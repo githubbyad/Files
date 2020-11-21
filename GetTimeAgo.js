@@ -52,8 +52,9 @@ function GetTimeAgo(sDate, adjusttime, Article_Timestamp, format, TimezoneOffset
 	//else if (secs > 0) str = secs + ' secs ago';
 	//else str = '0 secs';
 
-        if (days > 0 && days <= Article_Timestamp) str = document.write(days + ' days ago');
-        else if (days > Article_Timestamp) return GetDate(sDate, format);
+    if (days = 1) str = document.write(days + ' day ago');
+    else if (days > 1 && days <= Article_Timestamp) str = document.write(days + ' days ago');
+    else if (days > Article_Timestamp) return GetDate(sDate, format);
     else if (hours > 0 && hours < 2) str = document.write(hours + ' hour ago');
     else if (hours > 1) str = document.write(hours + ' hours ago'); 
     else if (mins > 0 && mins < 2) str = document.write(mins + ' min ago');
