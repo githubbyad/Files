@@ -1,0 +1,6 @@
+response.write("if (typeof MyTickets == 'function') { ")
+response.write("var mt = MyTickets();")
+response.write("if(typeof mt !== 'undefined'){")
+response.write("var mtb = '<ticket>(' + mt + ')</ticket>';")
+response.write("$('.hpx-24x7').html($('.hpx-24x7').html() + mtb);")
+response.write("$('.hpx-myticket').html($('.hpx-myticket').html() + mtb);}}")
