@@ -1,0 +1,6 @@
+response.write("<div class='hpx-homepage hpx-support'>")
+response.write("<div class='hpx-24x7'>24x7 Support<i class='fa fa-question-circle' aria-hidden='true'></i></div>")
+response.write("<div class='hpx-tickets'>")
+response.write("<a href='/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=#hpe_support' target='_blank'>My Tickets</a>")
+response.write("<a href='/form2.asp?lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_support' target='_blank'>Create New Ticket</a>")
+response.write("</div></div>")
