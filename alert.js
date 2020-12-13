@@ -22,13 +22,12 @@
 //		This plugin is licensed under the GNU General Public License: http://www.gnu.org/licenses/gpl.html
 //
 
-
 function confirmdelete(msg, ctl) {
-    jConfirm(msg, 'Delete', function(r) { if (r) window.location = ctl.href; });
+    jConfirm2(msg, 'Delete', function(r) { if (r) window.location = ctl.href; });
     return false;
 }
 function confirmhide(msg, ctl) {
-    jConfirm(msg, 'Hide', function(r) { if (r) window.location = ctl.href; });
+    jConfirm3(msg, 'Hide', function(r) { if (r) window.location = ctl.href; });
     return false;
 }
 
@@ -284,10 +283,10 @@ function confirmhide(msg, ctl) {
 	jConfirm = function(message, title, callback) {
 		$.alerts.confirm(message, title, callback);
     };
-    jConfirm = function(message, title, callback) {
+    jConfirm2 = function(message, title, callback) {
 		$.alerts.confirmdelete(message, title, callback);
     };
-    jConfirm = function(message, title, callback) {
+    jConfirm3 = function(message, title, callback) {
 		$.alerts.confirmhide(message, title, callback);
 	};	
 	jPrompt = function(message, value, title, callback) {
