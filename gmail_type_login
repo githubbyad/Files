@@ -1,0 +1,42 @@
+<style>
+    .LoginWrapper fieldset section:nth-child(2) {
+        display: none;
+    }
+    
+    .button.next2 {
+        padding: 0 15px;
+        cursor: pointer;
+    }
+    
+    .footer_wrapper #submit1 {
+        display: none;
+    }
+    
+    .LoginWrapper.LoginWrapper_page2 fieldset section:nth-child(1) {
+        display: none;
+    }
+    
+    .LoginWrapper.LoginWrapper_page2 fieldset section:nth-child(2) {
+        display: block;
+    }
+    
+    .footer_wrapper.footer_wrapper_page2 .button.next2 {
+        display: none;
+    }
+    
+    .footer_wrapper.footer_wrapper_page2 #submit1 {
+        display: inline-block;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        $('.footer_wrapper').prepend('<div class="button next2">NEXT</div>');
+        $('.button.next2').click(function() {
+            if ($('#uname').val() != '') {
+                $('.LoginWrapper').addClass('LoginWrapper_page2');
+                $('.footer_wrapper').addClass('footer_wrapper_page2');
+            }
+        });
+    });
+</script>
