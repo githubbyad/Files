@@ -1,0 +1,62 @@
+<script>
+    // BEGIN: Adding Custom Image
+    $(document).ready(function() {
+        // Add Image Link
+        $('button[aria-label="Insert/edit image"]').css('display', 'none');
+        $('button[aria-label="Insert/edit image"]').after('<span class="custom_image_on" title="Inset image"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" style="fill: white;"><path d="M5 15.7l3.3-3.2c.3-.3.7-.3 1 0L12 15l4.1-4c.3-.4.8-.4 1 0l2 1.9V5H5v10.7zM5 18V19h3l2.8-2.9-2-2L5 17.9zm14-3l-2.5-2.4-6.4 6.5H19v-4zM4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4a1 1 0 01-1-1V4c0-.6.4-1 1-1zm6 8a2 2 0 100-4 2 2 0 000 4z" fill-rule="nonzero"></path></svg></span></span>');
+        // Image Click
+        $('.custom_image_on').click(function() {
+            $('body').append('<div class="custom_image_iframe"><span class="custom_image_close" title="Close">+<span></span></span><iframe src="/custom_image.php"></iframe></div>');
+            $('.custom_image_close').click(function() {
+                $('.custom_image_iframe').remove();
+            });
+        });
+    });
+    // END: Adding Custom Image
+</script>
+
+<style>
+    /* Custom Image CSS */  
+    .custom_image_iframe {
+        border-width: 0;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        width: 500px;
+        height: 250px;
+        box-shadow: 0px 0px 0px 4000px rgba(0, 0, 0, 0.5);
+        background: white;
+        border-radius: 10px;
+        z-index: 1;
+    }
+    .custom_image_iframe iframe {
+        border: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .custom_image_close {
+        color: black;
+        top: 10px;
+        right: 20px;
+        position: absolute;
+        font-size: 35px;
+        cursor: pointer;
+        transform: rotate(45deg);
+    }
+    .custom_image_close:hover {
+        color: red;
+    }
+    .custom_image_on {
+        float: left;
+        width: auto;
+        cursor: pointer;
+    }
+    .custom_image_on img {
+        max-width: 20px;
+    }
+    .CuteEditorGroupMenuCell~.custom_image_on {
+        padding-top: 4px;
+        padding-right: 5px;
+    }
+</style>
