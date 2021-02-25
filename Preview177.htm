@@ -1,0 +1,90 @@
+{{LayoutPreview177Begin}}
+{{LayoutPreview177Limit6}}
+{{SortBy:Issue,Updated}}
+{{RemoveHTMLBody}}
+{{Where:HighlightAllExclude}}
+function GetPreview177(){document.write('
+
+<!-- Block start -->
+<div class="block-area">
+<!-- block title -->
+<div class="block-title-3" style="border-bottom: 3px solid red;margin-bottom: 15px;">  <h4 class="h2">    <span class="bg-danger px-2 py-1 text-white"><i class="fa fa-book text-white"></i> {{SubMenu}}</span>  </h4></div>
+<!--block content-->
+<div class="row">
+
+<!--post left start-->
+{{RepeatBegin}}
+{{If Counter<2}}
+<div class="col-lg-6">
+      <article class="card card-full hover-a mb-4">
+        <!--thumbnail-->
+         <div class="ratio_466-261 image-wrapper">
+ <a href="{{HeadingLink}}"><img class="img-fluid lazy" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"> </a>
+</div>
+        <div class="card-body">
+          <!-- title -->
+        <h3 class="card-title h1">
+<a href="{{HeadingLink}}" class="custom-color-id-{{MenuId}} line-2 text-dark fw-bold">{{Heading}}</a>
+</h3>
+          <!-- author, date and comments -->
+          <div class="card-text mb-2 h5 mt-4">
+            <span class="d-none d-sm-inline me-1">
+              <a class="fw-bold" href="#">{{By}}</a>
+            </span>
+            <time style="color: red;margin-left: 10px;">{{IssueDate}}</time>
+           
+          </div>
+          <!--description-->
+          <p class="card-text line-3 h3 mt-4 mb-4">{{Body}}</p>
+   <!--read more-->
+<a href="{{HeadingLink}}" class="btn btn-outline-danger rounded-0">Read more</a>
+<!--share-->
+<div class="btn-group dropend">
+<button type="button" class="btn btn-danger dropdown-toggle no-caret rounded-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<i class="fa fa-share-alt"></i> Share
+</button>
+<div class="dropdown-menu z-index-10 rounded-0">
+<!--replace link with your post link-->
+<a class="dropdown-item blank-windows" href="https://www.facebook.com/sharer/sharer.php?u={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}" title="Share to Facebook"><i class="fa fa-facebook text-facebook" title="Share to Facebook"></i> Facebook</a>
+<a class="dropdown-item blank-windows" href="https://twitter.com/intent/tweet?text={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}" title="Share to Twitter"><i class="fa fa-twitter text-twitter"></i> Twitter</a>
+<a class="dropdown-item blank-windows" href="https://www.linkedin.com/shareArticle?text={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}" title="Share to Linkedin"><i class="fa fa-linkedin text-linkedin"></i> Linkedin</a>
+</div>
+ </div>
+        </div>
+      </article>
+    </div>
+    <!--post right list start-->
+
+    <div class="col-lg-6">
+
+{{Else}}
+      <!--post list-->
+      <article class="card card-full hover-a mb-4">
+        <div class="row">
+          <!--thumbnail-->
+          <div class="col-3 col-md-4 pt-3 pb-3 ps-4 ">
+            <div class="ratio_466-261 image-wrapper">
+ <a href="{{HeadingLink}}"><img class="img-fluid lazy" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"> </a>
+</div>
+          </div>
+          <!-- title & date -->
+          <div class="col-9 col-md-8 pt-3 pb-3 ps-0">
+            <div class="card-body px-2 p-0">
+              <h3 class="card-title h3">
+<a href="{{HeadingLink}}" class="custom-color-id-{{MenuId}} line-2 text-dark fw-bold">{{Heading}}</a>
+</h3>
+              <div class="card-text h4">
+                <time style="color: red;">{{IssueDate}}</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+<!--End post list-->
+    <!--end post right list-->
+{{EndIf}}
+{{RepeatEnd}}
+    </div>
+</div></div>
+');}
+{{LayoutPreview177End}}
