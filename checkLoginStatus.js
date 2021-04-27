@@ -14,12 +14,12 @@ function checkLoginStatus(isRestricted) {
             if (surl == null) {
                 surl = "https://" + location.href.match(/:\/\/(.[^/]+)/)[1];
             }
-            var sframe = "<iframe id=\"frame1\" style=\"border:none;\" width=\"100%\" src=\"" + surl + "/" + sname + qs + "\" onload=\"iFrameResize({log:true}, '#frame1');\"></iframe>"
+            var sframe = "<iframe id=\"frame1\" style=\"border:none;\" width=\"100%\" src=\"" + surl + "/" + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
         } else {
             if (surl == null) {
                 surl = "http://" + location.href.match(/:\/\/(.[^/]+)/)[1];
             }
-            var sframe = "<iframe id=\"frame1\" style=\"border:none;\"  width=\"100%\" src=\"" + surl + "/" + sname + qs + "\" onload=\"iFrameResize({log:true}, '#frame1');\"></iframe>"
+            var sframe = "<iframe id=\"frame1\" style=\"border:none;\"  width=\"100%\" src=\"" + surl + "/" + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
         }
         document.getElementById("MainContent").innerHTML = sframe;
     } else {
