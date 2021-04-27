@@ -14,12 +14,12 @@ function checkLoginStatus(isRestricted) {
             if (surl == null) {
                 surl = "https://" + location.href.match(/:\/\/(.[^/]+)/)[1];
             }
-            var sframe = "<iframe id=\"IFrameContent\" name=\"IFrameContent\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\" width=100% onload=\"ResizeIFrame('IFrameContent');\" src=\"" + surl + "/" + sname + qs + "\"></iframe><script>iFrameResize({log:true}, '#frame1');<\/script>"
+            var sframe = "<iframe id=\"frame1\" name=\"frame1\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\" width=100% src=\"" + surl + "/" + sname + qs + "\"></iframe><script>iFrameResize({log:true}, '#frame1');<\/script>"
         } else {
             if (surl == null) {
                 surl = "http://" + location.href.match(/:\/\/(.[^/]+)/)[1];
             }
-            var sframe = "<iframe id=\"IFrameContent\" name=\"IFrameContent\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\" width=100% onload=\"ResizeIFrame('IFrameContent');\" src=\"" + surl + "/" + sname + qs + "\"></iframe><script>iFrameResize({log:true}, '#frame1');<\/script>"
+            var sframe = "<iframe id=\"frame1\" name=\"frame1\" marginwidth=\"0\" marginheight=\"0\" hspace=\"0\" vspace=\"0\" frameborder=\"0\" scrolling=\"no\" width=100% src=\"" + surl + "/" + sname + qs + "\"></iframe><script>iFrameResize({log:true}, '#frame1');<\/script>"
         }
         document.getElementById("MainContent").innerHTML = sframe;
     } else {
