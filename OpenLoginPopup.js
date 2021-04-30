@@ -1,7 +1,8 @@
 function OpenLoginPopup(ctl) {
     var s = readCookie('loginStatus');
     var sUrlc = 'https://bulletlink.one'; // Server domain
-    var siteU = location.href.match(/:\/\/(.[^/]+)/)[1];
+    var siteD = '{{PutDomain}}';
+    var siteU = siteD.split('//').pop().split('/').shift();
     var myParameters = new Array();
     var qrStr;
     if (ctl == null) {
