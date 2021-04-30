@@ -16,7 +16,6 @@ function OpenLoginPopup(ctl) {
         createCookie('curl', escape(qrStr));
         window.open('/index0.htm?pform={{Login}}&sname=target_form2.asp&site=' + siteU + '&as=' + sUrlc, target = '_parent');
         return false;
-        //      }
     } else {
         return true;
     }
