@@ -1,0 +1,179 @@
+{{FormValuesBegin}} 
+{{ReplaceFieldHelpWithFieldCaption:Yes}}
+{{SelectValue:Select}}
+{{RequiredValue:*}}
+{{FieldHelpValue:<b class="tooltip tooltip-top-right"><<FieldHelp>></b>}}
+{{TextAreaCount:<label id="<<FieldName>>-memo4"></label> <label id="<<FieldName>>-memo42"></label>}}
+<script src="{{PutAppServer}}iframe-resizer-master/js/iframeResizer.contentWindow.js"></script>
+<link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+<div class="formbody">
+<div class="body">
+<!--FormError-->
+<!--FormMessage-->
+<form class="custom-form" enctype="multipart/form-data" autocomplete="off" id="CustomForm" method="post" name="CustomForm" onsubmit="return Vailidate(this)" >
+<!--FKeys-->
+{{FormEmailSubject}} 
+{{FormEmailConfirmMessage}} 
+{{FormEmailFormat}} 
+{{FormEmailTo}} 
+{{FormEmailCC}}
+<header>
+{{FormTitle}}
+</header>
+<fieldset>
+<div class="system_text Header_text">
+{{FormHeader}}
+</div>
+
+{{RepeatBegin}} 
+
+{{If FieldType=System}}
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldValue}}" id="{{FieldName}}" placeholder="{{FieldCaption}}{{FieldRequired}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" {{FieldRequired}} >
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=ReadOnly}}
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" placeholder="{{FieldCaption}}{{FieldRequired}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" {{FieldRequired}} >
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=Divider}}
+
+<section>
+<div class="label">
+<div class="inp_custom">
+<div class="formdivider formdivider_custom">
+<span>{{FieldCaption}}</span>
+</div>
+</div>
+</div>
+</section>
+
+{{ElseIf FieldType=Memo}}
+
+<section>
+<label class="input">
+<label class="textarea">
+<{{TextArea}} class="formfieldinput formfieldinput_custom" id="{{FieldName}}" placeholder="{{FieldCaption}}{{FieldRequired}}" rows="4" cols="50" name="{{FieldName}}" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus'), LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}')" onblur="ChangeInputFocus(this, event, 'formfieldinput')" id="{{FieldName}}-memo"  onkeyup="LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}');" maxlength="{{FieldLength}}" NAME="{{FieldName}}" {{FieldRequired}}></{{TextArea}}>
+{{FieldHelp}}
+</label>
+<div class="formfieldname" style="text-align: left;">
+<label class="textarea">{{TextAreaCount}}</label>
+</div>
+</label>
+</section>
+
+{{ElseIf FieldType=File}}
+
+<section>
+<label for="file" class="inp1 input input-file">
+<div class="button"><input type="file" id="{{FieldName}}" name="{{FieldName}}" onchange="this.parentNode.nextSibling.value = this.value.replace(/.*[\/\\]/, '');"
+accept="image/*">Browse</div><input type="text" placeholder="Upload file" READONLY="" ID="{{FieldName}}-Browse" VALUE="" {{FieldRequired}}>
+</label>
+{{FieldHelp}}
+</section>
+
+{{ElseIf FieldType=Password}}
+
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom"  placeholder="{{FieldCaption}}" {{FieldRequired}} value="">
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=Date}}
+
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" placeholder="{{FieldCaption}}{{FieldRequired}}" id="{{FieldName}}" style="cursor: default;" type="{{FieldType}}" {{FieldRequired}} value="">
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=DropDown}}
+
+<section>
+<label class="label">
+<label class="select">
+<select id="{{FieldName}}" name="{{FieldName}}" {{FieldRequired}}>
+{{FieldDropDown}}
+</select> <i></i>
+</label>
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=Hidden}} 
+
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}" value="{{FieldDefaultValue}}"> 
+
+{{ElseIf FieldType=Decimal}} 
+
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldCaption}}{{FieldRequired}}" value="">
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=Number}} 
+
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldCaption}}{{FieldRequired}}">
+{{FieldHelp}}
+</label>
+</section>
+
+{{ElseIf FieldType=CheckBox}} 
+
+<section>
+<label class="checkbox state-error"><input id="{{FieldName}}" name="{{FieldName}}"  type="{{FieldType}}" name="checkbox"><i></i>{{FieldRequired}}
+    
+    {{FieldCaption}}</label>
+</section>
+
+{{ElseIf FieldType=Captcha}}
+
+<section class="captcha-section">
+<label class="input">
+{{FieldCaptcha}}
+</label>
+<div class="captcha-text"><span>Type Security code from the above picture.</span></div>
+</section>
+
+{{Else}}
+
+<section>
+<label class="input">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}"  maxlength="{{FieldLength}}" placeholder="{{FieldCaption}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom" {{FieldRequired}}>
+{{FieldHelp}}
+</label>
+</section>
+{{EndIf}} 
+
+{{RepeatEnd}}
+
+<div class="system_text footer_text">
+{{FormFooter}}
+</div>
+</fieldset>
+<footer>
+<button class="button" type="submit">{{FormButtonSubmit}}</button>
+</footer>
+</form>
+</div>
+<script language="JavaScript" type="text/javascript">LoadDoc("/get_sc.asp", "hcdiv", "");</script> 
+<script language="javascript">GetTooltipSys1();</script> 
+<script language="javascript">GetGoogleAnalytics('FORM:{{FormName}}');</script>
+
+</div>
+
+{{FormValuesEnd}}
