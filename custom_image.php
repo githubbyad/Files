@@ -46,7 +46,7 @@ parse_str($_SERVER['QUERY_STRING'], $params);
 			if (document.cookie.indexOf('bl_folder') != -1) { // Folder Templates
 				v = v + "/" + getCookie('bl_folder');
 			}
-			$(".hname").val(v);
+			//$(".hname").val(v);
 			$('.file-custom').click(function() {
 				$('.inputFile').click();
 			});
