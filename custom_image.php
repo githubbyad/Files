@@ -73,7 +73,7 @@ parse_str($_SERVER['QUERY_STRING'], $params);
 				var ap = (hx > 12) ? ('PM') : ('AM');
 				var n = Math.round(Math.random() * 10000000);
 				var path = d + "-" + m + "-" + y + "-" + h + "-" + min + "-" + s + "-" + ap + "-" + n;
-				$('.fname').val(path.toLowerCase() + "." + ext);
+				$('.fname').val(path.toLowerCase() + "." + ext.toLowerCase());
 				$('.btnSubmit').click(function() {
 					if ($('.inputFile').val() != '') {
 						$('.btnSubmit').val('Waiting...');
