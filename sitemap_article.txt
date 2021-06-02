@@ -1,6 +1,7 @@
 {{LayoutArticleGroup600Begin}}
 {{LayoutArticleGroup600Limit50}}
 {{File:sitemap.xml}}
+{{ReplaceJavascriptChars:No}}
 {{Find&ReplaceString:&,and}}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
