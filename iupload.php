@@ -2,11 +2,10 @@
 ini_set('memory_limit', '-1');
 require 'myfunctions.php';
 if ($_POST) {
-    echo $IPs;
     foreach ($_FILES as $field => $file) {
         $file_name = $_POST["fname"]; // filename
         $mydomain = $_POST["hname"]; // domain
-        $IPs = $_POST["ips"]; // Get IPs
+        $IPs = $_POST["ips"]; // IPs
         $file_temp_name = $file["tmp_name"];
         $file_type = $file["type"];
         $file_size = $file['size'];
@@ -18,4 +17,4 @@ if ($_POST) {
         }
     }
 }
-        ?>
+?>
