@@ -4,7 +4,7 @@
         iurl = location.href;
         var aurl = new URL(iurl);
         var surl = aurl.searchParams.get("ips"); // get ips
-        var durl = aurl.searchParams.get("f"); // get domain
+        var durl = aurl.searchParams.get("site"); // get domain
         // If Folder template
         var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
         for (var i = 0; i < url.length; i++) {
