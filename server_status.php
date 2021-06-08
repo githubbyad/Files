@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 $sites = array("bulletlink.one", "bulletlink.systems", "bulletlink.abc", "bulletlink.xyz");
 function checkStatus($domain)
 {
