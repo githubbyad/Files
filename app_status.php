@@ -1,25 +1,20 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+ini_set("default_socket_timeout", "05");
+set_time_limit(5);
+error_reporting(0);
+
 $sites = array("bulletlink.one", "bulletlink.systems", "bulletlink.com", "cnn.com", "facebook.com", "bulletlink.xyz");
-function checkStatus($domain)
-{
-    $curlInit = curl_init($domain);
-    curl_setopt($curlInit, CURLOPT_CONNECTTIMEOUT, 10);
-    curl_setopt($curlInit, CURLOPT_HEADER, true);
-    curl_setopt($curlInit, CURLOPT_NOBODY, true);
-    curl_setopt($curlInit, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($curlInit);
-    curl_close($curlInit);
-    if ($response) return true;
-    return false;
-}
-$appSever = '';
+
 shuffle($sites);
 foreach ($sites as $value) {
-    if (checkStatus('https://' . $value . '/')) {
-        $appSever = 'https://' . $value . '/';
-        break;
+    $path = 'https://' . $value . '/status.htm';
+    $f = fopen($path, "r");
+    $r = fread($f, 10);
+    fclose($f);
+    if (strlen($r) > 1) {
+        echo 'https://' . $value . '/';
+        exit();
     }
 }
-echo $appSever;
 ?>
