@@ -1,0 +1,104 @@
+<script type="text/javascript">
+    // Get AppServer
+    if (document.cookie.indexOf('AppServer') == -1) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                if (xmlhttp.status == 200) {
+                    document.cookie = "AppServer=" + xmlhttp.responseText;
+                } else if (xmlhttp.status == 400) {
+                    console.log('AppServer: There was an error 400');
+                } else {
+                    console.log('AppServer: something else other than 200 was returned');
+                }
+            }
+        };
+        xmlhttp.open("GET", "/lib/app_status.php", true);
+        xmlhttp.send();
+    }
+</script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/bl.js"></script>
+<script>
+function OpenLoginPopup(ctl) {
+    var s = readCookie('loginStatus');
+    var siteUh = location.href.match(/:\/\/(.[^/]+)/)[1];
+    var siteU = location.href.match(/:\/\/(.[^/]+)/)[1];
+    if (readCookie('hpe_client_domain')) {
+        if (siteU != readCookie('hpe_client_domain').split('//').pop().split('/').shift()) {
+            siteU = readCookie('hpe_client_domain').split('//').pop().split('/').shift();
+        }
+    }
+    var lb_page = 'hpeditor.asp'; // LB page
+    var myParameters = new Array();
+    var qrStr;
+    if (ctl == null) {
+        qrStr = location.href;
+    } else {
+        qrStr = ctl.href;
+    }
+    myParameters = ReadSParameters(qrStr);
+    var a = myParameters['a'];
+
+    if (a == '1' && s != 'Yes') {
+        createCookie('curl', escape(qrStr));
+        if (readCookie('hpe_client_domain')) {
+            if (siteUh != readCookie('hpe_client_domain').split('//').pop().split('/').shift()) {
+                window.open('/' + lb_page + '?lb=index0.htm?twindow=Form&pform={{Login}}&smenu=0&sname=target_form2.asp&site=' + siteU, target = '_parent');
+                return false;
+            }
+        }
+        window.open('/index0.htm?pform={{Login}}&sname=target_form2.asp&site=' + siteU, target = '_parent');
+        return false;
+    } else {
+        return true;
+    }
+}
+function checkLoginStatus(isRestricted) {
+    url = location.href;
+    var qs = url.substring(url.indexOf('?'));
+
+    var myParameters = new Array();
+    myParameters = ReadSParameters();
+    var sname = myParameters['sname'];
+    var a = myParameters['a'];
+    var urlhttps = url.startsWith("https");
+    var urlarr = new URL(url);
+    var surl;
+    if (sname.length > 0) {
+        var uint = setInterval(function(){
+            if(readCookie('AppServer')){
+                clearInterval(uint);
+                surl = readCookie('AppServer');
+                var sframe = "<iframe id=\"frame1\" style=\"border:none;\" width=\"100%\" src=\"" + surl + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
+                document.getElementById("MainContent").innerHTML = sframe;
+                }
+            },10);
+        
+    } else {
+        if (a == 1) {
+            var s = readCookie('loginStatus');
+            if (s != 'Yes') {
+                var divAccess1 = document.getElementById('divAccess');
+                if (divAccess1 != null) {
+                    document.getElementById('divAccess').style.display = 'none';
+                    OpenLoginPopup();
+                    document.getElementById('divMain').style.display = 'none';
+                }
+                return false;
+            } else {
+                var divMain1 = document.getElementById('divMain');
+                if (divMain1 != null) {
+                    document.getElementById('divMain').style.display = 'block';
+                }
+                return true;
+            }
+        } else {
+            var divMain = document.getElementById('divMain');
+            if (divMain != null) {
+                document.getElementById('divMain').style.display = 'block';
+            }
+            return true;
+        }
+    }
+}
+</script>
