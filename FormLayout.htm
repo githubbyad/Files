@@ -10,6 +10,15 @@
 <link type="text/css" rel="stylesheet" href="{{PutDomain}}style.css?v=9.000009">
 <link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
 <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script>
+$(document).ready(function() {
+$('input, textarea, select').each(function() {
+if ($(this).attr('required')) {
+$(this).siblings('b').text($(this).siblings('b').text() + ' is required.');
+}
+});
+});
+</script>
 <div class="formbody">
 <div class="body">
 <!--FormError-->
