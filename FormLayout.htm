@@ -1,14 +1,15 @@
-{{FormValuesBegin}} 
+{{FormValuesBegin}}
 {{ReplaceFieldHelpWithFieldCaption:Yes}}
 {{SelectValue:Select}}
 {{RequiredValue:*}}
 {{FieldHelpValue:<b class="tooltip tooltip-top-right"><<FieldHelp>></b>}}
 {{TextAreaCount:<label id="<<FieldName>>-memo4"></label> <label id="<<FieldName>>-memo42"></label>}}
 <script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/jquery.js"></script>
-<script src="{{PutAppServer}}iframe-resizer-master/js/iframeResizer.contentWindow.js"></script>
+<script src="/iframe-resizer-master/js/iframeResizer.contentWindow.js"></script>
 <script type="text/javascript" language="javascript" src="{{PutDomain}}customform.js?v=9.000009"></script>
 <link type="text/css" rel="stylesheet" href="{{PutDomain}}style.css?v=9.000009">
 <link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <div class="formbody">
 <div class="body">
 <!--FormError-->
@@ -33,7 +34,7 @@
 {{If FieldType=System}}
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldValue}}" id="{{FieldName}}" placeholder="{{FieldCaption}}{{FieldRequired}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" {{FieldRequired}} >
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldValue}}" id="{{FieldName}}" placeholder="{{FieldRequired}} {{FieldCaption}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" {{FieldRequiredBrowser}} >
 {{FieldHelp}}
 </label>
 </section>
@@ -41,7 +42,7 @@
 {{ElseIf FieldType=ReadOnly}}
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" placeholder="{{FieldCaption}}{{FieldRequired}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" {{FieldRequired}} >
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" placeholder="{{FieldRequired}} {{FieldCaption}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" {{FieldRequiredBrowser}} >
 {{FieldHelp}}
 </label>
 </section>
@@ -63,7 +64,7 @@
 <section>
 <label class="input">
 <label class="textarea">
-<{{TextArea}} class="formfieldinput formfieldinput_custom" id="{{FieldName}}" placeholder="{{FieldCaption}}{{FieldRequired}}" rows="4" cols="50" name="{{FieldName}}" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus'), LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}')" onblur="ChangeInputFocus(this, event, 'formfieldinput')" id="{{FieldName}}-memo"  onkeyup="LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}');" maxlength="{{FieldLength}}" NAME="{{FieldName}}" {{FieldRequired}}></{{TextArea}}>
+<{{TextArea}} class="formfieldinput formfieldinput_custom" id="{{FieldName}}" placeholder="{{FieldRequired}} {{FieldCaption}}" rows="4" cols="50" name="{{FieldName}}" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus'), LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}')" onblur="ChangeInputFocus(this, event, 'formfieldinput')" id="{{FieldName}}-memo"  onkeyup="LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}');" maxlength="{{FieldLength}}" NAME="{{FieldName}}" {{FieldRequiredBrowser}}></{{TextArea}}>
 {{FieldHelp}}
 </label>
 <div class="formfieldname" style="text-align: left;">
@@ -77,7 +78,7 @@
 <section>
 <label for="file" class="inp1 input input-file">
 <div class="button"><input type="file" id="{{FieldName}}" name="{{FieldName}}" onchange="this.parentNode.nextSibling.value = this.value.replace(/.*[\/\\]/, '');"
-accept="image/*">Browse</div><input type="text" placeholder="Upload file" READONLY="" ID="{{FieldName}}-Browse" VALUE="" {{FieldRequired}}>
+accept="image/*">Browse</div><input type="text" placeholder="Upload file" READONLY="" ID="{{FieldName}}-Browse" VALUE="" {{FieldRequiredBrowser}}>
 </label>
 {{FieldHelp}}
 </section>
@@ -86,7 +87,7 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom"  placeholder="{{FieldCaption}}" {{FieldRequired}} value="">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom"  placeholder="{{FieldRequired}} {{FieldCaption}}" {{FieldRequiredBrowser}} value="">
 {{FieldHelp}}
 </label>
 </section>
@@ -95,7 +96,7 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" placeholder="{{FieldCaption}}{{FieldRequired}}" id="{{FieldName}}" style="cursor: default;" type="{{FieldType}}" {{FieldRequired}} value="">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" placeholder="{{FieldRequired}} {{FieldCaption}}" id="{{FieldName}}" style="cursor: default;" type="{{FieldType}}" {{FieldRequiredBrowser}} value="">
 {{FieldHelp}}
 </label>
 </section>
@@ -105,9 +106,9 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 <section>
 <label class="label">
 <label class="select">
-<select id="{{FieldName}}" name="{{FieldName}}" {{FieldRequired}}>
+<select id="{{FieldName}}" name="{{FieldName}}" {{FieldRequiredBrowser}}>
 {{FieldDropDown}}
-</select> <i></i>
+</select><i></i>
 </label>
 {{FieldHelp}}
 </label>
@@ -121,7 +122,7 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldCaption}}{{FieldRequired}}" value="">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldRequired}} {{FieldCaption}}" value="">
 {{FieldHelp}}
 </label>
 </section>
@@ -130,7 +131,7 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldCaption}}{{FieldRequired}}">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldRequired}} {{FieldCaption}}" {{FieldRequiredBrowser}}>
 {{FieldHelp}}
 </label>
 </section>
@@ -138,9 +139,9 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 {{ElseIf FieldType=CheckBox}} 
 
 <section>
-<label class="checkbox state-error"><input id="{{FieldName}}" name="{{FieldName}}"  type="{{FieldType}}" name="checkbox"><i></i>{{FieldRequired}}
-    
-    {{FieldCaption}}</label>
+<label class="checkbox state-error"><input id="{{FieldName}}" name="{{FieldName}}"  type="{{FieldType}}" name="checkbox"><i></i>{{FieldRequiredBrowser}}   
+{{FieldCaption}}
+</label>
 </section>
 
 {{ElseIf FieldType=Captcha}}
@@ -156,7 +157,7 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 
 <section>
 <label class="input">
-<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}"  maxlength="{{FieldLength}}" placeholder="{{FieldCaption}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom" {{FieldRequired}}>
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}"  maxlength="{{FieldLength}}" placeholder="{{FieldRequired}} {{FieldCaption}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom" {{FieldRequiredBrowser}}>
 {{FieldHelp}}
 </label>
 </section>
@@ -173,10 +174,7 @@ accept="image/*">Browse</div><input type="text" placeholder="Upload file" READON
 </footer>
 </form>
 </div>
-<script language="JavaScript" type="text/javascript">LoadDoc("/get_sc.asp", "hcdiv", "");</script> 
-<script language="javascript">GetTooltipSys1();</script> 
 <script language="javascript">GetGoogleAnalytics('FORM:{{FormName}}');</script>
-
 </div>
 
 {{FormValuesEnd}}
