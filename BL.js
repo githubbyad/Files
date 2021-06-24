@@ -495,6 +495,9 @@ function OpenLoginPopup(ctl) {
 
 
 function checkLoginStatus(isRestricted) {
+    if (readCookie('Style_s13251')) { // header background - old template
+        document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + readCookie('Style_s13251') + ")";
+    } 
     url = location.href;
     var qs = url.substring(url.indexOf('?'));
 
@@ -1056,10 +1059,7 @@ function RunScript() {
 function ChangeStyle_s13251(fName) {
   parent.document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + fName + ")";
   createCookie("Style_s13251", fName, 60);
-}
-if (readCookie('Style_s13251')) {
-    document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + readCookie('Style_s13251') + ")";
-}  
+} 
 
 
 
