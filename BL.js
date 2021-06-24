@@ -1053,9 +1053,9 @@ function RunScript() {
 
 }
 
-function ChangeStyle_s15432(fName) {
-    parent.document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + fName + ")";
-    createCookie("Style_s15432", fName, 60);
+function ChangeStyle_s13251(fName) {
+  parent.document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + fName + ")";
+  createCookie("Style_s13251", fName, 60);
 }
 if (readCookie('Style_s13251')) {
     document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + readCookie('Style_s13251') + ")";
