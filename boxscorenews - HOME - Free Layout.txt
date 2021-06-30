@@ -1,0 +1,311 @@
+​
+{{PutDocType}}
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+{{PutMetaTitle}}
+{{PutMetaDescription}}
+{{PutMetaKeyword}}
+<link rel="shortcut icon" href="{{PutDomain}}favicon.ico?v=9.000009">
+<link rel="alternate" type="application/rss+xml" title="Boxscore World Sportswire [RSS]" href="{{PutDomain}}headlines.rss?v=9.000009">
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/bl.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/Gallery/jquery.ad-gallery.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/Watermark/jquery.watermarkinput.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/CSSMessageBox/js/jquery.ui.draggable.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/CSSMessageBox/js/jquery.alerts.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/calendar/jquery.datepick.js"></script>
+<link rel="stylesheet" type="text/css" href="{{PutDomain}}lib/JQuery/calendar/jquery.datepick.css">
+<script type="text/javascript" language="javascript" src="{{PutDomain}}settings.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}articles.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}ads.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}menus.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}sections.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}polls.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}tooltip.js?v=9.000009"></script>
+<link rel="stylesheet" href="{{PutDomain}}tooltip.css?v=9.000009" type="text/css">
+<link rel="stylesheet" href="{{PutDomain}}lib/JQuery/CSSMessageBox/css/jquery.alerts.css">
+<script type="text/javascript" src="{{PutDomain}}lib/JQuery/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="{{PutDomain}}lib/JQuery/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="{{PutDomain}}lib/JQuery/fancybox/jquery.fancybox-1.3.4.css" media="screen">
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/ModalPopup/dhtmlwindow.js">
+/***********************************************
+* DHTML Window Widget - (c) Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for legal use.
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+</script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/Gallery3/jqFancyTransitions.js"></script>
+<link rel="stylesheet" href="{{PutDomain}}lib/JQuery/Gallery3/jqFancyTransitions.css" type="text/css">
+<script type="text/javascript" src="{{PutDomain}}lib/JQuery/Highlight6/Highlight6.js"></script>
+<script type ="text/javascript" src="{{PutDomain}}lib/JQuery/Highlight8/jssor.js"></script>
+<script type ="text/javascript" src="{{PutDomain}}lib/JQuery/Highlight8/jssor.slider.js"></script>
+<link type="text/css" rel="stylesheet" href="{{PutDomain}}lib/JQuery/Highlight8/jssor_style.css">
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/ModalPopup/modal.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/AdsPeeler/swfobject.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/AdsPeeler/AC_OETags.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/AdsPeeler/pageear.js"></script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=xa-4a5593777887c4a4"></script>
+<!--[if lt IE 9]><script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/ToolTip/js/excanvas/excanvas.js"></script><![endif]-->
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/ToolTip/js/spinners/spinners.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/JQuery/ToolTip/js/tipped/tipped.js"></script>
+<link rel="stylesheet" href="{{PutDomain}}lib/JQuery/ToolTip/css/tipped.css" type="text/css">
+<link rel="stylesheet" href="{{PutDomain}}lib/ModalPopup/core-modalpopup.css" type="text/css">
+<link type="text/css" rel="stylesheet" href="{{PutDomain}}style.css?v=9.000009">
+<link type="text/css" rel="stylesheet" href="{{PutDomain}}layout.css?v=9.000009">
+<link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+<script type="text/javascript" language="javascript" src="{{PutDomain}}lib/iframeResizer.min.js"></script>
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_stylea" href="{{PutDomain}}stylea.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_styleb" href="{{PutDomain}}styleb.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_stylec" href="{{PutDomain}}stylec.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_styled" href="{{PutDomain}}styled.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_stylee" href="{{PutDomain}}stylee.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_stylef" href="{{PutDomain}}stylef.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_styleg" href="{{PutDomain}}styleg.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_styleh" href="{{PutDomain}}styleh.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_stylei" href="{{PutDomain}}stylei.css?v=9.000009">
+<link type="text/css" rel="alternate stylesheet" title="boxscorenews_stylej" href="{{PutDomain}}stylej.css?v=9.000009">
+<script type="text/javascript" language="javascript" src="/styleswitch.js"></script>
+<link rel="stylesheet" href="{{PutDomain}}lib/JQuery/popup1/popup1.css" type="text/css">
+<script src="{{PutDomain}}lib/JQuery/popup1/popup1.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}menus-horizontal1.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}jscript.js?v=9.000009"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomain}}custom.js?v=9.000009"></script>
+<link rel="stylesheet" href="https://fortawesome.github.io/Font-Awesome/3.2.1/assets/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+<!--StartMH-->
+<!--MetaSharing-->
+<!--EndMH-->
+{{PutHeadSection}}
+<meta name="google-site-verification" content="FIUp8OZPeVsc3fIAOUnA_0cIxrZjpv_VlOPJRGnoCwo" />
+<meta name="msvalidate.01" content="D62CB98BB6325223666A8F38A777F2F7" />
+</head>
+<body id="blbodymain">
+<div class="mainbody">
+<!-- BEGIN Header ---------------------------------------------------------------------- -->
+<div class="menu_content">
+<script type="text/javascript" language="JavaScript">GetHorizontalMenu1();</script>
+<div class="menu_wide"></div>
+</div>
+{{PutStickyAds}}
+{{PutGoogleCustomSearch}}
+<!-- BEGIN body ---------------------------------------------------------------------- -->
+<a name="top"></a>
+<table width=100%  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="ccx1">
+<tr>
+<td valign="top"  class="cx1">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td >
+{{PutAdGroup17}}
+</td>
+<td >
+{{PutAdGroup16}}
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+<table width=100%  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc1"><col class="cc3"><col class="cc4"><col class="cc5"><col class="cc66">
+<tr>
+<td valign="top"  class="c1">
+
+</td>
+<td valign="top"  class="c3">
+{{PutDate}}
+</td>
+<td valign="top"  align="center"  class="c4">
+</td>
+<td valign="top"  align="right"  class="c5">
+<div style="width:250px; height:30px"><gcse:searchbox></gcse:searchbox></div>
+</td>
+<td valign="top"  class="c66">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td >
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=100%  height=3  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc6">
+<tr>
+<td valign="top"  class="c6">
+
+</td>
+</tr>
+</table>
+<table width=100%  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc11">
+<tr>
+<td valign="top"  align="center"  class="c11">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td  align="center" >
+<div class="menu">
+<div class="menuIcons">
+<div class="menuOpen">
+<span class="icon-menu-bars">
+<span class="bar-1"></span>
+<span class="bar-2"></span>
+<span class="bar-3"></span>
+</span>
+</div>
+</div>
+</div>
+<script type="text/javascript" language="JavaScript">GetLogo();</script>
+</td>
+<td >
+{{PutAdGroup14}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=100%  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc17">
+<tr>
+<td valign="top"  align="center"  class="c17">
+{{PutMenusHorizontal}}
+</td>
+</tr>
+</table>
+<table width=100%  height=8  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc22">
+<tr>
+<td valign="top"  class="c22">
+
+</td>
+</tr>
+</table>
+<table width=100%  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc25"><col class="cc26"><col class="cc30"><col class="cc31"><col class="cg result"><col class="cc34"><col class="cc35"><col class="cc36"><col class="cc80"><col class="cc81"><col class="cc40"><col class="cc38">
+<tr>
+<td valign="top"  class="c25">
+
+</td>
+<td valign="top"  class="c26">
+<!--{{PutMenusVertical}}
+{{PutMenusDefault}}-->
+{{PutPoll1}}
+{{PutAdGroup13}}
+</td>
+<td valign="top"  class="c30 column1">
+
+</td>
+<td class="vrule">
+<div><span style="font-size: 0pt;"> </span></div>
+</td>
+<td valign="top"  align="center"  class="g result">
+<div><gcse:searchresults></gcse:searchresults></div>
+<div class="h6_sliderx">{{PutHighlight6}}</div>
+<div>{{PutHighlight7}}</div>
+{{PutMainContent}}
+{{PutArticleGroup100}}
+{{PutAdGroup12}}
+</td>
+<td valign="top"  class="c34 column1">
+
+</td>
+<td class="vrule">
+<div><span style="font-size: 0pt;"> </span></div>
+</td>
+<td valign="top"  class="c36">
+
+{{PutHighlight1}}
+{{PutArticleGroup444}}
+{{PutAdGroup15}}
+<div class="H4_div">{{PutHighlight4}} </div>
+</td>
+<td valign="top"  class="c80 column1">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td >
+
+</td>
+</tr>
+</table>
+</td>
+<td class="vrule">
+<table width=100% border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td >
+<div><span style="font-size: 0pt;"> </span></div>
+</td>
+</tr>
+</table>
+</td>
+<td valign="top"  align="center"  class="c40">
+{{PutAdGroup11}}
+</td>
+<td valign="top"  class="c38">
+
+</td>
+</tr>
+</table>
+<table width=100%  height=10  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc44">
+<tr>
+<td valign="top"  class="c44">
+
+</td>
+</tr>
+</table>
+<table width=100%  height=10  border=0 cellspacing=0 cellpadding=0 class="ccft">
+<col class="cc49"><col class="cc50"><col class="cc51">
+<tr>
+<td valign="top"  class="c49">
+
+</td>
+<td valign="top"  class="c50">
+
+</td>
+<td valign="top"  class="c51">
+
+</td>
+</tr>
+</table>
+<table width=100%  height=40  border=0 cellspacing=0 cellpadding=0 class="ccft" style="background-image: url('{{PutDomain}}stryker.png');
+background-repeat: no-repeat;
+background-position: top;
+">
+<col class="cc64"><col class="cc56"><col class="cc65"><col class="cc57">
+<tr>
+<td valign="top"  class="c64">
+<a href="#top" class="toplink"></a>
+</td>
+<td valign="top"  align="center"  class="c56">
+{{PutHitCounter}}
+<div>{{PutCopyright}}</div>
+</td>
+<td valign="top"  class="c65">
+<a href="#top" class="toplink"></a>
+</td>
+<td valign="top"  class="c57">
+
+</td>
+</tr>
+</table>
+<div id="divLoginStatus"></div>
+<div></div>
+{{PutTooltip}}
+<div>{{PutGoogleAnalytics}} </div>
+<br><div style="width: 1000px; margin-left: auto; margin-right: auto;"><br><center><a href="https://bulletlink.com" target=_blank><font size=1>{ powered by bulletlink.com }</font></a></center><br></div>
+</div>
+<!-- BEGIN footer ---------------------------------------------------------------------- -->
+
+
+<script type="text/javascript"> var infolinks_pid = 3317769; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+
+</body></html>
