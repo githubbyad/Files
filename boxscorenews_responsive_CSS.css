@@ -1,0 +1,195 @@
+body#blbodymain {
+    float: left;
+}
+
+.mainbody,
+.wrap_innter_div {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+.menu_logo {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    margin-top: 0;
+    margin-right: 2vw;
+    margin-left: 2vw;
+}
+
+.logo_div {
+    width: 78vw;
+    margin-right: 2vw;
+}
+
+.AdGroup14 {
+    width: 20vw;
+}
+
+a#logo img {
+    max-width: 100%;
+}
+
+img.custom_adgroup_14.custom_adgroup_h_14.img-fluid {
+    max-width: 100%;
+}
+
+.top_date {
+    width: 96vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 10px;
+}
+
+.date_left {
+    float: left;
+}
+
+span.date {
+    line-height: 30px;
+}
+
+.hpe-i-ad img {
+    max-width: 100%;
+    max-height: none;
+    width: auto;
+    height: auto;
+}
+
+.col_1,
+.col_2,
+.col_3 {
+    width: 100%;
+    float: left;
+    margin-right: 0;
+}
+
+.main_body {
+    width: 100%;
+}
+
+div#ARG102 {
+    width: 96vw;
+    float: left;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    height: auto;
+}
+
+.ARG102 {
+    width: 30vw;
+    margin-right: 3vw;
+    margin-left: 0;
+}
+
+.ARG102:nth-child(3n) {
+    margin-right: 0 !important;
+}
+
+.ARG102_img {
+    width: 30vw;
+    height: 20vw;
+}
+
+.ARG102_img img {
+    max-width: 30vw;
+    max-height: 20vw;
+}
+
+div#ARG100 {
+    width: 96vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 40px;
+}
+
+.H2_img {
+    width: 96vw;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 5px;
+}
+
+.H2_img img {
+    max-width: 96vw;
+    max-height: none;
+}
+
+.H2_heading,
+.H2_issue_date,
+.H2_body,
+.H2_more {
+    width: 100%;
+}
+
+.H2.uncomment1 {
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.load_more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#video-container,
+.video-label,
+.video-wrapper {
+    width: 100%;
+    float: left;
+}
+
+.col_2 {
+    margin-bottom: 20px;
+}
+
+.menu_bar.column6 {
+    width: 60%;
+}
+
+.menu_wide {
+    width: 40%;
+}
+
+.menuOpen.openm {
+    left: 62%;
+}
+
+table.pagebody {
+    width: 96vw;
+    float: left;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+div.pagebody {
+    width: 100% !important;
+}
+
+div.pagebody img {
+    max-width: 96vw !important;
+    box-sizing: border-box;
+}
+
+.article-section-archive-block,
+.article-section-archive-list {
+    width: 96vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    max-width: none;
+}
+
+h1.pageheading.layout_pageheading {
+    width: 100%;
+}
+
+div#divMain {
+    width: 96vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
