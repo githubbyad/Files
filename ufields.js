@@ -117,7 +117,6 @@ $(document).ready(function() {
 
     if ($(document).width() > 1024) {
         // vars
-        var wsite = readCookie('website');
         var lx = 'list';
         var lngn = '2.a'
         var lngl = 'sp'
@@ -129,6 +128,16 @@ $(document).ready(function() {
         var dl2 = '?<br><br>This operation cannot be undone.</center>';
         var pfist = fx + lngn + lngl + '?';
         var pdist = dx + lngn + lngl + '?';
+
+        // Client site URL
+        if (!readCookie('wsite')) {
+            if ($('.hpx-manage-link-all').length) {
+                var wurl_string = $('.hpx-manage-link-all').attr('href');
+                var wurl = new URL(wurl_string);
+                createCookie('wsite', wurl.searchParams.get("site"))
+            }
+        }
+        var wsite = readCookie('wsite');
 
         // push state
         if (readCookie('hpe_session_error') == 'Yes' && window.location.href.indexOf("/login") != -1) { // session error
