@@ -130,12 +130,10 @@ $(document).ready(function() {
         var pdist = dx + lngn + lngl + '?';
 
         // Client site URL
-        if (!readCookie('wsite')) {
-            if ($('.hpx-manage-link-all').length) {
-                var wurl_string = $('.hpx-manage-link-all').attr('href');
-                var wurl = new URL(wurl_string);
-                createCookie('wsite', wurl.searchParams.get("site"))
-            }
+        if ($('.hpx-manage-link-all').length) {
+            var wurl_string = $('.hpx-manage-link-all').attr('href');
+            var wurl = new URL(wurl_string);
+            createCookie('wsite', wurl.searchParams.get("site"))
         }
         var wsite = readCookie('wsite');
 
