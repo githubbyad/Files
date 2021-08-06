@@ -1,5 +1,10 @@
 <?php
 
+if (!isset($_SERVER['HTTP_REFERER'])) {
+    // Page Not Found
+    echo "<center><font face = 'Verdana'><h1><br><a style='text-decoration: none;' href=/>Page Not Found</a></h1></font></center>";
+    exit;
+}
 // Add correct path to your countlog.txt file.
 $path = 'countlog.txt';
 
@@ -12,7 +17,10 @@ fclose($file);
 $count = abs(intval($count)) + 1;
 
 // Output the updated count.
-echo "You are Visitor: {$count}\n";
+//echo "You are Visitor: {$count}\n";
+$hc = "{$count}";
+$myHC = '{ "hc":"' . $hc . '"}';
+echo "getHC(" . $myHC . ");";
 
 // Opens countlog.txt to change new hit number.
 $file = fopen($path, 'w');
