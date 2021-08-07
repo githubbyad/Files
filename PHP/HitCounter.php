@@ -1,8 +1,8 @@
 <?php
-
+//header("Access-Control-Allow-Origin: *");
 if (!isset($_SERVER['HTTP_REFERER'])) {
     // Page Not Found
-    echo "<center><font face = 'Verdana'><h1><br><a style='text-decoration: none;' href=/>Page Not Found</a></h1></font></center>";
+    echo "<script>console.log('Hit Counter Error...');</script>";
     exit;
 }
 // Add correct path to your countlog.txt file.
