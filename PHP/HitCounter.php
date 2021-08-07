@@ -14,7 +14,7 @@ $count = fgets($file, 1000);
 fclose($file);
 
 // Update the count.
-$count = abs(intval($count)) + 1;
+$count = number_format(abs(intval(str_replace(',', '', $count))) + 1);
 
 // Output the updated count.
 //echo "You are Visitor: {$count}\n";
