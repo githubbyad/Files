@@ -1,5 +1,4 @@
 <?php
-//header("Access-Control-Allow-Origin: *");
 if (!isset($_SERVER['HTTP_REFERER'])) {
     // Page Not Found
     echo "<script>console.log('Hit Counter Error...');</script>";
