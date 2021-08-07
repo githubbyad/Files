@@ -6,7 +6,7 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     exit;
 }
 // Add correct path to your countlog.txt file.
-$path = 'countlog.txt';
+$path = 'hitcounter.txt';
 
 // Opens countlog.txt to read the number of hits.
 $file  = fopen($path, 'r');
