@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reset - Hit Conter</title>
+    <style>
+        .rst_body {
+            width: 100%;
+            margin-top: 0px;
+            margin-right: auto;
+            margin-bottom: 0px;
+            margin-left: auto;
+            background-color: #fff;
+            font-family: Open Sans;
+            color: #333333;
+            font-size: 15px;
+            font-weight: 400;
+            text-decoration: none;
+            text-transform: none;
+            background-size: 400px auto;
+            background-attachment: fixed;
+        }
+        
+        .rst_header {
+            font-family: Arial;
+            font-size: 25px;
+            font-weight: 400;
+            font-weight: bold;
+        }
+        
+        .rst_form {
+            box-shadow: 0px 0px 5px #888888;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: left;
+            padding: 30px;
+        }
+        
+        .rst_form label {
+            color: rgb(68, 68, 68);
+            font-size: 15px;
+            line-height: 30px;
+            font-family: Arial;
+            width: 40%;
+            float: left;
+            margin-right: 5%;
+            text-align: right;
+        }
+        
+        .rst_form input[type="text"],
+        .rst_form input[type="number"] {
+            width: 50%;
+            height: 30px;
+        }
+        
+        .rst_form section {
+            width: 100%;
+            display: block;
+            margin-bottom: 30px;
+        }
+        
+        .rst_submit {
+            box-shadow: 0 0 10px rgba(0, 0, 0, .75);
+            border: 0px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .75);
+            -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .75);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .75);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 5px 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body class="rst_body">
+    <center>
+        <h1 class="rst_header">Reset Hit Counter</h1>
+
+        <form action="/get_site_counter.php">
+            <div class="rst_form">
+                <section>
+                    <label for="site">Site URL(such as "example.com "):</label>
+                    <input type="text" id="site" name="site">
+                </section>
+                <label for="reset">New Counter Value:</label>
+                <input type="number" id="reset" name="reset">
+            </div>
+            <input class="rst_submit" type="submit" value="Submit">
+        </form>
+    </center>
+</body>
+
+</html>
