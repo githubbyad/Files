@@ -3,8 +3,9 @@
 $(document).ready(function() { // Editor Button
     var xlngl = 'sp'
     var xpext = '.a' + xlngl;
+    var wbsite = readCookie('website');
     if (window.location.href.indexOf("/responsibility" + xpext) != -1) {
-        $('.lb-button').html('<a class="sm-hp ld-tt" title="Manage content and styles directly on homepage." href="/hpeditor' + xpext + '">Live Builder</a>');
+        $('.lb-button').html('<a class="sm-hp ld-tt" title="Manage content and styles directly on homepage." href="/hpeditor' + xpext + '?site=' + wbsite + '">Live Builder</a>');
         if (typeof Tipped !== "undefined") {
             Tipped.create('.ld-tt', {
                 ajax: false,
@@ -184,7 +185,7 @@ $(document).ready(function() {
             if (typeof MyTickets == 'function') {
                 var mt = MyTickets();
                 if (typeof mt !== 'undefined') {
-                    $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=#hpe_support\' target=\'_blank\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
+                    $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=&site=' + wsite + '#hpe_support\' target=\'_blank\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
                 }
             }
 
@@ -534,7 +535,7 @@ $(document).ready(function() {
                 });
             }
             if ($('.hpe-menu').length) {
-                $('.hpe-menu.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu & SubMenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Menu&x=#hpe_menu\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><div class="hp-span" title="Close Menu Editor to view Menu/Submenu Pages" class="hp-close"></div></div>');
+                $('.hpe-menu.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu & SubMenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Menu&x=&site=' + wsite + '#hpe_menu\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><div class="hp-span" title="Close Menu Editor to view Menu/Submenu Pages" class="hp-close"></div></div>');
             }
             $('.hp-close').click(function() { // Close Menu Editor
                 $(this).parent('.hp-z').parent('.hp-y').remove();
@@ -706,7 +707,7 @@ $(document).ready(function() {
             for (ag = 1; ag <= 100; ag++) {
                 if ($('.hpe-ag' + ag).length) {
                     $('[class*="hpe-ag' + ag + ' hp-x"] .hp-y').each(function() {
-                        $(this).append('<div class="hp-z"><div class="hp-span"><a title="Edit AdGroup ' + ag + '" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=CustomersAdsGroups&lid2=&level=1&pkeyname=group_id&pkey=' + ag + '&wpage=1&hpath=AdGroup' + ag + '&smid=&u=&c=&lf=&x=#hpe_ag\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                        $(this).append('<div class="hp-z"><div class="hp-span"><a title="Edit AdGroup ' + ag + '" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=CustomersAdsGroups&lid2=&level=1&pkeyname=group_id&pkey=' + ag + '&wpage=1&hpath=AdGroup' + ag + '&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_ag\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                     });
                 }
             }
@@ -949,7 +950,7 @@ $(document).ready(function() {
             var h;
             for (h = 1; h <= 20; h++) {
                 if ($('.hpe-hl' + h).length) { // Whole Highlight area
-                    $('[class*="hpe-hl' + h + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Highlight ' + h + '"href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=#hpe_hl$' + h + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                    $('[class*="hpe-hl' + h + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Highlight ' + h + '"href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=&site=' + wsite + '#hpe_hl$' + h + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                 }
                 if ($('.hpe-in-hl' + h).length) { // Specific Article
                     $('.hpe-in-hl' + h).each(function() {
@@ -974,7 +975,7 @@ $(document).ready(function() {
                     var m = $(this).attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit ' + s.replace(/@@/g, "'").replace(/_/g, " ") + '" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=#hpe_prev$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit ' + s.replace(/@@/g, "'").replace(/_/g, " ") + '" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=&site=' + wsite + '#hpe_prev$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                     }
                 });
             }
@@ -1000,7 +1001,7 @@ $(document).ready(function() {
                     var m = $(this).attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit ' + s.replace(/@@/g, "'").replace(/_/g, " ") + '" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=#hpe_xprev$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit ' + s.replace(/@@/g, "'").replace(/_/g, " ") + '" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=&site=' + wsite + '#hpe_xprev$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                     }
                 });
             }
@@ -1026,7 +1027,7 @@ $(document).ready(function() {
                     var m = $(this).attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=#hpe_prev$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit ' + s.replace(/@@/g, "'").replace(/_/g, " ") + ' </a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Pages&x=&site=' + wsite + '#hpe_prev$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit ' + s.replace(/@@/g, "'").replace(/_/g, " ") + ' </a></div></div>');
                     }
                 });
             }
@@ -1118,7 +1119,7 @@ $(document).ready(function() {
             if ($('.hpe-old-event').length) {
                 $('.hpe-old-event.hp-x').each(function() {
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Events&x=#hpe_old_event\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Events </a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Events&x=&site=' + wsite + '#hpe_old_event\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Events </a></div></div>');
                     }
                 });
             }
@@ -1128,7 +1129,7 @@ $(document).ready(function() {
             if ($('.hpe-old-directory').length) {
                 $('.hpe-old-directory.hp-x').each(function() {
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=CustomersSetup&x=#hpe_old_directory\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Directory </a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=CustomersSetup&x=&site=' + wsite + '#hpe_old_directory\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Directory </a></div></div>');
                     }
                 });
             }
@@ -1138,7 +1139,7 @@ $(document).ready(function() {
             if ($('.hpe-old-classified').length) {
                 $('.hpe-old-classified.hp-x').each(function() {
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Classifieds&x=#hpe_old_classified\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Classified </a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Classifieds&x=&site=' + wsite + '#hpe_old_classified\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Classified </a></div></div>');
                     }
                 });
             }
@@ -1148,7 +1149,7 @@ $(document).ready(function() {
             if ($('.hpe-video-g-yt-url').length) {
                 var vm = $('.hpe-video-g-yt-url.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                 var vs = $('.hpe-video-g-yt-url.hp-x').attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
-                $('.hpe-video-g-yt-url.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=#hpe_video_g_yt_url$$' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Videos </a></div></div>');
+                $('.hpe-video-g-yt-url.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=&site=' + wsite + '#hpe_video_g_yt_url$$' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Videos </a></div></div>');
             }
             if ($('.hpe-in-video-g-yt-url').length) { // Specific Video
                 $('.hpe-in-video-g-yt-url').each(function() {
@@ -1168,7 +1169,7 @@ $(document).ready(function() {
             if ($('.hpe-video-g-yt-code').length) {
                 var vm = $('.hpe-video-g-yt-code.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                 var vs = $('.hpe-video-g-yt-code.hp-x').attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
-                $('.hpe-video-g-yt-code.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=#hpe_video_g_yt_code$$' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Videos </a></div></div>');
+                $('.hpe-video-g-yt-code.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=&site=' + wsite + '#hpe_video_g_yt_code$$' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Videos </a></div></div>');
             }
             if ($('.hpe-in-video-g-yt-code').length) { // Specific Video
                 $('.hpe-in-video-g-yt-code').each(function() {
@@ -1188,7 +1189,7 @@ $(document).ready(function() {
             if ($('.hpe-video-g-yt-id').length) { // Whole Video Area
                 var vm = $('.hpe-video-g-yt-id.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                 var vs = $('.hpe-video-g-yt-id.hp-x').attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
-                $('.hpe-video-g-yt-id.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=#hpe_video_g_yt_id$$' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Videos </a></div></div>');
+                $('.hpe-video-g-yt-id.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=&site=' + wsite + '#hpe_video_g_yt_id$$' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Videos </a></div></div>');
             }
             if ($('.hpe-in-video-g-yt-id').length) { // Specific Video
                 $('.hpe-in-video-g-yt-id').each(function() {
@@ -1206,7 +1207,7 @@ $(document).ready(function() {
             if ($('.hpe-photo-g').length) { // Whole Photo Area
                 var pm = $('.hpe-photo-g.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
                 var ps = $('.hpe-photo-g.hp-x').attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
-                $('.hpe-photo-g.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=#hpe_photo_g$$' + pm + '&&' + ps + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Photos </a></div></div>');
+                $('.hpe-photo-g.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Galleries&x=&site=' + wsite + '#hpe_photo_g$$' + pm + '&&' + ps + '\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Photos </a></div></div>');
             }
             if ($('.hpe-in-photo-g').length) { // Specific Photo
                 $('.hpe-in-photo-g').each(function() {
@@ -1223,7 +1224,7 @@ $(document).ready(function() {
 
             // Old PhotoGallery
             if ($('.hpe-old-photog').length) {
-                $('.hpe-old-photog.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=PhotoGallery&x=#hpe_old_photogx\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Photos </a></div></div>');
+                $('.hpe-old-photog.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=PhotoGallery&x=&site=' + wsite + '#hpe_old_photogx\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Photos </a></div></div>');
             }
 
 
@@ -1244,52 +1245,52 @@ $(document).ready(function() {
 
             // Contact Information
             if ($('.hpe-contactbody').length) {
-                $('.hpe-contactbody.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=#hpe_contactbody\',\'iframe\');" title="Edit Contact Information"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Contact Information</header></div>');
+                $('.hpe-contactbody.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_contactbody\',\'iframe\');" title="Edit Contact Information"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Contact Information</header></div>');
             }
             // Copyright
             if ($('.hpe-copyright').length) {
-                $('.hpe-copyright.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=#hpe_copyright\',\'iframe\');" title="Edit Copyright"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Copyright</header></div>');
+                $('.hpe-copyright.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_copyright\',\'iframe\');" title="Edit Copyright"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Copyright</header></div>');
             }
             // Hitcounter
             if ($('.hpe-hitcounter').length) {
-                $('.hpe-hitcounter.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=#hpe_hitcounter\',\'iframe\');" title="Edit Hit Counter"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Hit Counter</header></div>');
+                $('.hpe-hitcounter.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_hitcounter\',\'iframe\');" title="Edit Hit Counter"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Hit Counter</header></div>');
             }
             // Social
             if ($('.hpe-social').length) {
                 $('.hpe-social').addClass('hp-ppp');
                 var hlp = "Click on 'EDIT' button/icon and provide us social media links.<br>We will update it within few minutes."
-                $('.hpe-social.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_social\',\'iframe\');" title="Edit Social Media Links"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Social Links</header></div>');
+                $('.hpe-social.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_social\',\'iframe\');" title="Edit Social Media Links"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Social Links</header></div>');
             }
             // Bottom Links
             if ($('.hpe-bottom-links').length) {
                 $('.hpe-bottom-links').addClass('hp-ppp');
                 var hlp = "You can write us to add/update/delete links.";
-                $('.hpe-bottom-links.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_bottom_links\',\'iframe\');" title="Edit Links"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Bottom Links</header></div>');
+                $('.hpe-bottom-links.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_bottom_links\',\'iframe\');" title="Edit Links"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Bottom Links</header></div>');
             }
             // Top Links
             if ($('.hpe-top-links').length) {
                 $('.hpe-top-links').addClass('hp-ppp');
                 var hlp = "You can write us to add/update/delete links.";
-                $('.hpe-top-links.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_top_links\',\'iframe\');" title="Edit Links"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Top Links</header></div>');
+                $('.hpe-top-links.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_top_links\',\'iframe\');" title="Edit Links"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Top Links</header></div>');
             }
             // Google Custom Search
             if ($('.hpe-gsearch').length) {
                 $('.hpe-gsearch').addClass('hp-ppp');
                 var hlp = "Please write us if it will not show results from your site.";
-                $('.hpe-gsearch.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_gsearch\',\'iframe\');" title="Any issues with Search?"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Search Bar</header></div>');
+                $('.hpe-gsearch.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_gsearch\',\'iframe\');" title="Any issues with Search?"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Search Bar</header></div>');
             }
             // Forms
             if ($('.hpe-formbody').length) {
                 var fn = $.urlParam('pform');
                 createCookie('hpe_formname', fn);
-                $('.hpe-formbody.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_formbodys\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Form</a></div></div>');
+                $('.hpe-formbody.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_formbodys\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Form</a></div></div>');
             }
             // Service Package
             if ($('.hpe-sp').length) {
                 //var spmn = $('.hpe-sp').children('#IFrameContent').attr('src').split('$$').pop();
                 //var spx = spmn.replace(/@@/g,"'").replace(/_/g," ");
                 //createCookie('hpe_spname', spx);
-                $('.hpe-sp.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_spackages\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                $('.hpe-sp.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_spackages\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
             }
 
             // Custom Sections
@@ -1970,7 +1971,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_in_submenu$$") != -1 && window.location.href.indexOf("?lid=Menu&") != -1) { // Go to SubMenu(modify)
         var pki = window.location.href.split('&&').pop();
         var fki = window.location.href.split('nu$$').pop().split('&&').shift();
-        window.location.href = '/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + pki + '&fkeyname=sys_menu_id&fkey=' + fki + '&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_in_submenux';
+        window.location.href = '/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + pki + '&fkeyname=sys_menu_id&fkey=' + fki + '&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_in_submenux';
     }
     if (window.location.href.indexOf("#hpe_in_submenu_") != -1 && window.location.href.indexOf("?lid=Menu&") != -1) { // Inside SubMenu(General)
         $('#form_header_wrapper span').text('Submenu');
@@ -2198,7 +2199,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_new_AG") != -1) { // New Ad
         $('.my-form').css('display', 'none');
         var adnumx = window.location.href.split('_AG').pop();
-        window.location.href = '/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnumx + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnumx + '&smid=&u=&c=&lf=&x=#hpe_newadx';
+        window.location.href = '/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnumx + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnumx + '&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_newadx';
     }
     if (window.location.href.indexOf("#hpe_newadx") != -1 && window.location.href.indexOf("?lid=CustomersAdsGroups&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1 && window.location.href.indexOf("&pkey=&") != -1) { // New Ad Screen
         $('.hpe-my-form fieldset section').css('display', 'none');
@@ -2259,7 +2260,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_update_poll$$") != -1) { // Go to Poll
         $('.my-form').css('display', 'none');
         var pk = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_update_pollxy';
+        window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_update_pollxy';
     }
     if (readCookie('hpe_update_pollx') == 'Yes') {
         history.pushState('', '', "#hpe_update_pollx");
@@ -2297,7 +2298,7 @@ $(document).ready(function() {
     }
     if (window.location.href.indexOf("#hpe_new_poll$$") != -1) { // New Poll
         $('.my-form').css('display', 'none');
-        window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_new_polls';
+        window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_new_polls';
     }
     if (readCookie('hpe_new_pollx') == 'Yes') {
         history.pushState('', '', "#hpe_new_pollx");
@@ -2335,7 +2336,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_delete_poll$$") != -1) { // Delete Poll
         $('.my-form').css('display', 'none');
         var pk = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_delete_polls';
+        window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_delete_polls';
     }
     if (readCookie('hpe_delete_pollx') == 'Yes') {
         history.pushState('', '', "#hpe_delete_pollx");
@@ -2415,18 +2416,18 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_update_@@") != -1) { // Go to Article 
         $('.my-form').css('display', 'none');
         var haidx = window.location.href.split('hpe_update_@@').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_updatex';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_updatex';
     }
     if (window.location.href.indexOf("#hpe_update_&&") != -1) { // Go to Video/Photo 
         $('.my-form').css('display', 'none');
         var hvidx = window.location.href.split('hpe_update_&&').pop();
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_updatex';
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_updatex';
     }
     if (window.location.href.indexOf("#hpe_update_AD") != -1) { // Go to Ad 
         $('.my-form').css('display', 'none');
         var adidx = window.location.href.split('hpe_update_AD').pop().split('_AG').shift();
         var adnumx = window.location.href.split('_AG').pop();
-        window.location.href = '/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adidx + '&fkeyname=group_id&fkey=' + adnumx + '&wpage=1&hpath=AdGroup' + adnumx + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_updatex';
+        window.location.href = '/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adidx + '&fkeyname=group_id&fkey=' + adnumx + '&wpage=1&hpath=AdGroup' + adnumx + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_updatex';
     }
     if (window.location.href.indexOf("#hpe_updatex") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article/Ad/Poll/Section Screen
         $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -2600,18 +2601,18 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_delete_@@") != -1) { // Go to Article 
         $('.my-form').css('display', 'none');
         var haidx = window.location.href.split('hpe_delete_@@').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_deletex';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_deletex';
     }
     if (window.location.href.indexOf("#hpe_delete_&&") != -1) { // Go to Video/Photo
         $('.my-form').css('display', 'none');
         var hvidx = window.location.href.split('hpe_delete_&&').pop();
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_deletex';
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_deletex';
     }
     if (window.location.href.indexOf("#hpe_delete_AD") != -1) { // Go to Ad 
         $('.my-form').css('display', 'none');
         var adidx = window.location.href.split('hpe_delete_AD').pop().split('_AG').shift();
         var adnumx = window.location.href.split('_AG').pop();
-        window.location.href = '/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adidx + '&fkeyname=group_id&fkey=' + adnumx + '&wpage=1&hpath=AdGroup' + adnumx + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_deletex';
+        window.location.href = '/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adidx + '&fkeyname=group_id&fkey=' + adnumx + '&wpage=1&hpath=AdGroup' + adnumx + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_deletex';
     }
     if (window.location.href.indexOf("#hpe_deletex") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article/Video/Photo/Menu/SubMenu Screen Hidden
         $('.my-form').css('display', 'none');
@@ -2656,19 +2657,19 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_hl_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
         var ha = window.location.href.split('$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_hlx' + ha;
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_hlx' + ha;
         createCookie('hpe_newh', 'Yes');
     }
     if (window.location.href.indexOf("#hpe_hl_delete") != -1) { // Delete Specific Article
         $('.my-form').css('display', 'none');
         var haidx = window.location.href.split('_@').pop().split('@').shift();
         var ha = window.location.href.split('$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_hldx' + ha;
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_hldx' + ha;
     }
     if (window.location.href.indexOf("#hpe_hl$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var ha = window.location.href.split('$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_hls' + ha;
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_hls' + ha;
     }
     if (window.location.href.indexOf("#hpe_hls") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -2837,12 +2838,12 @@ $(document).ready(function() {
         var qs = pa.replace(/@@/g, "'").replace(/_/g, " ");
         var ms = qs.replace("&&", " - ");
         createCookie('hpe_ms_prev', ms);
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_prevxy';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_prevxy';
     }
     if (window.location.href.indexOf("#hpe_prev$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var pa = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_prevs' + pa;
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_prevs' + pa;
     }
     if (window.location.href.indexOf("#hpe_prevs") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -2978,12 +2979,12 @@ $(document).ready(function() {
         var qs = pa.replace(/@@/g, "'").replace(/_/g, " ");
         var ms = qs.replace("&&", " - ");
         createCookie('hpe_ms_xprev', ms);
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_xprevxy';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xprevxy';
     }
     if (window.location.href.indexOf("#hpe_xprev$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var pxa = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_xprevs' + pxa;
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xprevs' + pxa;
     }
     if (window.location.href.indexOf("#hpe_xprevs") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3112,7 +3113,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_event$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var pea = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_events' + pea;
+        window.location.href = '/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_events' + pea;
     }
     if (window.location.href.indexOf("#hpe_events") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3353,15 +3354,15 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_xartg_@") != -1) { // Update Specific Article
         $('.my-form').css('display', 'none');
         var haidx = window.location.href.split('_@').pop().split('@_xart').shift();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_xartgroupx';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xartgroupx';
     }
     if (window.location.href.indexOf("#hpe_xartg_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_xartgroupx';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xartgroupx';
     }
     if (window.location.href.indexOf("#hpe_xartgroup$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_xartgroups';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xartgroups';
     }
     if (window.location.href.indexOf("#hpe_xartgroups") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3507,15 +3508,15 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_artg_@") != -1) { // Update Specific Article
         $('.my-form').css('display', 'none');
         var haidx = window.location.href.split('_@').pop().split('@_art').shift();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_artgroupx';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_artgroupx';
     }
     if (window.location.href.indexOf("#hpe_artg_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_artgroupx';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_artgroupx';
     }
     if (window.location.href.indexOf("#hpe_artgroup$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_artgroups';
+        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_artgroups';
     }
     if (window.location.href.indexOf("#hpe_artgroups") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3621,12 +3622,12 @@ $(document).ready(function() {
         var vqs = vps.replace(/@@/g, "'").replace(/_/g, " ");
         var vms = vqs.replace("&&", " - ");
         createCookie('hpe_ms_video', vms);
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_video_g_yt_urlxy';
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_video_g_yt_urlxy';
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_url$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var va = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_video_g_yt_urls' + va;
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_video_g_yt_urls' + va;
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_urls") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3747,12 +3748,12 @@ $(document).ready(function() {
         var vqs = vps.replace(/@@/g, "'").replace(/_/g, " ");
         var vms = vqs.replace("&&", " - ");
         createCookie('hpe_ms_video', vms);
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_video_g_yt_idxy';
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_video_g_yt_idxy';
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_id$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var va = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_video_g_yt_ids' + va;
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_video_g_yt_ids' + va;
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_ids") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3873,12 +3874,12 @@ $(document).ready(function() {
         var vqs = vps.replace(/@@/g, "'").replace(/_/g, " ");
         var vms = vqs.replace("&&", " - ");
         createCookie('hpe_ms_video', vms);
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_video_g_yt_codexy';
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_video_g_yt_codexy';
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_code$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var va = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_video_g_yt_codes' + va;
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_video_g_yt_codes' + va;
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_codes") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -3999,12 +4000,12 @@ $(document).ready(function() {
         var pqs = pps.replace(/@@/g, "'").replace(/_/g, " ");
         var pms = pqs.replace("&&", " - ");
         createCookie('hpe_ms_photo', pms);
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=#hpe_photo_gxy';
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_photo_gxy';
     }
     if (window.location.href.indexOf("#hpe_photo_g$$") != -1) { // Go to Search Page - Hidden
         $('.my-form').css('display', 'none');
         var pg = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=#hpe_photo_gs' + pg;
+        window.location.href = '/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_photo_gs' + pg;
     }
     if (window.location.href.indexOf("#hpe_photo_gs") != -1) { // Inside Search Page - Hidden
         $('.my-form').css('display', 'none');
@@ -4127,7 +4128,7 @@ $(document).ready(function() {
     }
     // Contact Information
     if (window.location.href.indexOf("#hpe_$contactbody") != -1) { // First load
-        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=#hpe_contactbody';
+        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_contactbody';
     }
     if (window.location.href.indexOf("#hpe_contactbody") != -1) { // Inside "Settings" screen
         $('#form_header_wrapper span').text('Contact Information');
@@ -4154,7 +4155,7 @@ $(document).ready(function() {
     }
     // Copyright
     if (window.location.href.indexOf("#hpe_$copyright") != -1) { // First load
-        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=#hpe_copyright';
+        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_copyright';
     }
     if (window.location.href.indexOf("#hpe_copyright") != -1) { // Inside "Settings" screen
         $('#form_header_wrapper span').text('Copyright');
@@ -4181,7 +4182,7 @@ $(document).ready(function() {
     }
     // Hitcounter
     if (window.location.href.indexOf("#hpe_$hitcounter") != -1) { // First load
-        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=#hpe_hitcounter';
+        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_hitcounter';
     }
     if (window.location.href.indexOf("#hpe_hitcounter") != -1) { // Inside "Settings" screen
         $('#form_header_wrapper span').text('Hit Counter');
@@ -4208,7 +4209,7 @@ $(document).ready(function() {
     }
     // Email
     if (window.location.href.indexOf("#hpe_$email") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_email';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_email';
     }
     if (window.location.href.indexOf("#hpe_email") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
@@ -4237,7 +4238,7 @@ $(document).ready(function() {
     }
     // Social
     if (window.location.href.indexOf("#hpe_$social") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_social';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_social';
     }
     if (window.location.href.indexOf("#hpe_social") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
@@ -4261,7 +4262,7 @@ $(document).ready(function() {
 
     // Phone
     if (window.location.href.indexOf("#hpe_$phone") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_phone';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_phone';
     }
     if (window.location.href.indexOf("#hpe_phone") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
@@ -4284,7 +4285,7 @@ $(document).ready(function() {
     }
     // Bottom Links
     if (window.location.href.indexOf("#hpe_$bottom_links") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_bottom_links';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_bottom_links';
     }
     if (window.location.href.indexOf("#hpe_bottom_links") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
@@ -4307,7 +4308,7 @@ $(document).ready(function() {
     }
     // Top Links
     if (window.location.href.indexOf("#hpe_$top_links") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_top_links';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_top_links';
     }
     if (window.location.href.indexOf("#hpe_top_links") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
@@ -4330,7 +4331,7 @@ $(document).ready(function() {
     }
     // Google Custom Search
     if (window.location.href.indexOf("#hpe_$gsearch") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_gsearch';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_gsearch';
     }
     if (window.location.href.indexOf("#hpe_gsearch") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
@@ -4354,7 +4355,7 @@ $(document).ready(function() {
     // Forms
     if (window.location.href.indexOf("#hpe_$formbody$$") != -1) { // First load
         //var fnn = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_formbodys';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_formbodys';
     }
     if (window.location.href.indexOf("#hpe_formbodys") != -1) { // Inside Ticket Page
         var tfn = readCookie('hpe_formname');
@@ -4376,7 +4377,7 @@ $(document).ready(function() {
     }
     // Service Package
     if (window.location.href.indexOf("#hpe_$spackage$$") != -1) { // First load
-        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=#hpe_spackages';
+        window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_spackages';
     }
     if (window.location.href.indexOf("#hpe_spackages") != -1) { // Inside Ticket Page
         //var tspn = readCookie('hpe_spname');
