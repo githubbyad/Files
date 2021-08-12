@@ -1,0 +1,86 @@
+{{LayoutArticleGroup200Begin}}
+{{LayoutArticleGroup200Limit9}}
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+{{SortBy:Issue,Updated}}
+{{Where:MenuIdInclude:30}}
+{{Where:HighlightAllExclude}}
+function GetArticleGroup200(){document.write('<div id=Highlight200>
+<div class="borderabove"></div>
+<div class="top_div">Politics</div>
+<div class="ARbody" style="display:flex; flex-direction:row; float:left;">
+{{RepeatBegin}}
+{{If Counter=1}}
+<div class="main_hold">
+<div class="article_div1"> 
+<div class="article_div1_img"><a href="{{HeadingLink}}"><img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"> </a></div>
+<div class="article_span_1"> 
+<div class="issue_div">{{IssueDate}}</div>
+<div class="article_div1_heading pageheading"><a href="{{HeadingLink}}"  class="article_div1_heading_text">{{Heading}}</a> </div>
+<div class="article_div1_body_text">{{Body}} </div>
+<div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
+</div>
+</div>
+</div>
+<div class="Arcolumn"> 
+{{EndIf}}
+{{If Counter<3}}
+<div class="article_div3"> 
+<div class="article_span_3"> 
+<div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
+<div id="image_PRV-new-1"><a href="{{HeadingLink}}"><img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"></a></div>
+<div class="article_div3_body_text1">{{Body}} </div>
+<div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
+</div>
+</div>
+{{EndIf}}
+{{If Counter=4}}
+</div>
+<div class="Arcolumn">
+<div class="article_div3"> 
+<div class="article_span_3"> 
+<div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
+<div class="article_div3_body_text1">{{Body}} </div>
+<div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
+</div>
+</div>
+{{ElseIf Counter<6}}
+<div class="article_div3"> 
+<div class="article_span_3"> 
+<div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
+<div class="article_div3_body_text1">{{Body}} </div>
+<div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
+</div>
+</div>
+{{ElseIf Counter=6}}
+<div class="article_div3"> 
+<div class="article_span_3"> 
+<div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
+<div id="image_PRV-new-1"><a href="{{HeadingLink}}"><img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"></a></div>
+</div>
+</div>
+</div>
+<div class="Arcolumn">
+{{ElseIf Counter<9}}
+<div class="article_div3"> 
+<div class="article_span_3"> 
+<div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
+<div class="article_div3_body_text1">{{Body}} </div>
+<div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
+</div>
+</div>
+{{EndIf}}
+{{If Counter=9}}
+<div class="article_div3"> 
+<div class="article_span_3"> 
+<div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
+<div class="article_div3_body_text1">{{Body}} </div>
+<div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
+</div>
+</div>
+</div>
+{{EndIf}}
+{{RepeatEnd}}
+ </div>
+<script type="text/javascript">jQuery(document).ready(function() {jQuery(\'#newsslider\').accessNews({});});<\/script></div>');}
+{{LayoutArticleGroup200End}}
