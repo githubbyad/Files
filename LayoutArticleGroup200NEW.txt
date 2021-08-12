@@ -23,8 +23,7 @@ function GetArticleGroup200(){document.write('<div id=Highlight200>
 </div>
 </div>
 <div class="Arcolumn"> 
-{{EndIf}}
-{{If Counter<3}}
+{{ElseIf Counter<3}}
 <div class="article_div3"> 
 <div class="article_span_3"> 
 <div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
@@ -33,8 +32,7 @@ function GetArticleGroup200(){document.write('<div id=Highlight200>
 <div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
 </div>
 </div>
-{{EndIf}}
-{{If Counter=4}}
+{{ElseIf Counter=4}}
 </div>
 <div class="Arcolumn">
 <div class="article_div3"> 
@@ -69,8 +67,7 @@ function GetArticleGroup200(){document.write('<div id=Highlight200>
 <div id="read_more_custom"><a href="{{HeadingLink}}">{{more}}</a></div>
 </div>
 </div>
-{{EndIf}}
-{{If Counter=9}}
+{{ElseIf Counter=9}}
 <div class="article_div3"> 
 <div class="article_span_3"> 
 <div class="article_div3_heading pageheading"><a href="{{HeadingLink}}"  class="article_layout_text3">{{Heading}}</a> </div>
