@@ -1,9 +1,10 @@
 // BEGIN: Live Builder(hpeditor)
-
 $(document).ready(function() { // Editor Button
     var xlngl = 'sp'
     var xpext = '.a' + xlngl;
-    var wbsite = readCookie('website');
+    var wurl_stringx = location.href;
+    var wurlx = new URL(wurl_stringx);
+    var wbsite = wurlx.searchParams.get("site");
     if (window.location.href.indexOf("/responsibility" + xpext) != -1) {
         $('.lb-button').html('<a class="sm-hp ld-tt" title="Manage content and styles directly on homepage." href="/hpeditor' + xpext + '?site=' + wbsite + '">Live Builder</a>');
         if (typeof Tipped !== "undefined") {
@@ -18,19 +19,18 @@ $(document).ready(function() { // Editor Button
             });
         }
     }
-
     // Go back to LB form Detail page - Article
     if (window.location.href.indexOf("?hp_editor$$") != -1) {
         var lb_m_url = window.location.href.split('?hp_editor').shift().split('/').pop();
         var lb_s_url = window.location.href.split('?hp_editor$$').pop();
-        var lb_b_url = 'https://' + lb_s_url + '/hpeditor' + xpext + '?lb=' + lb_m_url;
+        var lb_b_url = 'https://' + lb_s_url + '/hpeditor' + xpext + '?lb=' + lb_m_url + '&site=' + wbsite;
         window.location.href = lb_b_url;
     }
     // Go back to LB form Detail page - Event 
     if (window.location.href.indexOf("?hp_editor__") != -1) {
         var lb_m_url = window.location.href.split('?hp_editor').shift().split('/').pop();
         var lb_s_url = window.location.href.split('?hp_editor__').pop();
-        var lb_b_url = 'https://' + lb_s_url + '/hpeditor' + xpext + '?lb=' + lb_m_url + '&hp_editor_eventx_detail';
+        var lb_b_url = 'https://' + lb_s_url + '/hpeditor' + xpext + '?lb=' + lb_m_url + '&hp_editor_eventx_detail=' + '&site=' + wbsite;
         window.location.href = lb_b_url;
     }
 });
@@ -63,10 +63,6 @@ function readCookie(name) {
 
 function eraseCookie(name) {
     createCookie(name, "", -1);
-}
-
-function clearCookieLB() {
-    eraseCookie('hpe_poll_close');
 }
 
 function OpenBLPopup(pageUrl, window_type, fwidth, fheight) {
@@ -115,7 +111,6 @@ $(document).ready(function() {
         }
         return decodeURI(results[1]) || 0;
     }
-
     if ($(document).width() > 1024) {
         // vars
         var lx = 'list';
@@ -129,34 +124,20 @@ $(document).ready(function() {
         var dl2 = '?<br><br>This operation cannot be undone.</center>';
         var pfist = fx + lngn + lngl + '?';
         var pdist = dx + lngn + lngl + '?';
-
-        // Client site URL
-        if ($('.hpx-manage-link-all').length) {
-            var wurl_string = $('.hpx-manage-link-all').attr('href');
-            var wurl = new URL(wurl_string);
-            createCookie('wsite', wurl.searchParams.get("site"))
-        }
-        var wsite = readCookie('wsite');
+        var lhrx = location.href;
+        var lhurlx = new URL(lhrx);
+        var wsite = lhurlx.searchParams.get("site");
+        var wd = wsite.split('.').shift();
 
         // push state
         if (readCookie('hpe_session_error') == 'Yes' && window.location.href.indexOf("/login") != -1) { // session error
             eraseCookie('hpe_session_error');
             alert('<p style="color:red;">Your session has expired.</p>');
         }
-        if (window.location.href.indexOf("?hle") != -1) {
-            var url = document.location.href;
-            window.history.pushState({}, "", url.split("?hle")[0]);
-            window.location.reload();
-        }
         if (window.location.href.indexOf("/hpeditor.") != -1) {
-
-            // Clear Domain
-            //window.history.replaceState({}, document.title, "/" + "hpeditor" + pext);
-
             // Get domain      
             var dlb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1] + '/hpeditor' + pext + '?lb=';
-            var hlb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1] + '/hpeditor' + pext;
-
+            var hlb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1] + '/hpeditor' + pext + '?site=' + wsite;
             // New Tab Links
             var hpx = setInterval(function() {
                 if ($('.hpx-manage-link').length) {
@@ -164,10 +145,8 @@ $(document).ready(function() {
                     clearInterval(hpx);
                 }
             }, 1000);
-
             // Home Link 
-            $('.hp-homemenu-child .hp-menulink').attr('href', '/hpeditor' + pext);
-
+            $('.hp-homemenu-child .hp-menulink').attr('href', '/hpeditor' + pext + '?site=' + wsite);
             // Get Theme
             if (typeof SMThemeColor == 'function') {
                 if (SMThemeColor() == 'Black') { $('.hpx-main').attr('data-theme', 'Black'); }
@@ -188,36 +167,12 @@ $(document).ready(function() {
                     $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=&site=' + wsite + '#hpe_support\' target=\'_blank\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
                 }
             }
-
             // LB loader
             setTimeout(function() {
                 $('.hpx-loader').animate({ opacity: 1 }, 400, function() { $('.hpx-loader').css('display', 'none'); });
                 $('.hpx-wrapper').css('visibility', 'visible');
                 $('.hpx-wrapper').animate({ opacity: 1 }, 700);
             }, 2000);
-
-            // Get Server domain
-            //var as = '';
-            // if (readCookie('hpe_as')) {
-            //     var as = readCookie('hpe_as');
-            //     if ($.urlParam('as')) {
-            //         window.location.replace(window.location.pathname + '?hp_editor'); // Remove "as" parameter
-            //     }
-            // } else {
-            // if ($.urlParam('as')) {
-            //     //var as = $.urlParam('as');
-            //     createCookie('hpe_as', $.urlParam('as'));
-            //     window.location.replace(window.location.pathname + '?hp_editor'); // Remove "as" parameter
-            //     // if (as == null || as == undefined) {
-            //     //     as = '';
-            //     // } else {
-            //     //     createCookie('hpe_as', as);
-            //     //     window.location.replace(window.location.pathname + '?hp_editor'); // Remove "as" parameter
-            //     // }
-            // }
-            // // }
-            // var as = readCookie('hpe_as');
-            // alert(readCookie('hpe_as'));
 
             if (readCookie('hpe_success_delete')) { // If Deactivated Something
                 var sdt = readCookie('hpe_success_delete');
@@ -251,17 +206,6 @@ $(document).ready(function() {
             $('a').each(function() { // Change link into editor link
                 if ($(this).attr('href')) {
                     if ($(this).attr('href').indexOf('hp_editor') == -1) {
-                        // if ($(this).attr('href') == '#') {
-                        //     $(this).attr('href', 'javascript:void(0);');
-                        // } else if ($(this).attr('href').indexOf('?') != -1) {
-                        //     $(this).attr('href', $(this).attr('href').trim() + '&hp_editor');
-                        // } else {
-                        //     $(this).attr('href', $(this).attr('href').trim() + '?hp_editor');
-                        // }
-                        // if ($(this).attr('href').indexOf('target_service_package' + pext + '') != -1) { // Service Package
-                        //     //spm = $(this).text();
-                        //     //$(this).attr('href', $(this).attr('href') + '$$' + spm.replace(/'/g,"@@").replace(/ /g,"_"));
-                        // }
                         $(this).removeAttr('target');
                     }
                 }
@@ -270,23 +214,11 @@ $(document).ready(function() {
                 $('a').each(function() {
                     if ($(this).attr('href')) {
                         if ($(this).attr('href').indexOf('hp_editor') == -1) {
-                            // if ($(this).attr('href') == '#') {
-                            //     $(this).attr('href', 'javascript:void(0);');
-                            // } else if ($(this).attr('href').indexOf('?') != -1) {
-                            //     $(this).attr('href', $(this).attr('href').trim() + '&hp_editor');
-                            // } else {
-                            //     $(this).attr('href', $(this).attr('href').trim() + '?hp_editor');
-                            // }
-                            // if ($(this).attr('href').indexOf('target_service_package' + pext + '') != -1) { // Service Package
-                            //     //spm = $(this).text();
-                            //     //$(this).attr('href', $(this).attr('href') + '$$' + spm.replace(/'/g,"@@").replace(/ /g,"_"));
-                            // }
                             $(this).removeAttr('target');
                         }
                     }
                 });
             }, 2000, 5);
-
             var pl; // Poll - Add Classes
             for (pl = 1; pl <= 100; pl++) {
                 $('.polls1body[id="poll' + pl + '"]').addClass('hpe-poll' + pl);
@@ -344,7 +276,6 @@ $(document).ready(function() {
                     $(this).prepend('<div class="hp-y"></div>');
                 }
             });
-
             // Box width and Height (1st time)
             $('.hp-x').each(function() {
                 //$(this).addClass('hp-ppp'); // Add Class for box hover effect
@@ -416,8 +347,6 @@ $(document).ready(function() {
                     $(this).children('.hp-parent-div1').removeClass('hp-hide-delete');
                 }
             });
-
-
             var e = setInterval(function() {
                 if (readCookie('hpe_page2') == 'Yes') {
                     eraseCookie('hpe_page2');
@@ -450,12 +379,11 @@ $(document).ready(function() {
                         $('#blbodymain').css('opactiy', 0);
                         top.window.location.reload(true);
                     }
+                    if ($('.hpe-iframe').contents().get(0).location.href.indexOf('/acknowledge' + pext) != -1) {
+                        $(".hpe-iframe").contents().find("#form2").css('display', 'none');
+                    }
                 }
             }, 100);
-
-
-
-
             // Theme
             if (typeof SMThemeColor == 'function') {
                 if (SMThemeColor() == 'Yellow') { $('.hp-x, #blbodymain').attr('data-theme', 'Yellow'); }
@@ -469,9 +397,6 @@ $(document).ready(function() {
                 if (SMThemeColor() == 'Red') { $('.hp-x, #blbodymain').attr('data-theme', 'Red'); }
                 if (SMThemeColor() == 'Black') { $('.hp-x, #blbodymain').attr('data-theme', 'Black'); }
             }
-
-
-
             // LOGO - #logo
             if ($('.hpe-logo').length) {
                 $('.hpe-logo').each(function() {
@@ -485,25 +410,16 @@ $(document).ready(function() {
                     if ($(this).children('#logo').children('img').length) {
                         var hlp = 'Upload logo image with recommended width showing on bottom right side.<br><b>NOTE:</b> There is no limit for the height.';
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Logo" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '&hpe=Y#hpe_logo_img\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Homepage" href="' + hlb + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Logo</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Logo" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_logo_img\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Homepage" href="' + hlb + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Logo</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
                         }
                     } else {
                         var hlp = 'Upload logo image with recommended width showing on bottom right side.<br><b>NOTE:</b> There is no limit for the height.';
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Logo" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '&hpe=Y#hpe_logo_img\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Homepage" href="' + hlb + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Logo</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Logo" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_logo_img\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Homepage" href="' + hlb + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Logo</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
                         }
                     }
-                    /*else {
-                    	var hlp = 'This is logo text help';
-                        if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                    	$(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Logo" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '&hpe=Y#hpe_logo\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="'+ hlp + '"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Logo</header><cpanel></cpanel><rpanel>Recommended: ' + rw + 'px</rpanel></div>');
-                        }
-                    }*/
                 });
             }
-
-
-
             // Menu
             if ($('.hp-submenu').length) { // If there is no submenu, then add "ADD" button
                 $('.hp-submenu').each(function() {
@@ -517,7 +433,7 @@ $(document).ready(function() {
                     }
                     if ($(this).children('.hpe-in-submenu').length == 0) {
                         $(this).addClass('hp-submenux-zero');
-                        $(this).prepend('<submenu><div class="hpe-on-submenu hp-x"><sub>Add Submenu</sub><div class="hp-y"><div class="hp-z"><div class="hp-span"><a title="Add New Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=&fkeyname=sys_menu_id&fkey=' + mk + '&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=100#hpe_in_new_submenu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a></div></div></div></div></submenu>');
+                        $(this).prepend('<submenu><div class="hpe-on-submenu hp-x"><sub>Add Submenu</sub><div class="hp-y"><div class="hp-z"><div class="hp-span"><a title="Add New Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=&fkeyname=sys_menu_id&fkey=' + mk + '&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=100#hpe_in_new_submenu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a></div></div></div></div></submenu>');
 
                     }
                 });
@@ -535,7 +451,7 @@ $(document).ready(function() {
                 });
             }
             if ($('.hpe-menu').length) {
-                $('.hpe-menu.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu & SubMenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Menu&x=&site=' + wsite + '#hpe_menu\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><div class="hp-span" title="Close Menu Editor to view Menu/Submenu Pages" class="hp-close"></div></div>');
+                $('.hpe-menu.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu & SubMenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Menu&x=&site=' + wsite + '&smx=Y#hpe_menu\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><div class="hp-span" title="Close Menu Editor to view Menu/Submenu Pages" class="hp-close"></div></div>');
             }
             $('.hp-close').click(function() { // Close Menu Editor
                 $(this).parent('.hp-z').parent('.hp-y').remove();
@@ -580,9 +496,16 @@ $(document).ready(function() {
                             $(this).attr('data-link', dl);
                         }
                     }
-                    var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '');
+                    if ($(this).attr('data-link').indexOf('?twindow=') != -1) { // Replace ? with &
+                        $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
+                    }
+                    if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
+                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '');
+                    } else {
+                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    }
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_in_menu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&vpx=' + dv + '&fpx=' + mon + '#hpe_in_new_menu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-menudelete" title="Delete Menu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Menu and<br>all associated Submenus and Articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=1&pform=Menu&dname=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a class="hp-menulink" title="View Menu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_menu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&vpx=' + dv + '&fpx=' + mon + '#hpe_in_new_menu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-menudelete" title="Delete Menu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Menu and<br>all associated Submenus and Articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=1&pform=Menu&dname=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a class="hp-menulink" title="View Menu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
                     }
                     if ($(this).attr('data-link') == '#' || $(this).attr('data-link').indexOf('javascript:void') != -1) { // If there is no link, then disable Menu Link button
                         $('.hp-menulink').css('display', 'none');
@@ -650,13 +573,14 @@ $(document).ready(function() {
                 });
             }
             if ($('.hp-homemenu-child').length) { // If home menu, then change home URL
-                $('.hp-homemenu-child .hp-y .hp-z .hp-span .hp-menulink').attr('href', $('.hp-homemenu-child').attr('data-homeurl'));
+                $('.hp-homemenu-child .hp-y .hp-z .hp-span .hp-menulink').attr('href', '/hpeditor' + pext + '?site=' + wsite);
+
             }
             if ($('.hpe-in-menu-only').length) { // Editor for specific Menu(Only Name Change)
                 $('.hpe-in-menu-only').each(function() {
                     var mk = $(this).attr('data-menu');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_in_menu_only\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_menu_only\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></div>');
                     }
                 });
             }
@@ -682,10 +606,17 @@ $(document).ready(function() {
                 $('.hpe-in-submenu').each(function() {
                     var mk = $(this).attr('data-menu');
                     var sk = $(this).attr('data-submenu');
-                    var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '');
+                    if ($(this).attr('data-link').indexOf('?twindow=') != -1) { // Replace ? with &
+                        $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
+                    }
+                    if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
+                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '');
+                    } else {
+                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    }
                     var smon = $(this).attr('data-order-new');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&fkeyname=sys_menu_id&fkey=' + mk + '&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_in_submenu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=&fkeyname=sys_menu_id&fkey=' + mk + '&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=' + smon + '#hpe_in_new_submenu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-submenudelete" title="Delete Submenu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Submenu and<br>all associated articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=2&pform=Sub-Menu&dname=Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a title="View Submenu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&fkeyname=sys_menu_id&fkey=' + mk + '&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_submenu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=&fkeyname=sys_menu_id&fkey=' + mk + '&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=' + smon + '#hpe_in_new_submenu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-submenudelete" title="Delete Submenu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Submenu and<br>all associated articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=2&pform=Sub-Menu&dname=Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a title="View Submenu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
                     }
 
                 });
@@ -695,13 +626,10 @@ $(document).ready(function() {
                     var mk = $(this).attr('data-menu');
                     var sk = $(this).attr('data-submenu');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit SubMenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&fkeyname=sys_menu_id&fkey=' + mk + '&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_in_submenu_only\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit SubMenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&fkeyname=sys_menu_id&fkey=' + mk + '&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_submenu_only\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></div>');
                     }
                 });
             }
-
-
-
             // AdGroups
             var ag; // Whole AdGroup area
             for (ag = 1; ag <= 100; ag++) {
@@ -724,11 +652,10 @@ $(document).ready(function() {
                     }
                     var hlp = 'Upload ad with recommended width showing on bottom right side.<br><b>NOTE:</b> There is no limit for the height';
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
                     }
                 });
             }
-
             setIntervalLimited(function() { // For ad Box issue
                 $('.hpe-i-ad').each(function() {
                     if ($(this).css('float') != 'left') {
@@ -775,7 +702,6 @@ $(document).ready(function() {
                     $(this).removeClass('hpe-left');
                 });
             }, 500, 5);
-
             setInterval(function() {
                 $('[id*="holddiv"]').each(function() { // Ad Type = "SameSpotTime"
                     if (!$(this).children('.hp-y').length) {
@@ -801,7 +727,7 @@ $(document).ready(function() {
                         var adnum = $(this).attr('data-adnum');
                         var adid = $(this).attr('data-adid');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
                         }
                         $('[class*="hpe-"].hp-x .hp-y .hp-z .hp-span a').click(function() {
                             setTimeout(function() {
@@ -864,7 +790,7 @@ $(document).ready(function() {
                         var adid = $(this).attr('data-adid');
                         $(this).addClass('hp-ppp');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
                         }
                         if (!$(this).siblings('.hp-x').length) {
                             $(this).parent('tr').addClass('had-tr');
@@ -931,21 +857,15 @@ $(document).ready(function() {
                     if (SMThemeColor() == 'Black') { $('.hp-x, #blbodymain').attr('data-theme', 'Black'); }
                 }
             }, 200);
-
-
-
             // Poll
             var px;
             for (px = 1; px <= 100; px++) {
                 if ($('.hpe-poll' + px).length) {
                     var hlp = 'To delete this last poll and wish to add a new poll, add a new poll then delete sample poll. If you wish to remove the poll completely, please create a support ticket. ';
                     $('.polls1body[class*="hpe-poll' + px + ' hp-x"]').addClass('hp-ppp');
-                    $('.polls1body[class*="hpe-poll' + px + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Poll" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + px + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_update_pollxy\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="Add New Poll" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_new_polls\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a title="Delete Poll" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Poll' + dl2 + '\', \'/' + pdist + 'lid=Polls&lid2=&level=1&pform=polls&dname=Polls&pkeyname=sys_poll_id&pkey=' + px + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a class="hp-help hp-tt hp-poll-help" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Poll</header></div>');
+                    $('.polls1body[class*="hpe-poll' + px + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Poll" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Polls&lid2=&level=0&pform=polls&pkeyname=sys_poll_id&pkey=' + px + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_update_pollxy\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="Add New Poll" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Polls&lid2=&level=0&pform=polls&pkeyname=sys_poll_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_new_polls\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a title="Delete Poll" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Poll' + dl2 + '\', \'/' + pdist + 'lid=Polls&lid2=&level=0&pform=polls&dname=Polls&pkeyname=sys_poll_id&pkey=' + px + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a class="hp-help hp-tt hp-poll-help" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Poll</header></div>');
                 }
             }
-
-
-
             // Highlights
             var h;
             for (h = 1; h <= 20; h++) {
@@ -956,19 +876,16 @@ $(document).ready(function() {
                     $('.hpe-in-hl' + h).each(function() {
                         var haid = $(this).attr('data-article');
                         var isdate = $(this).attr('data-date');
-                        var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                        var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                         var dh = '<center>Do you want to Hide current Article from<br><b>Highlight - ' + h + '</b>?</center>';
                         $(this).addClass('hp-ppp');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=hlx' + h + '&x=&site=' + wsite + '&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_hlx' + h + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Hide Article from Highlight - ' + h + '" onclick="return confirmhide(\'' + dh + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_hldx' + h + '\');"><i class="fa fa-minus-circle" aria-hidden="true"></i><b class="hp-llable">Hide</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Highlight - ' + h + '</header></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=hlx' + h + '&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_hlx' + h + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Hide Article from Highlight - ' + h + '" onclick="return confirmhide(\'' + dh + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_hldx' + h + '\');"><i class="fa fa-minus-circle" aria-hidden="true"></i><b class="hp-llable">Hide</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Highlight - ' + h + '</header></div>');
                         }
 
                     });
                 }
             }
-
-
-
             // Previews
             if ($('.hpe-prev').length) { // Whole Preview area
                 $('.hpe-prev.hp-x').each(function() {
@@ -985,16 +902,13 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
-
-
-
             // Previews (Highlight Excluded)
             if ($('.hpe-xprev').length) { // Whole Preview Area
                 $('.hpe-xprev.hp-x').each(function() {
@@ -1011,16 +925,13 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_xprevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_xprevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
-
-
-
             // Sections
             if ($('.hpe-section').length) {
                 $('.hpe-section.hp-x').each(function() {
@@ -1037,15 +948,13 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=section#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=section&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=section#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=section&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
                     }
                 });
 
             }
-
-
             // E-Editon or Archive #EEE
             if ($('.hpe-in-edition').length) { // Specific Article
                 $('.hpe-in-edition').each(function() {
@@ -1053,51 +962,42 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    //var durl =  dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                    //var durl =  dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Edition" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=edition#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Edition" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=edition&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Edition" onclick="return confirmdelete(\'' + dl1 + ' E-Edition' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Edition" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=edition#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Edition" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=edition&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Edition" onclick="return confirmdelete(\'' + dl1 + ' E-Edition' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
-
             // Single Article on Homepage
             if ($('.hpe-article-only').length) {
                 $('.hpe-article-only').each(function() {
                     var daid = $(this).attr('data-article');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
                     }
                 });
             }
-
-
-
             // Details page Article
             if ($('.hpe-article-detail').length) {
                 $('.hpe-article-detail').each(function() {
                     var daid = $(this).attr('data-detailid');
                     var sbid = $(this).attr('data-submenu');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
-
-
             // Details page Event
             if ($('.hpe-event-detail').length) {
                 $('.hpe-event-detail').each(function() {
                     var daid = $(this).attr('data-detailid');
                     var sbid = $(this).attr('data-submenu');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=event_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=1&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=event_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=1&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
-
-
-
             // Events (New)
             if ($('.hpe-in-event').length) {
                 $('.hpe-in-event.hp-x').each(function() {
@@ -1105,16 +1005,13 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var eurl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&hp_editor_eventx_detail';
+                    var eurl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&hp_editor_eventx_detail=' + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=event&x=&site=' + wsite + '&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_eventxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Event" onclick="return confirmdelete(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=1&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Event" href="' + eurl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Event - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=event&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_eventxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Event" onclick="return confirmdelete(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=1&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Event" href="' + eurl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Event - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
-
-
-
             // Events (Old)
             if ($('.hpe-old-event').length) {
                 $('.hpe-old-event.hp-x').each(function() {
@@ -1123,8 +1020,6 @@ $(document).ready(function() {
                     }
                 });
             }
-
-
             // Directory (Old)
             if ($('.hpe-old-directory').length) {
                 $('.hpe-old-directory.hp-x').each(function() {
@@ -1133,8 +1028,6 @@ $(document).ready(function() {
                     }
                 });
             }
-
-
             // Classified (Old)
             if ($('.hpe-old-classified').length) {
                 $('.hpe-old-classified.hp-x').each(function() {
@@ -1143,8 +1036,6 @@ $(document).ready(function() {
                     }
                 });
             }
-
-
             // Videos - Gallery - YT(URL)
             if ($('.hpe-video-g-yt-url').length) {
                 var vm = $('.hpe-video-g-yt-url.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
@@ -1158,13 +1049,10 @@ $(document).ready(function() {
                     var hvid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=hpe_video_g_yt_url#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_urlxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_url#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_urlxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
-
-
-
             // Videos - Gallery - YT(Code)
             if ($('.hpe-video-g-yt-code').length) {
                 var vm = $('.hpe-video-g-yt-code.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
@@ -1178,13 +1066,10 @@ $(document).ready(function() {
                     var hvid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=hpe_video_g_yt_code#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_codexy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_code#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_codexy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
-
-
-
             // Videos - Gallery - YT(ID)
             if ($('.hpe-video-g-yt-id').length) { // Whole Video Area
                 var vm = $('.hpe-video-g-yt-id.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
@@ -1198,11 +1083,10 @@ $(document).ready(function() {
                     var hvid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=hpe_video_g_yt_id#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_idxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_id#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_idxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
-
             // Photo - Gallery
             if ($('.hpe-photo-g').length) { // Whole Photo Area
                 var pm = $('.hpe-photo-g.hp-x').attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_");
@@ -1216,18 +1100,14 @@ $(document).ready(function() {
                     var hpid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hpid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_photo_gxy' + pm + '&&' + ps + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Photo" onclick="return confirmdelete(\'' + dl1 + ' Photo' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hpid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hpid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_photo_gxy' + pm + '&&' + ps + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Photo" onclick="return confirmdelete(\'' + dl1 + ' Photo' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hpid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
-
-
             // Old PhotoGallery
             if ($('.hpe-old-photog').length) {
                 $('.hpe-old-photog.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=PhotoGallery&x=&site=' + wsite + '#hpe_old_photogx\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Photos </a></div></div>');
             }
-
-
             // ArticleGroup
             if ($('.hpe-in-artgroup').length) {
                 $('.hpe-in-artgroup').each(function() {
@@ -1235,21 +1115,12 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '');
+                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&hpe=Y#hpe_deletex\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">ArticleGroup - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_deletex\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">ArticleGroup - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
-            }
-
-            // Contact Information
-            if ($('.hpe-contactbody').length) {
-                $('.hpe-contactbody.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_contactbody\',\'iframe\');" title="Edit Contact Information"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Contact Information</header></div>');
-            }
-            // Copyright
-            if ($('.hpe-copyright').length) {
-                $('.hpe-copyright.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_copyright\',\'iframe\');" title="Edit Copyright"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div><header class="hp-hheader">Copyright</header></div>');
             }
             // Hitcounter
             if ($('.hpe-hitcounter').length) {
@@ -1287,12 +1158,8 @@ $(document).ready(function() {
             }
             // Service Package
             if ($('.hpe-sp').length) {
-                //var spmn = $('.hpe-sp').children('#IFrameContent').attr('src').split('$$').pop();
-                //var spx = spmn.replace(/@@/g,"'").replace(/_/g," ");
-                //createCookie('hpe_spname', spx);
                 $('.hpe-sp.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_spackages\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
             }
-
             // Custom Sections
             var ch;
             for (ch = 1; ch <= 1000; ch++) {
@@ -1310,10 +1177,8 @@ $(document).ready(function() {
                     $('[class*="hpe-weather-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=weather#hpe_updatex\',\'iframe\');"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Weather</header></div>');
                 }
             }
-
             // Box width and Height (2nd time)
             $('.hp-x').each(function() {
-                //$(this).addClass('hp-ppp'); // Add Class for box hover effect
                 $(this).mouseover(function() {
                     $(this).stop(true, true).removeClass('hp-ppp');
                 }).mouseout(function() {
@@ -1375,7 +1240,6 @@ $(document).ready(function() {
                 $('.hpe-in-menu').removeClass('hp-hide-delete');
                 $(this).removeClass('hpe-left');
             });
-
             // Reload while closing popup window
             var s = setInterval(function() {
                 if (readCookie('hpe_blank')) {
@@ -1389,7 +1253,7 @@ $(document).ready(function() {
                     $('.mfp-iframe.hpe-iframe').addClass('hpe-iframe-close');
                     $('.hpe-loader.hpe-loader-start').addClass('hpe-loader-restart');
                 }
-                if (readCookie('hpe_poll_close') == 'Yes') {
+                if (readCookie('hpe_poll_close' + '_' + wd) == 'Yes') {
                     $('.hpe-loader.hpe-loader-start').removeClass('hpe-loader-restart');
                     $('.hp-x-popup').addClass('hp-sslide2');
                     $('.hpe-iframe').animate({ opacity: 0 }, 400);
@@ -1414,7 +1278,7 @@ $(document).ready(function() {
                     $('.hpe-iframe').animate({ opacity: 0 }, 500);
                     window.location = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1] + '/hpeditor' + pext + '?lb=index' + i + '.htm';
                 }
-                if (readCookie('hpe_cancel') == 'Yes') {
+                if (readCookie('hpe_cancel' + '_' + wd) == 'Yes') {
                     $('.hp-x-popup').addClass('hp-sslide2');
                     $('.hpe-iframe').animate({ opacity: 0 }, 400);
                     setTimeout(function() {
@@ -1426,25 +1290,25 @@ $(document).ready(function() {
                     eraseCookie('hpe_old_photogx');
                     eraseCookie('hpe_old_directory');
                     eraseCookie('hpe_old_classified');
-                    if (readCookie('hpe_submit') == 'Yes') {
-                        eraseCookie('hpe_submit');
+                    if (readCookie('hpe_submit' + '_' + wd) == 'Yes') {
+                        eraseCookie('hpe_submit' + '_' + wd);
                         var hr;
                         for (hr = 1; hr <= 20; hr++) {
-                            if (readCookie('hpe_hlx' + hr) == 'Yes') {
-                                eraseCookie('hpe_hlx' + hr);
+                            if (readCookie('hpe_hlx' + hr + '_' + wd) == 'Yes') {
+                                eraseCookie('hpe_hlx' + hr + '_' + wd);
                             }
                         }
-                        eraseCookie('hpe_support');
-                        eraseCookie('hpe_menu');
+                        eraseCookie('hpe_support' + '_' + wd);
+                        eraseCookie('hpe_menu' + '_' + wd);
                         eraseCookie('hpe_hide_iframe');
-                        eraseCookie('hpe_cancel');
+                        eraseCookie('hpe_cancel' + '_' + wd);
                         eraseCookie('hpe_prevx');
                         eraseCookie('hpe_xprevx');
                         eraseCookie('hpe_ms_prev');
                         eraseCookie('hpe_ms_xprev');
                         eraseCookie('hpe_delete_hl');
-                        eraseCookie('hpe_updatex');
-                        eraseCookie('hpe_update_setting');
+                        eraseCookie('hpe_updatex' + '_' + wd);
+                        eraseCookie('hpe_update_setting' + '_' + wd);
                         eraseCookie('hpe_newx');
                         eraseCookie('hpe_newh');
                         eraseCookie('hpe_deletex');
@@ -1470,10 +1334,10 @@ $(document).ready(function() {
                         eraseCookie('hpe_old_event');
                         eraseCookie('hpe_old_directory');
                         eraseCookie('hpe_old_classified');
-                        eraseCookie('hpe_in_menux');
-                        if (readCookie('hpe_poll_close') == 'Yes') {
+                        eraseCookie('hpe_in_menux' + '_' + wd);
+                        if (readCookie('hpe_poll_close' + '_' + wd) == 'Yes') {
                             clearTimeout(s);
-                            eraseCookie('hpe_poll_close');
+                            eraseCookie('hpe_poll_close' + '_' + wd);
                             eraseCookie('hpe_art_detail_url');
                             eraseCookie('hpe_event_detail_url');
                             eraseCookie('hpe_rurl');
@@ -1491,7 +1355,6 @@ $(document).ready(function() {
                             var aurl = readCookie('hpe_event_detail_url');
                             eraseCookie('hpe_event_detail_url');
                             eraseCookie('hpe_rurl');
-                            //window.location.href = aurl + '&hpe_view=hp_editor_eventx_detail';
                             window.location.href = aurl + '&hpe_view=hp_editor__' + location.href.match(/:\/\/(.[^/]+)/)[1] + '';
                         }
                         if (readCookie('hpe_detail_delete') && readCookie('hpe_rurl')) {
@@ -1519,14 +1382,12 @@ $(document).ready(function() {
                 }, 300);
             });
         }
-
         // ToolTip - Slider
         var shlp = "Drag the slider left to right side by holding the mouse to see next article.";
         var shlp_up = "Drag the slider up to down side by holding the mouse to see next article.";
         $('.hp-slide .hp-x .hp-y .hp-z .hp-span').append('<a class="hp-help hp-tt" href="javascript:void(0);" title="' + shlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a>');
         $('.hp-slide-left .hp-x .hp-y .hp-z .hp-span').append('<a class="hp-help hp-tt" href="javascript:void(0);" title="' + shlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a>');
         $('.hp-slide-up .hp-x .hp-y .hp-z .hp-span').append('<a class="hp-help hp-tt" href="javascript:void(0);" title="' + shlp_up + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a>');
-
         // Tooltip on help button
         if (typeof Tipped !== "undefined") {
             Tipped.create('.hp-tt', {
@@ -1539,7 +1400,6 @@ $(document).ready(function() {
                 maxWidth: 500
             });
         }
-
         // Get Current Ad width & Height
         $('.hpe-i-ad').each(function() {
             agi = $(this).attr('data-adnum');
@@ -1565,7 +1425,6 @@ $(document).ready(function() {
                 }
             }
         });
-
         // Get Current Logo width & Height
         $('.hpe-logo').each(function() {
             $(this).children('#logo').addClass('hp-left');
@@ -1586,7 +1445,7 @@ $(document).ready(function() {
 
     }
 });
-
+// After full site load
 $(window).bind('load', function() {
     if ($(document).width() > 1024) { // Box Width & Height
         // paths
@@ -1595,32 +1454,21 @@ $(window).bind('load', function() {
         var lngl = 'sp'
         var plist = lx + lngn + lngl + '?';
         var pext = '.a' + lngl;
+        var wsite = readCookie('wsite');
 
         if (window.location.href.indexOf("/hpeditor.") != -1) {
             // Home Link 
-            $('.hp-homemenu-child .hp-menulink').attr('href', '/hpeditor' + pext);
+            $('.hp-homemenu-child .hp-menulink').attr('href', '/hpeditor' + pext + '?site=' + wsite);
 
             $('a').each(function() { // Change link into editor link
                 if ($(this).attr('href')) {
                     if ($(this).attr('href').indexOf('hp_editor') == -1) {
-                        // if ($(this).attr('href') == '#') {
-                        //     $(this).attr('href', 'javascript:void(0);');
-                        // } else if ($(this).attr('href').indexOf('?') != -1) {
-                        //     $(this).attr('href', $(this).attr('href').trim() + '&hp_editor');
-                        // } else {
-                        //     $(this).attr('href', $(this).attr('href').trim() + '?hp_editor');
-                        // }
-                        // if ($(this).attr('href').indexOf('target_service_package' + pext) != -1) { // Service Package
-                        //     //spm = $(this).text();
-                        //     //$(this).attr('href', $(this).attr('href') + '$$' + spm.replace(/'/g,"@@").replace(/ /g,"_"));
-                        // }
                         $(this).removeAttr('target');
                     }
                 }
             });
 
             $('.hp-x').each(function() {
-                //$(this).addClass('hp-ppp'); // Add Class for box hover effect
                 $(this).mouseover(function() {
                     $(this).stop(true, true).removeClass('hp-ppp');
                 }).mouseout(function() {
@@ -1681,12 +1529,9 @@ $(window).bind('load', function() {
                 }
                 $(this).removeClass('hpe-left');
             });
-
-
             setIntervalLimited(function() {
                 //setInterval(function(){
                 $('.hp-x').each(function() {
-                    //$(this).addClass('hp-ppp'); // Add Class for box hover effect
                     $(this).mouseover(function() {
                         $(this).stop(true, true).removeClass('hp-ppp');
                     }).mouseout(function() {
@@ -1811,24 +1656,12 @@ $(window).bind('load', function() {
                     });
                 });
             }, 500);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 });
 // END: Live Builder(hpeditor.htm)
+
+///////////////////////////////////////// Site Manager //////////////////////////////////////////////////////////////
 
 // BEGIN: Live Builder(Site Manager)
 
@@ -1843,19 +1676,17 @@ $(document).ready(function() {
     var pfist = fx + lngn + lngl + '?';
     var pdist = dx + lngn + lngl + '?';
     var pext = '.a' + lngl;
-
+    var lhr = location.href;
+    var lhurl = new URL(lhr);
+    var surlw = lhurl.searchParams.get("site");
+    var wd = surlw.split('.').shift();
     // Get Domain
     var dplb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1];
 
     // Hide Site Manager after submitting "Settings"
     if (window.location.href.indexOf("/responsibility" + pext) != -1 && window.location.href.indexOf("/responsibility" + pext + "#hpe_$") == -1 && readCookie('hpe_page1') == 'Yes') {
         $('.main_wrapper').css('display', 'none');
-        //eraseCookie('hpe_page1');
-        //createCookie('hpe_page2','Yes');
     }
-
-
-
     // General
     if (window.location.href.indexOf("#hpe_") != -1) {
         $('.my-form').addClass('hpe-my-form');
@@ -1864,29 +1695,27 @@ $(document).ready(function() {
         $('#form_header_wrapper').css({ 'margin-left': 'auto', 'width': '100%' });
         $('.form_header').css('float', 'none');
         if ($('#submit1').length || $('#submit2').length) {
-            createCookie('hpe_submit', 'Yes');
-            // $('#submit2').css('display','none');
+            createCookie('hpe_submit' + '_' + wd, 'Yes');
         }
     }
 
     // Blank Page after submit
     if (window.location.href.indexOf("/hpe_home") != -1) {
         if (readCookie('hpe_art_detail_url') || readCookie('hpe_event_detail_url') || readCookie('hpe_detail_delete')) {
-            createCookie('hpe_cancel', 'Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
             createCookie('hpe_rurl', 'Yes');
         } else if (readCookie('hpe_delete2')) {
             createCookie('hpe_delete_close', 'Yes');
         } else if (readCookie('hpe_detail_delete2')) {
             createCookie('hpe_detail_delete_close', 'Yes');
         } else {
-            createCookie('hpe_poll_close', 'Yes');
+            createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         }
     }
 
 
     // LOGO
     if (window.location.href.indexOf("#hpe_logo") != -1) { // Inside "Settings" screen
-        //createCookie('hpe_page1','Yes');
         $('fieldset').addClass('fieldset_hpe_logo');
         $('#form_header_wrapper span').text('Logo');
         $('.label.col.col-4').each(function() {
@@ -1894,11 +1723,10 @@ $(document).ready(function() {
                 $(this).parent('.row').parent('section').attr('data-row', $(this).text());
             }
         });
-        createCookie('hpe_update_setting', 'Yes');
+        createCookie('hpe_update_setting' + '_' + wd, 'Yes');
         $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            eraseCookie('hpe_update_setting' + '_' + wd);
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
             if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
@@ -1924,28 +1752,16 @@ $(document).ready(function() {
         $('section[data-row="Company Logo (HTML)"]').css('display', 'none');
         $('section[data-row="Company Logo (Text)"]').css('display', 'none');
         $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            eraseCookie('hpe_update_setting' + '_' + wd);
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
     }
-    if (readCookie('hpe_update_setting') == 'Yes') {
+    if (readCookie('hpe_update_setting' + '_' + wd) == 'Yes') {
         history.pushState('', '', "#hpe_update_setting");
     }
-    if (window.location.href.indexOf("/responsibility" + pext) != -1 && window.location.href.indexOf("#hpe_update_setting") != -1) { // "Site Manager" Screen
-        //createCookie('hpe_poll_close', 'Yes');
-        //$('.my-form').css('display', 'none');
-        //$('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
-    }
-
-
-
     // Menu
-    if (readCookie('hpe_menu') == 'Yes') {
-        eraseCookie('hpe_menu');
+    if (readCookie('hpe_menu' + '_' + wd) == 'Yes') {
+        eraseCookie('hpe_menu' + '_' + wd);
         history.pushState('', '', "#hpe_menu");
     }
     if (window.location.href.indexOf("#hpe_menu") != -1 && window.location.href.indexOf("?lid=Menu&") != -1) {
@@ -1961,7 +1777,7 @@ $(document).ready(function() {
             }
         });
         if ($('#submit1').length || $('#submit2').length) {
-            createCookie('hpe_menu', 'Yes');
+            createCookie('hpe_menu' + '_' + wd, 'Yes');
         }
     }
     if (window.location.href.indexOf("#hpe_menu") != -1 && window.location.href.indexOf("?lid=Menu&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search
@@ -1986,11 +1802,10 @@ $(document).ready(function() {
         }, 10);
         $('#submit2').attr('onclick', 'window.location="/hpe_home' + pext + '"');
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
-        createCookie('hpe_menu', 'Yes');
-        createCookie('hpe_in_menux', 'Yes');
+        createCookie('hpe_menu' + '_' + wd, 'Yes');
+        createCookie('hpe_in_menux' + '_' + wd, 'Yes');
         if (window.location.href.indexOf("#hpe_in_submenu_only") != -1) { // Inside SubMenu(Only Name Change)
             $('.label.col.col-4').each(function() {
                 if ($(this).text() == '* Sub Menu') {
@@ -2042,10 +1857,9 @@ $(document).ready(function() {
         $('#submit2').attr('onclick', 'window.location="/hpe_home' + pext + '"');
         $('#submit2').click(function() {
             eraseCookie('hpe_newx');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
-        createCookie('hpe_menu', 'Yes');
+        createCookie('hpe_menu' + '_' + wd, 'Yes');
         createCookie('hpe_newx', 'Yes');
         $('.label.col.col-4').each(function() {
             if ($(this).text() == '* Sub Menu' || $(this).text() == '* Order No.' || $(this).text() == '* Page Type') {
@@ -2107,10 +1921,9 @@ $(document).ready(function() {
         $('#submit2').attr('onclick', 'window.location="/hpe_home' + pext + '"');
         $('#submit2').click(function() {
             eraseCookie('hpe_newx');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
-        createCookie('hpe_menu', 'Yes');
+        createCookie('hpe_menu' + '_' + wd, 'Yes');
         createCookie('hpe_newx', 'Yes');
         $('.label.col.col-4').each(function() {
             if ($(this).text() == '* Menu' || $(this).text() == '* Order No.') {
@@ -2154,11 +1967,10 @@ $(document).ready(function() {
         }, 10);
         $('#submit2').attr('onclick', 'window.location="/hpe_home' + pext + '"');
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
-        createCookie('hpe_menu', 'Yes');
-        createCookie('hpe_in_menux', 'Yes');
+        createCookie('hpe_menu' + '_' + wd, 'Yes');
+        createCookie('hpe_in_menux' + '_' + wd, 'Yes');
         if (window.location.href.indexOf("#hpe_in_menu_only") != -1) { // Menu(Only Name Change)
             $('.label.col.col-4').each(function() {
                 if ($(this).text() == '* Menu') {
@@ -2186,13 +1998,10 @@ $(document).ready(function() {
             });
         }
     }
-    if (readCookie('hpe_in_menux') == 'Yes' && window.location.href.indexOf("?lid=Menu&") != -1 && window.location.href.indexOf("/list") != -1) {
-        createCookie('hpe_poll_close', 'Yes');
+    if (readCookie('hpe_in_menux' + '_' + wd) == 'Yes' && window.location.href.indexOf("?lid=Menu&") != -1 && window.location.href.indexOf("/list") != -1) {
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
     }
 
     // AdGroups
@@ -2223,8 +2032,7 @@ $(document).ready(function() {
         }, 10);
         $('#submit2').click(function() {
             eraseCookie('hpe_newx');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('input[type="file"]').each(function() { // Do not Compress while uploading PNG/GIF/ICO
             $(this).change(function() {
@@ -2255,23 +2063,19 @@ $(document).ready(function() {
             createCookie('hpe_ag', 'Yes');
         }
     }
-
     // Polls
     if (window.location.href.indexOf("#hpe_update_poll$$") != -1) { // Go to Poll
         $('.my-form').css('display', 'none');
         var pk = window.location.href.split('$$').pop();
         window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_update_pollxy';
     }
-    if (readCookie('hpe_update_pollx') == 'Yes') {
+    if (readCookie('hpe_update_pollx' + '_' + wd) == 'Yes') {
         history.pushState('', '', "#hpe_update_pollx");
     }
     if (window.location.href.indexOf("#hpe_update_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
     }
     if (window.location.href.indexOf("#hpe_update_pollxy") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // On Poll Page
         if ($('#submit1').length || $('#submit2').length) {
@@ -2280,7 +2084,7 @@ $(document).ready(function() {
                     $(this).parent('.row').parent('section').css('display', 'none');
                 }
             });
-            createCookie('hpe_update_pollx', 'Yes');
+            createCookie('hpe_update_pollx' + '_' + wd, 'Yes');
             var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
                 if ($('#submit1').length) {
                     if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
@@ -2291,8 +2095,7 @@ $(document).ready(function() {
             }, 10);
             $('#submit2').click(function() {
                 eraseCookie('hpe_update_pollx');
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
         }
     }
@@ -2304,12 +2107,9 @@ $(document).ready(function() {
         history.pushState('', '', "#hpe_new_pollx");
     }
     if (window.location.href.indexOf("#hpe_new_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Added Successfully</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
     }
     if (window.location.href.indexOf("#hpe_new_polls") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // On New Poll Page
         if ($('#submit1').length || $('#submit2').length) {
@@ -2328,8 +2128,7 @@ $(document).ready(function() {
                 }
             }, 10);
             $('#submit2').click(function() {
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
         }
     }
@@ -2342,12 +2141,9 @@ $(document).ready(function() {
         history.pushState('', '', "#hpe_delete_pollx");
     }
     if (window.location.href.indexOf("#hpe_delete_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Deleted Successfully</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
     }
     if (window.location.href.indexOf("#hpe_delete_polls") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // On Poll Page
         createCookie('hpe_delete_pollx', 'Yes');
@@ -2368,17 +2164,15 @@ $(document).ready(function() {
 
     // Clear Cookies on Site Manager page
     if (window.location.href.indexOf("/responsibility" + pext) != -1 || window.location.href.indexOf("/login") != -1) {
-        //eraseCookie('hpe_cancel');
         eraseCookie('hpe_prevx');
         eraseCookie('hpe_xprevx');
         eraseCookie('hpe_ms_prev');
-        eraseCookie('hpe_support');
+        eraseCookie('hpe_support' + '_' + wd);
         eraseCookie('hpe_ms_xprev');
         eraseCookie('hpe_delete_hl');
-        eraseCookie('hpe_updatex');
-        //eraseCookie('hpe_update_setting');
+        eraseCookie('hpe_updatex' + '_' + wd);
         eraseCookie('hpe_newx');
-        eraseCookie('hpe_menu');
+        eraseCookie('hpe_menu' + '_' + wd);
         eraseCookie('hpe_newh');
         eraseCookie('hpe_deletex');
         eraseCookie('hpe_video_g_yt_urlx');
@@ -2389,7 +2183,6 @@ $(document).ready(function() {
         eraseCookie('hpe_photo_gx');
         eraseCookie('hpe_formname');
         eraseCookie('hpe_spname');
-        //eraseCookie('hpe_poll_close');
         eraseCookie('hpe_update_pollx');
         eraseCookie('hpe_new_pollx');
         eraseCookie('hpe_delete_pollx');
@@ -2404,11 +2197,11 @@ $(document).ready(function() {
         eraseCookie('hpe_old_event');
         eraseCookie('hpe_old_directory');
         eraseCookie('hpe_old_classified');
-        eraseCookie('hpe_in_menux');
+        eraseCookie('hpe_in_menux' + '_' + wd);
         var he;
         for (he = 1; he <= 20; he++) {
-            if (readCookie('hpe_hlx' + he) == 'Yes') {
-                eraseCookie('hpe_hlx' + he);
+            if (readCookie('hpe_hlx' + he + '_' + wd) == 'Yes') {
+                eraseCookie('hpe_hlx' + he + '_' + wd);
             }
         }
     }
@@ -2436,7 +2229,7 @@ $(document).ready(function() {
                 $(this).parent('.row').parent('section').css('display', 'none');
             }
         });
-        createCookie('hpe_updatex', 'Yes');
+        createCookie('hpe_updatex' + '_' + wd, 'Yes');
         var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
             if ($('#submit1').length) {
                 if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
@@ -2446,9 +2239,8 @@ $(document).ready(function() {
             }
         }, 10);
         $('#submit2').click(function() {
-            eraseCookie('hpe_updatex');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            eraseCookie('hpe_updatex' + '_' + wd);
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         if (window.location.href.indexOf("?lid=CustomersAdsGroups&") != -1) { // If Ads
             $('.hpe-my-form fieldset section').css('display', 'none');
@@ -2485,7 +2277,7 @@ $(document).ready(function() {
         if (window.location.href.indexOf("&fpx=hlx") != -1) { // If Highlights
             var hx = $.urlParam('fpx');
             var hs = hx.split('hlx').pop();
-            createCookie('hpe_hlx' + hs, 'Yes');
+            createCookie('hpe_hlx' + hs + '_' + wd, 'Yes');
         }
         if (window.location.href.indexOf("&fpx=event") != -1) { // If Events (NEW)
             createCookie('hpe_eventx', 'Yes');
@@ -2584,16 +2376,16 @@ $(document).ready(function() {
             });
         });
     }
-    if (readCookie('hpe_updatex') == 'Yes') {
+    if (readCookie('hpe_updatex' + '_' + wd) == 'Yes') {
         history.pushState('', '', "#hpe_updatex");
     }
     if (window.location.href.indexOf("#hpe_updatex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
     }
     if (readCookie('hpe_newx') == 'Yes' && window.location.href.indexOf("/list") != -1) {
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Added Successfully</div>');
     }
@@ -2648,11 +2440,10 @@ $(document).ready(function() {
         history.pushState('', '', "#hpe_deletex");
     }
     if (window.location.href.indexOf("#hpe_deletex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Deleted Successfully</div>');
     }
-
     // Highlights
     if (window.location.href.indexOf("#hpe_hl_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
@@ -2666,78 +2457,17 @@ $(document).ready(function() {
         var ha = window.location.href.split('$').pop();
         window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haidx + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_hldx' + ha;
     }
-    if (window.location.href.indexOf("#hpe_hl$") != -1) { // Go to Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        var ha = window.location.href.split('$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_hls' + ha;
-    }
-    if (window.location.href.indexOf("#hpe_hls") != -1) { // Inside Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        $('.col.col-8 .select select, .input input').val('');
-        var hb = window.location.href.split('_hls').pop();
-        createCookie('hpe_hlx' + hb, 'Yes');
-        var ht = setInterval(function() {
-            if ($('#token').val() != '') {
-                clearInterval(ht);
-                if (hb == '1') {
-                    $('#highlight_flag option, #active option').filter(function() {
-                        return ($(this).text() == 'Yes');
-                    }).prop('selected', true);
-                    $('#submit1').click();
-                } else {
-                    $('#highlight' + hb + '_flag option, #active option').filter(function() {
-                        return ($(this).text() == 'Yes');
-                    }).prop('selected', true);
-                    $('#submit1').click();
-                }
-            }
-        }, 10);
-    }
     var h;
     for (h = 1; h <= 20; h++) {
-        if (readCookie('hpe_hlx' + h) == 'Yes') {
+        if (readCookie('hpe_hlx' + h + '_' + wd) == 'Yes') {
             history.pushState('', '', "#hpe_hlx" + h);
         }
-    }
-    if (window.location.href.indexOf("#hpe_hlx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
-        $('.col.col-8 .select select, .input input').val('');
-        var hc = window.location.href.split('_hlx').pop();
-        $('span.form_header').text('Search Highlight ' + hc + ' Articles');
-        $('.my-form .label').css('width', '160px');
-        $('.col.col-8, .col.col-8 select').css('width', '300px');
-        createCookie('hpe_hlx' + hc, 'Yes');
-        if (hc == '1') {
-            $('#highlight_flag option, #active option').filter(function() {
-                return ($(this).text() == 'Yes');
-            }).prop('selected', true);
-        } else {
-            $('#highlight' + hc + '_flag option, #active option').filter(function() {
-                return ($(this).text() == 'Yes');
-            }).prop('selected', true);
-        }
-    }
-    if (window.location.href.indexOf("#hpe_hlx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
-        var ha = window.location.href.split('#hpe_hlx').pop();
-        $('font[size="5"] b').text('Highlight ' + ha);
-        $('.smbody td:nth-child(7), .smbody td:nth-child(8), .smbody td:nth-child(6), .smbody td:nth-child(2), .smbody td:nth-child(3)').css('display', 'none');
-        $('.my-form').css('width', '90%');
-        $('a').each(function() {
-            $(this).attr('href', $(this).attr('href') + '#hpe_hlx' + ha);
-            if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
-                $(this).css('display', 'none');
-                $(this).prev('.smicon_bullet1').css('display', 'none');
-            }
-            if ($(this).attr('href') == '/responsibility' + pext + '#hpe_hlx' + ha) {
-                $(this).css('display', 'none');
-                $(this).next('.smicon_bullet1').css('display', 'none');
-            }
-        });
     }
     if (window.location.href.indexOf("#hpe_hlx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article Screen
         if ($('#submit1').length || $('#submit2').length) {
             $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
             var hs = window.location.href.split('_hlx').pop();
-            createCookie('hpe_hlx' + hs, 'Yes');
+            createCookie('hpe_hlx' + hs + '_' + wd, 'Yes');
         }
     }
     if (window.location.href.indexOf("#hpe_hldx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Delete Article
@@ -2747,7 +2477,7 @@ $(document).ready(function() {
                 $('#menu option:eq(1)').prop('selected', true);
             }
             var hs = window.location.href.split('_hldx').pop();
-            createCookie('hpe_hlx' + hs, 'Yes');
+            createCookie('hpe_hlx' + hs + '_' + wd, 'Yes');
             createCookie('hpe_delete_hl', 'Yes');
             if (hs == '1') {
                 $('#highlight_flag option').filter(function() {
@@ -2768,15 +2498,6 @@ $(document).ready(function() {
             }, 1000);
         }
     }
-    if (readCookie('hpe_delete_hl') == 'Yes' && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List after Delete
-        var ha = window.location.href.split('#hpe_hlx').pop();
-        createCookie('hpe_poll_close', 'Yes');
-        $('.my-form').css('display', 'none');
-        $('.my-form').after('<div class="dpe_delete">Article Deleted from Highlight ' + ha + '</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
-    }
     if (window.location.href.indexOf("#hpe_hlx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1 && window.location.href.indexOf("&pkey=&") != -1) { // New Article 
         if ($('#submit1').length || $('#submit2').length) {
             $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -2796,7 +2517,7 @@ $(document).ready(function() {
                     return ($(this).text() == 'Yes');
                 }).prop('selected', true);
             }
-            createCookie('hpe_hlx' + hs, 'Yes');
+            createCookie('hpe_hlx' + hs + '_' + wd, 'Yes');
             var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
                 if ($('#submit1').length) {
                     if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
@@ -2806,9 +2527,8 @@ $(document).ready(function() {
                 }
             }, 10);
             $('#submit2').click(function() {
-                eraseCookie('hpe_hlx' + hs);
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                eraseCookie('hpe_hlx' + hs + '_' + wd);
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
                 var dates = $.urlParam('isdate');
@@ -2822,13 +2542,10 @@ $(document).ready(function() {
     }
     var hrr;
     for (hrr = 1; hrr <= 20; hrr++) {
-        if (readCookie('hpe_hlx' + hrr) == 'Yes' && window.location.href.indexOf("/list") != -1 && !readCookie('hpe_delete_hl')) {
-            createCookie('hpe_poll_close', 'Yes');
+        if (readCookie('hpe_hlx' + hrr + '_' + wd) == 'Yes' && window.location.href.indexOf("/list") != -1 && !readCookie('hpe_delete_hl')) {
+            createCookie('hpe_poll_close' + '_' + wd, 'Yes');
             $('.my-form').css('display', 'none');
             $('.my-form').after('<div class="dpe_delete">Added Article in Highlight ' + hrr + '</div>');
-            //setTimeout(function(){
-            //createCookie('hpe_poll_close','Yes');
-            //},1000);
         }
     }
     // Previews
@@ -2939,8 +2656,7 @@ $(document).ready(function() {
                 }, 10);
                 $('#submit2').click(function() {
                     eraseCookie('hpe_newx');
-                    createCookie('hpe_cancel', 'Yes');
-                    //createCookie('hpe_poll_close','Yes');
+                    createCookie('hpe_cancel' + '_' + wd, 'Yes');
                 });
             }
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
@@ -2971,7 +2687,6 @@ $(document).ready(function() {
             }
         }
     }
-
     // Previews (Highlight Excluded)
     if (window.location.href.indexOf("#hpe_xprev_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
@@ -3095,8 +2810,7 @@ $(document).ready(function() {
                 }, 10);
                 $('#submit2').click(function() {
                     eraseCookie('hpe_newx');
-                    createCookie('hpe_cancel', 'Yes');
-                    //createCookie('hpe_poll_close','Yes');
+                    createCookie('hpe_cancel' + '_' + wd, 'Yes');
                 });
             }
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
@@ -3198,8 +2912,7 @@ $(document).ready(function() {
             }, 10);
             $('#submit2').click(function() {
                 eraseCookie('hpe_newx');
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
                 var dates = $.urlParam('isdate');
@@ -3211,7 +2924,6 @@ $(document).ready(function() {
             }
         }
     }
-
     // Events (Old)
     if (readCookie('hpe_old_event') == 'Yes') {
         history.pushState('', '', "#hpe_old_event");
@@ -3255,9 +2967,6 @@ $(document).ready(function() {
             }).prop('selected', true);
         }
     }
-
-
-
     // Directory (Old)
     if (readCookie('hpe_old_directory') == 'Yes') {
         history.pushState('', '', "#hpe_old_directory");
@@ -3301,8 +3010,6 @@ $(document).ready(function() {
             }).prop('selected', true);
         }
     }
-
-
     // Classified (Old)
     if (readCookie('hpe_old_classified') == 'Yes') {
         history.pushState('', '', "#hpe_old_classified");
@@ -3346,10 +3053,6 @@ $(document).ready(function() {
             }).prop('selected', true);
         }
     }
-
-
-
-
     // ArticleGroup - without Highlight
     if (window.location.href.indexOf("#hpe_xartg_@") != -1) { // Update Specific Article
         $('.my-form').css('display', 'none');
@@ -3444,9 +3147,7 @@ $(document).ready(function() {
             }
         }
     }
-
     // Details Page Article
-
     if (readCookie('hpe_art_detailx') == 'Yes') {
         history.pushState('', '', "#hpe_art_detailx");
     }
@@ -3469,11 +3170,9 @@ $(document).ready(function() {
         }, 10);
         $('#submit2').click(function() {
             eraseCookie('hpe_art_detailx');
-            createCookie('hpe_cancel', 'Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
     }
-
-
     // Details Page Events (NEW)
     if (readCookie('hpe_event_detailx') == 'Yes') {
         history.pushState('', '', "#hpe_event_detailx");
@@ -3497,13 +3196,9 @@ $(document).ready(function() {
         }, 10);
         $('#submit2').click(function() {
             eraseCookie('hpe_event_detailx');
-            createCookie('hpe_cancel', 'Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
     }
-
-
-
-
     // ArticleGroup
     if (window.location.href.indexOf("#hpe_artg_@") != -1) { // Update Specific Article
         $('.my-form').css('display', 'none');
@@ -3589,8 +3284,7 @@ $(document).ready(function() {
                 }, 10);
                 $('#submit2').click(function() {
                     eraseCookie('hpe_newx');
-                    createCookie('hpe_cancel', 'Yes');
-                    //createCookie('hpe_poll_close','Yes');
+                    createCookie('hpe_cancel' + '_' + wd, 'Yes');
                 });
             }
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
@@ -3604,17 +3298,10 @@ $(document).ready(function() {
         }
     }
     if (readCookie('hpe_newx') == 'Yes' && window.location.href.indexOf("/list") != -1) {
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Added Successfully</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},1000);
     }
-
-
-
-
     // Videos - Gallery - YT(URL)
     if (window.location.href.indexOf("#hpe_new_video_g_yt_url$$") != -1) { // New Specific Video
         $('.my-form').css('display', 'none');
@@ -3725,8 +3412,7 @@ $(document).ready(function() {
             }, 10);
             $('#submit2').click(function() {
                 eraseCookie('hpe_newx');
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
                 var dates = $.urlParam('isdate');
@@ -3738,9 +3424,6 @@ $(document).ready(function() {
             }
         }
     }
-
-
-
     // Videos - Gallery - YT(ID)
     if (window.location.href.indexOf("#hpe_new_video_g_yt_id$$") != -1) { // Add New Specific Video
         $('.my-form').css('display', 'none');
@@ -3851,8 +3534,7 @@ $(document).ready(function() {
             }, 10);
             $('#submit2').click(function() {
                 eraseCookie('hpe_newx');
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
                 var dates = $.urlParam('isdate');
@@ -3864,9 +3546,6 @@ $(document).ready(function() {
             }
         }
     }
-
-
-
     // Videos - Gallery - YT(Code)
     if (window.location.href.indexOf("#hpe_new_video_g_yt_code$$") != -1) { // Add New Specific Video
         $('.my-form').css('display', 'none');
@@ -3977,8 +3656,7 @@ $(document).ready(function() {
             }, 10);
             $('#submit2').click(function() {
                 eraseCookie('hpe_newx');
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
                 var dates = $.urlParam('isdate');
@@ -3990,9 +3668,6 @@ $(document).ready(function() {
             }
         }
     }
-
-
-
     // Photo - Gallery
     if (window.location.href.indexOf("#hpe_new_photo_g$$") != -1) { // New Specific Photo
         $('.my-form').css('display', 'none');
@@ -4081,8 +3756,7 @@ $(document).ready(function() {
             }, 10);
             $('#submit2').click(function() {
                 eraseCookie('hpe_newx');
-                createCookie('hpe_cancel', 'Yes');
-                //createCookie('hpe_poll_close','Yes');
+                createCookie('hpe_cancel' + '_' + wd, 'Yes');
             });
             if (window.location.href.indexOf("&isdate") != -1) { // Set Issue Date
                 var dates = $.urlParam('isdate');
@@ -4094,7 +3768,6 @@ $(document).ready(function() {
             }
         }
     }
-
     // OLD PhotoGallery
     if (readCookie('hpe_old_photogx') == 'Yes') {
         history.pushState('', '', "#hpe_old_photogx");
@@ -4126,95 +3799,13 @@ $(document).ready(function() {
             createCookie('hpe_old_photogx', 'Yes');
         }
     }
-    // Contact Information
-    if (window.location.href.indexOf("#hpe_$contactbody") != -1) { // First load
-        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_contactbody';
-    }
-    if (window.location.href.indexOf("#hpe_contactbody") != -1) { // Inside "Settings" screen
-        $('#form_header_wrapper span').text('Contact Information');
-        createCookie('hpe_update_setting', 'Yes');
-        $('fieldset section').css('display', 'none');
-        $('.label.col.col-4').each(function() {
-            if ($(this).text() == 'Contact Information') {
-                $(this).parent('.row').parent('section').css('display', 'block');
-            }
-        });
-        var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
-            if ($('#submit1').length) {
-                if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
-                    createCookie('hpe_hide_iframe', 'Yes');
-                    clearInterval(hi);
-                }
-            }
-        }, 10);
-        $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
-        });
-    }
-    // Copyright
-    if (window.location.href.indexOf("#hpe_$copyright") != -1) { // First load
-        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_copyright';
-    }
-    if (window.location.href.indexOf("#hpe_copyright") != -1) { // Inside "Settings" screen
-        $('#form_header_wrapper span').text('Copyright');
-        createCookie('hpe_update_setting', 'Yes');
-        $('fieldset section').css('display', 'none');
-        $('.label.col.col-4').each(function() {
-            if ($(this).text() == 'Copyright') {
-                $(this).parent('.row').parent('section').css('display', 'block');
-            }
-        });
-        var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
-            if ($('#submit1').length) {
-                if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
-                    createCookie('hpe_hide_iframe', 'Yes');
-                    clearInterval(hi);
-                }
-            }
-        }, 10);
-        $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
-        });
-    }
-    // Hitcounter
-    if (window.location.href.indexOf("#hpe_$hitcounter") != -1) { // First load
-        window.location.href = '/' + pfist + 'pform=options_systems&pkeyname=sys_option_system_id&pkey=1&x=&site=' + wsite + '#hpe_hitcounter';
-    }
-    if (window.location.href.indexOf("#hpe_hitcounter") != -1) { // Inside "Settings" screen
-        $('#form_header_wrapper span').text('Hit Counter');
-        createCookie('hpe_update_setting', 'Yes');
-        $('fieldset section').css('display', 'none');
-        $('.label.col.col-4').each(function() {
-            if ($(this).text() == 'Show Site Hits' || $(this).text() == '* Hit Counter Caption') {
-                $(this).parent('.row').parent('section').css('display', 'block');
-            }
-        });
-        var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
-            if ($('#submit1').length) {
-                if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
-                    createCookie('hpe_hide_iframe', 'Yes');
-                    clearInterval(hi);
-                }
-            }
-        }, 10);
-        $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting');
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
-        });
-    }
     // Email
     if (window.location.href.indexOf("#hpe_$email") != -1) { // First load
         window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_email';
     }
     if (window.location.href.indexOf("#hpe_email") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4229,12 +3820,9 @@ $(document).ready(function() {
         });
     }
     if (window.location.href.indexOf("/list") != -1 && window.location.href.indexOf("lid=SupportTickets&") != -1 && readCookie('hpe_ticket') == 'Yes') { // Inside Ticket List
-        createCookie('hpe_poll_close', 'Yes');
+        createCookie('hpe_poll_close' + '_' + wd, 'Yes');
         $('.my-form').css('display', 'none');
         $('.my-form').after('<div class="dpe_delete">Your request has been successfully submitted</div>');
-        //setTimeout(function(){
-        //createCookie('hpe_poll_close','Yes');
-        //},2000);
     }
     // Social
     if (window.location.href.indexOf("#hpe_$social") != -1) { // First load
@@ -4242,8 +3830,7 @@ $(document).ready(function() {
     }
     if (window.location.href.indexOf("#hpe_social") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4259,15 +3846,13 @@ $(document).ready(function() {
             }
         });
     }
-
     // Phone
     if (window.location.href.indexOf("#hpe_$phone") != -1) { // First load
         window.location.href = '/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_phone';
     }
     if (window.location.href.indexOf("#hpe_phone") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4289,8 +3874,7 @@ $(document).ready(function() {
     }
     if (window.location.href.indexOf("#hpe_bottom_links") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4312,8 +3896,7 @@ $(document).ready(function() {
     }
     if (window.location.href.indexOf("#hpe_top_links") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4335,8 +3918,7 @@ $(document).ready(function() {
     }
     if (window.location.href.indexOf("#hpe_gsearch") != -1) { // Inside Ticket Page
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4360,8 +3942,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_formbodys") != -1) { // Inside Ticket Page
         var tfn = readCookie('hpe_formname');
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4382,8 +3963,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_spackages") != -1) { // Inside Ticket Page
         //var tspn = readCookie('hpe_spname');
         $('#submit2').click(function() {
-            createCookie('hpe_cancel', 'Yes');
-            //createCookie('hpe_poll_close','Yes');
+            createCookie('hpe_cancel' + '_' + wd, 'Yes');
         });
         $('#submit1').click(function() {
             createCookie('hpe_ticket', 'Yes');
@@ -4397,11 +3977,9 @@ $(document).ready(function() {
             }
         });
     }
-
-
     // Support Ticket List
-    if (readCookie('hpe_support') == 'Yes') {
-        eraseCookie('hpe_support');
+    if (readCookie('hpe_support' + '_' + wd) == 'Yes') {
+        eraseCookie('hpe_support' + '_' + wd);
         history.pushState('', '', "#hpe_support");
     }
     if (window.location.href.indexOf("#hpe_support") != -1 && window.location.href.indexOf("?lid=SupportTickets&") != -1) { // Ticket List
@@ -4417,11 +3995,14 @@ $(document).ready(function() {
             }
         });
         if ($('#submit1').length || $('#submit2').length) {
-            createCookie('hpe_support', 'Yes');
+            createCookie('hpe_support' + '_' + wd, 'Yes');
         }
     }
+    if (window.location.href.indexOf("acknowledge.") != -1 && window.location.href.indexOf("?lid=SupportTickets&") != -1 && readCookie('hpe_submit' + '_' + wd)) { // Acknowledge Page
+        $('input#submit1').css('display', 'none');
+    }
     if (window.location.href.indexOf("#hpe_support") != -1 && window.location.href.indexOf("pform=support_tickets") != -1) { // Inside Ticket
-        createCookie('hpe_support', 'Yes');
+        createCookie('hpe_support' + '_' + wd, 'Yes');
     }
 
 
