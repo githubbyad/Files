@@ -172,7 +172,7 @@ $(document).ready(function() {
             if (typeof MyTickets == 'function') {
                 var mt = MyTickets();
                 if (typeof mt !== 'undefined') {
-                    $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=&site=' + wsite + '#hpe_support\' target=\'_blank\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
+                    $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=&site=' + wsite + '#hpe_support\' onclick=\'return ! window.open(this.href);\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
                 }
             }
             // LB loader
