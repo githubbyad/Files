@@ -1702,10 +1702,12 @@ $(document).ready(function() {
     var pfist = fx + lngn + lngl + '?';
     var pdist = dx + lngn + lngl + '?';
     var pext = '.a' + lngl;
-    var lhr = location.href;
-    var lhurl = new URL(lhr);
-    var surlw = lhurl.searchParams.get("site");
-    var wd = '_' + surlw.split('.').shift();
+    if (window.location.href.indexOf("site=") != -1) {
+        var lhr = location.href;
+        var lhurl = new URL(lhr);
+        var surlw = lhurl.searchParams.get("site");
+        var wd = '_' + surlw.split('.').shift();
+    }
     // Get Domain
     var dplb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1];
     // Hide Site Manager after submitting "Settings"
