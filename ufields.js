@@ -132,17 +132,18 @@ $(document).ready(function() {
         var dl2 = '?<br><br>This operation cannot be undone.</center>';
         var pfist = fx + lngn + lngl + '?';
         var pdist = dx + lngn + lngl + '?';
-        var lhrx = location.href;
-        var lhurlx = new URL(lhrx);
-        var wsite = lhurlx.searchParams.get("site");
-        var wd = '_' + wsite.split('.').shift();
-
-        // push state
-        if (readCookie('hpe_session_error' + wd) == 'Yes' && window.location.href.indexOf("/login") != -1) { // session error
-            eraseCookie('hpe_session_error' + wd);
-            alert('<p style="color:red;">Your session has expired.</p>');
-        }
-        if (window.location.href.indexOf("/hpeditor.") != -1) {
+        if (window.location.href.indexOf("/hpeditor.") != -1) { // Live Builder Start from here
+            var lhrx = location.href;
+            var lhurlx = new URL(lhrx);
+            var wsite = lhurlx.searchParams.get("site");
+            var wd = '_' + wsite.split('.').shift();
+            // push state
+            if (readCookie('hpe_session_error' + wd) == 'Yes' && window.location.href.indexOf("/login") != -1) { // session error
+                eraseCookie('hpe_session_error' + wd);
+                alert('<p style="color:red;">Your session has expired.</p>');
+            }
+            // Remove unwanted cookies
+            eraseCookie('hpe_poll_close' + wd);
             // Get domain      
             var dlb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1] + '/hpeditor' + pext + '?lb=';
             var hlb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1] + '/hpeditor' + pext + '?site=' + wsite;
@@ -185,17 +186,17 @@ $(document).ready(function() {
             if (readCookie('hpe_success_delete' + wd)) { // If Deactivated Something
                 var sdt = readCookie('hpe_success_delete' + wd);
                 eraseCookie('hpe_success_delete' + wd);
-                alert(sdt);
+                //alert(sdt);
             }
             if (readCookie('hpe_delete2' + wd)) { // If Deleted Something
                 var sdt = 'Deleted Sucessfully';
                 eraseCookie('hpe_delete2' + wd);
-                alert(sdt);
+                //alert(sdt);
             }
             if (readCookie('hpe_detail_delete2' + wd)) { // If Deleted Something from Detail Page
                 var sdt = 'Deleted Sucessfully';
                 eraseCookie('hpe_detail_delete2' + wd);
-                alert(sdt);
+                //alert(sdt);
             }
             if (typeof MParameters == 'function') { // Home menu ID
                 var mp = MParameters();
@@ -373,9 +374,11 @@ $(document).ready(function() {
                         $('.hpe-loader').addClass('hpe-loader-start');
                     }, 1000);
                     setTimeout(function() {
-                        $('.hpe-loader').animate({ opacity: 0 }, 400, function() {
-                            $('.hpe-loader').css('visibility', 'hidden');
-                        });
+                        if (readCookie('hpe_delete2' + wd) == 'Yes' || readCookie('hpe_detail_delete2' + wd) == 'Yes' || readCookie('hpe_delete_close' + wd == 'Yes')) {} else {
+                            $('.hpe-loader').animate({ opacity: 0 }, 400, function() {
+                                $('.hpe-loader').css('visibility', 'hidden');
+                            });
+                        }
                         $('.hpe-iframe').css('visibility', 'visible');
                         $('.hpe-iframe').animate({ opacity: 1 }, 400);
                     }, 5000);
@@ -513,7 +516,7 @@ $(document).ready(function() {
                         var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     }
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_menu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&vpx=' + dv + '&fpx=' + mon + '#hpe_in_new_menu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-menudelete" title="Delete Menu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Menu and<br>all associated Submenus and Articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=1&pform=Menu&dname=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a class="hp-menulink" title="View Menu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_menu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&vpx=' + dv + '&fpx=' + mon + '#hpe_in_new_menu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-menudelete" title="Delete Menu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Menu and<br>all associated Submenus and Articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=0&pform=Menu&dname=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a class="hp-menulink" title="View Menu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
                     }
                     if ($(this).attr('data-link') == '#' || $(this).attr('data-link').indexOf('javascript:void') != -1) { // If there is no link, then disable Menu Link button
                         $('.hp-menulink').css('display', 'none');
@@ -624,7 +627,7 @@ $(document).ready(function() {
                     }
                     var smon = $(this).attr('data-order-new');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&fkeyname=sys_menu_id&fkey=' + mk + '&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_submenu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=&fkeyname=sys_menu_id&fkey=' + mk + '&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=' + smon + '#hpe_in_new_submenu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-submenudelete" title="Delete Submenu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Submenu and<br>all associated articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=2&pform=Sub-Menu&dname=Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a title="View Submenu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&fkeyname=sys_menu_id&fkey=' + mk + '&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_submenu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Submenu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&pkeyname=sys_menu_sub_id&pkey=&fkeyname=sys_menu_id&fkey=' + mk + '&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=' + smon + '#hpe_in_new_submenu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-submenudelete" title="Delete Submenu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Submenu and<br>all associated articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=1&pform=Sub-Menu&dname=Menu&pkeyname=sys_menu_sub_id&pkey=' + sk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a title="View Submenu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
                     }
 
                 });
@@ -660,7 +663,7 @@ $(document).ready(function() {
                     }
                     var hlp = 'Upload ad with recommended width showing on bottom right side.<br><b>NOTE:</b> There is no limit for the height';
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header><cpanel></cpanel><rpanel>' + rwt + '</rpanel></div>');
                     }
                 });
             }
@@ -735,7 +738,7 @@ $(document).ready(function() {
                         var adnum = $(this).attr('data-adnum');
                         var adid = $(this).attr('data-adid');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
                         }
                         $('[class*="hpe-"].hp-x .hp-y .hp-z .hp-span a').click(function() {
                             setTimeout(function() {
@@ -798,7 +801,7 @@ $(document).ready(function() {
                         var adid = $(this).attr('data-adid');
                         $(this).addClass('hp-ppp');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=2&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=' + adid + '&fkeyname=group_id&fkey=' + adnum + '&wpage=1&hpath=AdGroup' + adnum + '&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Ad" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&pkeyname=ar_customers_ads_id&pkey=&fkeyname=group_id&fkey=' + adnum + '&eflag=Yes&wpage=1&hpath=AdGroup' + adnum + '&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_newadx\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Ad" onclick="return confirmdelete(\'' + dl1 + ' Ad' + dl2 + '\', \'/' + pdist + 'lid=CustomersAdsGroups&lid2=&level=1&pform=customers_ads&dname=CustomersAds&pkeyname=ar_customers_ads_id&pkey=' + adid + '&wpage=1&hpath=AdGroup' + adnum + '&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">AdGroup - ' + adnum + '</header></div>');
                         }
                         if (!$(this).siblings('.hp-x').length) {
                             $(this).parent('tr').addClass('had-tr');
@@ -888,7 +891,7 @@ $(document).ready(function() {
                         var dh = '<center>Do you want to Hide current Article from<br><b>Highlight - ' + h + '</b>?</center>';
                         $(this).addClass('hp-ppp');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=hlx' + h + '&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_hlx' + h + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Hide Article from Highlight - ' + h + '" onclick="return confirmhide(\'' + dh + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_hldx' + h + '\');"><i class="fa fa-minus-circle" aria-hidden="true"></i><b class="hp-llable">Hide</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Highlight - ' + h + '</header></div>');
+                            $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=hlx' + h + '&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_hlx' + h + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Hide Article from Highlight - ' + h + '" onclick="return confirmhide(\'' + dh + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_hldx' + h + '\');"><i class="fa fa-minus-circle" aria-hidden="true"></i><b class="hp-llable">Hide</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Highlight - ' + h + '</header></div>');
                         }
 
                     });
@@ -913,7 +916,7 @@ $(document).ready(function() {
                     var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -936,7 +939,7 @@ $(document).ready(function() {
                     var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_xprevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_xprevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -958,7 +961,7 @@ $(document).ready(function() {
                     var isdate = $(this).attr('data-date');
                     var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=section#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=section&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=section#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=section&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
                     }
                 });
 
@@ -992,7 +995,7 @@ $(document).ready(function() {
                     var daid = $(this).attr('data-detailid');
                     var sbid = $(this).attr('data-submenu');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
@@ -1002,7 +1005,7 @@ $(document).ready(function() {
                     var daid = $(this).attr('data-detailid');
                     var sbid = $(this).attr('data-submenu');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=event_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=1&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=event_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" class="detail_delete" title="Delete Article" onclick="return confirmdetail(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=0&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + daid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\', \'' + sbid + '\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
@@ -1016,7 +1019,7 @@ $(document).ready(function() {
                     var eurl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&hp_editor_eventx_detail=' + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=event&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_eventxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Event" onclick="return confirmdelete(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=1&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Event" href="' + eurl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Event - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=event&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_eventxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Event" onclick="return confirmdelete(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=0&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Event" href="' + eurl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Event - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -1025,6 +1028,19 @@ $(document).ready(function() {
                 $('.hpe-old-event.hp-x').each(function() {
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Events&x=&site=' + wsite + '#hpe_old_event\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Events </a></div></div>');
+                    }
+                });
+            }
+            // Product
+            if ($('.hpe-in-product').length) {
+                $('.hpe-in-product.hp-x').each(function() {
+                    // var m = $(this).attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_"); ' + m + '
+                    var mc = $(this).attr('data-category').replace(/'/g, "@@").replace(/ /g, "_");
+                    var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
+                    var haid = $(this).attr('data-product');
+                    $(this).addClass('hp-ppp');
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Product" onclick="OpenBLPopup(\'/' + pfist + 'lid=Products&lid2=&level=0&pform=products&pkeyname=sys_product_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=product&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Product" onclick="OpenBLPopup(\'/' + pfist + 'lid=Products&lid2=&level=0&pform=products&pkeyname=sys_product_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpc=' + mc + '#hpe_productxy$$&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Product" onclick="return confirmdelete(\'' + dl1 + ' Product' + dl2 + '\', \'/' + pdist + 'lid=Products&lid2=&level=0&pform=products&dname=Products&pkeyname=sys_product_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">Product - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -1057,7 +1073,7 @@ $(document).ready(function() {
                     var hvid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_url#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_urlxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_url#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_urlxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=0&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -1074,7 +1090,7 @@ $(document).ready(function() {
                     var hvid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_code#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_codexy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_code#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_codexy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=0&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -1091,7 +1107,7 @@ $(document).ready(function() {
                     var hvid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_id#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_idxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hvid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=hpe_video_g_yt_id#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Video" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_video_g_yt_idxy' + vm + '&&' + vs + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Video" onclick="return confirmdelete(\'' + dl1 + ' Video' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=0&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hvid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">VideoGallery - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -1108,7 +1124,7 @@ $(document).ready(function() {
                     var hpid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hpid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_photo_gxy' + pm + '&&' + ps + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Photo" onclick="return confirmdelete(\'' + dl1 + ' Photo' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=1&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hpid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=' + hpid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Photo" onclick="OpenBLPopup(\'/' + pfist + 'lid=Galleries&lid2=&level=1&pform=galleries&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_photo_gxy' + pm + '&&' + ps + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Photo" onclick="return confirmdelete(\'' + dl1 + ' Photo' + dl2 + '\', \'/' + pdist + 'lid=Galleries&lid2=&level=0&pform=galleries&dname=Galleries&pkeyname=sys_information_id&pkey=' + hpid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
                 });
             }
@@ -1126,7 +1142,7 @@ $(document).ready(function() {
                     var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
-                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_deletex\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">ArticleGroup - ' + $(this).attr("data-submenu") + '</header></div>');
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=artgroup&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_deletex\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">ArticleGroup - ' + $(this).attr("data-submenu") + '</header></div>');
                     }
                 });
             }
@@ -1172,17 +1188,17 @@ $(document).ready(function() {
             var ch;
             for (ch = 1; ch <= 1000; ch++) {
                 if ($('.hpe-custom-text-' + ch).length) { // TEXT
-                    $('[class*="hpe-custom-text-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=cust_text#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                    $('[class*="hpe-custom-text-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=cust_text&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                 }
                 if ($('.hpe-custom-html-' + ch).length) { // HTML
-                    $('[class*="hpe-custom-html-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=cust_html#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                    $('[class*="hpe-custom-html-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=cust_html&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                 }
                 if ($('.hpe-custom-img-' + ch).length) { // IMAGE
-                    $('[class*="hpe-custom-img-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=cust_img#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+                    $('[class*="hpe-custom-img-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=cust_img&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
                 }
                 if ($('.hpe-weather-' + ch).length) { // Weather Widget
                     var hlp = 'Provide us weather location and we will update it for you.';
-                    $('[class*="hpe-weather-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=weather#hpe_updatex\',\'iframe\');"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Weather</header></div>');
+                    $('[class*="hpe-weather-' + ch + ' hp-x"] .hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Sections&lid2=&level=1&pform=sections&pkeyname=section_id&pkey=' + ch + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&fpx=weather&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-question-circle" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a class="hp-help hp-tt" href="javascript:void(0);" title="' + hlp + '"><i class="fa fa-info-circle" aria-hidden="true"></i><b class="hp-llable">Help</b></a></div><header class="hp-hheader">Weather</header></div>');
                 }
             }
             // Box width and Height (2nd time)
@@ -1272,10 +1288,10 @@ $(document).ready(function() {
                 if (readCookie('hpe_delete_close' + wd) == 'Yes') { // Delete
                     clearInterval(s);
                     eraseCookie('hpe_delete_close' + wd);
-                    $('.hpe-loader.hpe-loader-start').removeClass('hpe-loader-restart');
+                    //$('.hpe-loader.hpe-loader-start').removeClass('hpe-loader-restart');
                     $('.hp-x-popup').addClass('hp-sslidex');
                     $('.hpe-iframe').animate({ opacity: 0 }, 500);
-                    window.location.reload();
+                    window.location.href = window.location.href;
                 }
                 if (readCookie('hpe_detail_delete_close' + wd) == 'Yes') { // Detail Delete
                     clearInterval(s);
@@ -1694,7 +1710,7 @@ $(document).ready(function() {
     var dplb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1];
     // Hide Site Manager after submitting "Settings"
     if (window.location.href.indexOf("/responsibility" + pext) != -1 && window.location.href.indexOf("/responsibility" + pext + "#hpe_$") == -1 && readCookie('hpe_page1' + wd) == 'Yes') {
-        $('.main_wrapper').css('display', 'none');
+        // $('.main_wrapper').css('display', 'none');
     }
     // General
     if (window.location.href.indexOf("#hpe_") != -1) {
@@ -1714,6 +1730,7 @@ $(document).ready(function() {
             createCookie('hpe_rurl' + wd, 'Yes');
         } else if (readCookie('hpe_delete2' + wd)) {
             createCookie('hpe_delete_close' + wd, 'Yes');
+            // createCookie('hpe_poll_close' + wd, 'Yes');
         } else if (readCookie('hpe_detail_delete2' + wd)) {
             createCookie('hpe_detail_delete_close' + wd, 'Yes');
         } else {
@@ -1731,9 +1748,9 @@ $(document).ready(function() {
                 $(this).parent('.row').parent('section').attr('data-row', $(this).text());
             }
         });
-        createCookie('hpe_update_setting' + wd, 'Yes');
+        // createCookie('hpe_update_setting' + wd, 'Yes');
         $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting' + wd);
+            // eraseCookie('hpe_update_setting' + wd);
             createCookie('hpe_cancel' + wd, 'Yes');
         });
         var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
@@ -1760,13 +1777,13 @@ $(document).ready(function() {
         $('section[data-row="Company Logo (HTML)"]').css('display', 'none');
         $('section[data-row="Company Logo (Text)"]').css('display', 'none');
         $('#submit2').click(function() {
-            eraseCookie('hpe_update_setting' + wd);
+            // eraseCookie('hpe_update_setting' + wd);
             createCookie('hpe_cancel' + wd, 'Yes');
         });
     }
-    if (readCookie('hpe_update_setting' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_update_setting");
-    }
+    // if (readCookie('hpe_update_setting' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_update_setting");
+    // }
     // Menu
     if (readCookie('hpe_menu' + wd) == 'Yes') {
         eraseCookie('hpe_menu' + wd);
@@ -2442,7 +2459,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_deletex' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_deletex");
+        //history.pushState('', '', "#hpe_deletex");
     }
     if (window.location.href.indexOf("#hpe_deletex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
         createCookie('hpe_poll_close' + wd, 'Yes');
@@ -2465,7 +2482,7 @@ $(document).ready(function() {
     var h;
     for (h = 1; h <= 20; h++) {
         if (readCookie('hpe_hlx' + h + wd) == 'Yes') {
-            history.pushState('', '', "#hpe_hlx" + h);
+            //history.pushState('', '', "#hpe_hlx" + h);
         }
     }
     if (window.location.href.indexOf("#hpe_hlx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article Screen
@@ -2540,19 +2557,20 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
     }
-    var hrr;
-    for (hrr = 1; hrr <= 20; hrr++) {
-        if (readCookie('hpe_hlx' + hrr + wd) == 'Yes' && window.location.href.indexOf("/list") != -1 && !readCookie('hpe_delete_hl' + wd)) {
-            createCookie('hpe_poll_close' + wd, 'Yes');
-            $('.my-form').css('display', 'none');
-            $('.my-form').after('<div class="dpe_delete">Added Article in Highlight ' + hrr + '</div>');
-        }
-    }
+    // var hrr;
+    // for (hrr = 1; hrr <= 20; hrr++) {
+    //     if (readCookie('hpe_hlx' + hrr + wd) == 'Yes' && window.location.href.indexOf("/list") != -1 && !readCookie('hpe_delete_hl' + wd)) {
+    //         createCookie('hpe_poll_close' + wd, 'Yes');
+    //         $('.my-form').css('display', 'none');
+    //         $('.my-form').after('<div class="dpe_delete">Added Article in Highlight ' + hrr + '</div>');
+    //     }
+    // }
     // Previews
     if (window.location.href.indexOf("#hpe_prev_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
@@ -2562,64 +2580,64 @@ $(document).ready(function() {
         createCookie('hpe_ms_prev' + wd, ms);
         window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_prevxy';
     }
-    if (window.location.href.indexOf("#hpe_prev$$") != -1) { // Go to Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        var pa = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_prevs' + pa;
-    }
-    if (window.location.href.indexOf("#hpe_prevs") != -1) { // Inside Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        $('.col.col-8 .select select, .input input').val('');
-        var ps = window.location.href.split('hpe_prevs').pop();
-        var qs = ps.replace(/@@/g, "'").replace(/_/g, " ");
-        var ms = qs.replace("&&", " - ");
-        createCookie('hpe_ms_prev' + wd, ms);
-        createCookie('hpe_prevx' + wd, 'Yes');
-        $('#active option').filter(function() {
-            return ($(this).text() == 'Yes');
-        }).prop('selected', true);
-        $('#menu option').filter(function() {
-            return ($(this).text() == ms);
-        }).prop('selected', true);
-        var pt = setInterval(function() {
-            if ($('#token').val() != '') {
-                clearInterval(pt);
-                $('#submit1').click();
-            }
-        }, 10);
-    }
-    if (readCookie('hpe_prevx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_prevx");
-    }
-    if (window.location.href.indexOf("#hpe_prevx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
-        eraseCookie('hpe_prevx' + wd);
-        $('.smbody td:nth-child(7), .smbody td:nth-child(8), .smbody td:nth-child(6), .smbody td:nth-child(2), .smbody td:nth-child(3)').css('display', 'none');
-        $('.my-form').css('width', '90%');
-        $('a').each(function() {
-            $(this).attr('href', $(this).attr('href') + '#hpe_prevx');
-            if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
-                $(this).css('display', 'none');
-                $(this).prev('.smicon_bullet1').css('display', 'none');
-            }
-            if ($(this).attr('href') == '/responsibility' + pext + '#hpe_prevx') {
-                $(this).css('display', 'none');
-                $(this).next('.smicon_bullet1').css('display', 'none');
-            }
-        });
-    }
-    if (window.location.href.indexOf("#hpe_prevx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
-        $('.my-form .label').css('width', '160px');
-        $('.col.col-8, .col.col-8 select').css('width', '300px');
-        $('#menu option').filter(function() {
-            return ($(this).text() == readCookie('hpe_ms_prev' + wd));
-        }).prop('selected', true);
-        $('.label.col.col-4').each(function() { // Hide Highlights
-            if ($(this).text() == '* Menu' || $(this).text() == 'Add to Highlight' || $(this).text() == 'Add to Highlight2' || $(this).text() == 'Add to Highlight3' || $(this).text() == 'Add to Highlight4' || $(this).text() == 'Add to Highlight5' || $(this).text() == 'Add to Highlight6' || $(this).text() == 'Add to Highlight7' || $(this).text() == 'Add to Highlight8' || $(this).text() == 'Add to Highlight9') {
-                $(this).parent('.row').parent('section').css('display', 'none');
-            }
-        });
-        createCookie('hpe_prevx' + wd, 'Yes');
-    }
+    // if (window.location.href.indexOf("#hpe_prev$$") != -1) { // Go to Search Page - Hidden
+    //     $('.my-form').css('display', 'none');
+    //     var pa = window.location.href.split('$$').pop();
+    //     window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_prevs' + pa;
+    // }
+    // if (window.location.href.indexOf("#hpe_prevs") != -1) { // Inside Search Page - Hidden
+    //     $('.my-form').css('display', 'none');
+    //     $('.col.col-8 .select select, .input input').val('');
+    //     var ps = window.location.href.split('hpe_prevs').pop();
+    //     var qs = ps.replace(/@@/g, "'").replace(/_/g, " ");
+    //     var ms = qs.replace("&&", " - ");
+    //     createCookie('hpe_ms_prev' + wd, ms);
+    //     createCookie('hpe_prevx' + wd, 'Yes');
+    //     $('#active option').filter(function() {
+    //         return ($(this).text() == 'Yes');
+    //     }).prop('selected', true);
+    //     $('#menu option').filter(function() {
+    //         return ($(this).text() == ms);
+    //     }).prop('selected', true);
+    //     var pt = setInterval(function() {
+    //         if ($('#token').val() != '') {
+    //             clearInterval(pt);
+    //             $('#submit1').click();
+    //         }
+    //     }, 10);
+    // }
+    // if (readCookie('hpe_prevx' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_prevx");
+    // }
+    // if (window.location.href.indexOf("#hpe_prevx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
+    //     eraseCookie('hpe_prevx' + wd);
+    //     $('.smbody td:nth-child(7), .smbody td:nth-child(8), .smbody td:nth-child(6), .smbody td:nth-child(2), .smbody td:nth-child(3)').css('display', 'none');
+    //     $('.my-form').css('width', '90%');
+    //     $('a').each(function() {
+    //         $(this).attr('href', $(this).attr('href') + '#hpe_prevx');
+    //         if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
+    //             $(this).css('display', 'none');
+    //             $(this).prev('.smicon_bullet1').css('display', 'none');
+    //         }
+    //         if ($(this).attr('href') == '/responsibility' + pext + '#hpe_prevx') {
+    //             $(this).css('display', 'none');
+    //             $(this).next('.smicon_bullet1').css('display', 'none');
+    //         }
+    //     });
+    // }
+    // if (window.location.href.indexOf("#hpe_prevx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
+    //     $('.my-form .label').css('width', '160px');
+    //     $('.col.col-8, .col.col-8 select').css('width', '300px');
+    //     $('#menu option').filter(function() {
+    //         return ($(this).text() == readCookie('hpe_ms_prev' + wd));
+    //     }).prop('selected', true);
+    //     $('.label.col.col-4').each(function() { // Hide Highlights
+    //         if ($(this).text() == '* Menu' || $(this).text() == 'Add to Highlight' || $(this).text() == 'Add to Highlight2' || $(this).text() == 'Add to Highlight3' || $(this).text() == 'Add to Highlight4' || $(this).text() == 'Add to Highlight5' || $(this).text() == 'Add to Highlight6' || $(this).text() == 'Add to Highlight7' || $(this).text() == 'Add to Highlight8' || $(this).text() == 'Add to Highlight9') {
+    //             $(this).parent('.row').parent('section').css('display', 'none');
+    //         }
+    //     });
+    //     createCookie('hpe_prevx' + wd, 'Yes');
+    // }
     if (window.location.href.indexOf("#hpe_prevx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article Screen
         if ($('#submit1').length || $('#submit2').length) {
             $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -2669,7 +2687,8 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
             if (window.location.href.indexOf("&fpx=edition") != -1) { // If E-Edition #EEE
@@ -2690,97 +2709,105 @@ $(document).ready(function() {
                     }
                 });
             }
+            // if (window.location.href.indexOf("&fpx=artgroup") != -1) { // If ArticleGroup, then show Menu
+            //     $('.hpe-my-form fieldset section').css('display', 'none');
+            //     $('.label.col.col-4').each(function() {
+            //         if ($(this).text() == '* Menu') {
+            //             $(this).parent('.row').parent('section').css('display', 'block');
+            //         }
+            //     });
+            // }
         }
     }
     // Previews (Highlight Excluded)
-    if (window.location.href.indexOf("#hpe_xprev_new") != -1) { // New Specific Article 
-        $('.my-form').css('display', 'none');
-        var pa = window.location.href.split('$$').pop();
-        var qs = pa.replace(/@@/g, "'").replace(/_/g, " ");
-        var ms = qs.replace("&&", " - ");
-        createCookie('hpe_ms_xprev' + wd, ms);
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xprevxy';
-    }
-    if (window.location.href.indexOf("#hpe_xprev$$") != -1) { // Go to Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        var pxa = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xprevs' + pxa;
-    }
-    if (window.location.href.indexOf("#hpe_xprevs") != -1) { // Inside Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        $('.col.col-8 .select select, .input input').val('');
-        var ps = window.location.href.split('hpe_xprevs').pop();
-        var qs = ps.replace(/@@/g, "'").replace(/_/g, " ");
-        var ms = qs.replace("&&", " - ");
-        createCookie('hpe_ms_xprev' + wd, ms);
-        createCookie('hpe_xprevx' + wd, 'Yes');
-        $('#active option').filter(function() {
-            return ($(this).text() == 'Yes');
-        }).prop('selected', true);
-        $('#menu option').filter(function() {
-            return ($(this).text() == ms);
-        }).prop('selected', true);
-        for (hex = 1; hex <= 20; hex++) { // No Highlight
-            if (hex == '1') {
-                $('#highlight_flag option').filter(function() {
-                    return ($(this).text() == 'No');
-                }).prop('selected', true);
-            } else {
-                $('#highlight' + hex + '_flag option').filter(function() {
-                    return ($(this).text() == 'No');
-                }).prop('selected', true);
-            }
-        }
-        var pt = setInterval(function() {
-            if ($('#token').val() != '') {
-                clearInterval(pt);
-                $('#submit1').click();
-            }
-        }, 10);
-    }
-    if (readCookie('hpe_xprevx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_xprevx");
-    }
-    if (window.location.href.indexOf("#hpe_xprevx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
-        eraseCookie('hpe_xprevx' + wd);
-        $('.smbody td:nth-child(7), .smbody td:nth-child(8), .smbody td:nth-child(6), .smbody td:nth-child(2), .smbody td:nth-child(3)').css('display', 'none');
-        $('.my-form').css('width', '90%');
-        $('a').each(function() {
-            $(this).attr('href', $(this).attr('href') + '#hpe_xprevx');
-            if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
-                $(this).css('display', 'none');
-                $(this).prev('.smicon_bullet1').css('display', 'none');
-            }
-            if ($(this).attr('href') == '/responsibility' + pext + '#hpe_xprevx') {
-                $(this).css('display', 'none');
-                $(this).next('.smicon_bullet1').css('display', 'none');
-            }
-        });
-    }
-    if (window.location.href.indexOf("#hpe_xprevx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
-        $('.my-form .label').css('width', '160px');
-        $('.col.col-8, .col.col-8 select').css('width', '300px');
-        $('#menu option').filter(function() {
-            return ($(this).text() == readCookie('hpe_ms_xprev' + wd));
-        }).prop('selected', true);
-        for (hex = 1; hex <= 20; hex++) { // No Highlight
-            if (hex == '1') {
-                $('#highlight_flag option').filter(function() {
-                    return ($(this).text() == 'No');
-                }).prop('selected', true);
-            } else {
-                $('#highlight' + hex + '_flag option').filter(function() {
-                    return ($(this).text() == 'No');
-                }).prop('selected', true);
-            }
-        }
-        $('.label.col.col-4').each(function() { // Hide Highlights
-            if ($(this).text() == 'Add to Highlight' || $(this).text() == 'Add to Highlight2' || $(this).text() == 'Add to Highlight3' || $(this).text() == 'Add to Highlight4' || $(this).text() == 'Add to Highlight5' || $(this).text() == 'Add to Highlight6' || $(this).text() == 'Add to Highlight7' || $(this).text() == 'Add to Highlight8' || $(this).text() == 'Add to Highlight9') {
-                $(this).parent('.row').parent('section').css('display', 'none');
-            }
-        });
-        createCookie('hpe_xprevx' + wd, 'Yes');
-    }
+    // if (window.location.href.indexOf("#hpe_xprev_new") != -1) { // New Specific Article 
+    //     $('.my-form').css('display', 'none');
+    //     var pa = window.location.href.split('$$').pop();
+    //     var qs = pa.replace(/@@/g, "'").replace(/_/g, " ");
+    //     var ms = qs.replace("&&", " - ");
+    //     createCookie('hpe_ms_xprev' + wd, ms);
+    //     window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xprevxy';
+    // }
+    // if (window.location.href.indexOf("#hpe_xprev$$") != -1) { // Go to Search Page - Hidden
+    //     $('.my-form').css('display', 'none');
+    //     var pxa = window.location.href.split('$$').pop();
+    //     window.location.href = '/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_xprevs' + pxa;
+    // }
+    // if (window.location.href.indexOf("#hpe_xprevs") != -1) { // Inside Search Page - Hidden
+    //     $('.my-form').css('display', 'none');
+    //     $('.col.col-8 .select select, .input input').val('');
+    //     var ps = window.location.href.split('hpe_xprevs').pop();
+    //     var qs = ps.replace(/@@/g, "'").replace(/_/g, " ");
+    //     var ms = qs.replace("&&", " - ");
+    //     createCookie('hpe_ms_xprev' + wd, ms);
+    //     createCookie('hpe_xprevx' + wd, 'Yes');
+    //     $('#active option').filter(function() {
+    //         return ($(this).text() == 'Yes');
+    //     }).prop('selected', true);
+    //     $('#menu option').filter(function() {
+    //         return ($(this).text() == ms);
+    //     }).prop('selected', true);
+    //     for (hex = 1; hex <= 20; hex++) { // No Highlight
+    //         if (hex == '1') {
+    //             $('#highlight_flag option').filter(function() {
+    //                 return ($(this).text() == 'No');
+    //             }).prop('selected', true);
+    //         } else {
+    //             $('#highlight' + hex + '_flag option').filter(function() {
+    //                 return ($(this).text() == 'No');
+    //             }).prop('selected', true);
+    //         }
+    //     }
+    //     var pt = setInterval(function() {
+    //         if ($('#token').val() != '') {
+    //             clearInterval(pt);
+    //             $('#submit1').click();
+    //         }
+    //     }, 10);
+    // }
+    // if (readCookie('hpe_xprevx' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_xprevx");
+    // }
+    // if (window.location.href.indexOf("#hpe_xprevx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
+    //     eraseCookie('hpe_xprevx' + wd);
+    //     $('.smbody td:nth-child(7), .smbody td:nth-child(8), .smbody td:nth-child(6), .smbody td:nth-child(2), .smbody td:nth-child(3)').css('display', 'none');
+    //     $('.my-form').css('width', '90%');
+    //     $('a').each(function() {
+    //         $(this).attr('href', $(this).attr('href') + '#hpe_xprevx');
+    //         if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
+    //             $(this).css('display', 'none');
+    //             $(this).prev('.smicon_bullet1').css('display', 'none');
+    //         }
+    //         if ($(this).attr('href') == '/responsibility' + pext + '#hpe_xprevx') {
+    //             $(this).css('display', 'none');
+    //             $(this).next('.smicon_bullet1').css('display', 'none');
+    //         }
+    //     });
+    // }
+    // if (window.location.href.indexOf("#hpe_xprevx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
+    //     $('.my-form .label').css('width', '160px');
+    //     $('.col.col-8, .col.col-8 select').css('width', '300px');
+    //     $('#menu option').filter(function() {
+    //         return ($(this).text() == readCookie('hpe_ms_xprev' + wd));
+    //     }).prop('selected', true);
+    //     for (hex = 1; hex <= 20; hex++) { // No Highlight
+    //         if (hex == '1') {
+    //             $('#highlight_flag option').filter(function() {
+    //                 return ($(this).text() == 'No');
+    //             }).prop('selected', true);
+    //         } else {
+    //             $('#highlight' + hex + '_flag option').filter(function() {
+    //                 return ($(this).text() == 'No');
+    //             }).prop('selected', true);
+    //         }
+    //     }
+    //     $('.label.col.col-4').each(function() { // Hide Highlights
+    //         if ($(this).text() == 'Add to Highlight' || $(this).text() == 'Add to Highlight2' || $(this).text() == 'Add to Highlight3' || $(this).text() == 'Add to Highlight4' || $(this).text() == 'Add to Highlight5' || $(this).text() == 'Add to Highlight6' || $(this).text() == 'Add to Highlight7' || $(this).text() == 'Add to Highlight8' || $(this).text() == 'Add to Highlight9') {
+    //             $(this).parent('.row').parent('section').css('display', 'none');
+    //         }
+    //     });
+    //     createCookie('hpe_xprevx' + wd, 'Yes');
+    // }
     if (window.location.href.indexOf("#hpe_xprevx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article Screen
         if ($('#submit1').length || $('#submit2').length) {
             $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -2823,65 +2850,66 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
     }
     // Events (New)
-    if (window.location.href.indexOf("#hpe_event$$") != -1) { // Go to Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        var pea = window.location.href.split('$$').pop();
-        window.location.href = '/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_events' + pea;
-    }
-    if (window.location.href.indexOf("#hpe_events") != -1) { // Inside Search Page - Hidden
-        $('.my-form').css('display', 'none');
-        $('.col.col-8 .select select, .input input').val('');
-        var pes = window.location.href.split('hpe_events').pop();
-        var qes = pes.replace(/@@/g, "'").replace(/_/g, " ");
-        var mes = qes.replace("&&", " - ");
-        createCookie('hpe_ms_event' + wd, mes);
-        createCookie('hpe_eventx' + wd, 'Yes');
-        $('#active option').filter(function() {
-            return ($(this).text() == 'Yes');
-        }).prop('selected', true);
-        $('#menu option').filter(function() {
-            return ($(this).text() == mes);
-        }).prop('selected', true);
-        var pt = setInterval(function() {
-            if ($('#token').val() != '') {
-                clearInterval(pt);
-                $('#submit1').click();
-            }
-        }, 10);
-    }
-    if (readCookie('hpe_eventx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_eventx");
-    }
-    if (window.location.href.indexOf("#hpe_eventx") != -1 && window.location.href.indexOf("?lid=Events2&") != -1 && window.location.href.indexOf("/list") != -1) { // Events List
-        eraseCookie('hpe_eventx' + wd);
-        $('.smbody td:nth-child(7), .smbody td:nth-child(8)').css('display', 'none');
-        $('.my-form').css('width', '90%');
-        $('a').each(function() {
-            $(this).attr('href', $(this).attr('href') + '#hpe_eventx');
-            if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
-                $(this).css('display', 'none');
-                $(this).prev('.smicon_bullet1').css('display', 'none');
-            }
-            if ($(this).attr('href') == '/responsibility' + pext + '#hpe_eventx') {
-                $(this).css('display', 'none');
-                $(this).next('.smicon_bullet1').css('display', 'none');
-            }
-        });
-    }
-    if (window.location.href.indexOf("#hpe_eventx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
-        $('.my-form .label').css('width', '160px');
-        $('.col.col-8, .col.col-8 select').css('width', '300px');
-        $('#menu option').filter(function() {
-            return ($(this).text() == readCookie('hpe_ms_event' + wd));
-        }).prop('selected', true);
-        createCookie('hpe_eventx' + wd, 'Yes');
-    }
+    // if (window.location.href.indexOf("#hpe_event$$") != -1) { // Go to Search Page - Hidden
+    //     $('.my-form').css('display', 'none');
+    //     var pea = window.location.href.split('$$').pop();
+    //     window.location.href = '/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=0&fkeyname=&fkey=&sflag=Form&sortflag=&wpage=1&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_events' + pea;
+    // }
+    // if (window.location.href.indexOf("#hpe_events") != -1) { // Inside Search Page - Hidden
+    //     $('.my-form').css('display', 'none');
+    //     $('.col.col-8 .select select, .input input').val('');
+    //     var pes = window.location.href.split('hpe_events').pop();
+    //     var qes = pes.replace(/@@/g, "'").replace(/_/g, " ");
+    //     var mes = qes.replace("&&", " - ");
+    //     createCookie('hpe_ms_event' + wd, mes);
+    //     createCookie('hpe_eventx' + wd, 'Yes');
+    //     $('#active option').filter(function() {
+    //         return ($(this).text() == 'Yes');
+    //     }).prop('selected', true);
+    //     $('#menu option').filter(function() {
+    //         return ($(this).text() == mes);
+    //     }).prop('selected', true);
+    //     var pt = setInterval(function() {
+    //         if ($('#token').val() != '') {
+    //             clearInterval(pt);
+    //             $('#submit1').click();
+    //         }
+    //     }, 10);
+    // }
+    // if (readCookie('hpe_eventx' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_eventx");
+    // }
+    // if (window.location.href.indexOf("#hpe_eventx") != -1 && window.location.href.indexOf("?lid=Events2&") != -1 && window.location.href.indexOf("/list") != -1) { // Events List
+    //     eraseCookie('hpe_eventx' + wd);
+    //     $('.smbody td:nth-child(7), .smbody td:nth-child(8)').css('display', 'none');
+    //     $('.my-form').css('width', '90%');
+    //     $('a').each(function() {
+    //         $(this).attr('href', $(this).attr('href') + '#hpe_eventx');
+    //         if ($(this).children('.list_links').text() == 'home' || $(this).children('.list_links').text() == 'site manager' || $(this).children('.list_links').text() == 'back') {
+    //             $(this).css('display', 'none');
+    //             $(this).prev('.smicon_bullet1').css('display', 'none');
+    //         }
+    //         if ($(this).attr('href') == '/responsibility' + pext + '#hpe_eventx') {
+    //             $(this).css('display', 'none');
+    //             $(this).next('.smicon_bullet1').css('display', 'none');
+    //         }
+    //     });
+    // }
+    // if (window.location.href.indexOf("#hpe_eventx") != -1 && window.location.href.indexOf("&eflag=") == -1) { // Inside Search Page - Visible
+    //     $('.my-form .label').css('width', '160px');
+    //     $('.col.col-8, .col.col-8 select').css('width', '300px');
+    //     $('#menu option').filter(function() {
+    //         return ($(this).text() == readCookie('hpe_ms_event' + wd));
+    //     }).prop('selected', true);
+    //     createCookie('hpe_eventx' + wd, 'Yes');
+    // }
     if (window.location.href.indexOf("#hpe_eventx") != -1 && window.location.href.indexOf("?lid=Events2&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Event Screen
         if ($('#submit1').length || $('#submit2').length) {
             $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -2924,9 +2952,11 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
+            $('#ending_date').val(''); // Clear Ending Date
         }
     }
     // Events (Old)
@@ -2970,6 +3000,42 @@ $(document).ready(function() {
             $('#menu option:nth-child(2)').filter(function() {
                 return ($(this).text() != '');
             }).prop('selected', true);
+        }
+    }
+    // Product
+    if (window.location.href.indexOf("#hpe_productxy") != -1 && window.location.href.indexOf("?lid=Products&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1 && window.location.href.indexOf("&pkey=&") != -1) {
+        if ($('#submit1').length || $('#submit2').length) {
+            $('.label.col.col-4').each(function() {
+                if ($(this).text() == '* Active') {
+                    $(this).parent('.row').parent('section').css('display', 'none');
+                }
+            });
+            var pa = window.location.href.split('$$').pop();
+            var qs = pa.replace(/@@/g, "'").replace(/_/g, " ");
+            var ms = qs.replace("&&", " - ");
+            $('#menu option').filter(function() {
+                return ($(this).text().indexOf(ms) != -1);
+            }).prop('selected', true);
+            var fpurl = location.href;
+            var fpurlx = new URL(fpurl);
+            var fpsite = fpurlx.searchParams.get("fpc");
+            var fpcc = fpsite.replace(/@@/g, "'").replace(/_/g, " ");
+            $('#category option').filter(function() {
+                return ($(this).text() == fpcc);
+            }).prop('selected', true);
+            createCookie('hpe_newx' + wd, 'Yes');
+            var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
+                if ($('#submit1').length) {
+                    if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
+                        createCookie('hpe_hide_iframe' + wd, 'Yes');
+                        clearInterval(hi);
+                    }
+                }
+            }, 10);
+            $('#submit2').click(function() {
+                eraseCookie('hpe_newx' + wd);
+                createCookie('hpe_cancel' + wd, 'Yes');
+            });
         }
     }
     // Directory (Old)
@@ -3098,7 +3164,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_xartgroupx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_xartgroupx");
+        //history.pushState('', '', "#hpe_xartgroupx");
     }
     if (window.location.href.indexOf("#hpe_xartgroupx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
         eraseCookie('hpe_xartgroupx' + wd);
@@ -3147,14 +3213,15 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
     }
     // Details Page Article
     if (readCookie('hpe_art_detailx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_art_detailx");
+        //history.pushState('', '', "#hpe_art_detailx");
     }
     if (window.location.href.indexOf("#hpe_art_detailx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Article Screen
         $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -3180,7 +3247,7 @@ $(document).ready(function() {
     }
     // Details Page Events (NEW)
     if (readCookie('hpe_event_detailx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_event_detailx");
+        //history.pushState('', '', "#hpe_event_detailx");
     }
     if (window.location.href.indexOf("#hpe_event_detailx") != -1 && window.location.href.indexOf("?lid=Events2&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // Event Screen
         $('.my-form header, .footer_links, #bottom_scroll, #top_scroll').css('display', 'none');
@@ -3233,7 +3300,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_artgroupx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_artgroupx");
+        //history.pushState('', '', "#hpe_artgroupx");
     }
     if (window.location.href.indexOf("#hpe_artgroupx") != -1 && window.location.href.indexOf("?lid=Pages&") != -1 && window.location.href.indexOf("/list") != -1) { // Article List
         eraseCookie('hpe_artgroupx' + wd);
@@ -3297,7 +3364,8 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
@@ -3342,7 +3410,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_video_g_yt_urlx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_video_g_yt_urlx");
+        //history.pushState('', '', "#hpe_video_g_yt_urlx");
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_urlx") != -1 && window.location.href.indexOf("?lid=Galleries&") != -1 && window.location.href.indexOf("/list") != -1) { // Video List
         eraseCookie('hpe_video_g_yt_urlx' + wd);
@@ -3424,7 +3492,8 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
@@ -3464,7 +3533,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_video_g_yt_idx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_video_g_yt_idx");
+        //history.pushState('', '', "#hpe_video_g_yt_idx");
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_idx") != -1 && window.location.href.indexOf("?lid=Galleries&") != -1 && window.location.href.indexOf("/list") != -1) { // Video List
         eraseCookie('hpe_video_g_yt_idx' + wd);
@@ -3546,7 +3615,8 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
@@ -3586,7 +3656,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_video_g_yt_codex' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_video_g_yt_codex");
+        //history.pushState('', '', "#hpe_video_g_yt_codex");
     }
     if (window.location.href.indexOf("#hpe_video_g_yt_codex") != -1 && window.location.href.indexOf("?lid=Galleries&") != -1 && window.location.href.indexOf("/list") != -1) { // Video List
         eraseCookie('hpe_video_g_yt_codex' + wd);
@@ -3668,7 +3738,8 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
@@ -3708,7 +3779,7 @@ $(document).ready(function() {
         }, 10);
     }
     if (readCookie('hpe_photo_gx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_photo_gx");
+        //history.pushState('', '', "#hpe_photo_gx");
     }
     if (window.location.href.indexOf("#hpe_photo_gx") != -1 && window.location.href.indexOf("?lid=Galleries&") != -1 && window.location.href.indexOf("/list") != -1) { // Photos List
         eraseCookie('hpe_photo_gx' + wd);
@@ -3768,7 +3839,8 @@ $(document).ready(function() {
                 var years = dates.split('_').pop();
                 var days = dates.split('_' + years).shift().split('_').pop();
                 var months = dates.split('_' + years).shift().split('_').shift();
-                var idate = months + '/' + days + '/' + years;
+                //var idate = months + '/' + days + '/' + years;
+                var idate = years + '-' + months + '-' + days;
                 $('#issue_date').val(idate);
             }
         }
