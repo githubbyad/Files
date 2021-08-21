@@ -318,6 +318,7 @@
     height: auto !important;
     padding: 0 !important;
     margin: 0 !important;
+    text-indent: 0 !important;
 }
 
 [class*="hpe-"].hp-x .hp-y .hp-z .hp-span a:last-child {
@@ -688,6 +689,7 @@
 }
 
 [class*="hpe-"].hp-x .hp-y .hp-z .hp-span a {
+    text-indent: 0 !important;
     position: relative;
     overflow: hidden;
 }
