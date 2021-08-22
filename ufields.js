@@ -624,6 +624,12 @@ $(document).ready(function() {
                         if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_service_package') != -1) { // // Check for Popup Links - Service Package
                             $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=ServicePackage&sname=target_service_package.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
                         }
+                        if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_classifieds') != -1) { // // Check for Popup Links - Classifieds
+                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=Classifieds&sname=target_classifieds.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                        }
+                        if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_yellowpage') != -1) { // // Check for Popup Links - YellowPages
+                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=YellowPages&sname=target_yellowpage.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                        }
                         $(this).removeAttr('onclick');
                     }
                     if ($(this).attr('data-link').indexOf('?twindow=') != -1) { // Replace ? with &
@@ -1503,6 +1509,13 @@ $(window).bind('load', function() {
                     }
                 }
             });
+
+            $('.formbody, .custom-form').addClass('hpe-formbody'); // Add Form Class
+            $('#frame1[src*="pform"]').parent('#MainContent').addClass('hpe-formbody'); // Add Form Class 2
+            $('#frame1[src*="target_service_package' + pext + '"]').parent('#MainContent').addClass('hpe-sp'); // Add Service Package Class
+            $('.hpe-sp').css('width', '100%');
+            $('#frame1[src*="target_yellowpage' + pext + '"]').parent('#MainContent').addClass('hpe-old-directory'); // Add Old Directory Class
+            $('#frame1[src*="target_classifieds' + pext + '"]').parent('#MainContent').addClass('hpe-old-classified'); // Add Old Classified 
 
             $('.hp-x').each(function() {
                 $(this).mouseover(function() {
