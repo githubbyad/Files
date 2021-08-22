@@ -173,7 +173,7 @@ $(document).ready(function() {
             if (typeof MyTickets == 'function') {
                 var mt = MyTickets();
                 if (typeof mt !== 'undefined') {
-                    $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/list2.asp?lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=&site=' + wsite + '#hpe_support\' onclick=\'return ! window.open(this.href);\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
+                    $('.hpx-24x7').html('<div class=\'hpx-24x7\' data-ticket=\'' + MyTickets() + '\'><i class=\'fa fa-question-circle\' aria-hidden=\'true\'></i> 24x7 Support<bell><a title=\'View My Recent Tickets\' href=\'/' + plist + 'lid=SupportTickets&lid2=&level=0&pkeyname=&pkey=&sortflag=&wpage=&hpath=&smid=&x=&site=' + wsite + '#hpe_support\' onclick=\'return ! window.open(this.href);\'><i class=\'fa fa-bell\' aria-hidden=\'true\'></i></a></bell></div>');
                 }
             }
             // LB loader
@@ -619,16 +619,16 @@ $(document).ready(function() {
                     var sk = $(this).attr('data-submenu');
                     if ($(this).attr('onclick')) {
                         if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_form') != -1) { // Check for Popup Links - Form
-                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=Form&sname=target_form2.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                            $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=Form&sname=target_form2" + pext + "&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
                         }
                         if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_service_package') != -1) { // // Check for Popup Links - Service Package
-                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=ServicePackage&sname=target_service_package.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                            $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=ServicePackage&sname=target_service_package" + pext + "&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
                         }
                         if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_classifieds') != -1) { // // Check for Popup Links - Classifieds
-                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=Classifieds&sname=target_classifieds.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                            $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=Classifieds&sname=target_classifieds" + pext + "&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
                         }
                         if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_yellowpage') != -1) { // // Check for Popup Links - YellowPages
-                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=YellowPages&sname=target_yellowpage.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                            $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=YellowPages&sname=target_yellowpage" + pext + "&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
                         }
                         $(this).removeAttr('onclick');
                     }
