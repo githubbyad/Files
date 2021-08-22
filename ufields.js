@@ -617,6 +617,15 @@ $(document).ready(function() {
                 $('.hpe-in-submenu').each(function() {
                     var mk = $(this).attr('data-menu');
                     var sk = $(this).attr('data-submenu');
+                    if ($(this).attr('onclick')) {
+                        if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_form') != -1) { // Check for Popup Links - Form
+                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=Form&sname=target_form2.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                        }
+                        if ($(this).attr('onclick').indexOf('OpenPopup4(') != -1 && $(this).attr('onclick').indexOf('/target_service_package') != -1) { // // Check for Popup Links - Service Package
+                            $(this).attr('data-link', "https://" + wsite + "/index0.htm?twindow=ServicePackage&sname=target_service_package.asp&" + $(this).attr("onclick").split("OpenPopup4('").pop().split("?").pop().split("',").shift());
+                        }
+                        $(this).removeAttr('onclick');
+                    }
                     if ($(this).attr('data-link').indexOf('?twindow=') != -1) { // Replace ? with &
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
