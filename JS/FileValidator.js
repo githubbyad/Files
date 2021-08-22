@@ -8,7 +8,7 @@ function FileValidator(myKey, myControl, fileType) {
         reFile = /^.+\.(([jJ][pP][eE]?[gG])|([gG][iI][fF])|([iI][cC][oO])|([pP][dD][fF])|([pP][nN][gG])|([fF][lL][aA])|([sS][wW][fF]))$/;
     }
     if (fileType == 'Image2') {
-        reFile = /^.+\.(([jJ][pP][eE]?[gG])|([jJ][pP][eE]?[gG])|([gG][iI][fF])|([pP][nN][gG]))$/;
+        reFile = /^.+\.(([jJ][pP][eE]?[gG])|([gG][iI][fF])|([pP][nN][gG]))$/;
     }
 
     if (myValue != "") {
@@ -18,7 +18,7 @@ function FileValidator(myKey, myControl, fileType) {
                 msg = "<b>" + myKey + "</b>&nbsp;&nbsp;&nbsp;Invalid file type.";
             if (fileType == "Image")
                 msg = "<b>" + myKey + "</b>&nbsp;&nbsp;&nbsp;Invalid file type. Valid files: gif, ico, wmv, wma, jpg, jpeg, flv, pdf, png, css, swf, mp3, mp4, rss, txt, mpg, mpeg, avi, wav, aif, aiff, mov, htm, html, fla, xml";
-                if (fileType == "Image2")
+            if (fileType == "Image2")
                 msg = "<b>" + myKey + "</b>&nbsp;&nbsp;&nbsp;Invalid file type. Valid files: jpg, jpeg, gif, png";
             alert(msg, myControl);
             myControl.focus();
