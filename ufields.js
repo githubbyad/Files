@@ -2115,14 +2115,14 @@ $(document).ready(function() {
         var pk = window.location.href.split('$$').pop();
         window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_update_pollxy';
     }
-    if (readCookie('hpe_update_pollx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_update_pollx");
-    }
-    if (window.location.href.indexOf("#hpe_update_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
-        createCookie('hpe_poll_close' + wd, 'Yes');
-        $('.my-form').css('display', 'none');
-        $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
-    }
+    // if (readCookie('hpe_update_pollx' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_update_pollx");
+    // }
+    // if (window.location.href.indexOf("#hpe_update_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
+    //     createCookie('hpe_poll_close' + wd, 'Yes');
+    //     $('.my-form').css('display', 'none');
+    //     $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
+    // }
     if (window.location.href.indexOf("#hpe_update_pollxy") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // On Poll Page
         if ($('#submit1').length || $('#submit2').length) {
             $('.label.col.col-4').each(function() {
@@ -2149,14 +2149,14 @@ $(document).ready(function() {
         $('.my-form').css('display', 'none');
         window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_new_polls';
     }
-    if (readCookie('hpe_new_pollx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_new_pollx");
-    }
-    if (window.location.href.indexOf("#hpe_new_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
-        createCookie('hpe_poll_close' + wd, 'Yes');
-        $('.my-form').css('display', 'none');
-        $('.my-form').after('<div class="dpe_delete">Added Successfully</div>');
-    }
+    // if (readCookie('hpe_new_pollx' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_new_pollx");
+    // }
+    // if (window.location.href.indexOf("#hpe_new_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
+    //     createCookie('hpe_poll_close' + wd, 'Yes');
+    //     $('.my-form').css('display', 'none');
+    //     $('.my-form').after('<div class="dpe_delete">Added Successfully</div>');
+    // }
     if (window.location.href.indexOf("#hpe_new_polls") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // On New Poll Page
         if ($('#submit1').length || $('#submit2').length) {
             $('.label.col.col-4').each(function() {
@@ -2183,14 +2183,14 @@ $(document).ready(function() {
         var pk = window.location.href.split('$$').pop();
         window.location.href = '/' + pfist + 'lid=Polls&lid2=&level=1&pform=polls&pkeyname=sys_poll_id&pkey=' + pk + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_delete_polls';
     }
-    if (readCookie('hpe_delete_pollx' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_delete_pollx");
-    }
-    if (window.location.href.indexOf("#hpe_delete_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
-        createCookie('hpe_poll_close' + wd, 'Yes');
-        $('.my-form').css('display', 'none');
-        $('.my-form').after('<div class="dpe_delete">Deleted Successfully</div>');
-    }
+    // if (readCookie('hpe_delete_pollx' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_delete_pollx");
+    // }
+    // if (window.location.href.indexOf("#hpe_delete_pollx") != -1 && window.location.href.indexOf("/list") != -1) { // Poll List Hidden
+    //     createCookie('hpe_poll_close' + wd, 'Yes');
+    //     $('.my-form').css('display', 'none');
+    //     $('.my-form').after('<div class="dpe_delete">Deleted Successfully</div>');
+    // }
     if (window.location.href.indexOf("#hpe_delete_polls") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1) { // On Poll Page
         createCookie('hpe_delete_pollx' + wd, 'Yes');
         $('.my-form').css('display', 'none');
@@ -2422,14 +2422,14 @@ $(document).ready(function() {
             });
         });
     }
-    if (readCookie('hpe_updatex' + wd) == 'Yes') {
-        history.pushState('', '', "#hpe_updatex");
-    }
-    if (window.location.href.indexOf("#hpe_updatex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
-        createCookie('hpe_poll_close' + wd, 'Yes');
-        $('.my-form').css('display', 'none');
-        $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
-    }
+    // if (readCookie('hpe_updatex' + wd) == 'Yes') {
+    //     history.pushState('', '', "#hpe_updatex");
+    // }
+    // if (window.location.href.indexOf("#hpe_updatex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
+    //     createCookie('hpe_poll_close' + wd, 'Yes');
+    //     $('.my-form').css('display', 'none');
+    //     $('.my-form').after('<div class="dpe_delete">Updated Successfully</div>');
+    // }
     if (readCookie('hpe_newx' + wd) == 'Yes' && window.location.href.indexOf("/list") != -1) {
         createCookie('hpe_poll_close' + wd, 'Yes');
         $('.my-form').css('display', 'none');
@@ -2482,14 +2482,14 @@ $(document).ready(function() {
             }
         }, 10);
     }
-    if (readCookie('hpe_deletex' + wd) == 'Yes') {
-        //history.pushState('', '', "#hpe_deletex");
-    }
-    if (window.location.href.indexOf("#hpe_deletex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
-        createCookie('hpe_poll_close' + wd, 'Yes');
-        $('.my-form').css('display', 'none');
-        $('.my-form').after('<div class="dpe_delete">Deleted Successfully</div>');
-    }
+    // if (readCookie('hpe_deletex' + wd) == 'Yes') {
+    //     //history.pushState('', '', "#hpe_deletex");
+    // }
+    // if (window.location.href.indexOf("#hpe_deletex") != -1 && window.location.href.indexOf("/list") != -1) { // Article List Hidden
+    //     createCookie('hpe_poll_close' + wd, 'Yes');
+    //     $('.my-form').css('display', 'none');
+    //     $('.my-form').after('<div class="dpe_delete">Deleted Successfully</div>');
+    // }
     // Highlights
     if (window.location.href.indexOf("#hpe_hl_new") != -1) { // New Specific Article 
         $('.my-form').css('display', 'none');
