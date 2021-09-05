@@ -511,9 +511,9 @@ $(document).ready(function() {
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
                     if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
-                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '');
+                        var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
                     } else {
-                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                        var dk = dlb + $(this).attr('data-link').replace(/.*\//, "") + '&site=' + wsite;
                     }
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="Edit Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_in_menu_x\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a><a title="Add New Menu" href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Menu&lid2=&level=1&pform=Menu&pkeyname=sys_menu_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&vpx=' + dv + '&fpx=' + mon + '#hpe_in_new_menu\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i></a><a class="hp-menudelete" title="Delete Menu" href="javascript:void(0);" onclick="return confirmdelete(\'' + dl1 + ' Menu and<br>all associated Submenus and Articles' + dl2 + '\', \'/' + pdist + 'lid=Menu&lid2=&level=0&pform=Menu&dname=Menu&pkeyname=sys_menu_id&pkey=' + mk + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i></a><a class="hp-menulink" title="View Menu" href="' + dk + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
@@ -636,9 +636,9 @@ $(document).ready(function() {
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
                     if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
-                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '');
+                        var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
                     } else {
-                        var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                        var dk = dlb + $(this).attr('data-link').replace(/.*\//, "") + '&site=' + wsite;
                     }
                     var smon = $(this).attr('data-order-new');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
@@ -902,7 +902,7 @@ $(document).ready(function() {
                     $('.hpe-in-hl' + h).each(function() {
                         var haid = $(this).attr('data-article');
                         var isdate = $(this).attr('data-date');
-                        var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                        var durl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                         var dh = '<center>Do you want to Hide current Article from<br><b>Highlight - ' + h + '</b>?</center>';
                         $(this).addClass('hp-ppp');
                         if ($(this).children('.hp-y').children('.hp-z').length == 0) {
@@ -928,7 +928,7 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    var durl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
@@ -951,7 +951,7 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    var durl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_xprevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Preview - ' + $(this).attr("data-submenu") + '</header></div>');
@@ -974,7 +974,7 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    var durl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=section#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=section&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
                     }
@@ -988,7 +988,7 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    //var durl =  dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    //var durl =  dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Edition" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=edition#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Edition" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=edition&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Edition" onclick="return confirmdelete(\'' + dl1 + ' E-Edition' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=1&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div></div>');
                     }
@@ -998,7 +998,7 @@ $(document).ready(function() {
             if ($('.hpe-article-only').length) {
                 $('.hpe-article-only').each(function() {
                     var daid = $(this).attr('data-article');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    var durl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + daid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=art_detail#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div></div>');
                     }
@@ -1031,7 +1031,7 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var eurl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&hp_editor_eventx_detail=' + '&site=' + wsite;
+                    var eurl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&hp_editor_eventx_detail=' + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=event&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Event" onclick="OpenBLPopup(\'/' + pfist + 'lid=Events2&lid2=&level=1&pform=events2&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&isdate=' + isdate + '#hpe_eventxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Event" onclick="return confirmdelete(\'' + dl1 + ' Event' + dl2 + '\', \'/' + pdist + 'lid=Events2&lid2=&level=0&pform=events2&dname=Events2&pkeyname=sys_information_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Event" href="' + eurl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">Event - ' + $(this).attr("data-submenu") + '</header></div>');
@@ -1154,7 +1154,7 @@ $(document).ready(function() {
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-article');
                     var isdate = $(this).attr('data-date');
-                    var durl = dlb + $(this).attr('data-url').replace(/(?:.*?\/){3}/, '') + '&site=' + wsite;
+                    var durl = dlb + $(this).attr('data-url').replace(/.*\//, "") + '&site=' + wsite;
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=preview#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Article" onclick="OpenBLPopup(\'/' + pfist + 'lid=Pages&lid2=&level=1&pform=pages&pkeyname=sys_information_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=artgroup&isdate=' + isdate + '#hpe_prevxy$$' + m + '&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Article" onclick="return confirmdelete(\'' + dl1 + ' Article' + dl2 + '\', \'/' + pdist + 'lid=Pages&lid2=&level=0&pform=pages&dname=Pages&pkeyname=sys_information_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_deletex\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a><a title="View Article" href="' + durl + '"><i class="fa fa-external-link" aria-hidden="true"></i><b class="hp-llable">View</b></a></div><header class="hp-hheader">ArticleGroup - ' + $(this).attr("data-submenu") + '</header></div>');
