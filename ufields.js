@@ -511,7 +511,11 @@ $(document).ready(function() {
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
                     if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
-                        var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
+                        if ($(this).attr('data-link').indexOf('/template-') != -1) { // if Tempalte
+                            var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){4}/, '');
+                        } else {
+                            var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
+                        }
                     } else {
                         var dk = dlb + $(this).attr('data-link').replace(/.*\//, "") + '&site=' + wsite;
                     }
@@ -636,7 +640,11 @@ $(document).ready(function() {
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
                     if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
-                        var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
+                        if ($(this).attr('data-link').indexOf('/template-') != -1) { // if Tempalte
+                            var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){4}/, '');
+                        } else {
+                            var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
+                        }
                     } else {
                         var dk = dlb + $(this).attr('data-link').replace(/.*\//, "") + '&site=' + wsite;
                     }
