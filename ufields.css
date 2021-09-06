@@ -2442,6 +2442,8 @@ data-submit b {
 more {
     display: inline-block;
 }
-
+.hpx-main .fa {
+    display: inline-block;
+}
 
 /* END: Live Builder(Site Manager) */
