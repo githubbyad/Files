@@ -1523,8 +1523,10 @@ $(window).bind('load', function() {
             $('#frame1[src*="target_service_package' + pext + '"]').parent('#MainContent').addClass('hpe-sp'); // Add Service Package Class
             $('.hpe-sp').css('width', '100%');
             $('#frame1[src*="target_yellowpage' + pext + '"]').parent('#MainContent').addClass('hpe-old-directory'); // Add Old Directory Class
-            $('#frame1[src*="target_classifieds' + pext + '"]').parent('#MainContent').addClass('hpe-old-classified'); // Add Old Classified 
-
+            $('#frame1[src*="target_classifieds' + pext + '"]').parent('#MainContent').addClass('hpe-old-classified'); // Add Old Classified
+            $('.eventbody').addClass('hpe-old-event'); // Add Old Event Class 
+            $('.hpe-old-event').css('width', '100%');
+            $('[class*="hpe-"]').addClass('hp-x');
             $('.hp-x').each(function() {
                 $(this).mouseover(function() {
                     $(this).stop(true, true).removeClass('hp-ppp');
