@@ -1505,8 +1505,13 @@ $(window).bind('load', function() {
         var lhrx = location.href;
         var lhurlx = new URL(lhrx);
         var wsite = lhurlx.searchParams.get("site");
-
+        var fx = 'form';
+        var pfist = fx + lngn + lngl + '?';
         if (window.location.href.indexOf("/hpeditor.") != -1) {
+            var lhrx = location.href;
+            var lhurlx = new URL(lhrx);
+            var wsite = lhurlx.searchParams.get("site");
+            var wd = '_' + wsite.split('.').shift();
             // Home Link 
             $('.hp-homemenu-child .hp-menulink').attr('href', '/hpeditor' + pext + '?site=' + wsite);
 
@@ -1527,6 +1532,11 @@ $(window).bind('load', function() {
             $('.eventbody').addClass('hpe-old-event'); // Add Old Event Class 
             $('.hpe-old-event').css('width', '100%');
             $('[class*="hpe-"]').addClass('hp-x');
+            $('[class*="hpe-"]').each(function() {
+                if ($(this).children('.hp-y').length == 0) {
+                    $(this).prepend('<div class="hp-y"></div>');
+                }
+            });
             $('.hp-x').each(function() {
                 $(this).mouseover(function() {
                     $(this).stop(true, true).removeClass('hp-ppp');
@@ -1705,6 +1715,42 @@ $(window).bind('load', function() {
 
 
             }, 3000, 3);
+
+            // Forms
+            if ($('.hpe-formbody').length) {
+                var fn = $.urlParam('pform');
+                createCookie('hpe_formname' + wd, fn);
+                $('.hpe-formbody.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_formbodys\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Form</a></div></div>');
+            }
+            // Service Package
+            if ($('.hpe-sp').length) {
+                $('.hpe-sp.hp-x .hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=SupportTickets&lid2=&level=1&pform=support_tickets&pkeyname=ticket_id&pkey=&fkeyname=&fkey=&eflag=Yes&wpage=&hpath=&smid=&u=&c=&lf=&x=&site=' + wsite + '#hpe_spackages\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a></div></div>');
+            }
+            // Events (Old)
+            if ($('.hpe-old-event').length) {
+                $('.hpe-old-event.hp-x').each(function() {
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Events&x=&site=' + wsite + '#hpe_old_event\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Events </a></div></div>');
+                    }
+                });
+            }
+
+            // Directory (Old)
+            if ($('.hpe-old-directory').length) {
+                $('.hpe-old-directory.hp-x').each(function() {
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=CustomersSetup&x=&site=' + wsite + '#hpe_old_directory\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Directory </a></div></div>');
+                    }
+                });
+            }
+            // Classified (Old)
+            if ($('.hpe-old-classified').length) {
+                $('.hpe-old-classified.hp-x').each(function() {
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + plist + 'lid=Classifieds&x=&site=' + wsite + '#hpe_old_classified\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Classified </a></div></div>');
+                    }
+                });
+            }
 
             setInterval(function() { // DifferentSpotTime Ad
                 $('.hpe-i-ad.divDiffSpotTime.hp-x').each(function() {
