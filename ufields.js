@@ -1057,13 +1057,20 @@ $(document).ready(function() {
             // Product
             if ($('.hpe-in-product').length) {
                 $('.hpe-in-product.hp-x').each(function() {
-                    // var m = $(this).attr('data-menu').replace(/'/g, "@@").replace(/ /g, "_"); ' + m + '
-                    var mc = $(this).attr('data-category').replace(/'/g, "@@").replace(/ /g, "_");
+                    var mc = $(this).attr('data-category').replace(/'/g, "@@").replace(/ /g, "_").replace(/&/g, "A_M_P");
                     var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
                     var haid = $(this).attr('data-product');
                     $(this).addClass('hp-ppp');
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Product" onclick="OpenBLPopup(\'/' + pfist + 'lid=Products&lid2=&level=0&pform=products&pkeyname=sys_product_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=product&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Product" onclick="OpenBLPopup(\'/' + pfist + 'lid=Products&lid2=&level=0&pform=products&pkeyname=sys_product_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpc=' + mc + '#hpe_productxy$$&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Product" onclick="return confirmdelete(\'' + dl1 + ' Product' + dl2 + '\', \'/' + pdist + 'lid=Products&lid2=&level=0&pform=products&dname=Products&pkeyname=sys_product_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">Product - ' + $(this).attr("data-submenu") + '</header></div>');
+                    }
+                });
+            }
+            if ($('.hpe-in-product-category').length) { // Codes icon
+                $('.hpe-in-product-category.hp-x').each(function() {
+                    var dcid = $(this).attr('data-category-id');
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Codes&lid2=&level=0&pform=codes&pkeyname=code_id&pkey=' + dcid + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=codes#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></div>');
                     }
                 });
             }
@@ -1075,6 +1082,35 @@ $(document).ready(function() {
                     }
                 });
             }
+            // Directory (New)
+            if ($('.hpe-in-directory').length) {
+                $('.hpe-in-directory.hp-x').each(function() {
+                    var mc = $(this).attr('data-category').replace(/'/g, "@@").replace(/ /g, "_").replace(/&/g, "A_M_P");
+                    var s = $(this).attr('data-submenu').replace(/'/g, "@@").replace(/ /g, "_");
+                    var haid = $(this).attr('data-id');
+                    $(this).addClass('hp-ppp');
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" title="Edit Directory" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersSetup&lid2=&level=0&pform=customers&pkeyname=customer_id&pkey=' + haid + '&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&fpx=directory&x=&site=' + wsite + '&smx=Y&hpe=Y#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i><b class="hp-llable">Edit</b></a><a href="javascript:void(0);" title="Add New Directory" onclick="OpenBLPopup(\'/' + pfist + 'lid=CustomersSetup&lid2=&level=0&pform=customers&pkeyname=customer_id&pkey=&fkeyname=&fkey=&wpage=1&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpc=' + mc + '#hpe_directoryxy$$&&' + s + '\',\'iframe\');"><i class="fa fa-plus" aria-hidden="true"></i><b class="hp-llable">New</b></a><a href="javascript:void(0);" title="Delete Directory" onclick="return confirmdelete(\'' + dl1 + ' Directory' + dl2 + '\', \'/' + pdist + 'lid=CustomersSetup&lid2=&level=0&pform=customers&dname=Customers&pkeyname=customer_id&pkey=' + haid + '&wpage=1&hpath=&sflag=&sortflag=&fa=&dflag=Y&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y\');"><i class="fa fa-trash" aria-hidden="true"></i><b class="hp-llable">Delete</b></a></div><header class="hp-hheader">Directory - ' + $(this).attr("data-submenu") + '</header></div>');
+                    }
+                });
+            }
+            if ($('.hpe-in-directory-category').length) { // Codes icon
+                $('.hpe-in-directory-category.hp-x').each(function() {
+                    var dcid = $(this).attr('data-category-id');
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a href="javascript:void(0);" onclick="OpenBLPopup(\'/' + pfist + 'lid=Codes&lid2=&level=0&pform=codes&pkeyname=code_id&pkey=' + dcid + '&fkeyname=&fkey=&wpage=&hpath=&eflag=Yes&fa=&sflag=&sortflag=&smid=&u=&c=&lf=&x=&site=' + wsite + '&smx=Y&hpe=Y&fpx=codes#hpe_updatex\',\'iframe\');"><i class="fa fa-pencil" aria-hidden="true"></i></a></div></div>');
+                    }
+                });
+            }
+            if ($('.hpe-in-directory-list').length) { // View Directroy Page 2
+                $('.hpe-in-directory-list.hp-x').each(function() {
+                    var dlink = dlb + $(this).attr('data-link').replace(/.*\//, "")  + '&site=' + wsite;
+                    if ($(this).children('.hp-y').children('.hp-z').length == 0) {
+                        $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="View Directory Listings" href="' + dlink + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
+                    }
+                });
+            }
+
             // Classified (Old)
             if ($('.hpe-old-classified').length) {
                 $('.hpe-old-classified.hp-x').each(function() {
@@ -2376,6 +2412,35 @@ $(document).ready(function() {
             });
         }
 
+        if (window.location.href.indexOf("&fpx=codes") != -1) { // If Codes
+            $('.hpe-my-form fieldset section').css('display', 'none');
+            $('.label.col.col-4').each(function() {
+                if ($(this).text() == '* Code Name') {
+                    $(this).parent('.row').parent('section').css('display', 'block');
+                }
+                if ($(this).text() == '* Code Name') {
+                    $(this).text('Category Name');
+                }
+            });
+        }
+
+        if (window.location.href.indexOf("&fpx=product") != -1) { // If Product
+            $('.label.col.col-4').each(function() {
+                if ($(this).text() == '* Menu' || $(this).text() == '* Category') {
+                    $(this).parent('.row').parent('section').css('display', 'none');
+                }
+            });
+        }
+
+        if (window.location.href.indexOf("&fpx=directory") != -1) { // If Directory
+            $('.label.col.col-4').each(function() {
+                if ($(this).text() == 'Menu' || $(this).text() == '* Category') {
+                    $(this).parent('.row').parent('section').css('display', 'none');
+                }
+            });
+        }
+
+
         if (window.location.href.indexOf("&fpx=hlx") != -1) { // If Highlights
             var hx = $.urlParam('fpx');
             var hs = hx.split('hlx').pop();
@@ -3086,7 +3151,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("#hpe_productxy") != -1 && window.location.href.indexOf("?lid=Products&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1 && window.location.href.indexOf("&pkey=&") != -1) {
         if ($('#submit1').length || $('#submit2').length) {
             $('.label.col.col-4').each(function() {
-                if ($(this).text() == '* Active') {
+                if ($(this).text() == '* Active' || $(this).text() == '* Menu' || $(this).text() == '* Category') {
                     $(this).parent('.row').parent('section').css('display', 'none');
                 }
             });
@@ -3099,7 +3164,43 @@ $(document).ready(function() {
             var fpurl = location.href;
             var fpurlx = new URL(fpurl);
             var fpsite = fpurlx.searchParams.get("fpc");
-            var fpcc = fpsite.replace(/@@/g, "'").replace(/_/g, " ");
+            var fpcc = fpsite.replace(/@@/g, "'").replace(/A_M_P/g, "&").replace(/_/g, " ");
+            $('#category option').filter(function() {
+                return ($(this).text() == fpcc);
+            }).prop('selected', true);
+            createCookie('hpe_newx' + wd, 'Yes');
+            var hi = setInterval(function() { // Click on "SUBMIT" will hide IFRAME and show Loader
+                if ($('#submit1').length) {
+                    if ($('#submit1').val().toLowerCase().indexOf('wait') != -1) {
+                        createCookie('hpe_hide_iframe' + wd, 'Yes');
+                        clearInterval(hi);
+                    }
+                }
+            }, 10);
+            $('#submit2').click(function() {
+                eraseCookie('hpe_newx' + wd);
+                createCookie('hpe_cancel' + wd, 'Yes');
+            });
+        }
+    }
+    // Directory (New)
+    if (window.location.href.indexOf("#hpe_directoryxy") != -1 && window.location.href.indexOf("?lid=CustomersSetup&") != -1 && window.location.href.indexOf("/form") != -1 && window.location.href.indexOf("&eflag=") != -1 && window.location.href.indexOf("&pkey=&") != -1) {
+        if ($('#submit1').length || $('#submit2').length) {
+            $('.label.col.col-4').each(function() {
+                if ($(this).text() == '* Active' || $(this).text() == 'Menu' || $(this).text() == '* Category') {
+                    $(this).parent('.row').parent('section').css('display', 'none');
+                }
+            });
+            var pa = window.location.href.split('$$').pop();
+            var qs = pa.replace(/@@/g, "'").replace(/_/g, " ");
+            var ms = qs.replace("&&", " - ");
+            $('#menu option').filter(function() {
+                return ($(this).text().indexOf(ms) != -1);
+            }).prop('selected', true);
+            var fpurl = location.href;
+            var fpurlx = new URL(fpurl);
+            var fpsite = fpurlx.searchParams.get("fpc");
+            var fpcc = fpsite.replace(/@@/g, "'").replace(/A_M_P/g, "&").replace(/_/g, " ");
             $('#category option').filter(function() {
                 return ($(this).text() == fpcc);
             }).prop('selected', true);
