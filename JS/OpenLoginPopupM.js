@@ -8,8 +8,8 @@ function OpenLoginPopupM(qrStr) {
     var a = myParameters['a'];
     var as = readCookie('AppServer');
     var st = window.location.hostname;
-    if (url.split("/").length == 5) { // Folder Sites
-        var st = st + "/" + url.split("/")[3];
+    if (url.split("/").length == 9) { // Folder Sites
+        var st = st + "/" + url.split("/")[7];
     }
     var lg = '.' + pg + sg;
     if (a == '1' && s != 'Yes') {
