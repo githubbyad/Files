@@ -1,0 +1,10 @@
+function OpenPopup5(pageUrl, window_type, fwidth, fheight) {
+    $.magnificPopup.open({
+        items: [{
+            src: readCookie('AppServer') + pageUrl,
+            type: window_type
+        }],
+        gallery: { enabled: true },
+        iframe: { markup: '<div class="popup4-article">' + '<div class="mfp-iframe-scaler" >' + '<div class="mfp-close"></div>' + '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' + '</div></div>' }
+    });
+}
