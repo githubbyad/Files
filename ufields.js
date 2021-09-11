@@ -81,7 +81,12 @@ function confirmdelete(msg, url) { // Confirm Popup
     var lhrx = location.href;
     var lhurlx = new URL(lhrx);
     var wsite = lhurlx.searchParams.get("site");
-    var wd = '_' + wsite.split('.').shift();
+    if (wsite.indexOf('/') != -1) {
+        var wd = '_' + wsite.split('.').shift() + '_' + wsite.split('/').pop();
+        var wd = wd.replace(/-/g, '_');
+    } else {
+        var wd = '_' + wsite.split('.').shift();
+    }
     jConfirm2(msg, 'Delete', function(r) {
         if (r) {
             OpenBLPopup('' + url + '', 'iframe');
@@ -96,7 +101,12 @@ function confirmdetail(msg, url, index) { // Confirm Popup - Detail
     var lhrx = location.href;
     var lhurlx = new URL(lhrx);
     var wsite = lhurlx.searchParams.get("site");
-    var wd = '_' + wsite.split('.').shift();
+    if (wsite.indexOf('/') != -1) {
+        var wd = '_' + wsite.split('.').shift() + '_' + wsite.split('/').pop();
+        var wd = wd.replace(/-/g, '_');
+    } else {
+        var wd = '_' + wsite.split('.').shift();
+    }
     jConfirm2(msg, 'Delete', function(r) {
         if (r) {
             OpenBLPopup('' + url + '', 'iframe');
@@ -136,7 +146,12 @@ $(document).ready(function() {
             var lhrx = location.href;
             var lhurlx = new URL(lhrx);
             var wsite = lhurlx.searchParams.get("site");
-            var wd = '_' + wsite.split('.').shift();
+            if (wsite.indexOf('/') != -1) {
+                var wd = '_' + wsite.split('.').shift() + '_' + wsite.split('/').pop();
+                var wd = wd.replace(/-/g, '_');
+            } else {
+                var wd = '_' + wsite.split('.').shift();
+            }
             // push state
             if (readCookie('hpe_session_error' + wd) == 'Yes' && window.location.href.indexOf("/login") != -1) { // session error
                 eraseCookie('hpe_session_error' + wd);
@@ -1104,7 +1119,7 @@ $(document).ready(function() {
             }
             if ($('.hpe-in-directory-list').length) { // View Directroy Page 2
                 $('.hpe-in-directory-list.hp-x').each(function() {
-                    var dlink = dlb + $(this).attr('data-link').replace(/.*\//, "")  + '&site=' + wsite;
+                    var dlink = dlb + $(this).attr('data-link').replace(/.*\//, "") + '&site=' + wsite;
                     if ($(this).children('.hp-y').children('.hp-z').length == 0) {
                         $(this).children('.hp-y').append('<div class="hp-z"><div class="hp-span"><a title="View Directory Listings" href="' + dlink + '"><i class="fa fa-external-link" aria-hidden="true"></i></a></div></div>');
                     }
@@ -1547,7 +1562,12 @@ $(window).bind('load', function() {
             var lhrx = location.href;
             var lhurlx = new URL(lhrx);
             var wsite = lhurlx.searchParams.get("site");
-            var wd = '_' + wsite.split('.').shift();
+            if (wsite.indexOf('/') != -1) {
+                var wd = '_' + wsite.split('.').shift() + '_' + wsite.split('/').pop();
+                var wd = wd.replace(/-/g, '_');
+            } else {
+                var wd = '_' + wsite.split('.').shift();
+            }
             // Home Link 
             $('.hp-homemenu-child .hp-menulink').attr('href', '/hpeditor' + pext + '?site=' + wsite);
 
@@ -1820,7 +1840,12 @@ $(document).ready(function() {
         var lhr = location.href;
         var lhurl = new URL(lhr);
         var surlw = lhurl.searchParams.get("site");
-        var wd = '_' + surlw.split('.').shift();
+        if (surlw.indexOf('/') != -1) {
+            var wd = '_' + surlw.split('.').shift() + '_' + surlw.split('/').pop();
+            var wd = wd.replace(/-/g, '_');
+        } else {
+            var wd = '_' + surlw.split('.').shift();
+        }
     }
     // Get Domain
     var dplb = 'https://' + location.href.match(/:\/\/(.[^/]+)/)[1];
