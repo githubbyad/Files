@@ -622,16 +622,16 @@ $(document).ready(function() {
                     var mk = $(this).attr('data-menu');
                     var sk = $(this).attr('data-submenu');
                     if ($(this).attr('onclick')) {
-                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('/target_form') != -1) { // Check for Popup Links - Form
+                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('target_form') != -1) { // Check for Popup Links - Form
                             $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=Form&sname=target_form2" + pext + "&" + $(this).attr("onclick").split("OpenPopup5('").pop().split("?").pop().split("',").shift());
                         }
-                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('/target_service_package') != -1) { // // Check for Popup Links - Service Package
+                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('target_service_package') != -1) { // // Check for Popup Links - Service Package
                             $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=ServicePackage&sname=target_service_package" + pext + "&" + $(this).attr("onclick").split("OpenPopup5('").pop().split("?").pop().split("',").shift());
                         }
-                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('/target_classifieds') != -1) { // // Check for Popup Links - Classifieds
+                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('target_classifieds') != -1) { // // Check for Popup Links - Classifieds
                             $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=Classifieds&sname=target_classifieds" + pext + "&" + $(this).attr("onclick").split("OpenPopup5('").pop().split("?").pop().split("',").shift());
                         }
-                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('/target_yellowpage') != -1) { // // Check for Popup Links - YellowPages
+                        if ($(this).attr('onclick').indexOf('OpenPopup5(') != -1 && $(this).attr('onclick').indexOf('target_yellowpage') != -1) { // // Check for Popup Links - YellowPages
                             $(this).attr("data-link", "https://" + wsite + "/index0.htm?twindow=YellowPages&sname=target_yellowpage" + pext + "&" + $(this).attr("onclick").split("OpenPopup5('").pop().split("?").pop().split("',").shift());
                         }
                         $(this).removeAttr('onclick');
