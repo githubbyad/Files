@@ -319,6 +319,7 @@
     padding: 0 !important;
     margin: 0 !important;
     text-indent: 0 !important;
+    letter-spacing: 0 !important;
 }
 
 [class*="hpe-"].hp-x .hp-y .hp-z .hp-span a:last-child {
@@ -2442,8 +2443,10 @@ data-submit b {
 more {
     display: inline-block;
 }
+
 .hpx-main .fa {
     display: inline-block;
 }
+
 
 /* END: Live Builder(Site Manager) */
