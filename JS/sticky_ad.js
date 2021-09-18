@@ -1,5 +1,4 @@
 // BEGIN: Sticky Ad
-
 $(document).ready(function() {
   if (!$('#stickyrightContent span').length) {
     $('#stickyright').css('display', 'none');
@@ -18,5 +17,4 @@ $(document).ready(function() {
     createCookie('AdStickyT1', 'Yes');
   }
 });
-
 // END: Sticky Ad
