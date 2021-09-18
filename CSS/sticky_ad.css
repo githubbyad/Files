@@ -1,0 +1,64 @@
+.stickybottom {
+    width: 80vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.stickyclose {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    visibility: visible;
+}
+
+.stickyheader {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: block;
+}
+
+.stickyleft {
+    width: 20vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    top: 200px;
+    left: 0px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.stickyminimize {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    visibility: visible;
+}
+
+.stickyright {
+    width: 20vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    top: 200px;
+    right: 0px;
+    position: fixed;
+    z-index: 9999;
+}
+
+.stickytop {
+    width: 80vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 9999;
+}
+
+#stickybottomContent span table tbody tr td img,
+#stickytopContent span table tbody tr td img {
+    max-height: 30vh;
+}
