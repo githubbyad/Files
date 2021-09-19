@@ -1,18 +1,43 @@
-.stickybottom {
-    width: 80vw;
+/* Sticky Ads - BEGIN */
+
+.stickytop {
     margin-top: 0px;
     margin-bottom: 0px;
-    right: 0px;
+    top: 0px;
+    left: 50%;
+    position: fixed;
+    z-index: 9999;
+    transform: translate(-50%, 0);
+}
+
+.stickybottom {
+    margin-top: 0px;
+    margin-bottom: 0px;
     bottom: 0px;
+    left: 50%;
+    position: fixed;
+    z-index: 9999;
+    transform: translate(-50%, 0);
+}
+
+.stickyleft {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    top: 50%;
     left: 0px;
     position: fixed;
     z-index: 9999;
+    transform: translate(0, -50%);
 }
 
-.stickyclose {
+.stickyright {
     margin-top: 0px;
     margin-bottom: 0px;
-    visibility: visible;
+    top: 50%;
+    right: 0px;
+    position: fixed;
+    z-index: 9999;
+    transform: translate(0, -50%);
 }
 
 .stickyheader {
@@ -21,44 +46,27 @@
     display: block;
 }
 
-.stickyleft {
-    width: 20vw;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    top: 200px;
-    left: 0px;
-    position: fixed;
-    z-index: 9999;
-}
-
 .stickyminimize {
     margin-top: 0px;
     margin-bottom: 0px;
     visibility: visible;
 }
 
-.stickyright {
-    width: 20vw;
+.stickyclose {
     margin-top: 0px;
     margin-bottom: 0px;
-    top: 200px;
-    right: 0px;
-    position: fixed;
-    z-index: 9999;
-}
-
-.stickytop {
-    width: 80vw;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    position: fixed;
-    z-index: 9999;
+    visibility: visible;
 }
 
 #stickybottomContent span table tbody tr td img,
 #stickytopContent span table tbody tr td img {
     max-height: 30vh;
 }
+
+#stickyleftContent span table tbody tr td img,
+#stickyrightContent span table tbody tr td img {
+    max-width: 20vw;
+}
+
+
+/* Sticky Ads - END */
