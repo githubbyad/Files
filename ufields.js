@@ -166,6 +166,7 @@ $(document).ready(function() {
             var hpx = setInterval(function() {
                 if ($('.hpx-manage-link').length) {
                     $('.hpx-manage-link, .hpx-homepage > a, .hpx-tickets > a').attr('onclick', 'return ! window.open(this.href);');
+                    $('.hpx-logout a').removeAttr('onclick');
                     clearInterval(hpx);
                 }
             }, 1000);
