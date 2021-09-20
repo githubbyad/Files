@@ -13,7 +13,6 @@ foreach ($sites as $value) {
     $r = fread($f, 10);
     fclose($f);
     if (strlen($r) > 1) {
-        //echo 'https://' . $value . '/';
         header("Location: https://" . $value . "/login.asp?site=" . $_SERVER['HTTP_HOST']);
         exit();
     }
