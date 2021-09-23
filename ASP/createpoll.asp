@@ -184,7 +184,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
   if V_PollType = "MultipleChoice-CheckBox" then
    MyContent = MyContent + "<form class=""cus-poll-1-form"" style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var chk_val = get_checkbox_value('F" + CStr(V_UniquePollID) + "');OpenPopup2('" + AppServer + "/target_poll.asp?PollType=M&UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip='+vip+'&'+chk_val,'iframe','600','400');return false;"">"
   else
-   MyContent = MyContent + "<form style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var rad_val=get_radio_value('F" + CStr(V_UniquePollID) + "');OpenPopup2('" + AppServer + "/target_poll.asp?UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip='+vip+'&choiceid='+rad_val,'iframe','600','400');return false;"">"
+   MyContent = MyContent + "<form class=""cus-poll-1-form"" style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var rad_val=get_radio_value('F" + CStr(V_UniquePollID) + "');OpenPopup2('" + AppServer + "/target_poll.asp?UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip='+vip+'&choiceid='+rad_val,'iframe','600','400');return false;"">"
   end if
   MyContent = MyContent + "<input type=""hidden"" id=""pollid"" name=""pollid"" value=""" + CStr(V_SysPollID) + """>"
 
@@ -304,7 +304,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    if ClosePollFlag = "Yes" then
     MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
    else
-    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom"">"
+    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"">"
    end if
 
    if ClosePollFlag = "No" then
