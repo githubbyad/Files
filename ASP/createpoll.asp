@@ -193,7 +193,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
   if V_PollType = "MultipleChoice-CheckBox" then
 
    MyContent = MyContent + "<div class=""polls1title polls1title_custom cus-poll-1-header fw-bold lh-lg text-center"">" + PollMenuTitle + "</div>"
-   MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question p-2 fw-bold"">" + V_Question + "</div>"
+   MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question fw-bold"">" + V_Question + "</div>"
 
    if ClosePollFlag = "Yes" then
     MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
@@ -299,7 +299,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
   else '**************************
 
    MyContent = MyContent + "<div class=""polls1title polls1title_custom cus-poll-1-header fw-bold lh-lg text-center"">" + PollMenuTitle + "</div>"
-   MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question p-2 fw-bold"">" + V_Question + "</div>"
+   MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question fw-bold"">" + V_Question + "</div>"
 
    if ClosePollFlag = "Yes" then
     MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
