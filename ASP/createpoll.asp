@@ -292,7 +292,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "</table>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button fw-bold fs-6 text-uppercase text-wrap"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
+    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
    end if
 
 
@@ -397,7 +397,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "</table>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button fw-bold fs-6 text-uppercase text-wrap"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
+    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
    end if
  
   end if 'if V_PollType = "MultipleChoice-CheckBox" then
