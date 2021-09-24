@@ -203,7 +203,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid1"" id=""choiceid1-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid1_custom cus-poll-1-input form-check-input ms-0""></td>"
+    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid1"" id=""choiceid1-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid1_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P1Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -213,7 +213,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "<td align=left class=""answer1_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid1-" + CStr(V_UniquePollID) + """>" + V_Answer1 + "</label></td></tr>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid2"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid2_custom cus-poll-1-input form-check-input ms-0""></td>"
+    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid2"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid2_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P2Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -225,7 +225,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer3 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid3"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid3_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid3"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid3_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P3Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -237,7 +237,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer4 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid4"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid4_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid4"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid4_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P4Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -249,7 +249,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer5 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_customcus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid5"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid5_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_customcus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid5"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid5_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P5Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -261,7 +261,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer6 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid6"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid6_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid6"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid6_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P6Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -273,7 +273,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer7 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid7"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid7_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid7"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid7_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P7Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -308,7 +308,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    end if
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" value=1 id=""choiceid1-" + CStr(V_UniquePollID) + """ class=""choiceid1_custom cus-poll-1-input form-check-input ms-0""></td>"
+    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" value=1 id=""choiceid1-" + CStr(V_UniquePollID) + """ class=""choiceid1_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P1Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -318,7 +318,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "<td align=left class=""answer1_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid1-" + CStr(V_UniquePollID) + """>" + V_Answer1 + "</label></td></tr>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=2 class=""choiceid2_custom cus-poll-1-input form-check-input ms-0""></td>"
+    MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=2 class=""choiceid2_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P2Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -330,7 +330,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer3 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=3 class=""choiceid3_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=3 class=""choiceid3_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P3Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -342,7 +342,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer4 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=4 class=""choiceid4_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=4 class=""choiceid4_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P4Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -354,7 +354,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer5 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=5 class=""choiceid5_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=5 class=""choiceid5_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P5Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -366,7 +366,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer6 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top CLASS=WB><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=6 class=""choiceid6_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top CLASS=WB><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=6 class=""choiceid6_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P6Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -378,7 +378,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
 
    if V_Answer7 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=7 class=""choiceid7_custom cus-poll-1-input form-check-input ms-0""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow-sm p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=7 class=""choiceid7_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P7Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
