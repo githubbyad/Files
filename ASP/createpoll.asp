@@ -179,7 +179,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
   V_Answer7   = rsResults("ANSWER7")
 
 
-  MyContent = MyContent + "<div id=""poll" + CStr(V_SysPollID) + """ name=""poll" + CStr(V_SysPollID) + """ class=""polls1body cus-poll-1-container container mb-2 px-0 border rounded"">"
+  MyContent = MyContent + "<div id=""poll" + CStr(V_SysPollID) + """ name=""poll" + CStr(V_SysPollID) + """ class=""polls1body cus-poll-1-container container mb-2 p-2 border rounded"">"
 
   if V_PollType = "MultipleChoice-CheckBox" then
    MyContent = MyContent + "<form class=""cus-poll-1-form"" style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var chk_val = get_checkbox_value('F" + CStr(V_UniquePollID) + "');OpenPopup2('" + AppServer + "/target_poll.asp?PollType=M&UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip='+vip+'&'+chk_val,'iframe','600','400');return false;"">"
@@ -196,91 +196,91 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question py-2"">" + V_Question + "</div>"
 
    if ClosePollFlag = "Yes" then
-    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table mb-3"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
+    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
    else
-    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question cus-poll-1-table cus-poll-1-table mb-3"">"
+    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question cus-poll-1-table"">"
    end if
 
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid1"" id=""choiceid1-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid1_custom cus-poll-1-input form-check-input""></td>"
+    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid1"" id=""choiceid1-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid1_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P1Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
     MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P1/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P1)+ "%</div></div></td>" + ShowDetails
    end if
-   MyContent = MyContent + "<td align=left class=""answer1_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid1-" + CStr(V_UniquePollID) + """>" + V_Answer1 + "</label></td></tr>"
+   MyContent = MyContent + "<td align=left class=""answer1_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid1-" + CStr(V_UniquePollID) + """>" + V_Answer1 + "</label></td></tr>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid2"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid2_custom cus-poll-1-input form-check-input""></td>"
+    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid2"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid2_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P2Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
     MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P2/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P2)+ "%</div></div></td>" + ShowDetails
    end if
-   MyContent = MyContent + "<td align=left class=""answer2_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid2-" + CStr(V_UniquePollID) + """>" + V_Answer2 + "</label></td></tr>"
+   MyContent = MyContent + "<td align=left class=""answer2_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid2-" + CStr(V_UniquePollID) + """>" + V_Answer2 + "</label></td></tr>"
 
 
    if V_Answer3 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid3"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid3_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid3"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid3_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P3Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
      end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P3/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P3)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer3_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid3-" + CStr(V_UniquePollID) + """>" + V_Answer3 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer3_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid3-" + CStr(V_UniquePollID) + """>" + V_Answer3 + "</label></td></tr>"
    end if
 
    if V_Answer4 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid4"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid4_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid4"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid4_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P4Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
      end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P4/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P4)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer4_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid4-" + CStr(V_UniquePollID) + """>" + V_Answer4 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer4_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid4-" + CStr(V_UniquePollID) + """>" + V_Answer4 + "</label></td></tr>"
    end if
 
    if V_Answer5 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_customcus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid5"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid5_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_customcus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid5"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid5_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P5Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
      end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P5/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P5)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer5_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid5-" + CStr(V_UniquePollID) + """>" + V_Answer5 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer5_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid5-" + CStr(V_UniquePollID) + """>" + V_Answer5 + "</label></td></tr>"
    end if
 
    if V_Answer6 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid6"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid6_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid6"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid6_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P6Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
      end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P6/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P6)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer6_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid6-" + CStr(V_UniquePollID) + """>" + V_Answer6 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer6_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid6-" + CStr(V_UniquePollID) + """>" + V_Answer6 + "</label></td></tr>"
    end if
 
    if V_Answer7 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""checkbox"" name=""choiceid7"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid7_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""checkbox"" name=""choiceid7"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=1 class=""choiceid7_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
      if DisplayDetailPollFlag = "Yes" then    
       ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P7Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
      end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P7/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P7)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer7_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid7-" + CStr(V_UniquePollID) + """>" + V_Answer7 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer7_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid7-" + CStr(V_UniquePollID) + """>" + V_Answer7 + "</label></td></tr>"
    end if
 
    if ClosePollFlag = "Yes" then
@@ -289,10 +289,10 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
     end if
    end if
 
-   MyContent = MyContent + "</table><style>.cus-poll-1-answers {transition-delay: 200ms linear;}.cus-poll-1-answers:hover {transition: 100ms linear; box-shadow: 0 0 0 2px #ddd !important;}</style>"
+   MyContent = MyContent + "</table><style>.cus-poll-1-answers {transition-delay: 200ms linear;}.cus-poll-1-answers:hover {transition: 100ms linear; box-shadow: 0 0 0 2px #ddd !important;}.cus-poll-1-label:hover {color: #0d6efd;}</style>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase mb-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
+    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase my-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
    end if
 
 
@@ -302,23 +302,23 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question py-2"">" + V_Question + "</div>"
 
    if ClosePollFlag = "Yes" then
-    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table mb-3"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
+    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
    else
-    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table mb-3"">"
+    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"">"
    end if
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""radio"" name=""choiceid"" value=1 id=""choiceid1-" + CStr(V_UniquePollID) + """ class=""choiceid1_custom cus-poll-1-input form-check-input""></td>"
+    MyContent = MyContent + "<tr class=""polls1question polls1question_custom cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" value=1 id=""choiceid1-" + CStr(V_UniquePollID) + """ class=""choiceid1_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P1Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
     MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P1/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P1)+ "%</div></div></td>" + ShowDetails
    end if   
-   MyContent = MyContent + "<td align=left class=""answer1_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid1-" + CStr(V_UniquePollID) + """>" + V_Answer1 + "</label></td></tr>"
+   MyContent = MyContent + "<td align=left class=""answer1_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid1-" + CStr(V_UniquePollID) + """>" + V_Answer1 + "</label></td></tr>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""radio"" name=""choiceid"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=2 class=""choiceid2_custom cus-poll-1-input form-check-input""></td>"
+    MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid2-" + CStr(V_UniquePollID) + """ value=2 class=""choiceid2_custom cus-poll-1-input form-check-input ms-0""></td>"
    else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P2Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
@@ -326,66 +326,66 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
     MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P2/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P2)+ "%</div></div></td>" + ShowDetails
    end if
 
-   MyContent = MyContent + "<td align=left class=""answer2_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid2-" + CStr(V_UniquePollID) + """>" + V_Answer2 + "</label></td></tr>"
+   MyContent = MyContent + "<td align=left class=""answer2_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid2-" + CStr(V_UniquePollID) + """>" + V_Answer2 + "</label></td></tr>"
 
    if V_Answer3 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""radio"" name=""choiceid"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=3 class=""choiceid3_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid3-" + CStr(V_UniquePollID) + """ value=3 class=""choiceid3_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P3Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P3/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P3)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer3_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid3-" + CStr(V_UniquePollID) + """>" + V_Answer3 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer3_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid3-" + CStr(V_UniquePollID) + """>" + V_Answer3 + "</label></td></tr>"
    end if
 
    if V_Answer4 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""radio"" name=""choiceid"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=4 class=""choiceid4_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid4-" + CStr(V_UniquePollID) + """ value=4 class=""choiceid4_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P4Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P4/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P4)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer4_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid4-" + CStr(V_UniquePollID) + """>" + V_Answer4 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer4_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid4-" + CStr(V_UniquePollID) + """>" + V_Answer4 + "</label></td></tr>"
    end if
 
    if V_Answer5 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""radio"" name=""choiceid"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=5 class=""choiceid5_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid5-" + CStr(V_UniquePollID) + """ value=5 class=""choiceid5_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P5Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P5/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P5)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer5_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid5-" + CStr(V_UniquePollID) + """>" + V_Answer5 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer5_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid5-" + CStr(V_UniquePollID) + """>" + V_Answer5 + "</label></td></tr>"
    end if
 
    if V_Answer6 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top CLASS=WB><input type=""radio"" name=""choiceid"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=6 class=""choiceid6_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top CLASS=WB><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid6-" + CStr(V_UniquePollID) + """ value=6 class=""choiceid6_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P6Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P6/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P6)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer6_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid6-" + CStr(V_UniquePollID) + """>" + V_Answer6 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer6_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid6-" + CStr(V_UniquePollID) + """>" + V_Answer6 + "</label></td></tr>"
    end if
 
    if V_Answer7 <> "" then
     if ClosePollFlag = "No" then
-     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input type=""radio"" name=""choiceid"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=7 class=""choiceid7_custom cus-poll-1-input form-check-input""></td>"
+     MyContent = MyContent + "<tr class=""polls1question cus-poll-1-answers form-check shadow p-2 mb-3 bg-body rounded""><td align=right valign=top><input role=""button"" type=""radio"" name=""choiceid"" id=""choiceid7-" + CStr(V_UniquePollID) + """ value=7 class=""choiceid7_custom cus-poll-1-input form-check-input ms-0""></td>"
     else
     if DisplayDetailPollFlag = "Yes" then    
      ShowDetails = "<TD align=right width=""15%"" style=""border: 1px solid " + BarBGColor + ";"">" + CStr(P7Responded) + "&nbsp; " + ReportVotesValue + "</TD>"
     end if
      MyContent = MyContent + "<tr style=""border: 1px solid " + BarBGColor + ";"" class=""polls1question polls1question_custom""><td align=left valign=top width=""50px""><div style=""width:100%; background-color: " + BarBGColor + ";""><div style=""width:" + CStr(P7/2) + "px; background-color: " + BarImage+ ";"">" + CStr(P7)+ "%</div></div></td>" + ShowDetails
     end if
-    MyContent = MyContent + "<td align=left class=""answer7_custom""><label class=""cus-poll-1-label form-check-label"" for=""choiceid7-" + CStr(V_UniquePollID) + """>" + V_Answer7 + "</label></td></tr>"
+    MyContent = MyContent + "<td align=left class=""answer7_custom""><label role=""button"" class=""cus-poll-1-label form-check-label ps-2"" for=""choiceid7-" + CStr(V_UniquePollID) + """>" + V_Answer7 + "</label></td></tr>"
    end if
 
     if ClosePollFlag = "Yes" then
@@ -394,10 +394,10 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
      end if
     end if
 
-   MyContent = MyContent + "</table><style>.cus-poll-1-answers {transition-delay: 200ms linear;}.cus-poll-1-answers:hover {transition: 100ms linear; box-shadow: 0 0 0 2px #ddd !important;}</style>"
+   MyContent = MyContent + "</table><style>.cus-poll-1-answers {transition-delay: 200ms linear;}.cus-poll-1-answers:hover {transition: 100ms linear; box-shadow: 0 0 0 2px #ddd !important;}.cus-poll-1-label:hover {color: #0d6efd;}</style>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase mb-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
+    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase my-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
    end if
  
   end if 'if V_PollType = "MultipleChoice-CheckBox" then
