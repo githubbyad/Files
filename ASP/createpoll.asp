@@ -179,10 +179,11 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
   V_Answer7   = rsResults("ANSWER7")
 
 
-  MyContent = MyContent + "<div id=""poll" + CStr(V_SysPollID) + """ name=""poll" + CStr(V_SysPollID) + """ class=""polls1body cus-poll-1-container container mb-2 p-2 border rounded"">"
+  MyContent = MyContent + "<div id=""poll" + CStr(V_SysPollID) + """ name=""poll" + CStr(V_SysPollID) + """ class=""polls1body cus-poll-1-container container mb-3 p-2 border rounded"">"
 
   if V_PollType = "MultipleChoice-CheckBox" then
-   MyContent = MyContent + "<form class=""cus-poll-1-form"" style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var chk_val = get_checkbox_value('F" + CStr(V_UniquePollID) + "');OpenPopup2('" + AppServer + "/target_poll.asp?PollType=M&UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip='+vip+'&'+chk_val,'iframe','600','400');return false;"">"
+   MyContent = MyContent + "<form class=""cus-poll-1-form"" style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var chk_val = get_checkbox_value('F" + CStr(V_UniquePollID) + "');var pollFrame = document.createElement('iframe');pollFrame.src = '" + AppServer + "/target_poll.asp?PollType=M&UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip=' + vip + '&' + chk_val;pollFrame.width = '100%';pollFrame.id = 'F" + CStr(V_UniquePollID) + "_FRAME';pollFrame.setAttribute('style', 'border: medium none; overflow: hidden;');pollFrame.setAttribute('scrolling', 'no');pollFrame.setAttribute('onload', 'iFrameResize({log:true}, \'#F" + CStr(V_UniquePollID) + "_FRAME\');');document.getElementsByClassName('poll-table-unq-" + CStr(V_UniquePollID) + "')[0].style.display = 'none';document.getElementsByClassName('poll-button-unq-" + CStr(V_UniquePollID) + "')[0].style.display = 'none';document.getElementById('" + CStr(V_UniquePollID) + "').insertBefore(pollFrame, document.getElementById('" + CStr(V_UniquePollID) + "').childNodes[0]);return false; "">"
+   
   else
    MyContent = MyContent + "<form class=""cus-poll-1-form"" style=""margin:0px; padding:0px;"" method=""post"" id=F" + CStr(V_UniquePollID) + " name=F" + CStr(V_UniquePollID) + " onSubmit=""var vip=document.getElementById('vip').value; var rad_val=get_radio_value('F" + CStr(V_UniquePollID) + "');OpenPopup2('" + AppServer + "/target_poll.asp?UniquePollID=" + CStr(V_UniquePollID) + "&site=" + MyDomainX + "&SysPollID=" + CStr(V_SysPollID) + "&vip='+vip+'&choiceid='+rad_val,'iframe','600','400');return false;"">"
   end if
@@ -196,9 +197,9 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question py-2 fw-bold"">" + V_Question + "</div>"
 
    if ClosePollFlag = "Yes" then
-    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
+    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table poll-table-unq-" + CStr(V_UniquePollID) + """ style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
    else
-    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question cus-poll-1-table"">"
+    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question cus-poll-1-table poll-table-unq-" + CStr(V_UniquePollID) + """>"
    end if
 
 
@@ -292,7 +293,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "</table><style>.cus-poll-1-answers {transition-delay: 200ms linear;}.cus-poll-1-answers:hover {transition: 100ms linear; box-shadow: 0 0 0 2px #ddd !important;}.cus-poll-1-label:hover {color: #0d6efd;}</style>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase my-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
+    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button poll-button-unq-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase my-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
    end if
 
 
@@ -302,9 +303,9 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "<div class=""polls1question polls1question_custom cus-poll-1-question py-2 fw-bold"">" + V_Question + "</div>"
 
    if ClosePollFlag = "Yes" then
-    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"" style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
+    MyContent = MyContent + "<table border=1 cellPadding=5 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom  poll-table-unq-" + CStr(V_UniquePollID) + """ style=""border-collapse: collapse; border: 1px solid " + BarBGColor + ";"">"
    else
-    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table"">"
+    MyContent = MyContent + "<table border=0 cellPadding=0 cellSpacing=0 width=""100%"" class=""polls1question polls1question_custom cus-poll-1-table poll-table-unq-" + CStr(V_UniquePollID) + """>"
    end if
 
    if ClosePollFlag = "No" then
@@ -397,7 +398,7 @@ Sub CreatePolls (WebsiteID, MyDomainZ, IPz)
    MyContent = MyContent + "</table><style>.cus-poll-1-answers {transition-delay: 200ms linear;}.cus-poll-1-answers:hover {transition: 100ms linear; box-shadow: 0 0 0 2px #ddd !important;}.cus-poll-1-label:hover {color: #0d6efd;}</style>"
 
    if ClosePollFlag = "No" then
-    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button unq-poll-1-button-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase my-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
+    MyContent = MyContent + "<center><input class=""polls1button polls1button_custom cus-poll-1-button poll-button-unq-" + CStr(V_UniquePollID) + " fw-bold fs-6 text-wrap btn btn-primary col-10 col-lg-6 text-uppercase my-3"" type=submit value=""&nbsp;" + PollButton + "&nbsp;"" id=submit" + CStr(V_SysPollID) + " name=submit" + CStr(V_SysPollID) + "></center>"
    end if
  
   end if 'if V_PollType = "MultipleChoice-CheckBox" then
