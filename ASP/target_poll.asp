@@ -29,7 +29,7 @@
  Response.CodePage = 65001 
  Response.CharSet = "UTF-8" 
 
-Response.Write "<html><head><script src='/iframe-resizer-master/js/iframeResizer.contentWindow.js'></script><style>#poll-loader {border: 4px solid #0d6efd;border-radius: 50%;border-top: 4px solid #ddd;width: 10vw;height: 10vw;-webkit-animation: spin 700ms linear infinite;animation: spin 700ms linear infinite;position: fixed;left: 45vw;transform: translate(-50%,0);top: 15vh;}@-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}</style><script>window.addEventListener('DOMContentLoaded', (event) => {document.getElementById('poll-loader').style.display = 'none';});</script></head><body class=""polls1body"" style=""background-color:#ffffff; background-image:none; margin-left: auto; margin-right: auto; margin-top: auto; padding: 0px; border:none;font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; "">"
+Response.Write "<html><head><script src='/iframe-resizer-master/js/iframeResizer.contentWindow.js'></script><style>#poll-loader {border: 4px solid #0d6efd;border-radius: 50%;border-top: 4px solid #ddd;width: 10vw;height: 10vw;-webkit-animation: spin 700ms linear infinite;animation: spin 700ms linear infinite;position: fixed;left: 45vw;transform: translate(-50%,0);top: 15vh;}@-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}.poll-table > tbody > tr > td:nth-child(2) {display: none;}</style><script>window.addEventListener('DOMContentLoaded', (event) => {document.getElementById('poll-loader').style.display = 'none';});</script></head><body class=""polls1body"" style=""background-color:#ffffff; background-image:none; margin-left: auto; margin-right: auto; margin-top: auto; padding: 0px; border:none;font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; "">"
 
  dim IP_Address
  dim SubMenu
@@ -264,12 +264,12 @@ end if 'if ID <> "" then
 
 <% elseif DisplayDetailPollFlag = "Yes" then %>
 
-  <BR><TABLE border=1 cellPadding=8 cellSpacing=0 style="width:95%; text-align:center" align=center>
+  <BR><TABLE class="poll-table" border=1 cellPadding=8 cellSpacing=0 style="width:95%; text-align:center" align=center>
 
     <TR style="display:none">
         <TD colSpan=3 width=100% ><b><%=rsResultsP("QUESTION")%></B></TD></TR>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P1 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%> ><img src=<%=BarImage%> width=<%=P1%>px height=14px></td></tr></table>
         </TD>
         <TD align=right width="15%"><%=rsResultsP("ANSWER1_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
@@ -277,7 +277,7 @@ end if 'if ID <> "" then
     </TR>
         
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P2 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P2%>px height=14px></td></tr></table>
         </TD>
         <TD align=right width="15%"><%=rsResultsP("ANSWER2_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
@@ -286,7 +286,7 @@ end if 'if ID <> "" then
 
     <% if rsResultsP("ANSWER3") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P3 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P3%>px height=14px></td></tr></table>
         </TD>
         <TD align=right width="15%"><%=rsResultsP("ANSWER3_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
@@ -296,7 +296,7 @@ end if 'if ID <> "" then
         
     <% if rsResultsP("ANSWER4") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P4 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P4%>px height=14px></td></tr></table>
         </TD>
         <TD align=right width="15%"><%=rsResultsP("ANSWER4_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
@@ -306,7 +306,7 @@ end if 'if ID <> "" then
         
     <% if rsResultsP("ANSWER5") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P5 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P5%>px height=14px></td></tr></table>
         </TD>
         <TD align=right width="15%"><%=rsResultsP("ANSWER5_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
@@ -316,7 +316,7 @@ end if 'if ID <> "" then
 
     <% if rsResultsP("ANSWER6") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P6 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P6%>px height=14px></td></tr></table>
         </TD>
         <TD align=right width="15%"><%=rsResultsP("ANSWER6_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
@@ -348,14 +348,14 @@ end if 'if ID <> "" then
     <TR>
         <TD colSpan=2 width=100% ><b><%=rsResultsP("QUESTION")%></B></TD></TR>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P1 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P1%>px height=14px></td></tr></table>
         </TD>
         <TD align=left><%=rsResultsP("ANSWER1")%></TD>
     </TR>
         
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P2 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P2%>px height=14px></td></tr></table>
         </TD>
         <TD align=left><%=rsResultsP("ANSWER2")%></TD>
@@ -363,7 +363,7 @@ end if 'if ID <> "" then
 
     <% if rsResultsP("ANSWER3") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P3 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P3%>px height=14px></td></tr></table>
         </TD>
         <TD align=left><%=rsResultsP("ANSWER3")%></TD>
@@ -372,7 +372,7 @@ end if 'if ID <> "" then
         
     <% if rsResultsP("ANSWER4") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P4 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P4%>px height=14px></td></tr></table>
         </TD>
         <TD align=left><%=rsResultsP("ANSWER4")%></TD>
@@ -381,7 +381,7 @@ end if 'if ID <> "" then
         
     <% if rsResultsP("ANSWER5") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P5 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P5%>px height=14px></td></tr></table>
         </TD>
         <TD align=left><%=rsResultsP("ANSWER5")%></TD>
@@ -390,7 +390,7 @@ end if 'if ID <> "" then
 
     <% if rsResultsP("ANSWER6") <> "" then %>
     <TR>
-        <TD width="28%" align=right> 
+        <TD width="40%" align=right> 
         <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P6 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P6%>px height=14px></td></tr></table>
         </TD>
         <TD align=left><%=rsResultsP("ANSWER6")%></TD>
