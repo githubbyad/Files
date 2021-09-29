@@ -11,11 +11,8 @@
  Response.CacheControl="no-cache"
  Response.Buffer = true
 
- QString = LCase(Request.QueryString())
- if InStr(1, QString, "'") > 0 or InStr(1, QString, "%27") > 0 then
-  Response.Redirect("/error.htm")
- end if
-
+ QString = Request.QueryString()
+ 
  QSite = Request.QueryString("site")
 
  SQLinj QSite, QString, "target_poll.asp"
@@ -29,7 +26,7 @@
  Response.CodePage = 65001 
  Response.CharSet = "UTF-8" 
 
-Response.Write "<html><head><script src='/iframe-resizer-master/js/iframeResizer.contentWindow.js'></script><style>#poll-loader {border: 4px solid #0d6efd;border-radius: 50%;border-top: 4px solid #ddd;width: 10vw;height: 10vw;-webkit-animation: spin 700ms linear infinite;animation: spin 700ms linear infinite;position: fixed;left: 45vw;transform: translate(-50%,0);top: 15vh;}@-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}.poll-table > tbody > tr > td:nth-child(2) {display: none;}.cus-poll-ans-div{width:100%;float:left;margin-bottom:16px;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)!important;box-sizing:border-box;color:#2a2a2a;font-weight:700;position:relative;border-radius:.25rem!important;background:#fff;padding-bottom:7px;padding-bottom:5px;overflow:hidden;border:1px solid transparent;transition:.2s linear}.cus-poll-ans-div:hover{border-color:#0d6efd;transition:.2s linear}.cus-poll-ans-text{float:left;width:67%;padding-right:5%;padding-left:3%;text-align:left;line-height:30px}.cus-poll-ans-pt{width:22%;float:right;padding-right:3%;text-align:right;line-height:30px}.cus-poll-ans-border-bg{height:5px;background:#eaeaea;position:absolute;bottom:0;width:100%}.cus-poll-ans-border-pt{background:#0d6efd;height:5px;float:left;position:absolute;bottom:0}.cus-poll-total{float:left;width:100%;text-align:center;font-weight:700;margin-bottom:8px;margin-top:10px;color:#000}</style><script>window.addEventListener('DOMContentLoaded', (event) => {document.getElementById('poll-loader').style.display = 'none';});</script></head><body class=""polls1body"" style=""background-color:#ffffff; background-image:none; margin-left: auto; margin-right: auto; margin-top: auto; padding: 0px; border:none;font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; ""><div id='pro-loader'></div>"
+ Response.Write "<html><head><script src='/iframe-resizer-master/js/iframeResizer.contentWindow.js'></script><style>#poll-loader {border: 4px solid #0d6efd;border-radius: 50%;border-top: 4px solid #ddd;width: 10vw;height: 10vw;-webkit-animation: spin 700ms linear infinite;animation: spin 700ms linear infinite;position: fixed;left: 45vw;transform: translate(-50%,0);top: 15vh;}@-webkit-keyframes spin {0% {-webkit-transform: rotate(0deg);}100% {-webkit-transform: rotate(360deg);}}@keyframes spin {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}.poll-table > tbody > tr > td:nth-child(2) {display: none;}.cus-poll-ans-div{width:100%;float:left;margin-bottom:16px;box-shadow:0 .125rem .25rem rgba(0,0,0,.075)!important;box-sizing:border-box;color:#2a2a2a;font-weight:700;position:relative;border-radius:.25rem!important;background:#fff;padding-bottom:7px;padding-bottom:5px;overflow:hidden;border:1px solid transparent;transition:.2s linear}.cus-poll-ans-div:hover{border-color:#0d6efd;transition:.2s linear}.cus-poll-ans-text{font-weight:normal;float:left;width:67%;padding-right:5%;padding-left:3%;text-align:left;line-height:30px}.cus-poll-ans-pt{width:22%;float:right;padding-right:3%;text-align:right;line-height:30px;color:#0d6efd}.cus-poll-ans-border-bg{height:5px;background:#eaeaea;position:absolute;bottom:0;width:100%}.cus-poll-ans-border-pt{background:#0d6efd;height:5px;float:left;position:absolute;bottom:0}.cus-poll-total{float:left;width:100%;text-align:center;font-weight:700;margin-bottom:8px;margin-top:10px;color:#000}</style><script>window.addEventListener('DOMContentLoaded', (event) => {document.getElementById('poll-loader').style.display = 'none';});</script></head><body class=""polls1body"" style=""background-color:#ffffff; background-image:none; margin-left: auto; margin-right: auto; margin-top: auto; padding: 0px; border:none;font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; ""><div id='poll-loader'></div>"
 
  dim IP_Address
  dim SubMenu
@@ -192,7 +189,7 @@ end if 'if ID <> "" then
  end if
 
  if AlreadyVoted  then
-  Response.Write "<center><b><font size=4 color=red>" + ReportVotedValue + "</font></b></center>"
+  Response.Write "<center><b><font size=4 color=red>" + ReportVotedValue + "</font></b></center><br>"
  end if
 
  if DisplayDetailPollFlag = "No" then 
@@ -325,83 +322,6 @@ end if 'if ID <> "" then
 
   <div class="cus-poll-total"><%=ReportTotalVotesValue%>&nbsp;:&nbsp;&nbsp;<%=rsResultsP("TOTAL_RESPONDED")%></div>
 
-  ' <BR><TABLE class="poll-table" border=1 cellPadding=8 cellSpacing=0 style="width:95%; text-align:center" align=center>
-
-  '   <TR style="display:none">
-  '       <TD colSpan=3 width=100% ><b><%=rsResultsP("QUESTION")%></B></TD></TR>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P1 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%> ><img src=<%=BarImage%> width=<%=P1%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER1_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER1")%></TD>
-  '   </TR>
-        
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P2 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P2%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER2_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER2")%></TD>
-  '   </TR>
-
-  '   <% if rsResultsP("ANSWER3") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P3 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P3%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER3_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER3")%></TD>
-  '   </TR>
-  '   <% end if %>
-        
-  '   <% if rsResultsP("ANSWER4") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P4 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P4%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER4_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER4")%></TD>
-  '   </TR>
-  '   <% end if %>
-        
-  '   <% if rsResultsP("ANSWER5") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P5 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P5%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER5_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER5")%></TD>
-  '   </TR>
-  '   <% end if %>
-
-  '   <% if rsResultsP("ANSWER6") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P6 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P6%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER6_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER6")%></TD>
-  '   </TR>
-  '   <% end if %>
-
-  '   <% if rsResultsP("ANSWER7") <> "" then %>
-  '   <TR>
-  '       <TD width="30%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P7 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P7%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=right width="15%"><%=rsResultsP("ANSWER7_RESPONDED")%>&nbsp;<%=ReportVotesValue%></TD>
-  '       <TD align=left><%=rsResultsP("ANSWER7")%></TD>
-  '   </TR>
-  '   <% end if %>
-
-
-  '   <TR>
-  '       <TD align=center colSpan=3><B><%=ReportTotalVotesValue%>&nbsp;:&nbsp;&nbsp;<%=rsResultsP("TOTAL_RESPONDED")%></B></TD>
-  '   </TR>
-  ' </TABLE>
-
-
 <% else %>
 
   <div class="cus-poll-ans-div">
@@ -463,70 +383,6 @@ end if 'if ID <> "" then
   </div>
   <% end if %>
 
-  ' <TABLE border=1 cellPadding=8 cellSpacing=0 style="width:95%; text-align:center" align=center>
-
-  '   <TR>
-  '       <TD colSpan=2 width=100% ><b><%=rsResultsP("QUESTION")%></B></TD></TR>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P1 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P1%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER1")%></TD>
-  '   </TR>
-        
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P2 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P2%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER2")%></TD>
-  '   </TR>
-
-  '   <% if rsResultsP("ANSWER3") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P3 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P3%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER3")%></TD>
-  '   </TR>
-  '   <% end if %>
-        
-  '   <% if rsResultsP("ANSWER4") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P4 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P4%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER4")%></TD>
-  '   </TR>
-  '   <% end if %>
-        
-  '   <% if rsResultsP("ANSWER5") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P5 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P5%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER5")%></TD>
-  '   </TR>
-  '   <% end if %>
-
-  '   <% if rsResultsP("ANSWER6") <> "" then %>
-  '   <TR>
-  '       <TD width="40%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P6 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P6%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER6")%></TD>
-  '   </TR>
-  '   <% end if %>
-
-  '   <% if rsResultsP("ANSWER7") <> "" then %>
-  '   <TR>
-  '       <TD width="30%" align=right> 
-  '       <table cellPadding=0 cellSpacing=0 border=0><tr><td align=right><B><%= P7 %></B>%&nbsp;&nbsp;</td><td align=left width=100px bgcolor=<%=BarBGColor%>><img src=<%=BarImage%> width=<%=P7%>px height=14px></td></tr></table>
-  '       </TD>
-  '       <TD align=left><%=rsResultsP("ANSWER7")%></TD>
-  '   </TR>
-  '   <% end if %>
-
-  ' </TABLE>
 
 <% end if %>
 
