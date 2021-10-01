@@ -249,7 +249,6 @@ end if 'if ID <> "" then
     BarBGColor = "#efe0c1"
    end if
 
-   BarImage = "/images/poll_bar_" + BarImage + ".jpg"
 %>
 
 <% if DisplayDetailPollFlag = "Message" then %>
@@ -261,8 +260,8 @@ end if 'if ID <> "" then
 
 <% elseif DisplayDetailPollFlag = "Yes" then %>
 
-  <style>.cus-poll-ans-div:hover{border-color:<%=BarBGColor%>;}.cus-poll-ans-border-pt{background:<%=BarBGColor%>}.cus-poll-ans-pt{color:<%=BarBGColor%>}</style>
-  
+  <style>.cus-poll-ans-div:hover{border-color:<%=BarImage%>;}.cus-poll-ans-border-pt{background:<%=BarImage%>}.cus-poll-ans-pt{color:<%=BarImage%>}.cus-poll-ans-border-bg{background:<%=BarBGColor%>}</style> 
+
   <div class="cus-poll-ans-div">
   <div class="cus-poll-ans-text"><%=rsResultsP("ANSWER1")%></div>
   <div class="cus-poll-ans-pt"><%=P1%>%</div>
@@ -326,7 +325,7 @@ end if 'if ID <> "" then
 
 <% else %>
 
-  <style>.cus-poll-ans-div:hover{border-color:<%=BarBGColor%>;}.cus-poll-ans-border-pt{background:<%=BarBGColor%>}.cus-poll-ans-pt{color:<%=BarBGColor%>}</style>
+  <style>.cus-poll-ans-div:hover{border-color:<%=BarImage%>;}.cus-poll-ans-border-pt{background:<%=BarImage%>}.cus-poll-ans-pt{color:<%=BarImage%>}.cus-poll-ans-border-bg{background:<%=BarBGColor%>}</style>
 
   <div class="cus-poll-ans-div">
   <div class="cus-poll-ans-text"><%=rsResultsP("ANSWER1")%></div>
