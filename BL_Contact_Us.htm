@@ -1,0 +1,307 @@
+<link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+<script src="{{PutAppServer}}iframe-resizer-master/js/iframeResizer.contentWindow.js"></script>
+<style>
+.custom-form a {
+    
+    font-size: 17px !important;
+    color: #666 !important;
+    font-weight: unset;
+}
+.mHeadingLine {
+    height: 55px;
+}
+.formbody {
+    font-size: 15px;
+    clear: both;
+    margin-top: 15px;
+}
+
+.custom-form {
+    margin: 0;
+    outline: none;
+    box-shadow: 0 0 0px rgba(0,0,0,.3);
+    font: 16px/1.55 'Open Sans', Helvetica, Arial, sans-serif;
+    color: #666;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Features_article {
+    font-family: "Raleway",sans-serif;
+    line-height: 46px;
+    text-transform: none;
+}
+
+.mHeading {
+    text-align: center !important;
+}
+.gray_box {
+    background-color: #ecf4fb;
+    border: 1px solid #eae9e9;
+    padding: 15px;
+    padding: 30px;
+    /* margin-bottom: 35px; */
+    padding-bottom: 0px;
+}
+.custom-form .col-5 {
+    width: 91.66%;
+}
+.custom-form .input input, .custom-form .select select, .custom-form .textarea textarea {
+    background:  #dce9f5;
+}
+i.icon-money-f, i.icon-billing-f, i.icon-key-up-f {
+    font-size: 43px;
+    padding-right: 15px;
+    color: #04a1f3;
+}
+</style>
+<!--FormBegin--> 
+<div class="mHeadingLine">
+						<div class="mHeading" align="left">
+							<h2 style="margin-top: 0px; margin-bottom: 0px;">
+<span class="Features_article">How can we help you?</span>
+
+</h2>
+
+						</div>
+</div>
+<div class="formbody">
+<div class="body">
+
+<!--FormError-->
+<!--FormMessage-->
+
+<form class="custom-form" enctype="multipart/form-data" autocomplete="off" id="CustomForm" method="post" name="CustomForm" onsubmit="return Vailidate(this)" >
+<INPUT TYPE=HIDDEN ID="SysInformationID" NAME="SysInformationID" VALUE="">
+<INPUT TYPE=HIDDEN ID="SystemEmailSubject" NAME="SystemEmailSubject" VALUE="bulletlink.com: Sales"> 
+<INPUT TYPE=HIDDEN ID="SystemEmailConfirmMessage" NAME="SystemEmailConfirmMessage" VALUE="Thank you for visiting bulletlink.com. <BR><BR>We look forward to answering your questions<BR>in a timely manner.<br><br><br>"> 
+<INPUT TYPE=HIDDEN ID="SystemEmailFormat" NAME="SystemEmailFormat" VALUE="HTML"> 
+<INPUT TYPE=HIDDEN ID="SystemEmailTo" NAME="SystemEmailTo" VALUE="sales@bulletlink.com"> 
+<INPUT TYPE=HIDDEN ID="SystemEmailCC" NAME="SystemEmailCC" VALUE="">
+
+
+<fieldset>
+
+
+<INPUT TYPE=HIDDEN ID="SysInformationID" NAME="SysInformationID" VALUE="">
+<!--SystemFieldsBegin 
+
+
+
+<section>
+<div class="label">
+<div class="inp_custom">
+<div class="formdivider formdivider_custom">
+{{FieldHeader}} Order Information
+</div>
+</div>
+</div>
+</section>
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4"></label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="{{FieldNameItem}}" VALUE="{{FieldValueItem}}" id="{{FieldNameItem}}" placeholder="{{FieldCaptionItem}}" type="text" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" >
+<b class="tooltip tooltip-top-right"></b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4"></label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="{{FieldNameAmount}}" VALUE="{{FieldValueAmount}}" id="{{FieldNameAmount}}" placeholder="{{FieldCaptionAmount}}" type="text" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" >
+<b class="tooltip tooltip-top-right"></b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+<div style="display:none;"> 
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4"></label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="{{FieldNameInvoice}}" VALUE="{{FieldValueInvoice}}" id="{{FieldNameInvoice}}" placeholder="{{FieldCaptionInvoice}}" type="text" readonly class="formfieldinput formfieldinput_custom formfieldinput_ReadOnly" >
+<b class="tooltip tooltip-top-right"></b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+</div>--> 
+
+
+
+
+<div class="gray_box"> 
+<section>
+<div class="row">
+<label class="label col col-4">*</label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="Company_Name" VALUE="" id="Company_Name" placeholder="Company Name" type="text" class="formfieldinput formfieldinput_custom" >
+<b class="tooltip tooltip-top-right">Company Name</b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4">*</label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="Do_you_have_a_website" VALUE="" id="Do_you_have_a_website" placeholder="Do you have a website" type="text" class="formfieldinput formfieldinput_custom" >
+<b class="tooltip tooltip-top-right">If website exists, please provide website name as well.</b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4">*</label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="Email" VALUE="" id="Email" placeholder="Email" type="text" class="formfieldinput formfieldinput_custom" >
+<b class="tooltip tooltip-top-right">Email</b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4"></label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="Phone" VALUE="" id="Phone" placeholder="Phone" type="text" class="formfieldinput formfieldinput_custom" >
+<b class="tooltip tooltip-top-right">Phone</b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4">*</label>
+<div class="col col-8">
+<label class="input">
+<INPUT NAME="Name" VALUE="" id="Name" placeholder="Name" type="text" class="formfieldinput formfieldinput_custom" >
+<b class="tooltip tooltip-top-right">Name</b>
+</label>
+</div>
+</div>
+</section>
+
+ 
+
+ 
+
+
+
+
+<section>
+<div class="row">
+<label class="label col col-4">*</label>
+<div class="col col-8">
+<label class="textarea">
+<{{TextArea}} class="formfieldinput formfieldinput_custom" id="Questions"  placeholder="Questions" rows="4" cols="50" name="Questions" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus'), LimitCharacters(this, 'Questions-memo4', 'Questions-memo42')" onblur="ChangeInputFocus(this, event, 'formfieldinput')" id="Questions-memo" onchange="limitlength(this, 5000, 'Questions-memo4');" onkeyup="LimitCharacters(this, 'Questions-memo4', 'Questions-memo42');" maxlength="5000" NAME="Questions"></{{TextArea}}>
+<b class="tooltip tooltip-top-right">Questions</b>
+</label>
+<div class="formfieldname" style="text-align: left;">
+<label class="textarea"><label id="Questions-memo4"></label> <label id="Questions-memo42"></label></label>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+ 
+<footer>
+<button class="button" type="submit">Submit</button>
+</footer>
+
+
+
+<script language=javascript>function Vailidate(New){ var Company_Name = document.getElementById("Company_Name"); if (!ReservedKeywordChecker(Company_Name)) return false; if (!EmptyValidator('Company Name', Company_Name)) return false;  var Do_you_have_a_website = document.getElementById("Do_you_have_a_website"); if (!ReservedKeywordChecker(Do_you_have_a_website)) return false; if (!EmptyValidator('Do you have a website', Do_you_have_a_website)) return false;  var Email = document.getElementById("Email"); if (!ReservedKeywordChecker(Email)) return false; if (!EmailValidator('Email', Email)) return false;  var Email = document.getElementById("Email"); if (!ReservedKeywordChecker(Email)) return false; if (!EmptyValidator('Email', Email)) return false;  var Name = document.getElementById("Name"); if (!ReservedKeywordChecker(Name)) return false; if (!EmptyValidator('Name', Name)) return false;  var Questions = document.getElementById("Questions"); if (!ReservedKeywordChecker(Questions)) return false; if (!EmptyValidator('Questions', Questions)) return false; {New.SUBMIT1.disabled=true;}}</script>
+
+
+</fieldset>
+
+<div class="system_text footer_text">
+<center>
+<BR>
+9123 Alcott Dr
+<br>Houston, TX 77080, USA
+<br> <a href="tel:+18002454046">Phone: 800-245-4046</a>
+<br>Email: sales@bulletlink.com
+<BR>
+</center>
+</div>
+</form>
+</div>
+<script language="JavaScript" type="text/javascript">LoadDoc("/get_sc.asp", "hcdiv", "");</script> 
+<script language="javascript">GetTooltipSys1();</script> 
+<script language="javascript">GetGoogleAnalytics('FORM:ContactUs');</script>
+<br>
+<br>
+<center></center>
+
+</div>
+
+<!--FormEnd-->
