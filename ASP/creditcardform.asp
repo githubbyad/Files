@@ -61,7 +61,8 @@
 .cus-form-help {display: none;}
 .cus-form-help:empty {display: none !important;}
 .form-control:focus ~ .cus-form-help {display: block;}
-.form-floating > .form-control {caret-color: #0d6efd;}
+.form-floating > .form-control {caret-color: #198754;}
+.form-control:focus {border-color: #60ac88;;box-shadow: 0 0 0 .25rem rgba(25,135,84,.25);}
 </style>
 <script>
 function ChangeInputFocus(obj, evt, cname) {
@@ -174,10 +175,10 @@ Sub ProcessCreditCard
 
 if Session("GatewayMessage") = "" then
 
-  Response.Write "<center><FORM id=""CustomForm"" class=""custom-form p-3 p-lg-5 mx-2 mx-lg-0 border border-success rounded col-lg-8 mb-4"" METHOD=post ACTION=" + AppServer + "/creditcardform.asp?uid=" + Request.QueryString("uid") + "&site=" + Request.QueryString("site") + " name=form onSubmit=""return Vailidate(this)"">"
+  Response.Write "<center><FORM id=""CustomForm"" class=""custom-form p-3 p-lg-5 mx-2 mx-lg-0 border border-success rounded col-lg-5 mb-4"" METHOD=post ACTION=" + AppServer + "/creditcardform.asp?uid=" + Request.QueryString("uid") + "&site=" + Request.QueryString("site") + " name=form onSubmit=""return Vailidate(this)"">"
 
   Response.Write "<center>" + LogoLocation + "</center>"
-  Response.Write "<center class=""fw-bold mb-3 fs-6 fs-lg-5 text-success"">Payment Due $" + CStr(Amount) + "</center>"
+  Response.Write "<center class=""fw-bold my-3 fs-5 text-success"">Payment Due $" + CStr(Amount) + "</center>"
 
   Response.Write "<fieldset>"
 
