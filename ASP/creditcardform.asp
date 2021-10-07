@@ -174,10 +174,10 @@ Sub ProcessCreditCard
 
 if Session("GatewayMessage") = "" then
 
-  Response.Write "<center><FORM id=""CustomForm"" class=""custom-form p-3 p-lg-5 mx-2 mx-lg-0 border rounded col-lg-8 mb-4"" METHOD=post ACTION=" + AppServer + "/creditcardform.asp?uid=" + Request.QueryString("uid") + "&site=" + Request.QueryString("site") + " name=form onSubmit=""return Vailidate(this)"">"
+  Response.Write "<center><FORM id=""CustomForm"" class=""custom-form p-3 p-lg-5 mx-2 mx-lg-0 border border-success rounded col-lg-8 mb-4"" METHOD=post ACTION=" + AppServer + "/creditcardform.asp?uid=" + Request.QueryString("uid") + "&site=" + Request.QueryString("site") + " name=form onSubmit=""return Vailidate(this)"">"
 
   Response.Write "<center>" + LogoLocation + "</center>"
-  Response.Write "<center class=""fw-bold mb-3 fs-4 text-success"">Payment Due $" + CStr(Amount) + "</center>"
+  Response.Write "<center class=""fw-bold mb-3 fs-6 fs-lg-5 text-success"">Payment Due $" + CStr(Amount) + "</center>"
 
   Response.Write "<fieldset>"
 
