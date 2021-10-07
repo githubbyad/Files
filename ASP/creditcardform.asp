@@ -5,7 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN">
 <HTML>
 <HEAD>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://www.google.com/recaptcha/api.js?render=6LdXmfgUAAAAAJNuEHBxVCY0w9eA73hvaWsdgPlM"></script>
 
 <script>
@@ -179,11 +180,9 @@ if Session("GatewayMessage") = "" then
 
   Response.Write "<fieldset>"
 
-  Response.Write "<center class=""text-danger fs-3 fw-bold"">" + TransactionErrorMsg + "</center>"
+  Response.Write "<center class=""text-danger fs-3 fw-bold my-2 "">" + TransactionErrorMsg + "</center>"
 
-  Response.Write "<section class=""w-100 mb-3 mt-5""><div class=""label w-100 mb-2""><div class=""inp_custom""><div class=""formdivider formdivider_custom text-start"" style=""border-bottom: 2px solid #004500;""><span class=""d-inline-block fw-bold px-3 py-2"" style=""background:#dff1df;color:#004500"">Billing Information</span></div></div></div></section>"
-
-  Response.Write "<section class=""w-96 mb-3"" style=""margin-left:2%""><div class=""input w-100 form-floating""><INPUT NAME=""card_number"" VALUE=""" + Request.Form("card_number") + """ id=""card_number"" maxlength=""50"" placeholder=""Card Number"" type=""text"" class=""formfieldinput formfieldinput_custom form-control"" required><label for=""card_number"" class=""form-label"" style=""color: #004500;"">Card Number</label><div></section>"
+  Response.Write "<section class=""w-96 mt- mb-3"" style=""margin-left:2%""><div class=""input w-100 form-floating""><INPUT NAME=""card_number"" VALUE=""" + Request.Form("card_number") + """ id=""card_number"" maxlength=""50"" placeholder=""Card Number"" type=""text"" class=""formfieldinput formfieldinput_custom form-control"" required><label for=""card_number"" class=""form-label"" style=""color: #004500;"">Card Number</label><div></section>"
 
   if Request.Form("expiration_month") = "" then
     Response.Write "<section class=""w-96 mb-3"" style=""margin-left:2%""><div class=""select w-100 form-floating""><select id=""expiration_month"" name=""expiration_month"" required class=""form-select"" required><option value="""" selected="""">-- Select Expiration Month --</option><option required="" value=""01"">01</option><option required="" value=""02"">02</option><option required="" value=""03"">03</option><option required="" value=""04"">04</option><option required="" value=""05"">05</option><option required="" value=""06"">06</option><option required="" value=""07"">07</option><option required="" value=""08"">08</option><option required="" value=""09"">09</option><option required="" value=""10"">10</option><option required="" value=""11"">11</option><option required="" value=""12"">12</option></select><label for=""expiration_month"" class=""form-label"" style=""color: #004500;"">Expiration Month</label></div></section>"
