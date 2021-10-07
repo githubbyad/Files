@@ -29,12 +29,9 @@
 <style><!--A{text-decoration:none}--></style>
 
 <script type="text/javascript" language="javascript" src="/bl.js"></script>
-' <script type="text/javascript" src="/JQuery/jquery.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="/iframe-resizer-master/js/iframeResizer.contentWindow.js"></script>
 <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-' <script type="text/javascript" src="/JQuery/CSSMessageBox/js/jquery.alerts.js"></script>
-' <link rel="stylesheet" href="/JQuery/CSSMessageBox/css/jquery.alerts.css" />
 
 <style>
 .grecaptcha-badge {visibility: hidden;}
