@@ -228,16 +228,6 @@ if Session("GatewayMessage") = "" then
   Response.Write "<input type=""hidden"" id=""token"" name=""token"">"
   Response.Write "</FORM></center>"
 
-  'Response.Write "<TR><TD><DIV class=""formfieldname"">Security Code</DIV></TD>"
-  'Response.Write "<TD align=left><img height=""30"" src=""aspcaptcha.asp"" ></TD></TR>"
-
-  'Response.Write "<TR><TD><DIV class=""formfieldname"">Security Code</DIV></TD>"
-  'Response.Write "<TD><INPUT class=""formfieldinput"" SIZE=40 MAXLENGTH=50 id=SecurityCode name=SecurityCode></TD></TR>"
-
-  Response.Write "</fieldset><br><br><button class=""button btn btn-success shadow"" id=""SUBMIT1"" type=""submit"" onclick=""document.getElementById('CustomForm').classList.add('was-validated');""><span class=""py-1 px-3 d-inline-block fs-4"">submit</span></button><i id=""cus-form-button-loader"" class=""fa fa-circle-o-notch fa-spin fast-spin fs-1 text-success""></i><BR><BR></TD></TR>"
-  Response.Write "<input type=""hidden"" id=""token"" name=""token"">"
-  Response.Write "</FORM></center>"
-
 end if 'if Session("GatewayMessage") = "" then
 
 End Sub ' ProcessCreditCard
