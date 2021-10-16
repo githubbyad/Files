@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template</title>
+    <link rel="shortcut icon" href="/bl-icon.png?v=94392708333">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+        header {
+            background-image: radial-gradient(circle, #0085ff, #006dc6, #00558e, #173c5a, #1c232a);
+        }
+        
+        .frame {
+            border: none;
+            display: block;
+            min-height: 100vh;
+            padding-top: 50px;
+        }
+        
+        #CustomForm {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+        
+        .frame-up {
+            padding-top: 0;
+        }
+        
+        #frame-panel {
+            position: fixed;
+            top: 0;
+            z-index: 2;
+            min-height: 50px;
+            box-shadow: 0px 0px 10px #000;
+        }
+        
+        .bl-template-number {
+            text-shadow: 0 2px 2px black;
+            user-select: none;
+            transition: 200ms linear;
+        }
+        
+        .bl-icons i {
+            color: #8a94a4
+        }
+        
+        .fa.fa-mobile {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .fa.fa-tablet {
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        .fa.fa-desktop {
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+        
+        .bl-hide {
+            position: fixed;
+            right: 1px;
+            top: 0;
+            z-index: 3;
+        }
+        
+        .bl-hide span {
+            border-color: #8a94a4 !important;
+            position: absolute;
+            top: -1rem;
+            right: 0;
+            background: #1b2630;
+        }
+        
+        .bl-hide i {
+            color: #8a94a4;
+            padding-top: 1rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        .bl-hide span:hover {
+            border-color: #fff;
+        }
+        
+        .bl-hide span:hover i {
+            color: #fff;
+        }
+        
+        .frame-mobile {
+            width: 373px;
+            min-height: 805px;
+            border-radius: 38px;
+            padding-top: 50px !important;
+        }
+        
+        .frame-tablet {
+            width: 760px;
+            min-height: 1066px;
+            padding-top: 50px !important;
+        }
+        
+        .mobile-active,
+        .tablet-active,
+        .desktop-active {
+            color: white !important;
+        }
+        
+        .frame-wrap-mobile {
+            background-image: url(/iphone_black.png);
+            padding: 27px 0 127px 0px;
+            width: 100%;
+            background-position: top center;
+            background-repeat: no-repeat;
+            margin: 60px 0px 20px 0px;
+            position: relative;
+        }
+        
+        .frame-wrap-tablet {
+            background-image: url(/tablet_black.png);
+            padding: 81px 0 140px 0;
+            width: 100%;
+            background-position: top center;
+            background-repeat: no-repeat;
+            margin: 60px 0px 20px 0px;
+            position: relative;
+        }
+        
+        .bl-template-drop-down {
+            position: fixed;
+            top: 37px;
+            display: none;
+        }
+        
+        .bl-t-d-span {
+            background: white;
+            display: block;
+            float: left;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 10px;
+            padding: 20px;
+            color: white;
+            position: relative;
+            top: 13px;
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+            user-select: none;
+        }
+        
+        .bl-template-drop-down>.bl-t-d-span::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            color: white;
+            left: 30px;
+            border-color: transparent transparent white transparent;
+            border-style: solid;
+            border-width: 10px;
+        }
+        
+        .bl-template-drop-down p {
+            cursor: pointer;
+            margin-bottom: 5px;
+            line-height: 25px;
+            transition: 200ms linear;
+            border-top: 1px solid transparent;
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
+            text-indent: 5px;
+            font-size: 14px;
+            color: #212121;
+            user-select: none;
+        }
+        
+        .bl-template-drop-down p:hover {
+            cursor: pointer;
+            transition: 200ms linear;
+            color: #0075d8;
+        }
+        
+        .bl-td-col-1 {
+            float: left;
+        }
+        
+        .bl-td-col-2 {
+            float: left;
+        }
+        
+        .bl-td-col-3 {
+            float: left;
+        }
+        
+        .bl-td-col-4 {
+            float: left;
+        }
+        
+        .bl-t-d-span>span {
+            margin-left: 5px;
+            margin-right: 20px;
+            padding-right: 30px;
+            padding-left: 20px;
+            transition: 300ms linear;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bl-t-d-span>span:hover {
+            background: #f1f3f6;
+            transition: 200ms linear;
+        }
+        
+        .bl-t-d-span>span:last-child {
+            border-width: 0;
+        }
+        
+        .bl-td-col p:last-child {
+            border-bottom-width: 0;
+        }
+        
+        .bl-temp-num.bl-temp-current {
+            pointer-events: none;
+            color: #7C7C7C;
+            display: none;
+        }
+        
+        .bl-td-col h6 {
+            color: #0073d5;
+        }
+        
+        .bl-td-col h6 i {
+            transition: 300ms linear;
+            margin-left: 10px;
+        }
+        
+        .bl-td-col:hover h6 i {
+            transition: 200ms linear;
+            transform: rotate(90deg);
+        }
+        
+        @media only screen and (min-width: 1025px) {
+            .bl-td-col:hover {
+                transform: translate(0, 5px);
+            }
+            .bl-template-number:hover~.bl-template-drop-down {
+                display: block;
+            }
+            .bl-template-drop-down:hover {
+                display: block;
+            }
+            .bl-t-d-span {
+                box-shadow: 0px 4000px 0 4000px rgba(0, 0, 0, 0.8);
+            }
+        }
+        
+        @media only screen and (max-width: 1024px) {
+            .bl-t-d-span>span {
+                width: 100%;
+                margin-bottom: 20px;
+                padding: 20px;
+                text-align: center;
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .bl-template-drop-down.bl-d-active .bl-t-d-span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 70vh;
+                width: 70vw;
+                overflow: scroll;
+                border-radius: 10px;
+                padding: 40px;
+                box-sizing: border-box;
+            }
+            .bl-icons {
+                display: none !important;
+            }
+            .bl-choose {
+                width: 65%;
+                text-align: right;
+            }
+            .bl-template-drop-down.bl-d-active {
+                display: block !important;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                top: 50px;
+                left: 0;
+            }
+            .bl-template-drop-down.bl-d-active .bl-dr-close {
+                display: block !important;
+                top: 70px;
+                right: 15px;
+                cursor: pointer;
+                background: none;
+                color: white;
+                font-weight: bold;
+                font-size: 2rem;
+                user-select: none;
+            }
+            .bl-template-drop-down p {
+                background: #ddd;
+                border-radius: 10px;
+                line-height: 40px;
+                text-align: center !important;
+                text-indent: 0 !important;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+            .bl-td-col h6 {
+                text-align: center;
+                font-size: 1.25rem;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media only screen and (max-width: 500px) {
+            .bl-choose {
+                width: auto;
+            }
+            .bl-template-number {
+                width: 50% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header container-fluid bg-primary text-white d-flex align-items-center py-2" id="frame-panel">
+        <div class="bl-template-number fw-bold text-white d-inline-block w-25">Template #</div>
+        <span class="bl-template-drop-down">
+            <button type="button" class="bl-dr-close btn-close position-fixed" style="display: none;" aria-label="Close">✕</button>
+            <span class="bl-t-d-span">
+                <span class="bl-td-col-1 bl-td-col">
+                    <h6 class="fw-bold">Trending <i class="fa fa-caret-right" aria-hidden="true"></i></h6>
+                    <p class="bl-temp-num" data-num="133">Template #133</p>
+                    <p class="bl-temp-num" data-num="135">Template #135</p>
+                    <p class="bl-temp-num" data-num="130">Template #130</p>
+                    <p class="bl-temp-num" data-num="129">Template #129</p>
+                    <p class="bl-temp-num" data-num="124">Template #124</p>
+                    <p class="bl-temp-num" data-num="131">Template #131</p>
+                    <p class="bl-temp-num" data-num="132">Template #132</p>
+                    <p class="bl-temp-num" data-num="132">Template #119</p>
+                    <p class="bl-temp-num" data-num="122">Template #122</p>
+                    <p class="bl-temp-num" data-num="121">Template #121</p>
+                    <p class="bl-temp-num" data-num="123">Template #123</p> 
+                    <p class="bl-temp-num" data-num="115">Template #115</p> 
+                    <p class="bl-temp-num" data-num="113">Template #113</p> 
+                    <p class="bl-temp-num" data-num="112">Template #112</p> 
+                    <p class="bl-temp-num" data-num="111">Template #111</p>
+                </span>
+        <span class="bl-td-col-2 bl-td-col">
+                    <h6 class="fw-bold">Classic <i class="fa fa-caret-right" aria-hidden="true"></i></h6>
+                    <p class="bl-temp-num" data-num="107">Template #107</p>
+                    <p class="bl-temp-num" data-num="117">Template #117</p>
+                    <p class="bl-temp-num" data-num="109">Template #109</p>
+                    <p class="bl-temp-num" data-num="110">Template #110</p>
+                    <p class="bl-temp-num" data-num="118">Template #118</p>
+                    <p class="bl-temp-num" data-num="106">Template #106</p>
+                    <p class="bl-temp-num" data-num="105">Template #105</p>
+                    <p class="bl-temp-num" data-num="103">Template #103</p>
+                    <p class="bl-temp-num" data-num="102">Template #102</p>
+                    <p class="bl-temp-num" data-num="101">Template #101</p>
+                    <p class="bl-temp-num" data-num="100">Template #100</p>
+                </span>
+        <span class="bl-td-col-3 bl-td-col">
+                    <h6 class="fw-bold">Multi Color <i class="fa fa-caret-right" aria-hidden="true"></i></h6>
+                    <p class="bl-temp-num" data-num="125">Template #125</p>
+                    <p class="bl-temp-num" data-num="120">Template #120</p>
+                    <p class="bl-temp-num" data-num="116">Template #116</p>
+                    <p class="bl-temp-num" data-num="114">Template #114</p>
+                    <p class="bl-temp-num" data-num="134">Template #134</p>
+                    <p class="bl-temp-num" data-num="108">Template #108</p>
+                </span>
+        <span class="bl-td-col-4  bl-td-col">
+                    <h6 class="fw-bold">Old Style <i class="fa fa-caret-right" aria-hidden="true"></i></h6>
+                    <p class="bl-temp-num" data-num="126">Template #126</p>            
+                    <p class="bl-temp-num" data-num="127">Template #127</p>
+                    <p class="bl-temp-num" data-num="128">Template #128</p>
+                </span>
+        <span class="bl-td-col-4  bl-td-col">
+                    <h6 class="fw-bold">Misc <i class="fa fa-caret-right" aria-hidden="true"></i></h6>
+                    <p class="bl-temp-num" data-num="104">Template #104</p>
+                    <p class="bl-temp-num" data-num="t1">Template #t1</p>
+                    <p class="bl-temp-num" data-num="t2">Template #t2</p>
+                    <p class="bl-temp-num" data-num="t3">Template #t3</p>
+                    <p class="bl-temp-num" data-num="t4">Template #t4</p>
+                </span>
+        </span>
+        </span>
+        <div class="bl-icons d-inline-block w-50 text-center">
+            <i class="fa fa-mobile me-3" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Mobile"></i>
+            <i class="fa fa-tablet me-3" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tablet"></i>
+            <i class="fa fa-desktop desktop-active" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Desktop"></i>
+        </div>
+        <div class="bl-choose d-inline-block"><button type="button" class="btn btn-warning" style="font-size: 0.8rem;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Select Template</button></div>
+    </header>
+    <div class="bl-hide d-inline-block">
+        <span class="bl-hide-span p-2 border" style="cursor: pointer;"><i class="fa fa-caret-up" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hide Panel"></i><i class="fa fa-caret-down" style="display: none;" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Show Panel"></i></span>
+    </div>
+
+    <div class="frame-wrap d-flex justify-content-center">
+        <iframe id="frame" class="frame" src="#" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-popups" width="100%" height="400px"></iframe>
+    </div>
+    <script>
+        var url = location.href;
+        var a = new URL(url);
+        var t = a.searchParams.get("t");
+        document.getElementById('frame').src = "https://bulletlink.com/template-" + t;
+        /* Title */
+        document.title = "Template #" + t;
+        /* Template Number */
+        document.getElementsByClassName('bl-template-number')[0].innerHTML = "Template #" + t + "  <i class='fa fa-angle-down' aria-hidden='true'></i>";
+        /* SignUp */
+        document.getElementsByClassName('bl-choose')[0].addEventListener('click', function() {
+            window.open('https://bulletlink.com/index0.htm?twindow=Form&smenu=115&pform=Buy_Newspaper_Template&minForm=Y&mad=No&sname=target_form2.asp&site=bulletlink.com&sitex=Template-' + t, '_blank')
+        });
+        /* Hide Panel */
+        document.getElementsByClassName('bl-hide-span')[0].addEventListener('click', function() {
+            var hd = document.getElementsByClassName('header')[0];
+            if (hd.classList.contains('d-flex')) {
+                document.getElementsByClassName('fa-caret-up')[0].style.display = "none";
+                document.getElementsByClassName('fa-caret-down')[0].style.display = "inline-block";
+                hd.classList.add('d-none');
+                hd.classList.remove('d-flex');
+                document.getElementById('frame').classList.add('frame-up');
+            } else {
+                document.getElementsByClassName('fa-caret-down')[0].style.display = "none";
+                document.getElementsByClassName('fa-caret-up')[0].style.display = "inline-block";
+                hd.classList.add('d-flex');
+                hd.classList.remove('d-none');
+                document.getElementById('frame').classList.remove('frame-up');
+            }
+        });
+        /* Mobile */
+        document.getElementsByClassName('fa-mobile')[0].addEventListener('click', function() {
+            document.getElementsByClassName('frame-wrap')[0].classList.add('frame-wrap-mobile');
+            document.getElementsByClassName('frame-wrap')[0].classList.remove('frame-wrap-tablet');
+            document.getElementsByClassName('fa-mobile')[0].classList.add('mobile-active');
+            document.getElementsByClassName('fa-tablet')[0].classList.remove('tablet-active');
+            document.getElementsByClassName('fa-desktop')[0].classList.remove('desktop-active');
+            document.getElementById('frame').classList.add('frame-mobile');
+            document.getElementById('frame').classList.remove('frame-tablet');
+            var iframe = document.getElementById('frame');
+            iframe.src = iframe.contentWindow.location.href;
+            iframe.onload = function() {
+                let myiFrame = document.getElementById("frame");
+                let doc = myiFrame.contentDocument;
+                doc.body.insertAdjacentHTML('beforeend', '<style>#blbodymain {overflow: hidden;}#blbodymain:hover {overflow: auto;}</style>');
+            }
+        });
+        /* Tablet */
+        document.getElementsByClassName('fa-tablet')[0].addEventListener('click', function() {
+            document.getElementsByClassName('frame-wrap')[0].classList.remove('frame-wrap-mobile');
+            document.getElementsByClassName('frame-wrap')[0].classList.add('frame-wrap-tablet');
+            document.getElementsByClassName('fa-mobile')[0].classList.remove('mobile-active');
+            document.getElementsByClassName('fa-tablet')[0].classList.add('tablet-active');
+            document.getElementsByClassName('fa-desktop')[0].classList.remove('desktop-active');
+            document.getElementById('frame').classList.add('frame-tablet');
+            document.getElementById('frame').classList.remove('frame-mobile');
+            var iframe = document.getElementById('frame');
+            iframe.src = iframe.contentWindow.location.href;
+            iframe.onload = function() {
+                let myiFrame = document.getElementById("frame");
+                let doc = myiFrame.contentDocument;
+                doc.body.insertAdjacentHTML('beforeend', '<style>#blbodymain {overflow: hidden;}#blbodymain:hover {overflow: auto;}</style>');
+            }
+        });
+        /* Desktop */
+        document.getElementsByClassName('fa-desktop')[0].addEventListener('click', function() {
+            document.getElementsByClassName('frame-wrap')[0].classList.remove('frame-wrap-mobile');
+            document.getElementsByClassName('frame-wrap')[0].classList.remove('frame-wrap-tablet');
+            document.getElementsByClassName('fa-mobile')[0].classList.remove('mobile-active');
+            document.getElementsByClassName('fa-tablet')[0].classList.remove('tablet-active');
+            document.getElementsByClassName('fa-desktop')[0].classList.add('desktop-active');
+            document.getElementById('frame').classList.remove('frame-tablet');
+            document.getElementById('frame').classList.remove('frame-mobile');
+            var iframe = document.getElementById('frame');
+            iframe.src = iframe.contentWindow.location.href;
+            iframe.onload = function() {
+                let myiFrame = document.getElementById("frame");
+                let doc = myiFrame.contentDocument;
+                // doc.body.innerHTML = doc.body.innerHTML + '<style>#blbodymain {overflow: auto;}</style>';
+            }
+        });
+        /* Template Select */
+        for (i = 0; i < document.getElementsByClassName('bl-temp-num').length; i++) {
+            document.getElementsByClassName('bl-temp-num')[i].addEventListener('click', function() {
+                window.location.href = "/template.htm?t=" + this.getAttribute('data-num');
+            });
+            if (document.getElementsByClassName('bl-temp-num')[i].getAttribute('data-num') == t) {
+                document.getElementsByClassName('bl-temp-num')[i].classList.add('bl-temp-current');
+            }
+        }
+        if (window.screen.width < 1025) {
+            document.getElementsByClassName('bl-template-number')[0].addEventListener('click', function() {
+                document.getElementsByClassName('bl-template-drop-down')[0].classList.add('bl-d-active');
+            });
+            document.getElementsByClassName('bl-dr-close')[0].addEventListener('click', function() {
+                document.getElementsByClassName('bl-template-drop-down')[0].classList.remove('bl-d-active');
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+</body>
+
+</html>
