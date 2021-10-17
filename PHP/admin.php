@@ -4,7 +4,7 @@ ini_set("default_socket_timeout", "05");
 set_time_limit(5);
 error_reporting(0);
 
-$sites = array("bulletlink.one", "bulletlink.net");
+include 'applist.php';;
 
 shuffle($sites);
 foreach ($sites as $value) {
