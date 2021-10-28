@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- /fontAwesome-->
+
+    <title>SignUp</title>
+
+    </script>
+</head>
+
+<body>
+    <h1 class="text-center my-5">Bootstrap - SignUp</h1>
+    <!-- SignUp -->
+    <div class="plan-cont container my-5">
+        <div class="row">
+            <div class="plans col-4">
+                <div class="plan-choice bg-warning rounded-top text-center invisible">
+                    <span class="fw-bold lh-lg" style="font-size: 0.875rem;color:black;">Top choice</span>
+                </div>
+                <div class="wrap-plan position-relative card text-center border-0 bg-white shadow rounded p-3">
+                    <h2 class="h5 mb-3 fw-bold text-center text-black" style="color: black">Starter</h2>
+                    <div class="myplan-heading d-inline-flex justify-content-center align-items-end">
+                        <span class="myplan-dollar fs-3 lh-base">$</span>
+                        <span class="monthly-price fw-bold fs-1 lh-1" style="color: black">39</span>
+                        <span class="fs-5">/1 month</span>
+                    </div>
+                    <span class="text-center w-100m mt-3 invisible"><strong class="bg-warning text-dark px-2 rounded" style="font-size: 0.875rem !important;">20% discount, save $23</strong></span>
+                    <div class="mt-3">
+                        <span class="cp-btn cp-39 btn btn-primary btn-lg mb-4 fs-6 fw-bold" data-plan="39" data-cp="0">Choose plan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="plans col-4">
+                <div class="plan-choice bg-warning rounded-top text-center invisible">
+                    <span class="fw-bold lh-lg" style="font-size: 0.875rem;color:black;">Top choice</span>
+                </div>
+                <div class="wrap-plan position-relative card text-center border-0 bg-white shadow rounded p-3">
+                    <h2 class="h5 mb-3 fw-bold text-center text-black" style="color: black">Professional</h2>
+                    <div class="myplan-heading d-inline-flex justify-content-center align-items-end">
+                        <span class="myplan-dollar fs-3 lh-base">$</span>
+                        <span class="monthly-price fw-bold fs-1 lh-1" style="color: black">94</span>
+                        <span class="fs-5">/3 months</span>
+                    </div>
+                    <span class="text-center w-100m mt-3"><strong class="bg-warning text-dark px-2 rounded" style="font-size: 0.875rem !important;">20% discount, save $23</strong></span>
+                    <div class="mt-3">
+                        <span class="cp-btn cp-94 btn btn-primary btn-lg mb-4 fs-6 fw-bold" data-plan="94" data-cp="1">Choose plan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="plans col-4">
+                <div class="plan-choice bg-warning rounded-top text-center">
+                    <span class="fw-bold lh-lg" style="font-size: 0.875rem;color:black;">Top choice</span>
+                </div>
+                <div class="wrap-plan position-relative card text-center border-0 bg-white shadow rounded p-3">
+                    <h2 class="h5 mb-3 fw-bold text-center text-black" style="color: black">Business</h2>
+                    <div class="myplan-heading d-inline-flex justify-content-center align-items-end">
+                        <span class="myplan-dollar fs-3 lh-base">$</span>
+                        <span class="monthly-price fw-bold fs-1 lh-1" style="color: black">328</span>
+                        <span class="fs-5">/12 months</span>
+                    </div>
+                    <span class="text-center w-100m mt-3"><strong class="bg-warning text-dark px-2 rounded" style="font-size: 0.875rem !important;">30% discount, save $140</strong></span>
+                    <div class="mt-3">
+                        <span class="cp-btn cp-328 btn btn-primary btn-lg mb-4 fs-6 fw-bold" data-plan="328" data-cp="2">Choose plan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .plans:hover {
+            transform: translate(0, -0.5rem);
+            transition: 400ms linear;
+            opacity: 1 !important;
+        }
+        
+        .plans {
+            transition: 400ms linear;
+        }
+        
+        .plans.plan-dim {
+            opacity: 0.5;
+        }
+        
+        .cp-btn i {
+            margin-right: 0.7rem;
+            margin-left: 0.2rem;
+        }
+        
+        .plan-cont {
+            display: none;
+        }
+        
+        .wrap-plan {
+            border: 3px solid transparent !important;
+        }
+        
+        .plan-selected .wrap-plan {
+            border: 2px dashed #198754 !important;
+        }
+        
+        .plan-selected {
+            transform: translate(0, -0.5rem);
+        }
+        
+        .plan-selected .plan-choice {
+            background: #198754 !important;
+        }
+        
+        .plan-selected .plan-choice>span {
+            color: white !important;
+        }
+        
+        @media (min-width:1025px) {
+            section:first-of-type {
+                display: none !important;
+            }
+            #CustomForm {
+                display: none;
+            }
+            .plan-cont {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        if (window.screen.width > 1024) {
+            for (i = 0; i < document.getElementsByClassName('cp-btn').length; i++) {
+                document.getElementsByClassName('cp-btn')[i].addEventListener('click', function() {
+                    document.getElementById('CustomForm').style.display = "block";
+                    for (j = 0; j < document.getElementsByClassName('cp-btn').length; j++) {
+                        if (document.getElementsByClassName('cp-btn')[j].classList.contains('btn-success')) {
+                            document.getElementsByClassName('cp-btn')[j].classList.remove('btn-success');
+                        }
+                    }
+                    for (a = 0; a < document.getElementsByClassName('plans').length; a++) {
+                        if (document.getElementsByClassName('plans')[a].classList.contains('plan-selected')) {
+                            document.getElementsByClassName('plans')[a].classList.remove('plan-selected');
+                        }
+                    }
+                    this.classList.add('btn-success');
+                    Amount.value = this.getAttribute('data-plan');
+                    Amount.style.pointerEvents = "none";
+                    Amount.style.backgroundColor = "#e9ecef";
+                    var dcp = this.getAttribute('data-cp');
+                    document.getElementsByClassName('plans')[dcp].classList.add('plan-selected');
+                    for (k = 0; k < document.getElementsByClassName('cp-btn').length; k++) {
+                        if (document.getElementsByClassName('cp-btn')[k].classList.contains('btn-success')) {
+                            document.getElementsByClassName('cp-btn')[k].innerHTML = "<i class='fa fa-check-circle' aria-hidden='true'></i>Selected";
+                        } else {
+                            document.getElementsByClassName('cp-btn')[k].innerHTML = "Choose plan";
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+    <!-- /SignUp -->
+    <div class="container">
+        <form id="CustomForm">
+            <select id="Amount" name="Amount" required="" class="form-select my-5 col-4">
+            <option value="" selected="">-- Select Amount --</option>
+            <option required="" value="39">$39 (1 month)</option>
+            <option required="" value="94">$94 (3 months, 20% discount, save $23)</option>
+            <option required="" value="328">$328 (12 months, 30% discount, save $140)</option>
+        </select>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
