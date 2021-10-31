@@ -1,0 +1,614 @@
+{{LayoutDirectoryPage1Begin}}
+{{LayoutDirectoryPage1Limit100}}
+{{ReplaceJavascriptChars:No}}
+{{MakeFullLinks:Yes}}
+{{GroupBy:Category}}
+{{File:directory-<<SubMenuId>>.htm}}
+{{FileTemplate:index0.htm}}
+<script>
+function OpenDirectory(pageUrl, window_type, fwidth, fheight){
+$.magnificPopup.open({
+items: [{src: pageUrl,type: window_type}],  
+gallery: { enabled: true },
+modal: true,
+iframe: {markup: '<div class="directory-popup">'+'<div class="mfp-iframe-scaler" >'+'<div class="mfp-close">✕</div>'+'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+'</div></div>'}
+});
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
+.directory-popup {
+	width: 700px;
+	height: 90vh;
+	box-shadow: 0px 2px 1px 4000px rgba(0,0,0,0.65);
+}
+.directory-popup .mfp-close {
+	z-index: 1;
+	color: white;
+	border-width: 0;
+	font-size: 30px;
+	background: #009284;
+	padding: 8px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: -20px;
+	right: -20px;
+}
+.directory-popup .mfp-close:hover {
+  background: black;
+}
+.dir1-container {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
+  font-family: 'Josefin Sans', sans-serif !important;
+}
+.dir1-heading {
+  float: left;
+  width: 100%;
+  background: #009284;
+  color: white;
+  font-family: 'Josefin Sans', sans-serif;
+  line-height: 50px;
+  padding-top:5px;
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  text-shadow: 0px 3px 1px rgba(0,0,0,0.5);
+}
+.dir1-wrap {
+  width: 100%;
+  float: left;
+  border: 2px solid #009284;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-top: 30px !important;
+}
+.dir1-div {
+	float: left;
+	width: 42%;
+	margin-left: 5%;
+	margin-bottom: 20px;
+	margin-right: 5%;
+	border: 2px dashed#009284;
+	box-sizing: border-box;
+	border-radius: 3px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.dir1-div:nth-child(2n) {
+  margin-left: 0 !important;
+}
+.dir1-link {
+  font-family: 'Josefin Sans', sans-serif !important;
+  display: block !important;
+  float: left;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: 200ms linear;
+}
+.dir1-category {
+  font-weight: bold !important;
+  font-size: 16px !important;
+  color: black !important;
+  display: block;
+  width: 100%;
+  float: left;
+  line-height: 20px;
+  max-height: 20px;
+  overflow: hidden;
+  text-align:center;
+}
+.dir1-list {
+  float: left;
+  font-size: 15px !important;
+  color: #333;
+  display: block;
+  width: 100%;
+  text-align:center;
+}
+.dir1-div:hover {
+  background: #eee;
+  border-color: black;
+}
+.dir1-link:hover {
+  transition: 300ms linear;
+}
+.dir1-container {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+	background-attachment: fixed;
+	position: relative;
+}
+.dir1-explore {
+  text-align: center;
+  width: 100%;
+  margin-top: 25px;
+  float: left;
+}
+.dir1-explore span {
+  color: white;
+  padding: 0 30px;
+  line-height: 35px;
+  display: inline-block;
+  border-radius: 20px;
+  border: 2px dashed;
+  background: #009284;
+  font-size: 15px;
+}
+.dir1-explore span:hover {
+  background: black;
+  border-color: white;
+}
+</style>
+<div class="dir1-container">
+<div class="dir1-heading">{{SubMenu}}</div> 
+<div class="dir1-wrap">
+{{RepeatBegin}}
+<div class="dir1-div">
+<a class="dir1-link" href="javascript:void(0);" onclick="OpenDirectory('{{URL}}directory-{{CategoryFile}}-<<SubMenuId>>.htm','iframe');">
+<div class="dir1-category">{{CategoryNoRepeat}}</div>
+<div class="dir1-list">({{TotalGroup}} Listings)</div>
+<div class="dir1-explore"><span>Explore Now</span></div>
+</a>
+</div>
+{{RepeatEnd}}
+</div> 
+</div>
+{{LayoutDirectoryPage1End}} 
+
+
+{{LayoutDirectoryPage2Begin}}
+{{LayoutDirectoryPage2Limit100}}
+{{ReplaceJavascriptChars:No}}
+{{File:directory-<<CategoryFile>>-<<SubMenuId>>.htm}}
+<html>
+<head>
+<script type="text/javascript" src="/JQuery/jquery.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script>
+$(window).bind('load',function(){
+$('.dir-loader').animate({opacity: 0}, 500, function() {$('.loader').css('display','none');});
+$('.dir2-container').css('visibility','visible');
+$('.dir2-container').animate({opacity: 1}, 1000);
+$('.dir2-img span img').each(function(){
+if ($(this).attr('src') == '') {
+$(this).css('display','none');
+}
+});
+});
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
+.dir-loader {
+	border: 5px solid #009284;
+	border-radius: 50%;
+	border-top: 5px solid #ddd;
+	width: 40px;
+	height: 40px;
+	-webkit-animation: spin 700ms linear infinite;
+	animation: spin 700ms linear infinite;
+	position: fixed;
+	left: 47%;
+	top: 40%;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.directory-popup .mfp-close:hover {
+  background: black;
+}
+.dir2-body {
+  font-family: 'Josefin Sans', sans-serif;
+  float: left;
+  width: 98%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin-right: 2%;
+  padding:10px;
+  box-sizing:border-box;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+	background-attachment: fixed;
+	position: relative;
+}
+.dir2-container {
+  float: left;
+  width: 100%;
+}
+.dir2-category {
+	float: left;
+	width: 100%;
+	background: #009284;
+	text-align: left;
+	text-indent: 10px;
+	color: white;
+	line-height: 50px;
+	text-transform: capitalize;
+	margin-bottom: 15px;
+	font-size: 22px;
+	padding-top: 5px;
+}
+.dir2-wrap {
+	float: left;
+	width: 100%;
+	border: 1px solid #009284;
+}
+.dir2-box {
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #009284;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+.dir2-img {
+  width: 200px;
+  float: left;
+  margin-right: 10px;
+}
+.dir2-name, .dir2-profile, .dir2-more {
+  float: left;
+  width: 415px;
+}
+.dir2-img span {
+	width: 200px;
+	height: 133px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #ddd;
+	box-shadow: -5px 0px 4px rgba(0,0,0,0.05);
+}
+.dir2-img span img {
+	width: 200px;
+	height: 133px;
+	object-fit: cover;
+}
+.dir2-address {
+  color: #4C4C4C;
+}
+.dir2-more a {
+  font-size: 15px !important;
+  font-style: italic;
+  color: #292929;
+  text-decoration: none !important;
+}
+.dir2-name a {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 20px;
+  text-decoration: none;
+}
+.dir2-profile {
+  font-size: 15px;
+  line-height: 20px;
+  max-height: 80px;
+  overflow: hidden;
+  float: left;
+  margin-bottom: 8px;
+}
+.dir2-name {
+  margin-bottom: 8px;
+  max-height: 20px;
+  overflow: hidden;
+}
+.dir2-more a:hover {
+  color: black;
+  text-decoration: underline !important;
+}
+.dir2-name a:hover {
+  color: #009284;
+}
+.dir2-category:empty {
+	display: none !important;
+}
+.dir2-box:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+</style>
+</head>
+<body class="dir2-body">
+<div class="dir-loader"></div>
+<div class="dir2-container" style="visibility:hidden;opacity:0;">
+<div class="dir2-wrap">
+{{RepeatBegin}}
+<div class="dir2-category">{{CategoryNoRepeat}}</div>
+<div class="dir2-box">
+<div class="dir2-img">
+<a href="{{URL}}directory-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm"><span><img src="{{Picture}}" /></span></a>
+</div>
+<div class="dir2-name">
+<a href="{{URL}}directory-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm">{{Company}}</a>
+</div>
+<div class="dir2-profile">{{Profile}}</div>
+<div class="dir2-more"><a href="{{URL}}directory-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm">See more...</a></div>
+</div>
+{{RepeatEnd}}
+</div>
+</div>
+</body>
+</html>
+{{LayoutDirectoryPage2End}}
+
+
+{{LayoutDirectoryPage3Begin}}
+{{LayoutDirectoryPage3Limit1}}
+{{ReplaceJavascriptChars:No}}
+{{File:directory-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm}}
+<html>
+<head>
+<script type="text/javascript" src="/JQuery/jquery.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script>
+$(window).bind('load',function(){
+$('.dir-loader').animate({opacity: 0}, 500, function() {$('.loader').css('display','none');});
+$('.dir3-container').css('visibility','visible');
+$('.dir3-container').animate({opacity: 1}, 1000);
+$('.d3t').each(function(){
+if ($(this).css('display') == 'none'){
+$(this).parents('.dir3-border').addClass('box-remove');
+}
+});
+$('.d3t').each(function(){
+if ($(this).text() == ''){
+$(this).parents('.dir3-border').addClass('box-remove');
+}
+});
+$('.d3t').each(function(){
+if ($(this).text() == ' '){
+$(this).parents('.dir3-border').addClass('box-remove');
+}
+});
+var a = $('.add3').text();
+if(a != ''){
+b = a.replace(/\s+/g, '%20');
+$('.d3m').append('<iframe width="500" height="500" src="https://maps.google.com/maps?q=' + b + '&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>');
+}
+else if(a == ''){
+$('.d3m').parent('.dir3-border').addClass('box-remove');
+}
+if ($('.d3img2').attr('src') == '') {
+$('.d3c').addClass('box-remove');
+}
+if ($('.d3img1').attr('src') == '') {
+$('.d3i').addClass('box-remove');
+}
+$('.box-remove').remove();
+});
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
+.dir-loader {
+	border: 5px solid #009284;
+	border-radius: 50%;
+	border-top: 5px solid #ddd;
+	width: 40px;
+	height: 40px;
+	-webkit-animation: spin 700ms linear infinite;
+	animation: spin 700ms linear infinite;
+	position: fixed;
+	left: 47%;
+	top: 40%;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.dir3-right.d3t:empty {
+  display: none;
+}
+.dir3-border.box-remove {
+  display: none;
+}
+.dir3-body {
+  font-family: 'Josefin Sans', sans-serif;
+  float: left;
+  width: 98%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin-right: 2%;
+  padding:10px;
+  box-sizing:border-box;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+	background-attachment: fixed;
+	position: relative;
+}
+.dir3-container {
+  float: left;
+  width: 100%;
+}
+.dir3-wrap {
+  float: left;
+  width: 100%;
+}
+.dir3-box {
+  float: left;
+  width: 100%;
+  border: 1px solid #009284;
+  box-sizing: border-box;
+}
+.dir3-back {
+  float: left;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.dir3-img {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #009284;
+}
+.d3 {
+  max-width: 100%;
+  max-height: none;
+}
+.dir3-img span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ddd;
+}
+.dir3-border {
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #009284;
+}
+.dir3-name {
+	font-weight: bold;
+	padding: 10px;
+	font-size: 20px;
+	text-align: left;
+	background: #009284;
+	color: white;
+}
+.dir3-left {
+  float: left;
+  width: 140px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.dir3-right {
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
+  width: 500px;
+  border-left: 1px solid #009284;
+  min-height: 40px;
+  white-space: pre-wrap;
+}
+.dir3-border:last-child {
+  border-bottom-width: 0 !important;
+}
+.dir3-back span a {
+	display: inline-block;
+	background: #009284;
+	color: white;
+	text-decoration: none;
+	line-height: 40px;
+	padding: 0 10px;
+	border: 2px dashed white;
+	border-radius: 20px;
+	padding: 0 30px;
+}
+.dir3-back span a:hover {
+  background: black;
+}
+.dir3-right.d3m iframe {
+	width: 485px;
+}
+.d3img2 {
+	max-width: 100%;
+	max-height: none;
+}
+</style>
+</head>
+<body class="dir3-body">
+<div class="dir-loader"></div>
+<div class="dir3-container" style="visibility:hidden;opacity:0;">
+<div class="dir3-label"></div>
+<div class="dir3-wrap">
+{{RepeatBegin}}
+<div class="dir3-box">
+<div class="dir3-img d3i"><span><img class="d3img1" src="{{Picture}}"></span></div>
+<div class="dir3-border">
+<div class="dir3-name">{{Company}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Name</div>
+<div class="dir3-right d3t">{{FirstName}} {{LastName}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Address</div>
+<div class="dir3-right d3t add3">{{Address1}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">City</div>
+<div class="dir3-right d3t">{{City}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">State</div>
+<div class="dir3-right d3t">{{State}}</div>
+</div>
+<div class="dir3-border d3zip">
+<div class="dir3-left">Zip/Postal Code</div>
+<div class="dir3-right d3t">{{Zip}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Country</div>
+<div class="dir3-right d3t">{{Country}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Phone</div>
+<div class="dir3-right d3t">{{Phone}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Cell</div>
+<div class="dir3-right d3t">{{Cell}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Pager</div>
+<div class="dir3-right d3t">{{Pager}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Fax</div>
+<div class="dir3-right d3t">{{Fax}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Email</div>
+<div class="dir3-right d3l d3t" onclick="location.href='mailto:{{Email}}';" style="cursor:pointer;">{{Email}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Website</div>
+<div class="dir3-right d3l d3t" onclick=" window.open('{{Website}}', '_blank'); return false;" style="cursor:pointer;">{{Website}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Facebook</div>
+<div class="dir3-right d3l d3t" onclick=" window.open('{{Facebook}}', '_blank'); return false;" style="cursor:pointer;">{{Facebook}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Twitter</div>
+<div class="dir3-right d3l d3t" onclick=" window.open('{{Twitter}}', '_blank'); return false;" style="cursor:pointer;">{{Twitter}}</div>
+</div>
+<div class="dir3-border d3c">
+<div class="dir3-left">Coupons</div>
+<div class="dir3-right"><img class="d3img2" src="{{Coupon}}"></div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Profile</div>
+<div class="dir3-right d3t">{{Profile}}</div>
+</div>
+<div class="dir3-border">
+<div class="dir3-left">Map</div>
+<div class="dir3-right d3m"></div>
+</div>
+</div>
+{{RepeatEnd}}
+<div class="dir3-back"><span><a href="javascript:history.go(-1);">Go back to the list</a></span></div>
+</div>
+</body>
+</html>
+{{LayoutDirectoryPage3End}} 
