@@ -17,7 +17,7 @@ function checkLoginStatus(isRestricted) {
             if (readCookie('AppServer')) {
                 clearInterval(uint);
                 surl = readCookie('AppServer');
-                var sframe = "<center class='cus-frame1-loader mt-5'><i aria-hidden='true' style='font-size: 5rem;' class='fa fa-spinner fa-6 fa-spin text-secondary'></i></center><iframe id=\"frame1\" style=\"border:none;visibility:hidden\" width=\"100%\" src=\"" + surl + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');document.getElementsByClassName('cus-frame1-loader')[0].style.display = 'none';document.getElementById('frame1').style.visibility = 'visible';\"></iframe>"
+                var sframe = "<center class='cus-frame1-loader mt-5 position-absolute w-100'><i aria-hidden='true' style='font-size: 5rem;' class='fa fa-spinner fa-6 fa-spin text-secondary'></i></center><iframe id=\"frame1\" style=\"border:none;visibility:hidden\" width=\"100%\" src=\"" + surl + sname + qs + "\" onload=\"document.getElementsByClassName('cus-frame1-loader')[0].style.display = 'none';document.getElementById('frame1').style.visibility = 'visible';window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
                 document.getElementById("MainContent").innerHTML = sframe;
             }
         }, 10);
