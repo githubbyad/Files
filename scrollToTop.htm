@@ -1,0 +1,21 @@
+<!-- go to top -->
+<div class="cus-scroll-top position-fixed bg-dark text-white fs-4 px-2 rounded-circle d-flex align-items-center justify-content-center"><i class="fa fa-angle-up lh-base text-shadow-3"></i></div>
+<script>
+    if (document.getElementsByClassName("cus-scroll-top")) {
+        window.addEventListener("scroll", function() {
+            if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+                document.getElementsByClassName('cus-scroll-top')[0].style.bottom = '20px';
+            } else {
+                document.getElementsByClassName('cus-scroll-top')[0].style.bottom = "-100px";
+            }
+        });
+        document.getElementsByClassName('cus-scroll-top')[0].addEventListener('click', function() {
+            window.scrollTo(0, 0);
+        });
+    }
+</script>
+<style>
+    .cus-scroll-top {cursor: pointer; right:20px; bottom: auto;transition: 400ms linear;opacity: 0.8; width:40px;height: 40px;}
+    .cus-scroll-top:hover {transition: 300ms linear;box-shadow: 0 0 0 15px rgba(0,0,0,0.3) !important;opacity: 1;}
+</style>
+<!-- /go to top -->
