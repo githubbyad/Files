@@ -4,7 +4,6 @@ function ReadSubmenu() {
         return SParameters();
     }
     var isFrontPage = qrStr.indexOf('.htm', 0);
-    console.log(isFrontPage);
     if (isFrontPage == -1) {
         return SParameters();
     } else {
