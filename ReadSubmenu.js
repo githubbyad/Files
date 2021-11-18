@@ -24,7 +24,6 @@ function ReadSubmenu() {
             }
         } else {
             sPos = qrStr.lastIndexOf('-', qrStr.length);
-            console.log(sPos);
             if (sPos != -1) {
                 ePos = qrStr.lastIndexOf('.', qrStr.length);
                 smenu = qrStr.substring(sPos + 1, ePos);
