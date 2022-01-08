@@ -1,0 +1,36 @@
+/* BEGIN: Custom SourceLine & ByLine */
+
+ .select-editable {
+     position:relative;
+     background-color:white;
+     width:427px;
+     height:38px;
+ }
+.select-editable select {
+  width:427px !important;
+}
+ .select-editable select {
+     position:absolute;
+     top:0px;
+     left:0px;
+     border:none;
+     margin:0;
+ }
+ .select-editable input {
+     position:absolute;
+     top:0px;
+     left:1px;
+     padding:7px;
+     border:none;
+     box-shadow: border-box;
+     width:394px !important;
+     color:#404040;
+ }
+ .select-editable select:focus, .select-editable input:focus {
+     outline:none;
+     padding:7px;
+     box-shadow: none;
+     border: none;
+ }
+ 
+/* END: Custom SourceLine & ByLine */
