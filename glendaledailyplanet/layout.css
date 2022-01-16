@@ -1,0 +1,160 @@
+.body {
+    margin: 0;
+}
+.header_div {
+position: relative;
+width:100%;
+height:240px;
+background: #000000 none repeat scroll 0 0;
+float:left;
+}
+.c1 {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 1150px;
+}
+.c2 {
+    float: left;
+    position: relative;
+    width: 33%;
+height:105px;
+background:#FFA200;
+}
+.c3 {
+    background-color: #000000;
+    float: left;
+    height: auto;
+    margin-left: 60px;
+    margin-top: 50px;
+    position: relative;
+    width: 66%;
+}
+
+.ccc {
+    color: #dbcb74;
+    float: left;
+    font-size: 55px;
+    font-weight: bold;
+    height: 20px;
+    margin-left: 5%;
+    margin-top: 65px;
+    width: 60%;
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    position: relative;
+    width: 1150px;
+}
+.leftdiv{
+width:69%;
+position: relative;
+float: left;
+}
+.rightdiv{
+width:29%;
+position: relative;
+float: right;
+margin-top:0px;
+}
+.c4
+{
+	width:100%;
+	height:auto;
+	position:relative;
+        margin-top:0px;
+        margin-bottom:px;
+}
+.c5
+{
+	width:100%;
+	height:auto;
+	position:relative;
+        margin-top:20px;
+        margin-bottom:px;
+}
+.c6
+{
+	width:100%;
+	height:auto;
+	position:relative;
+        margin-top:20px;
+        margin-bottom:px;
+}
+.c7
+{
+	width:100%;
+	height:auto;
+	position:relative;
+        margin-top:20px;
+        margin-bottom:px;
+}
+.c8 {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+.c9 {
+	margin-right:auto;
+	width: 100%;
+	margin-top: 20px;
+	margin-left: auto;
+	position: relative;
+        background: #202020 none repeat scroll 0 0;
+}
+.footer_div {
+	float: left;
+	width: 100%;
+	margin-top: 0px;
+	position: relative;
+        background: #121212 none repeat scroll 0 0;
+}
+.c10 {
+	margin-right:auto;
+	width: 1150px;
+        height:100px;
+	margin-left: auto;
+	position: relative;
+}
+.c11 {
+	float: left;
+	width:60%;
+	position: relative;
+}
+.c12 {
+	float: left;
+	width: 100%;
+	position: relative;
+        height:20px;
+        padding-top:10px;
+}
+.c13 {
+    float: right;
+    margin-left: 20px;
+    position: relative;
+    width: 20%;
+}
+.c14 {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.c15 {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.power {
+    font-family: roboto condensed;
+    font-size: 16px !important;
+    line-height: 5px;
+}
+.google_div {
+    height: 65px;
+    position: relative;
+    width: 100%;
+}
