@@ -1,0 +1,22 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script language="javascript">
+        function ChangeClientSiteImage(img_src) {
+            document['imgClientSite'].src = img_src;
+        }    
+    </script>
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<meta name="theme-color" content="#222222">
+<meta name="msapplication-navbutton-color" content="#222222">
+<meta name="apple-mobile-web-app-status-bar-style" content="#222222">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+
+<meta name="google-site-verification" content="X5XiEKPhJmTAKNDwM2jYhRAyIy9n6hmxGg09aQUxmb4" />
+<script src="https://kit.fontawesome.com/a46196efcb.js" crossorigin="anonymous"></script>
