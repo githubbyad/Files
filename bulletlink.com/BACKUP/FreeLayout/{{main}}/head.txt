@@ -1,0 +1,30 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link type="text/css" rel="stylesheet" href="https://bulletlink.com/App-css.css?v=9.000009">
+
+<script>
+function toggleDiv1() {
+document.getElementById("mydiv").style.display="block";
+document.getElementById("Hide_more").style.display="none";
+document.getElementById("Show_more").style.display="block";
+
+}
+function toggleDiv2() {
+document.getElementById("mydiv").style.display="none";
+document.getElementById("Hide_more").style.display="block";
+document.getElementById("Show_more").style.display="none";
+}
+</script>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+
+<meta name="theme-color" content="#222222">
+<meta name="msapplication-navbutton-color" content="#222222">
+<meta name="apple-mobile-web-app-status-bar-style" content="#222222">
+
+<meta name="google-site-verification" content="X5XiEKPhJmTAKNDwM2jYhRAyIy9n6hmxGg09aQUxmb4" />
+
