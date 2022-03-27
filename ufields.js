@@ -527,7 +527,8 @@ $(document).ready(function() {
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
                     if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
-                        if ($(this).attr('data-link').indexOf('/template-') != -1) { // if Tempalte
+                        if ($(this).attr('data-link').split("&as=").shift().split('/').length == 6 && a.split("&as=").shift().split('/')[3].indexOf('-') != -1) { // if folder
+                        //if ($(this).attr('data-link').indexOf('/client-') != -1) {
                             var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){4}/, '');
                         } else {
                             var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
@@ -656,7 +657,7 @@ $(document).ready(function() {
                         $(this).attr('data-link', $(this).attr('data-link').replace("?twindow=", "&twindow="));
                     }
                     if ($(this).attr('data-link').indexOf('&site=') != -1) { // No need to add "site" paramenter in form links
-                        if ($(this).attr('data-link').indexOf('/template-') != -1) { // if Tempalte
+                        if ($(this).attr('data-link').indexOf('/client-') != -1) { // if Tempalte
                             var dk = dlb + $(this).attr('data-link').replace(/(?:.*?\/){4}/, '');
                         } else {
                             var dk = dlb + $(this).attr('data-link').replace(/.*\//, "");
