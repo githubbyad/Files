@@ -122,6 +122,10 @@ function confirmhide(msg, url) { // Confirm Popup
     return false;
 }
 $(document).ready(function() {
+    $("div[class^='AdGroup'][data-ad-width]").each(function(){ // Change "-ad-" to avoid AdBlock in Ads
+        $(this).attr("data-adv-width",$(this).attr("data-ad-width"));
+        $(this).removeAttr("data-ad-width");
+    });
     $.urlParam = function(name) {
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results == null) {
@@ -690,11 +694,7 @@ $(document).ready(function() {
                     });
                 }
             }
-            if ($('.hpe-i-ad').length) { // Specific Ad
-                $("div[class^='AdGroup'][data-ad-width]").each(function(){ // Change "-ad-" to avoid AdBlock
-                    $(this).attr("data-adv-width",$(this).attr("data-ad-width"));
-                    $(this).removeAttr("data-ad-width");
-                });
+            if ($('.hpe-i-ad').length) { // Specific Ad                
                 $('.hpe-i-ad').each(function() {
                     var adnum = $(this).attr('data-adnum');
                     var adid = $(this).attr('data-adid');
