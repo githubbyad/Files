@@ -691,11 +691,15 @@ $(document).ready(function() {
                 }
             }
             if ($('.hpe-i-ad').length) { // Specific Ad
+                $("div[class^='AdGroup'][data-ad-width]").each(function(){ // Change "-ad-" to avoid AdBlock
+                    $(this).attr("data-adv-width",$(this).attr("data-ad-width"));
+                    $(this).removeAttr("data-ad-width");
+                });
                 $('.hpe-i-ad').each(function() {
                     var adnum = $(this).attr('data-adnum');
                     var adid = $(this).attr('data-adid');
                     $(this).addClass('hp-ppp');
-                    var rw = $('[data-adgroup="' + adnum + '"]').attr('data-ad-width');
+                    var rw = $('[data-adgroup="' + adnum + '"]').attr('data-adv-width');
                     if (typeof rw !== "undefined") {
                         var rwt = 'Recommended: ' + rw + 'px';
                     } else {
