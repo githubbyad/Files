@@ -33,6 +33,12 @@ var l = setInterval(function() {
             document.getElementsByClassName('SignIn')[0].innerHTML = "SignIn NOW!"
             document.getElementsByClassName('SignIn')[0].click();
         }
+        // 8:00 PM for Ramazan
+        if (t == '20:00') {
+            clearInterval(l);
+            document.getElementsByClassName('SignIn')[0].innerHTML = "SignIn NOW!"
+            document.getElementsByClassName('SignIn')[0].click();
+        }
     }
     // SignOut
     if (document.getElementsByClassName('SignOut').length) {
