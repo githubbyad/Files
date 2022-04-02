@@ -34,7 +34,7 @@ var l = setInterval(function() {
             document.getElementsByClassName('SignIn')[0].click();
         }
         // 8:00 PM for Ramazan
-        if (t == '20:00') {
+        if (t == '20:0') {
             clearInterval(l);
             document.getElementsByClassName('SignIn')[0].innerHTML = "SignIn NOW!"
             document.getElementsByClassName('SignIn')[0].click();
@@ -51,6 +51,12 @@ var l = setInterval(function() {
         }
         // 7:30 PM
         if (t == '19:30') {
+            clearInterval(l);
+            document.getElementsByClassName('SignOut')[0].innerHTML = "SignOut NOW!"
+            document.getElementsByClassName('SignOut')[0].click();
+        }
+        // 8:00 PM for Ramazan
+        if (t == '20:0') {
             clearInterval(l);
             document.getElementsByClassName('SignOut')[0].innerHTML = "SignOut NOW!"
             document.getElementsByClassName('SignOut')[0].click();
