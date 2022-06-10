@@ -1,0 +1,3 @@
+<!--UploadFileSizeLimit-->
+<input type="hidden" id="uploadfilesize" name="uploadfilesize" value="5242880">
+<!--/UploadFileSizeLimit-->
