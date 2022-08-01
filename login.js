@@ -20,12 +20,12 @@ var l = setInterval(function() {
     h = h > 9 ? h : h + "0";
     m = m > 9 ? m : m + "0";
     s = s > 9 ? s : s + "0";
-    var t = h + ":" + m + ":" + s;
+    var t = h + ":" + m;
     // SignIn
     if (document.getElementsByClassName('SignIn').length) {
         document.getElementsByClassName('SignIn')[0].innerHTML = t + ":" + s;
         // 11:00 AM
-        if (t == '11:0') {
+        if (t == '11:00') {
             clearInterval(l);
             document.getElementsByClassName('SignIn')[0].innerHTML = "SignIn NOW!"
             document.getElementsByClassName('SignIn')[0].click();
@@ -37,13 +37,13 @@ var l = setInterval(function() {
             document.getElementsByClassName('SignIn')[0].click();
         }
         // 3:00 PM for Ramazan
-        if (t == '15:0') {
+        if (t == '15:00') {
             clearInterval(l);
             document.getElementsByClassName('SignIn')[0].innerHTML = "SignIn NOW!"
             document.getElementsByClassName('SignIn')[0].click();
         }
         // 8:00 PM for Ramazan
-        if (t == '20:0') {
+        if (t == '20:00') {
             clearInterval(l);
             document.getElementsByClassName('SignIn')[0].innerHTML = "SignIn NOW!"
             document.getElementsByClassName('SignIn')[0].click();
@@ -53,7 +53,7 @@ var l = setInterval(function() {
     if (document.getElementsByClassName('SignOut').length) {
         document.getElementsByClassName('SignOut')[0].innerHTML = t + ":" + s;
         // 3:00 AM
-        if (t == '3:0') {
+        if (t == '03:00') {
             clearInterval(l);
             document.getElementsByClassName('SignOut')[0].innerHTML = "SignOut NOW!"
             document.getElementsByClassName('SignOut')[0].click();
@@ -65,13 +65,13 @@ var l = setInterval(function() {
             document.getElementsByClassName('SignOut')[0].click();
         }
         // 8:00 PM for Ramazan
-        if (t == '20:0') {
+        if (t == '20:00') {
             clearInterval(l);
             document.getElementsByClassName('SignOut')[0].innerHTML = "SignOut NOW!"
             document.getElementsByClassName('SignOut')[0].click();
         }
         // 11:00 PM for Ramazan
-        if (t == '23:0') {
+        if (t == '23:00') {
             clearInterval(l);
             document.getElementsByClassName('SignOut')[0].innerHTML = "SignOut NOW!"
             document.getElementsByClassName('SignOut')[0].click();
