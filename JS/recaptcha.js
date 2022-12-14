@@ -4,4 +4,4 @@ setTimeout(function(){
         document.getElementById("token").value = token;
     });
   });
-},5000);
+},5000); // load token again after 5 seconds
