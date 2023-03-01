@@ -1,10 +1,7 @@
 function ReadSubmenu() {
     var qrStr = location.href;
-    if (qrStr.indexOf("/hpeditor.") != -1) {
-        var uArr = new URL(qrStr);
-        var uSite = uArr.searchParams.get("site");
-        var uLb = uArr.searchParams.get("lb");
-        qrStr = `https://${uSite}/${uLb}`;
+    if (qrStr.indexOf('&site') != -1) {
+        qrStr = qrStr.split('&site').shift();
     }
     if (qrStr.indexOf("/index.html") != -1) {
         return SParameters();
@@ -15,6 +12,9 @@ function ReadSubmenu() {
     } else {
         var sPos, ePos, smenu;
         sPos = qrStr.indexOf('/index', 0);
+        if (qrStr.indexOf('?lb=')) {
+            sPos = qrStr.indexOf('=index', 0);
+        }
         if (sPos != -1) {
             ePos = qrStr.lastIndexOf('.', qrStr.length);
             smenu = qrStr.substring(sPos + 6, ePos);
