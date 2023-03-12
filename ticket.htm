@@ -1,0 +1,1412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- /fontAwesome-->
+    <script>
+        // Cookie functions
+        function createCookie(name, value, days) {
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            } else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            createCookie(name, "", -1);
+        }
+        // Alert function
+        function alert(msg, btnn) {
+            if (!document.getElementById('f_alert_button')) {
+                document.getElementsByTagName("body")[0].insertAdjacentHTML("beforeend", "<button id='f_alert_button' type='button' data-bs-toggle='modal' data-bs-target='#f_alert' style='display:none;'></button><div class='f_alert_box modal fade' id='f_alert' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='f_alertLabel' aria-hidden='true'><div class='modal-dialog modal-dialog-centered modal-dialog-scrollable'><div class='modal-content'><div class='modal-header' style='display:none'><button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button></div><div class='modal-body text-center fw-bold' style='white-space: pre-wrap;'>" + msg + "</div><div class='modal-footer d-flex justify-content-center border-0'><button type='button' class='f_alert_close btn btn-dark py-2 px-4' data-bs-dismiss='modal'>" + btnn + "</button></div></div></div><style>@media (min-width:576px){.modal-dialog{max-width:400px}}</style></div>");
+                if (document.getElementById('timer5')) {
+                    var timer2 = '05:01';
+                    var interval = setInterval(function() {
+                        var timer = timer2.split(':');
+                        var minutes = parseInt(timer[0], 10);
+                        var seconds = parseInt(timer[1], 10);
+                        --seconds;
+                        minutes = (seconds < 0) ? --minutes : minutes;
+                        if (minutes < 0) {
+                            document.getElementsByClassName('f_alert_close')[0].click();
+                            clearInterval(interval);
+                        }
+                        seconds = (seconds < 0) ? 59 : seconds;
+                        seconds = (seconds < 10) ? '0' + seconds : seconds;
+                        minutes = (minutes < 10) ? '0' + minutes : minutes;
+                        document.getElementById('timer5').innerHTML = minutes + ':' + seconds;
+                        timer2 = minutes + ':' + seconds;
+                        document.getElementsByClassName('f_alert_close')[0].addEventListener('click', function() {
+                            clearInterval(interval);
+                        });
+                    }, 1000);
+                }
+                if (document.getElementById('timer10')) {
+                    var timer2 = '10:01';
+                    var interval = setInterval(function() {
+                        var timer = timer2.split(':');
+                        var minutes = parseInt(timer[0], 10);
+                        var seconds = parseInt(timer[1], 10);
+                        --seconds;
+                        minutes = (seconds < 0) ? --minutes : minutes;
+                        if (minutes < 0) {
+                            document.getElementsByClassName('f_alert_close')[0].click();
+                            clearInterval(interval);
+                        }
+                        seconds = (seconds < 0) ? 59 : seconds;
+                        seconds = (seconds < 10) ? '0' + seconds : seconds;
+                        minutes = (minutes < 10) ? '0' + minutes : minutes;
+                        document.getElementById('timer10').innerHTML = minutes + ':' + seconds;
+                        timer2 = minutes + ':' + seconds;
+                        document.getElementsByClassName('f_alert_close')[0].addEventListener('click', function() {
+                            clearInterval(interval);
+                        });
+                    }, 1000);
+                }
+                if (document.getElementById('timer30')) {
+                    var timer2 = '00:31';
+                    var interval = setInterval(function() {
+                        var timer = timer2.split(':');
+                        var minutes = parseInt(timer[0], 10);
+                        var seconds = parseInt(timer[1], 10);
+                        --seconds;
+                        minutes = (seconds < 0) ? --minutes : minutes;
+                        if (minutes < 0) {
+                            document.getElementsByClassName('f_alert_close')[0].click();
+                            clearInterval(interval);
+                        }
+                        seconds = (seconds < 0) ? 59 : seconds;
+                        seconds = (seconds < 10) ? '0' + seconds : seconds;
+                        minutes = (minutes < 10) ? '0' + minutes : minutes;
+                        document.getElementById('timer30').innerHTML = minutes + ':' + seconds;
+                        timer2 = minutes + ':' + seconds;
+                        document.getElementsByClassName('f_alert_close')[0].addEventListener('click', function() {
+                            clearInterval(interval);
+                        });
+                    }, 1000);
+                }
+                document.getElementById('f_alert_button').click();
+                document.getElementsByClassName('f_alert_close')[0].addEventListener('click', function() {
+                    document.getElementById('f_alert_button').remove();
+                    document.getElementsByClassName('f_alert_box')[0].remove();
+                });
+            }
+        }
+    </script>
+    <title>Ticket Page</title>
+    <style>
+        #staff {
+            height: 112px;
+            background: #c9c9c9;
+            transform: translate(50px, 4px);
+            position: relative;
+            z-index: 2;
+            padding-left: 10px !important;
+            pointer-events: none;
+        }
+        
+        #shift,
+        #live,
+        #ctime,
+        #cbuzzer,
+        #past {
+            position: relative;
+            /* top: 0; */
+            z-index: 99;
+            /* width: 17vw; */
+            text-align: center;
+            color: white;
+            line-height: 35px;
+            font-size: 13px;
+            text-align: left;
+            /* padding-left: 23px; */
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border-top-width: 0;
+            overflow: hidden;
+            background: #212529;
+        }
+        
+        #shift p,
+        #live p,
+        #ctime p,
+        #cbuzzer p,
+        #past p {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            color: #212529;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            top: 0;
+            padding: 0 10px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            font-weight: bold;
+            border-bottom: 2px solid !important;
+        }
+        
+        #shift iframe,
+        #live iframe,
+        #ctime iframe,
+        #cbuzzer iframe,
+        #past iframe {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+        }
+        /* #shift {
+            top: 489px;
+        }
+        
+        #live {
+            top: 0;
+        }
+        
+        #past {
+            top: 155px;
+        }
+        
+        #ctime {
+            top: 394px;
+        }
+        
+        #cbuzzer {
+            top: 290px;
+        } */
+        /* #tickets {
+            border-left: 0.3rem solid black !important;
+        } */
+        
+        #buzzer {
+            height: 156px;
+            background: #c9c9c9;
+            transform: translate(-190px, 20px) scale(0.4);
+            box-sizing: border-box;
+            width: 840px !important;
+            transition: 200ms ease-in-out;
+        }
+        
+        #buzzer:hover {
+            transform: translate(0, 40px) scale(1);
+            transition: 300ms ease-in-out;
+        }
+        
+        #ticketcell {
+            height: 210px;
+            transform: translate(-6px, -25px) scale(1.3);
+            transition: 300ms ease-in-out;
+            background-color: #ddd;
+            width: 460px !important;
+        }
+        
+        #pticketcell {
+            height: 100px;
+            transform: translate(0, -57px);
+            width: 23vw !important;
+            transition: 300ms ease-in-out;
+        }
+        
+        #time {
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            font-size: 35px;
+            z-index: 1;
+            background: #c9c9c9;
+            border-bottom-left-radius: 0;
+            /* left: 50%;
+            transform: translateX(-50%); */
+            line-height: 25px;
+            width: 100%;
+        }
+        
+        #time span {
+            font-size: 15px;
+        }
+        
+        .rem {
+            font-size: 12px !important;
+            float: left;
+            width: 100%;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .logout-cont,
+        .tsx {
+            width: 60%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 999;
+            background: white;
+            text-align: center;
+            padding: 50px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.95);
+            transform: translate(-50%, -50%);
+            z-index: 999;
+        }
+        
+        .tsx {
+            padding: 0;
+            border-radius: 0;
+        }
+        
+        .logout-cont2 {
+            box-shadow: none;
+        }
+        
+        #skip {
+            transition: 200ms ease-in-out;
+            border: 1px dashed;
+        }
+        
+        #skip:hover {
+            border-color: gray;
+            transform: scale(1.1);
+            transition: 200ms ease-in-out;
+        }
+        
+        .logout-close {
+            position: fixed;
+            right: 15px;
+            top: 5px;
+            font-size: 28px;
+            color: black;
+            z-index: 99999;
+            cursor: pointer;
+        }
+        
+        .logout-select-2 {
+            display: none;
+        }
+        
+        button#skip {
+            min-width: 83px;
+        }
+        
+        .lbt:hover {
+            transform: translate(0, -0.3rem);
+            transition: 300ms ease-in-out;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lbt {
+            transition: 200ms ease-in-out;
+        }
+        
+        .nomobile {
+            color: red;
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+        
+        #shift-dark #tickets {
+            border-color: #212529 !important;
+        }
+        
+        #shift-dark #time {
+            color: #212529;
+        }
+        
+        #shift-dark #shift,
+        #shift-dark #live,
+        #shift-dark #ctime,
+        #shift-dark #cbuzzer {
+            background: #212529;
+        }
+        
+        #shift-success #tickets {
+            border-color: #198754 !important;
+        }
+        
+        #shift-success #time {
+            color: #198754;
+        }
+        
+        #shift-success #shift,
+        #shift-success #live,
+        #shift-success #ctime,
+        #shift-success #cbuzzer {
+            background: #198754;
+        }
+        
+        #shift-secondary #tickets {
+            border-color: #0d6efd !important;
+        }
+        
+        #shift-secondary #shift,
+        #shift-secondary #live,
+        #shift-secondary #ctime,
+        #shift-secondary #cbuzzer {
+            background: #0d6efd;
+        }
+        
+        #shift-secondary #time {
+            color: #0d6efd;
+        }
+        
+        .time-seconds {
+            font-weight: normal !important;
+            font-size: 20px;
+        }
+        
+        #shift:before,
+        #live:before,
+        #past:before,
+        #ctime:before,
+        #cbuzzer::before {
+            content: "";
+            position: absolute;
+            top: 23px;
+            color: white;
+            left: 25px;
+            border-color: transparent transparent #c9c9c9 transparent;
+            border-style: solid;
+            border-width: 7px;
+        }
+        
+        #shiftCover {
+            width: 40px;
+            height: 68px;
+            background: #c9c9c9;
+            position: absolute;
+            top: 37px;
+            z-index: 9;
+            right: 0;
+        }
+        
+        #live:before {
+            border-color: transparent transparent #dddddd transparent;
+        }
+        
+        #cbuzzer i,
+        #ctime i,
+        #live i,
+        #shift i,
+        #past i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #0d6efd;
+        }
+        
+        #shift span {
+            font-size: 12px !important;
+            float: right;
+            top: 7px;
+            position: absolute;
+            right: 0px;
+        }
+        
+        .logout-select-1,
+        .loginy {
+            display: none;
+        }
+        
+        .loginx i {
+            font-size: 13px;
+        }
+        
+        .tope~#minimize i {
+            transform: translate(-5px, -5px) scale(1.5) rotate(180deg);
+        }
+        
+        #timer5 {
+            color: #dc3545;
+            font-size: 6rem;
+            text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        #timer10 {
+            color: #198754;
+        }
+        
+        #timer30 {
+            font-size: 4rem;
+            color: #198754;
+        }
+        
+        .ticketSetting {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: #212529;
+            z-index: 99;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top-left-radius: 50px;
+            cursor: pointer;
+        }
+        
+        .ticketAlways {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: #212529;
+            z-index: 99;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top-right-radius: 50px;
+            cursor: pointer;
+        }
+        
+        .ticketAlways i {
+            color: #f49d00 !important;
+            font-size: 20px !important;
+            transform: translate(-5px, 5px);
+        }
+        
+        .ticketSetting i {
+            color: #f49d00 !important;
+            font-size: 20px !important;
+            transform: translate(5px, 5px);
+            transition: 1000ms ease-in-out;
+        }
+        
+        .ticketSetting i:hover {
+            transition: 1300ms ease-in-out;
+            transform: translate(5px, 5px) rotate(360deg);
+        }
+        
+        .ticketSettingList .ticketSettingListClose {
+            position: absolute;
+            top: 10px;
+            z-index: 1;
+            right: 10px;
+            cursor: pointer;
+        }
+        
+        .ticketSettingList {
+            position: relative;
+        }
+        
+        .ticketSettingListBox p {
+            cursor: pointer;
+        }
+        
+        .ticketSettingListBox p:hover {
+            color: #0d6efd;
+        }
+        
+        .ticketSettingList .col-3:hover {
+            background: #0d6efd;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .ticketSettingList .col-3:hover i {
+            color: white !important;
+        }
+        
+        .form-check.form-switch .form-check-label:hover {
+            color: #0d6efd;
+            cursor: pointer;
+        }
+        
+        .dsx {
+            left: 50%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+        
+        #topx {
+            height: 160px;
+            overflow: hidden;
+            padding-bottom: 10px;
+            box-sizing: border-box;
+            background-color: #212529;
+        }
+        
+        .col-x {
+            width: 33%;
+        }
+        
+        #minimize {
+            position: fixed;
+            top: 160px;
+            z-index: 999;
+            background: #212529;
+            width: auto;
+            left: 0%;
+            border-bottom-right-radius: 50px;
+            justify-content: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            padding: 15px;
+        }
+        
+        #minimize i {
+            color: orange;
+            font-size: 20px;
+            font-weight: bold;
+            transform: translate(-5px, -5px) scale(1.5);
+            transition: 300ms ease-in-out;
+        }
+        
+        .minimizeTop {
+            top: 0px !important;
+        }
+        
+        .col-x>.w-100 {
+            float: left;
+            border: 5px solid #fff;
+            background: #c9c9c9;
+            display: block;
+            position: relative;
+            z-index: 5;
+            top: 0;
+            height: 100%;
+            /* border-bottom-right-radius: 5px; */
+            overflow: hidden;
+            border-top-width: 0;
+            /* border-bottom-left-radius: 5px; */
+        }
+        
+        #shift,
+        #ctime {
+            width: 16%;
+        }
+        
+        #live,
+        #past {
+            width: 35%;
+        }
+        
+        .dark {
+            position: fixed;
+            top: 160px;
+            z-index: 999;
+            background: #212529;
+            width: auto;
+            right: 0%;
+            border-bottom-left-radius: 50px;
+            justify-content: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            padding: 15px;
+        }
+        
+        .dark i {
+            color: #f49d00 !important;
+            font-size: 20px !important;
+            transform: scale(1.2) translate(5px, -4px);
+        }
+        
+        .darkTop {
+            top: 0 !important;
+        }
+        
+        .tope {
+            height: 0px !important;
+            padding-bottom: 0 !important;
+        }
+        
+        .tope:hover {
+            height: 160px !important;
+            transition: ease-in-out height;
+        }
+        
+        .tope:hover~#topy {
+            height: calc(100vh - 160px) !important;
+        }
+        
+        .tope:hover~#minimize {
+            display: none !important;
+        }
+        
+        .minimizeTop i {
+            transform: rotate(180deg);
+        }
+        
+        .ticketAlways.tActive {
+            background: green !important;
+        }
+        
+        .ticketAlways.tActive i {
+            color: white !important;
+        }
+        
+        .tSpan {
+            position: absolute;
+            background: green;
+            border-top-right-radius: 50px;
+            padding: 7px;
+            left: 28px;
+            border: 0;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .darkEnable {
+            filter: invert(1) grayscale(100%);
+        }
+    </style>
+</head>
+
+<body class="ticketPage" style="overflow: hidden;">
+    <div id="ticketSpan">
+        <div class="cont container-fluid px-0">
+            <div class="row mx-0">
+                <div id="topx" class="row col-12 mx-0 d-flex topi" style="user-select: none;">
+                    <div class="col-x px-1" id="shift">
+                        <div class="w-100">
+                            <p><i class='fa fa-user' aria-hidden='true'></i> Online staffs</p>
+                            <div id="shiftCover"></div>
+                            <iframe id="staff" src="https://bulletlink.one/bulletlink_online_staff.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-x px-1" id="live">
+                        <div class="w-100">
+                            <p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>
+                            <iframe id="ticketcell" src="https://bulletlink.one/bulletlink_tickets.asp?cell=0" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-x px-1" id="cbuzzer">
+                        <div class="w-100">
+                            <p><i class="fa fa-volume-up" aria-hidden="true"></i> Buzzer</p>
+                            <iframe id="buzzer" src="https://bulletlink.one/ticket_status.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
+                    </div>
+                    <!-- <div class="col-x px-1" id="past">
+                        <div class="w-100">
+                            <p><i class="fa fa-tasks" aria-hidden="true"></i> Review Past Tickets</p>
+                            <iframe id="pticketcell" src="https://bulletlink.one/bulletlink_tickets_review.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
+                    </div> -->
+                    <div class="col-x px-1" id="ctime">
+                        <div class="w-100">
+                            <p>Time</p>
+                            <div id="time"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="minimize"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
+                <div class="dark">
+                    <i class="fa fa-moon-o dark_moon" title="Night Mode" aria-hidden="true"></i>
+                    <i class="fa fa-sun-o dark_sun d-none" title="Day Mode" aria-hidden="true"></i>
+                </div>
+                <div id="topy" class="ticket_page col-12 position-relative bg-body px-0" style="z-index: 2;">
+                    <iframe id="tickets" src="https://bulletlink.one/bulletlink_tickets.asp?" class="border-0 w-100 px-0" style="height: calc(100vh - 160px);"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="ticketSetting"><i class="fa fa-cog" aria-hidden="true"></i></div>
+        <div class="ticketAlways" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Browser Screen Setting">
+            <i class="fa fa-desktop" aria-hidden="true"></i>
+            <span class="tSpan d-none"></span>
+        </div>
+        <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header d-none">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body fw-bold py-5 text-center">
+                        <i class='fa fa-desktop mb-3 text-success' style='font-size:5rem;' aria-hidden='true'></i><br>Do you want your browser's screen to be "<span style='color:red'>Always ON</span>"?
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="buttonY btn btn-primary px-5 tYes">Yes</button>
+                        <button type="button" class="buttonY btn btn-danger tNo px-5" data-bs-dismiss="modal">No</button>
+                        <div class="modal-select d-none">
+                            <button type="button" class="buttonZ btn btn-secondary t-15m me-2 mb-2" data-bs-dismiss="modal">15 Minutes</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-30m me-2 mb-2" data-bs-dismiss="modal">30 Minutes</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-1h me-2 px-4 mb-2" data-bs-dismiss="modal">1 Hour</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-2h me-2 px-4 mb-2" data-bs-dismiss="modal">2 Hours</button>
+                            <center><button type="button" class="buttonZ btn btn-dark t-frv px-4 mb-2" data-bs-dismiss="modal">Forever</button></center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ticketAlwaysDIV d-none"></div>
+        <div class="ticketSettingList d-none">
+            <div class="ticketSettingListBox tsx text-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="ticketSettingListClose bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+                <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-moon-o me-3 d-none' aria-hidden='true'></i>Settings</h1>
+                <div class="d-block w-100 p-5">
+                    <div class="row justify-content-center">
+                        <div class="col-2 fw-bold tNamaz mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-moon-o ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Namaz</div>
+                        <div class="col-3 fw-bold tLunch mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-cutlery ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Lunch / Dinner</div>
+                        <div class="col-2 fw-bold tSound mb-2 me-2  border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-volume-up ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Sounds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ticketSettingListNamaz tsx d-none text-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="ticketSettingListClose bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+                <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-moon-o me-3' aria-hidden='true'></i>Namaz Timing</h1>
+                <div class="d-block w-100 p-5">
+                    <div class="row">
+                        <div class="col-4 fw-bold text-end mb-3">Fazar </div>
+                        <div class="col-8"><input id="fazar" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 mb-3 fw-bold text-end">Zohar </div>
+                        <div class="col-8"><input id="zohar" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 mb-3 fw-bold text-end">Asar </div>
+                        <div class="col-8"><input id="asar" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 mb-3 fw-bold text-end">Isha </div>
+                        <div class="col-8"><input id="isha" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 fw-bold text-end">Jumma </div>
+                        <div class="col-8"><input id="jumma" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
+                    </div>
+                    <div class="d-block w-100 border-top mt-5 py-3 text-center">
+                        <button type="button" class="btn btn-primary tNamazSave">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ticketSettingListLunch tsx d-none text-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="ticketSettingListClose bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+                <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-cutlery me-3' aria-hidden='true'></i>Lunch / Dinner</h1>
+                <div class="d-block w-100 p-5">
+                    <div class="row mb-4">
+                        <div class="col-4"></div>
+                        <div class="form-check form-switch col-4">
+                            <input class="form-check-input" type="checkbox" id="lunchEnable">
+                            <label class="form-check-label user-select-none" for="lunchEnable">Enable Lunch & Dinner</label>
+                        </div>
+                    </div>
+                    <div class="row lunchx">
+                        <div class="col-4 fw-bold text-end mb-3">Lunch </div>
+                        <div class="col-8">
+                            <input id="lunch" class="text-center fw-bold text-success" type="text" value="00:00:00">
+                        </div>
+                    </div>
+                    <div class="row dinnerx">
+                        <div class="col-4 mb-3 fw-bold text-end">Dinner </div>
+                        <div class="col-8"><input id="dinner" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
+                    </div>
+                    <div class="d-block w-100 border-top mt-5 py-3 text-center">
+                        <button type="button" class="btn btn-primary tLunchSave">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ticketSettingListSound tsx d-none text-start">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="ticketSettingListClose bi bi-x-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+                <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-volume-up me-3' aria-hidden='true'></i>Enable / Disble Sound</h1>
+                <div class="dsx d-block w-50 p-5">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="namazSound">
+                        <label class="form-check-label user-select-none" for="namazSound">Namaz Sound</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="lunchSound">
+                        <label class="form-check-label user-select-none" for="lunchSound">Lunch / Dinner Sound</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="restSound">
+                        <label class="form-check-label user-select-none" for="restSound">Rest Time Sound</label>
+                    </div>
+                    <div class="d-block w-100 border-top mt-5 py-3 text-center">
+                        <button type="button" class="btn btn-primary tSoundSave">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Disable Ticket page on mobile
+            if (window.screen.width < 1025) {
+                document.getElementsByTagName('body')[0].innerHTML = "<h1 class='nomobile'>This page is only accessible on Computer</h1>";
+            }
+
+            // Always Screen ON/OFF
+            document.getElementsByClassName("tNo")[0].addEventListener("click", () => {
+                document.getElementsByClassName("ticketAlways")[0].classList.remove("tActive");
+                document.getElementsByClassName("tSpan")[0].classList.add("d-none")
+                document.getElementsByClassName("ticketAlwaysDIV")[0].innerHTML = "";
+            });
+            document.getElementsByClassName("tYes")[0].addEventListener("click", () => {
+                document.querySelectorAll(".buttonY").forEach(x => x.classList.add("d-none"));
+                document.getElementsByClassName("modal-select")[0].classList.remove("d-none");
+                document.getElementsByClassName("ticketAlwaysDIV")[0].innerHTML = `
+                <video width="400" controls autoplay muted loop>
+                    <source src="https://raw.githubusercontent.com/githubbyad/tickets/main/docs/mov_bbb.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/githubbyad/tickets/main/docs/mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML video.
+                </video>`;
+                document.getElementsByClassName("ticketAlways")[0].classList.add("tActive");
+            });
+            document.querySelectorAll(".buttonZ").forEach(x => {
+                x.addEventListener("click", () => {
+                    setTimeout(() => {
+                        document.querySelectorAll(".buttonY").forEach(x => x.classList.remove("d-none"));
+                        document.getElementsByClassName("modal-select")[0].classList.add("d-none");
+                    }, 500);
+                });
+            });
+
+            tX = (t, v) => {
+                document.getElementsByClassName("tSpan")[0].classList.remove("d-none");
+                document.getElementsByClassName("tSpan")[0].innerHTML = v;
+                setTimeout(() => {
+                    document.getElementsByClassName("tNo")[0].click();
+                }, t);
+            }
+            document.getElementsByClassName("t-15m")[0].addEventListener("click", () => tX("900000", "15m"));
+            document.getElementsByClassName("t-30m")[0].addEventListener("click", () => tX("1800000", "30m"));
+            document.getElementsByClassName("t-1h")[0].addEventListener("click", () => tX("3600000", "1h"));
+            document.getElementsByClassName("t-2h")[0].addEventListener("click", () => tX("7200000", "2h"));
+            document.getElementsByClassName("t-frv")[0].addEventListener("click", () => document.getElementsByClassName("tSpan")[0].classList.add("d-none"));
+
+            // Setting
+            document.getElementsByClassName("ticketSetting")[0].addEventListener("click", function() {
+                document.getElementsByClassName("ticketSettingList")[0].classList.remove("d-none");
+                document.getElementsByClassName("ticketSettingListBox")[0].classList.remove("d-none");
+                document.getElementsByClassName("ticketSettingListNamaz")[0].classList.add("d-none");
+                document.getElementsByClassName("ticketSettingListSound")[0].classList.add("d-none");
+                document.getElementsByClassName("ticketSettingListLunch")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("ticketSettingListClose")[0].addEventListener("click", function() {
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("ticketSettingListClose")[1].addEventListener("click", function() {
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("ticketSettingListClose")[2].addEventListener("click", function() {
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("ticketSettingListClose")[3].addEventListener("click", function() {
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("tNamaz")[0].addEventListener("click", function() {
+                document.getElementsByClassName("ticketSettingListBox")[0].classList.add("d-none");
+                document.getElementsByClassName("ticketSettingListNamaz")[0].classList.remove("d-none");
+            });
+            document.getElementsByClassName("tLunch")[0].addEventListener("click", function() {
+                if (readCookie("lunchEnable") == "No") {
+                    document.getElementById("lunchEnable").checked = false;
+                } else {
+                    document.getElementById("lunchEnable").checked = true;
+                }
+                document.getElementsByClassName("ticketSettingListBox")[0].classList.add("d-none");
+                document.getElementsByClassName("ticketSettingListLunch")[0].classList.remove("d-none");
+            });
+            document.getElementsByClassName("tSound")[0].addEventListener("click", function() {
+                if (readCookie("nSound") == "No") {
+                    document.getElementById("namazSound").checked = false;
+                } else {
+                    document.getElementById("namazSound").checked = true;
+                }
+                if (readCookie("lSound") == "No") {
+                    document.getElementById("lunchSound").checked = false;
+                } else {
+                    document.getElementById("lunchSound").checked = true;
+                }
+                if (readCookie("rSound") == "No") {
+                    document.getElementById("restSound").checked = false;
+                } else {
+                    document.getElementById("restSound").checked = true;
+                }
+                document.getElementsByClassName("ticketSettingListBox")[0].classList.add("d-none");
+                document.getElementsByClassName("ticketSettingListSound")[0].classList.remove("d-none");
+            });
+
+            document.getElementsByClassName("tNamazSave")[0].addEventListener("click", function() {
+                createCookie("fazar", document.getElementById("fazar").value, 365);
+                createCookie("zohar", document.getElementById("zohar").value, 365);
+                createCookie("asar", document.getElementById("asar").value, 365);
+                createCookie("isha", document.getElementById("isha").value, 365);
+                createCookie("jumma", document.getElementById("jumma").value, 365);
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("tLunchSave")[0].addEventListener("click", function() {
+                if (document.getElementById("lunchEnable").checked == false) {
+                    createCookie("lunchEnable", "No");
+                } else {
+                    eraseCookie("lunchEnable");
+                }
+                createCookie("lunch", document.getElementById("lunch").value, 365);
+                createCookie("dinner", document.getElementById("dinner").value, 365);
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+            document.getElementsByClassName("tSoundSave")[0].addEventListener("click", function() {
+                if (document.getElementById("namazSound").checked == false) {
+                    createCookie("nSound", "No");
+                } else {
+                    eraseCookie("nSound");
+                }
+                if (document.getElementById("lunchSound").checked == false) {
+                    createCookie("lSound", "No");
+                } else {
+                    eraseCookie("lSound");
+                }
+                if (document.getElementById("restSound").checked == false) {
+                    createCookie("rSound", "No");
+                } else {
+                    eraseCookie("rSound");
+                }
+                document.getElementsByClassName("ticketSettingList")[0].classList.add("d-none");
+            });
+
+            // Shift Text
+            if (window.location.href.indexOf("?t=") != -1) {
+                document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Remaining</p>";
+            }
+            if (window.location.href.indexOf("?t=03:00") != -1) {
+                document.getElementById('shift').children[0].children[0].outerHTML = `<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge bg-warning ms-2 text-dark'><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+</svg> Night</span></p>`;
+                // document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-dark');
+            }
+            if (window.location.href.indexOf("?t=11:00") != -1) {
+                document.getElementById('shift').children[0].children[0].outerHTML = `<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge bg-warning ms-2 text-dark'><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+  <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+</svg> Night</span></p>`;
+                // document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-success');
+            }
+            if (window.location.href.indexOf("?t=19:30") != -1) {
+                document.getElementById('shift').children[0].children[0].outerHTML = `<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge bg-warning ms-2 text-dark'><svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+  <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+</svg> Day</span></p>`;
+                //  document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-secondary');
+            }
+
+            // Namaz time assign
+            var nDate = new Date();
+            var monthL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var month = monthL[nDate.getMonth()];
+            var nD = nDate.getDay();
+            if (readCookie("nSound") == "No") {
+                document.getElementById("namazSound").checked = false;
+            } else {
+                document.getElementById("namazSound").checked = true;
+            }
+            var fazar = "05:25:00";
+            if (readCookie("fazar")) {
+                fazar = readCookie("fazar");
+            } else {
+                createCookie("fazar", fazar, 365);
+            }
+            document.getElementById("fazar").value = fazar;
+
+            var zohar = "13:41:00";
+            if (readCookie("zohar")) {
+                zohar = readCookie("zohar");
+            } else {
+                createCookie("zohar", zohar, 365);
+            }
+            document.getElementById("zohar").value = zohar;
+
+            var asar = "17:45:00";
+            if (readCookie("asar")) {
+                asar = readCookie("asar");
+            } else {
+                createCookie("asar", asar, 365);
+            }
+            document.getElementById("asar").value = asar;
+
+            var isha = "20:45:00";
+            if (readCookie("isha")) {
+                isha = readCookie("isha");
+            } else {
+                createCookie("isha", isha, 365);
+            }
+            document.getElementById("isha").value = isha;
+
+            var jumma = "13:05:00";
+            if (readCookie("jumma")) {
+                jumma = readCookie("jumma");
+            } else {
+                createCookie("jumma", jumma, 365);
+            }
+            document.getElementById("jumma").value = jumma;
+
+
+            // Lunch, Dinner
+            if (readCookie("lSound") == "No") {
+                document.getElementById("lunchSound").checked = false;
+            } else {
+                document.getElementById("lunchSound").checked = true;
+            }
+            var lunch = "13:15:00";
+            if (readCookie("lunch")) {
+                lunch = readCookie("lunch");
+            } else {
+                createCookie("lunch", lunch, 365);
+            }
+            document.getElementById("lunch").value = lunch;
+
+            var dinner = "20:30:00";
+            if (readCookie("dinner")) {
+                dinner = readCookie("dinner");
+            } else {
+                createCookie("dinner", dinner, 365);
+            }
+            document.getElementById("dinner").value = dinner;
+
+            if (readCookie("rSound") == "No") {
+                document.getElementById("restSound").checked = false;
+            } else {
+                document.getElementById("restSound").checked = true;
+            }
+            // Buzzer - Refresh in 15 seconds
+            setInterval(function() {
+                buzzer.src = buzzer.src;
+                document.getElementById('cbuzzer').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Buzzer</p>';
+                setTimeout(function() {
+                    document.getElementById('cbuzzer').children[0].children[0].outerHTML = '<p><i class="fa fa-volume-up" aria-hidden="true"></i> Buzzer</p>';
+                }, 3000);
+            }, 15000);
+
+            // Ticket Page - Refresh in 60 seconds
+            setInterval(function() {
+                ticketcell.src = ticketcell.src;
+                pticketcell.src = pticketcell.src;
+                document.getElementById('live').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Live Tickets</p>';
+                document.getElementById('past').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Review Past Tickets</p>';
+                setTimeout(function() {
+                    document.getElementById('live').children[0].children[0].outerHTML = '<p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>';
+                    document.getElementById('past').children[0].children[0].outerHTML = '<p><i class="fa fa-tasks" aria-hidden="true"></i> Review Past Tickets</p>';
+                }, 3000);
+            }, 60000);
+            // Remove columms from live ticket page
+            /*
+            setTimeout(function() {
+                if (document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].children[3]) {
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].children[3].remove();
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].children[1].remove();
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].setAttribute("style", "box-shadow:none");
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByTagName("table")[1].setAttribute("style", "box-shadow:none");
+                }
+                var x = document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMB");
+                for (a = 0; a < x.length; a++) {
+                    if (x[a].children[3]) {
+                        x[a].children[3].remove();
+                        x[a].children[1].remove();
+                    }
+                }
+            }, 500);
+            setInterval(function() {
+                if (document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].children[3]) {
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].children[3].remove();
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].children[1].remove();
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMT")[0].setAttribute("style", "box-shadow:none");
+                    document.getElementById('ticketcell').contentWindow.document.getElementsByTagName("table")[1].setAttribute("style", "box-shadow:none");
+                }
+                var x = document.getElementById('ticketcell').contentWindow.document.getElementsByClassName("SMB");
+                for (a = 0; a < x.length; a++) {
+                    if (x[a].children[3]) {
+                        x[a].children[3].remove();
+                        x[a].children[1].remove();
+                    }
+                }
+            }, 10000);
+            */
+
+            // Online Staff Page - Refresh in 5 minutes
+            setInterval(function() {
+                staff.src = staff.src;
+            }, 300000);
+
+            // Work Timeline
+            setTimeout(function() {
+                alert("<i class='fa fa-pencil-square-o mb-3 text-success' style='font-size:3rem;' aria-hidden='true'></i><br>Open <b class='text-danger'>" + month + "</b> month's Spreadsheet file to enter Work Timeline <i style='font-weight:normal'>(Tickets, Tasks, etc.)</i>", "OK");
+            }, 60000);
+
+            // Start Timer and Other functions
+            var s = setInterval(function() {
+                var d = new Date();
+                if (window.location.href.indexOf("?t=19:30") != -1) {
+                    var d2 = new Date();
+                    var d = new Date(d2);
+                    d.setMinutes(d2.getMinutes() + 30);
+                }
+                var h = d.getHours();
+                if (h < 10) {
+                    h = "0" + h;
+                }
+                var m = d.getMinutes();
+                if (m < 10) {
+                    m = "0" + m;
+                }
+                var s = d.getSeconds();
+                if (s < 10) {
+                    s = "0" + s;
+                }
+                var t = h + ":" + m + ":" + s;
+                var tn = h + ":" + m + "<span class='time-seconds'>:" + s + "</span>";
+
+                var dz = new Date();
+                var hz = dz.getHours();
+                if (hz < 10) {
+                    hz = "0" + hz;
+                }
+                var mz = dz.getMinutes();
+                if (mz < 10) {
+                    mz = "0" + mz;
+                }
+                var sz = dz.getSeconds();
+                if (sz < 10) {
+                    sz = "0" + sz;
+                }
+                var tz = hz + ":" + mz + ":" + sz;
+
+                // Namaz
+                var nSound = "https://www.naataudio.com/downloads/IslamicRingtones/Allah-hu-Allah-New-ringtone.mp3";
+                if (readCookie("nSound") == "No") {
+                    nSound = "";
+                } else {
+                    nSound = "https://www.naataudio.com/downloads/IslamicRingtones/Allah-hu-Allah-New-ringtone.mp3";
+                }
+                fazar = readCookie("fazar");
+                if (tz.indexOf(fazar) != -1) {
+                    alert("<audio style='display:none;' controls autoplay><source src='" + nSound + "' type='audio/mpeg'></audio><i class='fa fa-moon-o mb-3 text-success' style='font-size:3rem' aria-hidden='true'></i><br>Fazar Namaz Time", "Going now!");
+                }
+                if (nD != 5) { // If not Friday
+                    zohar = readCookie("zohar");
+                    if (tz.indexOf(zohar) != -1) {
+                        alert("<audio style='display:none;' controls autoplay><source src='" + nSound + "' type='audio/mpeg'></audio><i class='fa fa-moon-o mb-3 text-success' style='font-size:3rem' aria-hidden='true'></i><br>Zohar Namaz Time", "Going now!");
+                    }
+                }
+                if (nD == 5) { // If Friday
+                    jumma = readCookie("jumma");
+                    if (tz.indexOf(jumma) != -1) {
+                        alert("<audio style='display:none;' controls autoplay><source src='" + nSound + "' type='audio/mpeg'></audio><i class='fa fa-moon-o mb-3 text-success' style='font-size:3rem' aria-hidden='true'></i><br>Jumma Namaz Time", "Going now!");
+                    }
+                }
+                asar = readCookie("asar");
+                if (tz.indexOf(asar) != -1) {
+                    alert("<audio style='display:none;' controls autoplay><source src='" + nSound + "' type='audio/mpeg'></audio><i class='fa fa-moon-o mb-3 text-success' style='font-size:3rem' aria-hidden='true'></i><br>Asar Namaz Time", "Going now!");
+                }
+                isha = readCookie("isha");
+                if (tz.indexOf(isha) != -1) {
+                    alert("<audio style='display:none;' controls autoplay><source src='" + nSound + "' type='audio/mpeg'></audio><i class='fa fa-moon-o mb-3 text-success' style='font-size:3rem' aria-hidden='true'></i><br>Isha Namaz Time", "Going now!");
+                }
+
+                // Lunch - Dinner
+                var lSound = "https://soundbible.com/mp3/Electrical_Sweep-Sweeper-1760111493.mp3";
+                if (readCookie("lSound") == "No") {
+                    lSound = "";
+                } else {
+                    lSound = "https://soundbible.com/mp3/Electrical_Sweep-Sweeper-1760111493.mp3";
+                }
+                dinner = readCookie("dinner");
+                if (tz.indexOf(dinner) != -1 && !readCookie("lunchEnable")) {
+                    alert("<audio style='display:none;' controls autoplay><source src='" + lSound + "' type='audio/mpeg'></audio><i class='fa fa-cutlery mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Dinner Time", "Go now!");
+                }
+                lunch = readCookie("lunch");
+                if (tz.indexOf(lunch) != -1 && !readCookie("lunchEnable")) {
+                    alert("<audio style='display:none;' controls autoplay><source src='" + lSound + "' type='audio/mpeg'></audio><i class='fa fa-cutlery mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Lunch Time", "Go now!");
+                }
+
+                // If time is set with "t" parameter
+                if (window.location.href.indexOf("?t=") != -1) {
+                    var url = location.href;
+                    var urlx = new URL(url);
+                    var parm = urlx.searchParams.get("t");
+                    if (parm == "skip") {
+                        time.innerHTML = tn;
+                        document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Now</p>";
+                    } else if (parm == "logout") {
+                        time.innerHTML = "<span>Logout NOW!</span>";
+                        document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Now</p>";
+                    } else {
+                        var hx = parm.split(':')[0];
+                        var mx = parm.split(':')[1];
+                        if (hx == '19' && mx == '30') {
+                            hx = '20';
+                            mx = '00';
+                        }
+                        if (hx < h) {
+                            hx = parseInt(hx) + 23 - h;
+                            if (hx < 10) {
+                                hx = "0" + hx;
+                            }
+                        } else if (hx == h) {
+                            hx = "00";
+                        } else if (hx > h) {
+                            hx = parseInt(hx) - h - 1;
+                            if (hx < 10) {
+                                hx = "0" + hx;
+                            }
+                        }
+                        if (mx <= m) {
+                            mx = parseInt(mx) + 59 - m;
+                            if (mx < 10) {
+                                mx = "0" + mx;
+                            }
+                        } else if (mx > m) {
+                            mx = mx - m;
+                            if (mx < 10) {
+                                mx = "0" + mx;
+                            }
+                        } //else if (mx == m) {
+                        //     mx = "00";
+                        // }
+                        var sx = 59 - s;
+                        if (sx < 10) {
+                            sx = "0" + sx;
+                        }
+                        var tx = hx + ":" + mx + ":" + sx;
+                        var ttx = hx + ":" + mx + "<span class='time-seconds'>:" + sx + "</span>";
+
+                        // Rest Time - after each 30 minutes
+                        var rSound = "https://mobcup.net/d/7ttndh2w/mp3' type='audio/mpeg";
+                        if (readCookie("rSound") == "No") {
+                            rSound = "";
+                        } else {
+                            rSound = "https://mobcup.net/d/7ttndh2w/mp3' type='audio/mpeg";
+                        }
+
+                        if (tx.indexOf('07:00:00') != -1 || tx.indexOf('07:30:00') != -1 || tx.indexOf('06:00:00') != -1 || tx.indexOf('06:30:00') != -1 || tx.indexOf('05:00:00') != -1 || tx.indexOf('05:30:00') != -1 || tx.indexOf('04:00:00') != -1 || tx.indexOf('04:30:00') != -1 || tx.indexOf('03:00:00') != -1 || tx.indexOf('03:30:00') != -1 || tx.indexOf('02:00:00') != -1 || tx.indexOf('02:30:00') != -1 || tx.indexOf('01:00:00') != -1 || tx.indexOf('01:30:00') != -1 || tx.indexOf('00:30:00') != -1) {
+                            alert(`<audio style='display:none;' controls autoplay><source src='${rSound}'></audio><i class='fa fa-exclamation-triangle mb-3 text-dark' style='font-size:3rem;color:orange !important;' aria-hidden='true'></i><br>For the love of your work, please take a break!<br><span id='timer5'>05:00</span><script><\/script>`, `Close`);
+                        }
+
+
+                        // Logout in 10 Minutes
+                        if (tx.indexOf('00:10:00') != -1) {
+                            alert("<audio style='display:none;' controls autoplay><source src='https://soundbible.com/mp3/Typing%20On%20Computer%20Keyboard-SoundBible.com-1096684006.mp3' type='audio/mpeg'></audio><i class='fa fa-sign-out mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Logout in <span id='timer10'>10:00</span> Minutes", "Got it!");
+                        }
+
+                        // Logout Now
+                        if (tx.indexOf('00:00:30') != -1) {
+                            window.history.replaceState({}, document.title, "" + "?t=logout");
+                            document.title = "Logout NOW!";
+                            time.innerHTML = "Logout NOW!";
+                            document.head.insertAdjacentHTML("beforeend", "<style>#time {color:blue;font-size: 20px;}</style>");
+                            alert("<audio style='display:none;' controls autoplay><source src='https://soundbible.com/mp3/Typing%20On%20Computer%20Keyboard-SoundBible.com-1096684006.mp3' type='audio/mpeg'></audio><i class='fa fa-sign-out mb-2 text-danger' style='font-size:3rem' aria-hidden='true'></i><br><span id='timer30'>00:30</span><br>Logout time. Visit <a class='text-decoration-none' target='_blank' href='https://bulletlink.one/bulletlink_attendance.asp'>Logout</a> page.", "Close");
+                            clearInterval(s);
+                        } else {
+                            document.title = tx;
+                        }
+                        time.innerHTML = "-" + ttx;
+                    }
+                } else {
+                    time.innerHTML = tn;
+                }
+            }, 1000);
+        </script>
+    </div>
+    <script>
+        // If Logout time not set
+        if (window.location.href.indexOf("?t=") == -1) {
+            document.getElementById('ticketSpan').innerHTML = "<div class='logout-cont'><div class='loginx'><p class='fs-5 mb-5'><b>Did you login?</b><p id='login'><button type='button' id='loginx' class='btn btn-primary px-5 me-3'>Yes</button><button type='button' id='loginy' class='btn btn-danger px-5' data-bs-toggle='tooltip' data-bs-html='true' title='<b>This will open Ticket Login page in new Tab. After login, come back to this page.</b>'>No</button></p></b></p><p class='mt-5'></div><div class='logout-select-1'><p class='mb-5 fs-5'><b>Select <span class='text-danger'>Logout</span> Time from below:</b></p><p id='logout-buttons'><button data-bs-toggle='tooltip' data-bs-html='true' title='<b>11:00 AM to 07:30 PM<br></b>' type='button' data-time='19:30' class='lbt btn btn-primary mb-5 me-5 fs-3'>07:30 PM</button><button data-bs-toggle='tooltip' data-bs-html='true' title='<b>07:30 PM to 03:00 AM</b>' type='button' data-time='03:00' class='lbt btn btn-dark mb-5 me-5 fs-3'>03:00 AM</button><button data-bs-toggle='tooltip' data-bs-html='true' title='<b>03:00 AM to 11:00 AM</b>' type='button' data-time='11:00' class='lbt btn btn-success mb-5 fs-3'>11:00 AM</button></p><p id='logout-confirm'><button type='button' id='skip' class='btn btn-light'>skip</button></p></div></div>";
+        }
+        if (document.getElementById('skip')) {
+            document.getElementById('skip').addEventListener('click', function() {
+                window.location.href = "?t=skip";
+            });
+            for (i = 0; i < document.getElementsByClassName('lbt').length; i++) {
+                document.getElementsByClassName('lbt')[i].addEventListener('click', function() {
+                    window.location.href = "?t=" + this.getAttribute('data-time');
+                })
+            }
+        }
+        if (document.getElementById('loginx')) {
+            document.getElementById('loginx').addEventListener('click', function() {
+                document.getElementsByClassName('loginx')[0].style.display = "none";
+                document.getElementsByClassName('logout-select-1')[0].style.display = "block";
+            });
+        }
+        if (document.getElementById('loginy')) {
+            document.getElementById('loginy').addEventListener('click', function() {
+                window.open('https://bulletlink.one/bulletlink_tasks.asp', '_blank')
+                document.getElementsByClassName('loginx')[0].style.display = "none";
+                document.getElementsByClassName('logout-select-1')[0].style.display = "block";
+            });
+        }
+    </script>
+    <script>
+        setTimeout(function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        }, 1000);
+        // Minimize top part
+        var minimize = document.getElementById("minimize");
+        var topx = document.getElementById("topx");
+        var tickets = document.getElementById("tickets");
+        var dark = document.querySelector('.dark');
+        minimize.addEventListener("click", function() {
+            if (topx.classList.contains("topi")) {
+                createCookie("top-hide", "Yes");
+                dark.classList.add('darkTop');
+                topx.classList.add("tope");
+                topx.classList.remove("topi");
+                minimize.classList.add("minimizeTop");
+                tickets.setAttribute("style", "height:calc(100vh)");
+            } else if (topx.classList.contains("tope")) {
+                eraseCookie("top-hide");
+                dark.classList.remove('darkTop');
+                topx.classList.add("topi");
+                topx.classList.remove("tope");
+                minimize.classList.remove("minimizeTop");
+                tickets.setAttribute("style", "height:calc(100vh - 160px)");
+            }
+        });
+        if (readCookie("top-hide")) {
+            topx.classList.add("tope");
+            topx.classList.remove("topi");
+            minimize.classList.add("minimizeTop");
+            tickets.setAttribute("style", "height:calc(100vh)");
+        }
+        dark.addEventListener('click', () => {
+            document.querySelector('.ticketPage').classList.toggle('darkEnable');
+            document.querySelector('.dark_moon').classList.toggle('d-none');
+            document.querySelector('.dark_sun').classList.toggle('d-none');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1 != true) {
+            document.getElementById('ticketSpan').innerHTML = "<div class='logout-cont logout-cont2'><i class='fa fa-exclamation-triangle mb-5 text-dark' style='font-size:6rem;color:gray !important;' aria-hidden='true'></i><br><h5>This ticket page will only work with <span class='text-danger'>FireFox</span> browser.<br><br>Thank you.</h5></div>";
+        }
+    </script>
+
+</body>
+
+</html>
