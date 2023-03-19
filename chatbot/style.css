@@ -1,0 +1,428 @@
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+}
+
+html {
+    scrollbar-color: #000 #f1f1f1;
+}
+
+html {
+    --scrollbarBG: #f1f1f1;
+    --thumbBG: rgba(0,0,0,0.7);
+}
+
+.chatbot-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.search_id {
+    cursor: pointer;
+}
+
+.search_id:hover {
+    background: #000;
+    transition: 200ms ease-in-out;
+}
+
+.search_id:hover .search_subject {
+    color: white !important;
+    transition: 200ms ease-in-out;
+}
+
+.search_id:hover .search_questionx {
+    color: #8e8e8e !important;
+    transition: 200ms ease-in-out;
+}
+
+.modal-body,
+.viewBody {
+    white-space: pre-wrap;
+}
+
+a[title*="000webhost"] {
+    display: none !important;
+}
+
+.viewBody img {
+    max-width: 100%;
+    height: auto;
+    padding: 5px;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.viewSubject .bi.bi-chevron-double-right {
+    display: none;
+}
+
+.bg-theme {
+    background-color: #fff !important;
+}
+
+.text-theme {
+    color: #0d64be !important;
+}
+
+.mb-10 {
+    margin-bottom: 10rem !important;
+}
+
+#search_box {
+    position: fixed;
+    bottom: 2vh;
+    opacity: 1;
+    width: 80%;
+    left: 10%;
+    z-index: 9;
+    box-sizing: border-box;
+    background: #ffffff;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.form-control:focus {
+    border-color: #ced4da;
+}
+
+#search_box #formDiv {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#search_box table {
+    width: 80%;
+    margin-left: 10%;
+}
+
+#searchData {
+    border-radius: 15px;
+}
+
+#loadData {
+    width: 100%;
+    margin-left: 0%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+#loadData:empty {
+    display: none;
+}
+
+.search_id .subjectSpan {
+    font-family: 'Oswald', sans-serif;
+    display: block;
+    margin-left: 0rem !important
+}
+
+.search_questionx {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    color: gray !important;
+}
+
+.formShadow {
+    transition: 300ms ease-in-out;
+}
+
+.search_id {
+    transition: 200ms ease-in-out;
+}
+
+.initial {
+    position: fixed;
+    top: 40%;
+    transform: translateY(-40%);
+    width: 100%;
+    text-align: center;
+    left: 0;
+}
+
+.user_chat {
+    max-width: 90%;
+    background: linear-gradient(#212529 0%,#000 100%);
+    background-color:#212529;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+}
+
+.bot_chat,
+.bot_chat2 {
+    max-width: 90%;
+    background: linear-gradient(#e8e8e8 50%,#d7d7d7 100%);
+    background-color:#eee;
+    border-radius: 20px;
+    color: #1d1e1e;
+}
+
+.bot_chat {
+    border-top-left-radius: 0;
+}
+
+.user_chat .bi.bi-person-circle,
+.user_chat .bi.bi-person-fill {
+    position: absolute;
+    right: -35px;
+    top: -1.6rem;
+}
+
+.bot_chat .bi.bi-robot {
+    position: absolute;
+    left: -35px;
+    top: -1.6rem;
+}
+
+.user_chat::before {
+    content: "You";
+    position: absolute;
+    top: -1.4rem;
+    right: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.bot_chat::before {
+    content: "BL Chatbot";
+    position: absolute;
+    top: -1.4rem;
+    left: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.close_boxes {
+	width: 90%;
+	margin-left: 5%;
+	text-align: right;
+	position: absolute;
+	margin-top: -39px;
+}
+
+.close_boxes svg {
+	cursor: pointer;
+	border: 5px solid white;
+	border-radius: 50px;
+	background: #333;
+	padding: 8px;
+	box-shadow: 0 -6px 6px rgba(0,0,0,0.2);
+}
+.searchMeans {
+	font-weight: bold;
+	color: #4a4a4a;
+	padding: 0.5rem 0;
+	padding-left: 0.7rem;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	margin-top: 0;
+}
+.newChat {
+    transition: 400ms ease-in-out;
+}
+
+.col-12.newChat.loadChat {
+    opacity: 0;
+}
+
+.refresh-message {
+    position: fixed;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 4000px rgba(255, 255, 255, 0.9);
+}
+
+.suggestions {
+    box-shadow: 0 -40px 40px rgba(0, 0, 0, 0.15);
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.chatbot-bodyx {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+}
+
+.search_id {
+    border-color: #000 !important;
+}
+
+.search_subject {
+    color: #000 !important;
+}
+
+.scrollDownx {
+    position: fixed;
+    bottom: 30%;
+    left: 2%;
+    opacity: 0.8;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.scrollDownx:hover {
+    opacity: 0.95;
+}
+
+.poweredLine small {
+    color: #9ba6b4;
+}
+
+.form-control::placeholder {
+    color: #969ba6;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.chatbot-container {
+    width: 80%;
+    margin-left: 10%;
+    height: 76vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 5%;
+    padding-right: 5%;
+    background: #fff;
+    margin-top: 12vh;
+    background: #f3f3f3;
+}
+
+.searchHeader {
+    width: 80%;
+    margin-left: 10%;
+    background: linear-gradient(#2E2E2E 0%,#000 100%);
+    margin-top: 2vh;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.sh_inside {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.sh_name::after {
+    content: "Customer Support 24x7";
+    position: absolute;
+    bottom: -0.7rem;
+    left: 0;
+    font-size: 0.7rem;
+    color: gray;
+    width: 100%;
+}
+
+.chatbot-body {
+	background-color: #2E3236 !important;
+	background-image: url("chatbot_bg.png");
+	background-repeat: repeat;
+}
+.chatLoader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align:center;
+	transition:300ms ease-in-out;
+}
+.chatHide, .mainbody {
+    opacity:0;
+    transition:300ms ease-in-out;
+}
+.mainbodyShow {
+    opacity:1;
+}
+.chatLoaderText {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.chatLoaderIcon {
+  text-align: center;
+}
+.chatLoaderText::after {
+	content: "|";
+	color: gray;
+	line-height: 35px;
+}
+@media only screen and (max-width: 900px) {
+    #loadData {
+        max-height: 85vh;
+        overflow: scroll;
+    }
+    .user_chat .bi.bi-person-circle,
+    .bot_chat .bi.bi-robot {
+        display: none;
+    }
+    .search_questionx {
+        display: none;
+    }
+    .subjectSpan svg {
+        margin-top: 0 !important;
+    }
+    .poweredLine {
+        display: none;
+    }
+    .scrollDownx {
+        display: none !important;
+    }
+    .searchHeader {
+        margin-top:0;
+        height:7vh;
+    }
+    .searchHeader,
+    .chatbot-container {
+        width: 100%;
+        margin-left: 0;
+        border-radius: 0;
+    }
+    .sh_name {
+    	transform: translateY(-0.4rem);
+    }
+    .chatbot-container {
+        height: 93vh;
+        margin-top:7vh;
+    }
+    #search_box {
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
