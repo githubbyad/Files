@@ -9,5 +9,5 @@ function Vailidate(New) {
         New.upassword.focus();
         return (false);
     }
-    New.SUBMIT.disabled = true;
+    New.submit1.disabled = true;
 }
