@@ -1,16 +1,16 @@
 function ReadSubmenu() {
-    var qrStr = location.href;
+    let qrStr = location.href;
     if (qrStr.indexOf('&site') != -1) {
         qrStr = qrStr.split('&site').shift();
     }
     if (qrStr.indexOf("/index.html") != -1) {
         return SParameters();
     }
-    var isFrontPage = qrStr.indexOf('.htm', 0);
+    const isFrontPage = qrStr.indexOf('.htm', 0);
     if (isFrontPage == -1) {
         return SParameters();
     } else {
-        var sPos, ePos, smenu;
+        let sPos, ePos, smenu;
         sPos = qrStr.indexOf('/index', 0);
         if (qrStr.indexOf('?lb=')) {
             sPos = qrStr.indexOf('=index', 0);
@@ -22,8 +22,8 @@ function ReadSubmenu() {
                 return SParameters();
             }
             if (qrStr.indexOf('smenu') != -1) {
-                var url = new URL(qrStr);
-                var smenup = url.searchParams.get("smenu");
+                const url = new URL(qrStr);
+                const smenup = url.searchParams.get("smenu");
                 return smenup;
             } else {
                 return smenu;
