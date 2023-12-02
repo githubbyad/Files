@@ -12,7 +12,7 @@ function ReadSubmenu() {
     } else {
         let sPos, ePos, smenu;
         sPos = qrStr.indexOf('/index', 0);
-        if (qrStr.indexOf('?lb=')) {
+        if (qrStr.indexOf('?lb=') != -1) {
             sPos = qrStr.indexOf('=index', 0);
         }
         if (sPos != -1) {
