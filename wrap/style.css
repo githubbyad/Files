@@ -1,0 +1,55 @@
+.lh-pending {
+	line-height: 4rem;
+}
+.pendingDiv .orderNum {
+    color: red
+}
+
+.pendingDiv .orderWrap {
+    border: 1px dashed red;
+}
+
+.pendingDiv[data-time*="second"] .orderNum,
+.pendingDiv[data-time^="1 minute"] .orderNum,
+.pendingDiv[data-time^="2 minute"] .orderNum,
+.pendingDiv[data-time^="3 minute"] .orderNum,
+.pendingDiv[data-time^="4 minute"] .orderNum,
+.pendingDiv[data-time^="5 minute"] .orderNum
+{
+    color: #000
+}
+
+.pendingDiv[data-time*="second"] .orderWrap,
+.pendingDiv[data-time^="1 minute"] .orderWrap,
+.pendingDiv[data-time^="2 minute"] .orderWrap,
+.pendingDiv[data-time^="3 minute"] .orderWrap,
+.pendingDiv[data-time^="4 minute"] .orderWrap,
+.pendingDiv[data-time^="5 minute"] .orderWrap {
+    border-width: 0;
+}
+
+.pendingDiv[data-time^="6 minute"] .orderNum,
+.pendingDiv[data-time^="7 minute"] .orderNum,
+.pendingDiv[data-time^="8 minute"] .orderNum,
+.pendingDiv[data-time^="9 minute"] .orderNum,
+.pendingDiv[data-time^="10 minute"] .orderNum,
+.pendingDiv[data-time^="11 minute"] .orderNum,
+.pendingDiv[data-time^="13 minute"] .orderNum,
+.pendingDiv[data-time^="14 minute"] .orderNum,
+.pendingDiv[data-time^="15 minute"] .orderNum
+{
+    color: #d35400
+}
+
+.pendingDiv[data-time^="6 minute"] .orderWrap,
+.pendingDiv[data-time^="7 minute"] .orderWrap,
+.pendingDiv[data-time^="8 minute"] .orderWrap,
+.pendingDiv[data-time^="9 minute"] .orderWrap,
+.pendingDiv[data-time^="10 minute"] .orderWrap,
+.pendingDiv[data-time^="11 minute"] .orderWrap,
+.pendingDiv[data-time^="13 minute"] .orderWrap,
+.pendingDiv[data-time^="14 minute"] .orderWrap,
+.pendingDiv[data-time^="15 minute"] .orderWrap
+{    
+    border: 1px dashed #d35400;
+}
