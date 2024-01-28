@@ -31,6 +31,10 @@
 
    include "../core/advanced_user.php";
 
-- 
+- update ".htaccess" file with below,
+
+   ErrorDocument 404 "<h1 style='color:gray;font-family: Trebuchet MS;position: fixed;top: 50%;left: 50%;transform: translate(-50%,50%);'>Page Not Found</h1>"
+
+-
 
 
