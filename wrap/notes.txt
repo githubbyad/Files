@@ -23,6 +23,6 @@
 
 - set ".userBox" class to "position:fixed" under "css/style.css"
 
-- 
+- create "faq" folder and "index.php" file and place "faq.php" file.
 
 
