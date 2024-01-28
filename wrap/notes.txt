@@ -37,6 +37,13 @@
 
 - remove 404 line from .htaccess from folders
 
+- add below in "/core/init.php",
+
+    // default timezone
+    $settings = new Settings;
+    $region = $settings->first()->region;
+    date_default_timezone_set($region);
+
 -
 
 
