@@ -27,4 +27,10 @@
 
 - copy "order/new.php" and "order/submit.php".
 
+- add below line on all pages except "pending","new","view" page of order folder
+
+   include "../core/advanced_user.php";
+
+- 
+
 
