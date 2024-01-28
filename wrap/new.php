@@ -145,7 +145,7 @@ $pendingOrders = count($pendingRes);
     <input type="hidden" name="order_number" value="<?= $orderNumber ?>" class="order_number_value">
     <input type="hidden" name="order_id" value="<?= $orderId ?>" class="order_id_value">
     <input type="hidden" name="order_timestamp" value="<?= $timeNow ?>" class="order_timestamp_value">
-    <input type="hidden" name="order_date" value="<?= $timeNowDate ?>" class="order_timestamp_value">
+    <input type="hidden" name="order_date" value="<?= $timeNowDate ?>" class="order_date_value">
     <input type="hidden" name="staff" value="<?= $_SESSION['user'] ?>" class="staff_value">
     <input type="hidden" name="order_amount" value="" class="order_amount_value">
 
@@ -991,8 +991,14 @@ $pendingOrders = count($pendingRes);
     document.querySelector(".parcel_toggle").addEventListener("click", () => {
         document.querySelectorAll(".selectParcel").forEach(s => {
             s.value = "Yes";
+            s.parentElement.querySelector(".order_parcel_status").value = s.options[s.selectedIndex].value;
         });
     });
+
+    // response from server
+    const date_timestamp = (d) => {
+        console.log(d);
+    }
 
     // form submit
     const form = document.querySelector("#orderForm");
@@ -1005,18 +1011,27 @@ $pendingOrders = count($pendingRes);
         document.querySelector(".responseData").innerHTML = data;
         document.querySelector(".print").classList.remove("disabledBox");
         // increase pending order after success
-        if (data.includes("success") && document.querySelector(".pendingOrder.updatePending")) {
+        if (data.includes("submit-success") && document.querySelector(".pendingOrder.updatePending")) {
+
             let pendingAdd = Number(document.querySelector(".pendingOrder.updatePending b").innerHTML) + 1;
             document.querySelector(".pendingOrder.updatePending b").innerHTML = pendingAdd;
             document.querySelector(".pendingOrder.updatePending b").classList.add("blink");
             document.querySelector(".pendingOrder.updatePending").setAttribute("data-pending", pendingAdd);
             document.querySelector(".pendingOrder.updatePending").classList.remove("updatePending");
             document.querySelector(".print").click();
-            <?php if ($settings->first()->payment_voice == "Yes") : ?>
-                startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
-            <?php endif ?>
+
         }
-        if (data.includes("Updated")) {
+        if (data.includes("update-success") || data.includes("submit-success")) {
+
+            // update date
+            let order_date = document.querySelector(".response_data").innerHTML;
+            let order_timestamp = document.querySelector(".response_data").getAttribute('data-timestamp');
+
+            document.querySelector(".orderDivKitchen .OrderTime").innerHTML = order_date.split(" ")[3] + " " + order_date.split(" ")[4];
+            document.querySelector(".orderDivCustomer .OrderTime").innerHTML = order_date;
+            document.querySelector(".order_date_value").value = order_date;
+            document.querySelector(".order_timestamp_value").value = order_timestamp;
+
             <?php if ($settings->first()->payment_voice == "Yes") : ?>
                 startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
             <?php endif ?>
