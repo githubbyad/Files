@@ -25,6 +25,6 @@
 
 - create "faq" folder and "index.php" file and place "faq.php" file.
 
-- move "date_default_timezone_set" from "inc/header.php" to "core/init.php" bottom side
+- copy "order/new.php" and "order/submit.php".
 
 
