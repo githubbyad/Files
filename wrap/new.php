@@ -654,8 +654,8 @@ $pendingOrders = count($pendingRes);
                 c.closest("tr").querySelector(".tdQuantity .quantityParent").classList.add("disabledBox");
 
                 // effect on parcel
-                c.closest("tr").querySelector(".tdParcel .selectParcel").value = "No";
-                c.closest("tr").querySelector(".tdParcel .order_parcel_status").value = "No";
+                c.closest("tr").querySelector(".tdParcel .selectParcel").value = document.querySelector(".selectParcel").value;
+                c.closest("tr").querySelector(".tdParcel .order_parcel_status").value = document.querySelector(".selectParcel").value;
                 c.closest("tr").querySelector(".tdParcel .selectParcel").disabled = true;
 
 
