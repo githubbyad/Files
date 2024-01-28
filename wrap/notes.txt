@@ -17,5 +17,8 @@
         return $ip;
     }
 
+- copy "config.php" file
+
+- move "functions.php" above "config.php" in "user/login.php"file
 
 
