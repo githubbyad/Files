@@ -3,27 +3,19 @@
 $title = "New Order";
 include "../inc/header.php";
 
-// get default texts
-$textResult = $conn->query("SELECT * from text");
-$texts = $textResult->fetchAll();
+// instances
+$orders = new Orders;
 
-$lastOrderResult = $conn->prepare("SELECT order_id, order_number,order_timestamp 
-                                    FROM orders 
-                                    ORDER BY order_id DESC 
-                                    LIMIT :limit");
-$lastOrderResult->execute([':limit' => '1']);
-$lastOrderObj = $lastOrderResult->fetchAll();
-$orderNumber = 1;
-$orderId = 1;
-if (count($lastOrderObj)) {
-    $lastOrderNumber = $lastOrderObj[0]->order_number; // last order number
-    $lastOrderId = $lastOrderObj[0]->order_id; // last order id or invoice 
-    $lastOrderTimeStamp = $lastOrderObj[0]->order_timestamp; // last order time    
-    if (date("j", $lastOrderTimeStamp) == date("j", strtotime("now"))) { // checking date with last order
-        $orderNumber = intval($lastOrderNumber) + 1;
-    }
-    $orderId = intval($lastOrderId) + 1;
+// get order & invice numbers
+$order_number = 1;
+$order_invoice = 1;
+$orders_last_record = $orders->first([], [], 'order_id');
+
+if ($orders_last_record) {
+    $order_invoice = intval($orders_last_record->invoice) + 1;
+    $order_number = intval($orders_last_record->order_number) + 1;
 }
+
 
 // current time
 $timeNow = time();
@@ -62,10 +54,10 @@ $pendingOrders = count($pendingRes);
             <span class="OrderCompanyAddress d-block"><?= $address ?></span>
         </p>
         <p class="printShow text-center pt-0 mb-0 justify-content-center align-items-center" style="border-top: 1px dashed;border-bottom: 1px dashed;display:flex;">
-            <span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $orderNumber ?></span>
+            <span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $order_number ?></span>
         </p>
         <p class="printShow float-start w-100 mb-0" style="line-height: 1.3rem !important;border-bottom: 1px dashed;">
-            <span class="orderInvoice float-start">INV# <?= $orderId ?></span>
+            <span class="orderInvoice float-start">INV# <?= $order_invoice ?></span>
             <span class="OrderTime float-end"><?= $timeNowDate ?></span>
         </p>
         <div class="position-relative mt-0 mb-1 w-100">
@@ -95,9 +87,9 @@ $pendingOrders = count($pendingRes);
 <div class="orderDivKitchen row rounded bg-body p-3 shadow" style="width: 80mm;display:none;">
     <div class="crrentOrdersKitchen printme border-2 text-black p-lg-0 px-0">
         <div class="printShow text-center pt-0 mb-0 d-flex justify-content-between align-items-end" style="border-bottom: 1px dashed;display:flex;">
-            <div class="d-inline-block"><span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $orderNumber ?></span></div>
+            <div class="d-inline-block"><span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $order_number ?></span></div>
             <div class="d-inline-block">
-                <span class="orderInvoice d-block text-end" style="line-height: 1.1rem;">INV# <?= $orderId ?></span>
+                <span class="orderInvoice d-block text-end" style="line-height: 1.1rem;">INV# <?= $order_invoice ?></span>
                 <span class="OrderTime d-block text-end"><?= $timeNowDate ?></span>
             </div>
         </div>
@@ -142,8 +134,9 @@ $pendingOrders = count($pendingRes);
 
 <form id="orderForm" action="" method="POST" class="position-relative no-print" style="box-shadow: none;">
 
-    <input type="hidden" name="order_number" value="<?= $orderNumber ?>" class="order_number_value">
-    <input type="hidden" name="order_id" value="<?= $orderId ?>" class="order_id_value">
+    <input type="hidden" name="order_number" value="<?= $order_number ?>" class="order_number_value">
+    <!-- <input type="hidden" name="order_id" value="<?= $orderId ?>" class="order_id_value"> -->
+    <input type="hidden" name="invoice" value="<?= $order_invoice ?>" class="invoice">
     <input type="hidden" name="order_timestamp" value="<?= $timeNow ?>" class="order_timestamp_value">
     <input type="hidden" name="order_date" value="<?= $timeNowDate ?>" class="order_date_value">
     <input type="hidden" name="staff" value="<?= $_SESSION['user'] ?>" class="staff_value">
@@ -1018,10 +1011,12 @@ $pendingOrders = count($pendingRes);
             document.querySelector(".pendingOrder.updatePending b").classList.add("blink");
             document.querySelector(".pendingOrder.updatePending").setAttribute("data-pending", pendingAdd);
             document.querySelector(".pendingOrder.updatePending").classList.remove("updatePending");
-            document.querySelector(".print").click();
 
         }
         if (data.includes("update-success") || data.includes("submit-success")) {
+
+            // auto-click on print button
+            document.querySelector(".print").click();
 
             // update date
             let order_date = document.querySelector(".response_data").innerHTML;
