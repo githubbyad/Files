@@ -44,7 +44,7 @@
     $region = $settings->first()->region;
     date_default_timezone_set($region);
 
-- add new column "invoice" with "Varchar" type under "orders".
+- add new column "invoice" with "Varchar" type under "orders" - By default value is zero.
 
 - replace ".formHeading" class with "body" from "delete" event JS for scroll top.
 
