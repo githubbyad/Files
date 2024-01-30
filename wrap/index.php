@@ -364,7 +364,7 @@ $users = new Users;
                 foreach ($order_details->count_column('menu', "DESC", ['category' => 'Special Wraps'], ['menu' => '']) as $row) :
                     if ($i <= 6) :
                 ?>
-                        <div class="col-12 py-3 div-hover position-relative">
+                        <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
                             <p class="d-flex justify-content-between mb-0">
                                 <span><?= $row->menu ?></span>
                                 <span><?= number_format(($row->count * 100) / $total_orders, 2, ".") . "%" ?></span>
@@ -391,7 +391,7 @@ $users = new Users;
                 foreach ($order_details->count_column('menu', "DESC", ['category' => 'Drinks'], ['menu' => '']) as $row) :
                     if ($i <= 6) :
                 ?>
-                        <div class="col-12 py-3 div-hover position-relative">
+                        <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
                             <p class="d-flex justify-content-between mb-0">
                                 <span><?= $row->menu ?></span>
                                 <span><?= number_format(($row->count * 100) / $total_orders, 2, ".") . "%" ?></span>
