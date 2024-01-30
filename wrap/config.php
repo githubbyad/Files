@@ -1,34 +1,45 @@
 <?php
 
-define("SERVER_ADDR", getIPAddress());
+define("SERVER", $_SERVER["SERVER_NAME"]);
 
-$_SERVER["SERVER_NAME"] == "localhost" && ($_SERVER["SERVER_NAME"] = SERVER_ADDR);
+//if ($_SERVER["SERVER_NAME"] == "localhost") { // localhost
 
-if ($_SERVER["SERVER_NAME"] == SERVER_ADDR) { // localhost
-    
-    define("ROOT", "http://" . SERVER_ADDR . "/Projects/BulletBilling/chiliwraps");
+// folder name
+define("FOLDER", "/pos");
 
-    /* true means it will show error */
-    define("DEBUG", true);
+// full path 
+define("ROOT", "http://" . SERVER . "" . FOLDER);
 
-    // database details
-    define("HOST", "localhost");
-    define("DB_NAME", "wraps");
-    define("USER", "root");
-    define("PASSWORD", "");
-    define("DATABASE", "mysql:host=" . HOST . ";dbname=" . DB_NAME);
-} else {
+// true means it will show error
+define("DEBUG", true);
 
-    /* true means it will show error */
-    define("DEBUG", true);
+// database details
+define("HOST", "localhost");
+define("DB_NAME", "wraps");
+define("USER", "root");
+define("PASSWORD", "");
+define("DATABASE", "mysql:host=" . HOST . ";dbname=" . DB_NAME);
 
-    // database details
-    define("HOST", "https://www.mywebsite.com");
-    define("DB_NAME", "wraps");
-    define("USER", "root");
-    define("PASSWORD", "");
-    define("DATABASE", "mysql:host=" . HOST . ";dbname=" . DB_NAME);
-}
+//} 
+
+// else {
+
+//     // folder to save data
+//     define("FOLDER", "");
+
+//     // full path 
+//     define("ROOT", "https://www.mywebsite.com" . FOLDER);
+
+//     // true means it will show error
+//     define("DEBUG", true);
+
+//     // database details
+//     define("HOST", "https://www.mywebsite.com");
+//     define("DB_NAME", "wraps");
+//     define("USER", "root");
+//     define("PASSWORD", "");
+//     define("DATABASE", "mysql:host=" . HOST . ";dbname=" . DB_NAME);
+// }
 
 // get user level
 $user_level = 1;
