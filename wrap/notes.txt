@@ -1,21 +1,9 @@
-- copy "config.php" file
-
-- move "functions.php" above "config.php" in "user/login.php"file
-
-/- create "faq" folder and "index.php" file and place "faq.php" file.
-
-- copy "order/new.php" and "order/submit.php".
-
-/- add below line on all pages except "pending","new","view" page of order folder. make sure to remove "../" while placing it on main "index.php" file.
-
-   include "../core/advanced_user.php";
-
-- add below in "/core/init.php",
-
-    // default timezone
-    $settings = new Settings;
-    $region = $settings->first()->region;
-    date_default_timezone_set($region);
-
-/- add new column "invoice" with "Varchar" type under "orders" - By default value is zero.
-
+- update below class,
+   .div-hover {
+       transition: 450ms cubic-bezier(.65,.05,.36,1);
+       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.05) inset;
+   
+       &:hover {
+           box-shadow: 600px 0px 0 0px rgba(0, 0, 0, 0.11) inset;
+       }
+   }
