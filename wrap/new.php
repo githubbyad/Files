@@ -12,7 +12,7 @@ $order_invoice = 1;
 $orders_last_record = $orders->first([], [], 'order_id');
 
 if ($orders_last_record) {
-    $order_invoice = intval($orders_last_record->invoice) + 1;
+    $order_invoice = intval($orders_last_record->order_id) + 1;
     $order_number = intval($orders_last_record->order_number) + 1;
 }
 
@@ -57,7 +57,7 @@ $pendingOrders = count($pendingRes);
             <span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $order_number ?></span>
         </p>
         <p class="printShow float-start w-100 mb-0" style="line-height: 1.3rem !important;border-bottom: 1px dashed;">
-            <span class="orderInvoice float-start">INV# <?= $order_invoice ?></span>
+            <span class="orderInvoice float-start">INV# <inv><?= $order_invoice ?></inv></span>
             <span class="OrderTime float-end"><?= $timeNowDate ?></span>
         </p>
         <div class="position-relative mt-0 mb-1 w-100">
@@ -87,9 +87,9 @@ $pendingOrders = count($pendingRes);
 <div class="orderDivKitchen row rounded bg-body p-3 shadow" style="width: 80mm;display:none;">
     <div class="crrentOrdersKitchen printme border-2 text-black p-lg-0 px-0">
         <div class="printShow text-center pt-0 mb-0 d-flex justify-content-between align-items-end" style="border-bottom: 1px dashed;display:flex;">
-            <div class="d-inline-block"><span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $order_number ?></span></div>
+            <div class="d-flex align-items-center"><span class="orderNumText fs-6">Order</span>:<span class="or_number ms-2 fw-bold" style="font-size:3rem !important;line-height: 3.3rem;"><?= $order_number ?></span></div>
             <div class="d-inline-block">
-                <span class="orderInvoice d-block text-end" style="line-height: 1.1rem;">INV# <?= $order_invoice ?></span>
+                <span class="orderInvoice d-block text-end" style="line-height: 1.1rem;">INV# <inv><?= $order_invoice ?></inv></span>
                 <span class="OrderTime d-block text-end"><?= $timeNowDate ?></span>
             </div>
         </div>
@@ -135,8 +135,8 @@ $pendingOrders = count($pendingRes);
 <form id="orderForm" action="" method="POST" class="position-relative no-print" style="box-shadow: none;">
 
     <input type="hidden" name="order_number" value="<?= $order_number ?>" class="order_number_value">
-    <!-- <input type="hidden" name="order_id" value="<?= $orderId ?>" class="order_id_value"> -->
-    <input type="hidden" name="invoice" value="<?= $order_invoice ?>" class="invoice">
+    <input type="hidden" name="order_id" value="<?= $order_invoice ?>" class="order_id_value">
+    <!-- <input type="hidden" name="invoice" value="<?= $order_invoice ?>" class="invoice"> -->
     <input type="hidden" name="order_timestamp" value="<?= $timeNow ?>" class="order_timestamp_value">
     <input type="hidden" name="order_date" value="<?= $timeNowDate ?>" class="order_date_value">
     <input type="hidden" name="staff" value="<?= $_SESSION['user'] ?>" class="staff_value">
@@ -334,7 +334,7 @@ $pendingOrders = count($pendingRes);
                     <div class="responseData"></div>
                 </div>
             </div>
-            <div class="row paymentRow bg-white layoutBar shadow">
+            <div class="row paymentRow bg-white layoutBar shadow" style="z-index: 2;">
                 <div class="submitBox col-12 text-center my-2">
 
                     <span class="pendingOrder updatePending btn btn-danger fw-normal fs-6 py-2 px-3 d-inline-block me-4" onclick="window.open('pending','_self');" data-pending="<?= $pendingOrders ?>"><?= $waitIcon ?>Pending <b><?= $pendingOrders ?></b></span>
@@ -342,9 +342,9 @@ $pendingOrders = count($pendingRes);
                         document.querySelector(".new-order-top").insertAdjacentElement("beforebegin", document.querySelector(".pendingOrder"));
                     </script>
 
-                    <span class="print btn btn-warning fw-normal fs-6 py-2 px-3 me-3 mb-3 mb-lg-0 d-inline-block ms-3 float-end disabledBox" data-bs-toggle="modal" data-bs-target="#exampleModal"><?= $printIcon ?> Print</span>
+                    <span class="print btn btn-warning fw-normal fs-6 py-2 px-3 me-3 mb-3 mb-lg-0 d-inline-block ms-3 float-end disabledBox d-none" data-bs-toggle="modal" data-bs-target="#exampleModal"><?= $printIcon ?> Print</span>
 
-                    <button type="submit" class="submit btn btn-primary fw-normal fs-6 py-2 px-3 mb-3 mb-lg-0 d-inline-block float-end disabledBox" data-total-amount=""><?= $placeOrderIcon ?> Submit</button>
+                    <button type="submit" class="submit btn btn-primary fw-normal fs-6 py-2 me-3 px-3 mb-3 mb-lg-0 d-inline-block float-end disabledBox" data-total-amount=""><?= $placeOrderIcon ?> Submit</button>
 
                     <div class="payByBox d-inline-block border bg-body rounded user-select-none px-3 py-2 float-end me-3">
                         <span class="float-start fw-bold text-black me-2">Pay By:</span>
@@ -360,7 +360,7 @@ $pendingOrders = count($pendingRes);
                         </div>
                         <input type="hidden" class="order_payment_method" name="order_payment_method">
                     </div>
-                    <span class="parcel_toggle btn btn-light float-end fw-normal me-3 px-3 py-2"><?= $parcel_icon ?> All Parcel</span>
+                    <span class="parcel_toggle btn btn-light float-end fw-normal me-3 px-3 py-2"><?= $parcel_icon ?> All Parcel<b></b></span>
                     <span class="check_items btn btn-light float-end fw-normal me-3 px-3 py-2" data-bs-toggle="modal" data-bs-target="#checkModal"><?= $check_items_icon ?> Items</span>
                     <span class="btn btn-light float-end fw-normal me-3 px-3 py-2" data-bs-toggle="modal" data-bs-target="#customerModal"><?= $new_customer_icon ?> Customer</span>
                     <span class="btn btn-light float-end fw-normal me-3 px-3 py-2" data-bs-toggle="modal" data-bs-target="#discountModal"><?= $percentage_icon  ?> Discount</span>
@@ -579,7 +579,7 @@ $pendingOrders = count($pendingRes);
         // select category
         // auto-select first category
         document.addEventListener("DOMContentLoaded", () => {
-            document.querySelector('.selectCategory') && (document.querySelectorAll('.selectCategory option').selectedIndex = 2);
+            //document.querySelector('.selectCategory') && (document.querySelectorAll('.selectCategory option').selectedIndex = 2);
         });
         document.querySelectorAll(".selectCategory").forEach(c => {
             c.addEventListener("change", e => {
@@ -968,7 +968,11 @@ $pendingOrders = count($pendingRes);
             document.querySelectorAll(".online_order").forEach(p => p.classList.remove("online_selected"));
             o.classList.add("online_selected");
             document.querySelector("input[name='customer_name']").value = `Online | ${o.innerHTML}`;
-            // document.querySelector("#customer_repeat").checked = true;
+            // changes on kitchen bill
+            $online_text =  `<b class="fst-italic rounded px-1 d-inline-block" style="border:1px solid black;">${o.innerHTML}</b>`;
+            document.querySelector(".orderDivKitchen .orderNumText").innerHTML = $online_text; 
+            document.querySelector(".orderDivCustomer .orderNumText").innerHTML = $online_text; 
+            
         });
     });
 
@@ -983,7 +987,7 @@ $pendingOrders = count($pendingRes);
     // parcel toggle
     document.querySelector(".parcel_toggle").addEventListener("click", () => {
         document.querySelectorAll(".selectParcel").forEach(s => {
-            s.value = "Yes";
+            s.value = (s.value == "Yes") ? "No" : "Yes";
             s.parentElement.querySelector(".order_parcel_status").value = s.options[s.selectedIndex].value;
         });
     });
@@ -1013,23 +1017,30 @@ $pendingOrders = count($pendingRes);
             document.querySelector(".pendingOrder.updatePending").classList.remove("updatePending");
 
         }
-        if (data.includes("update-success") || data.includes("submit-success")) {
-
-            // auto-click on print button
-            document.querySelector(".print").click();
+        if (data.includes("update-success") || data.includes("submit-success")) {            
 
             // update date
             let order_date = document.querySelector(".response_data").innerHTML;
             let order_timestamp = document.querySelector(".response_data").getAttribute('data-timestamp');
+            let order_invoice = document.querySelector(".response_data").getAttribute('data-invoice');
 
             document.querySelector(".orderDivKitchen .OrderTime").innerHTML = order_date.split(" ")[3] + " " + order_date.split(" ")[4];
             document.querySelector(".orderDivCustomer .OrderTime").innerHTML = order_date;
             document.querySelector(".order_date_value").value = order_date;
             document.querySelector(".order_timestamp_value").value = order_timestamp;
+            document.querySelector(".orderDivCustomer .orderInvoice inv").innerHTML = order_invoice;
+            document.querySelector(".orderDivCustomer .orderInvoice inv").innerHTML = order_invoice;
 
             <?php if ($settings->first()->payment_voice == "Yes") : ?>
                 startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
             <?php endif ?>
+
+            // auto-click on print button
+            //document.querySelector(".print").click();
+            // direct print button instead of manual keyboard clicks
+            document.querySelector(".printCustomer").click();
+            document.querySelector(".printKitchen").click();
+            
         }
     };
     document.querySelector(".submit").addEventListener("click", e => {

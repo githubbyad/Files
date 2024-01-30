@@ -55,21 +55,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $deleteLastOrderDetails->execute();
 
             $lastUpdated = 1;
-            echo '<div class="alert update-success alert-success alert-dismissible fade show" role="alert">
-                    Updated last order.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-            echo "<p class='response_data update-success d-none' data-timestamp='" . $order_timestamp . "' data-invoice='".$invoice_number."'>" . $order_time . "</p>";
+            // echo '<div class="alert update-success alert-success alert-dismissible fade show" role="alert">
+            //         Updated last order.
+            //         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            //     </div>';
+            // echo "<p class='response_data update-success d-none' data-timestamp='" . $order_timestamp . "' data-invoice='".$invoice_number."'>" . $order_time . "</p>";
         }
 
 
         // Inserting into "orders" table values
-        $ordersStatus = 0;        
+        $ordersStatus = 0;
 
         $ordersValue = [
             'order_number' => $_POST["order_number"],
             'order_date' => $order_time,
-            'invoice' => $_POST["invoice"],
             'order_timestamp' => $order_timestamp,
             'staff' => $_POST["staff"],
             'sub_total' => $_POST["sub_total"],
@@ -83,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-        $ordersSql = "INSERT INTO orders(order_number,order_date,invoice,order_timestamp,staff,sub_total,discount,order_total_amount, order_payment_method, customer_name,customer_phone,customer_repeat) VALUES ";
+        $ordersSql = "INSERT INTO orders(order_number,order_date,order_timestamp,staff,sub_total,discount,order_total_amount, order_payment_method, customer_name,customer_phone,customer_repeat) VALUES ";
         $ordersSql .= '("' . implode('","', $ordersValue) . '")';
         $ordersResult = $conn->prepare($ordersSql);
         try {
@@ -126,15 +125,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo "Error('order_details' table): " . $e->getMessage();
                 }
             }
-            if ($ordersDetailsStatus == 1 && $lastUpdated == 0) {
-                echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Order submitted successfully.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-
+            if ($ordersDetailsStatus == 1) {
+                if ($lastUpdated == 0) {
+                    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">Order submitted successfully.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+                } else if ($lastUpdated == 1) {
+                    echo '<div class="alert update-success alert-success alert-dismissible fade show" role="alert">Updated last order.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+                }
+                
                 // send date-time to client
-
-                echo "<p class='response_data submit-success d-none' data-timestamp='" . $order_timestamp . "' data-invoice='".$invoice_number."'>" . $order_time . "</p>";
+                echo "<p class='response_data submit-success d-none' data-timestamp='" . $order_timestamp . "' data-invoice='" . $ordersID . "'>" . $order_time . "</p>";
             }
         }
 
