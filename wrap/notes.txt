@@ -21,6 +21,9 @@
    }
 
 - add below class
+   .bg-gray {
+       background: #ddd;
+   }
    .modal_category_selected p,
    .modal_menu_selected p,
    .modal_menu_selected p span,
