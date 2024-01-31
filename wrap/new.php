@@ -580,10 +580,10 @@ $pendingOrders = count($pendingRes);
                 </div>
             </div>
             <div class="modal-footer pt-0 border-0 d-flex justify-content-between mt-4 mb-2">
-                <button type="button" class="btn btn-success px-5 py-2" onclick="setTimeout(() => document.querySelector('.addMore').click(),500);" data-bs-dismiss="modal">Add New</button>
+                <button type="button" class="btn btn-success px-5 py-2" onclick="setTimeout(() => document.querySelector('.addMore').click(),500);" data-bs-dismiss="modal">Save & Add Order</button>
                 <span>
-                    <button type="button" class="save_order btn btn-primary px-5 py-2 me-3" data-bs-dismiss="modal">Save</button>
-                    <button type="button" class="btn btn-light px-5 py-2" onclick="delete_order(document.querySelectorAll('.deleteIcon')[document.querySelectorAll('.deleteIcon').length - 1]);" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="save_order btn btn-primary px-5 py-2 me-3" data-bs-dismiss="modal">Save & Close</button>
+                    <button type="button" class="btn btn-light px-5 border border-dark py-2" onclick="delete_order(document.querySelectorAll('.deleteIcon')[document.querySelectorAll('.deleteIcon').length - 1]);" data-bs-dismiss="modal">Cancel</button>
                 </span>
             </div>
         </div>
