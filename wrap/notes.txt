@@ -7,3 +7,27 @@
            box-shadow: 600px 0px 0 0px rgba(0, 0, 0, 0.11) inset;
        }
    }
+
+
+- update below class
+   :root {
+       --color1: #1d6204;
+       --color2: #c5ff7b;
+       --color3: #fafafa;
+       --color4: #ecf0f1;
+       --color5: #000;
+   }
+
+- add below class
+   .modal_category_selected p,
+   .modal_menu_selected p,
+   .modal_menu_selected p span,
+   .modal_addon_selected p,
+   .modal_addon_selected p span,
+   .modal_submenu_selected p,
+   .modal_parcel_selected p {
+       background: var(--color5) !important;
+       transform: scale(1.05);
+       transition: 100ms ease-in-out;
+       color: #fff !important;
+   }
