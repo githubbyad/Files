@@ -5,6 +5,11 @@ include "../inc/header.php";
 
 // instances
 $orders = new Orders;
+$category = new Categories;
+$menus = new Menus;
+$submenus = new Submenus;
+$addons = new Addons;
+$comments = new Comments;
 
 // get order & invice numbers
 $order_number = 1;
@@ -132,7 +137,7 @@ $pendingOrders = count($pendingRes);
 <div class="orderCopy d-none"></div>
 <!-- order code copy -->
 
-<form id="orderForm" action="" method="POST" class="position-relative no-print" style="box-shadow: none;">
+<form id="orderForm" action="" method="POST" class="position-relative no-print mb-5" style="box-shadow: none;">
 
     <input type="hidden" name="order_number" value="<?= $order_number ?>" class="order_number_value">
     <input type="hidden" name="order_id" value="<?= $order_invoice ?>" class="order_id_value">
@@ -143,7 +148,7 @@ $pendingOrders = count($pendingRes);
     <input type="hidden" name="order_amount" value="" class="order_amount_value">
 
     <div class="row mx-0">
-        <div class="col-lg-12 bg-section p-3 mb-0 rounded shadow">
+        <div class="col-lg-12 bg-section p-3 mb-3 rounded shadow-sm">
             <div class="table-responsive">
                 <table class="table orderTable table-hover">
                     <thead>
@@ -160,7 +165,7 @@ $pendingOrders = count($pendingRes);
                         </tr>
                     </thead>
                     <tbody class="table-group-divider text-theme">
-                        <tr class="align-middle">
+                        <tr class="align-middle order_row">
                             <td title="Delete Order"><?= $deleteIcon; ?></td>
                             <td class="tdCategory">
                                 <select class="selectCategory form-select border border-theme blankValueCheck">
@@ -261,8 +266,8 @@ $pendingOrders = count($pendingRes);
                             </td>
                             <td class="tdParcel">
                                 <select class="selectParcel text-dark form-select border border-theme" disabled>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No" selected>No</option>
+                                    <option value="Yes" data-parcel-id="1">Yes</option>
+                                    <option value="No" selected data-parcel-id="2">No</option>
                                 </select>
                                 <input type='hidden' name='order_parcel_status[]' class='order_parcel_status'>
                             </td>
@@ -288,46 +293,6 @@ $pendingOrders = count($pendingRes);
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="row my-2">
-                <div class="col-12 text-black d-flex justify-content-between position-relative">
-                    <div>
-                        <span class="addMore btn btn-dark fw-normal fs-6 py-2 px-3 mb-0 d-inline-block me-3 me-lg-0 ms-0 ms-lg-3 float-start"><?= $newOrderIcon ?> Add More</span>
-                    </div>
-                    <div class="d-flex flex-column align-items-end mb-0 fw-bold fs-4 pe-1 w-50">
-                        <table class="subAmountTable" data-discount="0">
-                            <tr>
-                                <td class="ps-5 pe-3">Subtotal:</td>
-                                <td class="subTotalAmount fw-bold"></td>
-                            </tr>
-                            <tr>
-                                <td class="ps-5 pe-3">Discount <span class="discountPercentageShow"></span>:</td>
-                                <td class="discountFieldValue fw-bold"></td>
-                            </tr>
-                        </table>
-                        <input type="hidden" name="sub_total" value="0" class="sub_total_amount">
-                        <input type="hidden" name="discount" value="0" class="discount_amount">
-
-                        <!-- <p class="subTotalText text-end" data-discount="0">
-                            <span>Sub Total</span>
-                            <span class="subTotalAmount ms-4"></span>
-                            <input type="hidden" name="sub_total" value="0" class="sub_total_amount">
-                        </p>
-                        <p class="discountText text-end" data-discount="0">
-                            <span>Discount</span>
-                            <span class="discountPercentageShow"></span>
-                            <span class="discountFieldValue ms-4"></span>
-                            <input type="hidden" name="discount" value="0" class="discount_amount">
-                        </p> -->
-
-                        <p class="mb-0 text-end">
-                            <span class="totalAllText">Total</span>
-                            <gray class="ms-1"><?= $currency ?></gray>
-                            <span class="totalAmountAll">0</span>
-                            <input type="hidden" class="order_total_amount" name="order_total_amount">
-                        </p>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-lg-6 offset-lg-6">
@@ -369,7 +334,36 @@ $pendingOrders = count($pendingRes);
                 </div>
             </div>
         </div>
+        <div class="col-lg-12 px-lg-0 mb-5">
+            <div class="row my-2">
+                <div class="col-12 text-black d-flex justify-content-between position-relative">
+                    <div class="w-50 text-end">
+                        <span class="addMore btn btn-dark fw-normal fs-6 py-2 px-3 mb-0 d-inline-block me-3 me-lg-0 ms-0 ms-lg-3" data-bs-toggle="modal" data-bs-target="#order_modal"><?= $newOrderIcon ?> Add</span>
+                    </div>
+                    <div class="d-flex flex-column align-items-end mb-0 fw-bold fs-4 p-4 bg-white rounded shadow-sm w-auto">
+                        <table class="subAmountTable" data-discount="0">
+                            <tr>
+                                <td class="ps-5 pe-3">Subtotal:</td>
+                                <td class="subTotalAmount fw-bold"></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-5 pe-3">Discount <span class="discountPercentageShow"></span>:</td>
+                                <td class="discountFieldValue fw-bold"></td>
+                            </tr>
+                        </table>
+                        <input type="hidden" name="sub_total" value="0" class="sub_total_amount">
+                        <input type="hidden" name="discount" value="0" class="discount_amount">
 
+                        <p class="mb-0 text-end">
+                            <span class="totalAllText">Total</span>
+                            <gray class="ms-1"><?= $currency ?></gray>
+                            <span class="totalAmountAll">0</span>
+                            <input type="hidden" class="order_total_amount" name="order_total_amount">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- customer details -->
         <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" data-bs-backdrop="static" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
@@ -462,6 +456,140 @@ $pendingOrders = count($pendingRes);
 
     </div>
 </form>
+
+<!-- order popup -->
+<div class="modal fade" id="order_modal" tabindex="-1" aria-labelledby="order_popup" aria-hidden="true" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" style="--bs-modal-width: 80%;">
+        <div class="modal-content w-100">
+            <div class="modal-header d-none">
+                <h1 class="modal-title fs-6 w-100 text-center text-dark fw-bold" id="order_popup">Select Order</h1>
+                <button type="button" class="btn-close d-none" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="order_show modal-body p-3 d-flex justify-content-center rounded" style="background-color:var(--color4);">
+                <div class="container user-select-none">
+                    <div class="row justify-content-start">
+
+                        <!-- category -->
+                        <div class="col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
+                            <p class="fw-bold ps-2" style="color: var(--color5);">Category</p>
+                            <div class="row mx-0">
+                                <?php foreach ($category->find_all_limit(['status' => 'Yes'], [], 30, 0, 'category_order', 'ASC') as $row) : ?>
+                                    <div class="modal_category col-2 col-lg-3" data-category-id="<?= $row->category_id ?>">
+                                        <p class="bg-light fw-bold text-center text-dark shadow p-2 rounded cursor-pointer"><?= $row->category_name ?></p>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+
+                        <!-- menu -->
+                        <div class="modal_menu_wrap col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
+                            <p class="fw-bold ps-2" style="color: var(--color5);">Base</p>
+                            <div class="row mx-0">
+                                <?php foreach ($menus->find_all_limit(['menu_active_status' => 'Yes'], [], 100, 0, 'menu_name', 'ASC') as $row) : ?>
+                                    <div class="modal_menu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>">
+                                        <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">
+                                            <span class="d-block"><?= $row->menu_display_name ?></span>
+                                            <span class="d-block text-muted"><?= $currency_gray . $row->menu_amount ?></span>
+                                        </p>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+
+                        <!-- submenu -->
+                        <div class="modal_submenu_wrap col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
+                            <p class="fw-bold ps-2" style="color: var(--color5);">Flavour</p>
+                            <div class="row mx-0">
+                                <?php foreach ($submenus->find_all_limit(['submenu_active_status' => 'Yes'], [], 100, 0, 'submenu_name', 'ASC') as $row) : ?>
+                                    <div class="modal_submenu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>">
+                                        <p class="bg-light fw-bold text-center text-dark shadow p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+
+                        <!-- add-on -->
+                        <div class="modal_addon_wrap col-12 col-lg-3 mb-3 ps-lg-0 pe-lg-3">
+                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                <p class="fw-bold ps-2" style="color: var(--color5);">Add-On</p>
+                                <div class="row mx-0">
+                                    <?php foreach ($addons->find_all_limit(['addon_active_status' => 'Yes'], [], 100, 0, 'addon_name', 'ASC') as $row) : ?>
+                                        <div class="modal_addon col-4 col-lg-12 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>">
+                                            <p class="bg-light fw-bold text-dark text-center shadow p-2 rounded cursor-pointer">
+                                                <span class="d-block d-lg-inline me-lg-2"><?= $row->addon_display_name ?></span>
+                                                <span class="d-block d-lg-inline text-muted"><?= $currency_gray . $row->addon_amount ?></span>
+                                            </p>
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- parcel -->
+                        <div class="modal_parcel_wrap col-12 col-lg-3 mb-3 ps-lg-0 pe-lg-2">
+                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                <p class="fw-bold ps-2" style="color: var(--color5);">Parcel</p>
+                                <div class="row mx-0">
+                                    <div class="modal_parcel col-2 col-lg-6" data-parcel-id="1">
+                                        <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">Yes</p>
+                                    </div>
+                                    <div class="modal_parcel col-2 col-lg-6 modal_parcel_selected" data-parcel-id="2">
+                                        <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">No</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- quantity -->
+                        <div class="modal_quantity_wrap col-12 col-lg-3 mb-3 px-lg-2">
+                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                <p class="fw-bold ps-2" style="color: var(--color5);">Quantity</p>
+                                <div class="row mx-0">
+                                    <div class="col-12 d-flex mb-3 justify-content-center align-items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" onclick="minusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.minusIcon').length-1])" width="35" height="35" fill="#000" class="modal_minusIcon bi bi-dash-circle cursor-pointer" viewBox="0 0 16 16" style="opacity: 1;">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"></path>
+                                        </svg>
+                                        <span class="modal_quantity d-inline-block bg-light px-4 py-2 rounded text-dark mx-2 fw-bold">1</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" onclick="plusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.plusIcon').length-1])" width="35" height="35" fill="#000" class="modal_plusIcon bi bi-plus-circle cursor-pointer" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- comment -->
+                        <div class="modal_comment_wrap col-12 col-lg-3 mb-3 ps-lg-2 pe-lg-0">
+                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                <p class="fw-bold ps-2" style="color: var(--color5);">Comment</p>
+                                <div class="row mx-0">
+                                    <div class="modal_comment col-12 mb-3">
+                                        <input type="text" class="modal_comment_select form-control py-2" placeholder="Write Comment" list="commentList2">
+                                        <datalist id="commentList2">
+                                            <?php foreach ($comments->find_all_limit(['status' => 'Yes'], [], 25, 0, 'text', 'ASC') as $row) : ?>
+                                                <option value="<?= $row->text ?>"></option>;
+                                            <?php endforeach ?>
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer pt-0 border-0 d-flex justify-content-between mt-4 mb-2">
+                <button type="button" class="btn btn-success px-5 py-2" onclick="setTimeout(() => document.querySelector('.addMore').click(),500);" data-bs-dismiss="modal">Add New</button>
+                <span>
+                    <button type="button" class="save_order btn btn-primary px-5 py-2 me-3" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-light px-5 py-2" onclick="delete_order(document.querySelectorAll('.deleteIcon')[document.querySelectorAll('.deleteIcon').length - 1]);" data-bs-dismiss="modal">Cancel</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     // amount calculation on each row
     const trAmount = () => {
@@ -516,7 +644,7 @@ $pendingOrders = count($pendingRes);
         document.querySelector(".totalAmount").innerHTML = totalMerge;
         document.querySelector(".order_total_amount").value = totalMerge;
 
-        // quanity calculation
+        // quantity calculation
         let all_quantity = 0;
         document.querySelectorAll(".currentQuantity").forEach(c => {
             all_quantity += Number(c.innerHTML);
@@ -528,6 +656,7 @@ $pendingOrders = count($pendingRes);
     const plusClicked = p => {
         let q = Number(p.parentElement.querySelector(".currentQuantity").innerHTML) + 1;
         p.parentElement.querySelector(".currentQuantity").innerHTML = q;
+        document.querySelector(".modal_quantity").innerHTML = q;
         p.parentElement.parentElement.querySelector(".order_quantity").value = q;
         p.parentElement.querySelector(".minusIcon").style.opacity = (p.parentElement.querySelector(".currentQuantity").innerHTML != 1) ? 1 : 0;
         trAmount(); // amount calculation
@@ -537,12 +666,255 @@ $pendingOrders = count($pendingRes);
     const minusClicked = p => {
         if (p.parentElement.querySelector(".currentQuantity").innerHTML != 1) {
             p.parentElement.querySelector(".currentQuantity").innerHTML = Number(p.parentElement.querySelector(".currentQuantity").innerHTML) - 1;
+            document.querySelector(".modal_quantity").innerHTML = p.parentElement.querySelector(".currentQuantity").innerHTML;
             p.parentElement.parentElement.querySelector(".order_quantity").value = p.parentElement.querySelector(".currentQuantity").innerHTML;
             p.parentElement.querySelector(".minusIcon").style.opacity = (p.parentElement.querySelector(".currentQuantity").innerHTML != 1) ? 1 : 0;
             trAmount(); // amount calculation
         }
     }
 
+    // select category
+    const select_category = e => {
+        e.parentElement.querySelector(".category").value = e.options[e.selectedIndex].getAttribute("data-category-name");
+        const selectedCategoryId = e.options[e.selectedIndex].getAttribute("data-category-id");
+        e.classList.remove("blankValueCheck");
+        e.classList.remove("blankValue");
+
+        // effect on menu
+        e.closest("tr").querySelectorAll(".tdMenu .selectMenu option").forEach((m, i) => {
+            m.parentElement.disabled = false;
+            if (i > 0) {
+                m.parentElement.value = "";
+                m.classList.add("d-none");
+                m.getAttribute("data-category-id") == selectedCategoryId && m.classList.remove("d-none");
+            }
+            m.parentElement.querySelector("option").selected = true;
+        });
+        e.closest("tr").querySelector(".tdMenu .menu").value = "";
+        e.closest("tr").querySelector(".tdMenu .menu").setAttribute("data-menu-name", "");
+        e.closest("tr").querySelector(".tdMenu .menu").setAttribute("data-menu-amount", 0);
+
+        // effect on submenu
+        e.closest("tr").querySelectorAll(".tdSubMenu .selectSubMenu option").forEach((m, i) => {
+            m.parentElement.disabled = true;
+            if (i > 0) {
+                m.parentElement.value = "";
+                m.classList.add("d-none");
+                m.getAttribute("data-category-id") == selectedCategoryId && m.classList.remove("d-none");
+            }
+            m.parentElement.querySelector("option").selected = true;
+        });
+        e.closest("tr").querySelector(".tdSubMenu .submenu").value = "";
+        e.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-name", "");
+        e.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-amount", 0);
+
+        // effect on addon
+        e.closest("tr").querySelectorAll(".tdAddOn .selectAddOn").forEach(m => {
+            m.checked = false;
+            m.disabled = true;
+            m.classList.remove("d-none");
+            m.parentElement.classList.add("d-none");
+            if (m.getAttribute("data-category-id") == selectedCategoryId) {
+                m.parentElement.classList.remove("d-none");
+                m.classList.remove("d-none");
+                //m.disabled = false;
+            }
+        });
+        e.closest("tr").querySelectorAll(".tdAddOn .addon").forEach(t => {
+            t.value = "";
+            t.setAttribute("data-addon-name", "");
+            t.setAttribute("data-addon-id", "");
+            t.setAttribute("data-addon-amount", 0);
+        });
+        e.closest("tr").querySelectorAll(".tdAddOn .addonMerge").forEach(t => {
+            t.value = "";
+            t.setAttribute("data-addons", "");
+        });
+
+        // effect on quantity
+        e.closest("tr").querySelector(".tdQuantity .currentQuantity").innerHTML = 1;
+        e.closest("tr").querySelector(".tdQuantity .minusIcon").style.opacity = 0;
+        e.closest("tr").querySelector(".tdQuantity .order_quantity").value = 1;
+        e.closest("tr").querySelector(".tdQuantity .quantityParent").classList.add("disabledBox");
+
+        // effect on parcel
+        e.closest("tr").querySelector(".tdParcel .selectParcel").value = document.querySelector(".selectParcel").value;
+        e.closest("tr").querySelector(".tdParcel .order_parcel_status").value = document.querySelector(".selectParcel").value;
+        e.closest("tr").querySelector(".tdParcel .selectParcel").disabled = true;
+
+
+        // effect on comment
+        e.closest("tr").querySelector(".tdComment .selectComment").value = "";
+        e.closest("tr").querySelector(".tdComment .order_comment").value = "";
+        e.closest("tr").querySelector(".tdComment .selectComment").disabled = true;
+        e.closest("tr").querySelector(".tdComment .selectComment").classList.add("disabledBox");
+
+        // effect on amount
+        trAmount();
+
+    }
+
+    // select menu
+    const select_menu = e => {
+        e.parentElement.querySelector(".menu").value = e.options[e.selectedIndex].getAttribute("data-menu-name");
+        e.parentElement.querySelector(".menu").setAttribute("data-menu-name", e.options[e.selectedIndex].getAttribute("data-menu-name"));
+        e.parentElement.querySelector(".menu").setAttribute("data-menu-amount", e.options[e.selectedIndex].getAttribute("data-menu-amount"));
+        const selectedCategoryId = e.options[e.selectedIndex].getAttribute("data-category-id");
+        e.classList.remove("blankValueCheck");
+        e.classList.remove("blankValue");
+
+        // effect on submenu
+        e.closest("tr").querySelectorAll(".tdSubMenu .selectSubMenu option").forEach((m, i) => {
+            m.parentElement.disabled = false;
+            if (i > 0) { // ignore first field "Select SubMenu"
+                m.parentElement.value = "";
+                m.classList.add("d-none");
+                if (m.getAttribute("data-category-id") == selectedCategoryId) {
+                    m.classList.remove("d-none");
+                }
+            }
+            m.parentElement.querySelector("option").selected = true;
+        });
+        if (e.closest("tr").querySelectorAll(".selectSubMenu option[class=''][data-category-id]").length == 0) {
+            e.closest("tr").querySelector(".selectSubMenu").disabled = true;
+        } else {
+            e.closest("tr").querySelector(".selectSubMenu").disabled = false;
+        }
+        e.closest("tr").querySelector(".tdSubMenu .submenu").value = "";
+        e.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-name", "");
+        e.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-amount", 0);
+        e.closest("tr").querySelector(".tdSubMenu .selectSubMenu").classList.add("blankValueCheck");
+
+        // effect on addon
+        e.closest("tr").querySelectorAll(".tdAddOn .selectAddOn").forEach(m => {
+            m.checked = false;
+            m.disabled = true;
+            m.classList.remove("d-none");
+            m.parentElement.classList.add("d-none");
+            if (m.getAttribute("data-category-id") == selectedCategoryId) {
+                m.parentElement.classList.remove("d-none");
+                m.classList.remove("d-none");
+                m.disabled = false;
+            }
+        });
+        e.closest("tr").querySelectorAll(".tdAddOn .addon").forEach(t => {
+            t.value = "";
+            t.setAttribute("data-addon-name", "");
+            t.setAttribute("data-addon-id", "");
+            t.setAttribute("data-addon-amount", 0);
+        });
+        e.closest("tr").querySelectorAll(".tdAddOn .addonMerge").forEach(t => {
+            t.value = "";
+            t.setAttribute("data-addons", "");
+        });
+
+        // effect on quantity
+        e.closest("tr").querySelector(".tdQuantity .quantityParent").classList.remove("disabledBox");
+
+        // effect on parcel
+        e.closest("tr").querySelector(".tdParcel .selectParcel").disabled = false;
+
+        // effect on comment
+        e.closest("tr").querySelector(".tdComment .selectComment").disabled = false;
+        e.closest("tr").querySelector(".tdComment .selectComment").classList.remove("disabledBox");
+
+        // amount calculation
+        trAmount();
+    }
+
+    // select submenu
+    const select_submenu = e => {
+        e.parentElement.querySelector(".submenu").value = e.options[e.selectedIndex].getAttribute("data-submenu-name");
+        e.parentElement.querySelector(".submenu").setAttribute("data-submenu-name", e.options[e.selectedIndex].getAttribute("data-submenu-name"));
+        e.parentElement.querySelector(".submenu").setAttribute("data-submenu-amount", e.options[e.selectedIndex].getAttribute("data-submenu-amount"));
+        const selectedCategoryId = e.options[e.selectedIndex].getAttribute("data-category-id");
+        e.classList.remove("blankValueCheck");
+        e.classList.remove("blankValue");
+
+        // amount calculation
+        trAmount();
+    }
+
+    // select addon
+    const select_addon = e => {
+        e.parentElement.querySelector(".addon").value = "";
+        e.parentElement.querySelector(".addon").setAttribute("data-addon-name", "");
+        e.parentElement.querySelector(".addon").setAttribute("data-addon-id", "");
+        e.parentElement.querySelector(".addon").setAttribute("data-addon-amount", 0);
+        if (e.checked) {
+            e.parentElement.querySelector(".addon").value = e.getAttribute("data-addon-name");
+            e.parentElement.querySelector(".addon").setAttribute("data-addon-name", e.getAttribute("data-addon-name"));
+            e.parentElement.querySelector(".addon").setAttribute("data-addon-id", e.getAttribute("data-addon-id"));
+            e.parentElement.querySelector(".addon").setAttribute("data-addon-amount", e.getAttribute("data-addon-amount"));
+        }
+        let aMerge = "";
+        e.parentElement.parentElement.querySelector(".addonMerge").value = "";
+        e.parentElement.parentElement.querySelectorAll(".addon").forEach(a => (a.value != "") && (aMerge += `<${a.value}@${a.getAttribute('data-addon-amount')}>,`));
+        e.parentElement.parentElement.querySelector(".addonMerge").value = `[${aMerge.substring(0, (aMerge.length-1))}]`;
+        let bMerge = "";
+        e.parentElement.parentElement.querySelectorAll(".addon").forEach(b => (b.value != "") && (bMerge += `${b.value},`));
+        e.parentElement.parentElement.querySelector(".addonMerge").setAttribute("data-addons", "");
+        e.parentElement.parentElement.querySelector(".addonMerge").setAttribute("data-addons", bMerge.slice(0, -1));
+        const selectedCategoryId = e.getAttribute("data-category-id");
+
+        // amount calculation
+        trAmount();
+    }
+
+    // select parcel
+    const select_parcel = e => {
+        e.parentElement.querySelector(".order_parcel_status").value = e.options[e.selectedIndex].value;
+    }
+
+    // select comment
+    const select_comment = e => {
+        e.parentElement.querySelector(".order_comment").value = e.value;
+    }
+    // auto select category
+    const auto_select_category = i => {
+        document.querySelectorAll(".selectCategory")[document.querySelectorAll(".selectCategory").length - 1].selectedIndex = i;
+        select_category(document.querySelectorAll(".selectCategory")[document.querySelectorAll(".selectCategory").length - 1]);
+    }
+
+    // auto select menu
+    const auto_select_menu = i => {
+        document.querySelectorAll(".selectMenu")[document.querySelectorAll(".selectMenu").length - 1].selectedIndex = i;
+        select_menu(document.querySelectorAll(".selectMenu")[document.querySelectorAll(".selectMenu").length - 1]);
+    }
+
+    // auto select submenu
+    const auto_select_submenu = i => {
+        document.querySelectorAll(".selectSubMenu")[document.querySelectorAll(".selectSubMenu").length - 1].selectedIndex = i;
+        select_submenu(document.querySelectorAll(".selectSubMenu")[document.querySelectorAll(".selectSubMenu").length - 1]);
+    }
+
+    // auto select addon
+    const auto_select_addon = i => {
+        const addon_last_value = document.querySelectorAll(`.selectAddOn[data-addon-id='${i}']`)[document.querySelectorAll(`.selectAddOn[data-addon-id='${i}']`).length - 1].checked;
+        document.querySelectorAll(`.selectAddOn[data-addon-id='${i}']`)[document.querySelectorAll(`.selectAddOn[data-addon-id='${i}']`).length - 1].checked = !addon_last_value;
+        select_addon(document.querySelectorAll(`.selectAddOn[data-addon-id='${i}']`)[document.querySelectorAll(`.selectAddOn[data-addon-id='${i}']`).length - 1]);
+    }
+
+    // auto select comment
+    const auto_select_comment = value => {
+        document.querySelectorAll(".selectComment")[document.querySelectorAll(".selectComment").length - 1].value = value;
+        select_comment(document.querySelectorAll(".selectComment")[document.querySelectorAll(".selectComment").length - 1]);
+    }
+
+    // auto select parcel
+    const auto_select_parcel = i => {
+        document.querySelectorAll(".selectParcel")[document.querySelectorAll(".selectParcel").length - 1].selectedIndex = i;
+        select_parcel(document.querySelectorAll(".selectParcel")[document.querySelectorAll(".selectParcel").length - 1]);
+    }
+
+    // delete order
+    const delete_order = e => {
+        e.closest("tr").remove();
+        trAmount();
+        if (document.querySelector(".orderTable tbody").childElementCount == 0) {
+            //addMoreOrder();
+        }
+    }
 
     // load all scripts
     const loadScript = () => {
@@ -577,233 +949,39 @@ $pendingOrders = count($pendingRes);
 
 
         // select category
-        // auto-select first category
-        document.addEventListener("DOMContentLoaded", () => {
-            //document.querySelector('.selectCategory') && (document.querySelectorAll('.selectCategory option').selectedIndex = 2);
-        });
         document.querySelectorAll(".selectCategory").forEach(c => {
-            c.addEventListener("change", e => {
-                c.parentElement.querySelector(".category").value = e.target.options[e.target.selectedIndex].getAttribute("data-category-name");
-                const selectedCategoryId = e.target.options[e.target.selectedIndex].getAttribute("data-category-id");
-                c.classList.remove("blankValueCheck");
-                c.classList.remove("blankValue");
-
-
-                // effect on menu
-                c.closest("tr").querySelectorAll(".tdMenu .selectMenu option").forEach((m, i) => {
-                    m.parentElement.disabled = false;
-                    if (i > 0) {
-                        m.parentElement.value = "";
-                        m.classList.add("d-none");
-                        m.getAttribute("data-category-id") == selectedCategoryId && m.classList.remove("d-none");
-                    }
-                    m.parentElement.querySelector("option").selected = true;
-                });
-                c.closest("tr").querySelector(".tdMenu .menu").value = "";
-                c.closest("tr").querySelector(".tdMenu .menu").setAttribute("data-menu-name", "");
-                c.closest("tr").querySelector(".tdMenu .menu").setAttribute("data-menu-amount", 0);
-
-                // effect on submenu
-                c.closest("tr").querySelectorAll(".tdSubMenu .selectSubMenu option").forEach((m, i) => {
-                    m.parentElement.disabled = true;
-                    if (i > 0) {
-                        m.parentElement.value = "";
-                        m.classList.add("d-none");
-                        m.getAttribute("data-category-id") == selectedCategoryId && m.classList.remove("d-none");
-                    }
-                    m.parentElement.querySelector("option").selected = true;
-                });
-                c.closest("tr").querySelector(".tdSubMenu .submenu").value = "";
-                c.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-name", "");
-                c.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-amount", 0);
-
-                // effect on addon
-                c.closest("tr").querySelectorAll(".tdAddOn .selectAddOn").forEach(m => {
-                    m.checked = false;
-                    m.disabled = true;
-                    m.classList.remove("d-none");
-                    m.parentElement.classList.add("d-none");
-                    if (m.getAttribute("data-category-id") == selectedCategoryId) {
-                        m.parentElement.classList.remove("d-none");
-                        m.classList.remove("d-none");
-                        //m.disabled = false;
-                    }
-                });
-                c.closest("tr").querySelectorAll(".tdAddOn .addon").forEach(t => {
-                    t.value = "";
-                    t.setAttribute("data-addon-name", "");
-                    t.setAttribute("data-addon-id", "");
-                    t.setAttribute("data-addon-amount", 0);
-                });
-                c.closest("tr").querySelectorAll(".tdAddOn .addonMerge").forEach(t => {
-                    t.value = "";
-                    t.setAttribute("data-addons", "");
-                });
-
-                // effect on quantity
-                c.closest("tr").querySelector(".tdQuantity .currentQuantity").innerHTML = 1;
-                c.closest("tr").querySelector(".tdQuantity .minusIcon").style.opacity = 0;
-                c.closest("tr").querySelector(".tdQuantity .order_quantity").value = 1;
-                c.closest("tr").querySelector(".tdQuantity .quantityParent").classList.add("disabledBox");
-
-                // effect on parcel
-                c.closest("tr").querySelector(".tdParcel .selectParcel").value = document.querySelector(".selectParcel").value;
-                c.closest("tr").querySelector(".tdParcel .order_parcel_status").value = document.querySelector(".selectParcel").value;
-                c.closest("tr").querySelector(".tdParcel .selectParcel").disabled = true;
-
-
-                // effect on comment
-                c.closest("tr").querySelector(".tdComment .selectComment").value = "";
-                c.closest("tr").querySelector(".tdComment .order_comment").value = "";
-                c.closest("tr").querySelector(".tdComment .selectComment").disabled = true;
-                c.closest("tr").querySelector(".tdComment .selectComment").classList.add("disabledBox");
-
-                // effect on amount
-                trAmount();
-
-            });
+            c.addEventListener("change", () => select_category(c));
         });
 
         // select menu
         document.querySelectorAll(".selectMenu").forEach(c => {
-            c.addEventListener("change", e => {
-                c.parentElement.querySelector(".menu").value = e.target.options[e.target.selectedIndex].getAttribute("data-menu-name");
-                c.parentElement.querySelector(".menu").setAttribute("data-menu-name", e.target.options[e.target.selectedIndex].getAttribute("data-menu-name"));
-                c.parentElement.querySelector(".menu").setAttribute("data-menu-amount", e.target.options[e.target.selectedIndex].getAttribute("data-menu-amount"));
-                const selectedCategoryId = e.target.options[e.target.selectedIndex].getAttribute("data-category-id");
-                c.classList.remove("blankValueCheck");
-                c.classList.remove("blankValue");
-
-                // effect on submenu
-                c.closest("tr").querySelectorAll(".tdSubMenu .selectSubMenu option").forEach((m, i) => {
-                    m.parentElement.disabled = false;
-                    if (i > 0) { // ignore first field "Select SubMenu"
-                        m.parentElement.value = "";
-                        m.classList.add("d-none");
-                        if (m.getAttribute("data-category-id") == selectedCategoryId) {
-                            m.classList.remove("d-none");
-                        }
-                    }
-                    m.parentElement.querySelector("option").selected = true;
-                });
-                if (c.closest("tr").querySelectorAll(".selectSubMenu option[class=''][data-category-id]").length == 0) {
-                    c.closest("tr").querySelector(".selectSubMenu").disabled = true;
-                } else {
-                    c.closest("tr").querySelector(".selectSubMenu").disabled = false;
-                }
-                c.closest("tr").querySelector(".tdSubMenu .submenu").value = "";
-                c.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-name", "");
-                c.closest("tr").querySelector(".tdSubMenu .submenu").setAttribute("data-submenu-amount", 0);
-                c.closest("tr").querySelector(".tdSubMenu .selectSubMenu").classList.add("blankValueCheck");
-
-                // effect on addon
-                c.closest("tr").querySelectorAll(".tdAddOn .selectAddOn").forEach(m => {
-                    m.checked = false;
-                    m.disabled = true;
-                    m.classList.remove("d-none");
-                    m.parentElement.classList.add("d-none");
-                    if (m.getAttribute("data-category-id") == selectedCategoryId) {
-                        m.parentElement.classList.remove("d-none");
-                        m.classList.remove("d-none");
-                        m.disabled = false;
-                    }
-                });
-                c.closest("tr").querySelectorAll(".tdAddOn .addon").forEach(t => {
-                    t.value = "";
-                    t.setAttribute("data-addon-name", "");
-                    t.setAttribute("data-addon-id", "");
-                    t.setAttribute("data-addon-amount", 0);
-                });
-                c.closest("tr").querySelectorAll(".tdAddOn .addonMerge").forEach(t => {
-                    t.value = "";
-                    t.setAttribute("data-addons", "");
-                });
-
-                // effect on quantity
-                c.closest("tr").querySelector(".tdQuantity .quantityParent").classList.remove("disabledBox");
-
-                // effect on parcel
-                c.closest("tr").querySelector(".tdParcel .selectParcel").disabled = false;
-
-                // effect on comment
-                c.closest("tr").querySelector(".tdComment .selectComment").disabled = false;
-                c.closest("tr").querySelector(".tdComment .selectComment").classList.remove("disabledBox");
-
-                // amount calculation
-                trAmount();
-            });
+            c.addEventListener("change", () => select_menu(c));
         });
 
         // select submenu
         document.querySelectorAll(".selectSubMenu").forEach(c => {
-            c.addEventListener("change", e => {
-                c.parentElement.querySelector(".submenu").value = e.target.options[e.target.selectedIndex].getAttribute("data-submenu-name");
-                c.parentElement.querySelector(".submenu").setAttribute("data-submenu-name", e.target.options[e.target.selectedIndex].getAttribute("data-submenu-name"));
-                c.parentElement.querySelector(".submenu").setAttribute("data-submenu-amount", e.target.options[e.target.selectedIndex].getAttribute("data-submenu-amount"));
-                const selectedCategoryId = e.target.options[e.target.selectedIndex].getAttribute("data-category-id");
-                c.classList.remove("blankValueCheck");
-                c.classList.remove("blankValue");
-
-                // amount calculation
-                trAmount();
-            });
+            c.addEventListener("change", e => select_submenu(c));
         });
 
         // select addon
         document.querySelectorAll(".selectAddOn").forEach(c => {
-            c.addEventListener("change", e => {
-                c.parentElement.querySelector(".addon").value = "";
-                c.parentElement.querySelector(".addon").setAttribute("data-addon-name", "");
-                c.parentElement.querySelector(".addon").setAttribute("data-addon-id", "");
-                c.parentElement.querySelector(".addon").setAttribute("data-addon-amount", 0);
-                if (e.target.checked) {
-                    c.parentElement.querySelector(".addon").value = e.target.getAttribute("data-addon-name");
-                    c.parentElement.querySelector(".addon").setAttribute("data-addon-name", e.target.getAttribute("data-addon-name"));
-                    c.parentElement.querySelector(".addon").setAttribute("data-addon-id", e.target.getAttribute("data-addon-id"));
-                    c.parentElement.querySelector(".addon").setAttribute("data-addon-amount", e.target.getAttribute("data-addon-amount"));
-                }
-                let aMerge = "";
-                c.parentElement.parentElement.querySelector(".addonMerge").value = "";
-                c.parentElement.parentElement.querySelectorAll(".addon").forEach(a => (a.value != "") && (aMerge += `<${a.value}@${a.getAttribute('data-addon-amount')}>,`));
-                c.parentElement.parentElement.querySelector(".addonMerge").value = `[${aMerge.substring(0, (aMerge.length-1))}]`;
-                let bMerge = "";
-                c.parentElement.parentElement.querySelectorAll(".addon").forEach(b => (b.value != "") && (bMerge += `${b.value},`));
-                c.parentElement.parentElement.querySelector(".addonMerge").setAttribute("data-addons", "");
-                c.parentElement.parentElement.querySelector(".addonMerge").setAttribute("data-addons", bMerge.slice(0, -1));
-                const selectedCategoryId = e.target.getAttribute("data-category-id");
-
-                // amount calculation
-                trAmount();
-            });
+            c.addEventListener("change", e => select_addon(c));
         });
-
-        // select quantity
 
         // select parcel
         document.querySelectorAll(".selectParcel").forEach(c => {
-            c.addEventListener("change", e => {
-                c.parentElement.querySelector(".order_parcel_status").value = e.target.options[e.target.selectedIndex].value;
-            });
+            c.addEventListener("change", e => select_parcel(c));
         });
 
         // add comment
         document.querySelectorAll(".selectComment").forEach(c => {
-            c.addEventListener("input", e => {
-                c.parentElement.querySelector(".order_comment").value = e.target.value;
-            });
+            c.addEventListener("input", () => select_comment(c));
         });
 
-        // delete order
+        // delete order        
         document.querySelectorAll(".deleteIcon").forEach(d => {
-            d.addEventListener("click", () => {
-                d.closest("tr").remove();
-                trAmount();
-                if (document.querySelector(".orderTable tbody").childElementCount == 0) {
-                    addMoreOrder();
-                }
-            });
+            d.addEventListener("click", () => delete_order(d));
         });
-
 
     };
     loadScript();
@@ -811,11 +989,38 @@ $pendingOrders = count($pendingRes);
     // copy order
     document.querySelector(".orderCopy").innerHTML = `<!--${document.querySelector(".orderTable tbody tr").outerHTML}-->`;
 
+    // clear modal data
+    const clear_modal_data = () => {
+        document.querySelectorAll(".modal_category_selected").forEach(m => m.classList.remove("modal_category_selected"));
+        document.querySelectorAll(".modal_menu_selected").forEach(m => m.classList.remove("modal_menu_selected"));
+        document.querySelectorAll(".modal_submenu_selected").forEach(m => m.classList.remove("modal_submenu_selected"));
+        document.querySelectorAll(".modal_addon_selected").forEach(m => m.classList.remove("modal_addon_selected"));
+        document.querySelectorAll(".modal_parcel_selected").forEach(m => {
+            m.classList.remove("modal_parcel_selected")
+        });
+        const first_parcel = document.querySelector(".selectParcel").value; // select parcel value from first selection
+        if (first_parcel == "Yes") {
+            document.querySelectorAll(".modal_parcel")[0].classList.add("modal_parcel_selected");
+        } else {
+            document.querySelectorAll(".modal_parcel")[1].classList.add("modal_parcel_selected");
+        }
+        document.querySelectorAll(".modal_comment_select").forEach(m => m.value = "");
+        document.querySelectorAll(".modal_quantity").forEach(m => m.innerHTML = "1");
+        // auto select first category
+        document.querySelector(".modal_category").click();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
     // add more order
     const addMoreOrder = () => {
         let orderCopy = document.querySelector(".orderCopy").innerHTML.replace("<!--", "").replace("-->", "");
         document.querySelector(".orderTable tbody").insertAdjacentHTML("beforeend", orderCopy);
         loadScript();
+        clear_modal_data();
+        auto_select_category(1);
     };
     document.querySelector(".addMore").addEventListener("click", addMoreOrder);
 
@@ -916,6 +1121,7 @@ $pendingOrders = count($pendingRes);
             }
         });
     });
+
     // restricting percentge value under 100
     let amount = document.querySelector('.by_percentage input');
     amount.addEventListener('input', function(e) {
@@ -926,6 +1132,7 @@ $pendingOrders = count($pendingRes);
             amount.value = amount.value.slice(0, 2);
         }
     });
+
     // selecting percentage amount from pre-defined value
     document.querySelectorAll(".by_percentage p span").forEach(p => {
         p.addEventListener("click", e => {
@@ -934,6 +1141,7 @@ $pendingOrders = count($pendingRes);
             document.querySelector('.by_percentage input').value = Number(p.innerHTML);
         });
     });
+
     // submitting discount page
     document.querySelector(".submitDiscount").addEventListener("click", () => {
         let discountValue = 0;
@@ -969,10 +1177,10 @@ $pendingOrders = count($pendingRes);
             o.classList.add("online_selected");
             document.querySelector("input[name='customer_name']").value = `Online | ${o.innerHTML}`;
             // changes on kitchen bill
-            $online_text =  `<b class="fst-italic rounded px-1 d-inline-block" style="border:1px solid black;">${o.innerHTML}</b>`;
-            document.querySelector(".orderDivKitchen .orderNumText").innerHTML = $online_text; 
-            document.querySelector(".orderDivCustomer .orderNumText").innerHTML = $online_text; 
-            
+            $online_text = `<b class="fst-italic rounded px-1 d-inline-block" style="border:1px solid black;">${o.innerHTML}</b>`;
+            document.querySelector(".orderDivKitchen .orderNumText").innerHTML = $online_text;
+            document.querySelector(".orderDivCustomer .orderNumText").innerHTML = $online_text;
+
         });
     });
 
@@ -994,8 +1202,179 @@ $pendingOrders = count($pendingRes);
 
     // response from server
     const date_timestamp = (d) => {
-        console.log(d);
+        // console.log(d);
     }
+
+
+    // *************************** order modal ***************************
+
+    // select modal category
+    document.querySelectorAll(".modal_category").forEach(m => {
+
+        m.addEventListener("click", () => {
+
+            // add/remove selected class from category
+            document.querySelectorAll(".modal_category").forEach(p => p.classList.remove("modal_category_selected"));
+            m.classList.add("modal_category_selected");
+
+            // get category id
+            const category_id = m.getAttribute("data-category-id");
+
+            // effect on category            
+            document.querySelectorAll(".selectCategory")[document.querySelectorAll(".selectCategory").length - 1].querySelectorAll("option").forEach((s, i) => {
+                if (s.getAttribute("data-category-id") == category_id) {
+                    auto_select_category(i);
+                }
+            });
+
+            // effect on modal menu
+            document.querySelectorAll(".modal_menu").forEach(r => r.classList.add("d-none"));
+            document.querySelectorAll(".modal_menu").forEach(n => {
+                if (n.getAttribute('data-category-id') == category_id) {
+                    n.classList.remove("d-none");
+                }
+            });
+            document.querySelectorAll(".modal_menu").forEach(p => p.classList.remove("modal_menu_selected"));
+
+            // effect on modal submenu
+            // showing sub-menu as per category_id
+            document.querySelectorAll(".modal_submenu").forEach(r => r.classList.add("d-none"));
+            document.querySelectorAll(".modal_submenu").forEach(n => {
+                if (n.getAttribute('data-category-id') == category_id) {
+                    n.classList.remove("d-none");
+                }
+            });
+            // hiding whole section if not having any submenu
+            document.querySelector(".modal_submenu_wrap").classList.add("d-none");
+            if (document.querySelectorAll(".modal_submenu:not(.d-none)").length > 0) {
+                document.querySelector(".modal_submenu_wrap").classList.remove("d-none");
+            }
+
+            // effect on modal addon
+            document.querySelectorAll(".modal_addon").forEach(r => r.classList.add("d-none"));
+            document.querySelectorAll(".modal_addon").forEach(n => {
+                if (n.getAttribute('data-category-id') == category_id) {
+                    n.classList.remove("d-none");
+                }
+            });
+            // hiding whole section if not having any addon
+            document.querySelector(".modal_addon_wrap").classList.add("d-none");
+            if (document.querySelectorAll(".modal_addon:not(.d-none)").length > 0) {
+                document.querySelector(".modal_addon_wrap").classList.remove("d-none");
+            }
+        });
+    });
+    // auto select first category
+    document.querySelector(".modal_category").click();
+
+    // select modal menu
+    document.querySelectorAll(".modal_menu").forEach(m => {
+
+        m.addEventListener("click", () => {
+
+            // add/remove selected class from menu
+            document.querySelectorAll(".modal_menu").forEach(p => p.classList.remove("modal_menu_selected"));
+            m.classList.add("modal_menu_selected");
+
+            // get menu id
+            const menu_id = m.getAttribute("data-menu-id");
+
+            // effect on menu            
+            document.querySelectorAll(".selectMenu")[document.querySelectorAll(".selectMenu").length - 1].querySelectorAll("option").forEach((s, i) => {
+                if (s.getAttribute("data-menu-id") == menu_id) {
+                    auto_select_menu(i);
+                }
+            });
+
+            // effect on modal submenu
+            document.querySelectorAll(".modal_submenu").forEach(p => p.classList.remove("modal_submenu_selected"));
+
+            // effect on modal addon
+            document.querySelectorAll(".modal_addon").forEach(p => p.classList.remove("modal_addon_selected"));
+
+
+        });
+    });
+
+    // select modal submenu
+    document.querySelectorAll(".modal_submenu").forEach(m => {
+
+        m.addEventListener("click", () => {
+
+            // add/remove selected class from submenu
+            document.querySelectorAll(".modal_submenu").forEach(p => p.classList.remove("modal_submenu_selected"));
+            m.classList.add("modal_submenu_selected");
+
+            // get submenu id
+            const submenu_id = m.getAttribute("data-submenu-id");
+
+            // effect on submenu            
+            document.querySelectorAll(".selectSubMenu")[document.querySelectorAll(".selectSubMenu").length - 1].querySelectorAll("option").forEach((s, i) => {
+                if (s.getAttribute("data-submenu-id") == submenu_id) {
+                    auto_select_submenu(i);
+                }
+            });
+        });
+    });
+
+    // select modal addon
+    document.querySelectorAll(".modal_addon").forEach(m => {
+
+        m.addEventListener("click", () => {
+
+            // add/remove selected class from addon
+            // document.querySelectorAll(".modal_addon").forEach(p => p.classList.remove("modal_addon_selected"));
+            m.classList.toggle("modal_addon_selected");
+
+            // get addon id
+            const addon_id = m.getAttribute("data-addon-id");
+
+            // effect on addon       
+            auto_select_addon(addon_id);
+
+        });
+    });
+
+    // select modal parcel
+    document.querySelectorAll(".modal_parcel").forEach(m => {
+
+        m.addEventListener("click", () => {
+
+            // add/remove selected class from parcel
+            document.querySelectorAll(".modal_parcel").forEach(p => p.classList.remove("modal_parcel_selected"));
+            m.classList.add("modal_parcel_selected");
+
+            // get parcel id
+            const parcel_id = m.getAttribute("data-parcel-id");
+
+            // effect on parcel            
+            document.querySelectorAll(".selectParcel")[document.querySelectorAll(".selectParcel").length - 1].querySelectorAll("option").forEach((s, i) => {
+                if (s.getAttribute("data-parcel-id") == parcel_id) {
+                    auto_select_parcel(i);
+                }
+            });
+        });
+    });
+
+    // select modal comment
+    document.querySelectorAll(".modal_comment_select").forEach(m => {
+
+        m.addEventListener("input", () => {
+
+            // effect on comment            
+            //document.querySelectorAll(".selectComment")[document.querySelectorAll(".selectComment").length - 1].value = m.value;
+            auto_select_comment(m.value);
+        });
+    });
+
+    // remove order initially
+    document.querySelector(".order_row").remove();
+    document.querySelector(".addMore").click();
+
+    // auto-select 1st category
+    auto_select_category(1);
+
+
 
     // form submit
     const form = document.querySelector("#orderForm");
@@ -1017,7 +1396,7 @@ $pendingOrders = count($pendingRes);
             document.querySelector(".pendingOrder.updatePending").classList.remove("updatePending");
 
         }
-        if (data.includes("update-success") || data.includes("submit-success")) {            
+        if (data.includes("update-success") || data.includes("submit-success")) {
 
             // update date
             let order_date = document.querySelector(".response_data").innerHTML;
@@ -1032,7 +1411,7 @@ $pendingOrders = count($pendingRes);
             document.querySelector(".orderDivCustomer .orderInvoice inv").innerHTML = order_invoice;
 
             <?php if ($settings->first()->payment_voice == "Yes") : ?>
-                startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
+                //startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
             <?php endif ?>
 
             // auto-click on print button
@@ -1040,7 +1419,7 @@ $pendingOrders = count($pendingRes);
             // direct print button instead of manual keyboard clicks
             document.querySelector(".printCustomer").click();
             document.querySelector(".printKitchen").click();
-            
+
         }
     };
     document.querySelector(".submit").addEventListener("click", e => {
