@@ -1,3 +1,5 @@
+- add "new.php"
+
 - update below class,
    .div-hover {
        transition: 450ms cubic-bezier(.65,.05,.36,1);
