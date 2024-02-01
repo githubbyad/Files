@@ -26,14 +26,17 @@
        background: #ddd;
    }
    .modal_category_selected p,
-.modal_menu_selected p,
-.modal_menu_selected p span,
-.modal_addon_selected p,
-.modal_addon_selected p span,
-.modal_submenu_selected p,
-.modal_parcel_selected p {
-    background: var(--color5) !important;
-    transform: scale(1.05);
-    transition: 100ms ease-in-out;
-    color: #fff !important;
-}
+   .modal_menu_selected p,
+   .modal_menu_selected p span,
+   .modal_addon_selected p,
+   .modal_addon_selected p span,
+   .modal_submenu_selected p,
+   .modal_parcel_selected p {
+       background: var(--color5) !important;
+       transform: scale(1.05);
+       transition: 100ms ease-in-out;
+       color: #fff !important;
+   }
+   .orderTable tr:last-child td {
+   	border-width: 0 !important;
+   }
