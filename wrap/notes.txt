@@ -22,9 +22,10 @@
 
 
 - add below class
-   .bg-gray {
+      .bg-gray {
        background: #ddd;
    }
+   
    .modal_category_selected p,
    .modal_menu_selected p,
    .modal_menu_selected p span,
@@ -33,12 +34,21 @@
    .modal_submenu_selected p,
    .modal_parcel_selected p {
        background: var(--color5) !important;
-       transform: scale(1.05);
+       transform: scale(1.05) !important;
        transition: 100ms ease-in-out;
        color: #fff !important;
    }
+   
+   .modal_menu_wrap_selected .modal_box p,
+   .modal_category_wrap_selected .modal_box p,
+   .modal_submenu_wrap_selected .modal_box p,
+   .modal_addon_wrap_selected .modal_box p,
+   .modal_parcel_wrap_selected .modal_box p {
+       transform: scale(0.95);
+   }
+   
    .orderTable tr:last-child td {
-   	border-width: 0 !important;
+       border-width: 0 !important;
    }
 
 
