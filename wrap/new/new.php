@@ -327,7 +327,7 @@ $pendingOrders = count($pendingRes);
                         </div>
                         <input type="hidden" class="order_payment_method" name="order_payment_method">
                     </div>
-                    <span class="parcel_toggle btn btn-light float-end fw-normal me-3 px-3 py-2"><?= $parcel_icon ?> All Parcel<b></b></span>
+                    <span class="parcel_toggle btn btn-light float-end fw-normal me-3 px-3 py-2"><?= $parcel_icon ?> Parcel<b></b></span>
                     <span class="check_items btn btn-light float-end fw-normal me-3 px-3 py-2" data-bs-toggle="modal" data-bs-target="#checkModal"><?= $check_items_icon ?> Items</span>
                     <span class="btn btn-light float-end fw-normal me-3 px-3 py-2" data-bs-toggle="modal" data-bs-target="#customerModal"><?= $new_customer_icon ?> Customer</span>
                     <span class="btn btn-light float-end fw-normal me-3 px-3 py-2" data-bs-toggle="modal" data-bs-target="#discountModal"><?= $percentage_icon  ?> Discount</span>
@@ -461,132 +461,137 @@ $pendingOrders = count($pendingRes);
 
 <!-- order popup -->
 <div class="modal fade" id="order_modal" tabindex="-1" aria-labelledby="order_popup" aria-hidden="true" data-bs-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" style="--bs-modal-width: 80%;">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" style="--bs-modal-width: 95%;">
         <div class="modal-content w-100">
             <div class="modal-header d-none">
                 <h1 class="modal-title fs-6 w-100 text-center text-dark fw-bold" id="order_popup">Select Order</h1>
                 <button type="button" class="btn-close d-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="order_show modal-body p-2 d-flex justify-content-center rounded" style="background-color:var(--color4);">
-                <div class="container user-select-none">
-                    <div class="row justify-content-start">
+                <div class="container-fluid user-select-none">
+                    <div class="row mt-3">
 
-                        <!-- category -->
-                        <div class="modal_category_wrap col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3 position-relative">
-                            <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span class="">Category</span></p>
-                            <div class="row mx-0">
-                                <?php foreach ($category->find_all_limit(['status' => 'Yes'], [], 30, 0, 'category_order', 'ASC') as $row) : ?>
-                                    <div class="modal_category modal_box col-2 col-lg-3 px-1" data-category-id="<?= $row->category_id ?>">
-                                        <p class="bg-light fw-bold text-center text-dark shadow p-2 rounded cursor-pointer"><?= $row->category_name ?></p>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-
-                        <!-- menu -->
-                        <div class="modal_menu_wrap col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
-                            <p class="fw-bold ps-2 mb-2" style="color: var(--color5);">Base</p>
-                            <div class="row mx-0">
-                                <?php foreach ($menus->find_all_limit(['menu_active_status' => 'Yes'], [], 100, 0, 'menu_name', 'ASC') as $row) : ?>
-                                    <div class="modal_menu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>" onclick="startVoice('<?= $row->menu_display_name ?>')">
-                                        <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">
-                                            <span class="d-block"><?= $row->menu_display_name ?></span>
-                                            <span class="d-block text-muted"><?= $currency_gray . $row->menu_amount ?></span>
-                                        </p>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-
-                        <!-- submenu -->
-                        <div class="modal_submenu_wrap col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
-                            <p class="fw-bold ps-2 mb-2" style="color: var(--color5);">Flavour</p>
-                            <div class="row mx-0">
-                                <?php foreach ($submenus->find_all_limit(['submenu_active_status' => 'Yes'], [], 100, 0, 'submenu_name', 'ASC') as $row) : ?>
-                                    <div class="modal_submenu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>" onclick="startVoice('<?= $row->submenu_display_name ?>')">
-                                        <p class="bg-light fw-bold text-center text-dark mb-2 shadow p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-
-                        <!-- add-on -->
-                        <div class="modal_addon_wrap col-12 col-lg-3 mb-3 ps-lg-0 pe-lg-3">
-                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
-                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);">Add-On</p>
+                        <div class="col-lg-10 row mx-lg-0">
+                            <!-- category -->
+                            <div class="modal_category_wrap modal_wrap_box col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3 mb-lg-4 position-relative">
+                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Category</span></p>
                                 <div class="row mx-0">
-                                    <?php foreach ($addons->find_all_limit(['addon_active_status' => 'Yes'], [], 100, 0, 'addon_name', 'ASC') as $row) : ?>
-                                        <div class="modal_addon modal_box col-4 col-lg-12 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>" onclick="startVoice('with <?= $row->addon_display_name ?>')">
-                                            <p class="bg-light fw-bold text-dark text-center shadow p-2 rounded cursor-pointer">
-                                                <span class="d-block d-lg-inline me-lg-2"><?= $row->addon_display_name ?></span>
-                                                <span class="d-block d-lg-inline text-muted"><?= $currency_gray . $row->addon_amount ?></span>
+                                    <?php foreach ($category->find_all_limit(['status' => 'Yes'], [], 30, 0, 'category_order', 'ASC') as $row) : ?>
+                                        <div class="modal_category modal_box col-2 col-lg-2 px-1" data-category-id="<?= $row->category_id ?>">
+                                            <p class="bg-light fw-bold text-center text-dark mb-lg-2 shadow-sm p-2 rounded cursor-pointer"><?= $row->category_name ?></p>
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                            </div>
+
+                            <!-- menu -->
+                            <div class="modal_menu_wrap modal_wrap_box col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3 mb-lg-4">
+                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Base</span></p>
+                                <div class="row mx-0">
+                                    <?php foreach ($menus->find_all_limit(['menu_active_status' => 'Yes'], [], 100, 0, 'menu_name', 'ASC') as $row) : ?>
+                                        <div class="modal_menu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>" onclick="startVoice('<?= $row->menu_display_name ?>')">
+                                            <p class="bg-light fw-bolder text-dark shadow-sm text-center mb-2 p-2 rounded cursor-pointer">
+                                                <span class="d-block"><?= $row->menu_display_name ?></span>
+                                                <span class="d-block text-muted"><?= $currency_gray . $row->menu_amount ?></span>
                                             </p>
+                                        </div>
+                                    <?php endforeach ?>
+                                </div>
+                            </div>
+
+                            <!-- submenu -->
+                            <div class="modal_submenu_wrap modal_wrap_box col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
+                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Flavour</span></p>
+                                <div class="row mx-0">
+                                    <?php foreach ($submenus->find_all_limit(['submenu_active_status' => 'Yes'], [], 100, 0, 'submenu_name', 'ASC') as $row) : ?>
+                                        <div class="modal_submenu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>" onclick="startVoice('<?= $row->submenu_display_name ?>')">
+                                            <p class="bg-light fw-bold text-center text-dark mb-2 shadow-sm p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
                                         </div>
                                     <?php endforeach ?>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- parcel -->
-                        <div class="modal_parcel_wrap col-12 col-lg-3 mb-3 ps-lg-0 pe-lg-2">
-                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
-                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);">Parcel</p>
-                                <div class="row mx-0">
-                                    <div class="modal_parcel modal_box col-2 col-lg-6 px-1" data-parcel-id="1" onclick="startVoice('Parcel Yes.')">
-                                        <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">Yes</p>
+
+                        <div class="col-lg-2 row mx-lg-0 px-lg-0">
+                            <!-- add-on -->
+                            <div class="modal_addon_wrap col-12 col-lg-12 mb-3 mb-lg-4">
+                                <div class="modal_wrap_box w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                    <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Add-On</span></p>
+                                    <div class="row mx-0 justify-content-center">
+                                        <?php foreach ($addons->find_all_limit(['addon_active_status' => 'Yes'], [], 100, 0, 'addon_name', 'ASC') as $row) : ?>
+                                            <div class="modal_addon modal_box col-4 col-lg-10 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>" onclick="startVoice('with <?= $row->addon_display_name ?>')">
+                                                <p class="bg-light fw-bold text-dark text-center shadow-sm p-2 rounded cursor-pointer">
+                                                    <span class="d-block d-lg-inline me-lg-2"><?= $row->addon_display_name ?></span>
+                                                    <span class="d-block d-lg-inline text-muted"><?= $currency_gray . $row->addon_amount ?></span>
+                                                </p>
+                                            </div>
+                                        <?php endforeach ?>
                                     </div>
-                                    <div class="modal_parcel modal_box col-2 col-lg-6 px-1 modal_parcel_selected" data-parcel-id="2">
-                                        <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">No</p>
+                                </div>
+                            </div>
+
+                            <!-- parcel -->
+                            <div class="modal_parcel_wrap col-12 col-lg-12 mb-3 mb-lg-4">
+                                <div class="modal_wrap_box w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                    <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Parcel</span></p>
+                                    <div class="row mx-0">
+                                        <div class="modal_parcel modal_box col-2 col-lg-6 px-1" data-parcel-id="1" onclick="startVoice('Parcel Yes.')">
+                                            <p class="bg-light fw-bold text-dark shadow-sm text-center p-2 rounded cursor-pointer">Yes</p>
+                                        </div>
+                                        <div class="modal_parcel modal_box col-2 col-lg-6 px-1 modal_parcel_selected" data-parcel-id="2">
+                                            <p class="bg-light fw-bold text-dark shadow-sm text-center p-2 rounded cursor-pointer">No</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- quantity -->
+                            <div class="modal_quantity_wrap col-12 col-lg-12 mb-3 mb-lg-4">
+                                <div class="modal_wrap_box w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                    <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Quantity</span></p>
+                                    <div class="row mx-0">
+                                        <div class="col-12 d-flex mb-3 justify-content-center align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" onclick="minusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.minusIcon').length-1])" width="30" height="30" fill="#000" class="modal_minusIcon bi bi-dash-circle cursor-pointer" viewBox="0 0 16 16" style="opacity: 1;">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"></path>
+                                            </svg>
+                                            <span class="modal_quantity d-inline-block bg-light px-4 py-2 py-lg-1 rounded text-dark mx-2 fw-bold">1</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" onclick="plusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.plusIcon').length-1])" width="30" height="30" fill="#000" class="modal_plusIcon bi bi-plus-circle cursor-pointer" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- comment -->
+                            <div class="modal_comment_wrap col-12 col-lg-12 mb-3">
+                                <div class="modal_wrap_box w-100 bg-gray border border-secondary rounded p-2 pb-0">
+                                    <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Comment</span></p>
+                                    <div class="row mx-0">
+                                        <div class="modal_comment col-12 mb-3">
+                                            <input type="text" class="modal_comment_select form-control py-2 py-lg-1" placeholder="Write Comment" list="commentList2">
+                                            <datalist id="commentList2">
+                                                <?php foreach ($comments->find_all_limit(['status' => 'Yes'], [], 25, 0, 'text', 'ASC') as $row) : ?>
+                                                    <option value="<?= $row->text ?>"></option>;
+                                                <?php endforeach ?>
+                                            </datalist>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- quantity -->
-                        <div class="modal_quantity_wrap col-12 col-lg-3 mb-3 px-lg-2">
-                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
-                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);">Quantity</p>
-                                <div class="row mx-0">
-                                    <div class="col-12 d-flex mb-3 justify-content-center align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" onclick="minusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.minusIcon').length-1])" width="35" height="35" fill="#000" class="modal_minusIcon bi bi-dash-circle cursor-pointer" viewBox="0 0 16 16" style="opacity: 1;">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
-                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"></path>
-                                        </svg>
-                                        <span class="modal_quantity d-inline-block bg-light px-4 py-2 rounded text-dark mx-2 fw-bold">1</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" onclick="plusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.plusIcon').length-1])" width="35" height="35" fill="#000" class="modal_plusIcon bi bi-plus-circle cursor-pointer" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- comment -->
-                        <div class="modal_comment_wrap col-12 col-lg-3 mb-3 ps-lg-2 pe-lg-0">
-                            <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
-                                <p class="fw-bold ps-2 mb-2" style="color: var(--color5);">Comment</p>
-                                <div class="row mx-0">
-                                    <div class="modal_comment col-12 mb-3">
-                                        <input type="text" class="modal_comment_select form-control py-2" placeholder="Write Comment" list="commentList2">
-                                        <datalist id="commentList2">
-                                            <?php foreach ($comments->find_all_limit(['status' => 'Yes'], [], 25, 0, 'text', 'ASC') as $row) : ?>
-                                                <option value="<?= $row->text ?>"></option>;
-                                            <?php endforeach ?>
-                                        </datalist>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer pt-0 border-0 d-flex justify-content-center mt-2 mb-2">
-                <button type="button" class="btn btn-success px-5 py-2 d-none" onclick="setTimeout(() => document.querySelector('.addMore').click(),500);" data-bs-dismiss="modal">Save & Add Order</button>
-                <span>
-                    <button type="button" class="save_order btn btn-primary px-5 py-2 me-3" data-bs-dismiss="modal">Save</button>
-                    <button type="button" class="btn btn-light px-5 border border-dark py-2" onclick="delete_order(document.querySelectorAll('.deleteIcon')[document.querySelectorAll('.deleteIcon').length - 1]);" data-bs-dismiss="modal">Cancel</button>
-                </span>
+            <div class="modal-footer pt-0 border-0 d-flex justify-content-center my-3 pb-0">
+                <button type="button" class="btn btn-outline-success px-5 py-2 d-none" onclick="setTimeout(() => document.querySelector('.addMore').click(),500);" data-bs-dismiss="modal">Save & Add Order</button>
+                <span></span>
+                <button type="button" class="save_order btn btn-outline-primary fw-bold px-5 py-3 me-3" data-bs-dismiss="modal">Save</button>                
+                <button type="button" class="btn btn-outline-secondary px-5 fw-bold py-3" onclick="delete_order(document.querySelectorAll('.deleteIcon')[document.querySelectorAll('.deleteIcon').length - 1]);" data-bs-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
