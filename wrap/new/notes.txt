@@ -1,2 +1,29 @@
 - query to change menu name
   UPDATE `order_details` SET `menu`='Veg Cheezza' WHERE menu = 'Veg Cheesa'
+
+- add below css,
+  .modal_wrap_box {
+      position: relative;
+      margin-top: 8px;
+      padding-top: 15px !important;
+  }
+  
+  .modal_wrap_box>p span {
+      top: -15px;
+      z-index: 2;
+      background: #ddd;
+      color: #000;
+      position: absolute;
+      padding: 0 1rem !important;
+      border: 1px solid gray;
+      border-radius: 5px;
+  }
+  
+  .modal-content {
+      border-radius: 20px !important;
+  }
+  
+  .order_show {
+      border-radius: 20px !important;
+      border-bottom: 1px solid #6c757d;
+  }
