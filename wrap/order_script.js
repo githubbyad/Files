@@ -817,6 +817,7 @@ const postData = async (formattedFormData) => {
 
         if (payment_voice == "Yes") {
             startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
+            startVoice(`Your total Amount is ${document.querySelector(".totalAmountAll").innerHTML}.`);
         }
 
         // auto-click on print button

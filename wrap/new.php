@@ -150,7 +150,7 @@ $pendingOrders = count($pendingRes);
     <div class="row mx-0">
         <div class="col-lg-12 bg-section p-3 mb-3 rounded shadow-sm">
             <div class="table-responsive">
-                <table class="table orderTable table-hover">
+                <table class="table orderTable table-hover mb-0">
                     <thead>
                         <tr class="text-theme">
                             <th scope="col"></th>
@@ -338,7 +338,7 @@ $pendingOrders = count($pendingRes);
             <div class="row my-2">
                 <div class="col-12 text-black d-flex justify-content-between position-relative">
                     <div class="w-50 text-end">
-                        <span class="addMore btn btn-dark fw-normal fs-6 py-2 px-3 mb-0 d-inline-block me-3 me-lg-0 ms-0 ms-lg-3" data-bs-toggle="modal" data-bs-target="#order_modal"><?= $newOrderIcon ?> Add</span>
+                        <span class="addMore btn btn-dark fw-normal fs-6 py-2 px-3 mb-0 d-inline-block me-3 me-lg-0 ms-0 ms-lg-3" data-bs-toggle="modal" data-bs-target="#order_modal"><?= $newOrderIcon ?> Add Order</span>
                     </div>
                     <div class="d-flex flex-column align-items-end mb-0 fw-bold fs-4 p-4 bg-white rounded shadow-sm w-auto">
                         <table class="subAmountTable" data-discount="0">
@@ -486,7 +486,7 @@ $pendingOrders = count($pendingRes);
                             <p class="fw-bold ps-2" style="color: var(--color5);">Base</p>
                             <div class="row mx-0">
                                 <?php foreach ($menus->find_all_limit(['menu_active_status' => 'Yes'], [], 100, 0, 'menu_name', 'ASC') as $row) : ?>
-                                    <div class="modal_menu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>">
+                                    <div class="modal_menu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>" onclick="startVoice('<?= $row->menu_display_name ?>')">
                                         <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">
                                             <span class="d-block"><?= $row->menu_display_name ?></span>
                                             <span class="d-block text-muted"><?= $currency_gray . $row->menu_amount ?></span>
@@ -501,7 +501,7 @@ $pendingOrders = count($pendingRes);
                             <p class="fw-bold ps-2" style="color: var(--color5);">Flavour</p>
                             <div class="row mx-0">
                                 <?php foreach ($submenus->find_all_limit(['submenu_active_status' => 'Yes'], [], 100, 0, 'submenu_name', 'ASC') as $row) : ?>
-                                    <div class="modal_submenu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>">
+                                    <div class="modal_submenu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>" onclick="startVoice('<?= $row->submenu_display_name ?>')">
                                         <p class="bg-light fw-bold text-center text-dark shadow p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
                                     </div>
                                 <?php endforeach ?>
@@ -514,7 +514,7 @@ $pendingOrders = count($pendingRes);
                                 <p class="fw-bold ps-2" style="color: var(--color5);">Add-On</p>
                                 <div class="row mx-0">
                                     <?php foreach ($addons->find_all_limit(['addon_active_status' => 'Yes'], [], 100, 0, 'addon_name', 'ASC') as $row) : ?>
-                                        <div class="modal_addon col-4 col-lg-12 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>">
+                                        <div class="modal_addon col-4 col-lg-12 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>" onclick="startVoice('with <?= $row->addon_display_name ?>')">
                                             <p class="bg-light fw-bold text-dark text-center shadow p-2 rounded cursor-pointer">
                                                 <span class="d-block d-lg-inline me-lg-2"><?= $row->addon_display_name ?></span>
                                                 <span class="d-block d-lg-inline text-muted"><?= $currency_gray . $row->addon_amount ?></span>
@@ -530,7 +530,7 @@ $pendingOrders = count($pendingRes);
                             <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
                                 <p class="fw-bold ps-2" style="color: var(--color5);">Parcel</p>
                                 <div class="row mx-0">
-                                    <div class="modal_parcel col-2 col-lg-6" data-parcel-id="1">
+                                    <div class="modal_parcel col-2 col-lg-6" data-parcel-id="1" onclick="startVoice('Parcel Yes.')">
                                         <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">Yes</p>
                                     </div>
                                     <div class="modal_parcel col-2 col-lg-6 modal_parcel_selected" data-parcel-id="2">
@@ -595,7 +595,7 @@ $pendingOrders = count($pendingRes);
     const currency_symbol = "<?= $currency ?>";
     const success_alert_icon = '<?= $success_alert_icon ?>';
     const payment_voice = "<?= $settings->first()->payment_voice ?>";
-    const warningIcon = '<?= $warningIcon ?>';
+    const warningIcon = "<?= $warningIcon ?>";
 </script>
 
 <script src="order_script.js"></script>
