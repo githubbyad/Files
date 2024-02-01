@@ -1,0 +1,2 @@
+- query to change menu name
+  UPDATE `order_details` SET `menu`='Veg Cheezza' WHERE menu = 'Veg Cheesa'
