@@ -1,4 +1,4 @@
-- add "new.php"
+- add "new.php" & "order_script.js" under "order" folder
 
 - update below class,
    .div-hover {
@@ -39,4 +39,18 @@
    }
    .orderTable tr:last-child td {
    	border-width: 0 !important;
+   }
+
+
+- under "script.js", update "startVoice" function
+   function startVoice(text) {
+       if ('speechSynthesis' in window) {
+           let voices = getVoices();
+           let rate = 1,
+               pitch = 0.1,
+               volume = 1;
+           speak(text, voices[1], rate, pitch, volume);
+       } else {
+           console.log('Speech Synthesis Not Supported');
+       }
    }
