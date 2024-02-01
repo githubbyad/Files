@@ -1,3 +1,8 @@
+// redirect to pending page for other devices who logged in with IPs
+if(window.location.hostname.split(".").length == 4) {
+    window.location.replace("pending");
+}
+
 // amount calculation on each row
 const trAmount = () => {
     document.querySelectorAll(".orderTable .tdAmount").forEach(t => {
@@ -619,6 +624,7 @@ document.querySelectorAll(".modal_category").forEach(m => {
 
     m.addEventListener("click", () => {
 
+        document.querySelector(".modal_category_wrap").classList.add("modal_category_wrap_selected");
         // add/remove selected class from category
         document.querySelectorAll(".modal_category").forEach(p => p.classList.remove("modal_category_selected"));
         m.classList.add("modal_category_selected");
@@ -634,6 +640,7 @@ document.querySelectorAll(".modal_category").forEach(m => {
         });
 
         // effect on modal menu
+        document.querySelector(".modal_menu_wrap").classList.remove("modal_menu_wrap_selected");
         document.querySelectorAll(".modal_menu").forEach(r => r.classList.add("d-none"));
         document.querySelectorAll(".modal_menu").forEach(n => {
             if (n.getAttribute('data-category-id') == category_id) {
@@ -643,6 +650,7 @@ document.querySelectorAll(".modal_category").forEach(m => {
         document.querySelectorAll(".modal_menu").forEach(p => p.classList.remove("modal_menu_selected"));
 
         // effect on modal submenu
+        document.querySelector(".modal_submenu_wrap").classList.remove("modal_submenu_wrap_selected");
         // showing sub-menu as per category_id
         document.querySelectorAll(".modal_submenu").forEach(r => r.classList.add("d-none"));
         document.querySelectorAll(".modal_submenu").forEach(n => {
@@ -657,6 +665,7 @@ document.querySelectorAll(".modal_category").forEach(m => {
         }
 
         // effect on modal addon
+        document.querySelector(".modal_addon_wrap").classList.remove("modal_addon_wrap_selected");
         document.querySelectorAll(".modal_addon").forEach(r => r.classList.add("d-none"));
         document.querySelectorAll(".modal_addon").forEach(n => {
             if (n.getAttribute('data-category-id') == category_id) {
@@ -668,6 +677,7 @@ document.querySelectorAll(".modal_category").forEach(m => {
         if (document.querySelectorAll(".modal_addon:not(.d-none)").length > 0) {
             document.querySelector(".modal_addon_wrap").classList.remove("d-none");
         }
+        
     });
 });
 // auto select first category
@@ -678,6 +688,7 @@ document.querySelectorAll(".modal_menu").forEach(m => {
 
     m.addEventListener("click", () => {
 
+        document.querySelector(".modal_menu_wrap").classList.add("modal_menu_wrap_selected");
         // add/remove selected class from menu
         document.querySelectorAll(".modal_menu").forEach(p => p.classList.remove("modal_menu_selected"));
         m.classList.add("modal_menu_selected");
@@ -693,9 +704,11 @@ document.querySelectorAll(".modal_menu").forEach(m => {
         });
 
         // effect on modal submenu
+        document.querySelector(".modal_submenu_wrap").classList.remove("modal_submenu_wrap_selected");
         document.querySelectorAll(".modal_submenu").forEach(p => p.classList.remove("modal_submenu_selected"));
 
         // effect on modal addon
+        document.querySelector(".modal_submenu_wrap").classList.remove("modal_submenu_wrap_selected");
         document.querySelectorAll(".modal_addon").forEach(p => p.classList.remove("modal_addon_selected"));
 
 
@@ -707,6 +720,7 @@ document.querySelectorAll(".modal_submenu").forEach(m => {
 
     m.addEventListener("click", () => {
 
+        document.querySelector(".modal_submenu_wrap").classList.add("modal_submenu_wrap_selected");
         // add/remove selected class from submenu
         document.querySelectorAll(".modal_submenu").forEach(p => p.classList.remove("modal_submenu_selected"));
         m.classList.add("modal_submenu_selected");
@@ -728,6 +742,7 @@ document.querySelectorAll(".modal_addon").forEach(m => {
 
     m.addEventListener("click", () => {
 
+        document.querySelector(".modal_addon_wrap").classList.add("modal_addon_wrap_selected");
         // add/remove selected class from addon
         // document.querySelectorAll(".modal_addon").forEach(p => p.classList.remove("modal_addon_selected"));
         m.classList.toggle("modal_addon_selected");
@@ -746,6 +761,7 @@ document.querySelectorAll(".modal_parcel").forEach(m => {
 
     m.addEventListener("click", () => {
 
+        document.querySelector(".modal_parcel_wrap").classList.add("modal_parcel_wrap_selected");
         // add/remove selected class from parcel
         document.querySelectorAll(".modal_parcel").forEach(p => p.classList.remove("modal_parcel_selected"));
         m.classList.add("modal_parcel_selected");

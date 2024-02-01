@@ -18,7 +18,9 @@ $orders_last_record = $orders->first([], [], 'order_id');
 
 if ($orders_last_record) {
     $order_invoice = intval($orders_last_record->order_id) + 1;
-    $order_number = intval($orders_last_record->order_number) + 1;
+    if (date("j", $orders_last_record->order_timestamp) == date("j", time())) {
+        $order_number = intval($orders_last_record->order_number) + 1;
+    }
 }
 
 
@@ -470,11 +472,11 @@ $pendingOrders = count($pendingRes);
                     <div class="row justify-content-start">
 
                         <!-- category -->
-                        <div class="col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
+                        <div class="modal_category_wrap col-12 bg-gray border border-secondary rounded p-2 pb-0 mb-3">
                             <p class="fw-bold ps-2" style="color: var(--color5);">Category</p>
                             <div class="row mx-0">
                                 <?php foreach ($category->find_all_limit(['status' => 'Yes'], [], 30, 0, 'category_order', 'ASC') as $row) : ?>
-                                    <div class="modal_category col-2 col-lg-3" data-category-id="<?= $row->category_id ?>">
+                                    <div class="modal_category modal_box col-2 col-lg-3 px-1" data-category-id="<?= $row->category_id ?>">
                                         <p class="bg-light fw-bold text-center text-dark shadow p-2 rounded cursor-pointer"><?= $row->category_name ?></p>
                                     </div>
                                 <?php endforeach ?>
@@ -486,7 +488,7 @@ $pendingOrders = count($pendingRes);
                             <p class="fw-bold ps-2" style="color: var(--color5);">Base</p>
                             <div class="row mx-0">
                                 <?php foreach ($menus->find_all_limit(['menu_active_status' => 'Yes'], [], 100, 0, 'menu_name', 'ASC') as $row) : ?>
-                                    <div class="modal_menu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>" onclick="startVoice('<?= $row->menu_display_name ?>')">
+                                    <div class="modal_menu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>" onclick="startVoice('<?= $row->menu_display_name ?>')">
                                         <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">
                                             <span class="d-block"><?= $row->menu_display_name ?></span>
                                             <span class="d-block text-muted"><?= $currency_gray . $row->menu_amount ?></span>
@@ -501,7 +503,7 @@ $pendingOrders = count($pendingRes);
                             <p class="fw-bold ps-2" style="color: var(--color5);">Flavour</p>
                             <div class="row mx-0">
                                 <?php foreach ($submenus->find_all_limit(['submenu_active_status' => 'Yes'], [], 100, 0, 'submenu_name', 'ASC') as $row) : ?>
-                                    <div class="modal_submenu col-4 col-lg-2 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>" onclick="startVoice('<?= $row->submenu_display_name ?>')">
+                                    <div class="modal_submenu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>" onclick="startVoice('<?= $row->submenu_display_name ?>')">
                                         <p class="bg-light fw-bold text-center text-dark shadow p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
                                     </div>
                                 <?php endforeach ?>
@@ -514,7 +516,7 @@ $pendingOrders = count($pendingRes);
                                 <p class="fw-bold ps-2" style="color: var(--color5);">Add-On</p>
                                 <div class="row mx-0">
                                     <?php foreach ($addons->find_all_limit(['addon_active_status' => 'Yes'], [], 100, 0, 'addon_name', 'ASC') as $row) : ?>
-                                        <div class="modal_addon col-4 col-lg-12 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>" onclick="startVoice('with <?= $row->addon_display_name ?>')">
+                                        <div class="modal_addon modal_box col-4 col-lg-12 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>" onclick="startVoice('with <?= $row->addon_display_name ?>')">
                                             <p class="bg-light fw-bold text-dark text-center shadow p-2 rounded cursor-pointer">
                                                 <span class="d-block d-lg-inline me-lg-2"><?= $row->addon_display_name ?></span>
                                                 <span class="d-block d-lg-inline text-muted"><?= $currency_gray . $row->addon_amount ?></span>
@@ -530,10 +532,10 @@ $pendingOrders = count($pendingRes);
                             <div class="w-100 bg-gray border border-secondary rounded p-2 pb-0">
                                 <p class="fw-bold ps-2" style="color: var(--color5);">Parcel</p>
                                 <div class="row mx-0">
-                                    <div class="modal_parcel col-2 col-lg-6" data-parcel-id="1" onclick="startVoice('Parcel Yes.')">
+                                    <div class="modal_parcel modal_box col-2 col-lg-6 px-1" data-parcel-id="1" onclick="startVoice('Parcel Yes.')">
                                         <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">Yes</p>
                                     </div>
-                                    <div class="modal_parcel col-2 col-lg-6 modal_parcel_selected" data-parcel-id="2">
+                                    <div class="modal_parcel modal_box col-2 col-lg-6 px-1 modal_parcel_selected" data-parcel-id="2">
                                         <p class="bg-light fw-bold text-dark shadow text-center p-2 rounded cursor-pointer">No</p>
                                     </div>
                                 </div>

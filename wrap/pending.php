@@ -45,12 +45,12 @@ $orders = new Orders;
                         $timeDiff = "{$diff->h} hour ago";
                     }
 
-                    $tableData = "<div class='pendingDiv col-6 col-lg-2' data-time='{$timeDiff}'>
-                                    <div class='orderWrap w-100 p-2 mb-3 bg-body rounded shadow text-center'>
+                    $tableData = "<div class='pendingDiv col-12 col-sm-6 col-lg-2' data-time='{$timeDiff}'>
+                                    <div class='orderWrap w-100 p-2 mb-5 mb-sm-3 bg-body rounded shadow text-center'>
                                         <p class='orderNum fw-bold display-1 lh-pending'>{$row->order_number}</p>                                                                        
                                         <p class='fw-normal fs-6 text-gray'>{$timeAgoIcon}{$timeDiff}</p>
                                         <p class='fw-normal fs-6 mb-2'><button data-id='{$row->order_id}' data-order='{$row->order_number}' class='markDone btn btn-warning w-100'>{$mark_icon}Done</button></p>
-                                        <p class='text-center row mx-0 mb-1'>
+                                        <p class='view_delete_wrap text-center row mx-0 mb-1 d-none d-lg-flex'>
                                             <button data-id='{$row->order_id}' class='viewItem col btn btn-dark me-1'>View</button><button data-id='{$row->order_id}' data-order='{$row->order_number}' class='deleteItem col btn btn-danger'>Delete</button>
                                         </p>
                                     </div>
@@ -68,7 +68,7 @@ $orders = new Orders;
         </dir>
     </div>
 
-    <div class="col-lg-12 mt-4 px-0">
+    <div class="latest_order_wrap col-lg-12 mt-4 px-0">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom d-flex justify-content-between align-items-end pb-2 mb-1 position-relative">
                 <span class="tMenu">Latest Orders</span>
@@ -150,6 +150,15 @@ $orders = new Orders;
 </div>
 
 <script>
+    // hide later order for other devices
+    if (window.location.hostname.split(".").length == 4) {
+        document.querySelector(".latest_order_wrap").classList.add("d-none");        
+        document.querySelectorAll(".deleteItem").forEach(d => d.classList.add("d-none"));
+        document.querySelectorAll(".viewItem").forEach(d => d.classList.add("d-none"));
+        document.querySelector(".header").classList.add("d-none");
+        document.querySelector(".main-content").style.paddingTop = 0;
+    }
+
     // penidng counter
     document.querySelector(".subpage b").innerHTML = ` <ord><?= $pendingOrders ?></ord>`;
     // view item
