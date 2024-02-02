@@ -27,3 +27,16 @@
       border-radius: 20px !important;
       border-bottom: 1px solid #6c757d;
   }
+  .modal_category_selected p,
+  .modal_menu_selected p,
+  .modal_menu_selected p span,
+  .modal_addon_selected p,
+  .modal_addon_selected p span,
+  .modal_submenu_selected p,
+  .modal_parcel_selected p {
+      background: var(--color5) !important;
+      transform: scale(1.05) !important;
+      transition: 100ms ease-in-out;
+      color: #fff !important;
+      border-color: transparent !important
+  }
