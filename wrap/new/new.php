@@ -467,18 +467,18 @@ $pendingOrders = count($pendingRes);
                 <h1 class="modal-title fs-6 w-100 text-center text-dark fw-bold" id="order_popup">Select Order</h1>
                 <button type="button" class="btn-close d-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="order_show modal-body p-2 d-flex justify-content-center rounded" style="background-color:var(--color4);">
+            <div class="order_show modal-body p-2 d-flex justify-content-center shadow-sm rounded" style="background-color:var(--color4);">
                 <div class="container-fluid user-select-none">
                     <div class="row mt-3">
 
-                        <div class="col-lg-10 row mx-lg-0 align-items-start">
+                        <div class="col-lg-10 row mx-lg-0 align-content-start">
                             <!-- category -->
                             <div class="modal_category_wrap modal_wrap_box col-12 bg-gray border border-secondary rounded p-2 pb-1 mb-3 mb-lg-4 position-relative">
                                 <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Category</span></p>
                                 <div class="row mx-0">
                                     <?php foreach ($category->find_all_limit(['status' => 'Yes'], [], 30, 0, 'category_order', 'ASC') as $row) : ?>
                                         <div class="modal_category modal_box col-2 col-lg-2 px-1" data-category-id="<?= $row->category_id ?>">
-                                            <p class="bg-light fw-bold text-center text-dark mb-lg-2 shadow-sm p-2 rounded cursor-pointer"><?= $row->category_name ?></p>
+                                            <p class="bg-light fw-bold text-center text-dark mb-lg-2 border border-dashed border-dark p-2 rounded cursor-pointer"><?= $row->category_name ?></p>
                                         </div>
                                     <?php endforeach ?>
                                 </div>
@@ -490,7 +490,7 @@ $pendingOrders = count($pendingRes);
                                 <div class="row mx-0">
                                     <?php foreach ($menus->find_all_limit(['menu_active_status' => 'Yes'], [], 100, 0, 'menu_name', 'ASC') as $row) : ?>
                                         <div class="modal_menu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-menu-id="<?= $row->menu_id ?>" onclick="startVoice('<?= $row->menu_display_name ?>')">
-                                            <p class="bg-light fw-bolder text-dark shadow-sm text-center mb-2 p-2 rounded cursor-pointer">
+                                            <p class="bg-light fw-bolder text-dark border border-dashed border-dark text-center mb-2 p-2 rounded cursor-pointer">
                                                 <span class="d-block"><?= $row->menu_display_name ?></span>
                                                 <span class="d-block text-muted"><?= $currency_gray . $row->menu_amount ?></span>
                                             </p>
@@ -505,15 +505,14 @@ $pendingOrders = count($pendingRes);
                                 <div class="row mx-0">
                                     <?php foreach ($submenus->find_all_limit(['submenu_active_status' => 'Yes'], [], 100, 0, 'submenu_name', 'ASC') as $row) : ?>
                                         <div class="modal_submenu modal_box col-4 col-lg-2 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-submenu-id="<?= $row->submenu_id ?>" onclick="startVoice('<?= $row->submenu_display_name ?>')">
-                                            <p class="bg-light fw-bold text-center text-dark mb-2 shadow-sm p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
+                                            <p class="bg-light fw-bold text-center text-dark mb-2 border border-dashed border-dark p-2 rounded cursor-pointer"><?= $row->submenu_display_name ?></p>
                                         </div>
                                     <?php endforeach ?>
                                 </div>
                             </div>
                         </div>
 
-
-                        <div class="col-lg-2 row mx-lg-0 px-lg-0 align-items-start">
+                        <div class="col-lg-2 row mx-lg-0 px-lg-0 align-content-start">
                             <!-- add-on -->
                             <div class="modal_addon_wrap col-12 col-lg-12 mb-3 mb-lg-4">
                                 <div class="modal_wrap_box w-100 bg-gray border border-secondary rounded p-2 pb-1">
@@ -521,7 +520,7 @@ $pendingOrders = count($pendingRes);
                                     <div class="row mx-0 justify-content-center">
                                         <?php foreach ($addons->find_all_limit(['addon_active_status' => 'Yes'], [], 100, 0, 'addon_name', 'ASC') as $row) : ?>
                                             <div class="modal_addon modal_box col-4 col-lg-12 px-1 d-none" data-category-id="<?= $row->category_id ?>" data-addon-id="<?= $row->addon_id ?>" onclick="startVoice('with <?= $row->addon_display_name ?>')">
-                                                <p class="bg-light fw-bold text-dark text-center shadow-sm p-2 mb-2 rounded cursor-pointer">
+                                                <p class="bg-light fw-bold text-dark text-center border border-dashed border-dark p-2 mb-2 rounded cursor-pointer">
                                                     <span class="d-block d-lg-inline me-lg-2"><?= $row->addon_display_name ?></span>
                                                     <span class="d-block d-lg-inline text-muted"><?= $currency_gray . $row->addon_amount ?></span>
                                                 </p>
@@ -532,15 +531,15 @@ $pendingOrders = count($pendingRes);
                             </div>
 
                             <!-- parcel -->
-                            <div class="modal_parcel_wrap col-12 col-lg-12 mb-3 mb-lg-4">
+                            <div class="modal_parcel_wrap col-12 col-lg-12 mb-3 mb-lg-4 modal_parcel_wrap_selected">
                                 <div class="modal_wrap_box w-100 bg-gray border border-secondary rounded p-2 pb-1">
                                     <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Parcel</span></p>
                                     <div class="row mx-0">
                                         <div class="modal_parcel modal_box col-2 col-lg-6 px-1" data-parcel-id="1" onclick="startVoice('Parcel Yes.')">
-                                            <p class="bg-light fw-bold text-dark shadow-sm text-center p-2 mb-2 rounded cursor-pointer">Yes</p>
+                                            <p class="bg-light fw-bold text-dark border border-dashed border-dark text-center p-2 mb-2 rounded cursor-pointer">Yes</p>
                                         </div>
                                         <div class="modal_parcel modal_box col-2 col-lg-6 px-1 modal_parcel_selected" data-parcel-id="2">
-                                            <p class="bg-light fw-bold text-dark shadow-sm text-center p-2 mb-2 rounded cursor-pointer">No</p>
+                                            <p class="bg-light fw-bold text-dark border border-dashed border-dark text-center p-2 mb-2 rounded cursor-pointer">No</p>
                                         </div>
                                     </div>
                                 </div>
@@ -556,7 +555,7 @@ $pendingOrders = count($pendingRes);
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"></path>
                                             </svg>
-                                            <span class="modal_quantity d-inline-block bg-light px-4 py-2 py-lg-1 rounded text-dark mx-2 fw-bold">1</span>
+                                            <span class="modal_quantity d-inline-block px-3 py-2 py-lg-1 rounded text-white mx-2 fw-bold" style="background:var(--color5) !important">1</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" onclick="plusClicked(document.querySelectorAll('.minusIcon')[document.querySelectorAll('.plusIcon').length-1])" width="30" height="30" fill="#000" class="modal_plusIcon bi bi-plus-circle cursor-pointer" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
                                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
@@ -572,7 +571,7 @@ $pendingOrders = count($pendingRes);
                                     <p class="fw-bold ps-2 mb-2" style="color: var(--color5);"><span>Comment</span></p>
                                     <div class="row mx-0">
                                         <div class="modal_comment col-12 mb-3">
-                                            <input type="text" class="modal_comment_select form-control py-2 py-lg-1" placeholder="Write Comment" list="commentList2">
+                                            <input type="text" class="modal_comment_select form-control fw-bold py-2 py-lg-1 border border-dashed border-dark" placeholder="Write Comment" list="commentList2" style="color:var(--color5) !important">
                                             <datalist id="commentList2">
                                                 <?php foreach ($comments->find_all_limit(['status' => 'Yes'], [], 25, 0, 'text', 'ASC') as $row) : ?>
                                                     <option value="<?= $row->text ?>"></option>;
