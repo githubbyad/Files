@@ -20,13 +20,17 @@
   }
   
   .modal-content {
-      border-radius: 20px !important;
+      border-radius: 30px !important;
   }
   
   .order_show {
-      border-radius: 20px !important;
-      border-bottom: 1px solid #6c757d;
+	  border-radius: 20px !important;
+    border: 1px solid gray;
+  	width: 98%;
+  	margin-left: 1%;
+  	margin-top: 0.8rem;
   }
+
   .modal_category_selected p,
   .modal_menu_selected p,
   .modal_menu_selected p span,
