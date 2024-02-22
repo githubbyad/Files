@@ -1,55 +1,5 @@
-- query to change menu name
-  UPDATE `order_details` SET `menu`='Veg Cheezza' WHERE menu = 'Veg Cheesa'
+- replace index.php
 
-- add below css,
-  .modal_wrap_box {
-      position: relative;
-      margin-top: 8px;
-      padding-top: 15px !important;
-  }
-  
-  .modal_wrap_box>p span {
-      top: -15px;
-      z-index: 2;
-      background: #ddd;
-      color: #000;
-      position: absolute;
-      padding: 0 1rem !important;
-      border: 1px solid gray;
-      border-radius: 5px;
-  }
-  
-  .modal-content {
-      border-radius: 30px !important;
-  }
-  
-  .order_show {
-	  border-radius: 20px !important;
-    border: 1px solid gray;
-  	width: 98%;
-  	margin-left: 1%;
-  	margin-top: 0.8rem;
-  }
-
-  .modal_category_selected p,
-  .modal_menu_selected p,
-  .modal_menu_selected p span,
-  .modal_addon_selected p,
-  .modal_addon_selected p span,
-  .modal_submenu_selected p,
-  .modal_parcel_selected p {
-      background: var(--color5) !important;
-      transform: scale(1.05) !important;
-      transition: 100ms ease-in-out;
-      color: #fff !important;
-      border-color: transparent !important
-  }
-  .border-dashed {
-      border-style: dashed !important;
-  }
-  
-  .form-control::placeholder {
-      color: #6c757d;
-      opacity: 1;
-      font-weight: normal !important;
-  }
+- add below 2 functions in  core\model.php 
+  where_interval_quantity()
+  total()
