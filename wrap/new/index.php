@@ -165,7 +165,7 @@ $users = new Users;
         </div>
     </div>
 
-    <div class="col-6 col-lg-2 offset-lg-2 d-none">
+    <div class="col-6 col-lg-2">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Users</span></p>
             <div class="d-flex justify-content-evenly">
