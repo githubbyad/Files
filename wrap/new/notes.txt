@@ -1,5 +1,15 @@
-- replace index.php
+- add quantity.php file in "order" folder
+
+- add below menu link in header.php after comments
+
+    <li class="sideLI">
+      <a class="no-drop" href="<?= $path_dots ?>order/quantity">
+          <?= $dashboardIcon; ?>
+          <span class="sideMenus"><b class="ms-2 fw-normal">Quantity Stats</b></span>
+      </a>
+    </li>
+
 
 - add below 2 functions in  core\model.php 
-  where_interval_quantity()
-  total()
+  find_all_order_by()
+  get_order_quantity_by_date()
