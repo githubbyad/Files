@@ -12,6 +12,14 @@ trait Model
         return $this->query($query);
     }
 
+    public function find_all_order_by($column_name, $order_type = 'DESC')
+    {
+
+        $query = "SELECT * FROM $this->table ORDER BY $column_name $order_type";
+        return $this->query($query);
+    }
+
+
     public function find_all_group($column_name,  $data = [], $data_not = [])
     {
 
@@ -199,7 +207,20 @@ trait Model
     }
 
 
+    public function get_order_quantity_by_date($menu, $date)
+    {
+        $query = "SELECT SUM(d.order_quantity) as quantity 
+                    FROM orders as o 
+                    JOIN order_details as d 
+                    ON o.order_id = d.order_id 
+                    WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) = '" . $date . "' 
+                    AND menu = '" . $menu . "'";
 
+        if ($this->query($query)[0]->quantity) {
+            return $this->query($query)[0]->quantity;
+        }
+        return 0;
+    }
 
     public function where_interval_specific_total($sum_column_name, $data, $data_not = [], $column_name, $inverval1, $inverval2)
     {
