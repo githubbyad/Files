@@ -11,3 +11,38 @@
 
 - replace "model.php" under core 
 
+- add confirmnew function in "script.js"
+
+function confirmnew(msg, url) {
+    if (!document.getElementById('f_confirm_delete_button')) {
+        document.getElementsByTagName("body")[0].insertAdjacentHTML(`beforeend`, `
+            <button id='f_confirm_delete_button' type='button' data-bs-toggle='modal' data-bs-target='#f_confirm_delete' style='display:none;'></button>
+            <div class='f_confirm_delete_box modal fade' id='f_confirm_delete' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='f_confirm_deleteLabel' aria-hidden='true'>
+                <div class='modal-dialog modal-dialog-centered modal-dialog-scrollable'>
+                    <div class='modal-content'>
+                        <div class='modal-header' style='display:none'>
+                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div class='modal-body text-center' style='white-space: pre-wrap;'>${msg}</div>
+                        <div class='modal-footer d-flex justify-content-center border-0'>
+                            <button type='button' class='f_confirm_delete_yes btn btn-danger me-3 py-2 px-4' data-bs-dismiss='modal'>Delete</button>
+                            <button type='button' class='f_confirm_delete_close btn btn-dark py-2 px-4' data-bs-dismiss='modal'>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <style>@media (min-width:576px){.modal-dialog{max-width:400px}}</style>
+            </div>
+        `);
+        document.getElementById('f_confirm_delete_button').click();
+        document.getElementsByClassName('f_confirm_delete_close')[0].addEventListener('click', function () {
+            document.getElementById('f_confirm_delete_button').remove();
+            document.getElementsByClassName('f_confirm_delete_box')[0].remove();
+        });
+        document.getElementsByClassName('f_confirm_delete_yes')[0].addEventListener('click', function () {
+            document.getElementById('f_confirm_delete_button').remove();
+            document.getElementsByClassName('f_confirm_delete_box')[0].remove();
+            window.location.href = url;            
+        });
+    }
+    return false;
+}
