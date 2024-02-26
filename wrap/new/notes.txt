@@ -11,6 +11,10 @@
 
 - replace "model.php" under core 
 
+- add below JS line after double print in "order_script.js" 
+    // new order alert
+    confirmnew("Order Placed Successfully!");
+
 - add confirmnew function in "script.js"
 
 function confirmnew(msg, url) {
