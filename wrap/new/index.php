@@ -15,7 +15,7 @@ $users = new Users;
 ?>
 
 <div class="row">
-    <div class="col-6 col-lg-4">
+    <div class="col-6 col-lg-3">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1">Orders</p>
             <div class="d-flex justify-content-evenly">
@@ -103,69 +103,7 @@ $users = new Users;
         </div>
     </div>
 
-    <div class="col-6 col-lg-4">
-        <div class="w-100 bg-section p-3 mb-4 rounded shadow">
-            <p class="text-theme fw-bold border-bottom pb-2 mb-1">Quantity</span></p>
-            <div class="d-flex justify-content-evenly">
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">Today</b><br>
-                    <?= $orders->where_interval_quantity('1 DAY') != '' ? $orders->where_interval_quantity('1 DAY') : 0  ?>
-                </span>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">This week</b><br>
-                    <?= $orders->where_interval_quantity('1 WEEK') != '' ? $orders->where_interval_quantity('1 WEEK') : 0  ?>
-                </span>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">This month</b><br>
-                    <?= $orders->where_interval_quantity('1 MONTH') != '' ? $orders->where_interval_quantity('1 MONTH') : 0  ?>
-                </span>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">Overall</b><br>
-                    <?= $order_details->total('order_quantity',[],[])  ?>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="w-100 bg-section p-3 mb-4 rounded shadow">
-            <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Payment Stats</span></p>
-            <div class="d-flex justify-content-evenly">
-                <?php
-                $cash = (count($orders->where(['order_payment_method' => 'Cash'])) / count($orders->find_all())) * 100;
-                $online = (count($orders->where(['order_payment_method' => 'Online'])) / count($orders->find_all())) * 100;
-                ?>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">Cash</b><br>
-                    <per class="<?= $cash > $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Cash'])) / count($orders->find_all())) * 100, "2", ".") . "%" ?></per>
-                </span>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">Online</b><br>
-                    <per class="<?= $cash < $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Online'])) / count($orders->find_all())) * 100, "2", ".") . "%" ?></per>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="w-100 bg-section p-3 mb-4 rounded shadow">
-            <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Pickup / Dine-In Stats</span></p>
-            <div class="d-flex justify-content-evenly">
-                <?php
-                $pickup = (count($order_details->where(['order_parcel_status' => 'Yes'])) / count($order_details->find_all())) * 100;
-                $dine = (count($order_details->where(['order_parcel_status' => 'No'])) / count($order_details->find_all())) * 100;
-                ?>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">Pick-Up</b><br>
-                    <per class="<?= $pickup > $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'Yes'])) / count($order_details->find_all())) * 100, "2", ".") . "%" ?></per>
-                </span>
-                <span class="text-center fw-bold fs-4">
-                    <b class="text-muted fw-normal fs-6">Dine-In</b><br>
-                    <per class="<?= $pickup < $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'No'])) / count($order_details->find_all())) * 100, "2", ".") . "%" ?></per>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-6 col-lg-2">
+    <div class="col-6 col-lg-1">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Users</span></p>
             <div class="d-flex justify-content-evenly">
@@ -249,6 +187,40 @@ $users = new Users;
     </div>
 
     <div class="col-lg-3">
+        <div class="w-100 bg-section p-3 mb-4 rounded shadow">
+            <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Payment Stats</span></p>
+            <div class="d-flex justify-content-evenly">
+                <?php
+                $cash = (count($orders->where(['order_payment_method' => 'Cash'])) / count($orders->find_all())) * 100;
+                $online = (count($orders->where(['order_payment_method' => 'Online'])) / count($orders->find_all())) * 100;
+                ?>
+                <span class="text-center fw-bold fs-4">
+                    <b class="text-muted fw-normal fs-6">Cash</b><br>
+                    <per class="<?= $cash > $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Cash'])) / count($orders->find_all())) * 100, "2", ".") . "%" ?></per>
+                </span>
+                <span class="text-center fw-bold fs-4">
+                    <b class="text-muted fw-normal fs-6">Online</b><br>
+                    <per class="<?= $cash < $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Online'])) / count($orders->find_all())) * 100, "2", ".") . "%" ?></per>
+                </span>
+            </div>
+        </div>
+        <div class="w-100 bg-section p-3 mb-4 rounded shadow">
+            <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Pickup / Dine-In Stats</span></p>
+            <div class="d-flex justify-content-evenly">
+                <?php
+                $pickup = (count($order_details->where(['order_parcel_status' => 'Yes'])) / count($order_details->find_all())) * 100;
+                $dine = (count($order_details->where(['order_parcel_status' => 'No'])) / count($order_details->find_all())) * 100;
+                ?>
+                <span class="text-center fw-bold fs-4">
+                    <b class="text-muted fw-normal fs-6">Pick-Up</b><br>
+                    <per class="<?= $pickup > $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'Yes'])) / count($order_details->find_all())) * 100, "2", ".") . "%" ?></per>
+                </span>
+                <span class="text-center fw-bold fs-4">
+                    <b class="text-muted fw-normal fs-6">Dine-In</b><br>
+                    <per class="<?= $pickup < $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'No'])) / count($order_details->find_all())) * 100, "2", ".") . "%" ?></per>
+                </span>
+            </div>
+        </div>
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Customer Repeat</span></p>
             <div class="d-flex justify-content-evenly">
