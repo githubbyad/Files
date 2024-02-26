@@ -1,11 +1,12 @@
 - add below css in style.css
 
-th:hover {
+thead th:hover {
     cursor: pointer;
     user-select: none;
 
     &:hover {
         opacity: 0.9;
+        color:#000;
     }
 }
 
