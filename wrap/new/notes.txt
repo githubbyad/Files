@@ -1,14 +1,13 @@
 - add summary.php file in "order" folder
 
-- add below menu link in header.php after comments
+- add below menu link in header.php inside order menu
 
-    <li class="sideLI">
-      <a class="no-drop" href="<?= $path_dots ?>order/quantity">
-          <?= $dashboardIcon; ?>
-          <span class="sideMenus"><b class="ms-2 fw-normal">Order Summary</b></span>
-      </a>
+    <li>
+        <a class="drow-submenu" href="<?= $path_dots ?>order/summary">
+            <span>Summary</span>
+            <?= $downArrowIcon; ?>
+        </a>
     </li>
-
 
 - replace "model.php" under core 
 
