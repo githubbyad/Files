@@ -222,6 +222,40 @@ trait Model
         return 0;
     }
 
+
+    public function get_order_summary_by_date($date1, $date2 = null)
+    {
+        $query = "SELECT  d.menu, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
+        FROM orders as o 
+        JOIN order_details as d 
+        ON o.order_id = d.order_id                    
+        WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
+
+        if ($date2 != null || $date2 == "") {
+            $query .= "AND '$date2'";
+        }
+
+        $query .= "GROUP BY d.menu ORDER BY o.date_timestamp";
+
+        return $this->query($query);
+    }
+
+
+    public function get_list_by_date_range($date1, $date2 = null)
+    {
+        $query = "SELECT * FROM orders as o JOIN order_details as d 
+                    ON o.order_id = d.order_id
+                    WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
+
+        if ($date2 != null || $date2 == "") {
+            $query .= "AND '$date2'";
+        }
+
+        $query .= "ORDER BY o.date_timestamp";
+
+        return $this->query($query);
+    }
+
     public function where_interval_specific_total($sum_column_name, $data, $data_not = [], $column_name, $inverval1, $inverval2)
     {
         $query = "SELECT SUM($sum_column_name) as total FROM $this->table WHERE ";
