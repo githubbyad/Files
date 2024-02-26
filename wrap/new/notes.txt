@@ -1,15 +1,14 @@
-- add quantity.php file in "order" folder
+- add summary.php file in "order" folder
 
 - add below menu link in header.php after comments
 
     <li class="sideLI">
       <a class="no-drop" href="<?= $path_dots ?>order/quantity">
           <?= $dashboardIcon; ?>
-          <span class="sideMenus"><b class="ms-2 fw-normal">Quantity Stats</b></span>
+          <span class="sideMenus"><b class="ms-2 fw-normal">Order Summary</b></span>
       </a>
     </li>
 
 
-- add below 2 functions in  core\model.php 
-  find_all_order_by()
-  get_order_quantity_by_date()
+- replace "model.php" under core 
+
