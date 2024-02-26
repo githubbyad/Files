@@ -1,5 +1,5 @@
 // redirect to pending page for other devices who logged in with IPs
-if(window.location.hostname.split(".").length == 4) {
+if (window.location.hostname.split(".").length == 4) {
     window.location.replace("pending");
 }
 
@@ -471,10 +471,13 @@ setInterval(() => {
 
     // kitchen
     let kitchenMerge = "";
+    let kitchen_merge = "";
     document.querySelectorAll(".orderTable tbody tr").forEach(t => {
+
         let kit_name = t.querySelector(".menu").value.replace("Cheezza", "CZ").replace(" Wrap", "");
+
         kitchenMerge += `<tr data-amount="${t.querySelector(".order_amount_display").innerHTML}">
-                    <td class="text-center" style="width:80px;">${t.querySelector(".order_quantity").value}</td>
+                    <td class="text-center" style="width:40px;">${t.querySelector(".order_quantity").value}</td>
                     <td>
                         ${t.querySelector(".order_parcel_status").value == "Yes" ? "P - " : ""}
                         ${kit_name}
@@ -485,8 +488,25 @@ setInterval(() => {
                     </td> 
                     <td class="text-end">${t.querySelector(".order_amount_display").innerHTML}</td>                   
                 </tr>`;
+
+        // let kit_amount = t.querySelector(".order_amount_display").innerHTML;
+        // let kit_quantity = t.querySelector(".order_quantity").value;
+        // let kit_item = `${t.querySelector(".order_parcel_status").value == "Yes" ? "P - " : ""}
+        //                 ${kit_name}
+        //                 ${t.querySelector(".submenu").value == "" ? "" : " - " + t.querySelector(".submenu").value}
+        //                 ${t.querySelector(".addonMerge").getAttribute("data-addons") == "" || t.querySelector(".addonMerge").getAttribute("data-addons") == undefined ? "" : " - " + t.querySelector(".addonMerge").getAttribute("data-addons").replace(/,/g, " - ")}                            
+        //                 ${t.querySelector(".order_comment").value.trim() == "" ? "" : "<br>(" + t.querySelector(".order_comment").value + ")"}`;
+        // kitchen_merge += `<p class="current_kitchen_order d-flex justify-content-between mb-0 lh-sm" data-amount="${kit_amount}">
+        //                     <span>
+        //                         <qty class="me-2">${kit_quantity}</qty>    
+        //                         <itm>${kit_item}</itm>    
+        //                     </span>
+        //                     <span class="ms-2">${kit_amount}</span>
+        //                 </p>`;
+
     });
     document.querySelector(".orderDivKitchen tbody").innerHTML = kitchenMerge;
+    //document.querySelector(".orderDivKitchen .kitchen_orders").innerHTML = kitchen_merge;
 
 }, 200);
 if (document.querySelector(".orderDivKitchen .OrderTime")) { // showing only time 
@@ -678,7 +698,10 @@ document.querySelectorAll(".modal_category").forEach(m => {
         if (document.querySelectorAll(".modal_addon:not(.d-none)").length > 0) {
             document.querySelector(".modal_addon_wrap").classList.remove("d-none");
         }
-        
+
+        // effect on comment
+        document.querySelector(".modal_comment_wrap").classList.remove("modal_comment_wrap_selected");  
+
     });
 });
 // auto select first category
@@ -784,7 +807,8 @@ document.querySelectorAll(".modal_comment_select").forEach(m => {
 
     m.addEventListener("input", () => {
 
-        // effect on comment            
+        // effect on comment   
+        document.querySelector(".modal_comment_wrap").classList.add("modal_comment_wrap_selected");         
         //document.querySelectorAll(".selectComment")[document.querySelectorAll(".selectComment").length - 1].value = m.value;
         auto_select_comment(m.value);
     });
@@ -842,6 +866,9 @@ const postData = async (formattedFormData) => {
         // direct print button instead of manual keyboard clicks
         document.querySelector(".printCustomer").click();
         document.querySelector(".printKitchen").click();
+        
+        // new order alert
+        confirmnew("Order Placed Successfully!");
 
     }
 };
