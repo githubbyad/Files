@@ -5,6 +5,10 @@
 
 - update index.php page
 
+- update footer_script.js under js folder
+
+- style.css is also added, replace it if it show any missing CSS
+
 - add below method in models.php
       public function get_category_summary_by_date($date1, $date2 = null)
     {
