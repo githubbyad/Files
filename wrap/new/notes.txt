@@ -1,14 +1,6 @@
-- add below css in style.css
+- add below property in :root class in 'style.css'
+    --color6: #80e104;
 
-thead th:hover {
-    cursor: pointer;
-    user-select: none;
+- update summary.php page
 
-    &:hover {
-        opacity: 0.9;
-        color:#000;
-    }
-}
-
-- create new "footer_script.js" file and place in footer.php
-  <script src="<?= $path_dots ?>js/footer_script.js"></script>
+- update index.php page
