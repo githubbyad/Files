@@ -18,11 +18,11 @@ $orders = new Orders;
 
             <p class="ps-0 text-muted">Select Starting & Ending Dates to get order summary.</p>
             <div class="form-floating mb-3 mb-lg-0 col-lg-5 px-0 ps-lg-0 pe-lg-2">
-                <input type="date" name="date1" class="form-control" placeholder="" required>
+                <input type="date" name="date1" class="form-control" placeholder="" value="<?= date("Y-m-d", time()) ?>" required>
                 <label class="form-label text-muted">Starting Date</label>
             </div>
             <div class="form-floating mb-3 mb-lg-0 col-lg-5 px-0">
-                <input type="date" name="date2" class="form-control" placeholder="" required>
+                <input type="date" name="date2" class="form-control" placeholder="" value="<?= date("Y-m-d", time()) ?>" required>
                 <label class="form-label text-muted">Ending Date</label>
             </div>
             <div class="mb-3 mb-lg-0 col-lg-2 ps-2 px-0">
@@ -48,11 +48,14 @@ $orders = new Orders;
 
             <div class="row mx-lg-0 px-lg-0">
                 <!-- All order list -->
-                <div class="col-lg-9 mt-4 ps-lg-0 pe-lg-1">
+                <div class="col-lg-8 mt-4 ps-lg-0 pe-lg-1">
 
-                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow">
+                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow printDiv">
 
-                        <p class="fw-bold mb-2 border-bottom pb-2">All Orders</p>
+                    <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
+                            <span>All Orders</span>
+                            <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print d-none" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
+                        </p>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-hover table-borderless mb-0" style="white-space: nowraap;">
@@ -69,7 +72,7 @@ $orders = new Orders;
                                 </thead>
                                 <?php foreach ($orders->get_list_by_date_range($_POST['date1'], $_POST['date2']) as $item) : ?>
                                     <tr>
-                                        <td><?= $item->order_id ?></td>
+                                        <td><?= $item->order_id . "-" . $item->order_number ?></td>
                                         <td><?= $item->menu ?></td>
                                         <td><?= $item->submenu ?></td>
                                         <td class="addons">
@@ -95,10 +98,10 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th colspan="3">Total</th>
-                                    <th class="total_addon text-center"></th>
-                                    <th class="total_amount text-end"></th>
-                                    <th colspan="2"></th>
+                                    <th colspan="3" style="border-top: 3px solid var(--color6);">Total</th>
+                                    <th class="total_addon text-center" style="border-top: 3px solid var(--color6);"></th>
+                                    <th class="total_amount text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <th colspan="2" style="border-top: 3px solid var(--color6);"></th>
                                 </tfoot>
                             </table>
                             <script>
@@ -134,17 +137,68 @@ $orders = new Orders;
                 </div>
 
                 <!-- Summary -->
-                <div class="col-lg-3 mt-4 ps-lg-1 pe-lg-0">
+                <div class="col-lg-4 mt-4 ps-lg-1 pe-lg-0">
 
-                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow">
-                        <p class="fw-bold mb-2 border-bottom pb-2">Summary</p>
+                    <!-- Summary by Categories-->
+                    <div class="w-100 bg-section p-2 p-lg-3 mb-2 rounded position-relative shadow printDiv">
+                        <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
+                            <span>Summary by Categories</span>
+                            <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-borderless mb-0" style="white-space: nowrap;">
+                                <thead>
+                                    <tr class="text-theme">
+                                        <th>Category</th>
+                                        <th class="text-end">Qty</th>
+                                        <th class="text-end">Total</th>
+                                    </tr>
+                                </thead>
+                                <?php foreach ($orders->get_category_summary_by_date($_POST['date1'], $_POST['date2']) as $item) : ?>
+                                    <tr>
+                                        <td><?= $item->category ?></td>
+                                        <td class="quantities2 text-end"><?= $item->quantity ?></td>
+                                        <td class="s_amounts2 text-end"><?= $item->amount ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                                <tfoot style="background: var(--color2)">
+                                    <th style="border-top: 3px solid var(--color6);">Total</th>
+                                    <th class="total_summary_quantity2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <th class="total_summary_amount2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                </tfoot>
+                            </table>
+                            <script>
+                                // total amount (summary)
+                                let total_s_amount2 = 0;
+                                document.querySelectorAll(".s_amounts2").forEach(a => {
+                                    total_s_amount2 += Number(a.innerHTML);
+                                });
+                                document.querySelector(".total_summary_amount2").innerHTML = total_s_amount2;
+
+                                // total quantity (summary)
+                                let total_s_quantity2 = 0;
+                                document.querySelectorAll(".quantities2").forEach(a => {
+                                    total_s_quantity2 += Number(a.innerHTML);
+                                });
+                                document.querySelector(".total_summary_quantity2").innerHTML = total_s_quantity2;
+                            </script>
+                        </div>
+                    </div>
+
+                    <!-- Summary by Items -->
+                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow printDiv">
+                        <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
+                            <span>Summary by Items</span>
+                            <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
+                        </p>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-hover table-borderless mb-0" style="white-space: nowrap;">
                                 <thead>
                                     <tr class="text-theme">
                                         <th>Items</th>
-                                        <th class="text-end">Quantity</th>
+                                        <th class="text-end">Qty</th>
                                         <th class="text-end">Total</th>
                                     </tr>
                                 </thead>
@@ -156,9 +210,9 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th>Total</th>
-                                    <th class="total_summary_quantity text-end"></th>
-                                    <th class="total_summary_amount text-end"></th>
+                                    <th style="border-top: 3px solid var(--color6);">Total</th>
+                                    <th class="total_summary_quantity text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <th class="total_summary_amount text-end" style="border-top: 3px solid var(--color6);"></th>
                                 </tfoot>
                             </table>
                             <script>
@@ -178,6 +232,8 @@ $orders = new Orders;
                             </script>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         <?php endif ?>

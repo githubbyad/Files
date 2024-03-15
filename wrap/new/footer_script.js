@@ -3,18 +3,15 @@ function table_sort() {
     const styleSheet = document.createElement('style')
     styleSheet.innerHTML = `
           .order-inactive span {
-              visibility:hidden;
+            opacity:0.4;
           }
           .order-inactive:hover span {
-              visibility:visible;
-          }
-          .order-active span {
-              visibility: visible;
+            opacity:1;
           }
       `
     document.head.appendChild(styleSheet)
 
-    document.querySelectorAll('th').forEach(th_elem => {
+    document.querySelectorAll('thead th').forEach(th_elem => {
         let asc = true
         const span_elem = document.createElement('span')
         span_elem.style = "font-size:0.8rem; margin-left:0.5rem"
@@ -24,7 +21,7 @@ function table_sort() {
 
         const index = Array.from(th_elem.parentNode.children).indexOf(th_elem)
         th_elem.addEventListener('click', (e) => {
-            document.querySelectorAll('th').forEach(elem => {
+            document.querySelectorAll('thead th').forEach(elem => {
                 elem.classList.remove('order-active')
                 elem.classList.add('order-inactive')
             })
@@ -50,4 +47,73 @@ function table_sort() {
     })
 }
 
-table_sort()
+table_sort();
+
+function printDiv(div) {
+    var divContents = div.innerHTML;
+    var a = window.open('', 'printTab', 'height=auto, width=270');
+
+    a.document.write('<html>');
+    a.document.write('<body>');
+    if (document.querySelector('input[name="date1"]') && document.querySelector('input[name="date2"]')) {
+        let date1 = document.querySelector('input[name="date1"]').value;
+        date1 = new Date(date1).getDate() + '/' + (new Date(date1).getMonth() + 1) + '/' + new Date(date1).getFullYear();
+        let date2 = document.querySelector('input[name="date2"]').value;
+        date2 = new Date(date2).getDate() + '/' + (new Date(date2).getMonth() + 1) + '/' + new Date(date1).getFullYear();
+        if (date1 == date2) {
+            a.document.write('<p class="date-range">Date: ' + date1 + ' </p>');
+        } else {
+            a.document.write('<p class="date-range">From: <i>' + date1 + '</i> | To: <i>' + date2 + '</i></p>');
+        }
+    }
+    a.document.write(divContents);
+    a.document.write(`<style>
+    body {        
+        padding:0;
+        margin:0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    * {
+        font-family: Trebuchet MS;
+        font-size: 10pt !important;
+    }
+    .no-print {
+        display: none;
+    }
+    table {
+        white-space:normal !important;
+        width: min-content;
+    }
+    th {
+        font-weight: 500;
+      
+        & span {
+            display: none;
+        }
+        text-align: left;
+    }
+    .text-end {
+            text-align:right;
+    }
+    thead th {
+        border-bottom: 1px solid;
+    }
+    .border-bottom {
+        border-bottom: 1px solid;
+    }
+    tfoot th {
+        border-top: 1px solid !important;
+        font-weight:bold;
+    }
+    .date-range {
+        margin-bottom:0;
+    }
+    </style>`);
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+    //a.close();
+} 
