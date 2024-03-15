@@ -2,7 +2,7 @@
 $title = "Dashboard";
 
 require "inc/header.php";
-require "core/advanced_user.php";
+//require "core/advanced_user.php";
 
 // instances 
 $orders = new Orders;
@@ -11,6 +11,11 @@ $menus = new Menus;
 $submenus = new Submenus;
 $categories = new Categories;
 $users = new Users;
+
+
+if ($user_level == 1) {
+    redirect_page(ROOT . "/order/new");
+}
 
 ?>
 
