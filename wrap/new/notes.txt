@@ -1,28 +1,7 @@
-- add below property in :root class in 'style.css'
-    --color6: #80e104;
+- replace 'footer_script.js' 
 
-- update summary.php page
+- made minor changes in 'summary.php' - added localNumber function 
 
-- update index.php page
+- replace 'script.js' - added localNumber function 
 
-- update footer_script.js under js folder
-
-- style.css is also added, replace it if it show any missing CSS
-
-- add below method in models.php
-      public function get_category_summary_by_date($date1, $date2 = null)
-    {
-        $query = "SELECT  d.category, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
-        FROM orders as o 
-        JOIN order_details as d 
-        ON o.order_id = d.order_id                    
-        WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
-
-        if ($date2 != null || $date2 == "") {
-            $query .= "AND '$date2'";
-        }
-
-        $query .= "GROUP BY d.category ORDER BY o.date_timestamp";
-
-        return $this->query($query);
-    }
+- replace 'style.css' - made changes in print by using Trebuchet MS fonts
