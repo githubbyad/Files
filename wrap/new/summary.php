@@ -110,7 +110,7 @@ $orders = new Orders;
                                 document.querySelectorAll(".amounts").forEach(a => {
                                     total_amount += Number(a.innerHTML);
                                 });
-                                document.querySelector(".total_amount").innerHTML = total_amount;
+                                document.querySelector(".total_amount").innerHTML = localNumber(total_amount);
 
                                 // total add-ons
                                 let total_addon = 0;
@@ -123,7 +123,7 @@ $orders = new Orders;
                                     });
                                     total_addon += tc;
                                 });
-                                document.querySelector(".total_addon").innerHTML = total_addon;
+                                document.querySelector(".total_addon").innerHTML = localNumber(total_addon);
                                 var tc = 0;
                                 "Cheese (₹10)<br>Cheese (₹10)".split("₹").forEach(c => {
                                     if (c.split(")").length > 1) {
@@ -174,14 +174,14 @@ $orders = new Orders;
                                 document.querySelectorAll(".s_amounts2").forEach(a => {
                                     total_s_amount2 += Number(a.innerHTML);
                                 });
-                                document.querySelector(".total_summary_amount2").innerHTML = total_s_amount2;
+                                document.querySelector(".total_summary_amount2").innerHTML = localNumber(total_s_amount2);
 
                                 // total quantity (summary)
                                 let total_s_quantity2 = 0;
                                 document.querySelectorAll(".quantities2").forEach(a => {
                                     total_s_quantity2 += Number(a.innerHTML);
                                 });
-                                document.querySelector(".total_summary_quantity2").innerHTML = total_s_quantity2;
+                                document.querySelector(".total_summary_quantity2").innerHTML = localNumber(total_s_quantity2);
                             </script>
                         </div>
                     </div>

@@ -6,6 +6,7 @@
   --color5: #b71540;
   --color6: #80e104;
 }
+
 body {
   min-height: 100vh;
 }
@@ -19,7 +20,8 @@ body {
   margin-top: 8px;
   padding-top: 15px !important;
 }
-.modal_wrap_box > p span {
+
+.modal_wrap_box>p span {
   top: -15px;
   z-index: 2;
   background: #ddd;
@@ -29,6 +31,7 @@ body {
   border: 1px solid gray;
   border-radius: 5px;
 }
+
 .modal-content {
   border-radius: 30px !important;
 }
@@ -46,6 +49,7 @@ body {
   color: #fff !important;
   border-color: transparent !important;
 }
+
 .modal_menu_wrap_selected .modal_box p,
 .modal_category_wrap_selected .modal_box p,
 .modal_submenu_wrap_selected .modal_box p,
@@ -53,6 +57,7 @@ body {
 .modal_parcel_wrap_selected .modal_box p {
   transform: scale(0.95);
 }
+
 .border-dashed {
   border-style: dashed !important;
 }
@@ -72,6 +77,7 @@ thead th:hover {
     color: #000;
   }
 }
+
 .orderTable tr:last-child td {
   border-width: 0 !important;
 }
@@ -287,7 +293,7 @@ gray {
   padding-bottom: 0.6rem !important;
 }
 
-.crrentOrders:not(.d-none) ~ p {
+.crrentOrders:not(.d-none)~p {
   display: none;
 }
 
@@ -317,7 +323,7 @@ ord {
   border-radius: 50%;
 }
 
-.drop-down.icon-centered ~ ul.submenu-ul {
+.drop-down.icon-centered~ul.submenu-ul {
   display: none !important;
 }
 
@@ -403,7 +409,7 @@ addonitem:empty {
 .selectComment[disabled],
 .selectParcel[disabled],
 .selectAddOn[disabled],
-.selectAddOn[disabled] ~ .form-check-label,
+.selectAddOn[disabled]~.form-check-label,
 .quantityParent.disabledBox {
   display: none;
 }
@@ -442,6 +448,7 @@ table.table-fit tfoot td {
 .lh-pending {
   line-height: 4rem;
 }
+
 .pendingDiv .orderNum {
   color: red;
 }
@@ -779,12 +786,15 @@ td[data-status="No"] {
   line-height: 1.4rem;
   display: inline-block;
 }
+
 .online_order.online_selected {
   transform: scale(1.1);
 }
+
 .online_order {
   transition: 100ms ease-in-out;
 }
+
 .total_quantity b {
   background: #d0d0d0;
   color: #000;
@@ -793,6 +803,7 @@ td[data-status="No"] {
   border-radius: 50px;
   margin-left: 5px;
 }
+
 .progress_bar {
   height: inherit;
   border-radius: 5px;
@@ -823,7 +834,8 @@ td[data-status="No"] {
 }
 
 .last_days_graph {
-  width: 100%; /*30px*/
+  width: 100%;
+  /*30px*/
   background: #249df9;
   border-top-right-radius: 7px;
   border-top-left-radius: 7px;
@@ -988,7 +1000,7 @@ star::after {
 .crrentOrders[data-total-amount="0"] {
   display: none;
 
-  & ~ .defaultOrderText {
+  &~.defaultOrderText {
     display: block !important;
   }
 }
@@ -1024,6 +1036,7 @@ select {
 .d-none2 {
   display: none !important;
 }
+
 @media screen and (min-width: 1024px) {
   .mx-lg-s {
     margin-left: -1.5rem !important;
@@ -1060,7 +1073,7 @@ select {
 
 .orderDiv,
 .orderDivKitchen {
-  font-family: Oswald !important;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
   line-height: normal !important;
   color: #000 !important;
 
@@ -1071,6 +1084,7 @@ select {
 
 /* **************************** print **************************** */
 @media print {
+
   .printCustomerActive .orderDivCustomer,
   .printKitchenActive .orderDivKitchen {
     display: block !important;
@@ -1160,7 +1174,7 @@ select {
   html,
   body * {
     height: auto;
-    font-size: 11pt !important;
+    font-size: 10pt !important;
   }
 
   .totalText,
@@ -1172,16 +1186,22 @@ select {
   }
 
   .fs-p {
-    font-size: 0.9rem !important;
+    font-size: 10pt !important;
     text-transform: capitalize !important;
-    line-height: 1.05rem;
+    line-height: normal !important;
+  }
+
+  .fs-5 td {
+    font-size: 11pt !important;
+    text-transform: uppercase !important;
+    line-height: normal !important;
   }
 
   .OrderTime {
     text-transform: capitalize !important;
   }
 
-  .table > :not(caption) > * > * {
+  .table> :not(caption)>*>* {
     border-width: 0 !important;
   }
 
@@ -1195,7 +1215,7 @@ select {
   }
 
   body {
-    font-family: Oswald !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
     line-height: normal !important;
     color: #000 !important;
   }
@@ -1204,8 +1224,13 @@ select {
     color: #000 !important;
   }
 
+  .orderDiv th.order-active span,
+  .orderDiv th.order-inactive span {
+    display: none;
+  }
+
   .table .crrentOrdersListKitchen td {
-    border-bottom: 0px dashed !important;
+    border-bottom: 1px dashed !important;
   }
 
   .crrentOrders,

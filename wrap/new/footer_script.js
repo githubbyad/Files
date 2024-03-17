@@ -59,7 +59,7 @@ function printDiv(div) {
         let date1 = document.querySelector('input[name="date1"]').value;
         date1 = new Date(date1).getDate() + '/' + (new Date(date1).getMonth() + 1) + '/' + new Date(date1).getFullYear();
         let date2 = document.querySelector('input[name="date2"]').value;
-        date2 = new Date(date2).getDate() + '/' + (new Date(date2).getMonth() + 1) + '/' + new Date(date1).getFullYear();
+        date2 = new Date(date2).getDate() + '/' + (new Date(date2).getMonth() + 1) + '/' + new Date(date2).getFullYear();
         if (date1 == date2) {
             a.document.write('<p class="date-range">Date: ' + date1 + ' </p>');
         } else {
@@ -78,13 +78,12 @@ function printDiv(div) {
     }
     * {
         font-family: Trebuchet MS;
-        font-size: 10pt !important;
+        font-size: 11pt !important;
     }
     .no-print {
         display: none;
     }
     table {
-        white-space:normal !important;
         width: min-content;
     }
     th {
@@ -94,6 +93,9 @@ function printDiv(div) {
             display: none;
         }
         text-align: left;
+    }
+    th, td {
+        padding: 5px 5px !important;
     }
     .text-end {
             text-align:right;
