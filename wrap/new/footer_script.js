@@ -51,7 +51,7 @@ table_sort();
 
 function printDiv(div) {
     var divContents = div.innerHTML;
-    var a = window.open('', 'printTab', 'height=auto, width=270');
+    var a = window.open('', 'printTab', 'height=auto, width=auto');
 
     a.document.write('<html>');
     a.document.write('<body>');
@@ -85,6 +85,7 @@ function printDiv(div) {
     }
     table {
         width: min-content;
+        white-space:normal !imortant;
     }
     th {
         font-weight: 500;
@@ -113,9 +114,24 @@ function printDiv(div) {
     .date-range {
         margin-bottom:0;
     }
+    html,
+    body {
+      height: auto;
+    }
+  
+    @page {
+      size: 70mm auto;
+      margin: 5mm;
+    }
+  
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
     </style>`);
     a.document.write('</body></html>');
     a.document.close();
     a.print();
-    //a.close();
+    a.close();
 } 
