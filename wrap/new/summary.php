@@ -158,8 +158,8 @@ $orders = new Orders;
                                 <?php foreach ($orders->get_category_summary_by_date($_POST['date1'], $_POST['date2']) as $item) : ?>
                                     <tr>
                                         <td><?= $item->category ?></td>
-                                        <td class="quantities2 text-end"><?= $item->quantity ?></td>
-                                        <td class="s_amounts2 text-end"><?= $item->amount ?></td>
+                                        <td class="quantities2 text-end" data-quantity="<?= $item->quantity ?>"><?= moneyFormatIndia($item->quantity) ?></td>
+                                        <td class="s_amounts2 text-end" data-amount="<?= $item->amount ?>"><?= moneyFormatIndia($item->amount) ?></td>
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
@@ -172,14 +172,14 @@ $orders = new Orders;
                                 // total amount (summary)
                                 let total_s_amount2 = 0;
                                 document.querySelectorAll(".s_amounts2").forEach(a => {
-                                    total_s_amount2 += Number(a.innerHTML);
+                                    total_s_amount2 += Number(a.getAttribute('data-amount'));
                                 });
                                 document.querySelector(".total_summary_amount2").innerHTML = localNumber(total_s_amount2);
 
                                 // total quantity (summary)
                                 let total_s_quantity2 = 0;
                                 document.querySelectorAll(".quantities2").forEach(a => {
-                                    total_s_quantity2 += Number(a.innerHTML);
+                                    total_s_quantity2 += Number(a.getAttribute('data-quantity'));
                                 });
                                 document.querySelector(".total_summary_quantity2").innerHTML = localNumber(total_s_quantity2);
                             </script>
@@ -205,8 +205,8 @@ $orders = new Orders;
                                 <?php foreach ($orders->get_order_summary_by_date($_POST['date1'], $_POST['date2']) as $item) : ?>
                                     <tr>
                                         <td><?= $item->menu ?></td>
-                                        <td class="quantities text-end"><?= $item->quantity ?></td>
-                                        <td class="s_amounts text-end"><?= $item->amount ?></td>
+                                        <td class="quantities text-end" data-quantity="<?= $item->quantity ?>"><?= moneyFormatIndia($item->quantity) ?></td>
+                                        <td class="s_amounts text-end" data-amount="<?= $item->amount ?>"><?= moneyFormatIndia($item->amount) ?></td>
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
@@ -219,16 +219,16 @@ $orders = new Orders;
                                 // total amount (summary)
                                 let total_s_amount = 0;
                                 document.querySelectorAll(".s_amounts").forEach(a => {
-                                    total_s_amount += Number(a.innerHTML);
+                                    total_s_amount += Number(a.getAttribute('data-amount'));
                                 });
-                                document.querySelector(".total_summary_amount").innerHTML = total_s_amount;
+                                document.querySelector(".total_summary_amount").innerHTML = localNumber(total_s_amount);
 
                                 // total quantity (summary)
                                 let total_s_quantity = 0;
                                 document.querySelectorAll(".quantities").forEach(a => {
-                                    total_s_quantity += Number(a.innerHTML);
+                                    total_s_quantity += Number(a.getAttribute('data-quantity'));
                                 });
-                                document.querySelector(".total_summary_quantity").innerHTML = total_s_quantity;
+                                document.querySelector(".total_summary_quantity").innerHTML = localNumber(total_s_quantity);
                             </script>
                         </div>
                     </div>
