@@ -155,7 +155,11 @@ trait Model
         $query = trim($query, " && ");
 
         $data = array_merge($data, $data_not);
-        return $this->query($query, $data);
+        $result = $this->query($query, $data);
+        if(is_array($result)) {
+            return $result;
+        }
+        return [];
     }
 
     public function where_interval_quantity($inverval)
@@ -225,7 +229,7 @@ trait Model
 
     public function get_order_summary_by_date($date1, $date2 = null)
     {
-        $query = "SELECT  d.menu, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
+        $query = "SELECT  d.menu, d.category, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
         FROM orders as o 
         JOIN order_details as d 
         ON o.order_id = d.order_id                    
@@ -235,10 +239,32 @@ trait Model
             $query .= "AND '$date2'";
         }
 
-        $query .= "GROUP BY d.menu ORDER BY o.date_timestamp";
+        //$query .= "GROUP BY d.menu ORDER BY o.date_timestamp";
+
+        $query .= "GROUP BY d.menu ORDER BY d.category";
 
         return $this->query($query);
     }
+
+    public function get_category_summary_by_date($date1, $date2 = null)
+    {
+        $query = "SELECT  d.category, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
+        FROM orders as o 
+        JOIN order_details as d 
+        ON o.order_id = d.order_id                    
+        WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
+
+        if ($date2 != null || $date2 == "") {
+            $query .= "AND '$date2'";
+        }
+
+        //$query .= "GROUP BY d.category ORDER BY o.date_timestamp";
+
+        $query .= "GROUP BY d.category ORDER BY d.category";
+
+        return $this->query($query);
+    }
+
 
 
     public function get_list_by_date_range($date1, $date2 = null)
@@ -251,7 +277,7 @@ trait Model
             $query .= "AND '$date2'";
         }
 
-        $query .= "ORDER BY o.date_timestamp";
+        $query .= "ORDER BY o.order_id desc";
 
         return $this->query($query);
     }
