@@ -156,7 +156,7 @@ trait Model
 
         $data = array_merge($data, $data_not);
         $result = $this->query($query, $data);
-        if(is_array($result)) {
+        if (is_array($result)) {
             return $result;
         }
         return [];
@@ -229,10 +229,10 @@ trait Model
 
     public function get_order_summary_by_date($date1, $date2 = null)
     {
-        $query = "SELECT  d.menu, d.category, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
+        $query = "SELECT  d.menu, c.category_order, c.category_name, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
         FROM orders as o 
-        JOIN order_details as d 
-        ON o.order_id = d.order_id                    
+        JOIN order_details as d ON o.order_id = d.order_id     
+        JOIN categories as c ON d.category = c.category_name                    
         WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
 
         if ($date2 != null || $date2 == "") {
@@ -241,17 +241,17 @@ trait Model
 
         //$query .= "GROUP BY d.menu ORDER BY o.date_timestamp";
 
-        $query .= "GROUP BY d.menu ORDER BY d.category";
+        $query .= "GROUP BY d.menu ORDER BY c.category_order, d.menu";
 
         return $this->query($query);
     }
 
     public function get_category_summary_by_date($date1, $date2 = null)
     {
-        $query = "SELECT  d.category, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
+        $query = "SELECT d.category, d.menu, o.order_id, d.order_id, c.category_order, c.category_name, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
         FROM orders as o 
-        JOIN order_details as d 
-        ON o.order_id = d.order_id                    
+        JOIN order_details as d ON o.order_id = d.order_id  
+        JOIN categories as c ON d.category = c.category_name                                  
         WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
 
         if ($date2 != null || $date2 == "") {
@@ -260,7 +260,7 @@ trait Model
 
         //$query .= "GROUP BY d.category ORDER BY o.date_timestamp";
 
-        $query .= "GROUP BY d.category ORDER BY d.category";
+        $query .= "GROUP BY d.category ORDER BY c.category_order";
 
         return $this->query($query);
     }
