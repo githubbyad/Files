@@ -6,3 +6,7 @@
    th, td {
         padding: 2px 5px !important;
     }
+
+- replace 'order/summary.php'
+
+- replace 'core/functions.php' for new function 'moneyFormatIndia'
