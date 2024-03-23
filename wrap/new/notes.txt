@@ -1,7 +1,4 @@
-- replace 'footer_script.js' 
+- updated below functions in 'core/models.php'
+   get_order_summary_by_date
+   get_category_summary_by_date
 
-- made minor changes in 'summary.php' - added localNumber function 
-
-- replace 'script.js' - added localNumber function 
-
-- replace 'style.css' - made changes in print by using Trebuchet MS fonts
