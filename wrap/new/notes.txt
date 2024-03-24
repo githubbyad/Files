@@ -2,10 +2,7 @@
    get_order_summary_by_date
    get_category_summary_by_date
 
-- update below css in 'footer_script.js'
-   th, td {
-        padding: 2px 5px !important;
-    }
+- replace 'footer_script.js'
 
 - replace 'order/summary.php'
 
