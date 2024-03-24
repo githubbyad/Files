@@ -258,14 +258,14 @@ $orders = new Orders;
                                     c.setAttribute('data-subqty', total);
                                 } else {
                                     c.previousElementSibling.querySelectorAll('td').forEach(t => {
-                                        t.style.borderBottom = '1px dashed';
+                                        t.style.borderBottom = '0px dashed';
                                         t.closest('tr').classList.add('separator');
                                     });
                                 }
                             }
                             if (!c.nextElementSibling) {
                                 c.querySelectorAll('td').forEach(t => {
-                                    t.style.borderBottom = '1px dashed';
+                                    t.style.borderBottom = '0px dashed';
                                 });
                                 c.classList.add('separator');
 
@@ -296,12 +296,12 @@ $orders = new Orders;
                         // add separator
                         document.querySelectorAll(".separator").forEach(s => {
                             s.insertAdjacentHTML(`afterend`, `
-                                    <tr>
-                                        <td class="fw-bold" style="font-style:italic">Subtotal</td>
-                                        <td class="text-end fw-bold" style="font-style:italic">${localNumber(Number(s.getAttribute('data-subqty')))}</td>
-                                        <td class="text-end fw-bold" style="font-style:italic">${localNumber(Number(s.getAttribute('data-subamount')))}</td>
-                                    <tr>
-                                    `);
+                            <tr>
+                                <td class="fw-bold">Subtotal</td>
+                                <td class="text-end fw-bold">${localNumber(Number(s.getAttribute('data-subqty')))}</td>
+                                <td class="text-end fw-bold">${localNumber(Number(s.getAttribute('data-subamount')))}</td>
+                            <tr>
+                            `);
                         });
                     </script>
 
