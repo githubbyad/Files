@@ -54,9 +54,6 @@ function printDiv(div) {
     var a = window.open('', 'printTab', 'height=auto, width=270');
 
     a.document.write('<html>');
-    a.document.write('<head>');
-    //a.document.write('<script>function localNumber(number) {return number.toLocaleString();}<\/script>');
-    a.document.write('</head>');
     a.document.write('<body>');
     if (document.querySelector('input[name="date1"]') && document.querySelector('input[name="date2"]')) {
         let date1 = document.querySelector('input[name="date1"]').value;
@@ -132,5 +129,5 @@ function printDiv(div) {
     a.document.write('</body></html>');
     a.document.close();
     a.print();
-    //a.close();
+    a.close();
 } 

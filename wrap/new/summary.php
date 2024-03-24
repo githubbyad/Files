@@ -98,7 +98,7 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th colspan="3" style="border-top: 3px solid tranparent">Total</th>
+                                    <th colspan="3" style="border-top: 3px solid tranparent">Grand Total</th>
                                     <th class="total_addon text-center" style="border-top: 3px solid var(--color6);"></th>
                                     <th style="border-top: 3px solid tranparent"></th>
                                     <th class="total_amount text-end" style="border-top: 3px solid var(--color6);"></th>
@@ -164,7 +164,7 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th style="border-top: 3px solid var(--color6);">Total</th>
+                                    <th style="border-top: 3px solid var(--color6);">Grand Total</th>
                                     <th class="total_summary_quantity2 text-end" style="border-top: 3px solid var(--color6);"></th>
                                     <th class="total_summary_amount2 text-end" style="border-top: 3px solid var(--color6);"></th>
                                 </tfoot>
@@ -215,7 +215,7 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th style="border-top: 3px solid var(--color6);">Total</th>
+                                    <th style="border-top: 3px solid var(--color6);">Grand Total</th>
                                     <th class="total_summary_quantity text-end" style="border-top: 3px solid var(--color6);"></th>
                                     <!-- <th></th> -->
                                     <th class="total_summary_amount text-end" style="border-top: 3px solid var(--color6);"></th>
@@ -297,9 +297,9 @@ $orders = new Orders;
                         document.querySelectorAll(".separator").forEach(s => {
                             s.insertAdjacentHTML(`afterend`, `
                                     <tr>
-                                        <td style="font-style:italic">--Subtotal--</td>
-                                        <td class="text-end" style="font-style:italic">${localNumber(Number(s.getAttribute('data-subqty')))}</td>
-                                        <td class="text-end" style="font-style:italic">${localNumber(Number(s.getAttribute('data-subamount')))}</td>
+                                        <td class="fw-bold" style="font-style:italic">Subtotal</td>
+                                        <td class="text-end fw-bold" style="font-style:italic">${localNumber(Number(s.getAttribute('data-subqty')))}</td>
+                                        <td class="text-end fw-bold" style="font-style:italic">${localNumber(Number(s.getAttribute('data-subamount')))}</td>
                                     <tr>
                                     `);
                         });
