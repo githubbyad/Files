@@ -51,9 +51,12 @@ table_sort();
 
 function printDiv(div) {
     var divContents = div.innerHTML;
-    var a = window.open('', 'printTab', 'height=auto, width=auto');
+    var a = window.open('', 'printTab', 'height=auto, width=270');
 
     a.document.write('<html>');
+    a.document.write('<head>');
+    //a.document.write('<script>function localNumber(number) {return number.toLocaleString();}<\/script>');
+    a.document.write('</head>');
     a.document.write('<body>');
     if (document.querySelector('input[name="date1"]') && document.querySelector('input[name="date2"]')) {
         let date1 = document.querySelector('input[name="date1"]').value;
@@ -83,12 +86,20 @@ function printDiv(div) {
     .no-print {
         display: none;
     }
+    .bb {
+        border-bottom:1px solid;
+    }
+    tr.separator + tr td {
+        padding-bottom:5px !important;
+    }
     table {
         width: min-content;
-        white-space:normal !imortant;
+    }
+    .fw-bold {
+        font-weight:bold;
     }
     th {
-        font-weight: 500;
+        font-weight: bold;
       
         & span {
             display: none;
@@ -96,7 +107,7 @@ function printDiv(div) {
         text-align: left;
     }
     th, td {
-        padding: 5px 5px !important;
+        padding: 2px 5px !important;
     }
     .text-end {
             text-align:right;
@@ -114,24 +125,12 @@ function printDiv(div) {
     .date-range {
         margin-bottom:0;
     }
-    html,
-    body {
-      height: auto;
-    }
-  
-    @page {
-      size: 70mm auto;
-      margin: 5mm;
-    }
-  
-    *,
-    *:before,
-    *:after {
-      box-sizing: border-box;
+    .fs-7 {
+        font-size: 9pt !important;
     }
     </style>`);
     a.document.write('</body></html>');
     a.document.close();
     a.print();
-    a.close();
+    //a.close();
 } 
