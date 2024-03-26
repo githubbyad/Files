@@ -16,9 +16,16 @@ $order_number = 1;
 $order_invoice = 1;
 $orders_last_record = $orders->first([], [], 'order_id');
 
+//show(date("j H", time()));
+
 if ($orders_last_record) {
     $order_invoice = intval($orders_last_record->order_id) + 1;
-    if (date("j", $orders_last_record->order_timestamp) == date("j", time())) {
+
+    // reset order from 1 for the next day
+    //if (date("j", $orders_last_record->order_timestamp) == date("j", time())) {
+    
+    // start order from 1 if it passes 100
+    if ($orders_last_record->order_number < 100) {
         $order_number = intval($orders_last_record->order_number) + 1;
     }
 }
@@ -104,7 +111,7 @@ $pendingOrders = count($pendingRes);
             <table class="table fs-5">
                 <thead class="d-none">
                     <tr>
-                        <th scope="col" class="text-center" style="width:80px;">Qty</th>
+                        <th scope="col" class="text-center" style="width:40px;">Qty</th>
                         <th scope="col">Item</th>
                     </tr>
                 </thead>
@@ -589,7 +596,7 @@ $pendingOrders = count($pendingRes);
             <div class="modal-footer pt-0 border-0 d-flex justify-content-center my-3 pb-0">
                 <button type="button" class="btn btn-outline-success px-5 py-2 d-none" onclick="setTimeout(() => document.querySelector('.addMore').click(),500);" data-bs-dismiss="modal">Save & Add Order</button>
                 <span></span>
-                <button type="button" class="save_order btn btn-outline-primary fw-bold px-5 py-3 me-3" data-bs-dismiss="modal">Save</button>                
+                <button type="button" class="save_order btn btn-outline-primary fw-bold px-5 py-3 me-3" data-bs-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-outline-secondary px-5 fw-bold py-3" onclick="delete_order(document.querySelectorAll('.deleteIcon')[document.querySelectorAll('.deleteIcon').length - 1]);" data-bs-dismiss="modal">Cancel</button>
             </div>
         </div>
