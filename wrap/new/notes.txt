@@ -1,9 +1,3 @@
-- updated below functions in 'core/models.php'
-   get_order_summary_by_date
-   get_category_summary_by_date
+- added quantity order by in 'get_order_summary_by_date' method of 'model.php'. file already uploaded
 
-- replace 'footer_script.js'
-
-- replace 'order/summary.php'
-
-- replace 'core/functions.php' for new function 'moneyFormatIndia'
+   $query .= "GROUP BY d.menu ORDER BY c.category_order, quantity DESC";
