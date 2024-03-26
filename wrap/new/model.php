@@ -241,7 +241,7 @@ trait Model
 
         //$query .= "GROUP BY d.menu ORDER BY o.date_timestamp";
 
-        $query .= "GROUP BY d.menu ORDER BY c.category_order, d.menu";
+        $query .= "GROUP BY d.menu ORDER BY c.category_order, quantity DESC";
 
         return $this->query($query);
     }
