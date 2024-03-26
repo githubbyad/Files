@@ -1,3 +1,7 @@
 - added quantity order by in 'get_order_summary_by_date' method of 'model.php'. file already uploaded
 
    $query .= "GROUP BY d.menu ORDER BY c.category_order, quantity DESC";
+
+
+- added below 'if' condition to reset order from 1 if it passes 100. 'new.php' file added
+  if ($orders_last_record->order_number < 100) {
