@@ -2,3 +2,10 @@
 
 - updated 'order/delete.php'
 - updated 'order/pending.php'
+
+
+- add below css:
+
+ .deleted_order td {
+	background: #eb6565;
+}
