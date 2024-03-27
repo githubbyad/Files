@@ -7,6 +7,16 @@
 
 - add below css:
 
- .deleted_order td {
-	background: #eb6565;
-}
+	.deleted_order {
+	  opacity: 0.3;
+	
+	  & td {
+	    color:red;
+	  }
+	
+	  &:hover {
+	    opacity: 1;
+	  }
+	}
+
+- 
