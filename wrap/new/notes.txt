@@ -1,1 +1,4 @@
 - add 'order_delete' column in 'orders' table - varchar (255)
+
+- updated 'order/delete.php'
+- updated 'order/pending.php'
