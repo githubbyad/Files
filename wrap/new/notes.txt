@@ -3,7 +3,7 @@
 - updated 'order/delete.php'
 - updated 'order/pending.php'
 - updated 'order/new.php' for line - $orders_last_record = $orders->first(['order_delete' => ''], [], 'order_id');
--
+- updated 'index.php'
 
 - add below css:
 
