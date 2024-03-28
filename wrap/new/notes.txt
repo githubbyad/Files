@@ -3,9 +3,12 @@
 
 - updated 'order/delete.php'
 - updated 'order/pending.php'
+- updated 'order/list.php'
+- updated 'order/summary.php'
 - updated 'order/new.php' for line - $orders_last_record = $orders->first(['order_delete' => ''], [], 'order_id');
 - updated 'index.php'
-- updated 'order/list.php'
+- updated 'core/model.php'
+
 
 - add below css:
 
