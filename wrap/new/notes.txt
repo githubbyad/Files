@@ -7,8 +7,13 @@
 - updated 'order/list.php'
 - updated 'order/summary.php'
 - updated 'order/new.php' for line - $orders_last_record = $orders->first(['order_delete' => ''], [], 'order_id');
+
 - updated 'index.php'
 - updated 'core/model.php'
+
+- updated 'setting/index.php'
+- updated 'models/Settings.php'
+
 
 
 - add below css:
