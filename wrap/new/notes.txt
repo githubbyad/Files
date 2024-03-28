@@ -15,7 +15,6 @@
 - updated 'models/Settings.php'
 
 
-
 - add below css:
 
 	.st-delete {
