@@ -47,9 +47,9 @@ $orders = new Orders;
         <?php else : ?>
 
             <div class="row mx-lg-0 px-lg-0">
-                <!-- All order list -->
                 <div class="col-lg-8 mt-4 ps-lg-0 pe-lg-1">
 
+                    <!-- All order list -->
                     <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow printDiv">
 
                         <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
@@ -65,8 +65,9 @@ $orders = new Orders;
                                         <th>Items</th>
                                         <th>Flavour</th>
                                         <th>Add-On</th>
+                                        <th class="text-end">Qty</th>
+                                        <th class="text-end">Amt</th>
                                         <th>Comment</th>
-                                        <th class="text-end">Amount</th>
                                         <th>Date</th>
                                     </tr>
                                 </thead>
@@ -92,16 +93,18 @@ $orders = new Orders;
                                             }
                                             ?>
                                         </td>
-                                        <td><?= $item->order_comment ?></td>
+                                        <td class="quanities text-end"><?= $item->order_quantity ?></td>
                                         <td class="amounts text-end"><?= $item->order_amount ?></td>
+                                        <td><?= $item->order_comment ?></td>
                                         <td class="datex"><?= date("d/m <b>h:i A</b>", strtotime($item->date_timestamp)) ?></td>
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
                                     <th colspan="3" style="border-top: 3px solid tranparent">Grand Total</th>
-                                    <th class="total_addon text-center" style="border-top: 3px solid var(--color6);"></th>
-                                    <th style="border-top: 3px solid tranparent"></th>
+                                    <th class="total_addon text-center" style="border-top: 3px solid tranparent;"></th>
+                                    <th class="total_quantity text-end"></th>
                                     <th class="total_amount text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <th style="border-top: 3px solid tranparent"></th>
                                     <th style="border-top: 3px solid tranparent"></th>
                                 </tfoot>
                             </table>
@@ -112,6 +115,13 @@ $orders = new Orders;
                                     total_amount += Number(a.innerHTML);
                                 });
                                 document.querySelector(".total_amount").innerHTML = localNumber(total_amount);
+
+                                // total quantity
+                                let total_quantity = 0;
+                                document.querySelectorAll(".quanities").forEach(a => {
+                                    total_quantity += Number(a.innerHTML);
+                                });
+                                document.querySelector(".total_quantity").innerHTML = localNumber(total_quantity);
 
                                 // total add-ons
                                 let total_addon = 0;
@@ -125,13 +135,99 @@ $orders = new Orders;
                                     total_addon += tc;
                                 });
                                 document.querySelector(".total_addon").innerHTML = localNumber(total_addon);
-                                var tc = 0;
-                                "Cheese (₹10)<br>Cheese (₹10)".split("₹").forEach(c => {
-                                    if (c.split(")").length > 1) {
-                                        tc += Number(c.split(")")[0]);
-                                        // console.log(c);
-                                    }
+                            </script>
+                        </div>
+                    </div>
+
+                    <!-- Deleted order list -->
+                    <div class="deleted_list w-100 bg-section p-2 p-lg-3 mt-3 rounded position-relative shadow printDiv">
+
+                        <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
+                            <span class="text-danger">Deleted Orders</span>
+                            <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print d-none" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-borderless mb-0" style="white-space: nowraap;">
+                                <thead>
+                                    <tr class="text-danger">
+                                        <th>Invoice #</th>
+                                        <th>Items</th>
+                                        <th>Flavour</th>
+                                        <th>Add-On</th>
+                                        <th class="text-end">Qty</th>
+                                        <th class="text-end">Amt</th>
+                                        <th>Comment</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <?php foreach ($orders->get_list_by_date_range($_POST['date1'], $_POST['date2'], 'Y') as $item) : ?>
+                                    <tr>
+                                        <td><?= $item->order_id . "-" . $item->order_number ?></td>
+                                        <td><?= $item->menu ?></td>
+                                        <td><?= $item->submenu ?></td>
+                                        <td class="d_addons">
+                                            <?php // addon
+                                            $addons = "";
+                                            if (!empty($item->addons)) {
+                                                // [<Cheese@10>,<Red Cheese@15>]                        
+                                                $filtered = str_replace("/[]", "", $item->addons);
+                                                $filtered = str_replace("<", "", $item->addons);
+                                                $filtered = str_replace(">", "", $filtered);
+                                                $filtered = str_replace(",", ") - ", $filtered);
+                                                $filtered = str_replace("[", "", $filtered);
+                                                $filtered = str_replace("]", ")", $filtered);
+                                                $filtered = str_replace(") - ", ")<br>", $filtered);
+                                                $filtered = str_replace('@', " ({$currency}", $filtered);
+                                                echo $addons = trim($filtered, ' - ');
+                                            }
+                                            ?>
+                                        </td>
+                                        <td class="d_quantities text-end"><?= $item->order_quantity ?></td>
+                                        <td class="d_amounts text-end"><?= $item->order_amount ?></td>
+                                        <td><?= $item->order_comment ?></td>
+                                        <td class="datex"><?= date("d/m <b>h:i A</b>", strtotime($item->date_timestamp)) ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                                <tfoot style="background:#fb8b8b !important">
+                                    <th colspan="3" style="border-top: 3px solid tranparent">Grand Total</th>
+                                    <th class="d_total_addon text-center" style="border-top: 3px solid tranparent"></th>
+                                    <th class="d_total_quantity text-end" style="border-top: 3px solid tranparent"></th>
+                                    <th class="d_total_amount text-end" style="border-top: 3px solid red"></th>
+                                    <th style="border-top: 3px solid tranparent"></th>
+                                    <th style="border-top: 3px solid tranparent"></th>
+                                </tfoot>
+                            </table>
+                            <script>
+                                // total amount
+                                let d_total_amount = 0;
+                                document.querySelectorAll(".d_amounts").forEach(a => {
+                                    d_total_amount += Number(a.innerHTML);
                                 });
+                                document.querySelector(".d_total_amount").innerHTML = localNumber(d_total_amount);
+                                if (document.querySelector(".d_total_amount").innerHTML == 0) {
+                                    document.querySelector(".deleted_list").style.display = "none";
+                                }
+
+                                // total quantity
+                                let d_total_quantity = 0;
+                                document.querySelectorAll(".d_quantities").forEach(a => {
+                                    d_total_quantity += Number(a.innerHTML);
+                                });
+                                document.querySelector(".d_total_quantity").innerHTML = localNumber(d_total_quantity);
+
+                                // total add-ons
+                                let d_total_addon = 0;
+                                document.querySelectorAll(".d_addons").forEach(a => {
+                                    let d_tc = 0;
+                                    a.innerHTML.split("₹").forEach(c => {
+                                        if (c.split(")").length > 1) {
+                                            d_tc += Number(c.split(")")[0]);
+                                        }
+                                    });
+                                    d_total_addon += d_tc;
+                                });
+                                document.querySelector(".d_total_addon").innerHTML = localNumber(d_total_addon);
                             </script>
                         </div>
                     </div>
@@ -139,6 +235,53 @@ $orders = new Orders;
 
                 <!-- Summary -->
                 <div class="col-lg-4 mt-4 ps-lg-1 pe-lg-0">
+
+                    <!-- Deleted Summary by Categories-->
+                    <div class="w-100 bg-section p-2 p-lg-3 mb-2 rounded position-relative shadow printDiv d-none">
+                        <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
+                            <span class="text-danger">Summary by Categories</span>
+                            <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-borderless mb-0" style="white-space: nowrap;">
+                                <thead>
+                                    <tr class="text-theme">
+                                        <th>Category</th>
+                                        <th class="text-end">Qty</th>
+                                        <th class="text-end">Total</th>
+                                    </tr>
+                                </thead>
+                                <?php foreach ($orders->get_category_summary_by_date($_POST['date1'], $_POST['date2'], 'Y') as $item) : ?>
+                                    <tr>
+                                        <td><?= $item->category ?></td>
+                                        <td class="d_quantities2 text-end" data-quantity="<?= $item->quantity ?>"><?= moneyFormatIndia($item->quantity) ?></td>
+                                        <td class="d_s_amounts2 text-end" data-amount="<?= $item->amount ?>"><?= moneyFormatIndia($item->amount) ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                                <tfoot style="background: var(--color2)">
+                                    <th style="border-top: 3px solid var(--color6);">Grand Total</th>
+                                    <th class="d_total_summary_quantity2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <th class="d_total_summary_amount2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                </tfoot>
+                            </table>
+                            <script>
+                                // total amount (summary)
+                                let d_total_s_amount2 = 0;
+                                document.querySelectorAll(".d_s_amounts2").forEach(a => {
+                                    d_total_s_amount2 += Number(a.getAttribute('data-amount'));
+                                });
+                                document.querySelector(".d_total_summary_amount2").innerHTML = localNumber(d_total_s_amount2);
+
+                                // total quantity (summary)
+                                let d_total_s_quantity2 = 0;
+                                document.querySelectorAll(".d_quantities2").forEach(a => {
+                                    d_total_s_quantity2 += Number(a.getAttribute('data-quantity'));
+                                });
+                                document.querySelector(".d_total_summary_quantity2").innerHTML = localNumber(d_total_s_quantity2);
+                            </script>
+                        </div>
+                    </div>
 
                     <!-- Summary by Categories-->
                     <div class="w-100 bg-section p-2 p-lg-3 mb-2 rounded position-relative shadow printDiv">
@@ -164,12 +307,28 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th style="border-top: 3px solid var(--color6);">Grand Total</th>
-                                    <th class="total_summary_quantity2 text-end" style="border-top: 3px solid var(--color6);"></th>
-                                    <th class="total_summary_amount2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <tr>
+                                        <th style="border-top: 3px solid var(--color6);">Grand Total</th>
+                                        <th class="total_summary_quantity2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                        <th class="total_summary_amount2 text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    </tr>
+                                    <tr class="deleted_categories" style="background: #fff !important;">
+                                        <td class="text-danger" style="border-top: 1px dashed red;padding-top:5px !important;">Deleted Orders</td>
+                                        <td class="dx_total_summary_quantity2 text-danger text-end" style="border-top: 1px dashed red;padding-top:5px !important;"></td>
+                                        <td class="dx_total_summary_amount2 text-danger text-end" style="border-top: 1px dashed red;padding-top:5px !important;"></td>
+                                    </tr>
                                 </tfoot>
                             </table>
                             <script>
+                                // hide deleted recored if its zero
+                                if (document.querySelector(".d_total_summary_amount2").innerHTML == 0) {
+                                    document.querySelector(".deleted_categories").style.display = "none";
+                                }
+
+                                // get delete orders
+                                document.querySelector(".dx_total_summary_quantity2").innerHTML = `-${document.querySelector(".d_total_summary_quantity2").innerHTML}`;
+                                document.querySelector(".dx_total_summary_amount2").innerHTML = `-${document.querySelector(".d_total_summary_amount2").innerHTML}`;
+
                                 // total amount (summary)
                                 let total_s_amount2 = 0;
                                 document.querySelectorAll(".s_amounts2").forEach(a => {
@@ -187,10 +346,10 @@ $orders = new Orders;
                         </div>
                     </div>
 
-                    <!-- Summary by Items -->
-                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow printDiv">
+                    <!-- Deleted Summary by Items -->
+                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow printDiv d-none">
                         <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
-                            <span>Summary by Items</span>
+                            <span class="text-danger">Deleted Summary by Items</span>
                             <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
                         </p>
 
@@ -205,6 +364,120 @@ $orders = new Orders;
                                         <!-- <td class="fw-bold text-end bb"></td> -->
                                     </tr>
                                 </thead>
+                                <?php foreach ($orders->get_order_summary_by_date($_POST['date1'], $_POST['date2'], 'Y') as $item) : ?>
+                                    <tr data-category="<?= $item->category_name ?>" data-subqty="0" data-subamount="0">
+                                        <td><?= $item->menu ?></td>
+                                        <td class="d_quantities text-end" data-quantity="<?= $item->quantity ?>" data-category="<?= $item->category_name ?>"><?= moneyFormatIndia($item->quantity) ?></td>
+                                        <!-- <td class="sub-qty fs-7" style="font-style: italic;"></td> -->
+                                        <td class="d_s_amounts text-end" data-amount="<?= $item->amount ?>" data-category="<?= $item->category_name ?>"><?= moneyFormatIndia($item->amount) ?></td>
+                                        <!-- <td class="sub-amount fs-7" style="font-style: italic;"></td> -->
+                                    </tr>
+                                <?php endforeach ?>
+                                <tfoot style="background: var(--color2)">
+                                    <th style="border-top: 3px solid var(--color6);">Grand Total</th>
+                                    <th class="d_total_summary_quantity text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    <th class="d_total_summary_amount text-end" style="border-top: 3px solid var(--color6);"></th>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <script>
+                        // total amount (summary)
+                        let d_total_s_amount = 0;
+                        document.querySelectorAll(".d_s_amounts").forEach(a => {
+                            d_total_s_amount += Number(a.getAttribute('data-amount'));
+                        });
+                        document.querySelector(".d_total_summary_amount").innerHTML = localNumber(d_total_s_amount);
+
+                        // total quantity (summary)
+                        let d_total_s_quantity = 0;
+                        document.querySelectorAll(".d_quantities").forEach(a => {
+                            d_total_s_quantity += Number(a.getAttribute('data-quantity'));
+                        });
+                        document.querySelector(".d_total_summary_quantity").innerHTML = localNumber(d_total_s_quantity);
+
+                        // sub-quantity
+                        document.querySelectorAll('.d_quantities').forEach(q => {
+                            let currentCat = q.getAttribute('data-category');
+                            let parentCat = q.parentElement.getAttribute('data-category');
+                            let parentsubQ = q.parentElement.getAttribute('data-subqty');
+                            let currentQ = q.getAttribute('data-quantity');
+                            if (currentCat == parentCat) {
+                                q.parentElement.setAttribute('data-subqty', Number(parentsubQ) + Number(currentQ));
+                            }
+                        });
+                        document.querySelectorAll('tr[data-category]').forEach(c => {
+                            if (c.previousElementSibling) {
+                                if (c.getAttribute('data-category') == c.previousElementSibling.getAttribute('data-category')) {
+                                    let current = Number(c.getAttribute('data-subqty'));
+                                    let prev = Number(c.previousElementSibling.getAttribute('data-subqty'));
+                                    let total = current + prev;
+                                    c.setAttribute('data-subqty', total);
+                                } else {
+                                    c.previousElementSibling.querySelectorAll('td').forEach(t => {
+                                        t.style.borderBottom = '0px dashed';
+                                        t.closest('tr').classList.add('separator2');
+                                    });
+                                }
+                            }
+                            if (!c.nextElementSibling) {
+                                c.querySelectorAll('td').forEach(t => {
+                                    t.style.borderBottom = '0px dashed';
+                                });
+                                c.classList.add('separator2');
+
+                            }
+                        });
+
+                        // sub-total
+                        document.querySelectorAll('.d_s_amounts').forEach(q => {
+                            let currentCat = q.getAttribute('data-category');
+                            let parentCat = q.parentElement.getAttribute('data-category');
+                            let parentsubAmt = q.parentElement.getAttribute('data-subamount');
+                            let currentAmt = q.getAttribute('data-amount');
+                            if (currentCat == parentCat) {
+                                q.parentElement.setAttribute('data-subamount', Number(parentsubAmt) + Number(currentAmt));
+                            }
+                        });
+                        document.querySelectorAll('tr[data-category]').forEach(c => {
+                            if (c.previousElementSibling) {
+                                if (c.getAttribute('data-category') == c.previousElementSibling.getAttribute('data-category')) {
+                                    let current = Number(c.getAttribute('data-subamount'));
+                                    let prev = Number(c.previousElementSibling.getAttribute('data-subamount'));
+                                    let total = current + prev;
+                                    c.setAttribute('data-subamount', total);
+                                }
+                            }
+                        });
+
+                        // add separator
+                        document.querySelectorAll(".separator2").forEach(s => {
+                            s.insertAdjacentHTML(`afterend`, `
+                            <tr>
+                                <td class="fw-bold">Subtotal</td>
+                                <td class="text-end fw-bold">${localNumber(Number(s.getAttribute('data-subqty')))}</td>
+                                <td class="text-end fw-bold">${localNumber(Number(s.getAttribute('data-subamount')))}</td>
+                            <tr>
+                            `);
+                        });
+                    </script>
+
+                    <!-- Summary by Items -->
+                    <div class="w-100 bg-section p-2 p-lg-3 rounded position-relative shadow printDiv">
+                        <p class="fw-bold mb-2 border-bottom pb-2 d-flex justify-content-between">
+                            <span>Summary by Items</span>
+                            <span class="btn btn-outline-secondary fw-normal cursor-pointer no-print" onclick="printDiv(this.closest('.printDiv'))">Print <?= $printIcon ?></span>
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-borderless mb-0" style="white-space: nowrap;">
+                                <thead>
+                                    <tr class="text-theme">
+                                        <td class="fw-bold bb">Items</td>
+                                        <td class="fw-bold text-end bb">Qty</td>
+                                        <td class="fw-bold text-end bb">Total</td>
+                                    </tr>
+                                </thead>
                                 <?php foreach ($orders->get_order_summary_by_date($_POST['date1'], $_POST['date2']) as $item) : ?>
                                     <tr data-category="<?= $item->category_name ?>" data-subqty="0" data-subamount="0">
                                         <td><?= $item->menu ?></td>
@@ -215,16 +488,30 @@ $orders = new Orders;
                                     </tr>
                                 <?php endforeach ?>
                                 <tfoot style="background: var(--color2)">
-                                    <th style="border-top: 3px solid var(--color6);">Grand Total</th>
-                                    <th class="total_summary_quantity text-end" style="border-top: 3px solid var(--color6);"></th>
-                                    <!-- <th></th> -->
-                                    <th class="total_summary_amount text-end" style="border-top: 3px solid var(--color6);"></th>
-                                    <!-- <th></th> -->
+                                    <tr>
+                                        <th style="border-top: 3px solid var(--color6);">Grand Total</th>
+                                        <th class="total_summary_quantity text-end" style="border-top: 3px solid var(--color6);"></th>
+                                        <th class="total_summary_amount text-end" style="border-top: 3px solid var(--color6);"></th>
+                                    </tr>
+                                    <tr class="deleted_items" style="background:#fff;">
+                                        <td class="text-danger" style="border-top: 1px dashed red;padding-top:5px !important;">Deleted Orders</td>
+                                        <td class="dx_total_summary_quantity text-danger text-end" style="border-top: 1px dashed red;padding-top:5px !important;"></td>
+                                        <td class="dx_total_summary_amount text-danger text-end" style="border-top: 1px dashed red; padding-top:5px !important;"></td>
+                                    </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
                     <script>
+                        // hide deleted recored if its zero
+                        if (document.querySelector(".d_total_summary_amount").innerHTML == 0) {
+                            document.querySelector(".deleted_items").style.display = "none";
+                        }
+
+                        // get delete orders
+                        document.querySelector(".dx_total_summary_quantity").innerHTML = `-${document.querySelector(".d_total_summary_quantity").innerHTML}`;
+                        document.querySelector(".dx_total_summary_amount").innerHTML = `-${document.querySelector(".d_total_summary_amount").innerHTML}`;
+
                         // total amount (summary)
                         let total_s_amount = 0;
                         document.querySelectorAll(".s_amounts").forEach(a => {

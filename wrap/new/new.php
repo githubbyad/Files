@@ -14,7 +14,7 @@ $comments = new Comments;
 // get order & invice numbers
 $order_number = 1;
 $order_invoice = 1;
-$orders_last_record = $orders->first([], [], 'order_id');
+$orders_last_record = $orders->first(['order_delete' => ''], [], 'order_id');
 
 //show(date("j H", time()));
 
