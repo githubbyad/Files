@@ -217,7 +217,7 @@ trait Model
                     FROM orders as o 
                     JOIN order_details as d 
                     ON o.order_id = d.order_id 
-                    WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) = '" . $date . "' 
+                    WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) = '" . $date . "'
                     AND menu = '" . $menu . "'";
 
         if ($this->query($query)[0]->quantity) {
@@ -227,7 +227,7 @@ trait Model
     }
 
 
-    public function get_order_summary_by_date($date1, $date2 = null)
+    public function get_order_summary_by_date($date1, $date2 = null, $softDelete = '')
     {
         $query = "SELECT  d.menu, c.category_order, c.category_name, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
         FROM orders as o 
@@ -241,12 +241,12 @@ trait Model
 
         //$query .= "GROUP BY d.menu ORDER BY o.date_timestamp";
 
-        $query .= "GROUP BY d.menu ORDER BY c.category_order, quantity DESC";
+        $query .= " AND o.order_delete = '" . $softDelete . "' GROUP BY d.menu ORDER BY c.category_order, quantity DESC";
 
         return $this->query($query);
     }
 
-    public function get_category_summary_by_date($date1, $date2 = null)
+    public function get_category_summary_by_date($date1, $date2 = null, $softDelete = '')
     {
         $query = "SELECT d.category, d.menu, o.order_id, d.order_id, c.category_order, c.category_name, SUM(d.order_quantity) as quantity, SUM(d.order_amount) as amount
         FROM orders as o 
@@ -260,24 +260,24 @@ trait Model
 
         //$query .= "GROUP BY d.category ORDER BY o.date_timestamp";
 
-        $query .= "GROUP BY d.category ORDER BY c.category_order";
+        $query .= " AND o.order_delete = '" . $softDelete . "' GROUP BY d.category ORDER BY c.category_order";
 
         return $this->query($query);
     }
 
 
 
-    public function get_list_by_date_range($date1, $date2 = null)
+    public function get_list_by_date_range($date1, $date2 = null, $softDelete = '')
     {
-        $query = "SELECT * FROM orders as o JOIN order_details as d 
-                    ON o.order_id = d.order_id
+        $query = "SELECT * FROM orders as o JOIN order_details as d ON o.order_id = d.order_id
                     WHERE SUBSTRING_INDEX(date_timestamp,' ', 1) BETWEEN '$date1'";
 
         if ($date2 != null || $date2 == "") {
             $query .= "AND '$date2'";
         }
 
-        $query .= "ORDER BY o.order_id desc";
+
+        $query .= " AND o.order_delete = '" . $softDelete . "' ORDER BY o.order_id desc";
 
         return $this->query($query);
     }

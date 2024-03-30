@@ -1,6 +1,6 @@
 <?php
-$title = "Dashboard";
 
+$title = "Dashboard";
 require "inc/header.php";
 //require "core/advanced_user.php";
 
@@ -11,6 +11,11 @@ $menus = new Menus;
 $submenus = new Submenus;
 $categories = new Categories;
 $users = new Users;
+$settings = new Settings;
+
+// set time zone
+$region = $settings->first()->region;
+date_default_timezone_set($region);
 
 
 if ($user_level == 1) {
@@ -20,26 +25,29 @@ if ($user_level == 1) {
 ?>
 
 <div class="row">
+
+    <!-- Orders -->
     <div class="col-6 col-lg-3">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1">Orders</p>
             <div class="d-flex justify-content-evenly">
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Today</b><br>
-                    <?= is_array($orders->where_interval([], [], 'date_timestamp', '1 DAY')) ? count($orders->where_interval([], [], 'date_timestamp', '1 DAY')) : 0 ?>
+                    <?= is_array($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 DAY')) ? count($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 DAY')) : 0 ?>
                 </span>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">This week</b><br>
-                    <?= is_array($orders->where_interval([], [], 'date_timestamp', '1 WEEK')) ? count($orders->where_interval([], [], 'date_timestamp', '1 WEEK')) : 0 ?>
+                    <?= is_array($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 WEEK')) ? count($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 WEEK')) : 0 ?>
                 </span>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Overall</b><br>
-                    <?= count($orders->find_all()) ?>
+                    <?= is_array($orders->where(['order_delete' => ''])) ? count($orders->where(['order_delete' => ''])) : 0 ?>
                 </span>
             </div>
         </div>
     </div>
 
+    <!-- Earnings -->
     <div class="col-6 col-lg-5">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1">Earnings</span></p>
@@ -48,7 +56,7 @@ if ($user_level == 1) {
                     <b class="text-muted fw-normal fs-6">Today</b><br>
                     <?php
                     $totalEarning = 0;
-                    foreach ($orders->where_interval([], [], 'date_timestamp', '1 DAY') as $order) :
+                    foreach ($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 DAY') as $order) :
                         $totalEarning += floatval($order->order_total_amount);
                     endforeach;
                     echo "<gray>" . $currency . "</gray> " . number_format($totalEarning);
@@ -58,7 +66,7 @@ if ($user_level == 1) {
                     <b class="text-muted fw-normal fs-6">This week</b><br>
                     <?php
                     $totalEarning = 0;
-                    foreach ($orders->where_interval([], [], 'date_timestamp', '1 WEEK') as $order) :
+                    foreach ($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 WEEK') as $order) :
                         $totalEarning += floatval($order->order_total_amount);
                     endforeach;
                     echo "<gray>" . $currency . "</gray> " . number_format($totalEarning);
@@ -68,7 +76,7 @@ if ($user_level == 1) {
                     <b class="text-muted fw-normal fs-6">This month</b><br>
                     <?php
                     $totalEarning = 0;
-                    foreach ($orders->where_interval([], [], 'date_timestamp', '1 MONTH') as $order) :
+                    foreach ($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '1 MONTH') as $order) :
                         $totalEarning += floatval($order->order_total_amount);
                     endforeach;
                     echo "<gray>" . $currency . "</gray> " . number_format($totalEarning);
@@ -78,7 +86,7 @@ if ($user_level == 1) {
                     <b class="text-muted fw-normal fs-6">Overall</b><br>
                     <?php
                     $totalEarning = 0;
-                    foreach ($orders->find_all() as $order) :
+                    foreach ($orders->where(['order_delete' => '']) as $order) :
                         $totalEarning += floatval($order->order_total_amount);
                     endforeach;
                     echo "<gray>" . $currency . "</gray> " . number_format($totalEarning);
@@ -88,6 +96,7 @@ if ($user_level == 1) {
         </div>
     </div>
 
+    <!-- Categories -->
     <div class="col-6 col-lg-3">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Categories</span></p>
@@ -108,6 +117,7 @@ if ($user_level == 1) {
         </div>
     </div>
 
+    <!-- Users -->
     <div class="col-6 col-lg-1">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Users</span></p>
@@ -120,7 +130,7 @@ if ($user_level == 1) {
         </div>
     </div>
 
-
+    <!-- Latest Orders -->
     <div class="col-lg-5">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom d-flex justify-content-between align-items-end pb-2 mb-1 position-relative">
@@ -131,7 +141,7 @@ if ($user_level == 1) {
                 <table class="table orderTable table-hover table-borderless">
                     <thead>
                         <tr class="text-muted">
-                            <th scope="col" class="fw-normal">Order #</th>
+                            <th scope="col" class="fw-normal">#</th>
                             <th scope="col" class="fw-normal">Time</th>
                             <th scope="col" class="fw-normal text-end">Amount</th>
                             <th scope="col" class="fw-normal text-center">Payment</th>
@@ -142,9 +152,9 @@ if ($user_level == 1) {
                     <tbody>
                         <?php
 
-                        foreach ($orders->find_all_limit([], [], 8, 0, 'order_id') as $row) : ?>
+                        foreach ($orders->find_all_limit(['order_delete' => ''], [], 8, 0, 'order_id') as $row) : ?>
                             <tr>
-                                <td class="fw-bold text-center"><?= $row->order_number ?></td>
+                                <td class="fw-bold text-end"><?= $row->order_number ?></td>
                                 <td><?= date("h:i:s A", $row->order_timestamp) ?></td>
                                 <td class="text-end"><?= "<gray>" . $currency . "</gray> " . $row->order_total_amount ?></td>
                                 <td class="text-center"><?= $row->order_payment_method ?></td>
@@ -157,8 +167,7 @@ if ($user_level == 1) {
         </div>
     </div>
 
-
-
+    <!-- Order Stats -->
     <div class="col-lg-4">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Order Stats</span></p>
@@ -170,7 +179,7 @@ if ($user_level == 1) {
                         height: 350,
                         type: 'radialBar',
                     },
-                    series: [<?= number_format(count($orders->where(['order_pending_status' => ''])) * 100 / count($orders->find_all()), 2, ".") ?>],
+                    series: [<?= number_format(count($orders->where(['order_pending_status' => '', 'order_delete' => ''])) * 100 / count($orders->where(['order_delete' => ''])), 2, ".") ?>],
                     labels: ['Completed'],
                 }
                 var chart = new ApexCharts(document.querySelector("#chart"), options);
@@ -179,68 +188,72 @@ if ($user_level == 1) {
             <div class="d-flex justify-content-evenly">
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Completed</b><br>
-                    <?= count($orders->where(['order_pending_status' => ''])) ?>
+                    <?= count($orders->where(['order_pending_status' => '', 'order_delete' => ''])) ?>
                 </span>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Pending</b><br>
-                    <?= count($orders->where([], ['order_pending_status' => ''])) ?>
+                    <?= count($orders->where(['order_delete' => ''], ['order_pending_status' => ''])) ?>
                 </span>
             </div>
         </div>
-
-
     </div>
 
+    <!-- Payment Stats -->
     <div class="col-lg-3">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Payment Stats</span></p>
             <div class="d-flex justify-content-evenly">
                 <?php
-                $cash = (count($orders->where(['order_payment_method' => 'Cash'])) / count($orders->find_all())) * 100;
-                $online = (count($orders->where(['order_payment_method' => 'Online'])) / count($orders->find_all())) * 100;
+                $cash = (count($orders->where(['order_payment_method' => 'Cash', 'order_delete' => ''])) / count($orders->where(['order_delete' => '']))) * 100;
+                $online = (count($orders->where(['order_payment_method' => 'Online', 'order_delete' => ''])) / count($orders->where(['order_delete' => '']))) * 100;
                 ?>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Cash</b><br>
-                    <per class="<?= $cash > $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Cash'])) / count($orders->find_all())) * 100, "2", ".") . "%" ?></per>
+                    <per class="<?= $cash > $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Cash', 'order_delete' => ''])) / count($orders->where(['order_delete' => '']))) * 100, "2", ".") . "%" ?></per>
                 </span>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Online</b><br>
-                    <per class="<?= $cash < $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Online'])) / count($orders->find_all())) * 100, "2", ".") . "%" ?></per>
+                    <per class="<?= $cash < $online ? 'text-success' : 'text-danger' ?>"><?= number_format((count($orders->where(['order_payment_method' => 'Online', 'order_delete' => ''])) / count($orders->where(['order_delete' => '']))) * 100, "2", ".") . "%" ?></per>
                 </span>
             </div>
         </div>
+
+        <!-- Pickup -->
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Pickup / Dine-In Stats</span></p>
             <div class="d-flex justify-content-evenly">
                 <?php
-                $pickup = (count($order_details->where(['order_parcel_status' => 'Yes'])) / count($order_details->find_all())) * 100;
-                $dine = (count($order_details->where(['order_parcel_status' => 'No'])) / count($order_details->find_all())) * 100;
+                $pickup = (count($order_details->where(['order_parcel_status' => 'Yes','order_delete' => ''])) / count($order_details->where(['order_delete' => '']))) * 100;
+                $dine = (count($order_details->where(['order_parcel_status' => 'No','order_delete' => ''])) / count($order_details->where(['order_delete' => '']))) * 100;
                 ?>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Pick-Up</b><br>
-                    <per class="<?= $pickup > $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'Yes'])) / count($order_details->find_all())) * 100, "2", ".") . "%" ?></per>
+                    <per class="<?= $pickup > $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'Yes', 'order_delete' => ''])) / count($order_details->where(['order_delete' => '']))) * 100, "2", ".") . "%" ?></per>
                 </span>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Dine-In</b><br>
-                    <per class="<?= $pickup < $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'No'])) / count($order_details->find_all())) * 100, "2", ".") . "%" ?></per>
+                    <per class="<?= $pickup < $dine ? 'text-success' : 'text-danger' ?>"><?= number_format((count($order_details->where(['order_parcel_status' => 'No','order_delete' => ''])) / count($order_details->where(['order_delete' => '']))) * 100, "2", ".") . "%" ?></per>
                 </span>
             </div>
         </div>
+
+        <!-- Customer Repeat -->
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-1"><span class="tMenu">Customer Repeat</span></p>
             <div class="d-flex justify-content-evenly">
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">This week</b><br>
-                    <?= is_array($orders->where_interval(['customer_repeat' => 'on'], [], 'date_timestamp', '1 WEEK')) ? count($orders->where_interval(['customer_repeat' => 'on'], [], 'date_timestamp', '1 WEEK')) : 0 ?>
+                    <?= is_array($orders->where_interval(['customer_repeat' => 'on', 'order_delete' => ''], [], 'date_timestamp', '1 WEEK')) ? count($orders->where_interval(['customer_repeat' => 'on', 'order_delete' => ''], [], 'date_timestamp', '1 WEEK')) : 0 ?>
                 </span>
                 <span class="text-center fw-bold fs-4">
                     <b class="text-muted fw-normal fs-6">Overall</b><br>
-                    <?= count($orders->where(['customer_repeat' => 'on'])) ?>
+                    <?= count($orders->where(['customer_repeat' => 'on', 'order_delete' => ''])) ?>
                 </span>
             </div>
         </div>
     </div>
 
+    <!-- Menus -->
     <div class="col-lg-6">
         <div class="row mx-lg-0">
             <div class="col-12 row mx-0 bg-section p-3 mb-4 rounded shadow">
@@ -250,9 +263,9 @@ if ($user_level == 1) {
                         <p class="text-muted fw-normal fs-6 mb-3"><span class="tMenu">Top Bases</span></p>
                         <div class="row totalMenusHead">
                             <?php
-                            $total_orders = count($order_details->where(['category' => 'Wraps'], ['menu' => '']));
+                            $total_orders = count($order_details->where(['category' => 'Wraps','order_delete' => ''], ['menu' => '']));
                             $i = 1;
-                            foreach ($order_details->count_column('menu', "DESC", ['category' => 'Wraps'], ['menu' => '']) as $row) :
+                            foreach ($order_details->count_column('menu', "DESC", ['category' => 'Wraps','order_delete' => ''], ['menu' => '']) as $row) :
                                 if ($i <= 6) :
                             ?>
                                     <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
@@ -275,9 +288,9 @@ if ($user_level == 1) {
                         <p class="text-muted fw-normal fs-6 mb-3"><span class="tMenu">Top Flavours</span></p>
                         <div class="row totalMenusHead">
                             <?php
-                            $total_orders = count($order_details->where(['category' => 'Wraps'], ['submenu' => '']));
+                            $total_orders = count($order_details->where(['category' => 'Wraps','order_delete' => ''], ['submenu' => '']));
                             $i = 1;
-                            foreach ($order_details->count_column('submenu', "DESC", ['category' => 'Wraps'], ['submenu' => '']) as $row) :
+                            foreach ($order_details->count_column('submenu', "DESC", ['category' => 'Wraps','order_delete' => ''], ['submenu' => '']) as $row) :
                                 if ($i <= 6) :
                             ?>
                                     <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
@@ -310,9 +323,9 @@ if ($user_level == 1) {
                         <p class="text-muted fw-normal fs-6 mb-3"><span class="tMenu">Top Bases</span></p>
                         <div class="row totalMenusHead">
                             <?php
-                            $total_orders = count($order_details->where(['category' => 'Cheezzas'], ['menu' => '']));
+                            $total_orders = count($order_details->where(['category' => 'Cheezzas','order_delete' => ''], ['menu' => '']));
                             $i = 1;
-                            foreach ($order_details->count_column('menu', "DESC", ['category' => 'Cheezzas'], ['menu' => '']) as $row) :
+                            foreach ($order_details->count_column('menu', "DESC", ['category' => 'Cheezzas','order_delete' => ''], ['menu' => '']) as $row) :
                                 if ($i <= 6) :
                             ?>
                                     <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
@@ -335,9 +348,9 @@ if ($user_level == 1) {
                         <p class="text-muted fw-normal fs-6 mb-3"><span class="tMenu">Top Flavours</span></p>
                         <div class="row totalMenusHead">
                             <?php
-                            $total_orders = count($order_details->where(['category' => 'Cheezzas'], ['submenu' => '']));
+                            $total_orders = count($order_details->where(['category' => 'Cheezzas','order_delete' => ''], ['submenu' => '']));
                             $i = 1;
-                            foreach ($order_details->count_column('submenu', "DESC", ['category' => 'Cheezzas'], ['submenu' => '']) as $row) :
+                            foreach ($order_details->count_column('submenu', "DESC", ['category' => 'Cheezzas','order_delete' => ''], ['submenu' => '']) as $row) :
                                 if ($i <= 6) :
                             ?>
                                     <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
@@ -361,15 +374,14 @@ if ($user_level == 1) {
         </div>
     </div>
 
-
     <div class="col-lg-3">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-0"><span class="tMenu">Special Wraps</span></p>
             <div class="row totalMenusHead">
                 <?php
-                $total_orders = count($order_details->where(['category' => 'Special Wraps'], ['menu' => '']));
+                $total_orders = count($order_details->where(['category' => 'Special Wraps','order_delete' => ''], ['menu' => '']));
                 $i = 1;
-                foreach ($order_details->count_column('menu', "DESC", ['category' => 'Special Wraps'], ['menu' => '']) as $row) :
+                foreach ($order_details->count_column('menu', "DESC", ['category' => 'Special Wraps','order_delete' => ''], ['menu' => '']) as $row) :
                     if ($i <= 6) :
                 ?>
                         <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
@@ -387,16 +399,15 @@ if ($user_level == 1) {
             </div>
         </div>
     </div>
-
 
     <div class="col-lg-3">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-0"><span class="tMenu">Drinks</span></p>
             <div class="row totalMenusHead">
                 <?php
-                $total_orders = count($order_details->where(['category' => 'Drinks'], ['menu' => '']));
+                $total_orders = count($order_details->where(['category' => 'Drinks','order_delete' => ''], ['menu' => '']));
                 $i = 1;
-                foreach ($order_details->count_column('menu', "DESC", ['category' => 'Drinks'], ['menu' => '']) as $row) :
+                foreach ($order_details->count_column('menu', "DESC", ['category' => 'Drinks','order_delete' => ''], ['menu' => '']) as $row) :
                     if ($i <= 6) :
                 ?>
                         <div class="col-12 pt-2 pb-3 div-hover rounded position-relative">
@@ -415,6 +426,7 @@ if ($user_level == 1) {
         </div>
     </div>
 
+    <!-- Last 7 days Earnings -->
     <div class="col-lg-6">
         <div class="w-100 bg-section p-3 mb-4 rounded shadow">
             <p class="text-theme fw-bold border-bottom pb-2 mb-0"><span class="tMenu">Last 7 days Earnings</span></p>
@@ -424,13 +436,13 @@ if ($user_level == 1) {
                 $days = 7;
                 $last_x_day_total = 0;
 
-                foreach ($orders->where_interval([], [], 'date_timestamp', '10 DAY') as $row) {
+                foreach ($orders->where_interval(['order_delete' => ''], [], 'date_timestamp', '10 DAY') as $row) {
                     $last_x_day_total += $row->order_total_amount;
                 }
 
                 for ($i = $days; $i >= 1; $i--) {
                     $j = $i + 1;
-                    ${"day_$i"} = $orders->where_interval_specific_total("order_total_amount", [], [], "date_timestamp", "$j  DAY", "$i DAY") ?? 0;
+                    ${"day_$i"} = $orders->where_interval_specific_total("order_total_amount", ['order_delete' => ''], [], "date_timestamp", "$j  DAY", "$i DAY") ?? 0;
                     ${"day_p$i"} = toFixed((${"day_$i"} / $last_x_day_total) * 100);
                 ?>
                     <div class="col px-0 graph_col position-relative">
@@ -453,6 +465,7 @@ if ($user_level == 1) {
 
 </div>
 
+<!-- Powered by line -->
 <div class="w-100 text-center text-secondary mt-5 border-top pt-2">
     { Powered by <b><?= $settings->first()->company_text; ?></b> }
 </div>
