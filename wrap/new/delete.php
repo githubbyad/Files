@@ -6,6 +6,7 @@ include "../mail/email.php";
 // instances
 $settings = new Settings;
 $orders = new Orders;
+$orders_detail = new Order_details;
 
 //include "../core/advanced_user.php";
 
@@ -45,12 +46,32 @@ if (isset($_GET['id'])) {
 
                         // get details of deleted orders
                         $order_deleted = $orders->first(['order_id' => $deleteId]);
+                        $order_detail_deleted = $orders_detail->where(['order_id' => $deleteId]);
+                        $detail_email = "<table border='1' cellspacing='0' cellpadding='5'><thead><th>Items</th><th>Qty</th><th>Amt</th></thead><tbody>";
+                        foreach($order_detail_deleted as $item) {
 
-                        $mail->Subject =  "{$settings->first()->logo_text} - Order# {$order_deleted->order_number} is Deleted";
-                        $mail->Body    = "Order#: {$order_deleted->order_number}<br>Time: {$order_deleted->order_date}<br>Amount: {$order_deleted->order_total_amount}";
+                            // addon
+                            $addons = "";
+                            if (!empty($item->addons)) {
+                                $filtered = str_replace("<", "", $item->addons);
+                                $filtered = str_replace(">", "", $filtered);
+                                $filtered = str_replace(",", ") - ", $filtered);
+                                $filtered = str_replace("[", " - ", $filtered);
+                                $filtered = str_replace("]", ")", $filtered);
+                                $filtered = str_replace('@', " ({$currency}", $filtered);
+                                $addons = $filtered;
+                            }
+
+                            $detail_email .= "<tr><td>$item->menu $item->submenu $addons</td><td>$item->order_quantity</td><td>$item->order_amount</td></tr>";
+                        }
+                        $detail_email .= "<tfoot><th colspan='2'>Total</th><th>$order_deleted->order_total_amount</th></tfoot></tbody></table>";
+
+                        $mail->Subject =  "{$settings->first()->logo_text} - Order# {$order_deleted->order_number} has been deleted on {$order_deleted->order_date}";
+                        $mail->Body    = "<b>Order#:</b> {$order_deleted->order_number}<br><b>Invoice#:</b> {$order_deleted->order_id}<br><br>{$detail_email}";
                         $mail->send();
                     }
 
+                    // success message to redirect back to 'new' page
                     echo "Success";
                 } catch (PDOException $e) {
 
