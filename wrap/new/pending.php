@@ -238,7 +238,7 @@ $setting = new Settings;
     // auto refresh 30 seconds
     setInterval(() => {
         window.location.reload();
-    }, 30000);
+    }, 50000);
 
     // average time taken
     function secondsToTime(e) {
