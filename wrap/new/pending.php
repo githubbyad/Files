@@ -212,7 +212,7 @@ $setting = new Settings;
     function deleteConfirmed(id) {
 
         const deleteData = async () => {
-            const response = await fetch(`delete.php?id=${id}`);
+            const response = await fetch(`delete.php?id=${id}&page=pending`);
             const data = await response.text();
             document.querySelector(".responseData").innerHTML = data;
             if (data == "Success") {
