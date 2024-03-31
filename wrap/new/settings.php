@@ -19,6 +19,10 @@ class Settings
         'region',
         'tax',
         'tax_allow',
-        'payment_voice'
+        'payment_voice',
+        'allow_email_send',
+        'sender_email',
+        'sender_password',
+        'recipient_email'
     ];
 }
