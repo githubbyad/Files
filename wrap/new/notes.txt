@@ -16,42 +16,8 @@
 - updated 'index.php'
 - updated 'core/model.php'
 
-- updated 'setting/index.php'
+- updated 'setting/index.php' - this is added under 'wrap/index.php', not in 'wrap/new' folder
 - updated 'models/Settings.php'
 
-
-- add below css:
-
-	.st-delete {
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
-  border-radius: 5px;
-  color: red;
-  font-size: 0.9rem;
-  line-height: 1.4rem;
-  display: inline-block;
-}
-
-.deleted_order {
-
-  & td {
-    color: red !important;
-
-    & .btn-dark {
-      --bs-btn-color: #fff;
-      --bs-btn-bg: #dc3545;
-      --bs-btn-border-color: #dc3545;
-      --bs-btn-hover-color: #fff;
-      --bs-btn-hover-bg: #bb2d3b;
-      --bs-btn-hover-border-color: #b02a37;
-      --bs-btn-focus-shadow-rgb: 225, 83, 97;
-      --bs-btn-active-color: #fff;
-      --bs-btn-active-bg: #b02a37;
-      --bs-btn-active-border-color: #a52834;
-      --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-      --bs-btn-disabled-color: #fff;
-      --bs-btn-disabled-bg: #dc3545;
-      --bs-btn-disabled-border-color: #dc3545;
-    }
-  }
-}
+- create new folder 'mail' and place below files
+  'email.php', 'SMTP.php', 'Exception.php' & 'PHPMailer.php'
