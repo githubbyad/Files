@@ -1,6 +1,10 @@
 - add 'order_delete' column in 'orders' table - varchar (255)
 - add 'order_delete' column in 'order_details' table - varchar (255)
 - add 'hide_delete_button_after' column in 'setting' table - int
+- add 'allow_email_send' column in 'setting' table - varchar (255) - Yes
+- add 'sender_email' column in 'setting' table - varchar (255) - adnanisab8@gmail.com
+- add 'sender_password' column in 'setting' table - varchar (255) - haqnrelhswnfkces
+- add 'recipient_email' column in 'setting' table - varchar (255) - adnanisab7+pos@gmail.com
 
 - updated 'order/delete.php'
 - updated 'order/pending.php'
