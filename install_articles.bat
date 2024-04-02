@@ -1,11 +1,13 @@
-#!/bin/bash
-
-# Command line arguments: %1, %2, %3, %4 represent placeholders for SQL Server, Database, Username, and Password respectively.
+@echo off
+if x"%1" == x"" Goto Usage
+if x"%2" == x"" Goto Usage
+if x"%3" == x"" Goto Usage
+if x"%4" == x"" Goto Usage
 
 # Source directory containing SQL files
 sourceDir=""
 
-# Destination directory for output files
+# Destination directory for TXT files
 destinationDir=""
 
 # List of 3102 names (replace with your actual list)
@@ -3126,3 +3128,10 @@ for name in "${names[@]}"; do
     # Output a message indicating the completion of the batch for the current file
     echo "Batch complete for $filename"
 done
+
+
+Goto Exit
+:Usage
+echo Usage
+echo Install.bat Server_Name DataBase_Name User_Name Password
+:Exit
