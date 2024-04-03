@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link type="text/css" rel="stylesheet" href="{{PutDomain}}layout.css?v=9.000009">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    {{PutMetaTitle}} 
+    {{PutMetaKeyword}} 
+    {{PutMetaDescription}} 
+    {{PutNoIndex}}
+    <link rel="shortcut icon" href="{{PutDomain}}favicon.ico?v=9.000009">
+    <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/bl2.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.7.min.js" integrity="sha256-/05Jde9AMAT4/o5ZAI23rUf1SxDYTHLrkOco0eyRV84=" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/JQuery/jquery.js"></script> -->
+    <!-- <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/JQuery/CSSMessageBox/js/jquery.ui.draggable.js"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/JQuery/CSSMessageBox/js/jquery.alerts.js"></script>
+    <link rel="stylesheet" href="{{PutDomainT}}lib/JQuery/CSSMessageBox/css/jquery.alerts.css">
+    <script type="text/javascript" src="{{PutDomainT}}lib/JQuery/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="{{PutDomainT}}lib/JQuery/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{PutDomainT}}lib/JQuery/fancybox/jquery.fancybox-1.3.4.css" media="screen">
+    <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/JQuery/Gallery3/jqFancyTransitions.js"></script>
+    <link rel="stylesheet" href="{{PutDomainT}}lib/JQuery/popup1/popup1.css" type="text/css">
+    <script src="{{PutDomainT}}lib/JQuery/popup1/popup1.js"></script> -->
+    <!-- /jQuery -->
+
+    <!-- system -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}settings.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}articles.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}ads.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}menus.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}sections.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}polls.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/iframeResizer.min.js"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}menu_horizontal.js?v=9.000009"></script>
+    <!-- /system -->
+
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- /fontAwesome-->
+
+    <!-- general -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}jscript1.js?v=9.000009"></script>
+    <link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}custom.js?v=9.000009"></script>
+    <!-- /general -->
+
+    <!--StartMH-->
+    <!--MetaSharing-->
+    <!--EndMH-->
+
+    <!-- live-Builder --> 
+    <!--<link type="text/css" rel="stylesheet" href="{{PutDomain}}ufields.css" />
+    <script type="text/javascript" src="{{PutDomain}}ufields.js"></script> -->
+    <!-- /live-Builder --> 
+    {{PutHeadSection}}
+</head>
+
+<body id="blbodymain" class="blbody">
+    <div class="mainbody">
+        <!-- stycky ads-->
+        <span class="cus-sticky-ads">{{PutStickyAds}}</span>
+        <!-- /stycky ads-->
+        <div class="container-fluid mt-2">
+            <!-- top-links -->
+            <div class="row mb-3">
+                <div class="bl-top-links col-sm-8 float-start mb-sm-0">
+                    <div class="float-start">
+                        <!-- search-->
+                        {{PutGoogleCustomSearch}}
+                        <a class="search-link text-decoration-none text-black fs-6 fw-bold me-3 border rounded p-1 px-2 bl-toplink-1-133-searchlink" href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="right" title="Click to Search Articles..."><i class="fa fa-search" aria-hidden="true"></i> SEARCH</a>
+                        <div class="search_content">
+                            <div class="search_box"><gcse:searchbox></gcse:searchbox></div>
+                            <div class="search_results"><gcse:searchresults></gcse:searchresults></div>
+                            <div class="search_remove">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                              </svg>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementsByClassName('search-link')[0].addEventListener("click", function() {
+                                document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search for...");
+                                document.getElementsByClassName('search_content')[0].classList.add("search-flex");
+                                document.getElementsByClassName('search_remove')[0].style.display = "block";
+                                document.getElementsByClassName('gsc-results-close-btn')[0].addEventListener("click", function() {
+                                    document.getElementsByClassName('search_content')[0].classList.remove("search-flex");
+                                });
+                            });
+                            document.getElementsByClassName('search_remove')[0].addEventListener("click", function() {
+                                document.getElementsByClassName('search_content')[0].classList.remove("search-flex");
+                                document.getElementsByClassName('search_remove')[0].style.display = "none";                            });
+                        </script>
+                        <style>
+                            .gsc-adBlock {display: none !important;}
+                            #gsc-i-id1{color:#000!important}
+                            #gsc-i-id1::placeholder{color:#555!important;opacity:1;font-size:inherit!important}
+                            .search_content{display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;background-color:rgba(255,255,255,.98);height:100%;position:fixed;top:100%;opacity:0;left:0;width:100%;z-index:2147483647;transition: 400ms linear;}
+                            .search-flex{top: 0;opacity: 1;display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;transition: 300ms linear;}
+                            .search_remove{cursor:pointer;user-select:none;position:absolute;top:10px;left:3%;}
+                            .search_remove:hover{color:gray}
+                            .gsc-control-cse.gsc-control-cse-en{background-color:transparent;border-width:0;position:absolute}.search_box{border-bottom:2px solid #000;width:70%;padding-bottom:6px}
+                            .gsib_b,.gsst_a{display:none!important}
+                            .gscb_a{display:none!important}
+                            .gsc-input{background-image:none!important}
+                            .gsc-input{background-color:transparent!important}
+                            .gsc-input-box{background-color:transparent!important;border-bottom:0 solid #ff4500!important;border-width:0!important}
+                            .gsc-input{border-width:0!important;color:#fff!important;font-size:20px!important}
+                            .gsc-adBlock{display:none!important}
+                            .search-icon-desk{cursor:pointer}
+                            .search-icon-desk{float:right;height:54px;margin-right:10px}
+                            .search-icon-desk i{border:1px solid #ddd;border-radius:4px;color:#000;display:block;line-height:35px;margin-top:9px;padding:0 12px}
+                            .search-icon-desk i:hover{color:#79655d}
+                            .gsc-results-wrapper-overlay.gsc-results-wrapper-visible {width: 100%;left: 0;top: 0;height: 100%;}
+                            .gcsc-branding {display: none;}
+                            .gsc-search-button.gsc-search-button-v2{padding:0 18px;line-height:35px;display:inline-block!important;background:#ddd;border-radius:5px;border-color:#555}
+                            .gsc-search-button{width:auto!important;float:right!important}.gsc-search-button.gsc-search-button-v2:hover{background:#ddd!important}
+                            .gsc-search-button-v2 svg{fill:#000!important}
+                            .gsc-search-button.gsc-search-button-v2:hover{background:#05a2d3!important;border-color:#006899!important}
+                            .gsc-search-button.gsc-search-button-v2:hover svg{fill:#fff!important}
+                        </style>
+                        <!-- /search-->
+                        <a class="text-decoration-none text-black fs-6 me-3 bl-toplink-1-133-link" href="{{PutDomain}}about-our-paper-p189-108.htm">ABOUT</a>
+                        <a class="text-decoration-none text-black fs-6 me-3 bl-toplink-1-133-link" href="{{PutDomain}}index0.htm?twindow=Form&smenu148=&pform=ContactUs&mad=No&sname=target_form2.asp&site={{PutDomainX}}">CONTACT</a>
+                        <a class="text-decoration-none text-black fs-6 me-3 bl-toplink-1-133-link" href="{{PutDomain}}index0.htm?twindow=ServicePackage&smenu=112&mad=No&sname=target_service_package.asp&site={{PutDomainX}}">SUBSCRIBE</a>
+                    </div>
+                </div>
+                <div class="cus-social-links col-sm-4 float-sm-end d-flex justify-content-center d-sm-inline-block">
+                    <div class="float-sm-end">
+                        <a class="text-decoration-none text-dark rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-133-icon" href="https://facebook.com/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        <a class="text-decoration-none text-dark rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-133-icon" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                        <a class="text-decoration-none text-dark rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-133-icon" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- /top-links -->
+            <!-- logo-->
+            <div class="row mb-3">
+                <div class="col-12 d-flex justify-content-center">{{PutLogo}}</div>
+            </div>
+            <!-- /logo -->
+            <!-- menu -->
+            <div class="row mb-3">
+                <div class="col-12 px-0">
+                    <script type="text/javascript" language="JavaScript">
+                        GetMenuH();
+                    </script>
+                </div>
+            </div>
+            <!-- /menu -->
+            <!-- H5 -->
+            <div class="row mb-3">
+                <div class="col-12">
+                    {{PutHighlight5}}
+                </div>
+            </div>
+            <!-- /H5 -->
+            <!-- 3-columns -->
+            <div class="cus-column-133-row row mb-3 border-bottom">
+                <div class="cus-column-133-1 col-lg-6">
+                    <div class="row mb-2 pb-2">
+                        <div class="col-12 px-0">
+                            {{PutHighlight4}}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <hr class="my-2 text-secondary">
+                            {{PutAdGroup12}}
+                        </div>
+                    </div>
+                </div>
+                <div class="cus-column-133-2 col-lg-3 border-start border-end">
+                    <div class="row mb-2">
+                        <div class="col-12 px-0">
+                            {{PutHighlight2}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{PutPoll1}}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <hr class="my-2 text-secondary">
+                            {{PutAdGroup11}}
+                        </div>
+                    </div>
+                </div>
+                <style>@media (max-width: 992px) {.cus-column-133-2 {border-width: 0 !important;} }</style>
+                <div class="cus-column-133-3 col-lg-3">
+                    <div class="row mb-2">
+                        <div class="col-12 px-0">
+                            {{PutHighlight1}}
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            {{PutAdGroup13}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /3-columns -->
+            <!-- previews -->
+            <div class="row mb-3 pb-2">
+                <div class="col-12">
+                    {{PutPreview109}}
+                </div>
+            </div>
+            <div class="row mb-3 pb-2">
+                <div class="col-12">
+                    {{PutPreview110}}
+                </div>
+            </div>
+            <!-- /previews -->
+            <!-- footer -->
+            <div class="row bl-footer-1-133-footer bg-light border-top p-2">
+                <div class="col-12">
+                    <div class="row mb-2">
+                        <div class="col-lg-6 mb-2 mb-lg-0">
+                            <i class="fa fa-map-marker text-primary" style="padding-right: 0.8rem"aria-hidden="true"></i><script type="text/javascript">Section4();</script>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="float-sm-end">
+                                <i class="fa fa-phone text-primary pe-2" aria-hidden="true"></i><script type="text/javascript">Section6();</script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2 pb-2 border-bottom">
+                        <div class="col-lg-6 mb-2 mb-lg-0">
+                            <i class="fa fa-copyright text-primary pe-2" aria-hidden="true"></i><script type="text/javascript">Section5();</script>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="float-sm-end">
+                                <i class="fa fa-envelope text-primary pe-2" aria-hidden="true"></i><script type="text/javascript">Section7();</script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2 d-flex justify-content-center">
+                        <div class="col-6 d-flex justify-content-center px-0">
+                            {{PutLogo}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center px-0">
+                            <a class="text-decoration-none text-dark rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-133-icon" href="https://facebook.com/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                            <a class="text-decoration-none text-dark rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-133-icon" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                            <a class="text-decoration-none text-dark rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-133-icon" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /footer -->
+        </div>
+    </div>
+    <!-- go to top -->
+    <div class="cus-scroll-top position-fixed end-0 bg-dark text-white fs-4 px-2" style="cursor: pointer;bottom: auto;transition: 400ms linear;" data-bs-toggle="tooltip" data-bs-placement="top" title="Go to top"><i class="fa fa-angle-up"></i></div>
+    <script>
+        if (document.getElementsByClassName("cus-scroll-top")) {
+            window.addEventListener("scroll", function() {
+                if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+                    document.getElementsByClassName('cus-scroll-top')[0].style.bottom = 0;
+                } else {
+                    document.getElementsByClassName('cus-scroll-top')[0].style.bottom = "-100px";
+                }
+            });
+            document.getElementsByClassName('cus-scroll-top')[0].addEventListener('click', function() {
+                window.scrollTo(0, 0);
+            });
+        }
+    </script>
+    <!-- /go to top -->
+    <div class="cus-g-analytics-133">{{PutGoogleAnalytics}}</div>
+    <!-- tooltip -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
+    <!-- /tooltip -->
+</body>
+<!--Template-133-->
+
+</html>
