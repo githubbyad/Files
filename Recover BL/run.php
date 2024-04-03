@@ -1,7 +1,7 @@
 <?php
 
 // Define the directory where your files are located
-$directory = 'files/other/';
+$directory = 'files/';
 
 // Open the directory
 if ($handle = opendir($directory)) {
@@ -14,7 +14,7 @@ if ($handle = opendir($directory)) {
             $contents = file_get_contents($filePath);
 
             //$pattern = '/^\[\{(.+?)\}\]$/';      
-            $pattern = '/\[{(.*?)}\]/';
+            $pattern = '/\[{(.*?)}\]/';      
 
             // for replacing column name from [{XXX}] to [xyz]
             $newContents = preg_replace_callback($pattern, function ($matches) {
@@ -26,11 +26,14 @@ if ($handle = opendir($directory)) {
 
                 // Return the replacement string
                 return $replacement;
-            }, $contents);
+            }, $contents);            
+            file_put_contents($filePath, $newContents);
 
-            file_put_contents($filePath, $newContents, LOCK_EX, null);
+            // for adding -- comment
+            //$updatedContents = str_replace('Declare @ID Uniqueidentifier', '--Declare @ID Uniqueidentifier', $contents);            
+            //file_put_contents($filePath, $updatedContents);
 
-            echo "Success: {$filePath}<br>";
+            echo "Success<br>";
         }
     }
     // Close the directory handle
