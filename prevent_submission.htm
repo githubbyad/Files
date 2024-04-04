@@ -1,0 +1,26 @@
+<script>
+    // prevent submit article before 28 March 2024
+    if (window.location.href.includes('&pform=pages&pkeyname=sys_information_id')) {
+        if (document.querySelector('#issue_date')) {
+            let issue = document.querySelector('#issue_date').value;
+            let body = document.querySelector('#body').value;
+            let form = document.querySelector(".my-form");
+            let issueDate = new Date(issue);
+            let stopDate = new Date("2024-03-28");
+            if (body == "") {
+                if (issueDate <= stopDate) {
+                    console.log("Form submission prevented!");
+                    form.addEventListener("submit", function (event) {
+                        if (!window.location.href.includes('&subx=Y')) { // staff can pass this in URL allow submission
+                            event.preventDefault();
+                            alert("Caution: Article body is empty. Please create a support ticket for further assistance.");
+                        } else {
+                            console.log('Submitting...')
+                        }
+
+                    });
+                }
+            }
+        }
+    }
+</script>
