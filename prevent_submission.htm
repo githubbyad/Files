@@ -11,13 +11,14 @@
                 if (issueDate <= stopDate) {
                     console.log("Form submission prevented!");
                     form.addEventListener("submit", function (event) {
-                        if (!window.location.href.includes('&subx=Y')) { // staff can pass this in URL allow submission
+                        // prevent submission
+                        if (!window.location.href.includes('&subx=Y')) {
                             event.preventDefault();
                             alert("Caution: Article body is empty. Please create a support ticket for further assistance.");
                         } else {
+                            // allow submission | staff can pass '&subx=Y' in URL to allow submission
                             console.log('Submitting...')
                         }
-
                     });
                 }
             }
