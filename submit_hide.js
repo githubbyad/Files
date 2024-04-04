@@ -9,6 +9,7 @@ if (window.location.href.includes('&pform=pages&pkeyname=sys_information_id')) {
             console.log("Form submission prevented!");
             form.addEventListener("submit", function (event) {
                 event.preventDefault();
+                console.log("Form submission will not work!");
             });
         }
     }
