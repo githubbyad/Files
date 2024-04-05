@@ -1,0 +1,167 @@
+{{LayoutH5Begin}}
+{{LayoutH5Limit7}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue,Updated}}
+{{BlankValue-TotalArticles}}
+function GetHighlights5(){document.write('
+<div id="slider123" class="carousel slide mb-4" data-bs-ride="carousel" data-bs-interval="false" style="display:none;">
+
+    <div class="carousel-inner cus-blocks-5-123-inner row mx-0">
+
+        <div class="col-lg-8 px-0">
+
+            {{RepeatBegin}}
+
+                <div class="carousel-item cus-blocks-5-123-item position-relative">
+
+                    <a href="{{HeadingLink}}">
+
+                        <div class="ratio-3-2">
+
+                            <div class="img-content cus-blocks-5-123-item-img">
+
+                                <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid">
+                            </div>
+                        </div>
+                    </a>
+
+                    <div class="d-block position-absolute top-0 start-0">
+
+                        <a href="{{SubMenuLink}}" class="text-decoration-none text-white bg-110 fs-5_1 p-2 d-inline-block fw-bold">{{SubMenu}}</a>
+                    </div>
+
+                    <h3 class="cus-blocks-5-123-box d-block position-absolute w-100 px-3 z-index-1 bottom-0">
+
+                        <div class="d-block text-white fs-6 mb-1">
+
+                            <i aria-hidden="true" class="fa fa-clock-o pe-1 fs-5"></i>{{IssueDate}}</div>
+                            
+                            <a class="cus-blocks-5-123-heading text-decoration-none text-white text-warning-hover d-block line-2 fs-4 fw-bold"
+                            href="{{HeadingLink}}">{{Heading}}</a>
+                    </h3>
+                </div>
+            {{RepeatEnd}}
+        </div>
+
+        <div class="col-4 d-none d-lg-inline bg-black text-white p-2 position-relative">
+
+            <div class="d-block w-100 text-center fw-bold mb-2">THE BIG STORY</div>
+
+            <div class="cus-blocks-5-123-side d-block w-100 border-top border-gray"></div>
+
+            <div class="carousel-indicators cus-blocks-5-123-indicators"></div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev d-lg-none" type="button" data-bs-target="#slider123" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+            class="visually-hidden">Previous</span> </button>
+    <button class="carousel-control-next d-lg-none" type="button" data-bs-target="#slider123" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<script>    
+/* Activate First Slider */
+document.getElementsByClassName("cus-blocks-5-123-item")[0].classList.add("active"); /* Add Buttons */
+var s1 = document.getElementsByClassName("cus-blocks-5-123-item");
+if (s1.length > 0) {
+  document.getElementsByClassName("cus-blocks-5-123-indicators")[0].insertAdjacentHTML("beforeend", "<button type=\'button\' data-bs-target=\'#slider123\' data-bs-slide-to=\'0\' class=\'cus-blocks-5-123-button active\' aria-current=\'true\' aria-label=\'Slide 1\'></button>");
+}
+for (si = 2; si <= s1.length; si++) {
+  var sj = si - 1;
+  document.getElementsByClassName("cus-blocks-5-123-indicators")[0].insertAdjacentHTML("beforeend", "<button type=\'button\' data-bs-target=\'#slider123\' data-bs-slide-to=\'" + sj + "\' class=\'cus-blocks-5-123-button\' aria-label=\'Slide " + si + "\'></button>");
+} /* Side bar articles */
+var h = document.getElementsByClassName("cus-blocks-5-123-heading");
+var s = document.getElementsByClassName("cus-blocks-5-123-side");
+for (i = 0; i < h.length; i++) {
+  s[0].insertAdjacentHTML("beforeend", "<p class=\'cus-blocks-5-123-list ps-3 line-2 mb-0 fs-5_1 bg-dark border-bottom border-gray p-1 cus-cursor-pointer text-gray text-white-hover\'>" + h[i].innerHTML + "</p>");
+}
+var l = document.getElementsByClassName("cus-blocks-5-123-list");
+for (x = 0; x < l.length; x++) {
+  l[x].setAttribute("data-num", x);
+  l[x].addEventListener("click", function(index) {
+    document.getElementsByClassName("cus-blocks-5-123-button")[this.getAttribute("data-num")].click();
+  });
+}
+document.addEventListener("readystatechange", event => {
+  if (event.target.readyState === "complete") {
+    setInterval(function() {
+      var a = document.getElementsByClassName("cus-blocks-5-123-item");
+      var c = document.getElementsByClassName("cus-blocks-5-123-list");
+      for (b = 0; b < a.length; b++) {
+        if (a[b].classList.contains("active")) {
+          c[b].classList.add("cus-blocks-5-123-list-active");
+        } else {
+          c[b].classList.remove("cus-blocks-5-123-list-active");
+        }
+      }
+    }, 100);
+  }
+});
+<\/script>
+<style>
+#slider123 .carousel-control-next,
+#slider123 .carousel-control-prev {
+	width: 5%;
+	height: 20%;
+	top: 50%;
+	transform: translateY(-50%)
+}
+
+#slider123 .carousel-control-next:hover,
+#slider123 .carousel-control-prev:hover {
+	background-color: rgba(0, 0, 0, .5)
+}
+
+.cus-blocks-5-123-item-img::after {
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .95) 100%) rgba(0, 0, 0, 0);
+	bottom: 0;
+	content: " ";
+	display: inline;
+	height: 35%;
+	position: absolute;
+	width: 100%
+}
+
+#slider123 .carousel-indicators [data-bs-target] {
+	border-radius: 50px !important;
+	border-top-width: 0 !important;
+	border-bottom-width: 0 !important;
+	width: 10px;
+	height: 10px
+}
+
+.cus-blocks-5-123-list-active {
+	position: relative
+}
+
+.cus-blocks-5-123-list-active:before {
+	content: "";
+	position: absolute;
+	width: 5px;
+	height: 100%;
+	background: red;
+	left: 0;
+	top: 0
+}
+
+@media all and (max-width:992px) {
+	.cus-blocks-5-123-indicators {
+		position: relative
+	}
+
+	.cus-blocks-5-123-indicators [data-bs-target] {
+		background-color: #000 !important
+	}
+
+	.cus-blocks-5-123-box {
+		bottom: 0 !important
+	}
+
+	.cus-blocks-5-123-heading {
+		font-size: 1rem !important
+	}
+}
+    </style > ');DisplayHighlight('slider123');
+');DisplayHighlight('cus-blocks-1-133');}
+{{LayoutH6End}}
