@@ -3,7 +3,7 @@ DECLARE @json NVARCHAR(MAX);
 SET @json = N'
 [
    {
-      "website_id": null,
+      "website_id": 6688,
       "group_id": 1,
       "name": "AdGroup1",
       "description": "AdGroup1",
@@ -16,7 +16,7 @@ SET @json = N'
 ]
 ';
 
-MERGE INTO ar_customers_ads_groups AS target
+MERGE INTO x_ar_customers_ads_groups AS target
 USING (
     SELECT 
         website_id,
