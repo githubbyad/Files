@@ -1,7 +1,274 @@
+{{LayoutArticleGroup101Begin}}
+{{LayoutArticleGroup101Limit3}}
+{{Where:HighlightInclude:1}} 
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+function GetArticleGroup101(){document.write({{PutHtmlChar39}}
+<div id="Highlight1">
+<div class="main_H1 hp-parent" style="margin-top: 0px;">
+{{RepeatBegin}}
+<div class="main_H1_holder-c hpe-in-hl1" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}" style="width: 350px;">
+<span class="Menu_H1 custom_background_{{MenuId}}">
+<span class="Menu-H1">{{Menu}}</span>
+<i class="fa fa-caret-right" aria-hidden="true"></i>
+<span class="sub-Menu_H1"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span>
+</span>
+<div class="image-wrapper_H1-c" style="width: 350px;height: 233px;">
+<a href="{{HeadingLink}}">
+<img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H1-c" style="display: block;width: 350px;height: 233px;"></a>
+<div class="ribbon-wrapper" style="width: 370px;">
+<div class="glow"> </div>
+<div class="ribbon-front custom_background_{{MenuId}}" style="width: 365px;">
+<div class="heading_H1-c"><a href="{{HeadingLink}}"  class="article_heading_H1-b">{{Heading}}</a></div>
+</div>
+<div class="ribbon-edge-topleft custom_border_rebbon_topleft_{{MenuId}}"></div>
+<div class="ribbon-edge-topright custom_border_rebbon_topright_{{MenuId}}"></div>
+<div class="ribbon-edge-bottomleft custom_border_rebbon_bottomleft_{{MenuId}}"></div>
+<div class="ribbon-edge-bottomright custom_border_rebbon_bottomright_{{MenuId}}" style="left: 355px;"></div>
+</div>
+
+</div>
+</div>
+{{RepeatEnd}}
+</div>
+</div>
+{{PutHtmlChar39}});}
+{{LayoutArticleGroup101End}}
+
+{{LayoutH1Begin}}
+{{LayoutH1Limit9}}
+{{RemoveMore:Yes}}
+{{SortBy:Issue,Updated}}
+{{RemoveHTMLBody}}
+{{BlankValue-TotalArticles}}
+function GetHighlights1(){document.write('<div id="Highlight1" style="display:none";>
+<div class="main_H1 hp-parent">
+{{RepeatBegin}}
+{{If Counter=1}}
+<div id="wrapper_H1">
+    <div class="slider-wrap_H1 hp-parent">
+        <div class="slider_H1 hpe-in-hl2" data-article="24796" data-url="{{HeadingLink}}" data-date="03_28_2024"><div class="H1_image"><span class="Menu_H1 custom_background_1"><a href="{{HeadingLink}}">{{SubMenu}} </a></span><a href="{{HeadingLink}}"><img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H1" style="display: block;"></a><span class="Top_Date_H1"><div class="date_H1">28</div><div class="month_H1">MAR</div><div class="year_H1">2024</div></span><div class="heading_H1"><a href="{{HeadingLink}}" class="article_heading_H1">{{Heading}}</a></div><div class="Body_H1">{{Body}}</div><div class="more_H1"><a href="{{HeadingLink}}">READ MORE</a></div></div></div>
+    </div></div>
+{{ElseIf Counter<4}}
+<div class="slider_H1 wrapper_1 hpe-in-hl2 space_counte_2" data-article="24801" data-url="{{HeadingLink}}" data-date="03_28_2024"><div class="H1_image wrapper_1"><span class="Menu_H1 custom_background_32"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span><a href="{{HeadingLink}}"><img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H1 wrapper_1" style="display: block;"></a><div class="heading_H1 wrapper_1"><a href="{{HeadingLink}}" class="article_heading_H1 wrapper_1">{{Heading}}</a></div></div></div>
+{{ElseIf Counter<6}}
+<div class="slider_H1 wrapper_2 hpe-in-hl2 space_counte_2" data-article="24801" data-url="{{HeadingLink}}" data-date="03_28_2024"><div class="H1_image wrapper_1"><span class="Menu_H1 custom_background_32"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span><a href="{{HeadingLink}}"><img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H1 wrapper_1" style="display: block;"></a><div class="heading_H1 wrapper_1"><a href="{{HeadingLink}}" class="article_heading_H1 wrapper_1">{{Heading}}</a></div></div></div>
+{{Else}}
+<div class="slider_H1 wrapper_2 hpe-in-hl2 space_counte_2" data-article="24801" data-url="{{HeadingLink}}" data-date="03_28_2024"><div class="H1_image wrapper_1"><span class="Menu_H1 custom_background_32"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span><a href="{{HeadingLink}}"><img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H1 wrapper_1" style="display: block;"></a><div class="heading_H1 wrapper_1"><a href="{{HeadingLink}}" class="article_heading_H1 wrapper_1">{{Heading}}</a></div></div></div>
+{{EndIf}}
+{{RepeatEnd}}
+
+</div>
+</div>');
+DisplayHighlight('Highlight1');}
+{{LayoutH1End}}
+
+{{LayoutH2Begin}}
+{{LayoutH2Limit10}}
+{{SortBy:Issue,Updated}}
+{{RemoveMore:Yes}}
+{{RemoveHTMLBody}}
+{{BlankValue-TotalArticles}}
+function GetHighlights2(){document.write('<div id="Highlight2">
+<div class="main_H2">
+<div id="content">
+<aside class="arrow hpe-custom-text-2"><script type="text/javascript">Section2();</script></aside>
+</div>
+<div class="hp-parent">
+{{RepeatBegin}}
+{{If Counter<3}}
+<div class="main_H2_holder {{Counter}} hpe-in-hl2" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+<span class="Menu_H2 custom_background_{{MenuId}}">
+<span class="Menu-H2">{{Menu}}</span>
+<i class="fa fa-caret-right" aria-hidden="true"></i>
+<span class="sub-Menu_H2"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span>
+</span>
+<div class="heading_H2 custom_color_{{MenuId}}"><a href="{{HeadingLink}}"  class="article_heading_H2 custom_color_{{MenuId}}">{{Heading}}</a></div>
+<div class="Date_H2 custom_color_{{MenuId}}"><i class="fa fa-clock-o" aria-hidden="true"></i>{{IssueDate}}</div>
+<div class="image-wrapper_H2">
+<a href="{{HeadingLink}}">
+<img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H2" style="display: block;"></a>
+</div>
+<div class="body_H2">{{Body}}</div>
+<div class="More_H2"><a href="{{HeadingLink}}"  class="custom_color_{{MenuId}}"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></div>
+<div class="More_H2-sharingtool-1">
+
+<ul class="social-share">
+<li>
+<a href="javascript:void(0);">
+<i class="fa fa-share-alt custom_color_{{MenuId}}" aria-hidden="true"></i>
+</a>
+</li>
+<li>
+<a class="sharing-tool-1" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+</li>
+<li>
+<a class="sharing-tool-1" target="_blank" href="https://twitter.com/intent/tweet?text={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+</li>
+<li>
+
+<a class="sharing-tool-1" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}&title=&summary=&source=" style="color:#0177b5;"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+</li>
+</ul>
+</div>
+
+</div>
+{{ElseIf Counter<4}}
+<div class="Ad-35" data-adgroup="35" data-ad-width="810"><script type="text/javascript" language="JavaScript">AdGroup35();</script></div>
+<div class="main_H2_holder-b hpe-in-hl2" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+    <div class="image-wrapper_H2-b">
+    <span class="Menu_H2-b custom_background_{{MenuId}}">
+    <span class="Menu-H2-b">{{Menu}}</span>
+    <i class="fa fa-caret-right" aria-hidden="true"></i>
+    <span class="sub-Menu_H2-b"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span>
+    </span>
+    <a href="{{HeadingLink}}">
+    <img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H2-b" style="display: block;"></a>
+    </div>
+    <div class="heading_H2-b custom_color_{{MenuId}}"><a href="{{HeadingLink}}"  class="article_heading_H2-b custom_color_{{MenuId}}">{{Heading}}</a></div>
+    <div class="Date_H2-b custom_color_{{MenuId}}"><i class="fa fa-clock-o" aria-hidden="true"></i>{{IssueDate}}</div>
+    
+    <div class="body_H2-b">{{Body}}</div>
+    <div class="More_H2-b"><a href="{{HeadingLink}}"  class="custom_color_{{MenuId}}"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></div>
+    <div class="More_H2-sharingtool-2">
+    
+    <ul class="social-share">
+    <li>
+    <a href="javascript:void(0);">
+    <i class="fa fa-share-alt custom_color_{{MenuId}}" aria-hidden="true"></i>
+    </a>
+    </li>
+    <li>
+    <a class="sharing-tool-1" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+    </li>
+    <li>
+    <a class="sharing-tool-1" target="_blank" href="https://twitter.com/intent/tweet?text={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+    </li>
+    <li>
+    
+    <a class="sharing-tool-1" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}&title=&summary=&source=" style="color:#0177b5;"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+    </li>
+    </ul>
+    </div>
+    
+    </div>
+{{ElseIf Counter<6}}
+<div class="main_H2_holder-b hpe-in-hl2" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+    <div class="image-wrapper_H2-b">
+    <span class="Menu_H2-b custom_background_{{MenuId}}">
+    <span class="Menu-H2-b">{{Menu}}</span>
+    <i class="fa fa-caret-right" aria-hidden="true"></i>
+    <span class="sub-Menu_H2-b"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span>
+    </span>
+    <a href="{{HeadingLink}}">
+    <img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H2-b" style="display: block;"></a>
+    </div>
+    <div class="heading_H2-b custom_color_{{MenuId}}"><a href="{{HeadingLink}}"  class="article_heading_H2-b custom_color_{{MenuId}}">{{Heading}}</a></div>
+    <div class="Date_H2-b custom_color_{{MenuId}}"><i class="fa fa-clock-o" aria-hidden="true"></i>{{IssueDate}}</div>
+    
+    <div class="body_H2-b">{{Body}}</div>
+    <div class="More_H2-b"><a href="{{HeadingLink}}"  class="custom_color_{{MenuId}}"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></div>
+    <div class="More_H2-sharingtool-2">
+    
+    <ul class="social-share">
+    <li>
+    <a href="javascript:void(0);">
+    <i class="fa fa-share-alt custom_color_{{MenuId}}" aria-hidden="true"></i>
+    </a>
+    </li>
+    <li>
+    <a class="sharing-tool-1" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+    </li>
+    <li>
+    <a class="sharing-tool-1" target="_blank" href="https://twitter.com/intent/tweet?text={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+    </li>
+    <li>
+    
+    <a class="sharing-tool-1" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}&title=&summary=&source=" style="color:#0177b5;"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+    </li>
+    </ul>
+    </div>
+    
+    </div>
+{{Else}}
+<div class="main_H2_holder-b hpe-in-hl2" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+    <div class="image-wrapper_H2-b">
+    <span class="Menu_H2-b custom_background_{{MenuId}}">
+    <span class="Menu-H2-b">{{Menu}}</span>
+    <i class="fa fa-caret-right" aria-hidden="true"></i>
+    <span class="sub-Menu_H2-b"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span>
+    </span>
+    <a href="{{HeadingLink}}">
+    <img u="image" src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="image_H2-b" style="display: block;"></a>
+    </div>
+    <div class="heading_H2-b custom_color_{{MenuId}}"><a href="{{HeadingLink}}"  class="article_heading_H2-b custom_color_{{MenuId}}">{{Heading}}</a></div>
+    <div class="Date_H2-b custom_color_{{MenuId}}"><i class="fa fa-clock-o" aria-hidden="true"></i>{{IssueDate}}</div>
+    
+    <div class="body_H2-b">{{Body}}</div>
+    <div class="More_H2-b"><a href="{{HeadingLink}}"  class="custom_color_{{MenuId}}"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></div>
+    <div class="More_H2-sharingtool-2">
+    
+    <ul class="social-share">
+    <li>
+    <a href="javascript:void(0);">
+    <i class="fa fa-share-alt custom_color_{{MenuId}}" aria-hidden="true"></i>
+    </a>
+    </li>
+    <li>
+    <a class="sharing-tool-1" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+    </li>
+    <li>
+    <a class="sharing-tool-1" target="_blank" href="https://twitter.com/intent/tweet?text={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+    </li>
+    <li>
+    
+    <a class="sharing-tool-1" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{Http}}{{PutHName}}{{PutHExt}}{{HeadingLink}}&title=&summary=&source=" style="color:#0177b5;"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+    </li>
+    </ul>
+    </div>
+    
+    </div>
+{{EndIf}}
+{{RepeatEnd}}
+</div>
+</div>
+</div>');
+DisplayHighlight('Highlight2');}
+{{LayoutH2End}}
+
+{{LayoutH4Begin}}
+{{LayoutH4Limit6}}
+{{SortBy:Issue,Updated}}
+{{RemoveHTMLBody}}
+{{BlankValue-TotalArticles}}
+function GetHighlights4(){document.write('<div id="Highlight4" style="">
+<div class="main_H4">
+<div id="content">
+<aside class="arrow hpe-custom-text-3"><script type="text/javascript">Section3();</script></aside>
+</div>
+<div class="hp-parent">
+{{RepeatBegin}}
+<div class="main_H4_holder custom_border_{{MenuId}} hpe-in-hl4" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+<span class="Menu_H4 custom_background_{{MenuId}}">
+<span class="Menu-H4">{{Menu}}</span>
+<i class="fa fa-caret-right" aria-hidden="true"></i>
+<span class="sub-Menu_H4"><a href="{{SubMenuLink}}">{{SubMenu}} </a></span>
+</span>
+<div class="heading_H4 custom_color_{{MenuId}}"><a href="{{HeadingLink}}"  class="article_heading_H4">{{Heading}}</a></div>
+<div class="Date_H2 custom_color_{{MenuId}}"><i class="fa fa-clock-o" aria-hidden="true"></i>{{IssueDate}}</div>
+</div>
+{{RepeatEnd}}
+</div>
+</div>
+</div>');
+DisplayHighlight('Highlight4');}
+{{LayoutH4End}}
+
+
 {{LayoutMenus1Begin}}
 {{File:menu_horizontal.js}}
 {{Where:MenuTypeInclude:'Horizontal'}}
-function GetHorizontalMenu1(){document.write({{PutHtmlChar39}}
+function GetHorizontalMenu(){document.write({{PutHtmlChar39}}
 <div class="mobile-container" style="display:none;">
     <div class="mobile-wrap">
         <span class="menu-mobile-label">Menu</span>
@@ -12,15 +279,15 @@ function GetHorizontalMenu1(){document.write({{PutHtmlChar39}}
         </span>
     </div>
 </div>
-<div class="column6">
+<div class="column6 menu_wrap_x2">
     {{RepeatBegin1}}
     <div class="menubodyhorizontal active has-sub custom_menu_1 hp-menu" data-menu="1">
         <div class="hpe-in-menu" data-view="Horizontal" data-menu="{{MenuId}}" data-link="#" data-order="2">
-            <a href="#" style="">{{Menu}} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+            <a href="{{MenuLink}}" style="">{{Menu}} <i class="fa fa-caret-down" aria-hidden="true"></i></a>
         </div>
         <div class="SubMenuContainer1 hp-submenu" data-menu="{{MenuId}}" data-submenu="{{SubMenuId}}">
             {{RepeatBegin2}}
-            <div class="submenubodyhorizontal custom_Submenu_95 hpe-in-submenu" style="" data-menu="{{MenuId}}" data-submenu="{{SubMenuId}}"
+            <div class="submenubodyhorizontal custom_Submenu_95 hpe-in-submenu" style="{{CSSDisplay}}" data-menu="{{MenuId}}" data-submenu="{{SubMenuId}}"
                 data-link="{{SubMenuLink}}"
                 data-order="2">
                 <a name="S_{{SubMenuId}}_S" href="{{SubMenuLink}}" style=" " class="Sub-link">{{SubMenu}}</a>
@@ -31,442 +298,71 @@ function GetHorizontalMenu1(){document.write({{PutHtmlChar39}}
     {{RepeatEnd1}}
 </div>
 <style>
-.hpe-in-menu.BlankSibling > a > i {
-	display: none;
-}
-
-div.menubodyhorizontal {
-  border-right: 1px solid #eee;
-}
-.SubMenuContainer1 {
-  display: none;
-  position: absolute;
-/*  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1); 
-  border-top: 1px solid #000; */
-  background:#fff;
-}
-.menubodyhorizontal > a i {
-  display: none;
-}
-.menubodyhorizontal > a:empty {
-  display: none !important;
-}
-.SubMenuContainer1:empty {
-  display: none !important;
-}
-.menubodyhorizontal > a ~ i {
-  display: none !important;
-}
-.submenubodyhorizontal > a:hover i {
-  padding-left: 5px;
-  padding-right: 5px;
-  transition: 200ms linear 50ms;
-  -webkit-transition: 200ms linear 50ms;
-  -ms-transition: 200ms linear 50ms;
-}
-.arrow-active a i {
-  display: inline-block;
-  color: #adadad;
-}
-div.menubodyhorizontal {
-    display: inline-block;
-    float:left;
-}
-
-.submenubodyhorizontal {
-  margin: 0;
-  text-align: left;
-  padding: 0 0 !important;
-  width: auto;
-  border-width: 0;
-  display: block;
-  text-align: ;
-}
-@media screen and (min-width: 1025px) {
-.menubodyhorizontal a:hover ~ .SubMenuContainer1 {
-    display: block;
-}
-}
-.SubMenuContainer1:hover {
-    display: block;
-}
-div.menubodyhorizontal a:link, div.menubodyhorizontal a:visited {
-	color: black;
-	padding: 0 7px !important;
-	line-height: 55px !important;
-        display: inline-block;
-}
-div.menubodyhorizontal a:hover {
-color:gray;
-}
-div.menubodyhorizontal:hover > a {
-
-}
-.MenuStyle1 {
-  float: left;
-  width: 100%;
-}
-.submenubodyhorizontal a i {
-  padding-right: 10px;
-  transition: 100ms linear 50ms;
-  -webkit-transition: 100ms linear 50ms;
-  -ms-transition: 100ms linear 50ms;
-}
-.submenubodyhorizontal {
-  position: relative;
-  z-index: 10;
-  float: left;
-  width: 100%;
-}
-@media screen and (min-width: 1025px) {
-.submenubodyhorizontal {
-  float: left;
-  position: relative;
-  width: auto;
-  z-index: 10;
-  clear: both;
-}
-}
-.column6 {
-	border-width: 0;
-	display: flex;
-        flex-wrap:wrap;
-	justify-content: left;
-	align-items: center;
-	background: none;
-}
-.menubodyhorizontal {
-	padding: 0 !important;
-	border-right-width: 0 !important;
-}
-div.submenubodyhorizontal a:link, div.submenubodyhorizontal a:visited {
-	padding: 0 20px !important;
-	display: block;
-	float: left;
-	text-align: left !important;
-	line-height: 35px !important;
-	color: black !important;
-	text-transform: none !important;
-	font-size: 14px !important;
-        min-width:120px;
-}
-div.submenubodyhorizontal {
-	border-bottom: 1px solid #dcdcdc;
-	width: 100%;
-	float: left;
-        background: white;
-}
-div.submenubodyhorizontal:last-child {
-	border-width: 0;
-}
-div.submenubodyhorizontal a:hover {
-	color: gray !important;
-	transition-duration: 200ms;
-}
-div.submenubodyhorizontal a{
-	transition-duration: 300ms;
-        background: #fff !important;
-}
-.c6.columnx {
-        border-top: 2px solid black;
-}
-.column6 {
-	background: white;
-	position: relative;
-	z-index: 100;
-}
-div.menubodyhorizontal a:link, div.menubodyhorizontal a:visited {
-  color: black;
-  font-weight: bold;
-}
-.arrow-active a i {
-  margin-left: 3px;
-}
-@media screen and (min-width: 1025px) {
-div.menubodyhorizontal:hover a {
-	background: #242424;
-	color: white;
-	transition: 200ms ease-in-out;
-}
-.SubMenuContainer1 {
-  min-width:150px;
-  display:block;
-  visibility:hidden;
-  padding-top: 50px;
-  opacity: 0;
-  transition-property: all;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0);
-}
-div.menubodyhorizontal:hover > .SubMenuContainer1 {
-  padding-top: 0;
-  opacity: 1;
-  transition-duration: 500ms;
-  transition-property: all;
-  visibility: visible;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
-}
-.menu-block.MenuStyleSticky {
-	position: fixed;
-	z-index: 999;
-	top: 0;
-	width: 1250px;
-}
-}
-@media screen and (max-width: 1024px) {
-    .mobile-container {
-        display: block !important;
-    }
-    .MenuStyle1 {
-      display: none;
-    }
-    div.menubodyhorizontal {
-        border-bottom: 1px solid gray;
-        float: left;
-        height: auto;
-        margin-left: 5%;
-        margin-right: 5%;
-        width: 90%;
-    }
-    .column6 {
-        float: left;
-        width: 100%;
-        background-color: #f8f8f8;
-        border-bottom: 3px solid black!important;
-     display:none;
-    }
-    .menubodyhorizontal > a i {
-      float: right;
-    }
-    .MenuStyle1 {
-        width: 100%;
-    }
-    div.menubodyhorizontal a {
-        display: block;
-        float: left;
-        width: 100%;
-    }
-    a.menubodyhorizontal i {
-        float: right;
-    }
-    .mmenu {
-      -moz-user-select: none;
-      background-color: black;
-      cursor: pointer;
-      display: block;
-      float: left;
-      padding-left: 2vw;
-      padding-right: 2vw;
-      width: 7vw;
-    }
-    .mmenuIcons {
-      height: 40px;
-      display:flex;
-      display:-webkit-flex;
-      -ms-display:flex;
-      align-items:center;
-      -webkit-align-items:center;
-      -ms-align-items:center;
-      justify-content: center;
-      -webkit-justify-content: center;
-      -ms-justify-content: center;
-      text-align: center;
-      width: auto;
-    }
-    .mmenuOpen {
-      color: white;
-      cursor: pointer;
-      font-size: 21px;
-      line-height: 40px;
-    }
-    .icon-menu-bars { 
-      position: relative;
-      display: inline-block;
-      line-height: 40px;
-      width: 25px;
-      z-index: 1;
-    }
-    .mmenu-label {
-      float:left;
-      color:white;
-      line-height:40px;
-      font-size:17px;
-    }
-    .icon-menu-bars .bar-1, .icon-menu-bars .bar-2, .icon-menu-bars .bar-3 {
-      background: white none repeat scroll 0 0;
-      display: block;
-      height: 2px;
-      margin-top: 4px;
-      transition: all 0.15s ease 0s;
-      width: 100%;
-    }
-    .navbar-dark .icon-menu-bars .bar-1, .navbar-dark .icon-menu-bars .bar-2, .navbar-dark .icon-menu-bars .bar-3 {
-      background: #efefef none repeat scroll 0 0;
-    }
-    
-    .dd-container.open .icon-menu-bars .bar-2, .dropup.open .icon-menu-bars .bar-2, .no-js .dd-container:hover .icon-menu-bars .bar-2, .no-js .dropup:hover .icon-menu-bars .bar-2 {
-      transform: scale(0);
-    }
-    
-    .dd-container.open .icon-menu-bars .bar-1, .dropup.open .icon-menu-bars .bar-1, .no-js .dd-container:hover .icon-menu-bars .bar-1, .no-js .dropup:hover .icon-menu-bars .bar-1 {
-      transform: rotate(45deg) translateY(4px) translateX(3px);
-    }
-    
-    .dd-container.open .icon-menu-bars .bar-3, .dropup.open .icon-menu-bars .bar-3, .no-js .dd-container:hover .icon-menu-bars .bar-3, .no-js .dropup:hover .icon-menu-bars .bar-3 {
-      transform: rotate(-45deg) translateY(-4px) translateX(3px);
-    }
-    
-    .openm .bar-3 {
-      transform: rotate(-45deg) translateY(-4px) translateX(6px);
-    }
-    
-    .openm .bar-1 {
-      transform: rotate(45deg) translateY(4px) translateX(4px);
-    }
-    .openm .bar-2 {
-      transform: rotate(-45deg) translateY(0px) translateX(0px);
-    }
-    
-    .SubMenuContainer1 {
-        float: left;
-        margin-top: auto;
-        position: static;
-        width: 100%;
-    }
-    .submenubodyhorizontal {
-        display: block;
-        float: left;
-        width: 100%;
-        z-index: auto;
-    }
-    div.submenubodyhorizontal a:link, div.submenubodyhorizontal a:hover, div.submenubodyhorizontal a:visited {
-        border-bottom: 1px solid #ddd;
-        box-sizing: border-box;
-        line-height: 35px;
-        max-width: none;
-        min-width: auto;
-        width: 100%;
-        background-color: #232323;
-    }
-    div.menubodyhorizontal a {
-        box-sizing: border-box;
-    }
-    div.submenubodyhorizontal:last-of-type a {
-        border-radius: 0;
-        border-width: 0;
-    }
-    
-    .mobile-container {
-      background: black;
-      line-height: 50px;
-      width: 100%;
-      float: left;
-      cursor: pointer;
-    }
-    .menu-mobile-label {
-        float: right;
-        color: white;
-        font-family:Trebuchet MS;
-        text-transform: uppercase;
-        margin-right: 4vw;
-        font-weight: bold;
-    }
-    .icon-menu-bars {
-      float: left;
-      margin-left: 4vw;
-      margin-top: 14px;
-    }
-    .mobile-container:hover {
-      background: #666;
-    }
-    .date-block {
-      border-width: 0;
-      margin-bottom: 3px;
-    }
-    .menubodyhorizontal > a i {
-        line-height: 50px;
-        color: gray;
-        transform: translateX(-20px) !important;
-    }
-    .column6 div.menubodyhorizontal:last-child {
-        border-bottom-width: 0;
-    }
-    div.menubodyhorizontal a:link, div.menubodyhorizontal a:visited {
-        color: white;
-            padding: 0 13px !important;
-    }
-        div.menubodyhorizontal > a:link, div.menubodyhorizontal > a:visited {
-        padding: 0 !important;
-    }
-    .SubMenuContainer1.hp-submenu {
-        width: 90%;
-        margin-left: 5%;
-        margin-bottom: 15px;
-    }
-    .mobile-wrap {
-        float: left;
-        width: 100%;
-    }
-}
+.hpe-in-menu.BlankSibling>a>i,.menubodyhorizontal>a i{display:none}div.menubodyhorizontal{border-right:1px solid #eee;display:inline-block;float:left}.SubMenuContainer1{display:none;position:absolute}.column6,.submenubodyhorizontal{border-width:0;position:relative}.SubMenuContainer1:empty,.menubodyhorizontal>a:empty,.menubodyhorizontal>a~i{display:none!important}.submenubodyhorizontal>a:hover i{padding-left:5px;padding-right:5px;transition:.2s linear 50ms;-webkit-transition:.2s linear 50ms;-ms-transition:.2s linear 50ms}.arrow-active a i{display:inline-block;color:#adadad;margin-left:1px}.submenubodyhorizontal{margin:0;text-align:left;padding:0!important;display:block;z-index:10;float:left;width:100%}.SubMenuContainer1:hover{display:block}div.menubodyhorizontal a:link,div.menubodyhorizontal a:visited{padding:0 7px!important;line-height:55px!important;display:inline-block}div.menubodyhorizontal a:hover{color:gray}.MenuStyle1{float:left;width:100%}.submenubodyhorizontal a i{padding-right:10px;transition:.1s linear 50ms;-webkit-transition:.1s linear 50ms;-ms-transition:.1s linear 50ms}.column6{display:flex;flex-wrap:wrap;justify-content:left;align-items:center;background:#fff;z-index:100}.menubodyhorizontal{padding:0!important;border-right-width:0!important}div.submenubodyhorizontal a:link,div.submenubodyhorizontal a:visited{padding:0 20px!important;display:block;float:left;text-align:left!important;line-height:35px!important;color:#000!important;text-transform:none!important;font-size:14px!important;min-width:120px}div.submenubodyhorizontal{border-bottom:1px solid #dcdcdc;width:100%;float:left;background:#fff}div.submenubodyhorizontal:last-child{border-width:0}div.submenubodyhorizontal a.Sub-link:hover{color:gray!important;transition-duration:.2s}div.submenubodyhorizontal a{transition-duration:.3s;background:#fff!important}.c6.columnx{border-top:2px solid #000}div.menubodyhorizontal a:link,div.menubodyhorizontal a:visited{color:#000 !important;font-weight:700}@media screen and (min-width:1025px){.menubodyhorizontal a:hover~.SubMenuContainer1{display:block}.submenubodyhorizontal{float:left;position:relative;width:auto;z-index:10;clear:both}div.menubodyhorizontal:hover a{background:#242424;color:#fff;transition:.2s ease-in-out}.SubMenuContainer1{min-width:150px;display:block;visibility:hidden;padding-top:50px;opacity:0;transition-property:all;box-shadow:0 2px 4px 0 transparent}div.menubodyhorizontal:hover>.SubMenuContainer1{padding-top:0;opacity:1;transition-duration:.5s;transition-property:all;visibility:visible;box-shadow:0 2px 4px 0 rgba(0,0,0,.4)}.menu-block.MenuStyleSticky{position:fixed;z-index:999;top:0;width:1250px}.menu_wrap_x2{float:left;width:100%;background-color:#f8f8f8;border-top:1px solid #000;}}@media screen and (max-width:1024px){.mmenu-label,.mmenuOpen{line-height:40px;color:#fff}.mobile-container{display:block!important}.MenuStyle1,.menu_wrap_x2{display:none;width:100%}div.menubodyhorizontal{border-bottom:2px solid gray;float:left;height:auto;margin-left:5%;margin-right:5%;width:90%}.menu_wrap_x2{float:left;background-color:#fff;border-bottom:3px solid #000!important}.menubodyhorizontal>a i{float:right;line-height:50px;color:gray;transform:translateX(-20px)!important}div.menubodyhorizontal a{display:block;float:left;width:100%;box-sizing:border-box}a.menubodyhorizontal i{float:right}.mmenu{-moz-user-select:none;background-color:#000;cursor:pointer;display:block;float:left;padding-left:2vw;padding-right:2vw;width:7vw}.mmenuIcons{height:40px;display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;text-align:center;width:auto}.mmenuOpen{cursor:pointer;font-size:21px}.icon-menu-bars{position:relative;display:inline-block;line-height:40px;width:25px;z-index:1}.mmenu-label{float:left;font-size:17px}.icon-menu-bars .bar-1,.icon-menu-bars .bar-2,.icon-menu-bars .bar-3{background:#fff;display:block;height:2px;margin-top:4px;transition:.15s;width:100%}.navbar-dark .icon-menu-bars .bar-1,.navbar-dark .icon-menu-bars .bar-2,.navbar-dark .icon-menu-bars .bar-3{background:#efefef}.dd-container.open .icon-menu-bars .bar-2,.dropup.open .icon-menu-bars .bar-2,.no-js .dd-container:hover .icon-menu-bars .bar-2,.no-js .dropup:hover .icon-menu-bars .bar-2{transform:scale(0)}.dd-container.open .icon-menu-bars .bar-1,.dropup.open .icon-menu-bars .bar-1,.no-js .dd-container:hover .icon-menu-bars .bar-1,.no-js .dropup:hover .icon-menu-bars .bar-1{transform:rotate(45deg) translateY(4px) translateX(3px)}.dd-container.open .icon-menu-bars .bar-3,.dropup.open .icon-menu-bars .bar-3,.no-js .dd-container:hover .icon-menu-bars .bar-3,.no-js .dropup:hover .icon-menu-bars .bar-3{transform:rotate(-45deg) translateY(-4px) translateX(3px)}.openm .bar-3{transform:rotate(-45deg) translateY(-4px) translateX(6px)}.openm .bar-1{transform:rotate(45deg) translateY(4px) translateX(4px)}.openm .bar-2{transform:rotate(-45deg) translateY(0) translateX(0)}.SubMenuContainer1{float:left;margin-top:auto;position:static;width:100%}.submenubodyhorizontal{display:block;float:left;width:100%;z-index:auto}div.submenubodyhorizontal a:hover,div.submenubodyhorizontal a:link,div.submenubodyhorizontal a:visited{border-bottom:1px solid #ddd;box-sizing:border-box;line-height:35px;max-width:none;min-width:auto;width:100%;background-color:#232323}div.submenubodyhorizontal:last-of-type a{border-radius:0;border-width:0}.mobile-container{background:#000;line-height:50px;width:100%;float:left;cursor:pointer}.menu-mobile-label{float:right;color:#fff;font-family:Trebuchet MS;text-transform:uppercase;margin-right:4vw;font-weight:700}.icon-menu-bars{float:left;margin-left:4vw;margin-top:14px}.mobile-container:hover{background:#666}.date-block{border-width:0;margin-bottom:3px}.hpe-in-menu i{color:#ddd}.column6 div.menubodyhorizontal:last-child{border-bottom-width:0}div.menubodyhorizontal a:link,div.menubodyhorizontal a:visited{color:#000 !important;padding:0 13px!important}div.menubodyhorizontal>a:link,div.menubodyhorizontal>a:visited{padding:0!important}.SubMenuContainer1.hp-submenu{width:90%;margin-left:5%;margin-bottom:15px}.mobile-wrap{float:left;width:100%}}
 </style>
 <script>
 $(document).ready(function () {
-    $(`.submenubodyhorizontal`).each(function () {
-        if ($(this).css(`display`) == `none`) {
-            $(this).remove();
-        }
-    });
+  $(`.submenubodyhorizontal`).each(function () {
+    if ($(this).css(`display`) == `none`) {
+      $(this).remove();
+    }
+  });
 
-    $(`.SubMenuContainer1`).each(function () { // Add arrows
-        if ($(this).children(`.submenubodyhorizontal`).length) {
-            $(this).parents(`.menubodyhorizontal`).addClass(`arrow-active`);
-        }
+  $(`.SubMenuContainer1`).each(function () {
+    if ($(this).children(`.submenubodyhorizontal`).length) {
+      $(this).parents(`.menubodyhorizontal`).addClass(`arrow-active`);
+    }
+  });
+  if ($(document).width() < 1025) {
+    $(`.hpe-in-menu > a`).unwrap();
+    $(`div.menubodyhorizontal > a[href="#"]`).each(function () {
+      $(this).attr(`href`, `javascript:void(0);`);
     });
-});
-$(document).ready(function () {
-    if ($(document).width() < 1025) {
-        $(`.hpe-in-menu > a`).unwrap();
-        $(`div.menubodyhorizontal > a[href="#"]`).each(function () {
-            $(this).attr(`href`, `javascript:void(0);`);
-        });
-        $(`.mobile-wrap`).toggle(function () {
-            $(`.mobile-wrap`).addClass(`mw`);
-            $(`.icon-menu-bars`).addClass(`openm`);
-            $(`.column6`).slideDown(400);
+    $(`.mobile-wrap`).toggle(function () {
+      $(`.mobile-wrap`).addClass(`mw`);
+      $(`.icon-menu-bars`).addClass(`openm`);
+      $(`.menu_wrap_x2`).slideDown(400);
+    }, function () {
+      $(`.mobile-wrap`).removeClass(`mw`);
+      $(`.icon-menu-bars`).removeClass(`openm`);
+      $(`.menu_wrap_x2`).slideUp(200);
+    });
+    $(`div.menubodyhorizontal > a`).each(function () {
+      if ($(this).attr(`href`) == `javascript:void(0);`) {
+        $(this).toggle(function () {
+          $(this).siblings(`.SubMenuContainer1`).slideDown(300);
         }, function () {
-            $(`.mobile-wrap`).removeClass(`mw`);
-            $(`.icon-menu-bars`).removeClass(`openm`);
-            $(`.column6`).slideUp(200);
+          $(this).siblings(`.SubMenuContainer1`).slideUp(200);
         });
-        $(`div.menubodyhorizontal > a`).each(function () {
-            if ($(this).attr(`href`) == `javascript:void(0);`) {
-                $(this).toggle(function () {
-                    $(this).siblings(`.SubMenuContainer1`).slideDown(300);
-                }, function () {
-                    $(this).siblings(`.SubMenuContainer1`).slideUp(200);
-                });
-            }
-        });
+      }
+    });
+  }
+  if ($(window).width() > 1024) {
+    $(`.SubMenuContainer1`).each(function () {
+      if ($(this).css(`display`) == `none`) {
+        $(this).addClass(`NONEUL`);
+      }
+    });
+    $(`.SubMenuContainer1.NONEUL`).siblings(`.hpe-in-menu`).addClass(`BlankSibling`);
+    $(`div.submenubodyhorizontal a`).each(function () {
+      var myParameters = new Array();
+      myParameters = ReadSParameters();
+      var smenu = myParameters["smenu"];
+      if (this.name.indexOf(`S_` + smenu + `_S`) != -1) {
+        $(this).parent(`div.submenubodyhorizontal`).addClass(`ActiveLI`);
+        $(`.ActiveLI`).parent(`.SubMenuContainer1`).addClass(`ActiveUL`);
+        $(`.ActiveUL`).siblings(`a`).css(`background`, `#05a2d3`);
+      }
+    });
+  }
+  document.querySelectorAll(`.SubMenuContainer1`).forEach(s => {
+    if (s.innerHTML.trim() == "") {
+      s.style.display = "none";
+      if(s.parentElement.querySelector("i")) {
+        s.parentElement.querySelector("i").style.display = "none";
+      }
     }
-});
-$(document).ready(function () {
-    if ($(window).width() > 1024) {
-        $(`.SubMenuContainer1`).each(function () {
-            if ($(this).css(`display`) == `none`) {
-                $(this).addClass(`NONEUL`);
-            }
-        });
-        $(`.SubMenuContainer1.NONEUL`).siblings(`.hpe-in-menu`).addClass(`BlankSibling`);
-        $(`div.submenubodyhorizontal a`).each(function () {
-            var myParameters = new Array();
-            myParameters = ReadSParameters();
-            var smenu = myParameters["smenu"];
-            if (this.name.indexOf(`S_` + smenu + `_S`) != -1) {
-                $(this).parent(`div.submenubodyhorizontal`).addClass(`ActiveLI`);
-                $(`.ActiveLI`).parent(`.SubMenuContainer1`).addClass(`ActiveUL`);
-                $(`.ActiveUL`).siblings(`a`).css(`background`, `#05a2d3`);
-            }
-        });
-    }
+  });
 });
 <\/script>
 {{PutHtmlChar39}});}
