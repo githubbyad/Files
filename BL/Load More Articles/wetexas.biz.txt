@@ -1,0 +1,160 @@
+{{LayoutH4Begin}}
+{{LayoutH4Limit100}}
+{{SortBy:Issue,Updated}}
+function GetHighlights4(){document.write('
+<div id="ARG101" style="display: none;">
+    <div id="column-label">FEATURED NEWS</div>
+    {{RepeatBegin}}
+        {{If Counter < 11}}
+            <div class="ARGX uncomment1">
+                <div class="ARGX_img">
+                    <a href="{{HeadingLink}}">
+                        <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}">
+                    </a>
+                </div>
+                <div class="ARGX_submenu">
+                    <a href="{{SubMenuLink}}">{{SubMenu}}</a>
+                </div>
+                <div class="ARGX_heading">
+                    <a href="{{HeadingLink}}">{{Heading}}</a>
+                </div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>
+            </div>
+        {{ElseIf Counter < 21}}        
+            <div class="ARGX uncomment2">
+                <!--<div class="ARGX_img">
+                    <a href="{{HeadingLink}}">
+                        <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                    </div>
+                    <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                    <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                    <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 31}}           
+            <div class="ARGX uncomment3">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 41}}           
+            <div class="ARGX uncomment4">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 51}}   
+            <div class="ARGX uncomment5">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 61}}   
+            <div class="ARGX uncomment6">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 71}}   
+            <div class="ARGX uncomment7">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 81}}   
+            <div class="ARGX uncomment8">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 91}}   
+            <div class="ARGX uncomment9">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 101}}   
+            <div class="ARGX uncomment10">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 111}}   
+            <div class="ARGX uncomment11">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 121}}   
+            <div class="ARGX uncomment12">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 131}}   
+            <div class="ARGX uncomment13">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{Else}}   
+            <div class="ARGX uncomment14">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{EndIf}}
+    {{RepeatBegin}}    
+    <div class="load_more">
+        <span>Load more <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+    </div>
+</div>
+');DisplayHighlight('ARG101');}
+{{LayoutH4End}}
