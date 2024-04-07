@@ -1,0 +1,25 @@
+{{LayoutMenus1Begin}}
+{{File:menus-horizontal1.js}}
+{{Where:MenuTypeInclude:'Horizontal'}}
+function GetHorizontalMenu1(){document.write({{PutHtmlChar39}}
+<div id="cssmenu">
+    <div id="menu-button">Menu</div>
+    <ul>   
+        <div id="mweather-cont"></div>
+        {{RepeatBegin1}}
+            <li class="menubodyhorizontal active has-sub custom_menu_1">
+                <span class="submenu-button" style="visibility: visible;"></span>
+                <a href="{{MenuLink}}" style="" class="menubodyhorizontal custom_menu_1">{{Menu}}</a>
+                <ul style="background-color: rgb(36, 36, 36);">
+                    {{RepeatBegin2}}
+                    <li class="submenubodyhorizontal  custom_Submenu_{{SubMenuId}} custom_menu_{{MenuId}}" style="{{CSSDisplay}}">
+                        <a href="{{SubMenuLink}}" style="" class="submenubodyhorizontal custom_Submenu_{{SubMenuId}}">{{SubMenu}}</a>
+                    </li>         
+                    {{RepeatEnd2}}           
+                </ul>
+            </li>
+       {{RepeatEnd1}} 
+    </ul>
+</div>
+{{PutHtmlChar39}});}
+{{LayoutMenus1End}}
