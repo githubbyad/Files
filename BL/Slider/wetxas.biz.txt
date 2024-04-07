@@ -1,0 +1,33 @@
+{{LayoutH1Begin}}
+{{LayoutH1Limit4}}
+{{SortBy:Issue,Updated}}
+function GetHighlights1(){document.write('
+<div id="Highlight1" style="display: none;">
+    <div id="highlight1_container" class="slider_container_h1" jssor-slider="true">        
+        <div class="slider_container_h1">
+            <div u="slides" class="slides_h1" debug-id="slide-board">
+                {{RepeatBegin}}
+                    <div class="H1-container" debug-id="slide-{{Count}}">
+                        <div class="H1-image">
+                            <a href="https://wetexas.biz/congrats-to-wbcss-kathleen-hunt-p1346-234.htm"><img src="https://wetexas.biz/13-03-2024-02-08-32-pm-2773711.png" alt="Congrats to WBCS's Kathleen Hunt" class="article-img_h1" style="display: block;"></a>
+                        </div>
+                        <div class="H1-heading">
+                            <div class="H1-submenu"><a href="https://wetexas.biz/index234.htm">Insights and Resources</a></div>
+                            <div class="H1-heading-div"><a href="https://wetexas.biz/congrats-to-wbcss-kathleen-hunt-p1346-234.htm"><span class="heading_h1" style="display: block;">Congrats to WBCS's Kathleen Hunt</span></a></div>
+                            <div class="H1-date"><i class="fa fa-calendar" aria-hidden="true"></i>Wed, Mar 13 2024</div>
+                            <div class="count"><span class="n-count">{{Count}}</span>|<span class="t-count">4</span></div>
+                        </div>
+                    </div>	  
+                {{RepeatEnd}}                                                  
+            </div>
+            <div u="navigator" class="jssorb21_h5" style="width: 100px; height: 19px; left: 550px;">
+                <div u="prototype" style="position: absolute; width: 19px; height: 19px; text-align: center; line-height: 19px; color: white; font-size: 12px; left: 0px; top: 0px;" class="av"></div>
+                <div u="prototype" style="position: absolute; width: 19px; height: 19px; text-align: center; line-height: 19px; color: white; font-size: 12px; left: 27px; top: 0px;"></div>
+                <div u="prototype" style="position: absolute; width: 19px; height: 19px; text-align: center; line-height: 19px; color: white; font-size: 12px; left: 54px; top: 0px;"></div>
+                <div u="prototype" style="position: absolute; width: 19px; height: 19px; text-align: center; line-height: 19px; color: white; font-size: 12px; left: 81px; top: 0px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+');DisplayHighlight('Highlight1');}
+{{LayoutH1End}}
