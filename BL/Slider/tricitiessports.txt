@@ -1,1 +1,52 @@
-code here
+{{LayoutH8Begin}}
+{{LayoutH8Limit10}}
+{{SortBy:Issue,Updated}}
+function GetHighlights8(){document.write('
+    <div id="slider111-2" class="carousel slide " data-bs-ride="carousel" data-bs-interval="false" style="display: none;">    
+        <div class="carousel-inner cus-blocks-3-111-inner">     
+            {{RepeatBegin}}
+            <div class="carousel-item cus-blocks-3-111-item position-relative">                
+                <a href="https://tricitiessports.com/tribe-closes-charleston-trip-with-win-at-bishop-england-p117792-73.htm">                    
+                    <div class="ratio-3-2">                        
+                        <div class="img-content">                            
+                            <img src="https://tricitiessports.com/28-03-2024-12-24-29-am-1075813.jpg" alt="Tribe Closes Charleston Trip With Win at Bishop England" class="img-fluid">                        
+                        </div>                    
+                    </div>                
+                </a>                
+                <div class="cus-blocks-3-111-box d-block position-absolute z-index-1 bottom-0 w-100">                        
+                    <div class="col-12 p-3 bg-light-16">                            
+                        <div class="H8-heading col-12 px-0 mb-1">                        
+                            <a class="cus-blocks-3-133-link d-inline-block text-decoration-none fs-4 text-light fw-bold lh-sm fst-italic transition text-dark-hover" href="https://tricitiessports.com/tribe-closes-charleston-trip-with-win-at-bishop-england-p117792-73.htm">Tribe Closes Charleston Trip With Win at Bishop England</a>                    
+                        </div>                                                                       
+                    </div>                
+                </div>            
+            </div> 
+            {{RepeatEnd}}                                                          
+        </div>    
+        
+        <div class="carousel-indicators cus-blocks-3-111-indicators"></div>    
+        <button class="carousel-control-prev" type="button" data-bs-target="#slider111-2" data-bs-slide="prev">        
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>        
+            <span class="visually-hidden">Previous</span>    
+        </button>    
+        <button class="carousel-control-next" type="button" data-bs-target="#slider111-2" data-bs-slide="next">        
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>        
+            <span class="visually-hidden">Next</span>    
+        </button>
+    </div>
+
+<script>
+/* Activate First Slider */
+document.getElementsByClassName("cus-blocks-3-111-item")[0].classList.add("active"); /* Add Buttons */
+var s1 = document.getElementsByClassName("cus-blocks-3-111-item");
+if (s1.length > 0) {
+  document.getElementsByClassName("cus-blocks-3-111-indicators")[0].insertAdjacentHTML("beforeend", "<button type=\'button\' data-bs-target=\'#slider111-2\' data-bs-slide-to=\'0\' class=\'active bg-yellow\' aria-current=\'true\' aria-label=\'Slide 1\'></button>");
+}
+for (si = 2; si <= s1.length; si++) {
+  var sj = si - 1;
+  document.getElementsByClassName("cus-blocks-3-111-indicators")[0].insertAdjacentHTML("beforeend", "<button type=\'button\' data-bs-target=\'#slider111-2\' class=\'bg-yellow\' data-bs-slide-to=\'" + sj + "\' aria-label=\'Slide " + si + "\'></button>");
+}     
+</script>
+<style>  #slider111-2 .carousel-control-next, #slider111-2 .carousel-control-prev {width: 7%; height: 14%; top: 50%;transform: translateY(-50%);}    #slider111-2 .carousel-indicators [data-bs-target] {height:30px;}    #slider111-2 .carousel-indicators {top: 0;right: auto;bottom:auto;left: 0;margin-right: 0;margin-left: 10px;}    #slider111-2 .carousel-control-next{border-top-left-radius: 50px;border-bottom-left-radius: 50px;}    #slider111-2 .carousel-control-prev{border-top-right-radius: 50px;border-bottom-right-radius: 50px;}    #slider111-2 .carousel-control-next, #slider111-2 .carousel-control-prev {display:none;background-color: rgba(0,0,0,0.9);}    #slider111-2:hover .carousel-control-next, #slider111-2:hover .carousel-control-prev {display:block;}    @media all and (max-width: 992px) {        .cus-blocks-3-111-indicators {position: relative;}        .cus-blocks-3-111-indicators [data-bs-target] {background-color: black !important;}        .cus-blocks-3-111-box {bottom: 0 !important;}        .cus-blocks-3-111-heading{font-size:1rem !important}    }</style>
+');DisplayHighlight('slider111-2');}
+{{LayoutH8End}}
