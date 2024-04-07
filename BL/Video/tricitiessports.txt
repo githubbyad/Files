@@ -1,0 +1,30 @@
+{{LayoutSection585Begin}}
+{{LayoutSection585Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:585}}
+{{File:section585.htm}}
+{{ReplaceJavascriptChars:No}}
+{{SortBy:Issue,Updated}}
+<div class="cus-videogallery-121">
+    <p class="cus-121-label my-2 position-relative"><span class="text-dark fw-bold text-uppercase border-top border-4 border-red position-relative z-index-2">{{SubMenu}}</span></p>
+    <div class="row mx-0 hp-parent">
+        {{RepeatBegin}}
+        <div class="col-sm-6 col-md-4 px-1 mb-2">
+            <a class="cus-videogallery-121-link position-relative d-block text-decoration-none border rounded overflow-hidden" href="javascript:void(0);" onclick="OpenYouTube('{{Body}}');">
+                <div class="ratio-16-9">
+                    <div class="img-content cus-dark-img">
+                        <img class="cus-videogallery-121-img img-fluid lazy loaded" src="https://img.youtube.com/vi/{{Body}}/hqdefault.jpg" data-src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" data-was-processed="true">
+                    </div>
+                </div>
+                <span class="cus-videogallery-121-play position-absolute translate-middle top-50 start-50"><i class="fa fa-play fs-1 text-white text-shadow-1" aria-hidden="true"></i></span>
+                <p class="cus-videogallery-121-heading mb-0 bg-dark text-white p-2 fs-6 lh-lg fw-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{Heading}}"><span class="line-1">{{Heading}}</span></p>
+            </a>
+        </div>
+        {{RepeatEnd}}
+    </div>
+</div>
+<style>
+    .cus-121-label::before {content: "";position: absolute;width: 100%;height: 0.2rem;background: rgba(221, 7, 7, 0.2);margin-top: -0.2rem;z-index: 2;}
+    .cus-photogallery-121-icon {opacity: 0;  transition: 200ms linear;}
+    .cus-photogallery-121-popup:hover .cus-photogallery-121-icon {opacity: 1; transition: 300ms linear;}
+</style>
+{{LayoutSection585End}}
