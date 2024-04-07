@@ -1,0 +1,33 @@
+{{LayoutArticleGroup147Begin}}
+{{LayoutArticleGroup147Limit20}}
+{{SortBy:Issue,Updated}}
+{{RemoveHTMLBody}} 
+{{Where:SubMenuIdInclude:147}}
+function GetArticleGroup147(){document.write('
+<div id="H6_container" class="slider_container_H6" jssor-slider="true">
+    <div class="slider_container_H6">
+        <div id="menu_heading_H6" class="menu_heading_H6">
+            <a href="https://themonmouthjournalnorthern.com/index147.htm">Obituaries</a>
+        </div>
+        <span u="arrowleft" class="jssora15ll_H6 jssora15l_H6" style=""><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+        <span u="arrowright" class="jssora15rr_H6 jssora15r_H6" style=""><i class="fa fa-arrow-right"></i></span>            
+        <div u="slides" class="slides_H6" debug-id="slide-board">
+            {{RepeatBegin}}
+                <div class="main_contenir_H6" debug-id="slide-0">
+                    <div class="img_H6">
+                        <span class="Top_Date_H6">
+                            <div class="date_H6">{{IssueDate}}</div>
+                        </span>
+                        <a href="{{HeadingLink}}">
+                            <img u="image" src="{{HeadingImage}}" class="">
+                        </a>
+                    </div>
+                    <span class="Menu_H6"><a href="{{SubMenuLink}}">{{SubMenu}}</a></span>
+                    <div class="Heading_H6"><a href="{{HeadingLink}}" class="heading_preview_H6">{{Heading}}</a></div>
+                    <div style="clear:both;"></div>
+                </div>  
+            {{RepeatEnd}}              
+        </div>
+    </div>
+</div>
+{{LayoutArticleGroup147End}}
