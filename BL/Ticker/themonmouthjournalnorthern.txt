@@ -7,7 +7,7 @@ function GetHighlights1(){document.write('
             <span class="bn-label">TRENDING NEWS</span>
             <ul>
                 {{RepeatBegin}}  
-                    <li class="custom_background_1">
+                    <li class="custom_background_{{SubMenuId}}">
                         <a class="art-link " href="{{HeadingLink}}">{{Heading}}</a>
                     </li>   
                 {{RepeatEnd}}                       
