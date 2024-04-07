@@ -6,17 +6,17 @@ function GetHighlights8(){document.write('
         <div class="carousel-inner cus-blocks-3-111-inner">     
             {{RepeatBegin}}
             <div class="carousel-item cus-blocks-3-111-item position-relative">                
-                <a href="https://tricitiessports.com/tribe-closes-charleston-trip-with-win-at-bishop-england-p117792-73.htm">                    
+                <a href="{{HeadingLink}}">                    
                     <div class="ratio-3-2">                        
                         <div class="img-content">                            
-                            <img src="https://tricitiessports.com/28-03-2024-12-24-29-am-1075813.jpg" alt="Tribe Closes Charleston Trip With Win at Bishop England" class="img-fluid">                        
+                            <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid">                        
                         </div>                    
                     </div>                
                 </a>                
                 <div class="cus-blocks-3-111-box d-block position-absolute z-index-1 bottom-0 w-100">                        
                     <div class="col-12 p-3 bg-light-16">                            
                         <div class="H8-heading col-12 px-0 mb-1">                        
-                            <a class="cus-blocks-3-133-link d-inline-block text-decoration-none fs-4 text-light fw-bold lh-sm fst-italic transition text-dark-hover" href="https://tricitiessports.com/tribe-closes-charleston-trip-with-win-at-bishop-england-p117792-73.htm">Tribe Closes Charleston Trip With Win at Bishop England</a>                    
+                            <a class="cus-blocks-3-133-link d-inline-block text-decoration-none fs-4 text-light fw-bold lh-sm fst-italic transition text-dark-hover" href="{{HeadingLink}}">{{Heading}}</a>                    
                         </div>                                                                       
                     </div>                
                 </div>            
