@@ -1,0 +1,18 @@
+{{LayoutH1Begin}}
+{{LayoutH1Limit10}}
+{{SortBy:Issue,Updated}}
+function GetHighlights1(){document.write('
+    <div id="H7" class="css_ticker">
+        <div class="Breaking_News">
+            <span class="bn-label">TRENDING NEWS</span>
+            <ul>
+                {{RepeatBegin}}  
+                    <li class="custom_background_1">
+                        <a class="art-link " href="{{HeadingLink}}">{{Heading}}</a>
+                    </li>   
+                {{RepeatEnd}}                       
+            </ul>
+        </div>
+    </div>
+');}
+{{LayoutH1End}}
