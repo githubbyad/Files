@@ -1,0 +1,746 @@
+{{LayoutSection220Begin}}
+{{LayoutSection220Limit}}
+{{Where:SubMenuIdInclude:220}}
+{{File:section220.htm}}
+{{ReplaceJavascriptChars:No}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue, Updated}}
+<div class="cus-section-header w-100 d-block"><script>GetSubMenuHeader220();</script></div>
+    <div class="event-220-container">
+        <div class="event-220-label block-label"><span class="hpe-custom-text-10">EVENTS</span></div>
+        <div class="event-container">
+            <div class="event-card">
+                <h3 class="event-card-header" id="monthAndYear">May 2024</h3>
+                <table class="event-table" id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body"></tbody>
+                </table>
+                <div class="event-form-inline">
+                    <button class="event-btn event-btn-prev" title="Previous" id="previous" onclick="previous()"><i class="fa fa-caret-left" aria-hidden="true"></i></button>
+                    <button class="event-btn event-btn-next" title="Next" id="next" onclick="next()"><i class="fa fa-caret-right" aria-hidden="true"></i></button>
+                </div>
+                <br />
+                <form class="form-inline" style="display: none;">
+                    <label class="lead mr-2 ml-2" for="month">Jump To: </label>
+                    <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
+                        <option value="0">Jan</option>
+                        <option value="1">Feb</option>
+                        <option value="2">Mar</option>
+                        <option value="3">Apr</option>
+                        <option value="4">May</option>
+                        <option value="5">Jun</option>
+                        <option value="6">Jul</option>
+                        <option value="7">Aug</option>
+                        <option value="8">Sep</option>
+                        <option value="9">Oct</option>
+                        <option value="10">Nov</option>
+                        <option value="11">Dec</option>
+                    </select>
+                    <label for="year"></label>
+                    <select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
+                        <option value="1990">1990</option>
+                        <option value="1991">1991</option>
+                        <option value="1992">1992</option>
+                        <option value="1993">1993</option>
+                        <option value="1994">1994</option>
+                        <option value="1995">1995</option>
+                        <option value="1996">1996</option>
+                        <option value="1997">1997</option>
+                        <option value="1998">1998</option>
+                        <option value="1999">1999</option>
+                        <option value="2000">2000</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="event-220-wrap">
+            <div class="event-220-for" style="display: none;">
+                <div class="event-220-for-month">Events in <span class="event-220-for-in-month">Month</span></div>
+                <div class="event-220-for-date" style="display: none;"><span class="event-220-for-in-date"></span></div>
+            </div>
+    
+            {{RepeatBegin}}
+            <div
+                class="event-220-bigdiv hpe-in-event"
+                data-datex="{{MonthI1}}-{{DayI}}-{{YearI}}"
+                data-article="{{ArticleId}}"
+                data-url="{{HeadingLink}}"
+                data-menu="{{Menu}}"
+                data-submenu="{{SubMenu}}"
+                data-date="{{MonthI}}_{{DayI}}_{{YearI}}"
+                style="display: none;"
+            >
+                <div class="event-220-block" name="{{MonthI1}}" data="{{YearI}}">
+                    <div class="event-220-div2"><img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" /></div>
+                    <div class="event-220-div3">
+                        <div class="event-220-heading">
+                            <a class="event-220-link" href="{{HeadingLink}}">
+                                {{Heading}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{RepeatEnd}}                
+            <div class="event-220-none" style="display: block;">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i><br />
+                <br />
+                There are no events in <span class="event-220-none-in-month">Month</span>.
+            </div>
+        </div>
+    </div>    
+<div class="cus-section-footer w-100 d-block"><script>GetSubMenuFooter220();</script></div>
+<script>
+/* SubMenu Title */
+document.title = "{{SubMenu}}";
+/*Changing heading*/
+if (document.getElementsByClassName('event-220-link').length) {
+  for (var m = 0; m < document.getElementsByClassName('event-220-link').length; m++) {
+    var am = document.getElementsByClassName('event-220-link')[m].innerHTML; /* Use "##" in Heading field to place time and location. For example, 5 AM ## Heading text... ## Texas */
+    if (am.split(' ## ').length == 3) {
+      var am_1 = '<span class="event-220-link-1"><i class="fa fa-clock-o" aria-hidden="true"></i>' + am.split(' ## ')[0] + '</span>';
+      var am_2 = '<span class="event-220-link-2">' + am.split(' ## ')[1] + '</span>';
+      var am_3 = '<span class="event-220-link-3"><i class="fa fa-map-marker" aria-hidden="true"></i>' + am.split(' ## ')[2] + '</span>';
+      document.getElementsByClassName('event-220-link')[m].innerHTML = am_1 + am_2 + am_3;
+    }
+  }
+}
+today = new Date();
+currentMonth = today.getMonth();
+currentYear = today.getFullYear();
+selectYear = document.getElementById("year");
+selectMonth = document.getElementById("month");
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+monthAndYear = document.getElementById("monthAndYear");
+showCalendar(currentMonth, currentYear);
+
+function next() {
+  currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+  currentMonth = (currentMonth + 1) % 12;
+  showCalendar(currentMonth, currentYear);
+}
+
+function previous() {
+  currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
+  currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+  showCalendar(currentMonth, currentYear);
+}
+
+function jump() {
+  currentYear = parseInt(selectYear.value);
+  currentMonth = parseInt(selectMonth.value);
+  showCalendar(currentMonth, currentYear);
+}
+
+function showCalendar(month, year) {
+  let firstDay = (new Date(year, month)).getDay();
+  tbl = document.getElementById("calendar-body"); /* body of the calendar */ /* clearing all previous cells */
+  tbl.innerHTML = ""; /* filing data about month and in the page via DOM. */
+  monthAndYear.innerHTML = months[month] + " " + year;
+  selectYear.value = year;
+  selectMonth.value = month;
+  document.getElementsByClassName('event-220-for-in-month')[0].innerHTML = months[month];
+  document.getElementsByClassName('event-220-none-in-month')[0].innerHTML = months[month]; /* creating all cells */
+  let date = 1;
+  for (let i = 0; i < 6; i++) {
+    /* creates a table row */
+    let row = document.createElement("tr"); /* creating individual cells, filing them up with data. */
+    for (let j = 0; j < 7; j++) {
+      if (i === 0 && j < firstDay) {
+        cell = document.createElement("td");
+        cellText = document.createTextNode("");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      } else if (date > daysInMonth(month, year)) {
+        break;
+      } else {
+        cell = document.createElement("td");
+        var datey = date;
+        if (date < 10) {
+          datey = "0" + date;
+        }
+        cell.setAttribute('data-datex', months[month] + "-" + datey + "-" + year);
+        cell.setAttribute('class', 'event-in-date');
+        cellText = document.createTextNode(date);
+        if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
+          cell.classList.add("event-today");
+        } /* color today date */
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        date++;
+      }
+    }
+    tbl.appendChild(row); /* appending each row into calendar body. */
+  }
+} /* check how many days in a month code from dzone.com/articles/determining-number-days-month */
+function daysInMonth(iMonth, iYear) {
+  return 32 - new Date(iYear, iMonth, 32).getDate();
+}
+$(document).ready(function() {
+  $('.event-in-date').each(function() {
+    if ($(this).attr('data-datex')) {
+      if ($('.event-220-bigdiv[data-datex=' + $(this).attr("data-datex") + ']').length) {
+        $(this).addClass('event-in-yes');
+      }
+    }
+  }); /* Check for Event in Current Month */
+  $('.event-220-bigdiv, .event-220-for-date').css('display', 'none');
+  $('.event-220-bigdiv[data-datex*="' + $('#monthAndYear').text().split(' ').shift() + '"][data-datex*="' + $('#monthAndYear').text().split(' ').pop() + '"]').css('display', 'block');
+  var el = $('.event-220-bigdiv').length;
+  var elc = 0;
+  $('.event-220-bigdiv').each(function() {
+    if ($(this).css('display') == 'none') {
+      elc++;
+    }
+  });
+  if (el == elc) {
+    $('.event-220-none').css('display', 'block');
+    $('.event-220-for').css('display', 'none');
+  } else {
+    $('.event-220-none').css('display', 'none');
+    $('.event-220-for').css('display', 'block');
+  } /* /Check for Event in Current Month */ /* Buttons Click */
+  $('#previous, #next').click(function() {
+    $('.event-in-date').each(function() {
+      if ($(this).attr('data-datex')) {
+        if ($('.event-220-bigdiv[data-datex=' + $(this).attr("data-datex") + ']').length) {
+          $(this).addClass('event-in-yes');
+        }
+      }
+    });
+    $('.event-220-bigdiv, .event-220-for-date').css('display', 'none');
+    $('.event-220-bigdiv[data-datex*="' + $('#monthAndYear').text().split(' ').shift() + '"][data-datex*="' + $('#monthAndYear').text().split(' ').pop() + '"]').css('display', 'block');
+    var el = $('.event-220-bigdiv').length;
+    var elc = 0;
+    $('.event-220-bigdiv').each(function() {
+      if ($(this).css('display') == 'none') {
+        elc++;
+      }
+    });
+    if (el == elc) {
+      $('.event-220-none').css('display', 'block');
+      $('.event-220-for').css('display', 'none');
+    } else {
+      $('.event-220-for').css('display', 'block');
+      $('.event-220-none').css('display', 'none');
+    } /* Date Click */
+    if ($('.event-in-yes').length) {
+      $('.event-in-yes').each(function() {
+        $(this).click(function() {
+          $('.event-in-yes').removeClass('event-in-yes-focus');
+          $(this).addClass('event-in-yes-focus');
+          $('.event-220-bigdiv, .event-220-none').css('display', 'none');
+          $('.event-220-bigdiv[data-datex="' + $(this).attr("data-datex") + '"]').css('display', 'block');
+          $('.event-220-for-date').css('display', 'flex');
+          $('.event-220-for-in-month').text($(this).attr("data-datex").split('-')[0]);
+          $('.event-220-for-in-date').text($(this).attr("data-datex").split('-')[1]);
+        });
+      });
+    } /* /Date Click */
+  }); /* /Buttons Click */ /* Date Click */
+  if ($('.event-in-yes').length) {
+    $('.event-in-yes').each(function() {
+      $(this).click(function() {
+        $('.event-in-yes').removeClass('event-in-yes-focus');
+        $(this).addClass('event-in-yes-focus');
+        $('.event-220-bigdiv, .event-220-none').css('display', 'none');
+        $('.event-220-bigdiv[data-datex="' + $(this).attr("data-datex") + '"]').css('display', 'block');
+        $('.event-220-for-date').css('display', 'flex');
+        $('.event-220-for-in-month').text($(this).attr("data-datex").split('-')[0]);
+        $('.event-220-for-in-date').text($(this).attr("data-datex").split('-')[1]);
+      });
+    });
+  } /* /Date Click */
+});
+
+</script>
+<style>
+    .col1,
+.col3,
+.adgroup-20 {
+    display: none;
+}
+
+.col2 {
+    width: 100%;
+    height: auto !important;
+}
+
+.event-220-none {
+    display: none;
+}
+
+.event-220-none {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    font-family: Open Sans;
+    margin-top: 44px;
+    border: 1px solid #ddd;
+    padding-bottom: 40px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.event-220-none i {
+    color: gray;
+    font-size: 30px;
+}
+
+.event-container {
+    width: 50%;
+    font-family: Trebuchet MS;
+    float: left;
+    padding-right: 2%;
+    user-select: none;
+}
+
+.event-220-div2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.event-220-wrap {
+    width: 48%;
+    float: left;
+}
+
+.event-in-date {
+    border-radius: 50px;
+}
+
+.event-card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.event-card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.event-card-header {
+    padding: 1.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, .03);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #007bff;
+}
+
+.event-btn:hover {
+    background: #138eff;
+}
+
+.event-table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 1px solid #c9cfe5;
+    border-collapse: collapse;
+}
+
+.event-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #c9cfe5;
+    color: #036;
+}
+
+.event-table thead td,
+.event-table thead th {
+    /* border-bottom-width: 2px; */
+    border-width: 0;
+}
+
+.event-table td,
+.event-table th {
+    border: 1px solid #c9cfe5;
+}
+
+.event-table td,
+.event-table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #c9cfe5;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.event-today {
+    font-weight: bold;
+    background: #e3e9ff;
+}
+
+.event-table td {
+    transition: 200ms linear;
+    border-width: 0 !important;
+}
+
+.event-table td[data-datex*="-"]:hover {
+    transition: 200ms linear;
+}
+
+.event-form-inline {
+    position: absolute;
+    top: 0.75rem;
+    width: 100%;
+}
+
+#next {
+    right: 0.75rem;
+    position: absolute;
+}
+
+#previous {
+    position: absolute;
+    left: 0.75rem;
+}
+
+.event-btn-prev {
+    margin-right: 0.5rem;
+    float: left;
+}
+
+.event-btn {
+    float: left;
+    border-width: 0;
+    cursor: pointer;
+    font-size: 1.25rem;
+    background: #4daeff;
+    color: white;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+}
+
+.event-220-bigdiv {
+    background: white;
+    box-shadow: 2px 5px 0px rgba(0, 0, 0, 0.1);
+    float: left;
+    padding: 10px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.event-220-wrap {
+    width: 48%;
+    float: left;
+}
+
+.event-220-div1 {
+    float: left;
+    margin-right: 2px;
+    width: 20px;
+}
+
+.event-220-div2 {
+    float: left;
+    margin-right: 2%;
+    width: 16%;
+}
+
+.event-220-div3 {
+    float: left;
+    width: 82%;
+}
+
+.event-220-weekday {
+    writing-mode: vertical-lr;
+    background: gray;
+    color: white;
+    padding: 15px 0px;
+    letter-spacing: 2px;
+    font-family: pt sans, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+}
+
+.event-220-day {
+    background: #e3e9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 22px;
+    font-family: pt sans, sans-serif;
+    font-weight: bold;
+    border: 1px solid #b8bec3;
+    box-sizing: border-box;
+}
+
+.event-220-month {
+    display: flex;
+    margin-bottom: 2px;
+    justify-content: center;
+    align-items: center;
+    background: #3899F4;
+    font-family: pt sans, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+.event-220-heading a:link,
+.event-220-heading a:visited {
+    color: black;
+    font-size: 16px;
+    font-family: Open Sans;
+    line-height: 22px;
+    text-transform: uppercase;
+}
+
+.event-220-heading {
+    float: left;
+    width: 100%;
+}
+
+.event-220-caption {
+    float: left;
+    width: 100%;
+    font-family: pt sans, sans-serif;
+    font-size: 14px;
+}
+
+.event-220-heading a:hover {
+    color: #007bff;
+}
+
+.event-220-bigdiv:hover {
+    background: #f4f4f4;
+    transition: 400ms;
+}
+
+.event-220-bigdiv {
+    transition: 300ms;
+    display: none;
+}
+
+.event-in-yes:before {
+    content: "\f111";
+    font-family: FontAwesome;
+    color: #db4139;
+    font-size: 10px;
+    line-height: inherit;
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+    transform: translate(-50%, 0);
+}
+
+.event-in-yes {
+    position: relative;
+    cursor: pointer;
+}
+
+.event-in-yes:hover,
+.event-in-yes-focus {
+    background: #db4139;
+    border-radius: 50px;
+    color: white;
+}
+
+.event-220-for-month {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.25rem;
+    font-family: Trebuchet MS;
+}
+
+.event-220-for-date {
+    display: none;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    float: left;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-220-for-in-date {
+    border: 2px solid #fa5016;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+}
+
+.event-220-for {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.event-220-link-1 {
+    font-size: 11px !important;
+    color: black !important;
+    width: 100%;
+    float: left;
+    font-weight: normal;
+}
+
+.event-220-link-1 i {
+    margin-right: 5px;
+}
+
+.event-220-link-2 {
+    color: #4d71da !important;
+    float: left;
+    width: 100%;
+}
+
+.event-220-link-3 {
+    color: #777 !important;
+    float: left;
+    width: 100%;
+    font-size: 12px !important;
+    font-weight: normal;
+}
+
+.event-220-link-3 i {
+    margin-right: 5px;
+}
+
+.event-220-heading a:link,
+.event-220-heading a:visited {
+    color: #4d71da !important;
+    font-weight: bold;
+    font-size: 14px !important;
+}
+
+@media (min-width:993px) {
+    .event-container {
+        margin-top: 44px;
+    }
+}
+
+@media (max-width:992px) {
+    .event-220-none {
+        margin-top: 0;
+    }
+
+    .event-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .event-container {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .event-220-wrap {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .event-table td,
+    .event-table th {
+        padding: 1rem 2.6rem;
+    }
+
+    .event-220-div2 {
+        width: 20%;
+        margin-right: 3%;
+    }
+
+    .event-220-div3 {
+        width: 77%;
+    }
+
+    .event-in-yes:before {
+        font-size: 7px;
+    }
+}
+
+@media (max-width:576px) {
+
+    .event-table td,
+    .event-table th {
+        padding: 1rem 1.6rem;
+    }
+}
+
+@media (max-width:360px) {
+
+    .event-table td,
+    .event-table th {
+        padding: 1rem 0.7rem;
+    }
+}
+</style>
+{{LayoutSection220End}}
