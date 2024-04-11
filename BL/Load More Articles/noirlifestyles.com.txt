@@ -1,0 +1,334 @@
+{{LayoutH1Begin}}
+{{LayoutH1Limit100}}
+{{SortBy:Issue,Updated}}
+function GetHighlights1(){document.write('
+<div id="ARG101" style="display: none;">
+    <div id="column-label">LATEST NEWS</div>	
+    {{RepeatBegin}}
+        {{If Counter < 11}}
+            <div class="ARGX uncomment1">
+                <div class="ARGX_img">
+                    <a href="{{HeadingLink}}">
+                        <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}">
+                    </a>
+                </div>
+                <div class="ARGX_submenu">
+                    <a href="{{SubMenuLink}}">{{SubMenu}}</a>
+                </div>
+                <div class="ARGX_heading">
+                    <a href="{{HeadingLink}}">{{Heading}}</a>
+                </div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>
+            </div>
+        {{ElseIf Counter < 21}}        
+            <div class="ARGX uncomment2">
+                <!--<div class="ARGX_img">
+                    <a href="{{HeadingLink}}">
+                        <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                    </div>
+                    <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                    <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                    <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 31}}           
+            <div class="ARGX uncomment3">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 41}}           
+            <div class="ARGX uncomment4">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 51}}   
+            <div class="ARGX uncomment5">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 61}}   
+            <div class="ARGX uncomment6">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 71}}   
+            <div class="ARGX uncomment7">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 81}}   
+            <div class="ARGX uncomment8">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 91}}   
+            <div class="ARGX uncomment9">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 101}}   
+            <div class="ARGX uncomment10">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 111}}   
+            <div class="ARGX uncomment11">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 121}}   
+            <div class="ARGX uncomment12">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{ElseIf Counter < 131}}   
+            <div class="ARGX uncomment13">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{Else}}   
+            <div class="ARGX uncomment14">
+                <!--<div class="ARGX_img">
+                <a href="{{HeadingLink}}">
+                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a>
+                </div>
+                <div class="ARGX_submenu"><a href="https://wetexas.biz/index233.htm">{{SubMenu}}</a></div>
+                <div class="ARGX_heading"><a href="{{HeadingLink}}">{{Heading}}</a></div>
+                <div class="ARGX_issue_date"><i class="fa fa-calendar" aria-hidden="true"></i>{{DayNameI1}}, {{MonthI1}}, {{DayI}} {{YearI}}</div>-->
+            </div>
+        {{EndIf}}
+    {{RepeatEnd}}    
+    <div class="load_more">
+        <span>Load more <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+    </div>
+</div>
+');DisplayHighlight('ARG101');}
+{{LayoutH1End}}
+
+
+
+
+/* *** BEGIN: Highlight 1 *** */
+#column-label::before {
+  background: #fe2e2e none repeat scroll 0 0;
+  content: " ";
+  display: block;
+  height: 5px;
+  left: 0;
+  top: 0;
+  width: 30px;
+}
+#column-label {
+	color: #000000;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+	margin-top: 20px;
+}
+#ARG101 { 
+  display: flex;
+  display: -webkit-flex;
+  -ms-display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  float: left;
+  width: 900px;
+}
+.ARGX_issue_date i {
+	margin-right: 5px;
+}
+.load_more {
+  float:left;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.load_more span {
+  background-color: #d7b128;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  background-image: none;
+  background-position: 50% center;
+  background-size: 200% 200%;
+  border: 1px solid;
+  color: white;
+  cursor: pointer;
+  line-height: 40px;
+  margin: 5px auto;
+  transition: all 0.2s ease 0s;
+  width:890px;
+  box-sizing:border-box;
+  float:left;
+}
+.load_more span:hover {
+    background-color: #d7b128;
+    color: white;
+}
+.load_more .fa.fa-angle-down {
+    padding-left: 3px;
+}
+
+.load_more > span:active {
+  background-color: #d7b128;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.7) 10%, #d7b128 11%);
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  color: white;
+  transition: all 0.6s ease 0s;
+}
+.load_more > span:hover, .load_more > span:active:hover {
+    background-color: #d7b128;
+}
+.uncomment2, .uncomment3, .uncomment4, .uncomment5, .uncomment6, .uncomment7, .uncomment8, .uncomment9, .uncomment10, .uncomment11,  .uncomment12,  .uncomment13, .uncomment14  {
+  display: none;
+}
+.ARGX:hover > .ARGX_img img, .H2_container > a:hover .H2_img > img { 
+  transform: scale(1.1);
+  transition-duration: 300ms;
+}
+
+
+.ARGX:hover > .ARGX_heading > a:link {
+  color: #d7b128;
+  transition-duration: 200ms;
+}
+
+.ARGX_img {
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  display: flex;
+  -ms-display: flex;
+  display: -webkit-flex;
+  float: left;
+  height: 102px;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  margin-right: 10px;
+  overflow: hidden;
+  width: 153px;
+}
+
+.ARGX_heading {
+  float: left;
+  font-size: 15px;
+  line-height: 16px;
+  margin-bottom: 5px;
+  max-height: 48px;
+  overflow: hidden;
+  width: 245px;
+}
+.ARGX_submenu {
+  display: block;
+  float: left;
+  margin-bottom: 5px;
+  max-height: 20px;
+  overflow: hidden;
+  width: 60%;
+}
+
+.ARGX {
+  background-color: white;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08) ;
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  width: 410px;
+}
+.ARGX_issue_date .icon-time {
+  padding-right: 3px;
+}
+.ARGX_issue_date {
+  color: #fe2e2e ;
+  display: block;
+  float: left;
+  font-weight: bold;
+  font-size: 14px;
+}
+.ARGX_heading > a:link, .ARGX_heading > a:visited {
+  color: #222222;
+  font-size: 15px;
+  line-height: 16px;
+  text-transform: uppercase;
+  transition-duration: 200ms;
+  font-weight:bold;
+}
+
+.ARGX_submenu > a:link, .ARGX_submenu > a:visited {
+  color: #b1b1b1;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.ARGX_img img {
+  max-height: 102px;
+  max-width: 153px;
+  float: left;
+  transition-duration: 200ms;
+}
+.label-menu-wrap i.fa {
+	color: #fff !important;
+}
+/* *** END: Highlight 1 *** */ 
