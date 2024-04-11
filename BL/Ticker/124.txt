@@ -1,0 +1,70 @@
+{{LayoutH1Begin}}
+{{LayoutH1Limit7}}
+{{SortBy:Issue,Updated}}
+{{BlankValue-TotalArticles}}
+function GetHighlights1(){document.write({{PutHtmlChar39}}
+<div id="cus-blocks-2-124" class="cus-blocks-2-124" style="display: block;">    
+    <div class="row me-lg-0">        
+        <div class="col-lg-2 pe-lg-0">           
+            <div data-tor="place.left place.bottom" class="ribbon-bookmark-h ribbon-fold w-100 bg-danger my-0 fw-bold ms-2"> IN THE NEWS </div>        
+        </div>    
+        <div id="ticker124" class="carousel carousel-dark slide col-lg-7 d-flex align-items-center " data-bs-ride="carousel">        
+            <div class="carousel-inner cus-carousel-124-2-inner position-relative">     
+                {{RepeatBegin}}                       
+                <div class="carousel-item cus-carousel-124-2-item">                    
+                    <span class="col-1 d-inline d-lg-none pe-0"><i class="fa fa-circle text-red" style="transform: scale(0.8);" aria-hidden="true"></i></span>                    
+                    <article class="cus-carousel-124-2-article mb-0 w-100 d-block text-start">                        
+                        <a class="cus-carousel-124-2-link d-block text-decoration-none line-1 text-white fw-bold text-uppercase transition text-red-hover" href="{{HeadingLink}}">{{Heading}}</a>                    
+                    </article>                
+                </div> 
+                {{RepeatEnd}}                                                                                             
+            </div>
+        </div>
+        <div id="top_bar_social_icons" class="cus-social-links col-12 col-lg-3 float-end px-0 d-flex align-items-center  justify-content-center">						
+            <ul class="row pull-right m-0">							
+                <div class="col bg-danger fs-5 fw-bold d-flex align-items-center  justify-content-center text-white">Follow Us!</div>
+                <li>								
+                    <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="1M">									
+                        <i class="fa fa-facebook"></i>								
+                    </a>							
+                </li>							
+                <li>								
+                    <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="0.5M">									
+                        <i class="fa fa-twitter"></i>								
+                    </a>							
+                </li>							
+                <li>								
+                    <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="2.5k">									
+                        <i class="fa fa-youtube"></i>								
+                    </a>							
+                </li>							
+                <li>								
+                    <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Rss">									
+                        <i class="fa fa-rss"></i>								
+                    </a>							
+                </li>						
+            </ul>						
+        </div>						
+    </div>						
+</div>
+<style>
+    <!--  Start Css ribbon  -->.ribbon-bookmark-h.ribbon-fold[data-tor*="place.left"] {	--tor-ribbon-polygon: polygon(0% 0%, 0.5em -0.5em, 0.5em 0%, 100% 0%, calc(100% - 1em) 1em, 100% 100%, 0% 100%, 0% 0%);}.ribbon-bookmark-h[data-tor*="place.left"] {	--tor-ribbon-polygon: polygon(0% 0%, 100% 0%, calc(100% - 1em) 1em, 100% 100%, 0% 100%);	padding-right: 1em;	padding-left: unset;}.ribbon-bookmark-h.ribbon-fold[data-tor*="place.left"]::before {	left: 0;	right: auto;}.ribbon-bookmark-h.ribbon-fold::before {	top: -0.5em;	right: 0;}.ribbon-bookmark-v.ribbon-fold::before,.ribbon-bookmark-h.ribbon-fold::before {	content: "";	position: absolute;	z-index: -1;	background-color: inherit;	filter: brightness(50%);	padding: 0.25em;}.ribbon-bookmark-h {	--tor-ribbon-polygon: polygon(100% 100%, 0% 100%, 1em 1em, 0% 0%, 100% 0%);	-webkit-clip-path: var(--tor-ribbon-polygon);	clip-path: var(--tor-ribbon-polygon);	margin-bottom: 1rem;	margin-top: 1rem;	height: 2em;	width: calc(var(--tor-ribbon-size) + 1em);	padding-left: 1em;}.ribbon-bookmark-v,.ribbon-bookmark-h {	--tor-ribbon-size: 3em;	color: #fff;	background-color: #1f44ff;	position: relative;	right: 0;	top: 0;	flex-direction: column;	transform-style: preserve-3d;	z-index: 1;}.ribbon-corner,.ribbon-bookmark-v,.ribbon-bookmark-h {	display: flex;	text-align: center;	align-items: center;	justify-content: center;}<!--  End Css ribbon  -->						
+</style>
+<script>    
+    /* Activate First Slider */
+if (document.body.clientWidth > 992) {
+  document.getElementsByClassName("cus-carousel-124-2-item")[0].classList.add("active");
+} else {
+  document.getElementById("ticker124").setAttribute("data-bs-interval", "false");
+  document.getElementById("ticker124").classList.remove("bg-body");
+  var ta = document.getElementsByClassName("cus-carousel-124-2-item");
+  for (var t = 0; t < ta.length; t++) {
+    ta[t].classList.add("row", "d-flex", "mx-auto", "float-end", "py-3", "border-bottom");
+    document.getElementsByClassName("cus-carousel-124-2-link")[t].classList.remove("line-1");
+    document.getElementsByClassName("cus-carousel-124-2-article")[t].classList.add("col-11", "ps-0");
+    document.getElementsByClassName("cus-carousel-124-2-article")[t].classList.remove("w-100");
+  }
+}
+<\/script>
+');}
+{{LayoutH1End}}
