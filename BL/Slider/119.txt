@@ -1,0 +1,37 @@
+{{LayoutH8Begin}}
+{{LayoutH8Limit6}}
+{{SortBy:Issue,Updated}}
+{{BlankValue-TotalArticles}}
+function GetHighlights8(){document.write('
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">  
+    <div class="carousel-inner">	
+        {{RepeatBegin}}			    
+        <div class="carousel-item" data-bs-interval="10000">	
+            <a href="{{HeadingLink}}">      
+                <img src="{{HeadingImage}}" class="d-block w-100" alt="{{HeadingImageAlt}}">	  
+            </a>      
+            <div class="d-none d-md-block col-12 px-2" style="position: absolute;z-index: 1000;bottom: 0;background-color: #000000ab;">       
+                <a class="text-decoration-none" href="{{HeadingLink}}">                                
+                    <h2 class="fs-2 fs-lg-2 fw-bold text-white line-2 lh-base">{{Heading}}</h2>                            
+                </a>							
+                <p class="mb-0 fs-5 text-white"><i class="fa fa-calendar pe-1 text-white" aria-hidden="true"></i>{{IssueDate}}/p>							 
+                <p class="line-4 text-light fs-5 mb-2 lh-base">{{Body}}</p>		
+                <p class="cus-ARG-124-more">                        
+                    <a class="d-inline-block text-decoration-none fs-5 text-white fw-bold lh-1 fst-italic transition text-red-hover" href="{{HeadingLink}}">More</a>                    
+                </p>      
+            </div>    
+        </div>	
+        {{RepeatEnd}}		  			     
+    </div>  
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">    
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>    
+        <span class="visually-hidden">Previous</span>  
+    </button>  
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">    
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>    
+        <span class="visually-hidden">Next</span>  
+    </button>
+</div>
+<script>document.querySelector(".carousel-item").classList.add("active");<\/script>
+');}
+{{LayoutH8End}}
