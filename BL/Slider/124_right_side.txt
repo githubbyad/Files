@@ -1,0 +1,89 @@
+{{LayoutH4Begin}}
+{{LayoutH4Limit40}}
+{{SortBy:Issue, Updated}}
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+function GetHighlights4(){document.write('
+<div id="cus-preview-H4" class="carousel slide position-relative col-12 bg-white" data-bs-ride="carousel" data-bs-interval="false">        
+    <div class="d-block w-100 pb-3 pt-3 mb-3" style="border-bottom: 3px solid #f24d34 !important;">            
+        <span class="text-danger fw-bold text-uppercase"> FEATURE NEWS	</span>			
+        <button class="carousel-control-prev me-1" style="background-color: #f24d34 !important;border-radius: 19px;width: 35px !important;height: 35px !important;display: flex;justify-content: center;align-items: center;margin-right: 20px !important;" type="button" data-bs-target="#cus-preview-H4" data-bs-slide="prev">            
+            <span class="carousel-control-prev-icon float-start" aria-hidden="true"></span>            
+            <span class="carousel-number-prev-H4 text-dark float-start ms-1"></span>            
+            <span class="visually-hidden">Previous</span>        
+        </button>        
+        <button class="carousel-control-next" style="background-color: #f24d34 !important;border-radius: 19px;width: 35px !important;height: 35px !important;display: flex;justify-content: center;align-items: center;margin-right: 5px;" type="button" data-bs-target="#cus-preview-H4" data-bs-slide="next">            
+            <span class="carousel-number-next-H4 text-dark float-start me-1"></span>            
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>                        
+            <span class="visually-hidden">Next</span>        
+        </button>        
+    </div>        
+    
+    <div class="carousel-inner cus-preview-H4-inner">                                                                                                                                {{RepeatBegin}}                                                                                                         
+        <div class="cus-preview-H4-box col-lg-12 position-relative px-0 px-lg-1 mb-3 position-relative">    
+            <a href="{{HeadingLink}}">                            
+                <div class="ratio-3-2">                                
+                    <div class="img-content">                                    
+                        <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid">                                
+                    </div>                            
+                </div>                        
+            </a> 
+            <div class="position-absolute p-3 top-0 w-100  z-index-1">                                           
+                <a class="badge fw-normal text-uppercase rounded-0 bg-red text-white text-decoration-none fs-5" href="{{SubMenuLink}}">{{SubMenu}}</a>
+            </div>                 						                                                
+            <div class="d-block z-index-1 bottom-0 w-100 position-absolute">                        
+                <div class="p-2" style="background-color: rgba(0, 0, 0, 0.72);">
+                    <a class="cus-heading-font text-decoration-none fw-bold text-primary text-white d-block line-2 fs-5 text-red-hover " href="{{HeadingLink}">{{Heading}}</a>
+                </div>                        
+            </div>                            
+        </div> 
+        {{RepeatEnd}}                                                                             
+    </div>    
+</div>
+<script>                
+/* 2 Slides */
+var bp = document.getElementsByClassName("cus-preview-H4-inner");
+var bl = document.getElementsByClassName("cus-preview-H4-box");
+var bv = bl.length;
+var bb = document.getElementsByClassName("cus-preview-H4-item");
+if (document.body.clientWidth > 992) {
+  var bc = Math.ceil(bv / 4); /* Change limit here */
+  if (bv > 0) {
+    for (var a = 0; a < bc; a++) {
+      bp[0].insertAdjacentHTML("beforeend", "<div class=\'carousel-item cus-preview-H4-item position-relative row ms-0\'></div>");
+    }
+    var n = 0,
+      k = 0,
+      j = 0;
+    for (j = 1; j <= bc; j++) {
+      n = j * 4; /* Change limit here */
+      k = j - 1;
+      for (var i = 0; i < bv; i++) {
+        if (i < n) {
+          if (bl[0].parentNode.getAttribute("class").indexOf("cus-preview-H4-item") == -1) {
+            if (bb[k].childElementCount < 4) {
+              /* Change limit here */
+              bb[k].appendChild(bl[0]);
+            }
+          }
+        }
+      }
+    }
+    document.getElementsByClassName("cus-preview-H4-item")[0].classList.add("active");
+  }
+} else {
+  if (bv > 0) {
+    for (var i = 0; i < bv; i++) {
+      org_html = document.getElementsByClassName("cus-preview-H4-box")[i].outerHTML;
+      new_html = "<div class=\'carousel-item cus-preview-H4-item position-relative row ms-0\'>" + org_html + "</div>";
+      document.getElementsByClassName("cus-preview-H4-box")[i].outerHTML = new_html;
+    }
+    document.getElementsByClassName("cus-preview-H4-item")[0].classList.add("active");
+  }
+}    
+<\/script>
+<style>        
+    #cus-preview-H4 .carousel-control-next,#cus-preview-H4 .carousel-control-prev{width:25px !important;height:30px;top:8px !important;opacity:1;padding-top:3px;padding-bottom:3px;box-sizing:border-box}        #cus-preview-H4 .carousel-item.active, #cus-preview-H4 .carousel-item-next, #cus-preview-H4 .carousel-item-prev {display:flex;}        #cus-preview-H4 .carousel-control-next, #cus-preview-H4 .carousel-control-prev {display:block;}        #cus-preview-H4 .carousel-control-prev-icon {background-image: url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%23000\'%3e%3cpath d=\'M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z\'/%3e%3c/svg%3e");}        #cus-preview-H4 .carousel-control-next-icon {background-image: url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'%23000\'%3e%3cpath d=\'M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z\'/%3e%3c/svg%3e");}        #cus-preview-H4 .carousel-control-next {right: 0;}        #cus-preview-H4 .carousel-control-prev {right: 30px !important;left: auto;}        #cus-preview-H4 .carousel-control-next-icon, #cus-preview-H4 .carousel-control-prev-icon {width: 1.5rem;height: 1.5rem;}        #cus-preview-H4 .carousel-control-prev:hover .carousel-control-prev-icon, #cus-preview-H4 .carousel-control-next:hover .carousel-control-next-icon {background-color: transparent !important;}    
+</style>
+');}
+{{LayoutH4End}}
