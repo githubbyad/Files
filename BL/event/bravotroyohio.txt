@@ -1,5 +1,5 @@
 {{LayoutSection220Begin}}
-{{LayoutSection220Limit}}
+{{LayoutSection220Limit100}}
 {{Where:SubMenuIdInclude:220}}
 {{File:section220.htm}}
 {{ReplaceJavascriptChars:No}}
