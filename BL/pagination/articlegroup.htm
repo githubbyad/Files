@@ -1,0 +1,75 @@
+{{LayoutArticleGroup6Begin}}
+{{LayoutArticleGroup6Limit15}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue,Updated}}
+{{Where:HighlightAllExclude}}
+{{Where:SubMenuIdExclude:25}} 
+{{Where:PageTypeInclude:Article}} 
+function GetArticleGroup6(){document.write({{PutHtmlChar39}}
+<div class="cus-blocks-2-100 mb-3">    
+    <div class="cus-default-menu-bar border-bottom border-red border-2">        
+        <span class="cus-102-label cus-default-submenu hpe-custom-text-1 bg-theme text-uppercase py-2 px-3 d-inline-block text-white ">More Columns and Archives</span>
+    </div>    
+    <div class="pagination-100 mt-2">
+    {{RepeatBegin}}
+    <div class="d-block w-100 position-relative mb-2 d-none">                            
+        <div class="row position-relative">                
+            <div class="col-lg-4 col-md-2 pe-md-0 mb-2 mb-md-0">                    
+                <a href="{{HeadingLink}}">                        
+                    <div class="ratio-3-2 cus-zoom" data-cus-src="{{HeadingImage}}">                            
+                        <div class="img-content">                                
+                            <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid" />                            
+                        </div>                        
+                    </div>                    
+                </a>                
+            </div>                
+            <div class="col-lg-8 col-md-10">                    
+                <a class="cus-blocks-2-102-article line-3 text-decoration-none text-black text-red-hover" href="{{HeadingLink}}">{{Heading}}</a>                                    
+            </div>                
+            <div class="col-12"><hr class="d-block d-lg-none text-gray mb-0 mt-3"></div>            
+        </div>   
+    </div>
+    {{RepeatEnd}}  
+</div>                                               
+</div>
+<style>
+.cus-blocks-2-100-submenu[style=""] {display:none !important}
+</style>
+<script>
+let p_wrap = document.querySelector(".pagination-100");
+let p_limit = 5; /* number of  articles */
+let p_counter = p_wrap.childElementCount;
+let p_pages = Math.ceil(p_counter/p_limit);
+let p_count = "";
+for(i = 1; i <= p_pages; i++) {
+    p_count += `<span class="page py-1 px-2 d-inline-block rounded bg-dark bg-red-hover text-white me-1" style="cursor:pointer">${i}</span>`;
+}
+/* show numbers */
+p_wrap.insertAdjacentHTML("afterend", `<div class="w-100 d-block text-center p_count_click">${p_count}</div>`);
+/* initial load */
+document.querySelectorAll(".pagination-100 > div").forEach((e, i) => {
+    if(i < p_limit) {
+        e.classList.remove("d-none");
+    }
+});
+document.querySelector(".p_count_click .page").classList.add("bg-red");
+/* clicking on pages */
+document.querySelectorAll(".p_count_click .page").forEach(e => {
+    e.addEventListener("click", () => {
+        let current_page = e.innerHTML;
+        document.querySelectorAll(".p_count_click .page").forEach(x => x.classList.remove("bg-red"));
+        e.classList.add("bg-red");
+        document.querySelectorAll(".pagination-100 > div").forEach(a => a.classList.add("d-none"));
+        let start = Number(current_page - 1) * p_limit;
+        let end = Number(current_page) * p_limit;
+        for(j = start; j < end; j++){                    
+            if(document.querySelectorAll(".pagination-100 > div")[j]) {
+                document.querySelectorAll(".pagination-100 > div")[j].classList.remove("d-none");
+            }
+        }
+    });
+});
+<\/script>
+
+{{PutHtmlChar39}}); DisplayHighlight('cus-102-blocks-1');}
+{{LayoutArticleGroup6End}}
