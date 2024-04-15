@@ -1,0 +1,49 @@
+{{SectionValuesBegin}}
+{{LayoutSection<<SubMenuId>>Begin}}
+{{LayoutSection<<SubMenuId>>Limit150}}
+{{Where:SubMenuIdInclude:<<SubMenuId>>}}
+{{File:section<<SubMenuId>>.htm}}
+{{SortBy:Issue,Updated}}
+{{RemoveMore:Yes}} 
+{{RemoveHTMLBody}}
+{{ReplaceJavascriptChars:No}}
+<div class="cus-edition-133">
+    <div class="cus-default-menu-bar">
+        <div class="text-uppercase fw-bold px-0 mb-2 text-black cus-133-label">
+            <span>
+                <span class="cus-default-menu">{{Menu}}</span><i class="fa fa-angle-right mx-2" aria-hidden="true"></i><span class="cus-default-submenu">{{SubMenu}}</span>
+            </span>
+        </div>
+    </div>
+    <div class="row mx-0 hp-parent">
+        {{RepeatBegin}}
+        <div class="col-6 col-md-3 px-1 mb-2">
+            <a class="cus-edition-133-link position-relative d-block text-decoration-none" href="{{Picture2}}" target="_blank">
+                <div class="ratio-2-3">
+                    <div class="img-content cus-dark-img">
+                        <span class="cus-edition-133-pdf text-center fw-bold text-white position-absolute"><i class="fa fa-link" aria-hidden="true"></i><br>PDF</span>
+                        <img class="cus-edition-133-img img-fluid lazy loaded" src="{{HeadingImage}}" data-src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" data-was-processed="true">
+                    </div>
+                </div>
+                <p class="cus-edition-133-heading mb-0 bg-dark text-white p-2 line-1 fs-6 lh-lg fw-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{Heading}}">{{Heading}}</p>
+            </a>
+        </div>
+        {{RepeatEnd}}
+    </div>
+</div>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+.cus-133-label {font-family: pt sans,sans-serif;border-bottom: 4px solid #bdcde3;}
+.cus-133-label > span{position: relative;}
+.cus-133-label > span:before {background: #dc3545;position: absolute;display: inline-block;content: "";width: 100%;height: 4px;bottom: -6px;}
+.cus-edition-133-link {border: 2px solid #212529;}
+.cus-edition-133-link .ratio-2-3 {background-color: white;}
+.cus-edition-133-pdf {top: 50%;left: 50%;transform: translate(-50%,-50%);opacity: 0; transition: 200ms linear;z-index: 1;}
+.cus-edition-133-link:hover .cus-edition-133-pdf {opacity: 1; transition: 300ms linear;}
+</style>
+<script>
+/* SubMenu Title */
+document.title = "{{SubMenu}}";
+</script>
+{{LayoutSection<<SubMenuId>>End}}
+{{SectionValuesEnd}}
