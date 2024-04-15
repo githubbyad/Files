@@ -1,0 +1,47 @@
+{{LayoutSection308Begin}}
+{{LayoutSection308Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:308}}
+{{File:section308.htm}}
+{{SortBy:Issue Asc}}
+{{ReplaceJavascriptChars:No}}
+<div class="article-section-container">
+<div class="label-menu-wrap">
+<span>
+<div class="label-menu">{{Menu}}</div>
+<i class="fa fa-caret-right" aria-hidden="true"></i>
+<div class="label-submenu">{{SubMenu}}</div>
+</span>
+</div>
+{{RepeatBegin}}
+{{If Counter<=25}}
+<div class="article-section-block">
+<div class="article-section-image flex"><a class="img_zoom" name="{{HeadingLink}}" "href="javascript:void(0);" onclick="OpenPopup3('{{HeadingImage}}','image',',');"><img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a></div>
+<div class="article-section-heading"><a href="{{HeadingLink}}"><h2 class="pageheading">{{Heading}}</h2></a></div>
+<div class="article-section-date"><i class="fa fa-clock-o" aria-hidden="true"></i><span>{{MonthI3}} {{DayI}}, {{YearI}}</span></div>
+<div class="article-section-body pagebody">{{Body}}</div>
+<div class="article-section-more"><a href="{{HeadingLink}}" class=""><span>{{more}}<i class="fa fa-arrow-right_SEC"></i></span></a></div>
+</div>
+{{Else}}
+<div class="article-section-archive-list">
+<div class="article-section-archive-image flex"><a class="img_zoom" name="{{HeadingLink}}" href="javascript:void(0);" onclick="OpenPopup3('{{HeadingImage}}','image',',');"><img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}"/></a></div>
+<div class="article-section-archive-heading"><li><a href="{{HeadingLink}}">{{Heading}}</a></li></div>
+<div class="article-section-archive-date"><i class="fa fa-clock-o" aria-hidden="true"></i><span>{{MonthI3}} {{DayI}}, {{YearI}}</span></div>
+</div>
+{{EndIf}}
+{{If TotalArticlesArchive=0}}
+<style>.DisplayFlag{display:none;}</style>
+{{EndIf}}
+{{If Counter=TotalArticlesPage}}
+<div class="article-section-archive-block">
+<div  style="{{SubMenuNoRepeatCSSDisplay}}">
+<div class="article-section-archive-label-div DisplayFlag">
+<div class="article-section-archive-label">
+<span class="label-archive">More in {{SubMenu}}</span></span>
+</div>
+</div>
+</div>
+</div>
+{{EndIf}}
+{{RepeatEnd}}
+</div>
+{{LayoutSection308End}}
