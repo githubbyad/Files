@@ -266,5 +266,5 @@ if ($action == 'update') {
 //echo $table;
 
 // show data
-//echo $data;
-echo htmlspecialchars($data);
+echo $data;
+//echo htmlspecialchars($data);
