@@ -237,6 +237,11 @@ $source = str_replace('"', '""', $source);  // Escape double quotes
 // adding in CSV file
 //fputcsv($csvFile, $data);
 
+// check for article id, ignore if not found
+if($articleID == "") {
+    exit;
+}
+
 // insert
 if ($action == 'insert') {
     $data .= "INSERT INTO sys_information_test (website_id, sys_information_id, sys_menu_sub_id, menu, heading, body, picture_location, picture_alignment, picture_caption, by_line, source_line, issue_date, starting_date, unique_file, meta_keywords, site_title, meta_description, target_window) VALUES ({$website}, {$articleID}, {$submenuID}, N'{{{{{menu{$submenuID}}}}}}', N'{$heading}', N'{$body}', N'{$image}', N'Left', '{$caption}', N'{$by}', N'{$source}', '{$date}', '{$date}', N'{$unique_file}', N'{$keywords}', N'{$title}', N'{$description}', N'Article')";
