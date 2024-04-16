@@ -2,6 +2,9 @@
 
 // https://bulletlink.net/get_sql_commands.php?cmd=insert&site=1000&url=https://xyz.com/abcd-p22100-307.htm
 
+// Turn off error reporting
+error_reporting(0);
+
 // store all actions
 $data = "";
 
@@ -59,6 +62,12 @@ $file = $_GET['url'];
 
 // Read the HTML file content
 $html = file_get_contents($file);
+
+// Check if there was an error
+if ($html === false) {
+    //echo "Failed to fetch content. Error: " . error_get_last()['message'];
+    exit();
+} 
 
 // unique file
 $unique_file = basename($file);
@@ -244,11 +253,14 @@ if ($action == 'update') {
     // $count++;
 }
 
+// show data
 //echo $data;
 echo htmlspecialchars($data);
+
+
+
 //}
 //$table .= ' </tbody></table>';
-
 
 //echo $table;
 
