@@ -244,7 +244,9 @@ if($articleID == "") {
 
 // insert
 if ($action == 'insert') {
-    $data .= "INSERT INTO sys_information_test (website_id, sys_information_id, sys_menu_sub_id, menu, heading, body, picture_location, picture_alignment, picture_caption, by_line, source_line, issue_date, starting_date, unique_file, meta_keywords, site_title, meta_description, target_window) VALUES ({$website}, {$articleID}, {$submenuID}, N'{{{{{menu{$submenuID}}}}}}', N'{$heading}', N'{$body}', N'{$image}', N'Left', '{$caption}', N'{$by}', N'{$source}', '{$date}', '{$date}', N'{$unique_file}', N'{$keywords}', N'{$title}', N'{$description}', N'Article')";
+    $data .= "INSERT INTO sys_information_test (website_id, sys_information_id, sys_menu_sub_id, menu, heading, body, picture_location, picture_alignment, picture_caption, by_line, source_line, issue_date, starting_date, unique_file, meta_keywords, site_title, meta_description, target_window, active, created_by, last_updated_by, creation_date, last_update_date) VALUES ({$website}, {$articleID}, {$submenuID}, N'{{{{{menu{$submenuID}}}}}}', N'{$heading}', N'{$body}', N'{$image}', N'Left', '{$caption}', N'{$by}', N'{$source}', '{$date}', '{$date}', N'{$unique_file}', N'{$keywords}', N'{$title}', N'{$description}', N'Article','Yes', 0, 0,  getdate(), getdate())";
+
+    // update sys_information set active = 'Yes', created_by = 0, last_updated_by = 0, creation_date = getdate(), last_update_date = getdate() where website_id = 5269
 
     // echo $count . ') ' . $directory . '<br>';
     // $count++;
