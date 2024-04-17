@@ -3,7 +3,7 @@
 // https://bulletlink.net/get_sql_commands.php?cmd=insert&site=1000&url=https://xyz.com/abcd-p22100-307.htm
 
 // Turn off error reporting
-//error_reporting(0);
+error_reporting(0);
 
 //echo $_SERVER['REQUEST_URI'] . "<hr>";
 
