@@ -57,7 +57,7 @@ function getSubMenuID($pattern, $file)
 function escape_quotes($string)
 {
     $string = str_replace("'", "''", $string);  // Escape single quotes
-    $string = str_replace('"', '""', $string);  // Escape double quotes
+    //$string = str_replace('"', '""', $string);  // Escape double quotes
     return $string;
 }
 
@@ -218,7 +218,7 @@ if ($action == 'insert') {
     // email_bcc=Null
     // xyz=@ID
 
-    $data = "INSERT INTO sys_custom_forms_master_test (website_id, form_master_id, name, description, email_to, email_cc, email_subject, email_confirm_message, email_format (default value=HTML), post_url, button_value, header, footer,  table_name, created_by, last_updated_by, creation_date, last_update_date, active) VALUES (N'{$website_id}', N'{$form_master_id}', N'{$form_master_id}', N'{$description}', N'{$email_to}', N'{$email_cc}', N'{$email_subject}', N'{$email_confirm_message}', N'{$email_format}', Null, N'Submit', N'{$header}', N'{$footer}', '', 99, 99, getdate(), getdate(), N'Yes')";
+    $data = 'INSERT INTO sys_custom_forms_master_test (website_id, form_master_id, name, description, email_to, email_cc, email_subject, email_confirm_message, email_format (default value=HTML), post_url, button_value, header, footer,  table_name, created_by, last_updated_by, creation_date, last_update_date, active) VALUES (N\'' . $website_id . '\', N\'' . $form_master_id . '\', N\'' . $form_master_id . '\', N\'' . $description . '\', N\'' . $email_to . '\', N\'' . $email_cc . '\', N\'' . $email_subject . '\', N\'' . $email_confirm_message . '\', N\'' . $email_format . '\', Null, N\'Submit\', N\'' . $header . '\', N\'' . $footer . '\', \'\', 99, 99, getdate(), getdate(), N\'Yes\')';
 
     // $data .= "INSERT INTO sys_custom_forms_master_test (website_id, customer_id, category, first_name, last_name,
     // company, address1, city, state, zip, phone, email, sys_menu_sub_id, menu,pager,website,facebook, picture_location, coupons_location, active,profile) VALUES({$website_id}, {$customer_id}, N'{$category}', N'{$first_name}', '', N'{$company}', N'{$address1}', N'{$city}', N'{$state}', N'{$zip}', N'{$phone}', N'{$email}', {$sys_menu_sub_id}, N'{{{{{menu{$sys_menu_sub_id}}}}}}', N'{$pager}', N'{$website}', N'{$facebook}', N'{$picture_location}', N'{$coupons_location}', 'Yes', N'{$profile}')";
