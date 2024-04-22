@@ -57,7 +57,7 @@ function getSubMenuID($pattern, $file)
 function escape_quotes($string)
 {
     $string = str_replace("'", "''", $string);  // Escape single quotes
-    $string = str_replace('"', '""', $string);  // Escape double quotes
+    //$string = str_replace('"', '""', $string);  // Escape double quotes
     return $string;
 }
 
@@ -207,7 +207,7 @@ if ($action == 'insert') {
             // echo "last_update_date = getdate()<br>";
             // echo "active = N'Yes'<br>";            
 
-            $data .= "INSERT INTO sys_custom_forms_details_test (website_id, form_detail_id, form_master_id, caption, column_name, input_type, input_length, default_value, required_flag, order_sequence, lov_static, created_by, last_updated_by, creation_date, last_update_date, active) VALUES ({$website_id}, N'{$form_master_id}', N'{$form_master_id}', N'{$caption}', N'{$column_name}', N'{$input_type}', N'{$input_length}', N'{$default_value}', N'{$required_flag}', N'{$order_sequence}', N'{$lov_static}', 99, 99, getdate(), getdate(), N'Yes')\n\n\n";
+            $data .= 'INSERT INTO sys_custom_forms_details_test (website_id, form_detail_id, form_master_id, caption, column_name, input_type, input_length, default_value, required_flag, order_sequence, lov_static, created_by, last_updated_by, creation_date, last_update_date, active) VALUES (' . $website_id . ', N\'' . $form_master_id . '\', N\'' . $form_master_id . '\', N\'' . $caption . '\', N\'' . $column_name . '\', N\'' . $input_type . '\', N\'' . $input_length . '\', N\'' . $default_value . '\', N\'' . $required_flag . '\', N\'' . $order_sequence . '\', N\'' . $lov_static . '\', 99, 99, getdate(), getdate(), N\'Yes\')\n\n\n';
 
             //echo "<hr>";
             $order_sequence++;
