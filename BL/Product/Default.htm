@@ -1,0 +1,266 @@
+{{LayoutProductPage1Begin}}
+{{LayoutProductPage1Limit100}}
+{{Where:IncludeCurrentSubMenuId:Yes}}
+{{ReplaceJavascriptChars:No}}
+{{MakeFullLinks:Yes}}
+{{File:product-<<SubMenuId>>.htm}}
+{{FileTemplate:index0.htm}}
+<div class="product1-container">
+<div class="product1-bar">
+<div class="product1-label">{{SubMenu}}</div>
+<!--<div class="product-cartx">
+<div title="View Cart" class="product1-cart-count"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart <span class="pc-count"></span></a></div>
+<div class="product-cart-items" style="display:none;">
+<ol id="list-item"></ol>
+<div class="total-text"><p>Total: </p><p id="total-price" class="productx-total-price">{{Currency}}<span>0.00</span></p></div>
+<div class="product-checkout-link"><a href="javascript:void(0);" onclick="OpenShopping('{{URL}}cartcheckout.htm','iframe');">Checkout</a></div>
+</div>
+<div class="product1-empty" style="display:none;">
+<span>Your cart is empty</span>
+<button class="product1-continue">Continue shopping</button>
+</div>
+</div>-->
+</div>
+<div style="display:none;" class="productx-currency">{{Currency}}</div>
+<!--
+<div class="product1-sort"><span>Sort by: </span>
+<a href="javascript:void(0);" class="active-sort">Popularity</a>
+<a href="javascript:void(0);">Price -- Low to High</a>
+<a href="javascript:void(0);">Price -- High to Low</a>
+<a href="javascript:void(0);">Newest First</a>
+</div>-->
+<div class="product1-wrap">
+{{RepeatBegin}}
+<div class="product1-category"><span>{{CategoryNoRepeat}}</span></div>
+<div class="product1-list" name="{{SalePrice}}">
+<div class="product1-box">
+<div class="product1-box1"><a href="javascript:void(0);" onclick="OpenShopping('{{URL}}product-<<CategoryFile>>-{{ProductId}}-<<SubMenuId>>.htm','iframe');"><img src="{{Picture1}}"><span class="product1-quick"><i class="fa fa-location-arrow" aria-hidden="true"></i> Details</span></a></div>
+<div class="product1-box2">
+<div class="product1-name">{{ProductName}}</div>
+<div class="product1-price">
+<div class="product1-sale-price" name="{{SalePrice}}">
+<div class="product1-sign">{{Currency}}</div>
+<div class="product1-sale">{{SalePrice}}</div>
+</div>
+<div class="product1-regular-price" name="{{RegularPrice}}">
+<div class="product1-sign">{{Currency}}</div>
+<div class="product1-reg"><s>{{RegularPrice}}</s></div>
+</div>
+<div class="product1-discount"><span></span>% off</div>
+</div>
+</div>
+</div>
+<div class="product1-cart">
+<a class="pc-cart" href="javascript:void(0);" value="{{SalePrice}}" data-name="{{RegularPrice}}" alt="{{Currency}}" data="{{Picture1}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart<p style="display:none;">{{ProductName}}</p><b style="display:none;"></b></a>
+<div class="product1-weight" style="display:none;">{{Weight}}</div>
+<a class="pc-go-to-cart" style="display:none;" href="javascript:void(0);" onclick="OpenShopping('{{URL}}cartcheckout.htm','iframe');"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Buy Now</a>
+<!--<a class="pc-buy" href="javascript:void(0);" onclick="OpenShopping('{{URL}}product-<<CategoryFile>>-{{ProductId}}-<<SubMenuId>>.htm','iframe');"><i class="fa fa-location-arrow" aria-hidden="true"></i> More Details</a>-->
+<div class="productx-notification"><i class="fa fa-check-circle" aria-hidden="true"></i> Product has been added to your cart.</div>
+</div>
+</div>
+{{RepeatEnd}}
+</div>
+<div class="product1-footer"></div>
+</div>
+{{LayoutProductPage1End}} 
+
+
+{{LayoutProductPage2Begin}}
+{{LayoutProductPage2Limit1}}
+{{Where:IncludeCurrentSubMenuId:Yes}}
+{{Where:IncludeCategory:Yes}}
+{{ReplaceJavascriptChars:No}}
+{{MakeFullLinks:Yes}}
+{{File:product-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm}}
+test 1
+{{RepeatBegin}}
+test 2
+Unique ID: {{ProductId}} <br>
+URL: {{URL}}product<<ProductId>>.htm <br>
+Category: {{Category}} <br>
+Code: {{ProductCode}} <br>
+Name: {{ProductName}} <br>
+UnitOfMeasure: {{UnitOfMeasure}} <br>
+Description: {{Description}} <br>
+RegularPrice: {{RegularPrice}} <br>
+SalePrice: {{SalePrice}} <br>
+Picture1: {{Picture1}} <br>
+Picture2: {{Picture2}} <br>
+Order: {{Order}} <br>
+Weight: {{Weight}} <br>
+{{RepeatEnd}}
+</body>
+</html>
+{{LayoutProductPage2End}} 
+
+
+{{LayoutProductPage3Begin}}
+{{LayoutProductPage3Limit1}}
+{{Where:IncludeCurrentSubMenuId:Yes}}
+{{Where:IncludeDetailId:Yes}}
+{{ReplaceJavascriptChars:No}}
+{{MakeFullLinks:Yes}}
+{{File:product-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm}}
+<html>
+<head>
+<script type="text/javascript" src="https://bulletlink.com/JQuery/jquery.js"></script> 
+<link type="text/css" rel="stylesheet" href="/clients{{PutHName}}/custom.css">
+<script>
+$(window).bind('load', function(){
+$('.pro-loader').animate({opacity: 0}, 500, function() {$('.loader').css('display','none');});
+$('.product2-div').css('visibility','visible');
+$('.product2-div').animate({opacity: 1}, 1000);
+$('.product2-price').each(function(){
+var rvv = $(this).children('.product2-regular-price').attr('name');
+if($(this).children('.product2-sale-price').attr('name') == '0'){
+$(this).children('.product2-sale-price').attr('name', rvv);
+}
+});
+$('.product2-sale-price').each(function(){
+$(this).children('.product2-sale').text($(this).attr('name'));
+});
+$('.product2-regular-price').each(function(){
+$(this).attr('data', $(this).siblings('.product2-sale-price').attr('name'));
+if($(this).attr('name') == $(this).attr('data')) {
+$(this).css('display','none');
+}
+});
+var d = 100 - (($('.product2-sale').text() * 100) / $('.product2-reg s').text());
+$('.product2-discount').children('span').text(parseInt(d));
+$('.product2-discount').each(function(){
+if($(this).children('span').text() == '0') {
+$(this).css('display','none');
+}
+});
+var a = $('#p2img1 img').height();
+var b = $('#p2img2 img').height();
+if(a > b) {
+$('.product2-image-big').css('height', a);
+}
+if(a < b) {
+$('.product2-image-big').css('height', b);
+}
+if(a == b) {
+$('.product2-image-big').css('height', a);
+}
+if($('.p2img2 img').attr('src') == ''){
+$('.p2img2, .product2-image-small').css('display','none');
+}
+$('.p2img1').click(function(){
+$('.p2img1').addClass('p2active');
+$('.p2img2').removeClass('p2active');
+$('#p2img1').css('display','block');
+$('#p2img2').css('display','none');
+});
+$('.p2img2').click(function(){
+$('.p2img2').addClass('p2active');
+$('.p2img1').removeClass('p2active');
+$('#p2img2').css('display','block');
+$('#p2img1').css('display','none');
+});
+$('.product2-sale, .product2-reg s').each(function(){
+$(this).text(parseFloat($(this).text()).toFixed(2).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+});
+});
+</script>
+</head>
+<body class="product2-body">
+<div class="pro-loader"></div>
+<div class="product2-div" style="visibility:hidden;opacity:0;">
+{{RepeatBegin}}
+<div class="product2-container">
+<div class="product2-name" name="{{ProductName}}">{{ProductName}}</div>
+<div class="product2-left">
+<div class="product2-image">
+<div class="product2-image-big">
+<span id="p2img1"><img src="{{Picture1}}"></span>
+<span id="p2img2" style="display:none;"><img src="{{Picture2}}"></span>
+</div>
+<div class="product2-image-small">
+<span class="p2img1 p2active"><img src="{{Picture1}}"></span>
+<span class="p2img2"><img src="{{Picture2}}"></span>
+</div>
+</div>
+</div>
+<div class="product2-right">
+<div class="product2-price" name="{{SalePrice}}">
+<div class="product2-sale-price" name="{{SalePrice}}">
+<div class="product2-sign">{{Currency}}</div>
+<div class="product2-sale">{{SalePrice}}</div>
+</div>
+<div class="product2-regular-price" name="{{RegularPrice}}">
+<div class="product2-sign">{{Currency}}</div>
+<div class="product2-reg"><s>{{RegularPrice}}</s></div>
+</div>
+<div class="product2-discount"><span></span>% off</div>
+</div>
+<div class="product2-border">
+<div class="product2-box">
+<div class="product2-head">Specifications</div>
+</div>
+<div class="product2-box">
+<div class="product2-label">Product Description</div>
+<div class="product2-value">{{Description}}</div>
+</div>
+<div class="product2-box">
+<div class="product2-label">Weight</div>
+<div class="product2-value">{{Weight}} lbs</div>
+</div>
+<div class="product2-box">
+<div class="product2-label">Unit Of Measure</div>
+<div class="product2-value">{{UnitOfMeasure}}</div>
+</div>
+<div class="product2-box">
+<div class="product2-label">Product Code</div>
+<div class="product2-value">{{ProductCode}}</div>
+</div>
+</div>
+</div>
+</div>
+{{RepeatEnd}}
+</div>
+</body>
+</html>
+{{LayoutProductPage3End}} 
+
+
+{{LayoutProductPage4Begin}}
+{{LayoutProductPage4Limit50}}
+{{Where:GroupInclude:1}}
+{{ReplaceJavascriptChars:No}}
+{{MakeFullLinks:Yes}}
+{{File:product-group1.htm}}
+<div class="g1-container">
+<div class="g1-label">Most Popular Products</div>
+<div class="g1-wrap">
+{{RepeatBegin}}
+<div class="product1-list g1-list" name="{{SalePrice}}">
+<div class="product1-box g1-box">
+<div class="product1-box1 g1-box1"><a href="javascript:void(0);" onclick="OpenShopping('{{URL}}product-<<CategoryFile>>-{{ProductId}}-<<SubMenuId>>.htm','iframe');"><img src="{{Picture1}}"><span class="product1-quick"><i class="fa fa-location-arrow" aria-hidden="true"></i> Details</span></a></div>
+<div class="product1-box2 g1-box2">
+<div class="g1-category"><span>{{Category}}</span></div>
+<div class="product1-name g1-name">{{ProductName}}</div>
+<div class="product1-price g1-price">
+<div class="product1-sale-price g1-sale-price" name="{{SalePrice}}">
+<div class="product1-sign g1-sign">{{Currency}}</div>
+<div class="product1-sale g1-sale">{{SalePrice}}</div>
+</div>
+<div class="product1-regular-price g1-regular-price" name="{{RegularPrice}}">
+<div class="product1-sign g1-sign">{{Currency}}</div>
+<div class="product1-reg g1-reg"><s>{{RegularPrice}}</s></div>
+</div>
+<div class="product1-discount g1-discount"><span></span>% off</div>
+</div>
+</div>
+</div>
+<div class="product1-cart g1-cart">
+<a class="pc-cart g1-pc-cart" href="javascript:void(0);" value="{{SalePrice}}" data-name="{{RegularPrice}}" alt="{{Currency}}" data="{{Picture1}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart<p style="display:none;">{{ProductName}}</p><b style="display:none;"></b></a>
+<div class="product1-weight g1-weight" style="display:none;">{{Weight}}</div>
+<a class="pc-go-to-cart g1-go-to-cart" style="display:none;" href="javascript:void(0);" onclick="OpenShopping('{{URL}}cartcheckout.htm','iframe');"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Buy Now</a>
+<div class="productx-notification g1-notification"><i class="fa fa-check-circle" aria-hidden="true"></i> Product has been added to your cart.</div>
+</div>
+</div>
+{{RepeatEnd}}
+</div>
+</div>
+{{LayoutProductPage4End}} 
