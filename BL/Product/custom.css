@@ -1549,3 +1549,37 @@ font-family: Trebuchet MS;
 }
 
 /* END: Product */
+
+
+/* BEGIN: Group 1 */
+
+
+.g1-container {
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+}
+.g1-label {
+  float: left;
+  width: 100%;
+  text-align: center;
+  font-family: Trebuchet Ms;
+  font-size: 25px;
+  color: #2d2d2d;
+  margin-bottom: 20px;
+}
+.g1-wrap {
+  float: left;
+  width: 100%;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+.g1-category {
+  width: 100%;
+  text-align: center;
+  color: gray;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+/* END: Group 1 */
