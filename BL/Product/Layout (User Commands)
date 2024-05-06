@@ -1,0 +1,11 @@
+{{UserCommandPutGroup1Begin}}
+<div id="group1" name="group1" class="group1">
+<script type="text/javascript" language="JavaScript">LoadDoc("{{PutHName}}/product-group1.htm", "group1", "");</script>
+</div>
+{{UserCommandPutGroup1End}}
+
+{{UserCommandPutGroup2Begin}}
+<div id="group2" name="group2" class="group2">
+<script type="text/javascript" language="JavaScript">LoadDoc("{{PutHName}}/product-group2.htm", "group2", "");</script>
+</div>
+{{UserCommandPutGroup2End}}
