@@ -583,7 +583,6 @@ function checkLoginStatus(isRestricted) {
 
 
 
-
 function jsAppend(js_file) {
     js_script = document.createElement('script');
     js_script.type = "text/javascript";
