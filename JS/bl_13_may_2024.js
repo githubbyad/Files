@@ -528,8 +528,10 @@ function OpenLoginPopup(ctl) {
 
 
 
-
 function checkLoginStatus(isRestricted) {
+    if (readCookie('Style_s13251')) { // header background - old template
+        document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + readCookie('Style_s13251') + ")";
+    }
     var url = location.href;
     var qs = url.substring(url.indexOf('?'));
 
@@ -539,20 +541,17 @@ function checkLoginStatus(isRestricted) {
     var a = myParameters['a'];
     var urlhttps = url.startsWith("https");
     var urlarr = new URL(url);
-    var surl = urlarr.searchParams.get("as"); // get server domain
+    var surl;
     if (sname.length > 0) {
-        if (urlhttps == true) {
-            if (surl == null) {
-                surl = "https://" + location.href.match(/:\/\/(.[^/]+)/)[1];
+        var uint = setInterval(function() {
+            if (readCookie('AppServer')) {
+                clearInterval(uint);
+                surl = readCookie('AppServer');
+                var sframe = "<iframe id=\"frame1\" style=\"border:none;\" width=\"100%\" src=\"" + surl + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
+                document.getElementById("MainContent").innerHTML = sframe;
             }
-            var sframe = "<iframe id=\"frame1\" style=\"border:none;\" width=\"100%\" src=\"" + surl + "/" + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
-        } else {
-            if (surl == null) {
-                surl = "http://" + location.href.match(/:\/\/(.[^/]+)/)[1];
-            }
-            var sframe = "<iframe id=\"frame1\" style=\"border:none;\"  width=\"100%\" src=\"" + surl + "/" + sname + qs + "\" onload=\"window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
-        }
-        document.getElementById("MainContent").innerHTML = sframe;
+        }, 10);
+
     } else {
         if (a == 1) {
             var s = readCookie('loginStatus');
