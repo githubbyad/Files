@@ -110,7 +110,6 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
       <\/script>`);
     } else {
       document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `
-      <!-- Peeler Ad Start -->
       <div id="peeler-top-left" class="peeler_top_left" ${link_code}>
         <div class="back-img peeler_top_left"></div>
         <img class="peel-ad-small peeler_top_left" src="${small_image}">
@@ -164,18 +163,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
             width: 600px;
             height: 613px;
         }
-      </style>
-      <script>
-        window.addEventListener("scroll", function (event) {
-            if (this.scrollY > ${scroll_height}) {
-                document.querySelector("#peeler-top-left").style.display = "none";
-            }
-            else {
-                document.querySelector("#peeler-top-left").style.display = "block";
-            }
-        }, false);
-      <\/script>
-      <!-- Peeler Ad End -->`);
+      </style>`);
     }
 
     /* hide peeler ad after provided height in 'scroll_height' */
