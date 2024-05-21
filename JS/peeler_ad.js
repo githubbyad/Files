@@ -4,6 +4,10 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
   /* add peeler ad element */
   document.body.insertAdjacentHTML(`beforeend`, `<!-- Peeler Ad Start --><peeler></peeler><!-- Peeler Ad End -->`);
 
+  /* hide peeler ad after specific height */
+  const scroll_hide = 'Yes';
+  const scroll_position = 200;
+
   /* get site url */
   let site = location.href.match(/:\/\/(.[^/]+)/)[1];
   let folder = "";
@@ -33,11 +37,8 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
     } else {
       link_code = `onclick="window.open('${link}', '_self');"`;
     }
-    document.querySelector('peeler').insertAdjacentHTML(`beforeend`,`<style>.peeler_position {cursor:pointer;}</style>`);
+    document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `<style>.peeler_position {cursor:pointer;}</style>`);
   }
-
-  /* hide peeler ad after specific height */
-  const scroll_height = 200;
 
   /* only for desktop */
   if (window.screen.width > 992) {
@@ -97,17 +98,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
             width: 600px;
             height: 613px;
         }
-      </style>
-      <script>
-        window.addEventListener("scroll", function (event) {
-            if (this.scrollY > ${scroll_height}) {
-                document.querySelector("#peeler-top-right").style.display = "none";
-            }
-            else {
-                document.querySelector("#peeler-top-right").style.display = "block";
-            }
-        }, false);
-      <\/script>`);
+      </style>`);
     } else {
       document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `
       <div id="peeler-top-left" class="peeler_top_left" ${link_code}>
@@ -166,13 +157,13 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
       </style>`);
     }
 
-    /* hide peeler ad after provided height in 'scroll_height' */
+    /* hide peeler ad after provided height in 'scroll_position' */
     document.addEventListener("DOMContentLoaded", function () {
       if (direction != '') {
         var script = document.createElement('script');
         script.textContent = `
         window.addEventListener("scroll", function(event) {
-            if (this.scrollY > ${scroll_height}) {
+            if (this.scrollY > ${scroll_position}) {
               if(document.querySelector("#peeler-top-right")) {
                 document.querySelector("#peeler-top-right").style.display = "none";
               }
@@ -189,7 +180,9 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
 
             }
         }, false);`;
-        document.querySelector('peeler').appendChild(script);
+        if (scroll_hide == 'Yes') {
+          document.querySelector('peeler').appendChild(script);
+        }
       }
     });
   }
