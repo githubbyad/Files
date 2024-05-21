@@ -1,6 +1,9 @@
 /* peeler ad */
 function writeObjects(small_path, big_path, small_width, small_height, big_width, big_height, link, direction, new_window) {
 
+  /* add peeler ad element */
+  document.body.insertAdjacentHTML(`beforeend`, `<!-- Peeler Ad Start --><peeler></peeler><!-- Peeler Ad End -->`);
+  
   /* get site url */
   let site = location.href.match(/:\/\/(.[^/]+)/)[1];
   let folder = "";
@@ -20,7 +23,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
   let big = big_path;
   let big_parts = big.split('/');
   big = big_parts[big_parts.length - 1];
-  const big_image = site + big; 
+  const big_image = site + big;
 
   /* link */
   let link_code = '';
@@ -30,6 +33,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
     } else {
       link_code = `onclick="window.open('${link}', '_self');"`;
     }
+    document.querySelector('peeler').insertAdjacentHTML(`beforeend`,`<style>.peeler_position {cursor:pointer;}</style>`);
   }
 
   /* hide peeler ad after specific height */
@@ -39,9 +43,8 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
   if (window.screen.width > 992) {
     /* if direction is Top-Right */
     if (direction == 'rt') {
-      document.body.insertAdjacentHTML(`beforeend`, `
-      <!-- Peeler Ad Start -->
-      <div id="peeler-top-right" class="peeler_top_right" ${link_code}>
+      document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `      
+      <div id="peeler-top-right" class="peeler_top_right peeler_position" ${link_code}>
         <div class="back-img peeler_top_right"></div>
         <img class="peel-ad-small peeler_top_right" src="${small_image}">
         <img class="peel-ad-big peeler_top_right" src="${big_image}">
@@ -52,8 +55,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
             right: 0;
             top: 0;
             float: right;
-            z-index: 999999;
-            cursor: pointer
+            z-index: 999999;            
         }
         #peeler-top-right .back-img,
         #peeler-top-right img {
@@ -105,10 +107,9 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
                 document.querySelector("#peeler-top-right").style.display = "block";
             }
         }, false);
-      <\/script>
-      <!-- Peeler Ad End -->`);
+      <\/script>`);
     } else {
-      document.body.insertAdjacentHTML(`beforeend`, `
+      document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `
       <!-- Peeler Ad Start -->
       <div id="peeler-top-left" class="peeler_top_left" ${link_code}>
         <div class="back-img peeler_top_left"></div>
@@ -121,8 +122,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
             left: 0;
             top: 0;
             float: left;
-            z-index: 999999;
-            cursor: pointer
+            z-index: 999999;            
         }
         #peeler-top-left .back-img,
         #peeler-top-left img {
