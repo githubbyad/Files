@@ -3,7 +3,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
 
   /* add peeler ad element */
   document.body.insertAdjacentHTML(`beforeend`, `<!-- Peeler Ad Start --><peeler></peeler><!-- Peeler Ad End -->`);
-  
+
   /* get site url */
   let site = location.href.match(/:\/\/(.[^/]+)/)[1];
   let folder = "";
@@ -201,7 +201,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
 
             }
         }, false);`;
-        document.body.appendChild(script);
+        document.querySelector('peeler').appendChild(script);
       }
     });
   }
