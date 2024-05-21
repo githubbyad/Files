@@ -44,66 +44,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
   }
 
   /* add common css */
-  document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `
-    <style>
-    #peeler-top-right, #peeler-top-left {
-      position: fixed;
-      top: 0;
-      z-index: 999999;            
-    }
-    #peeler-top-right .back-img,
-    #peeler-top-left .back-img,
-    #peeler-top-right img,
-    #peeler-top-left img
-     {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: 0
-    }
-    #peeler-top-right .peel-ad-small,
-    #peeler-top-left .peel-ad-small {
-        z-index: 99;
-        transition-delay: 0.2s !important
-    }
-    #peeler-top-right .back-img,
-    #peeler-top-left .back-img {
-        overflow: hidden;
-        z-index: 101;
-        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
-    }
-    #peeler-top-right .back-img,
-    #peeler-top-right .peel-ad-big,
-    #peeler-top-right .peel-ad-small,
-    #peeler-top-left .back-img,
-    #peeler-top-left .peel-ad-big,
-    #peeler-top-left .peel-ad-small {
-        transition: .2s ease-in-out
-    }
-    #peeler-top-right:hover .back-img,
-    #peeler-top-right:hover .peel-ad-big,
-    #peeler-top-left:hover .back-img,
-    #peeler-top-left:hover .peel-ad-big {
-        width: 600px;
-        height: 600px;
-        transition: .3s ease-in-out
-    }
-    #peeler-top-right:hover .peel-ad-small,
-    #peeler-top-left:hover .peel-ad-small {
-        opacity: 0
-    }
-    #peeler-top-right:hover .peel-ad-big,
-    #peeler-top-left:hover .peel-ad-big {
-        z-index: 100
-    }
-    #peeler-top-right:hover .back-img,
-    #peeler-top-left:hover .back-img {
-        top: -12px;
-        width: 600px;
-        height: 613px;
-    }
-    </style>
-  `);
+  document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `<style>#peeler-top-left,#peeler-top-right{position:fixed;top:0;z-index:999999}#peeler-top-left .back-img,#peeler-top-left img,#peeler-top-right .back-img,#peeler-top-right img{width:100px;height:100px;position:absolute;top:0}#peeler-top-left .peel-ad-small,#peeler-top-right .peel-ad-small{z-index:99;transition-delay:0.2s!important}#peeler-top-left .back-img,#peeler-top-right .back-img{overflow:hidden;z-index:101;box-shadow:0 0 10px rgba(0,0,0,.5)}#peeler-top-left .back-img,#peeler-top-left .peel-ad-big,#peeler-top-left .peel-ad-small,#peeler-top-right .back-img,#peeler-top-right .peel-ad-big,#peeler-top-right .peel-ad-small{transition:.2s ease-in-out}#peeler-top-left:hover .back-img,#peeler-top-left:hover .peel-ad-big,#peeler-top-right:hover .back-img,#peeler-top-right:hover .peel-ad-big{width:600px;height:600px;transition:.3s ease-in-out}#peeler-top-left:hover .peel-ad-small,#peeler-top-right:hover .peel-ad-small{opacity:0}#peeler-top-left:hover .peel-ad-big,#peeler-top-right:hover .peel-ad-big{z-index:100}#peeler-top-left:hover .back-img,#peeler-top-right:hover .back-img{top:-12px;width:600px;height:613px}</style>`);
 
   /* only for desktop */
   if (window.screen.width > 992) {
@@ -115,18 +56,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
         <img class="peel-ad-small peeler_top_right" src="${small_image}">
         <img class="peel-ad-big peeler_top_right" src="${big_image}">
       </div>
-      <style>
-        #peeler-top-right {
-            right: 0;
-            float: right;     
-            & .back-img, & img {
-              right: 0;
-            }      
-            & .back-img {
-              background: linear-gradient(-2.35998rad, transparent 45%, rgba(0, 0, 0, .2) 50%, #aaa 50%, #bbb 56%, #ccc 62%, #f3f3f3 80%, #fff 100%);              
-          }
-        }                
-      </style>`);
+      <style>#peeler-top-right{right:0;float:right}& .back-img{background:linear-gradient(-2.35998rad,transparent 45%,rgba(0,0,0,.2) 50%,#aaa 50%,#bbb 56%,#ccc 62%,#f3f3f3 80%,#fff 100%)}</style>`);
     } else {
       document.querySelector('peeler').insertAdjacentHTML(`beforeend`, `
       <div id="peeler-top-left" class="peeler_top_left" ${link_code}>
@@ -134,18 +64,7 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
         <img class="peel-ad-small peeler_top_left" src="${small_image}">
         <img class="peel-ad-big peeler_top_left" src="${big_image}">
       </div>
-      <style>
-        #peeler-top-left {
-            left: 0;   
-            float:left;
-            & .back-img, & img {
-              left: 0;
-            }
-            & .back-img {
-              background: linear-gradient(2.35998rad, transparent 45%, rgba(0, 0, 0, .2) 50%, #aaa 50%, #bbb 56%, #ccc 62%, #f3f3f3 80%, #fff 100%);
-          }         
-        }        
-      </style>`);
+      <style>#peeler-top-left{left:0;float:left}& .back-img{background:linear-gradient(2.35998rad,transparent 45%,rgba(0,0,0,.2) 50%,#aaa 50%,#bbb 56%,#ccc 62%,#f3f3f3 80%,#fff 100%)}</style>`);
     }
 
     /* hide peeler ad after provided height in 'scroll_position' */
@@ -178,4 +97,3 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
     });
   }
 }
-
