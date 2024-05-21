@@ -1,16 +1,6 @@
 /* peeler ad */
 function writeObjects(small_path, big_path, small_width, small_height, big_width, big_height, link, direction, new_window) {
 
-  /* get small image name */
-  let small = small_path;
-  let small_parts = small.split('/');
-  small = small_parts[small_parts.length - 1];
-
-  /* get big image name' */
-  let big = big_path;
-  let big_parts = big.split('/');
-  big = big_parts[big_parts.length - 1];
-
   /* get site url */
   let site = location.href.match(/:\/\/(.[^/]+)/)[1];
   let folder = "";
@@ -20,9 +10,17 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
   }
   site = `https://${site}${folder}/`;
 
-  /* get images */
+  /* get small image */
+  let small = small_path;
+  let small_parts = small.split('/');
+  small = small_parts[small_parts.length - 1];
   const small_image = site + small;
-  const big_image = site + big;
+
+  /* get big image */
+  let big = big_path;
+  let big_parts = big.split('/');
+  big = big_parts[big_parts.length - 1];
+  const big_image = site + big; 
 
   /* link */
   let link_code = '';
@@ -32,10 +30,9 @@ function writeObjects(small_path, big_path, small_width, small_height, big_width
     } else {
       link_code = `onclick="window.open('${link}', '_self');"`;
     }
-
   }
 
-  /* hide peeler ad after specifide width */
+  /* hide peeler ad after specific height */
   const scroll_height = 200;
 
   /* only for desktop */
