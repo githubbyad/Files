@@ -77,8 +77,8 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
 
 
     // Bucket name and file details
-    $bucketName = 'cfimran'; /* hard coded */
-    if ($my_site == $bucketName) {
+    $bucketName = 'cfimran'; /* hard coded */ 
+    if (strpos($my_site, 'cfimran') !== false) {
         $filePath = $my_file_x; /* from */
         $fileName = $file_name1; /* to */
 
