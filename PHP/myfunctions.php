@@ -2,6 +2,7 @@
 
 // for AWS upload
 require 'vendor/autoload.php';
+
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 
@@ -14,6 +15,9 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
 {
 
     $my_file_x = "c:\\upload\\" . $my_file;
+
+    send_file_to_aws($my_site, $my_file, $my_file_x); // send file to aws
+
     $handle = fopen($my_file_x, "rb");
     $file_content1 = fread($handle, filesize($my_file_x));
     fclose($handle);
@@ -68,19 +72,28 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
     }
 
     /* ****************************************** send file to AWS - begin ****************************************** */
+
+    /* ****************************************** send file to AWS - end ****************************************** */
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+function send_file_to_aws($my_site, $my_file, $my_file_x)
+{
+
     // Cloudflare R2 API endpoint
-    $endpoint = 'https://c70d7944d938833c501c72fd4221dbaf.r2.cloudflarestorage.com'; /* hard coded */
+    $endpoint = 'https://c70d7944d938833c501c72fd4221dbaf.r2.cloudflarestorage.com'; /* hard-coded */
 
     // Cloudflare R2 access key and secret key
     $accessKey = 'e90d510ff8086c821165ba1d59616e2c'; /* hard coded */
-    $secretKey = 'c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3'; /* hard coded */
+    $secretKey = 'c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3'; /* hard-coded */
 
 
     // Bucket name and file details
-    $bucketName = 'cfimran'; /* hard coded */ 
-    if (strpos($my_site, 'cfimran') !== false) {
+    $bucketName = 'cfimran'; /* hard-coded */
+    if (strpos($my_site, $bucketName) !== false) {
         $filePath = $my_file_x; /* from */
-        $fileName = $file_name1; /* to */
+        $fileName = $my_file; /* to */
 
         // Path to the custom CA bundle file
         $caBundlePath = 'cacert.pem'; /* hard coded */
@@ -112,7 +125,6 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
             echo 'Error uploading file: ' . $e->getMessage();
         }
     }
-    /* ****************************************** send file to AWS - end ****************************************** */
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
