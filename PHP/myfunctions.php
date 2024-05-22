@@ -79,8 +79,8 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
     // Bucket name and file details
     $bucketName = 'cfimran'; /* hard coded */
     if ($my_site == $bucketName) {
-        $filePath = $file_name1;
-        $fileName = $file_name1;
+        $filePath = $my_file_x; /* from */
+        $fileName = $file_name1; /* to */
 
         // Path to the custom CA bundle file
         $caBundlePath = 'cacert.pem'; /* hard coded */
