@@ -74,9 +74,6 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
         }
     }
 
-    /* ****************************************** send file to AWS - begin ****************************************** */
-
-    /* ****************************************** send file to AWS - end ****************************************** */
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +87,7 @@ function send_file_to_aws($my_site, $my_file, $my_file_x)
         $accessKey = $_POST['accesskey'];
         $secretKey = $_POST['secretkey'];
         $bucketName = $_POST['bucket'];        
-        
+
         // account=c70d7944d938833c501c72fd4221dbaf&bucket=cfimran&accesskey=e90d510ff8086c821165ba1d59616e2c&secretkey=c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3
 
         // Cloudflare R2 API endpoint
@@ -100,10 +97,11 @@ function send_file_to_aws($my_site, $my_file, $my_file_x)
         //$accessKey = 'e90d510ff8086c821165ba1d59616e2c'; /* hard coded */
         //$secretKey = 'c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3'; /* hard-coded */
 
-
-        // Bucket name and file details
+        // Bucket name 
         //$bucketName = 'cfimran'; /* hard-coded */
+
         if (strpos($my_site, $bucketName) !== false) {
+            // file details
             $filePath = $my_file_x; /* from */
             $fileName = $my_file; /* to */
 
