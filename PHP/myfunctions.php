@@ -1,8 +1,5 @@
 <?php
 
-// Start the session
-session_start();
-
 // for AWS upload
 require 'vendor/autoload.php';
 
@@ -73,7 +70,6 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
             }
         }
     }
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +82,7 @@ function send_file_to_aws($my_site, $my_file, $my_file_x)
         $endpoint = $_POST['account'];
         $accessKey = $_POST['accesskey'];
         $secretKey = $_POST['secretkey'];
-        $bucketName = $_POST['bucket'];        
+        $bucketName = $_POST['bucket'];
 
         // account=c70d7944d938833c501c72fd4221dbaf&bucket=cfimran&accesskey=e90d510ff8086c821165ba1d59616e2c&secretkey=c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3
 
