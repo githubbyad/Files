@@ -1,5 +1,8 @@
 <?php
 
+// Start the session
+session_start();
+
 // for AWS upload
 require 'vendor/autoload.php';
 
@@ -81,48 +84,58 @@ function move_uploaded_file_to_remote($my_site, $my_file, $IPx)
 function send_file_to_aws($my_site, $my_file, $my_file_x)
 {
 
-    // Cloudflare R2 API endpoint
-    $endpoint = 'https://c70d7944d938833c501c72fd4221dbaf.r2.cloudflarestorage.com'; /* hard-coded */
+    // Check if the data was posted
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $endpoint = $_POST['account'];
+        $accessKey = $_POST['accesskey'];
+        $secretKey = $_POST['secretkey'];
+        $bucketName = $_POST['bucket'];        
+        
+        // account=c70d7944d938833c501c72fd4221dbaf&bucket=cfimran&accesskey=e90d510ff8086c821165ba1d59616e2c&secretkey=c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3
 
-    // Cloudflare R2 access key and secret key
-    $accessKey = 'e90d510ff8086c821165ba1d59616e2c'; /* hard coded */
-    $secretKey = 'c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3'; /* hard-coded */
+        // Cloudflare R2 API endpoint
+        //$endpoint = 'https://c70d7944d938833c501c72fd4221dbaf.r2.cloudflarestorage.com'; /* hard-coded */
+
+        // Cloudflare R2 access key and secret key
+        //$accessKey = 'e90d510ff8086c821165ba1d59616e2c'; /* hard coded */
+        //$secretKey = 'c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3'; /* hard-coded */
 
 
-    // Bucket name and file details
-    $bucketName = 'cfimran'; /* hard-coded */
-    if (strpos($my_site, $bucketName) !== false) {
-        $filePath = $my_file_x; /* from */
-        $fileName = $my_file; /* to */
+        // Bucket name and file details
+        //$bucketName = 'cfimran'; /* hard-coded */
+        if (strpos($my_site, $bucketName) !== false) {
+            $filePath = $my_file_x; /* from */
+            $fileName = $my_file; /* to */
 
-        // Path to the custom CA bundle file
-        $caBundlePath = 'cacert.pem'; /* hard coded */
+            // Path to the custom CA bundle file
+            $caBundlePath = 'cacert.pem'; /* hard coded */
 
-        // Create an S3Client instance with custom CA bundle
-        $s3Client = new S3Client([
-            'version' => 'latest',
-            'region' => 'auto',
-            'endpoint' => $endpoint,
-            'credentials' => [
-                'key' => $accessKey,
-                'secret' => $secretKey,
-            ],
-            'http' => [
-                'verify' => $caBundlePath,
-            ],
-        ]);
-
-        // Upload the file to Cloudflare R2
-        try {
-            $result = $s3Client->putObject([
-                'Bucket' => $bucketName,
-                'Key' => $fileName,
-                'SourceFile' => $filePath,
+            // Create an S3Client instance with custom CA bundle
+            $s3Client = new S3Client([
+                'version' => 'latest',
+                'region' => 'auto',
+                'endpoint' => $endpoint,
+                'credentials' => [
+                    'key' => $accessKey,
+                    'secret' => $secretKey,
+                ],
+                'http' => [
+                    'verify' => $caBundlePath,
+                ],
             ]);
 
-            echo 'File uploaded successfully. ETag: ' . $result['ETag'];
-        } catch (AwsException $e) {
-            echo 'Error uploading file: ' . $e->getMessage();
+            // Upload the file to Cloudflare R2
+            try {
+                $result = $s3Client->putObject([
+                    'Bucket' => $bucketName,
+                    'Key' => $fileName,
+                    'SourceFile' => $filePath,
+                ]);
+
+                echo 'File uploaded successfully. ETag: ' . $result['ETag'];
+            } catch (AwsException $e) {
+                echo 'Error uploading file: ' . $e->getMessage();
+            }
         }
     }
 }
