@@ -78,8 +78,12 @@ function send_file_to_aws($my_site, $my_file, $my_file_x)
 {
 
     // Check if the data was posted
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $endpoint = $_POST['account'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+
+        // send post data in cookie
+        setcookie("post_data", http_build_query($_POST), time() + 3600, "/");  
+
+        $endpoint = "https://" . $_POST['account'] . ".r2.cloudflarestorage.com";
         $accessKey = $_POST['accesskey'];
         $secretKey = $_POST['secretkey'];
         $bucketName = $_POST['bucket'];
