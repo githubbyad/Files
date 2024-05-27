@@ -1,6 +1,6 @@
 <?php
 
-//header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: text/html; charset=utf-8');
 
 echo "cf_send_files entry<br>";
 
