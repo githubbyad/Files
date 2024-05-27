@@ -80,9 +80,14 @@ foreach ($_POST as $field => $value) {
         if ($FileExt == ".htm" or $FileExt == ".html" or $FileExt == ".css" or $FileExt == ".js" or $FileExt == ".json" or $FileExt == ".txt" or $FileExt == ".xml" or $FileExt == ".rss" or $FileExt == ".php") {
 
             $FileContent = str_replace("~~!!~~", "&", $value);
+            
+            $htmlContent = file_get_contents($File); // decode            
+            $decodedContent = html_entity_decode($htmlContent); // Decode HTML entities            
+            setcookie("file_data", $decodedContent, time() + 3600, "/"); // send file data in cookie
 
-            // send file data in cookie
-            setcookie("file_data", htmlspecialchars_decode($FileContent), time() + 3600, "/");
+            $FileContent = $decodedContent;
+
+            echo $FileContent;
 
             // $FileContent = htmlspecialchars_decode($FileContent);
 
