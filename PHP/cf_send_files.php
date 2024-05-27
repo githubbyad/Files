@@ -1,6 +1,6 @@
 <?php
 
-header('Content-Type: text/html; charset=utf-8');
+//header('Content-Type: text/html; charset=utf-8');
 
 echo "cf_send_files entry<br>";
 
@@ -84,8 +84,8 @@ foreach ($_POST as $field => $value) {
 
             $FileContent = str_replace("~~!!~~", "&", $value);
 
-            //$FileContent = htmlspecialchars_decode($FileContent);
-            $FileContent = htmlspecialchars_decode($fileContent, ENT_QUOTES);
+            //$FileContent = htmlspecialchars_decode($FileContent);            
+            $FileContent = html_entity_decode($FileContent);            
 
             //$htmlContent = file_get_contents($File); // decode            
             //$decodedContent = html_entity_decode($htmlContent); // Decode HTML entities            
