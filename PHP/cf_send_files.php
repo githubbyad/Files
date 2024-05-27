@@ -1,5 +1,8 @@
 <?php
 
+header('Content-Type: text/html; charset=utf-8');
+
+echo "cf_send_files entry<br>";
 
 ini_set('memory_limit', '-1');
 
@@ -63,7 +66,7 @@ foreach ($_POST as $field => $value) {
     if (substr($field, 0, 9) == "file_name") {
 
         $File = $value;
-        //echo $File . "<br>";
+        echo $File . "<br>";
 
         $FileExt = "";
         $Pos = strpos($File, ".");
@@ -80,16 +83,15 @@ foreach ($_POST as $field => $value) {
         if ($FileExt == ".htm" or $FileExt == ".html" or $FileExt == ".css" or $FileExt == ".js" or $FileExt == ".json" or $FileExt == ".txt" or $FileExt == ".xml" or $FileExt == ".rss" or $FileExt == ".php") {
 
             $FileContent = str_replace("~~!!~~", "&", $value);
-            
-            $htmlContent = file_get_contents($File); // decode            
-            $decodedContent = html_entity_decode($htmlContent); // Decode HTML entities            
-            setcookie("file_data", $decodedContent, time() + 3600, "/"); // send file data in cookie
 
-            $FileContent = $decodedContent;
+            //$FileContent = htmlspecialchars_decode($FileContent);
+            $FileContent = htmlspecialchars_decode($fileContent, ENT_QUOTES);
 
-            echo $FileContent;
+            //$htmlContent = file_get_contents($File); // decode            
+            //$decodedContent = html_entity_decode($htmlContent); // Decode HTML entities            
+            //setcookie("file_data", $decodedContent, time() + 3600, "/"); // send file data in cookie
 
-            // $FileContent = htmlspecialchars_decode($FileContent);
+            //$FileContent = $decodedContent;           
 
             //echo $FileContent . "@@@<br>";
 
