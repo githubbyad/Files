@@ -47,24 +47,17 @@ $s3Client = new S3Client([
     ],
 ]);
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
 $File = "";
 $FileContent = "";
 
 foreach ($_POST as $field => $value) {
-
     // Sanitize the key and value to prevent XSS attacks
-    $field = htmlspecialchars($field);
-    $value = htmlspecialchars($value);
-
+    $field = htmlspecialchars($field, ENT_QUOTES, 'UTF-8');
+    $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 
     $SendFile = false;
 
     if (substr($field, 0, 9) == "file_name") {
-
         $File = $value;
         echo $File . "<br>";
 
@@ -75,71 +68,43 @@ foreach ($_POST as $field => $value) {
         }
     }
 
-
     if (substr($field, 0, 12) == "file_content") {
-
         $SendFile = true;
 
-        if ($FileExt == ".htm" or $FileExt == ".html" or $FileExt == ".css" or $FileExt == ".js" or $FileExt == ".json" or $FileExt == ".txt" or $FileExt == ".xml" or $FileExt == ".rss" or $FileExt == ".php") {
-
+        if (in_array($FileExt, [".htm", ".html", ".css", ".js", ".json", ".txt", ".xml", ".rss", ".php"])) {
             $FileContent = str_replace("~~!!~~", "&", $value);
 
-            //$FileContent = htmlspecialchars_decode($FileContent);            
-            $FileContent = html_entity_decode($FileContent);            
-
-            //$htmlContent = file_get_contents($File); // decode            
-            //$decodedContent = html_entity_decode($htmlContent); // Decode HTML entities            
-            //setcookie("file_data", $decodedContent, time() + 3600, "/"); // send file data in cookie
-
-            //$FileContent = $decodedContent;           
-
-            //echo $FileContent . "@@@<br>";
-
+            // Decode all HTML entities
+            $FileContent = html_entity_decode($FileContent, ENT_QUOTES, 'UTF-8');
         } else {
-
             $FileContent = $value;
         }
     }
 
-
-
-
-
     if ($SendFile) {
-
         $SendFile = false;
 
         $blobKey = $File;
         $blobData = $FileContent;
 
-        if ($FileExt == ".htm" or $FileExt == ".html") {
-            $blobContentType = "text/html";
-        } else if ($FileExt == ".css") {
-            $blobContentType = "text/css";
-        } else if ($FileExt == ".js") {
-            $blobContentType = "application/x-javascript";
-        } else if ($FileExt == ".json") {
-            $blobContentType = "application/json";
-        } else if ($FileExt == ".txt") {
-            $blobContentType = "text/plain";
-        } else if ($FileExt == ".xml") {
-            $blobContentType = "text/xml";
-        } else if ($FileExt == ".rss") {
-            $blobContentType = "application/rss+xml";
-        } else if ($FileExt == ".pdf") {
-            $blobContentType = "application/pdf";
-        } else if ($FileExt == ".png") {
-            $blobContentType = "image/png";
-        } else if ($FileExt == ".jpg" or $FileExt == ".jpeg") {
-            $blobContentType = "image/jpeg";
-        } else if ($FileExt == ".gif") {
-            $blobContentType = "image/gif";
-        } else if ($FileExt == ".webp") {
-            $blobContentType = "image/webp";
-        } else {
-            $blobContentType = $FileExt;
-        }
+        $mimeTypes = [
+            ".htm" => "text/html",
+            ".html" => "text/html",
+            ".css" => "text/css",
+            ".js" => "application/javascript",
+            ".json" => "application/json",
+            ".txt" => "text/plain",
+            ".xml" => "text/xml",
+            ".rss" => "application/rss+xml",
+            ".pdf" => "application/pdf",
+            ".png" => "image/png",
+            ".jpg" => "image/jpeg",
+            ".jpeg" => "image/jpeg",
+            ".gif" => "image/gif",
+            ".webp" => "image/webp",
+        ];
 
+        $blobContentType = $mimeTypes[$FileExt] ?? 'application/octet-stream';
 
         try {
             // Push the blob to Cloudflare R2
@@ -156,6 +121,3 @@ foreach ($_POST as $field => $value) {
         }
     }
 }
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
