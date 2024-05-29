@@ -1,5 +1,9 @@
 <?php
 
+session_start(); // Start the session in PHP
+
+require 'cf_get_access_keys.php';
+
 // for AWS upload
 require 'vendor/autoload.php';
 
@@ -7,6 +11,7 @@ use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 
 ini_set('max_execution_time', 300);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -81,24 +86,12 @@ function send_file_to_aws($my_site, $my_file, $my_file_x)
     if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
 
         // send post data in cookie
-        setcookie("post_data", http_build_query($_POST), time() + 3600, "/");  
+        setcookie("post_data", http_build_query($_POST), time() + 3600, "/"); 
 
-        $endpoint = "https://" . $_POST['account'] . ".r2.cloudflarestorage.com";
-        $accessKey = $_POST['accesskey'];
-        $secretKey = $_POST['secretkey'];
-        $bucketName = $_POST['bucket'];
-
-        // account=c70d7944d938833c501c72fd4221dbaf&bucket=cfimran&accesskey=e90d510ff8086c821165ba1d59616e2c&secretkey=c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3
-
-        // Cloudflare R2 API endpoint
-        //$endpoint = 'https://c70d7944d938833c501c72fd4221dbaf.r2.cloudflarestorage.com'; /* hard-coded */
-
-        // Cloudflare R2 access key and secret key
-        //$accessKey = 'e90d510ff8086c821165ba1d59616e2c'; /* hard coded */
-        //$secretKey = 'c1ee934a720c9d4f167fe27ac3609ca662d2f53bc5a5a17d15d84ada7d3dc9e3'; /* hard-coded */
-
-        // Bucket name 
-        //$bucketName = 'cfimran'; /* hard-coded */
+        $endpoint = "https://" . $_SESSION['Account'] . ".r2.cloudflarestorage.com";
+        $accessKey = $_SESSION['AccessKey'];
+        $secretKey = $_SESSION['SecretKey'];
+        $bucketName = $_SESSION['Bucket'];
 
         if (strpos($my_site, $bucketName) !== false) {
             // file details
@@ -517,3 +510,22 @@ function resize_imagegif3($file, $w, $h)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
+
+function formatSize($bytes) {
+    if ($bytes >= 1073741824) {
+        $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+    } elseif ($bytes >= 1048576) {
+        $bytes = number_format($bytes / 1048576, 2) . ' MB';
+    } elseif ($bytes >= 1024) {
+        $bytes = number_format($bytes / 1024, 2) . ' KB';
+    } elseif ($bytes > 1) {
+        $bytes = $bytes . ' bytes';
+    } elseif ($bytes == 1) {
+        $bytes = $bytes . ' byte';
+    } else {
+        $bytes = '0 bytes';
+    }
+    return $bytes;
+}
+
+///////////////////////////////////////////////////////////////////////
