@@ -83,10 +83,14 @@ function send_file_to_aws($my_site, $my_file, $my_file_x)
 {
 
     // Check if the data was posted
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // send post data in cookie
-        setcookie("post_data", http_build_query($_POST), time() + 3600, "/"); 
+        $_POST['endpoint'] = $_SESSION['Account'];
+        $_POST['accessKey'] = $_SESSION['AccessKey'];
+        $_POST['$secretKey'] = $_SESSION['SecretKey'];
+        $_POST['bucketName'] = $_SESSION['Bucket'];
+        setcookie("post_data", http_build_query($_POST), time() + 3600, "/");
 
         $endpoint = "https://" . $_SESSION['Account'] . ".r2.cloudflarestorage.com";
         $accessKey = $_SESSION['AccessKey'];
@@ -511,7 +515,8 @@ function resize_imagegif3($file, $w, $h)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-function formatSize($bytes) {
+function formatSize($bytes)
+{
     if ($bytes >= 1073741824) {
         $bytes = number_format($bytes / 1073741824, 2) . ' GB';
     } elseif ($bytes >= 1048576) {
