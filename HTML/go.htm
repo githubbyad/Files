@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        /* get AppServer */
+        let sites = ["bulletlink.one", "bulletlink.net"];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        async function checkStatus(domain) {
+            try {
+                const response = await fetch(domain + 'app_server.php', {
+                    method: 'HEAD',
+                    headers: {
+                        'Access-Control-Request-Headers': 'content-type', // Add any additional headers if needed
+                    }
+                });
+                return response.ok;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function findAvailableServer(sites) {
+            for (const site of sites) {
+                const url = 'https://' + site + '/';
+                const isAvailable = await checkStatus(url);
+                if (isAvailable) {
+                    return url;
+                }
+            }
+            return '';
+        }
+
+        window.addEventListener('load', async () => {
+            sites = shuffleArray(sites);
+            const appServer = await findAvailableServer(sites);
+            if (appServer) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const SN = urlParams.get("sname");
+                urlParams.delete("sname");
+                const newQueryString = urlParams.toString();
+                const newURL = `${appServer}${SN}?${newQueryString}`;
+                window.location.href = newURL;
+            } else {
+                console.error('No available AppServer found.');
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- No content -->
+</body>
+</html>
