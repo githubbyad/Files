@@ -1,3 +1,17 @@
+// Function to load the PDF.js library dynamically
+function loadPdfJs(callback) {
+    if (!window.pdfjsLib) {
+        var script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.7.570/pdf.min.js';
+        script.onload = callback;
+        document.head.appendChild(script);
+    } else {
+        callback();
+    }
+}
+
+
+
 // Function to render the PDF in a specific container
 function renderPdf(url, container) {
     loadPdfJs(function () {
@@ -94,3 +108,16 @@ function renderPdf(url, container) {
         });
     });
 }
+
+// Manually trigger the onload event for the pdf-viewer divs
+document.addEventListener('readystatechange', event => {
+    if (event.target.readyState === "interactive") {
+        var pdfContainers = document.querySelectorAll("div[pdf]");
+        pdfContainers.forEach(function (container) {
+            var url = container.getAttribute('pdf');
+            if (url) {
+                renderPdf(url, container);
+            }
+        });
+    }
+});
