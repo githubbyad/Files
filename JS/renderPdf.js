@@ -1,3 +1,4 @@
+/* *************************************** PDF code begin *************************************** */
 // Function to load the PDF.js library dynamically
 function loadPdfJs(callback) {
     if (!window.pdfjsLib) {
@@ -9,8 +10,6 @@ function loadPdfJs(callback) {
         callback();
     }
 }
-
-
 
 // Function to render the PDF in a specific container
 function renderPdf(url, container) {
@@ -121,3 +120,4 @@ document.addEventListener('readystatechange', event => {
         });
     }
 });
+/* *************************************** PDF code end *************************************** */
