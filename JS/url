@@ -1,0 +1,14 @@
+/* convert <url>example.com<url> to clickable link */
+document.addEventListener('readystatechange', event => {
+    if (event.target.readyState === "complete") {
+        const regex = /(http|https):\/\//;
+        document.querySelectorAll("url").forEach(u => {
+            const linkText = u.innerText.trim();
+            let link = u.innerText.trim();
+            if (!regex.test(link)) {
+                link = "//" + link
+            }
+            u.outerHTML = `<a href="${link}" target="_blank">${linkText}</a>`;
+        });
+    }
+});
