@@ -1,4 +1,4 @@
-/* convert <url>example.com<url> to clickable link */
+/* convert <url>example.com</url> to clickable link */
 document.addEventListener('readystatechange', event => {
     if (event.target.readyState === "complete") {
         const regex = /(http|https):\/\//;
