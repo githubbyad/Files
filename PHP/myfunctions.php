@@ -177,6 +177,8 @@ function send_file_to_aws ($my_site, $my_file, $my_file_x)
     if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
 
         echo "--inside AWS if--";
+        echo "@@my_site_x: " . $my_site_x . "!!";
+        echo "@@CloudflareBucket: " . $CloudflareBucket  . "!!";
 
         $endpoint = "https://" . $Account . ".r2.cloudflarestorage.com";
 
@@ -827,3 +829,5 @@ try {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
+
+?>
