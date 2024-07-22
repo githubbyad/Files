@@ -95,7 +95,7 @@ parse_str($_SERVER['QUERY_STRING'], $params);
 			$("#uploadForm").on('submit', (function(e) {
 				e.preventDefault();
 				$.ajax({
-					url: "iupload.php?site=<?= $params['mydomain'] ?>",
+					url: "iupload.php?site=<?= str_replace(['http://', 'https://'], '', $params['mydomain']) ?>",
 					type: "POST",
 					data: new FormData(this),
 					contentType: false,
