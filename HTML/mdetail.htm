@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type='text/javascript' language='javascript' src='https://pointecoupeereporter.com/lib/bl2.js'></script>
+    <style>
+        /* Reset margin and padding for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
+
+        /* Make iframe take up the full screen */
+        #myFrame {
+            width: 100vw;
+            /* 100% of the viewport width */
+            height: 100vh;
+            /* 100% of the viewport height */
+            border: none;
+            /* Remove border */
+        }
+    </style>
+</head>
+
+<body>
+    <iframe id="myFrame"></iframe>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryStringParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the 'url' and 'site' parameters from the query string
+        const urlParam = getQueryStringParameter('url');
+        const siteParam = getQueryStringParameter('site');
+
+        // get AppServer
+        const appServer = readCookie('AppServer') ? readCookie('AppServer') : "https://bulletlink.one/";
+
+        // Define the base URL for the iframe
+        const baseUrl = 'mdetail3.php?app=Y&pop=Y&dm=Yes';
+
+        // Construct the full URL for the iframe
+        const iframeSrc = `${appServer}${baseUrl}&l=${encodeURIComponent(urlParam)}&site=${encodeURIComponent(siteParam)}`;
+
+        // Set the iframe src attribute
+        document.getElementById('myFrame').src = iframeSrc;
+    </script>
+</body>
+
+</html>
