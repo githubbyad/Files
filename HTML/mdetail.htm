@@ -36,9 +36,11 @@
             return urlParams.get(name);
         }
 
-        // Get the 'url' and 'site' parameters from the query string
+        // Get the 'url' parameter from the query string
         const urlParam = getQueryStringParameter('url');
-        const siteParam = getQueryStringParameter('site');
+
+        // get site
+        const site = window.location.hostname;
 
         // get AppServer
         const appServer = readCookie('AppServer') ? readCookie('AppServer') : "https://bulletlink.one/";
@@ -47,7 +49,7 @@
         const baseUrl = 'mdetail3.php?app=Y&pop=Y&dm=Yes';
 
         // Construct the full URL for the iframe
-        const iframeSrc = `${appServer}${baseUrl}&l=${encodeURIComponent(urlParam)}&site=${encodeURIComponent(siteParam)}`;
+        const iframeSrc = `${appServer}${baseUrl}&l=${encodeURIComponent(urlParam)}&site=${encodeURIComponent(site)}`;
 
         // Set the iframe src attribute
         document.getElementById('myFrame').src = iframeSrc;
