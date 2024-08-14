@@ -15,7 +15,7 @@ function FileValidator(myKey, myControl, fileType) {
             if (fileType == "All")
                 msg = "<b>" + myKey + "</b>&nbsp;&nbsp;&nbsp;Invalid file type.";
             if (fileType == "Image")
-                msg = "<b>" + myKey + "</b>&nbsp;&nbsp;&nbsp;Invalid file type. Valid files: gif, ico, wmv, wma, jpg, jfif, jpeg, flv, pdf, png, css, swf, mp3, mp4, rss, txt, mpg, mpeg, avi, wav, aif, aiff, mov, htm, html, fla, xml";
+                msg = "<b>" + myKey + "</b>&nbsp;&nbsp;&nbsp;Invalid file type. Valid files: gif, ico, wmv, wma, jpg, jpeg, flv, pdf, png, css, swf, mp3, mp4, rss, txt, mpg, mpeg, avi, wav, aif, aiff, mov, htm, html, fla, xml";
             alert(msg, myControl);
             myControl.focus();
             return false;
