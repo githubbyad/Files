@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type='text/javascript' language='javascript' src='/lib/bl2.js'></script>
+    <style>
+        /* Reset margin and padding for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
+
+        /* Make iframe take up the full screen */
+        #myFrame {
+            width: 100vw;
+            /* 100% of the viewport width */
+            height: 100vh;
+            /* 100% of the viewport height */
+            border: none;
+            /* Remove border */
+        }
+
+        .google_ad {
+            position: fixed;
+            width: 100%;
+            background-color: #ccc;
+            bottom: 0;
+            left: 0;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div align="center" class="google_ad">
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2921688500433470"
+            crossorigin="anonymous"></script>
+        <!-- 310x125 -->
+        <ins class="adsbygoogle" style="display:inline-block;width:310px;height:125px"
+            data-ad-client="ca-pub-2921688500433470" data-ad-slot="9092123644"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <iframe id="myFrame"></iframe>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryStringParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get the 'url' parameter from the query string
+        const urlParam = getQueryStringParameter('url');
+
+        // get site
+        const site = window.location.hostname;
+
+        // get AppServer
+        const appServer = readCookie('AppServer') ? readCookie('AppServer') : "https://bulletlink.one/";
+
+        // Define the base URL for the iframe
+        const baseUrl = 'mdetail3.php?app=Y&pop=Y&dm=Yes';
+
+        // Construct the full URL for the iframe
+        const iframeSrc = `${appServer}${baseUrl}&l=${encodeURIComponent(urlParam)}&site=${encodeURIComponent(site)}`;
+
+        // Set the iframe src attribute
+        document.getElementById('myFrame').src = iframeSrc;
+    </script>
+</body>
+
+</html>
