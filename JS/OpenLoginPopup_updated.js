@@ -1,7 +1,7 @@
 function OpenLoginPopup(ctl) {
     var s = readCookie('loginStatus');
     var url = window.location.href;
-    url = url.replace(/([?&])fbclid=[^&]*/, '');
+    url = url.replace(/([?&])fbclid=[^&]*/, ''); // For Facebook issue
     console.log(url);
     var siteUh = location.href.match(/:\/\/(.[^/]+)/)[1];
     var siteU = url.match(/:\/\/(.[^/]+)/)[1];
