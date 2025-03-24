@@ -1,0 +1,136 @@
+{{LayoutSection323Begin}}
+{{LayoutSection323Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:323}}
+{{File:section323.htm}}
+{{ReplaceJavascriptChars:No}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue, Updated}}       
+<div class="cus-photogallery-133">            
+    <div class="cus-default-menu-bar">
+      <div class="label-menu">{{Menu}}</div>
+      <div class="label-submenu">{{SubMenu}}</div>
+      <div class="label-line"></div>
+    </div>       
+    <div class="row mx-0 hp-parent float-start mt-3"> 
+        {{RepeatBegin}}               
+        <div class="col-md-12 col-lg-6 mb-3">
+          <div class="ratio ratio-16x9 media-body" data-body="{{Body}}">
+              <iframe class="media-iframe" src="https://www.youtube.com/embed/{{Body}}" title="YouTube video" allowfullscreen></iframe>
+              <a href="{{HeadingLink}}" class="media-image ratio ratio-16x9 d-none">
+                <img class="media-image-img" src="{{HeadingImage}}" />
+              </a>
+          </div>
+          <a class="media-link pointer-events-none" href="{{HeadingLink}}"><h3 class="mb-3 mt-1 fs-5 text-dark text-primary-hover fw-bold">{{Heading}}</h3></a>
+      </div>
+        {{RepeatEnd}}                                     
+    </div>       
+</div>        
+<style>     
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+
+.cus-323-label {
+    font-family: pt sans, sans-serif;
+    border-bottom: 4px solid #bdcde3;
+}
+
+.cus-323-label>span {
+    position: relative;
+}
+
+.cus-323-label>span:before {
+    background: #dc3545;
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 100%;
+    height: 4px;
+    bottom: -6px;
+}
+
+.cus-videogallery-323-link:hover .cus-videogallery-323-play i {
+    transform: scale(1.2);
+    transition: 200ms linear;
+}
+
+.cus-videogallery-323-play i {
+    transition: 100ms linear;
+}                    
+</style>            
+<script>       
+/* SubMenu Title */
+  document.title = "Media";
+var vu = document.getElementsByClassName("cus-videogallery-323-img");
+for (i = 0; i < vu.length; i++) {
+  if (vu[i].src.split("http").length > 2) {
+    /*Full URL*/
+    var tu = vu[i].getAttribute("data-body");
+    if (tu.indexOf("embed") != -1 && tu.indexOf("you") != -1) {
+      /*YouTube*/
+      tu = tu.split("/")[4].slice(0, 11);
+      vu[i].src = `https://img.youtube.com/vi/${tu}/maxresdefault.jpg`;
+    } else if (tu.indexOf("watch") != -1 && tu.indexOf("you") != -1) {
+      /*YouTube*/
+      var bx = new URL(tu);
+      tu = bx.searchParams.get(`v`).slice(0, 11);
+      vu[i].src = `https://img.youtube.com/vi/${tu}/maxresdefault.jpg`;
+    } else if (tu.indexOf("vimeo") != -1 && tu.indexOf("player.vimeo") == -1) {
+      /*Vimeo*/
+      tu = tu.split("/")[3];
+      vu[i].src = `https://vumbnail.com/${tu}.jpg`;
+    } else {
+      /*Other*/
+      vu[i].src = vu[i].getAttribute("data-src");
+    }
+  }
+}
+
+function OpenYouTube(id) {
+  if (!document.getElementById('f_YT_button')) {
+    if (id.indexOf("/") != -1) {
+      /*Full URL*/
+      if (id.indexOf("embed") != -1 && tu.indexOf("you") != -1) {
+        /*Youtube Video*/
+        id = id.split("/")[4].slice(0, 11);
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://www.youtube.com/embed/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      } else if (id.indexOf("watch") != -1 && tu.indexOf("you") != -1) {
+        /*Youtube Video*/
+        var bx = new URL(id);
+        id = bx.searchParams.get(`v`).slice(0, 11);
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://www.youtube.com/embed/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      } else if (id.indexOf("vimeo") != -1 && id.indexOf("player.vimeo") == -1) {
+        /*Vimeo Video*/
+        id = id.split("/")[3];
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://player.vimeo.com/video/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      } else {
+        /*Other Video*/
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      }
+    } else {
+      var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://www.youtube.com/embed/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+    }
+    document.getElementsByTagName("body")[0].insertAdjacentHTML(`beforeend`, `<button id='f_YT_button' type='button' data-bs-toggle='modal' data-bs-target='#f_YT' style='display:none;'></button><div class='f_YT_box modal fade' id='f_YT' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='f_YTLabel' aria-hidden='true'><div class='modal-dialog modal-dialog-centered mx-auto'><div class='modal-content' id='YT_parent'><button type='button' class='f_YT_close btn-close position-absolute' data-bs-dismiss='modal' aria-label='Close'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#fff' class='bi bi-x-lg' viewBox='0 0 16 16'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.3233l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.3233 8 2.146 2.854Z'/></svg></button><div class='modal-body text-center' style='white-space: pre-wrap;'><p id='f_loader'><i class='fa fa-spinner fa-spin' aria-hidden='true'></i></p>${msg}</div></div></div><style>#YT_parent{width:70vw;height:39.43vw}.modal-dialog{max-width:none;display:flex;align-items:center;justify-content:center}.modal-dialog-scrollable .modal-content {max-height: none;overflow:visible;}.modal-body {padding:0;} .f_YT_close{right:-1rem;z-index:999;top:-1rem;background-color:red;border-radius:50px;padding:.5rem;opacity:1;box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);background-image:none;color:#fff;display:flex;justify-content:center;align-items:center;font-weight:700;font-size:18px}.f_YT_close:hover{color:#fff;background-color: #333;opacity:1} .f-mfp-iframe {width:100%;height:100%;}#f_loader{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}#f_loader i{font-size:4rem;color:red;opacity:0.8}@media (max-width:576px){#YT_parent{width:85vw;height:48vw}}</style></div>`);
+    document.getElementById('f-mfp-iframe').onload = function () {
+      document.getElementById("f_loader").remove();
+    };
+    document.getElementById('f_YT_button').click();
+    document.getElementsByClassName('f_YT_close')[0].addEventListener('click', function () {
+      document.getElementById('f_YT_button').remove();
+      document.getElementsByClassName('f_YT_box')[0].remove();
+    });
+  }
+}   
+/* show image when video not added */    
+document.querySelectorAll(".media-body").forEach(function(element) {
+  let bodyData = element.getAttribute("data-body");
+  let iframe = element.querySelector(".media-iframe");
+  let image = element.querySelector(".media-image");
+  let link = element.nextElementSibling;
+
+  if (bodyData.length > 11) {    
+    iframe.style.display = "none";
+    image.classList.remove("d-none");
+    link.classList.remove("pointer-events-none");
+  }
+});
+</script>
+{{LayoutSection323End}}
