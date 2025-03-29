@@ -1,0 +1,3362 @@
+--- custom.css ---
+.fa {
+  color: black !important;
+}
+
+:root {
+--bl-theme: #f7c532;
+--bl-body: #ececec;
+}
+
+/* service package */
+
+.spbody,
+.spbutton,
+.spfieldname,
+.spfieldinput,
+.spinstructions {
+    font-family: Trebuchet MS;
+    font-size: 16px;
+    color: #333;
+}
+
+.spbutton {
+    background-color: #0d6efd;
+    text-transform: capitalize;
+    border-radius: 6px;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+}
+
+.spbody {
+    background-color: transparent !important;
+    width: 100% !important;
+    padding: 2%;
+    border: 1px solid #dee2e6 !important;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: auto;
+
+    & #PaymentForm {
+        font-weight: bold !important;
+        font-family: Trebuchet MS !important;
+        color: black !important;
+    }
+}
+
+/* /service package */
+
+
+/* classified */
+
+.classifiedbody,
+.classifiedheading,
+.classifiedcategory,
+.classifiedbody a {
+    font-family: Trebuchet MS !important;
+    font-size: 16px !important;
+    color: #333 !important;
+}
+
+.classifiedbody a {
+    font-weight: bold !important;
+    color: #0d6efd !important;
+}
+
+body.classifiedbody {
+    background-color: transparent !important;
+    width: 100% !important;
+    padding: 2%;
+    border: 1px solid #dee2e6 !important;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: auto;
+
+    &>table {
+        background: #fff;
+        padding: 3%;
+        box-sizing: border-box;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+    }
+}
+
+.classifiedcategory {
+    background: transparent !important;
+
+    & td {
+        padding: 10px 0;
+    }
+}
+
+.classifiedbutton {
+    background-color: #0d6efd;
+    text-transform: capitalize;
+    border-radius: 6px;
+    line-height: 28px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.classifiedheading td {
+    border-bottom: 2px solid #b0b0b0 !important;
+    margin-bottom: 8px;
+}
+
+.classifiedheading b {
+    font-size: 20px;
+    line-height: 40px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#SKeyword {
+    border: 1px solid gray;
+    border-radius: 5px;
+    line-height: 30px;
+    padding: 4px;
+    box-sizing: border-box;
+    font-family: Trebuchet MS;
+    font-weight: normal !important;
+    font-size: 15px;
+}
+
+.classifiedbody #form1 {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    margin-top: 15px;
+    padding: 20px 0px !important;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 17px;
+    color: #555;
+}
+
+div.classifiedbody {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+
+    & .classifiedheading {
+        font-size: 20px !important;
+        color: #0d6efd !important;
+    }
+
+    &.classifiedheading+div,
+    & .classifiedruler+div {
+        width: 100%;
+        float: left;
+        color: #555;
+    }
+
+    & .classifiedheading+div b,
+    & .classifiedruler+div b {
+        color: #fff;
+        background: gray;
+        padding: 7px 10px;
+        display: inline-block;
+        border-radius: 5px;
+    }
+}
+
+.classifiedruler {
+    float: left;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.custom_classified_image {
+    max-width: 300px !important;
+    max-height: none !important;
+    padding-right: 0 !important;
+    margin-right: 10px;
+    cursor: zoom-in;
+}
+
+/* /classified */
+
+
+/* dark-theme */
+
+.vr {
+    display: inline-block;
+    align-self: stretch;
+    width: 1px;
+    min-height: 1rem;
+    background-color: currentcolor;
+    opacity: .25;
+}
+
+.user-none {
+    user-select: none;
+}
+
+html[data-theme="dark"] {
+
+    & body,
+    & .bg-body {
+        background-color: #212529 !important;
+    }
+
+    & .text-black,
+    & .polls1question {
+        color: #fff !important;
+    }
+
+    & .border,
+    & .border-gray {
+        border-color: rgba(255, 255, 255, .1) !important;
+    }
+
+    .border-light,
+    & .border-gray {
+        border-color: #000 !important;
+    }
+    & .cus-active-menu {
+        border-color: #b0b0b0 !important;
+    }
+
+    & .text-dark {
+        color: #f0e6e6 !important;
+    }
+
+    & .dropdown-menu {
+        background-color: #535455;
+    }
+
+    & .text-muted {
+        color: #9b9898 !important;
+    }
+
+    & .btn-primary {
+        background-color: #000;
+        border-color: #000;
+    }
+    & vr.bg-secodary {
+        background: #fff !important;
+    }
+
+    & div[style="background-color:#f3f3f3;"] {
+        background-color: #131313 !important;
+    }
+
+}
+
+/* /dark-theme */@media screen and (max-width:992px) {
+    .pagebody .pagephoto {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px) {[data-sticky] {position: sticky;} }
+
+.carousel-control-next {
+    z-index:999;
+}
+.carousel-control-prev {
+    z-index:999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- customform.js ---
+function checkLoginStatus(isRestricted) {
+    if (readCookie('Style_s13251')) { // header background - old template
+        document.getElementById('tdHeader').style.backgroundImage = "url(/lib/images/" + readCookie('Style_s13251') + ")";
+    }
+    var url = location.href;
+    var qs = url.substring(url.indexOf('?'));
+
+    var myParameters = new Array();
+    myParameters = ReadSParameters();
+    var sname = myParameters['sname'];
+    var a = myParameters['a'];
+    var urlhttps = url.startsWith("https");
+    var urlarr = new URL(url);
+    var surl;
+    if (sname.length > 0) {
+        var uint = setInterval(function() {
+            if (readCookie('AppServer')) {
+                clearInterval(uint);
+                surl = readCookie('AppServer');
+                var sframe = "<center class='cus-frame1-loader mt-5 position-absolute w-100'><i aria-hidden='true' style='font-size: 5rem;' class='fa fa-spinner fa-6 fa-spin text-theme'></i></center><iframe id=\"frame1\" style=\"border:none;visibility:hidden\" width=\"100%\" src=\"" + surl + sname + qs + "\" onload=\"document.getElementsByClassName('cus-frame1-loader')[0].style.display = 'none';document.getElementById('frame1').style.visibility = 'visible';window.parent.parent.scrollTo(0,0);iFrameResize({log:true}, '#frame1');\"></iframe>"
+                document.getElementById("MainContent").innerHTML = sframe;
+            }
+        }, 10);
+
+    } else {
+        if (a == 1) {
+            var s = readCookie('loginStatus');
+            if (s != 'Yes') {
+                var divAccess1 = document.getElementById('divAccess');
+                if (divAccess1 != null) {
+                    document.getElementById('divAccess').style.display = 'none';
+                    OpenLoginPopup();
+                    document.getElementById('divMain').style.display = 'none';
+                }
+                return false;
+            } else {
+                var divMain1 = document.getElementById('divMain');
+                if (divMain1 != null) {
+                    document.getElementById('divMain').style.display = 'block';
+                }
+                return true;
+            }
+        } else {
+            var divMain = document.getElementById('divMain');
+            if (divMain != null) {
+                document.getElementById('divMain').style.display = 'block';
+            }
+            return true;
+        }
+    }
+}
+
+
+// sticky column css&js 
+document.addEventListener('readystatechange', event => {
+  if (event.target.readyState === "complete") {
+    if (document.querySelector("[data-sticky]")) {
+      var sp = document.querySelectorAll("[data-sticky]");
+      var sw = window.innerHeight;
+      var sf = () => {
+        if (sp != null) {
+          sp.forEach(x => {
+            var ds = x.getAttribute("data-sticky") != "" ? x.getAttribute("data-sticky") : 10;
+            var st = x.offsetHeight - sw + 10;
+            if (st >= 0) {
+              x.style.top = `-${st}px`;
+            } else if (st < 0) {
+              if (st > -ds) {
+                x.style.top = `${Math.abs(st)}px`;
+              } else {
+                x.style.top = `${ds}px`;
+              }
+            }
+          });
+        }
+      }
+      sf();
+      setTimeout(() => {
+        sf();
+      }, 500);
+      setTimeout(() => {
+        sf();
+      }, 1000);
+      setTimeout(() => {
+        sf();
+      }, 3000);
+    }
+  }
+});
+
+
+
+// sticky column css&js
+document.addEventListener('readystatechange', event => {
+  if (event.target.readyState === "complete") {
+    if (document.querySelector("[data-sticky]")) {
+      var sp = document.querySelectorAll("[data-sticky]");
+      var sw = window.innerHeight;
+      var sf = () => {
+        if (sp != null) {
+          sp.forEach(x => {
+            var ds = x.getAttribute("data-sticky") != "" ? x.getAttribute("data-sticky") : 10;
+            var st = x.offsetHeight - sw + 10;
+            if (st >= 0) {
+              x.style.top = `-${st}px`;
+            } else if (st < 0) {
+              if (st > -ds) {
+                x.style.top = `${Math.abs(st)}px`;
+              } else {
+                x.style.top = `${ds}px`;
+              }
+            }
+          });
+        }
+      }
+      sf();
+      setTimeout(() => {
+        sf();
+      }, 500);
+      setTimeout(() => {
+        sf();
+      }, 1000);
+      setTimeout(() => {
+        sf();
+      }, 3000);
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- Default Values --- 
+{{LayoutDirectoryPage1Begin}}
+{{LayoutDirectoryPage1Limit100}}
+{{ReplaceJavascriptChars:No}}
+{{GroupBy:Category}}
+{{File:directory-<<SubMenuId>>.htm}}
+{{FileTemplate:index0.htm}}
+<div class="cus-directory-121-container container-fluid px-0">
+    <div class="cus-default-menu-bar mb-3">
+        <div class="text-uppercase fw-bold px-0 mb-2 text-gray cus-121-label" style="font-family: pt sans,sans-serif;">
+            <span>
+                <span class="cus-default-submenu">{{SubMenu}}</span>
+            </span>
+        </div>
+    </div>
+    <div class="cus-directory-121-wrap row mx-0 pt-3 border rounded shadow">
+        {{RepeatBegin}}
+            <div class="col-md-6 col-lg-4 my-2">
+                <a class="cus-directory-121-link text-decoration-none" href="{{PutDomain}}directory-{{CategoryFile}}-<<SubMenuId>>.htm">
+                    <p class="cus-directory-121-category text-start text-black fw-bold ps-1 py-2">
+                        <span class="cus-directory-121-category-text position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="{{TotalGroup}} Listings">
+                            {{CategoryNoRepeat}}
+                            <span class="cus-directory-121-list badge rounded-pill bg-secondary">
+                                {{TotalGroup}}
+                            </span>
+                        </span>
+                    </p>
+                </a>
+            </div>
+        {{RepeatEnd}}
+    </div> 
+</div>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+.cus-121-label {border-bottom: 4px solid #bdcde3;}
+.cus-121-label > span{position: relative;}
+.cus-121-label > span:before {background: #dc3545;position: absolute;display: inline-block;content: "";width: 100%;height: 4px;bottom: -6px;}
+.cus-directory-121-wrap {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");background-attachment: fixed;}
+.cus-directory-121-category {border-left: 0.25rem solid #9c29bc;}
+.cus-directory-121-category-text:hover {color: #9c29bc !important; transition: 200ms linear;}
+.cus-directory-121-list {background:#8c6ad1 !important}
+.cus-directory-121-category-text:hover .cus-directory-121-list {background: #000 !important; transition: 200ms linear;}
+.cus-default-submenu a {pointer-events: none;color: gray !important;text-decoration: none;}
+</style>
+<script>
+/* title */
+var t = document.getElementsByClassName("cus-default-submenu")[0].innerText;
+document.title = t.toLowerCase().charAt(0).toUpperCase() + t.slice(1).toLowerCase(0);
+</script>
+{{LayoutDirectoryPage1End}} 
+
+
+{{LayoutDirectoryPage2Begin}}
+{{LayoutDirectoryPage2Limit100}}
+{{Where:IncludeCurrentSubMenuId:Yes}}
+{{Where:IncludeCategory:Yes}}
+{{ReplaceJavascriptChars:No}}
+{{File:directory-<<CategoryFile>>-<<SubMenuId>>.htm}}
+{{FileTemplate:index0.htm}}
+<div class="cus-directory-121-container container-fluid px-0">
+    <div class="cus-default-menu-bar mb-3">
+        <div class="text-uppercase fw-bold px-0 mb-2 text-gray cus-121-label" style="font-family: pt sans,sans-serif;">
+            <span>
+                <span class="cus-default-submenu">{{SubMenu}}</span><i class="fa fa-angle-right mx-2" aria-hidden="true"></i><span class="cus-directory-121-category-label text-gray text-transform-uppercase"></span>
+            </span>
+        </div>
+    </div>
+    <div class="cus-directory-121-wrap row py-2 mx-0 border rounded shadow">
+        {{RepeatBegin}}
+            <div class="cus-directory-121-category-hidden d-none">{{CategoryNoRepeat}}</div>
+            <div class="cus-directory-121-box col-lg-4 my-2">
+                <a class="cus-directory-121-link text-decoration-none bg-body d-block p-2 position-relative border rounded shadow-sm" href="{{PutDomain}}directory-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm">
+                    <div class="ratio-3-2 cus-zoom mb-2">
+                        <div class="img-content">
+                            <img src="{{Picture}}" alt="{{Company}}" class="img-fluid" />
+                        </div>
+                    </div>
+                    <div class="cus-directory-121-name text-black fw-bold">{{Company}}</div>
+                </a>
+            </div>
+        {{RepeatEnd}}
+    </div>
+</div>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+.cus-121-label {border-bottom: 4px solid #bdcde3;}
+.cus-121-label > span{position: relative;}
+.cus-121-label > span:before {background: #dc3545;position: absolute;display: inline-block;content: "";width: 100%;height: 4px;bottom: -6px;}
+.cus-directory-121-wrap {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");background-attachment: fixed;}
+.cus-default-submenu a {color: gray !important;text-decoration: none;}
+.cus-default-submenu a:hover {color: #0d6efd !important;}
+.cus-directory-121-name:hover {color: #9c29bc !important;}
+</style>
+<script>
+/* title */
+var t = document.getElementsByClassName("cus-default-submenu")[0].innerText;
+document.title = t.toLowerCase().charAt(0).toUpperCase() + t.slice(1).toLowerCase(0) + " - " + document.getElementsByClassName('cus-directory-121-category-hidden')[0].innerText;
+/* label */
+document.getElementsByClassName('cus-directory-121-category-label')[0].innerText = document.getElementsByClassName('cus-directory-121-category-hidden')[0].innerText;
+</script>
+{{LayoutDirectoryPage2End}}
+
+
+{{LayoutDirectoryPage3Begin}}
+{{LayoutDirectoryPage3Limit1}}
+{{ReplaceJavascriptChars:No}}
+{{Where:IncludeCurrentSubMenuId:Yes}}
+{{Where:IncludeDetailId:Yes}}
+{{File:directory-<<CategoryFile>>-<<DetailID>>-<<SubMenuId>>.htm}}
+{{FileTemplate:index0.htm}}
+<div class="cus-directory-121-container container-fluid px-0">
+    <div class="cus-default-menu-bar mb-3">
+        <div class="text-uppercase fw-bold px-0 mb-2 text-gray cus-121-label" style="font-family: pt sans,sans-serif;">
+            <span>
+                <span class="cus-default-submenu">{{SubMenu}}</span><i class="fa fa-angle-right mx-2" aria-hidden="true"></i><span><a class="cus-directory-121-category-label text-gray text-transform-uppercase" href="#"></a></span>
+            </span>
+        </div>
+    </div>
+    <div class="cus-directory-121-wrap row mx-0 rounded border py-2 shadow-sm">
+        {{RepeatBegin}}
+            <div class="cus-directory-121-category-hidden d-none" data-href="{{PutDomain}}directory-{{CategoryFile}}-<<SubMenuId>>.htm">{{CategoryNoRepeat}}</div>
+            <h1 class="cus-directory-121-name text-black fw-bold mb-3">{{Company}}</h1>
+            <div class="cus-directory-121-img col-12 mb-4 d-flex justify-content-center" data-src="{{Picture}}">
+                <img src="{{Picture}}" alt="{{Company}}" class="img-fluid border p-1 rounded bg-body" />
+            </div>
+            <div class="cus-directory-121-table">
+                <table class="table table-hover table-bordered table-responsive mb-4 bg-body">
+                    <tbody>
+                        <tr class="cus-directory-121-val" data-value="{{FirstName}} {{LastName}}">
+                            <th scope="row" class="text-end">Name</th>
+                            <td>{{FirstName}} {{LastName}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Address1}}">
+                            <th scope="row" class="text-end">Address</th>
+                            <td class="cus-directory-121-address">{{Address1}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{City}}">
+                            <th scope="row" class="text-end">City</th>
+                            <td class="cus-directory-121-city">{{City}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{State}}">
+                            <th scope="row" class="text-end">State</th>
+                            <td class="cus-directory-121-state">{{State}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Zip}}">
+                            <th scope="row" class="text-end">Zip/Postal Code</th>
+                            <td class="cus-directory-121-zip">{{Zip}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Country}}">
+                            <th scope="row" class="text-end">Country</th>
+                            <td class="cus-directory-121-country">{{Country}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Phone}}">
+                            <th scope="row" class="text-end">Phone</th>
+                            <td>{{Phone}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Cell}}">
+                            <th scope="row" class="text-end">Cell</th>
+                            <td>{{Cell}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Pager}}">
+                            <th scope="row" class="text-end">Pager</th>
+                            <td>{{Pager}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Fax}}">
+                            <th scope="row" class="text-end">Fax</th>
+                            <td>{{Fax}}</td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Email}}">
+                            <th scope="row" class="text-end">Email</th>
+                            <td><a class="text-decoration-none" href="mailto:{{Email}}">{{Email}}</a></td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Website}}">
+                            <th scope="row" class="text-end">Website</th>
+                            <td><a class="cus-directory-121-site text-decoration-none" href="{{Website}}" target="_blank">{{Website}}</a></td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Facebook}}{{Twitter}}">
+                            <th scope="row" class="text-end">Social Links</th>
+                            <td>
+                                <a class="cus-directory-121-val me-2" data-value="{{Facebook}}" href="{{Facebook}}" target="_blank"><i class="fa fa-facebook-official fs-4" aria-hidden="true"></i></a>
+                                <a class="cus-directory-121-val" data-value="{{Twitter}}" href="{{Twitter}}" target="_blank"><i class="fa fa-twitter-square fs-4" aria-hidden="true"></i></a></th>
+                            </td>
+                        </tr>
+                        <tr class="cus-directory-121-coupon" data-src="{{Coupon}}">
+                            <th scope="row" class="text-end">Coupons</th>
+                            <td><img class="img-fluid" src="{{Coupon}}"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span class="fw-bold mb-2 d-block w-100">Profile</span>
+                                <span class="d-block w-100" style="white-space: pre-wrap;">{{Profile}}</span>
+                            </td>
+                        </tr>
+                        <tr class="cus-directory-121-val" data-value="{{Address1}}{{City}}{{State}}{{Country}}{{Zip}}">
+                            <td colspan="2">
+                                <span class="fw-bold mb-2 d-block w-100">Map</span>
+                                <span class="d-block w-100">
+                                    <iframe id="cus-directory-121-map" scrolling="no" marginheight="0" marginwidth="0" src="" width="100%" height="600" frameborder="0"></iframe>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {{RepeatEnd}}
+        <div class="my-3 text-center">
+            <a class="cus-directory-121-back btn text-white" href="{{PutDomain}}directory-{{CategoryFile}}-<<SubMenuId>>.htm"><i class="fa fa-chevron-left" aria-hidden="true"></i> Go back</a>
+        </div>
+    </div>
+</div>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+.cus-121-label {border-bottom: 4px solid #bdcde3;}
+.cus-121-label > span{position: relative;}
+.cus-121-label > span:before {background: #dc3545;position: absolute;display: inline-block;content: "";width: 100%;height: 4px;bottom: -6px;}
+.cus-directory-121-wrap {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");background-attachment: fixed;}
+.cus-default-submenu a, .cus-directory-121-category-label {color: gray !important;text-decoration: none;}
+.cus-default-submenu a:hover, .cus-directory-121-category-label:hover {color: #0d6efd !important;}
+.cus-directory-121-back {background-color: #8c6ad1 !important;border-color: #7a58bf !important;}
+.cus-directory-121-back:hover {background: #7a58bf !important;}
+.cus-directory-121-img[data-src*="/blank.png"], .cus-directory-121-coupon[data-src*="/blank.png"], .cus-directory-121-val[data-value=""] {display: none !important;}
+</style>
+<script>
+/* title */
+document.title = document.getElementsByClassName("cus-directory-121-name")[0].innerText;
+/* label */
+document.getElementsByClassName("cus-directory-121-category-label")[0].innerText = document.getElementsByClassName("cus-directory-121-category-hidden")[0].innerText;
+document.getElementsByClassName("cus-directory-121-category-label")[0].setAttribute("href",document.getElementsByClassName("cus-directory-121-category-hidden")[0].getAttribute("data-href"));
+document.getElementsByClassName("cus-directory-121-back")[0].setAttribute("href",document.getElementsByClassName("cus-directory-121-category-hidden")[0].getAttribute("data-href"));
+/* website */
+var wst = document.getElementsByClassName("cus-directory-121-site")[0];
+wst.innerText = wst.innerText.split("://").pop();
+wst.innerText = wst.innerText.split("www.").pop();
+if(wst.getAttribute("href").indexOf("http") == -1) {
+wst.setAttribute("href", "http://" + wst.getAttribute("href"));
+}
+/* map */
+var map_address = document.getElementsByClassName('cus-directory-121-address')[0].innerText.replace(/\s+/g, "%20");
+map_address = (map_address == "") ? "" : map_address + ",";
+var map_city = document.getElementsByClassName('cus-directory-121-city')[0].innerText.replace(/\s+/g, "%20");
+map_city = (map_city == "") ? "" : map_city + ",";
+var map_state = document.getElementsByClassName('cus-directory-121-state')[0].innerText.replace(/\s+/g, "%20");
+map_state = (map_state == "") ? "" : map_state + ",";
+var map_country = document.getElementsByClassName('cus-directory-121-country')[0].innerText.replace(/\s+/g, "%20");
+map_country = (map_country == "") ? "" : map_country;
+var map_zip = document.getElementsByClassName('cus-directory-121-zip')[0].innerText.replace(/\s+/g, "%20");
+map_zip = (map_zip == "") ? "" : "-" + map_zip;
+var map_loc = map_address + map_city + map_state + map_country + map_zip;
+document.getElementById('cus-directory-121-map').setAttribute('src','https://maps.google.com/maps?width=100%25&height=600&hl=en&q=' + map_loc + '&t=&z=14&ie=UTF8&iwloc=B&output=embed')
+</script>
+{{LayoutDirectoryPage3End}} 
+
+{{SectionValuesBegin}}
+{{LayoutSection<<SubMenuId>>Begin}}
+{{LayoutSection<<SubMenuId>>Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:<<SubMenuId>>}}
+{{File:section<<SubMenuId>>.htm}}
+{{ReplaceJavascriptChars:No}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue, Updated}}
+<div class="w-100 d-block cus-submenu-header"><script type="text/javascript" language="JavaScript">GetSubMenuHeader<<SubMenuId>>();</script></div>
+<div class="cus-section-121-container container-fluid px-0">
+    <p class="cus-121-label my-2 position-relative">        
+        <span class="text-dark fw-bold text-uppercase border-top border-4 border-red position-relative z-index-2">            
+            <span class="cus-default-menu hpe-in-menu-only" data-menu="{{MenuId}}">{{Menu}}</span><i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
+            <span class="cus-default-submenu hpe-in-submenu-only" data-menu="{{MenuId}}" data-submenu="{{SubMenuId}}">{{SubMenu}}</span>        
+        </span>    
+    </p>
+    {{RepeatBegin}}
+        {{If Counter<=TotalArticlesPage}}
+            <div class="cus-section-121-block mb-4 mb-lg-2 mx-0 pb-2 border-bottom row hpe-in-section" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-menu="{{Menu}}" data-submenu="{{SubMenu}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+                <div class="col-lg-5 mb-2 mb-lg-0 px-0">
+                    <a href="{{HeadingLink}}">
+                        <div class="ratio-3-2 cus-zoom" data-cus-src="{{HeadingImage}}">
+                            <div class="img-content">
+                                <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid" />
+                            </div>
+                        </div>
+                   </a>
+                </div>
+                <div class="col-lg-7 px-0 px-lg-2">
+                    <p class="cus-section-121-heading mb-1">
+                        <a class="d-inline-block text-decoration-none fs-4 fw-bold text-black lh-base line-2" href="{{HeadingLink}}">{{Heading}}</a>
+                    </p>
+                    <p class="cus-section-121-date d-inline-block text-decoration-none fs-6 text-muted lh-1 mb-2">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> {{IssueDate}}
+                    </p>
+                    <p class="cus-section-121-body line-4 text-dark fs-5 mb-2 lh-base">
+                        {{Body}}
+                    </p>
+                    <p class="cus-section-121-more">
+                        <a class="d-inline-block text-decoration-none fs-5 text-dark lh-1 fst-italic" href="{{HeadingLink}}">{{more}}</a>
+                    </p>
+                </div>
+            </div>
+        {{Else}}
+            <div class="cus-section-121-archive mb-4 mb-lg-2 mx-0 pb-2 border-bottom row hpe-in-section" style="display: none;" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-menu="{{Menu}}" data-submenu="{{SubMenu}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+                <div class="col-lg-5 mb-2 mb-lg-0 px-0">
+                    <a href="{{HeadingLink}}">
+                        <div class="ratio-3-2 cus-zoom" data-cus-src="{{HeadingImage}}">
+                            <div class="img-content">
+                                <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid" />
+                            </div>
+                        </div>
+                </a>
+                </div>
+                <div class="col-lg-7 px-0 px-lg-2">
+                    <p class="cus-section-121-heading mb-1">
+                        <a class="d-inline-block text-decoration-none fs-4 fw-bold text-black lh-base line-2" href="{{HeadingLink}}">{{Heading}}</a>
+                    </p>
+                    <p class="cus-section-121-date d-inline-block text-decoration-none fs-6 text-muted lh-1 mb-2">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> {{IssueDate}}
+                    </p>
+                    <p class="cus-section-121-body line-4 text-dark fs-5 mb-2 lh-base">
+                        {{Body}}
+                    </p>
+                    <p class="cus-section-121-more">
+                        <a class="d-inline-block text-decoration-none fs-5 text-dark lh-1 fst-italic" href="{{HeadingLink}}">{{more}}</a>
+                    </p>
+                </div>
+            </div>
+        {{EndIf}}
+        {{If TotalArticlesArchive=0}}
+            <style>.DisplayFlag{display:none;}</style>
+        {{EndIf}}
+        {{If Counter=TotalArticlesPage}}
+        <div class="cus-section-121-archivemore DisplayFlag text-center position-relative border-bottom" style=" ">                
+            <span class="cus-section-121-load-more cus-cursor-pointer border border-primary rounded fw-bold lh-lg px-5 mt-3 mb-5 d-inline-block text-primary text-black-hover shadow-sm">                    
+                <more class="">More in</more> {{SubMenu}}
+            </span>                
+            <center style="top: 0;left: 50%;transform: translateX(-50%);" class="cus-section-121-load-more-i d-none mt-4 position-absolute"><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin text-primary fs-3"></i></center>            
+        </div>
+        {{EndIf}}
+    {{RepeatEnd}}
+</div>
+<style>
+.cus-121-label::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.2rem;
+    background: rgba(221, 7, 7, 0.2);
+    margin-top: -0.2rem;
+    z-index: 2;
+}
+.cus-121-label > span{position: relative;}
+.cus-section-121-archivemore-active {display: none !important;}
+.cus-section-121-archivemore span:hover {
+    border-color: #000 !important;
+}
+
+.cus-section-121-archivemore-active~.cus-section-121-archive {
+    display: flex !important;
+}
+
+.cus-section-121-archivemore-active {
+    display: none !important;
+}
+
+div[data-cus-src*="lib/images/blank.png"]::after {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+color: gray;
+font-weight: bold;
+font-size: 1.5rem;
+width: 100%;
+text-align: center;
+padding: 0 1rem;
+}
+</style>
+<script>
+/* SubMenu Title */
+document.title = "{{SubMenu}}";
+/* Load More Button */
+if(document.getElementsByClassName('cus-section-121-load-more').length) {
+document.getElementsByClassName('cus-section-121-load-more')[0].addEventListener('click', function(){
+document.getElementsByClassName('cus-section-121-archivemore')[0].classList.add('cus-section-121-archivemore-active');
+});
+}
+/* Blank Image Text */
+var cus_domain = "{{PutDomain}}";
+if (cus_domain.split('/').length > 4) {
+cus_domain = cus_domain.split('://').pop().split('/').slice(1).join('/').split('/').shift();
+} else {
+cus_domain = cus_domain.split('://').pop().split('/').shift();
+}
+document.getElementsByClassName("cus-section-121-container")[0].insertAdjacentHTML("afterend", "<style>div[data-cus-src*='lib/images/blank.png']::after {content: '" + cus_domain + "';</style>");
+</script>
+<div class="w-100 d-block cus-submenu-footer"><script type="text/javascript" language="JavaScript">GetSubMenuFooter<<SubMenuId>>();</script></div>
+{{LayoutSection<<SubMenuId>>End}}
+{{SectionValuesEnd}}
+
+{{LayoutNewsLetter1Begin}}
+{{LayoutNewsLetter1Limit10}}
+{{ReplaceJavascriptChars:No}}
+{{SortBy:Issue Desc}}
+<html><head></head><body style="font: 13px Trebuchet MS"><br><table cellpadding="3" style="background:#ECECEC;border:2px solid #088484;padding:5px;border-radius:10px;"><tbody><tr><td align="center" colspan="2"><a href="{{Home}}"><img style="max-width:300px;" src="Logo Image"></a><br><font size="3" face="Trebuchet MS"><strong>Welcome to {{Company}}!</strong></font></td></tr>
+{{RepeatBegin}}
+<tr><td style="background:#088484;height: 25px;border-radius: 3px;vertical-align: middle;" colspan="2" align="LEFT" style="{{SubMenuNoRepeatCSSDisplay}}"><font size="2" face="Trebuchet MS" ><a style="text-decoration:none;color:white;text-transform: uppercase;" href="{{SubMenuLink}}" target="_BLANK"><strong>{{SubMenuNoRepeat}}</strong></a></font></td></tr><tr>
+<td align="LEFT"><a href="{{HeadingLink}}"><img style="max-width:100px;" src="{{HeadingImage}}" alt="" /></a></td><td align="LEFT"><font size="2" face="Trebuchet MS"><strong><a style="text-decoration:none;" href="{{HeadingLink}}">{{Heading}}</a><strong></font></td></tr>
+{{RepeatEnd}}
+</tbody></table></body></html>
+{{LayoutNewsLetter1End}}
+
+{{ArticleValuesBegin}}
+<div class="hpe-article-detail" data-submenu={{SubMenuId}} data-detailid="{{ArticleId}}">
+    <p class="cus-121-label my-2 position-relative">        
+        <span class="text-dark fw-bold text-uppercase border-top border-4 border-red position-relative z-index-2">            
+            <span class="cus-default-menu">{{Menu}}</span><i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
+            <span class="cus-default-submenu"><a class="text-gray text-decoration-none" href="{{SubMenuLink}}">{{SubMenu}}</a></span>        
+        </span>    
+    </p>
+    <h1 class="cus-default-heading pageheading layout_pageheading custom_color_{{MenuId}} text-black fw-bold mb-3">{{Heading}}</h1>
+    <div class="mb-2 text-muted">
+        <span class="pagebyline layout_pagebyline cus-default-byline"><span class="text-primary">{{<span class="text-muted">By</span> :By:<span class="px-1 text-muted">•</span>}}</span></span>
+        <span class="pageissuedate layout_pageissuedate custom_color_{{MenuId}} cus-default-date"><i class="fa fa-calendar me-1" aria-hidden="true"></i><span class="cus-default-date-text">{{IssueDate}}</span></span>
+    </div>
+    <div class="cus-default-share-top sharebody layout_sharebody pageheading top_share w-100 mb-2 f-left">{{ShareToolsTop}}</div>
+    <div class="pagebody layout_pagebody text-dark">
+        <figure class="cus-default-figure figure mb-2 float-start" data-photo-align="{{PictureAlignment}}" data-src="{{Picture1}}">
+            <img src="{{Picture1}}" class="cus-default-img figure-img img-fluid" alt="{{Heading}}">
+            <figcaption class="cus-default-caption figure-caption text-center line-3">{{Picture1Caption}}</figcaption>
+        </figure>
+        <div class="cus-default-body mb-2 text-dark float-start float-lg-none">{{Body}}</div>
+        <div class="cus-default-sourceline mb-2 w-100 text-muted fst-italic">{{— :Source}}</div>
+        <div class="cus-default-share-bottom sharebody layout_sharebody bottom_share w-100 my-3 f-left">{{ShareToolsBottom}}</div>
+    </div>
+    <div class="cus-default-comment opinionbody layout_opinionbody mb-2 w-100 f-left">{{AllowComments:}}</div>
+</div>
+<style>
+.cus-121-label::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.2rem;
+    background: rgba(221, 7, 7, 0.2);
+    margin-top: -0.2rem;
+    z-index: 2;
+}    
+.pagedropcap {float:none;}
+.opinionbody .opinionbutton {display: none;}
+.cus-default-submenu a:hover {color: #0d6efd !important;}
+.cus-default-caption:empty {display: none !important;}
+.opiniontitle {margin-top: 20px;border-bottom: 1px solid #dee2e6 !important;font-weight: bold;color: #2c2f2d;font-size: 1.25rem;}
+.opinionheading {font-size: 0.875rem;color:#1574ba;font-weight: bold;margin-top: 10px;float: left;width: 100%;}
+.opinionbody {font-size: 0.875rem;color: #6c757d;float: left;width: 100%;}
+.opinionbody iframe {margin-top: 20px;}
+.cus-121-label > span{position: relative;}
+.cus-default-body iframe, .cus-default-body embed {max-width: 100%;}
+.cus-default-figure[data-src=""],.cus-default-figure[data-src*="/blank.png"] {display:none !important}
+@media all and (min-width: 992px) {
+.cus-default-figure[data-photo-align="Left"] {padding-right: 1rem;}
+.cus-default-figure[data-photo-align="Right"] {padding-left: 1rem;float: right !important;}
+.cus-default-figure[data-photo-align="Center"] {float: none !important;display: flex;justify-content: center;align-items: center;flex-direction: column;}
+}
+</style>
+<script>
+/* Caption width */
+function setIntervalLimited(callback, interval, x) {
+for (var i = 0; i < x; i++) {
+setTimeout(callback, i * interval);
+}
+}
+setIntervalLimited(function() {
+var dcn = document.getElementsByClassName('cus-default-caption');
+if (dcn.length) {
+for (var j = 0; j < dcn.length; j++) {
+if(dcn[j].innerHTML != "") {
+dcn[j].style.width = document.getElementsByClassName('cus-default-img')[j].offsetWidth + "px";
+}
+}
+}
+}, 2000, 5);
+/* Comment Form Show */
+if (document.getElementsByClassName('opinionbutton').length) {
+var cb_length = document.getElementsByClassName('opinionbutton').length;
+for (i = 0; i < cb_length; i++) {
+var cb_c = document.getElementsByClassName('opinionbutton')[i];
+var cb_url = cb_c.getAttribute('onclick').split("',").shift().split("OpenPopup2('").pop();
+var cb_cf = document.createElement('iframe');
+cb_cf.src = cb_url;
+cb_cf.width = '100%';
+cb_cf.id = 'CB_FRAME_' + i;
+cb_cf.setAttribute('style', 'border: medium none; overflow: hidden;');
+cb_cf.setAttribute('scrolling', 'no');
+cb_cf.setAttribute('onload', 'iFrameResize({log:true}, \'#' + cb_cf.id + '\');');
+cb_c.parentNode.insertBefore(cb_cf, cb_c.nextSibling);
+}
+}
+/* Reader Comment */
+if(document.getElementsByClassName('opiniontitle').length) {
+var rc = document.getElementsByClassName('opinionheading').length;
+document.getElementsByClassName('opiniontitle')[0].innerHTML = "<i class='fa fa-comments' aria-hidden='true'></i> " + rc + " Comments";
+var och = document.getElementsByClassName('opinionheading');
+var ouser = '<i class="fa fa-user-circle-o text-muted" aria-hidden="true"></i> ';
+for(var m=0; m< och.length; m++) {
+  och[m].innerHTML = ouser + och[m].innerHTML;
+}
+}
+</script>
+{{ArticleValuesEnd}}
+
+
+
+{{FormValuesBegin}}
+{{ReplaceFieldHelpWithFieldCaption:Yes}}
+{{SelectValue:Select}}
+{{RequiredValue:*}}
+{{FieldHelpValue:<b class="tooltip tooltip-top-right"><<FieldHelp>></b>}}
+{{TextAreaCount:<label id="<<FieldName>>-memo4"></label> <label id="<<FieldName>>-memo42"></label>}}
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{FormTitle}}</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="/iframe-resizer-master/js/iframeResizer.contentWindow.js"></script>
+<script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/bl.js"></script>
+<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!--<link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">-->
+<script>
+function ChangeInputFocus(obj, evt, cname) {
+/*if (evt.type == "focus")
+obj.className = cname;
+else if (evt.type == "blur")
+/*obj.className = cname;*/
+}
+</script>
+<style>
+#CustomForm {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='32' viewBox='0 0 16 32'%3E%3Cg fill='%23c9d1cb' fill-opacity='0.16'%3E%3Cpath fill-rule='evenodd' d='M0 24h4v2H0v-2zm0 4h6v2H0v-2zm0-8h2v2H0v-2zM0 0h4v2H0V0zm0 4h2v2H0V4zm16 20h-6v2h6v-2zm0 4H8v2h8v-2zm0-8h-4v2h4v-2zm0-20h-6v2h6V0zm0 4h-4v2h4V4zm-2 12h2v2h-2v-2zm0-8h2v2h-2V8zM2 8h10v2H2V8zm0 8h10v2H2v-2zm-2-4h14v2H0v-2zm4-8h6v2H4V4zm0 16h6v2H4v-2zM6 0h2v2H6V0zm0 24h2v2H6v-2z'/%3E%3C/g%3E%3C/svg%3E");background-attachment: fixed;}
+.form-check-label:hover {color: #0d6efd;cursor: pointer;}
+.cus-form-loader .cus-form-loading {display: block !important;}
+.cus-form-loader .formbody fieldset, .cus-form-loader .system_text.footer_text {opacity: 0.5;pointer-events: none;}
+#cus-form-button-loader {display:none;}
+.cus-form-loader footer, .cus-form-loader button {cursor: no-drop;}
+.fast-spin {-webkit-animation: fa-spin 1s infinite linear;animation: fa-spin 1s infinite linear;}
+.cus-form-loader #SUBMIT1 {display:none;}
+.cus-form-loader #cus-form-button-loader {display:inline-block;}
+.form-floating > .form-control:focus ~ label {color: #0d6efd !important;}
+.form-control:not(:disabled):not([readonly])::file-selector-button {position: absolute;right: 0;border-radius: 5px !important;}
+.input-file-preview {display: none;}
+.input-file-preview img {max-width: 30%;max-height: 200px;border: 1px solid #ced4da;border-radius: 5px;padding: 5px;box-sizing: border-box;cursor: zoom-in;}
+.w-96 {width: 96% !important;}
+.p-valid {color: green;}
+.p-valid:before {position: relative;left: -10px;content: "✔";}
+.p-invalid {color: red;}
+.p-invalid:before {position: relative;left: -10px;content: "✖";font-size: 0.875rem !important;}
+.open-eye, .close-eye {position: absolute;right: 2%;top: 50%;transform: translate(0,-50%);cursor: pointer;}
+.open-eye i:hover, .close-eye i:hover {color: gray !important;}
+.cus-form-help:before {content: "\f05a";font-family: FontAwesome;padding-left: 0.5rem;padding-right: 0.5rem;}
+.cus-form-help {display: none;}
+.cus-form-help:empty {display: none !important;}
+.form-control:focus ~ .cus-form-help {display: block;}
+.formdivider.formdivider_custom {border-left: 5px solid #ffc107;}
+.form-floating > .form-control {caret-color: #0d6efd;}
+</style>
+</head>
+<body>
+<div class="formbody">
+<div class="body p-2">
+<!--FormError-->
+<!--FormMessage-->
+<form class="custom-form p-3 mx-0 border rounded" enctype="multipart/form-data" autocomplete="off" id="CustomForm" method="post" name="CustomForm" onsubmit="return Vailidate(this);">
+<!--FKeys-->
+{{FormEmailSubject}} 
+{{FormEmailConfirmMessage}} 
+{{FormEmailFormat}} 
+{{FormEmailTo}} 
+{{FormEmailCC}}
+<center class="fw-bold mb-3 fs-3 text-secondary">{{FormTitle}}</center>
+<fieldset>
+<div class="system_text Header_text mb-5 text-center">{{FormHeader}}</div>
+
+{{RepeatBegin}} 
+
+{{If FieldType=System}}
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldValue}}" id="{{FieldName}}" placeholder="{{FieldRequired}} {{FieldCaption}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom form-control formfieldinput_ReadOnly" {{FieldRequiredBrowser}} >
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=ReadOnly}}
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" placeholder="{{FieldRequired}} {{FieldCaption}}" type="{{FieldType}}" readonly class="formfieldinput formfieldinput_custom form-control formfieldinput_ReadOnly" {{FieldRequiredBrowser}} >
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=Divider}}
+
+<section class="w-100 mb-3 mt-5">
+<div class="label w-100 mb-2">
+<div class="inp_custom">
+<div class="formdivider formdivider_custom" style="border-bottom: 2px solid #343a40;">
+<span class="text-white d-inline-block fw-bold bg-dark px-3 py-2">{{FieldCaption}}</span>
+</div>
+</div>
+</div>
+</section>
+
+{{ElseIf FieldType=Memo}}
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<{{TextArea}} class="formfieldinput formfieldinput_custom form-control" style="height: 100px" id="{{FieldName}}" placeholder="{{FieldRequired}} {{FieldCaption}}" rows="4" cols="50" name="{{FieldName}}" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus'), LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}')" onblur="ChangeInputFocus(this, event, 'formfieldinput')" id="{{FieldName}}-memo"  onkeyup="LimitCharacters(this, '{{FieldName}}-memo4', '{{FieldName}}-memo42','{{FieldLengthW}}');" maxlength="{{FieldLength}}" NAME="{{FieldName}}" {{FieldRequiredBrowser}}></{{TextArea}}>
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+<div class="formfieldname text-start">
+<label class="textarea text-muted" style="font-size:0.875rem">{{TextAreaCount}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=File}}
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input input-file w-100 form-floating">
+<input type="file" id="{{FieldName}}" class="form-control" name="{{FieldName}}" accept="image/*" {{FieldRequiredBrowser}}>
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} Upload {{FieldCaption}}</label>
+<div id="{{FieldName}}-prv-div" class="input-file-preview mt-2 w-100">
+<img id="{{FieldName}}_prvx" src="#" alt="" onclick="window.open(this.src, '_blank');" />
+<span id="{{FieldName}}_sizex" class="text-muted" style="font-size: 0.875rem !important"></span>
+</div>
+</div>
+<script>
+{{FieldName}}.onchange = evt => {
+const [file] = {{FieldName}}.files
+if (file) {
+document.getElementById('{{FieldName}}-prv-div').style.display = "block";
+{{FieldName}}_prvx.src = URL.createObjectURL(file);
+var fileUpload = document.getElementById("{{FieldName}}");
+if (typeof(fileUpload.files) != "undefined") {
+var size = parseFloat(fileUpload.files[0].size / 1024).toFixed(2);
+document.getElementById('{{FieldName}}_sizex').innerHTML = "[File Size: "+ size + " KB]"
+} 
+}
+}
+</script>
+</section>
+
+{{ElseIf FieldType=Password}}
+
+<section id="{{FieldName}}_sectionx" class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom form-control"  placeholder="{{FieldRequired}} {{FieldCaption}}" {{FieldRequiredBrowser}} value="">
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+<div id="{{FieldName}}-form-forget" class="float-start w-100" style="display: none;"><a class="text-decoration-none mt-1 d-block" href="/target_form2.asp?twindow=Form&smenu=106&pform={{ForgotPassword}}&mad=No&sname=target_form2.asp&site={{PutDomainX}}">Forgot Password?</a></div>
+<div id="{{FieldName}}_show_p" class="open-eye text-dark"><i aria-hidden="true" class="fa fa-eye fs-5"></i></div>
+<div id="{{FieldName}}_hide_p" class="close-eye text-dark" style="display:none;"><i class="fa fa-eye-slash fs-5 text-danger" aria-hidden="true"></i></div>
+</div>
+<div id="{{FieldName}}_message">
+<h6>Password must contain the following:</h6>
+<p id="{{FieldName}}_letter" class="p-invalid">A <b>lowercase</b> letter</p>
+<p id="{{FieldName}}_capital" class="p-invalid">A <b>capital (uppercase)</b> letter</p>
+<p id="{{FieldName}}_number" class="p-invalid">A <b>number</b></p>
+<p id="{{FieldName}}_special" class="p-invalid">A <b>special character</b> such as ! # $ % @</p>
+<p id="{{FieldName}}_length" class="p-invalid">Minimum <b>8 characters</b></p>
+</div>
+<style>
+#{{FieldName}}_message {
+display: none;
+background: #d1e7dd;
+color: #000;
+position: relative;
+padding: 20px;
+margin-top: 10px;
+box-sizing: border-box;
+border-radius: 10px;
+}
+#{{FieldName}}_message::before {
+content: "";
+position: absolute;
+top: -14px;
+left: 30px;
+border-color: transparent transparent #d1e7dd transparent;
+border-style: solid;
+border-width: 7px;
+}
+#{{FieldName}}_message p {
+padding: 0 0 0 10px;
+font-size: 0.875rem;
+margin-bottom: 7px !important;
+}
+#{{FieldName}}:invalid {
+  background: none !important;
+}
+</style>
+<script>
+{{FieldName}}_show_p.addEventListener('click', function() {
+{{FieldName}}.type = "text";
+{{FieldName}}_show_p.style.display = "none";
+{{FieldName}}_hide_p.style.display = "block";
+});
+{{FieldName}}_hide_p.addEventListener('click', function() {
+{{FieldName}}.type = "password";
+{{FieldName}}_show_p.style.display = "block";
+{{FieldName}}_hide_p.style.display = "none";
+});
+if(window.location.href.indexOf("pform={{Login}}") != -1){
+document.getElementById("{{FieldName}}-form-forget").style.display = "block";
+}
+if(window.location.href.indexOf("pform={{Login}}") == -1){
+var myInput = document.getElementById("{{FieldName}}");
+var letter = document.getElementById("{{FieldName}}_letter");
+var capital = document.getElementById("{{FieldName}}_capital");
+var special = document.getElementById("{{FieldName}}_special");
+var number = document.getElementById("{{FieldName}}_number");
+var length = document.getElementById("{{FieldName}}_length");
+myInput.onfocus = function() {
+document.getElementById('{{FieldName}}_sectionx').previousElementSibling.scrollIntoView();
+document.getElementById("{{FieldName}}_message").style.display = "block";
+}
+myInput.onblur = function() {
+}
+myInput.onkeyup = function() {
+myInput.value = myInput.value.replace(/\s+/g, '');
+var lowerCaseLetters = /[a-z]/g;
+if(myInput.value.match(lowerCaseLetters)) {
+letter.classList.remove("p-invalid");
+letter.classList.add("p-valid");
+} else {
+letter.classList.remove("p-valid");
+letter.classList.add("p-invalid");
+}
+var upperCaseLetters = /[A-Z]/g;
+if(myInput.value.match(upperCaseLetters)) {
+capital.classList.remove("p-invalid");
+capital.classList.add("p-valid");
+} else {
+capital.classList.remove("p-valid");
+capital.classList.add("p-invalid");
+}
+var numbers = /[0-9]/g;
+if(myInput.value.match(numbers)) {
+number.classList.remove("p-invalid");
+number.classList.add("p-valid");
+} else {
+number.classList.remove("p-valid");
+number.classList.add("p-invalid");
+}
+var specialChar = /[!#$%@]/g;
+if(myInput.value.match(specialChar)) {
+special.classList.remove("p-invalid");
+special.classList.add("p-valid");
+} else {
+special.classList.remove("p-valid");
+special.classList.add("p-invalid");
+}
+if(myInput.value.length >= 8) {
+length.classList.remove("p-invalid");
+length.classList.add("p-valid");
+} else {
+length.classList.remove("p-valid");
+length.classList.add("p-invalid");
+}
+}
+}
+</script>
+</section>
+
+{{ElseIf FieldType=Date}}
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" class="form-control" VALUE="{{FieldDefaultValue}}" placeholder="{{FieldRequired}} {{FieldCaption}}" id="{{FieldName}}" style="cursor: default;" type="{{FieldType}}" {{FieldRequiredBrowser}} value="">
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=DropDown}}
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="select w-100 form-floating">
+<select id="{{FieldName}}" name="{{FieldName}}" {{FieldRequiredBrowser}} class="form-select">
+{{FieldDropDown}}
+</select>
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=Hidden}} 
+
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}" value="{{FieldDefaultValue}}"> 
+
+{{ElseIf FieldType=Decimal}} 
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom form-control" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldRequired}} {{FieldCaption}}" value="" {{FieldRequiredBrowser}}>
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=Number}} 
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}" type="{{FieldType}}"  onkeypress="return keyRestrict(event,this.value,'Decimal')" class="formfieldinput formfieldinput_custom form-control" onfocus="ChangeInputFocus(this, event, 'formfieldinputfocus')" onblur="ChangeInputFocus(this, event, 'formfieldinput formfieldinput_custom')" maxlength="{{FieldLength}}" placeholder="{{FieldRequired}} {{FieldCaption}}" {{FieldRequiredBrowser}}>
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+
+{{ElseIf FieldType=CheckBox}} 
+
+<section class="w-96 mb-3 form-check" style="margin-left:2%">
+<input id="{{FieldName}}" name="{{FieldName}}"  type="{{FieldType}}" name="checkbox" class="form-check-input" {{FieldRequiredBrowser}}>
+<label for="{{FieldName}}" class="form-label form-check-label user-select-none" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">{{FieldRequired}} {{FieldCaption}}</label>
+</section>
+{{ElseIf FieldType=Captcha}}
+
+<section class="captcha-section w-96 mb-3" style="margin-left: 2%;">
+<div class="input w-100 form-floating">
+{{FieldCaptcha}}
+</div>
+<div class="captcha-text"><span>Type Security code from the above picture.</span></div>
+</section>
+
+{{Else}}
+
+<section class="w-96 mb-3" style="margin-left:2%" data-bs-toggle="tooltip" data-bs-placement="auto" title="{{FieldHelpB}}">
+<div class="input w-100 form-floating">
+<INPUT NAME="{{FieldName}}" VALUE="{{FieldDefaultValue}}" id="{{FieldName}}"  maxlength="{{FieldLength}}" placeholder="{{FieldRequired}} {{FieldCaption}}" type="{{FieldType}}"  class="formfieldinput formfieldinput_custom form-control" {{FieldRequiredBrowser}}>
+<label for="{{FieldName}}" class="form-label text-muted">{{FieldRequired}} {{FieldCaption}}</label>
+</div>
+</section>
+{{EndIf}} 
+
+{{RepeatEnd}}
+
+</fieldset>
+<footer class="text-center mt-3">
+<button class="button btn btn-primary shadow text-capitalize" id="SUBMIT1" type="submit" onclick="document.getElementById('CustomForm').classList.add('was-validated');"><span class="py-1 px-3 d-inline-block">{{FormButtonSubmit}}</span></button>
+<i id="cus-form-button-loader" class='fa fa-circle-o-notch fa-spin fast-spin fs-1 text-primary'></i>
+</footer>
+<div class="system_text footer_text mt-5 mb-3 text-center">{{FormFooter}}</div>
+</form>
+</div>
+<script language="javascript">GetGoogleAnalytics('FORM:{{FormName}}');</script>
+<!-- Tooltip -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
+<!-- /Tooltip -->
+</div>
+</body>
+</html>
+{{FormValuesEnd}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- Layouts --- 
+{{LayoutMenus1Begin}}
+{{File:menu_horizontal.js}}
+{{Where:MenuTypeInclude:'Horizontal'}}
+function GetMenuH(){document.write({{PutHtmlChar39}}
+<nav class="navbar navbar-expand-lg navbar-light px-3 py-2 py-lg-0 w-100">    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">        
+        <span class="navbar-toggler-icon cus-menu-bar"></span>        
+        <span class="navbar-toggler-icon cus-menu-close d-none">            
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">                <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>                <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>            </svg>        
+        </span>    
+    </button>    
+    <span class="cus-menu-social"></span>    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">        
+        <ul class="navbar-nav flex-wrap mt-2 mt-lg-0"> 
+            {{RepeatBegin1}}           	            
+            <li class="cus-menu-li nav-item dropdown py-1 py-lg-2 pe-0 hp-menu" data-menu="{{MenuId}}" data-link="{{MenuLink}}" data-view="Horizontal" data-order="{{MenuOrder}}">	                
+                <a id="navbarDropdown" class="nav-link cus-menu-id-{{MenuId}} fs-5 dropdown-toggle fw-bold text-uppercase text-black hpe-in-menu px-2 px-lg-2" style="{{MenuStyle}}" href="{{MenuLink}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{Menu}}</a>	                
+                <ul class="dropdown-menu cus-submenu-ul fade-up mb-2 mb-lg-0 mx-3 mx-lg-0 hp-submenu" data-menu="{{MenuId}}" aria-labelledby="navbarDropdown" data-bs-popper="none">    
+                    {{RepeatBegin2}}                                                
+                    <li class="cus-submenu-li hpe-in-submenu" style="{{CSSDisplay}}" data-menu="{{MenuId}}" data-submenu="{{SubMenuId}}" data-link="{{SubMenuLink}}">                                
+                        <a class="dropdown-item cus-submenu-id-{{SubMenuId}} fs-5 fw-bold text-dark border-bottom border-gray nx-2 transition text-red-hover" href="{{SubMenuLink}}">{{SubMenu}}</a>                            
+                    </li>     
+                    {{RepeatEnd2}}                                               
+                </ul>	            
+            </li>	
+            {{RepeatEnd1}}                
+        </ul>	
+    </div>
+</nav>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+
+.cus-menu-li .nav-link,
+.cus-submenu-li .dropdown-item {
+    font-family: pt sans, sans-serif;
+}
+
+.no-submenu .dropdown-toggle::after {
+    display: none;
+}
+
+#navbarDropdown:empty {
+    display: none;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: transparent;
+}
+
+.cus-menu-social {
+    display: none;
+}
+
+.cus-active-submenu {
+    color: #dd0707 !important;
+}
+
+@media all and (min-width: 992px) {
+    .dropdown-menu {
+        box-shadow: 0 1rem 3rem rgba(66, 53, 53, 0.575) !important;
+    }
+
+    .navbar-nav li:hover>ul.dropdown-menu {
+        display: block;
+        margin-top: 0px;
+    }
+
+    .navbar .dropdown-menu-end {
+        right: 0;
+        left: auto;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        margin-top: 0;
+    }
+
+    .navbar .nav-item:hover .nav-link {
+        color: #b6b6b6 !important
+    }
+
+    .navbar .dropdown-menu.fade-down {
+        top: 80%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+
+    .navbar .dropdown-menu.fade-up {
+        top: 180%;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        transition: .3s;
+        opacity: 1;
+        visibility: visible;
+        top: 100%;
+        transform: rotateX(0deg);
+    }
+
+    .dropdown-menu.fade-up:before {
+        content: "";
+        position: absolute;
+        top: -14px;
+        color: white;
+        left: 30px;
+        border-color: transparent transparent white transparent;
+        border-style: solid;
+        border-width: 7px;
+    }
+
+    .nav-item.dropdown:hover #navbarDropdown::after {
+        transform: rotate(180deg);
+        transition: 300ms linear;
+        transition-property: transform;
+    }
+
+    .fixed-top {
+        top: -40px;
+        transform: translateY(40px);
+        transition: transform .3s;
+        opacity: 0.9;
+    }
+
+    .fixed-top:hover {
+        opacity: 1;
+    }
+
+    .dropdown-menu {
+        z-index: 999;
+    }
+
+    .cus-active-menu {
+        border-top: 0.3rem solid #000 !important;
+    }
+
+    .cus-menu-li {
+        border-top: 0.3rem solid transparent;
+    }
+}
+
+@media all and (max-width: 991px) {
+    .cus-active-menu>.nav-link {
+        border-left: 0.3rem solid #dd0707 !important;
+    }
+
+    .nav-item.dropdown {
+        border-bottom: 1px solid;
+    }
+
+    .navbar-dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon.cus-menu-bar {
+        display: none !important;
+        background: none !important;
+    }
+
+    .navbar-dark .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon.cus-menu-close {
+        display: block !important;
+        background: none !important
+    }
+
+    .cus-social-links {
+        display: none !important;
+    }
+
+    .cus-menu-social {
+        display: inline-block;
+    }
+
+    .dropdown-toggle::after {
+        position: absolute;
+        right: 1rem;
+        top: 1.25rem;
+    }
+}
+</style>
+<script>
+/* Active Menu */
+document.querySelectorAll(`.cus-submenu-li`).forEach(s => {
+    var list = s.parentNode.parentNode.getAttribute(`data-submenu-list`);
+    list = (list == null) ? `-` : list;
+    s.parentNode.parentNode.setAttribute(`data-submenu-list`, `${list}${s.getAttribute("data-submenu")}-`);
+});
+var sid = ReadSubmenu();
+if (sid != undefined || sid != "") {
+    document.querySelectorAll(".cus-menu-li").forEach(m => {
+        if (m.getAttribute("data-submenu-list").indexOf(`-${sid}-`) != -1) {
+            m.classList.add("cus-active-menu");
+        }
+    });
+    if (document.querySelector(`.cus-submenu-id-${sid}`)) {
+        document.querySelector(`.cus-submenu-id-${sid}`).classList.add("cus-active-submenu");
+    }
+} /*HideSubMenu*/
+document.querySelectorAll(".dropdown-menu li").forEach(x => {
+    if (x.style.display == "none") {
+        x.classList.add("remove-submenu");
+    }
+});
+document.querySelectorAll(".remove-submenu").forEach(y => y.remove()); /*MenuWithoutSubmenu*/
+document.querySelectorAll(".dropdown-menu").forEach(z => {
+    if (z.children.length == 0) {
+        z.parentNode.classList.add("no-submenu");
+        z.style.display = "none";
+    }
+});
+document.querySelectorAll(".no-submenu").forEach(a => {
+    var n = a.children[0].getAttribute(`onclick`);
+    if (n == `` || n == null) {
+        a.children[0].setAttribute(`onclick`, `location.href = \'${a.children[0].getAttribute("href")}\';`);
+    }
+}); /*MenuHTML*/
+for (var mh = 0; mh < document.getElementsByClassName("dropdown-toggle").length; mh++) {
+    var mh_this = document.getElementsByClassName("dropdown-toggle")[mh];
+    if (mh_this.innerHTML == "" && mh_this.parentNode.children.length == 3) {
+        mh_this.nextSibling.setAttribute("class", mh_this.getAttribute("class"));
+        mh_this.nextSibling.setAttribute("id", mh_this.getAttribute("id"));
+        mh_this.nextSibling.setAttribute("style", mh_this.getAttribute("style"));
+        mh_this.remove();
+    }
+} /*SubMenuHTML*/
+document.querySelectorAll(".dropdown-item").forEach(s => {
+    if (s.innerHTML.trim() == "" && s.nextElementSibling) {
+        s.nextElementSibling.setAttribute("class", s.getAttribute("class"));
+        s.nextElementSibling.setAttribute("style", s.getAttribute("style"));
+        s.remove();
+    }
+});  /* Social icons (mobile) */
+if (window.screen.width <= 992 && document.getElementsByClassName("cus-social-links").length > 0) {
+    var np = document.getElementsByClassName("cus-menu-social")[0];
+    var op = document.getElementsByClassName("cus-social-links")[0];
+    while (op.childNodes.length > 0) {
+        np.appendChild(op.childNodes[0]);
+    }
+}
+<\/script>
+{{PutHtmlChar39}});}
+{{LayoutMenus1End}}
+
+
+{{LayoutH1Begin}}
+{{LayoutH1Limit4}}
+{{SortBy:Issue,Updated}}
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+{{BlankValue-TotalArticles}}
+function GetHighlights1(){document.write({{PutHtmlChar39}}
+<div id="slider121" class="carousel carousel-dark slide cus-blocks-1-121 cus-activeX-100 pointer-event" data-bs-ride="carousel" data-bs-interval="false" style="display: none;">    
+    <div class="carousel-inner cus-carousel-121-1-inner">  
+        {{RepeatBegin}}                  
+        <div class="carousel-item cus-carousel-121-1-item hpe-in-hl1" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">                
+            <div class="row">                    
+                <div class="col-lg-6 cus-carousel-121-1-col-1 pe-0">                        
+                    <a href="{{HeadingLink}}">                            
+                        <div class="ratio-3-2">                                
+                            <div class="img-content">                                    
+                                <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid">                                
+                            </div>                            
+                        </div>                        
+                    </a>                    
+                </div>                    
+                <div class="col-lg-6 cus-carousel-121-1-col-2 px-0" style="margin-top: 25.5638px;">                        
+                    <article class="mb-0 w-100 d-block p-4" style="background-color:var(--bl-theme);height: inherit;">                            
+                        <p>
+                            <a class="fw-normal text-uppercase text-white text-decoration-none fw-bold" href="{{SubMenuLink}}">{{SubMenu}}</a>
+                        </p>                            
+                        <p>
+                            <a class="d-block text-decoration-none fs-1 line-4 text-dark fw-bold lh-sm text-uppercase transition text-black text-red-hover" href="{{HeadingLink}}">{{Heading}}</a>
+                        </p>                            
+                        <p class="mb-0 text-white fw-bold"><i class="fa fa-calendar me-1" aria-hidden="true"></i> {{IssueDate}}</p>                        
+                    </article>                    
+                </div>                
+            </div>            
+        </div> 
+        {{RepeatEnd}}                                        
+    </div>    
+    <div class="carousel-indicators cus-carousel-121-1-indicators d-none d-lg-inline"></div>    
+    <button class="carousel-control-prev" type="button" data-bs-target="#slider121" data-bs-slide="prev">        
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>        
+        <span class="visually-hidden">Previous</span>    
+    </button>    
+    <button class="carousel-control-next" type="button" data-bs-target="#slider121" data-bs-slide="next">        
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>        
+        <span class="visually-hidden">Next</span>    
+    </button>
+</div>
+<style>
+    @media all and (min-width: 993px) {
+    .cus-blocks-1-121 {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    .cus-carousel-121-1-col-2 {
+        transform: translateX(-25.5638px);
+        height: 340.85px;
+    }
+    .cus-blocks-1-121.cus-activeX-100 {
+        opacity: 1;
+        transform: translateX(0);
+        transition: 300ms ease-in-out;
+    }
+
+    .cus-carousel-121-1-col-2::after {
+        content: "";
+        background: var(--bl-theme);
+        position: absolute;
+        height: 100%;
+        top: 0;
+    }
+}
+
+#slider121:hover .carousel-control-next::before,
+#slider121:hover .carousel-control-prev::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: .5;
+    transition: .1s ease-in;
+}
+
+#slider121 .carousel-control-next,
+#slider121 .carousel-control-prev {
+    width: 5%;
+}
+
+.cus-carousel-121-1-indicators {
+    left: auto;
+}
+
+#slider121.carousel-dark .carousel-indicators [data-bs-target] {
+    background-color: #000;
+    height: 20px;
+    width: 20px;
+    color: #fff;
+    line-height: 20px;
+    border: 0;
+    border-radius: 50px;
+    font-size: .8rem;
+    text-indent: 0;
+    margin-left: 7px;
+    margin-right: 7px;
+    padding: 2px
+}
+
+#slider121 .carousel-indicators.cus-carousel-121-1-indicators .active {
+    transform: scale(1.3);
+    transition: 100ms ease-in-out;
+}
+
+#slider121.carousel-dark .carousel-indicators [data-bs-target]:hover {
+    background: #000;
+    opacity: 1;
+    transition: .1s ease-in-out
+}
+
+@media all and (max-width: 992px) {
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        transform: scale(2);
+        opacity: 1 !important;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        opacity: 1 !important;
+    }
+
+    #slider121 .carousel-control-next::before,
+    #slider121 .carousel-control-prev::before {
+        content: "";
+        background: #fff;
+        position: absolute;
+        width: 100%;
+        height: 30% !important;
+        opacity: .8;
+    }
+
+    #slider121 .carousel-control-next,
+    #slider121 .carousel-control-prev {
+        top: 30% !important;
+        transform: translateY(-30%);
+    }
+
+    #slider121 .carousel-control-next-icon,
+    #slider121 .carousel-control-prev-icon {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+@media all and (max-width: 576px) {
+
+    #slider121 .carousel-control-next,
+    #slider121 .carousel-control-prev {
+        width: 8%;
+    }
+
+    #slider121 .carousel-control-next::before,
+    #slider121 .carousel-control-prev::before {
+        height: 10% !important;
+    }
+
+    #slider121 .carousel-control-next,
+    #slider121 .carousel-control-prev {
+        top: -30% !important;
+        transform: translateY(0%);
+    }
+}
+</style>
+<script>
+/* Activate First Slider */
+document.getElementsByClassName("cus-carousel-121-1-item")[0].classList.add("active"); 
+/* Add Buttons */
+var s1 = document.getElementsByClassName("cus-carousel-121-1-item");
+if (s1.length > 0) {
+    document.getElementsByClassName("cus-carousel-121-1-indicators")[0].insertAdjacentHTML("beforeend", "<button type=\'button\' data-bs-target=\'#slider121\' data-bs-slide-to=\'0\' class=\'active\' aria-current=\'true\' aria-label=\'Slide 1\'>1</button>");
+}
+for (si = 2; si <= s1.length; si++) {
+    var sj = si - 1;
+    document.getElementsByClassName("cus-carousel-121-1-indicators")[0].insertAdjacentHTML("beforeend", "<button type=\'button\' data-bs-target=\'#slider121\' data-bs-slide-to=\'" + sj + "\' aria-label=\'Slide " + si + "\'>" + si + "</button>");
+} 
+/* Moving Article area over image*/
+if (document.body.clientWidth > 992) {
+    var st = 0;
+    setTimeout(function () {
+        st = 1;
+    }, 100);
+    var stx = setInterval(function () {
+        if (st == 1) {
+            document.getElementsByClassName("cus-blocks-1-121")[0].classList.add("cus-activeX-100");
+            clearInterval(stx);
+        }
+        var sh = document.getElementsByClassName("cus-carousel-121-1-inner")[0].offsetHeight;
+        var sp = 15;
+        var sh = sh - ((sh * sp) / 100);
+        var sm = (sh * sp) / 200;
+        var bm = sm + 12;
+        var c2 = document.getElementsByClassName("cus-carousel-121-1-col-2");
+        for (c = 0; c < c2.length; c++) {
+            c2[c].style.height = sh + "px";
+            c2[c].style.marginTop = sm + "px";
+            c2[c].style.transform = "translateX(-" + sm + "px)";
+        }
+        document.getElementById("slider121").insertAdjacentHTML("beforeend", "<style>.cus-carousel-121-1-col-2::after{width:" + sm + "px;right:-" + sm + "px}</style>");
+        document.getElementsByClassName("cus-carousel-121-1-indicators")[0].style.bottom = bm + "px";
+    }, 10);
+}
+<\/script>
+{{PutHtmlChar39}});DisplayHighlight('slider121');}
+{{LayoutH1End}}
+
+
+
+{{LayoutH2Begin}}
+{{LayoutH2Limit10}}
+{{SortBy:Issue,Updated}}
+{{BlankValue-TotalArticles}}
+function GetHighlights2(){document.write(`
+<div id="slider131" class="carousel slide mb-4 pointer-event" data-bs-ride="carousel" data-bs-interval="false" style="display: none;">    
+    <div class="carousel-inner cus-blocks-5-131-inner hp-slide-left">  
+        {{RepeatBegin}}                                                                              
+            <div class="carousel-item cus-blocks-5-131-item position-relative hpe-in-hl2" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">                
+                <a href="{{HeadingLink}}">                    
+                    <div class="ratio-3-2">                        
+                        <div class="img-content cus-blocks-5-131-item-img">                            
+                            <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid">                        
+                        </div>                    
+                    </div>                
+                </a>                
+                <h3 class="cus-blocks-5-131-box d-block w-100 px-3 z-index-1" style="bottom:50px;background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.95) 100%) repeat scroll 0 0;margin-top: 0px;padding-bottom: 19px;">                    
+                    <div class="d-block mb-0 mb-md-2">
+                        <a href="{{SubMenuLink}}" class="text-decoration-none text-light text-black-hover text-uppercase bg-dark fs-5_1 p-1 d-inline-block">{{SubMenu}}</a>
+                    </div>                    
+                    <a class="cus-blocks-5-131-heading text-decoration-none text-white text-white-hover text-uppercase d-block line-2" href="{{HeadingLink}}">{{Heading}}</a>                    
+                    <div class="d-block text-white fs-6 mt-1">
+                        <i aria-hidden="true" class="fa fa-clock-o pe-1 fs-5"></i>{{MonthI3}} {{DayI}}, {{YearI}}
+                    </div>                
+                </h3>            
+            </div>   
+        {{RepeatEnd}}         
+    </div>    
+    <div class="carousel-indicators cus-blocks-5-131-indicators"></div>    
+    <button class="carousel-control-prev" type="button" data-bs-target="#slider131" data-bs-slide="prev">        
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>        
+        <span class="visually-hidden">Previous</span>    
+    </button>    
+    <button class="carousel-control-next" type="button" data-bs-target="#slider131" data-bs-slide="next">        
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>        
+        <span class="visually-hidden">Next</span>    
+    </button>
+</div>
+<style>
+#slider131 .carousel-control-next,
+#slider131 .carousel-control-prev {
+    width: 5%;
+    height: 20%;
+    top: 65%;
+    transform: translateY(-50%);
+}
+#slider131:hover .carousel-control-next,
+#slider131:hover .carousel-control-prev {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.cus-blocks-5-131-item-img::after {
+
+    bottom: 0;
+    content: " ";
+    display: inline;
+    height: 65%;
+    position: absolute;
+    width: 100%;
+}
+@media all and (max-width: 992px) {
+    #slider131 .carousel-control-next,
+    #slider131 .carousel-control-prev {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .cus-blocks-5-131-indicators {
+        position: relative;
+    }
+    .cus-blocks-5-131-indicators [data-bs-target] {
+        background-color: black !important;
+    }
+    .cus-blocks-5-131-box {
+        bottom: 0 !important;
+    }
+    .cus-blocks-5-131-heading {
+        font-size: 1rem !important
+    }
+}
+</style>
+<script>
+/* Activate First Slider */
+document.getElementsByClassName("cus-blocks-5-131-item")[0].classList.add("active"); /* Add Buttons */
+var s1 = document.getElementsByClassName("cus-blocks-5-131-item");
+if (s1.length > 0) {
+  document.getElementsByClassName("cus-blocks-5-131-indicators")[0].insertAdjacentHTML("beforeend", "<button type='button' data-bs-target='#slider131' data-bs-slide-to='0' class='active' aria-current='true' aria-label='Slide 1'></button>");
+}
+for (si = 2; si <= s1.length; si++) {
+  var sj = si - 1;
+  document.getElementsByClassName("cus-blocks-5-131-indicators")[0].insertAdjacentHTML("beforeend", "<button type='button' data-bs-target='#slider131' data-bs-slide-to='" + sj + "' aria-label='Slide " + si + "'></button>");
+}   
+<\/script>
+`);
+DisplayHighlight('slider131');
+}
+{{LayoutH2End}}
+
+
+{{LayoutH4Begin}}
+{{LayoutH4Limit40}}
+{{SortBy:Issue, Updated}}
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+function GetHighlights4(){document.write({{PutHtmlChar39}}
+<div id="cus-blocks-3-121" class="cus-blocks-3-121 mb-3 mt-3" style="display: none;">    
+    <p class="cus-121-label my-2 position-relative">
+        <span class="text-dark fw-bold text-uppercase border-top border-4 border-red position-relative z-index-2">LATEST NEWS</span>
+    </p>    
+    <div class="row">   
+            {{RepeatBegin}}                               
+                <div class="cus-blocks-3-121-box col-lg-6 row mb-3 mx-0 d-none hpe-in-hl4" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">                    
+                    <!--<div class="col-lg-12 col-md-3 cus-blocks-3-121-img px-0 border-top border-bottom border-start rounded-top-start rounded-bottom-start overflow-hidden">                        
+                        <a href="{{HeadingLink}}">                            
+                            <div class="ratio-3-2 cus-zoom">                                
+                                <div class="img-content">                                    
+                                    <img src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" class="img-fluid">                                
+                                </div>                            
+                            </div>                        
+                        </a>                    
+                    </div>                    
+                    <div class="col-lg-12 col-md-9 cus-blocks-3-121-article py-2 py-md-0 border-top border-bottom border-end rounded-top-end rounded-bottom-end">                        
+                        <p class="mb-0">
+                            <a class="text-decoration-none text-primary text-uppercase fw-bold fs-5_1 text-secondary-hover" href="{{SubMenuLink}}">{{SubMenu}}</a>
+                        </p>                        
+                        <p class="mb-0">
+                            <a class="text-decoration-none text-black text-red-hover line-3 fw-bold" href="{{HeadingLink}}">{{Heading}}</a>
+                        </p>                        
+                        <p class="mb-0 text-gray fs-5_1"><i class="fa fa-calendar me-1" aria-hidden="true"></i> {{DayNameI1}}, {{MonthI1}} {{DayI}} {{YearI}}</p>                    
+                    </div>-->                
+                </div>  
+            {{RepeatEnd}}
+        </div>    
+    <div class="row mb-3 pb-3 d-flex justify-content-center border-bottom">        
+            <p class="text-center cus-blocks-3-121-load-more-p">            
+                <span class="cus-blocks-3-121-load-more user-select-none cus-cursor-pointer fw-bold text-primary border border-primary rounded lh-lg px-5 d-inline-block shadow-sm text-black-hover" data-load-start="" data-load-show="" data-load-max="">                
+                    <more class="pe-2">Load More</more><i class="fa fa-angle-down fw-bold" aria-hidden="true"></i>            
+                </span>        
+            </p>        
+            <center class="cus-blocks-3-121-load-more-i d-none my-1 position-absolute"><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin text-primary fs-3"></i></center>
+        </div>
+</div>
+<script>
+/* show first 10 articles */    
+document.querySelectorAll(".cus-blocks-3-121-box").forEach((x, i) => {
+  if(i < 10) {
+    if(document.querySelectorAll(".cus-blocks-3-121-box")[i]) {
+      document.querySelectorAll(".cus-blocks-3-121-box")[i].classList.remove("d-none");
+      document.querySelectorAll(".cus-blocks-3-121-box")[i].innerHTML = document.querySelectorAll(".cus-blocks-3-121-box")[i].innerHTML.replace("<!--", "").replace("-->", "");
+    }
+  }
+});
+var a = "cus-blocks-3-121-box";
+var l = "cus-blocks-3-121-load-more";
+var v = 6; /* show next articles batch */
+var t = document.getElementsByClassName(a).length;
+if (document.getElementsByClassName(a)[1]) {
+    document.getElementsByClassName(l)[0].classList.remove("d-none");
+}
+
+function countActiveBoxes() {
+    var u = 0;
+    var b = document.getElementsByClassName(a);
+    for (i = 0; i < b.length; i++) {
+        if (b[i].childElementCount > 0) {
+            u++;
+        }
+    }
+    return u;
+}
+document.getElementsByClassName(l)[0].setAttribute("data-load-start", countActiveBoxes());
+document.getElementsByClassName(l)[0].setAttribute("data-load-show", v + countActiveBoxes());
+document.getElementsByClassName(l)[0].setAttribute("data-load-max", t);
+document.getElementsByClassName(l)[0].addEventListener("click", function () {
+    document.getElementsByClassName(l + "-p")[0].classList.add("invisible");
+    setTimeout(function () {
+        document.getElementsByClassName(l + "-i")[0].classList.remove("d-none");
+    }, 100);
+    setTimeout(function () {
+        document.getElementsByClassName(l + "-i")[0].classList.add("d-none");
+        document.getElementsByClassName(l + "-p")[0].classList.remove("invisible");
+        var st = document.getElementsByClassName(l)[0].getAttribute("data-load-start");
+        var sw = document.getElementsByClassName(l)[0].getAttribute("data-load-show");
+        for (i = parseInt(st); i < parseInt(sw); i++) {
+            if (document.getElementsByClassName(a)[i]) {
+                if (document.getElementsByClassName(a)[i].childElementCount == 0) {
+                    document.getElementsByClassName(a)[i].classList.remove("d-none");
+                    document.getElementsByClassName(a)[i].innerHTML = document.getElementsByClassName(a)[i].innerHTML.replace("<!--", "").replace("-->", "");
+                }
+            }
+        }
+        document.getElementsByClassName(l)[0].setAttribute("data-load-start", countActiveBoxes());
+        document.getElementsByClassName(l)[0].setAttribute("data-load-show", v + countActiveBoxes());
+        if (document.getElementsByClassName(l)[0].getAttribute("data-load-start") == document.getElementsByClassName(l)[0].getAttribute("data-load-max")) {
+            document.getElementsByClassName(l)[0].classList.add("d-none");
+        }
+    }, 800);
+});
+<\/script>
+<style>
+.cus-121-label::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.2rem;
+    background: rgba(221, 7, 7, 0.2);
+    margin-top: -0.2rem;
+    z-index: 2;
+}
+
+.cus-blocks-3-121-load-more:hover {
+    border-color: #000 !important;
+}
+
+@media all and (max-width: 992px) {
+
+    .cus-blocks-3-121-article,
+    .cus-blocks-3-121-img {
+        border: 1px solid #dee2e6 !important;
+        border-radius: 0 !important;
+    }
+}    
+</style>
+');DisplayHighlight('cus-blocks-3-121');}
+{{LayoutH4End}}
+
+{{LayoutH7Begin}}
+{{LayoutH7Limit7}}
+{{SortBy:Issue,Updated}}
+{{BlankValue-TotalArticles}}
+function GetHighlights7(){document.write({{PutHtmlChar39}}
+<div id="cus-blocks-2-121" class="cus-blocks-2-121 shadow my-4" style="display: none;">    
+    <div class="row me-lg-0">        
+        <div class="col-lg-2 pe-lg-0">            
+            <span class="cus-blocks-2-121-label fw-bold text-uppercase text-center p-1 bg-black text-white d-block lh-lg hpe-custom-text-5" style="border-right: 5px solid var(--bl-theme);">TRENDING NOW</span>        
+        </div>        
+        <div id="ticker121" class="carousel carousel-dark slide col-lg-10 d-flex align-items-center bg-body pointer-event" data-bs-ride="carousel">            
+            <div class="carousel-inner cus-carousel-121-2-inner bg-body position-relative hp-ticker">  
+                {{RepeatBegin}}                                  
+                    <div class="carousel-item cus-carousel-121-2-item hpe-in-hl7" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">                        
+                        <span class="col-1 d-flex d-lg-none align-items-center pe-0"><i class="fa fa-circle text-black" style="transform: scale(0.8);" aria-hidden="true"></i></span>                        
+                        <article class="cus-carousel-121-2-article mb-0 w-100 d-block text-start">                            
+                            <a class="cus-carousel-121-2-link d-block text-decoration-none line-1 text-black fw-bold transition text-red-hover" href="{{HeadingLink}}">
+                                <span class="text-decoration-none text-primary text-uppercase fw-bold fs-5_1 d-none d-lg-inline">{{SubMenu}}</span>
+                                <span class="d-none d-lg-inline"><i class="fa fa-circle text-warning mx-1" style="transform: scale(0.4);color:var(--bl-theme) !important;" aria-hidden="true"></i></span>{{Heading}}
+                            </a>                        
+                        </article>                    
+                    </div> 
+                {{RepeatEnd}}                                                            
+            </div>        
+        </div>    
+    </div>
+</div>
+<style>
+    @media all and (max-width: 992px) {.cus-blocks-2-121-label {border-width:0 !important;}    }
+</style>
+<script>
+    /* Activate First Slider */
+if (document.body.clientWidth > 992) {
+    document.getElementsByClassName("cus-carousel-121-2-item")[0].classList.add("active");
+} else {
+    document.getElementById("ticker121").setAttribute("data-bs-interval", "false");
+    document.getElementById("ticker121").classList.remove("bg-body");
+    var ta = document.getElementsByClassName("cus-carousel-121-2-item");
+    for (var t = 0; t < ta.length; t++) {
+        ta[t].classList.add("row", "d-flex", "mx-auto", "float-end", "py-3", "border-bottom");
+        document.getElementsByClassName("cus-carousel-121-2-link")[t].classList.remove("line-1");
+        document.getElementsByClassName("cus-carousel-121-2-article")[t].classList.add("col-11", "ps-0");
+        document.getElementsByClassName("cus-carousel-121-2-article")[t].classList.remove("w-100");
+    }
+}    
+<\/script>
+{{PutHtmlChar39}});
+DisplayHighlight('cus-blocks-2-121');}
+{{LayoutH7End}}
+
+{{LayoutArticleGroup22Begin}}
+{{LayoutArticleGroup22Limit4}}
+{{Where:SubMenuIdInclude:276}}
+{{SortBy:Issue, Updated}}
+function GetArticleGroup22(){document.write({{PutHtmlChar39}}<div class="cus-photogallery-121">              
+    <p class="cus-29-label my-2 position-relative"><span class="text-dark fw-bold text-uppercase border-top border-4 border-red position-relative z-index-2 hpe-in-submenu-only" data-menu="{{MenuId}}" data-submenu="{{SubMenuId}}">{{SubMenu}}</span></p>    
+    <div class="row mx-0 hp-parent"> 
+        {{RepeatBegin}}               
+        <div class="col-sm-6 col-md-4 px-1 mb-2 hpe-in-video-g-yt-id" data-article="{{ArticleId}}" data-url="{{HeadingLink}}" data-menu="{{Menu}}" data-submenu="{{SubMenu}}" data-date="{{MonthI}}_{{DayI}}_{{YearI}}">            
+            <div class="cus-videogallery-{{SubMenuId}}-link position-relative d-block text-decoration-none border rounded overflow-hidden">                                
+                <a class="cus-videogallery-{{SubMenuId}}-link position-relative d-block text-decoration-none border rounded overflow-hidden" href="javascript:void(0);" onclick="OpenYouTube(`{{Body}}`.trim());">                    
+                    <div class="ratio-16-9">                        
+                        <div class="img-content cus-dark-img">                            
+                            <img class="cus-videogallery-{{SubMenuId}}-img img-fluid lazy loaded" src="https://img.youtube.com/vi/{{Body}}/maxresdefault.jpg" data-body="{{Body}}" data-src="{{HeadingImage}}" alt="{{HeadingImageAlt}}" data-was-processed="true">                        
+                        </div>                    
+                    </div>                    
+                    <span class="cus-videogallery-{{SubMenuId}}-play position-absolute translate-middle top-50 start-50">
+                        <i class="fa fa-play fs-1 text-white text-shadow-1" aria-hidden="true"></i>
+                    </span>                    
+                    <p class="cus-videogallery-{{SubMenuId}}-heading mb-0 bg-dark text-white p-2 fs-6 lh-lg fw-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="{{Heading}}">
+                        <span class="line-1">{{Heading}}</span>
+                    </p>                
+                </a>            
+            </div>        
+        </div>     
+        {{RepeatEnd}}                                     
+    </div>       
+</div>        
+<style>     
+.cus-29-label::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 0.2rem;
+	background: rgba(221, 7, 7, 0.2);
+	margin-top: -0.2rem;
+	z-index: 2;
+}
+.cus-29-label>span {
+    position: relative;
+}
+.cus-videogallery-29-link:hover .cus-videogallery-29-play i {
+    transform: scale(1.2);
+    transition: 200ms linear;
+}
+
+.cus-videogallery-29-play i {
+    transition: 100ms linear;
+}                    
+</style>            
+<script>       
+/* SubMenu Title */
+if (ReadSubmenu() == 29) {
+  document.title = "{{SubMenu}}";
+} /* If Full URL used instead of just ID*/
+var vu = document.getElementsByClassName("cus-videogallery-29-img");
+for (i = 0; i < vu.length; i++) {
+  if (vu[i].src.split("http").length > 2) {
+    /*Full URL*/
+    var tu = vu[i].getAttribute("data-body");
+    if (tu.indexOf("embed") != -1 && tu.indexOf("you") != -1) {
+      /*YouTube*/
+      tu = tu.split("/")[4].slice(0, 11);
+      vu[i].src = `https://img.youtube.com/vi/${tu}/maxresdefault.jpg`;
+    } else if (tu.indexOf("watch") != -1 && tu.indexOf("you") != -1) {
+      /*YouTube*/
+      var bx = new URL(tu);
+      tu = bx.searchParams.get(`v`).slice(0, 11);
+      vu[i].src = `https://img.youtube.com/vi/${tu}/maxresdefault.jpg`;
+    } else if (tu.indexOf("vimeo") != -1 && tu.indexOf("player.vimeo") == -1) {
+      /*Vimeo*/
+      tu = tu.split("/")[3];
+      vu[i].src = `https://vumbnail.com/${tu}.jpg`;
+    } else {
+      /*Other*/
+      vu[i].src = vu[i].getAttribute("data-src");
+    }
+  }
+}
+
+function OpenYouTube(id) {
+  if (!document.getElementById('f_YT_button')) {
+    if (id.indexOf("/") != -1) {
+      /*Full URL*/
+      if (id.indexOf("embed") != -1 && tu.indexOf("you") != -1) {
+        /*Youtube Video*/
+        id = id.split("/")[4].slice(0, 11);
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://www.youtube.com/embed/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      } else if (id.indexOf("watch") != -1 && tu.indexOf("you") != -1) {
+        /*Youtube Video*/
+        var bx = new URL(id);
+        id = bx.searchParams.get(`v`).slice(0, 11);
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://www.youtube.com/embed/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      } else if (id.indexOf("vimeo") != -1 && id.indexOf("player.vimeo") == -1) {
+        /*Vimeo Video*/
+        id = id.split("/")[3];
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://player.vimeo.com/video/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      } else {
+        /*Other Video*/
+        var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+      }
+    } else {
+      var msg = `<iframe id="f-mfp-iframe" class="f-mfp-iframe" allowfullscreen="" src="https://www.youtube.com/embed/${id}?autoplay=1" scrolling="no" frameborder="0"></iframe>`;
+    }
+    document.getElementsByTagName("body")[0].insertAdjacentHTML(`beforeend`, `<button id='f_YT_button' type='button' data-bs-toggle='modal' data-bs-target='#f_YT' style='display:none;'></button><div class='f_YT_box modal fade' id='f_YT' data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='f_YTLabel' aria-hidden='true'><div class='modal-dialog modal-dialog-centered mx-auto'><div class='modal-content' id='YT_parent'><button type='button' class='f_YT_close btn-close position-absolute' data-bs-dismiss='modal' aria-label='Close'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='#fff' class='bi bi-x-lg' viewBox='0 0 16 16'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/></svg></button><div class='modal-body text-center' style='white-space: pre-wrap;'><p id='f_loader'><i class='fa fa-spinner fa-spin' aria-hidden='true'></i></p>${msg}</div></div></div><style>#YT_parent{width:70vw;height:39.43vw}.modal-dialog{max-width:none;display:flex;align-items:center;justify-content:center}.modal-dialog-scrollable .modal-content {max-height: none;overflow:visible;}.modal-body {padding:0;} .f_YT_close{right:-1rem;z-index:999;top:-1rem;background-color:red;border-radius:50px;padding:.5rem;opacity:1;box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);background-image:none;color:#fff;display:flex;justify-content:center;align-items:center;font-weight:700;font-size:18px}.f_YT_close:hover{color:#fff;background-color: #333;opacity:1} .f-mfp-iframe {width:100%;height:100%;}#f_loader{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}#f_loader i{font-size:4rem;color:red;opacity:0.8}@media (max-width:576px){#YT_parent{width:85vw;height:48vw}}</style></div>`);
+    document.getElementById('f-mfp-iframe').onload = function () {
+      document.getElementById("f_loader").remove();
+    };
+    document.getElementById('f_YT_button').click();
+    document.getElementsByClassName('f_YT_close')[0].addEventListener('click', function () {
+      document.getElementById('f_YT_button').remove();
+      document.getElementsByClassName('f_YT_box')[0].remove();
+    });
+  }
+}       
+</script>}
+{{LayoutArticleGroup22End}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- SM JS --- 
+// BEGIN: Site Manager Add Class
+
+$(document).ready(function(){
+if (window.location.href.indexOf("/responsibility.asp") != -1) {
+$('.my-form').addClass('sitemanager-div');
+}
+});
+
+// END: Site Manager Add Class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- SM CSS --- 
+.my-form.sitemanager-div {
+    display: flex;
+    flex-direction: column;
+  }
+  .my-form.sitemanager-div center {
+    order: 4;
+  }
+  .my-form.sitemanager-div header {
+    order: 1;
+  }
+  .my-form.sitemanager-div fieldset {
+    order: 2;
+  }
+  .my-form.sitemanager-div footer {
+    order: 3;
+  }
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+--- HOME Layout (Head Section) --- 
+<!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="https://bulletlink.com/bootstrap.css">
+    <!-- /bootstrap -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- Home Layout (Java Scripts) ----- 
+
+// BEGIN: Event page JS
+
+$(document).ready(function(){
+if (window.location.href.indexOf('/index262.htm') > - 1) {
+$('.wrapper').addClass('eventPage');
+}
+
+$('.event-sub-box[name="September 2018"]').wrapAll('<div class=\'September2018 monthCSS\' />');
+$('.event-sub-box[name="October 2018"]').wrapAll('<div class=\'October2018 monthCSS\' />');
+$('.event-sub-box[name="November 2018"]').wrapAll('<div class=\'November2018 monthCSS\' />');
+$('.event-sub-box[name="December 2018"]').wrapAll('<div class=\'December2018 monthCSS\' />');
+
+$('.event-sub-box[name="January 2019"]').wrapAll('<div class=\'January2019 monthCSS\' />');
+$('.event-sub-box[name="February 2019"]').wrapAll('<div class=\'February2019 monthCSS\' />');
+$('.event-sub-box[name="March 2019"]').wrapAll('<div class=\'March2019 monthCSS\' />');
+$('.event-sub-box[name="April 2019"]').wrapAll('<div class=\'April2019 monthCSS\' />');
+$('.event-sub-box[name="May 2019"]').wrapAll('<div class=\'May2019 monthCSS\' />');
+$('.event-sub-box[name="June 2019"]').wrapAll('<div class=\'June2019 monthCSS\' />');
+$('.event-sub-box[name="July 2019"]').wrapAll('<div class=\'July2019 monthCSS\' />');
+$('.event-sub-box[name="August 2019"]').wrapAll('<div class=\'August2019 monthCSS\' />');
+$('.event-sub-box[name="September 2019"]').wrapAll('<div class=\'September2019 monthCSS\' />');
+$('.event-sub-box[name="October 2019"]').wrapAll('<div class=\'October2019 monthCSS\' />');
+$('.event-sub-box[name="November 2019"]').wrapAll('<div class=\'November2019 monthCSS\' />');
+$('.event-sub-box[name="December 2019"]').wrapAll('<div class=\'December2019 monthCSS\' />');
+
+$('.event-sub-box[name="January 2020"]').wrapAll('<div class=\'January2020 monthCSS\' />');
+$('.event-sub-box[name="February 2020"]').wrapAll('<div class=\'February2020 monthCSS\' />');
+$('.event-sub-box[name="March 2020"]').wrapAll('<div class=\'March2020 monthCSS\' />');
+$('.event-sub-box[name="April 2020"]').wrapAll('<div class=\'April2020 monthCSS\' />');
+$('.event-sub-box[name="May 2020"]').wrapAll('<div class=\'May2020 monthCSS\' />');
+$('.event-sub-box[name="June 2020"]').wrapAll('<div class=\'June2020 monthCSS\' />');
+$('.event-sub-box[name="July 2020"]').wrapAll('<div class=\'July2020 monthCSS\' />');
+$('.event-sub-box[name="August 2020"]').wrapAll('<div class=\'August2020 monthCSS\' />');
+$('.event-sub-box[name="September 2020"]').wrapAll('<div class=\'September2020 monthCSS\' />');
+$('.event-sub-box[name="October 2020"]').wrapAll('<div class=\'October2020 monthCSS\' />');
+$('.event-sub-box[name="November 2020"]').wrapAll('<div class=\'November2020 monthCSS\' />');
+$('.event-sub-box[name="December 2020"]').wrapAll('<div class=\'December2020 monthCSS\' />');
+
+$('.event-sub-box[name="January 2021"]').wrapAll('<div class=\'January2021 monthCSS\' />');
+$('.event-sub-box[name="February 2021"]').wrapAll('<div class=\'February2021 monthCSS\' />');
+$('.event-sub-box[name="March 2021"]').wrapAll('<div class=\'March2021 monthCSS\' />');
+$('.event-sub-box[name="April 2021"]').wrapAll('<div class=\'April2021 monthCSS\' />');
+$('.event-sub-box[name="May 2021"]').wrapAll('<div class=\'May2021 monthCSS\' />');
+$('.event-sub-box[name="June 2021"]').wrapAll('<div class=\'June2021 monthCSS\' />');
+$('.event-sub-box[name="July 2021"]').wrapAll('<div class=\'July2021 monthCSS\' />');
+$('.event-sub-box[name="August 2021"]').wrapAll('<div class=\'August2021 monthCSS\' />');
+$('.event-sub-box[name="September 2021"]').wrapAll('<div class=\'September2021 monthCSS\' />');
+$('.event-sub-box[name="October 2021"]').wrapAll('<div class=\'October2021 monthCSS\' />');
+$('.event-sub-box[name="November 2021"]').wrapAll('<div class=\'November2021 monthCSS\' />');
+$('.event-sub-box[name="December 2021"]').wrapAll('<div class=\'December2021 monthCSS\' />');
+
+
+/*
+if($('.September2018').height() > $('.November2018').height()) {$('.November2018').css('height', $('.September2018').height());}
+if($('.September2018').height() < $('.November2018').height()) {$('.September2018').css('height', $('.November2018').height());}
+
+if($('.January2019').height() > $('.February2019').height()) {$('.February2019').css('height', $('.January2019').height());}
+if($('.January2019').height() < $('.February2019').height()) {$('.January2019').css('height', $('.February2019').height());}
+
+if($('.March2019').height() > $('.April2019').height()) {$('.April2019').css('height', $('.March2019').height());}
+if($('.March2019').height() < $('.April2019').height()) {$('.March2019').css('height', $('.April2019').height());}
+
+
+if($('.month_right').height() > $('.month_left').height()) {$('.month_left').css('height', $('.month_right').height());}
+if($('.month_left').height() > $('.month_right').height()) {$('.month_right').css('height', $('.month_left').height());}
+*/
+});
+
+$(window).bind('load',function(){ 
+$('.event-container-div div:nth-child(2n+1)').addClass('month_right');
+$('.event-container-div div:nth-child(2n)').addClass('month_left');
+});
+
+// END: Event page JS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- Home Layout (Free Layout) --- 
+{{PutDocType}}
+<html lang="en">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{PutMetaTitle}} 
+    {{PutMetaKeyword}} 
+    {{PutMetaDescription}} 
+    {{PutNoIndex}}
+    <link rel="shortcut icon" href="{{PutDomain}}favicon.ico?v=9.000009">
+    <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/bl2.js"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="https://bulletlink.com/bootstrap.css">
+    <!-- /bootstrap -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.7.min.js" integrity="sha256-/05Jde9AMAT4/o5ZAI23rUf1SxDYTHLrkOco0eyRV84=" crossorigin="anonymous"></script>
+    <!-- /jQuery -->
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- /font -->
+
+    <!-- system -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}settings.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}ads.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}menu_horizontal.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}sections.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}polls.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}articles.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="https://bulletlink.com/lib/iframeResizer.min.js"></script>
+    <!-- /system -->
+
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- /fontAwesome-->
+
+    <!-- general -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}jscript1.js?v=9.000009"></script>
+    <link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+    <!-- /general -->
+
+    <!--StartMH-->
+    <!--MetaSharing-->
+    <!--EndMH-->
+
+    <!-- live-Builder --> 
+    <link type="text/css" rel="stylesheet" href="{{PutDomain}}ufields.css?v=9.000009" />
+    <script type="text/javascript" src="{{PutDomain}}ufields.js?v=9.000009"></script>
+    <!-- /live-Builder --> 
+    {{PutHeadSection}}
+</head>
+
+<body id="blbodymain" class="blbody cus-select-red" style="background-color: var(--bl-body);font-family: 'Jost', sans-serif;">
+
+    <div class="mainbody">
+
+        <!-- sticky ads-->
+        <span class="cus-sticky-ads">{{PutStickyAds}}</span>
+        <!-- /sticky ads-->
+
+        <div class="container-fluid">
+
+            <!-- header -->
+            <div class="cus-121-header row mb-3 bg-light p-lg-3">
+                <div class="row container-bl">
+                    <div class="col-lg-6 d-flex align-items-center user-select-none mt-4 mt-lg-0">
+                        
+                        <span class="cus-121-logo w-100 text-center text-lg-start py-2 py-lg-0 px-5 px-lg-0 hpe-logo" data-logo-width="500">{{PutLogo}}</span>
+                        <style>@media (min-width: 992px) {#logo img {} }</style>
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-end align-items-center">
+
+                        <!-- social links -->
+                        <div class="cus-121-social-links cus-social-links d-flex justify-content-center d-sm-inline-block border-end pe-3 border-secondary">
+                            <div class="position-relative hpe-social">
+                                <a class="text-decoration-none text-white rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-121-icon" href="https://facebook.com/" target="_blank"><i class="fa fa-facebook-square text-warning-hover" aria-hidden="true"></i></a>
+                                <a class="text-decoration-none text-white rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-121-icon" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter-square text-warning-hover" aria-hidden="true"></i></a>
+                                <a class="text-decoration-none text-white rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-121-icon" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin-square text-warning-hover" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <!-- /social links -->
+
+                        <!-- search-->
+                        <div class="cus-121-search text-white fw-bold hpe-gsearch"><i class="fa fa-search text-warning-hover cus-cursor-pointer search-link" aria-hidden="true"></i></div>
+                        {{PutGoogleCustomSearch}}
+                        <div class="search_content">
+                            <div class="search_box"><gcse:searchbox></gcse:searchbox></div>
+                            <div class="search_results"><gcse:searchresults></gcse:searchresults></div>
+                            <div class="search_remove">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                            </svg>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementsByClassName('search-link')[0].addEventListener("click", function() {
+                                document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search for...");
+                                document.getElementsByClassName('search_content')[0].classList.add("search-flex");
+                                document.getElementsByClassName('search_remove')[0].style.display = "block";
+                                document.getElementsByClassName('gsc-results-close-btn')[0].addEventListener("click", function() {
+                                    document.getElementsByClassName('search_content')[0].classList.remove("search-flex");
+                                });
+                            });
+                            document.getElementsByClassName('search_remove')[0].addEventListener("click", function() {
+                                document.getElementsByClassName('search_content')[0].classList.remove("search-flex");
+                                document.getElementsByClassName('search_remove')[0].style.display = "none";                        
+                            });
+                        </script>
+                        <style>
+                            .gsc-adBlock {display: none !important;}
+                            #gsc-i-id1{color:#000!important}
+                            #gsc-i-id1::placeholder{color:#555!important;opacity:1;font-size:inherit!important}
+                            .search_content{display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;background-color:rgba(255,255,255,.98);height:100%;position:fixed;top:100%;opacity:0;left:0;width:100%;z-index:2147483647;transition: 400ms ease-in-out;}
+                            .search-flex{top: 0;opacity: 1;display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;transition: 300ms ease-in-out;}
+                            .search_remove{cursor:pointer;user-select:none;position:absolute;top:10px;left:3%;}
+                            .search_remove:hover{color:var(--bl-theme)}
+                            .gsc-control-cse.gsc-control-cse-en{background-color:transparent;border-width:0;position:absolute}.search_box{border-bottom:2px solid var(--bl-theme);width:70%;padding-bottom:6px}
+                            .gsib_b,.gsst_a{display:none!important}
+                            .gscb_a{display:none!important}
+                            .gsc-input{background-image:none!important}
+                            .gsc-input{background-color:transparent!important}
+                            .gsc-input-box{background-color:transparent!important;border-bottom:0 solid #ff4500!important;border-width:0!important}
+                            .gsc-input{border-width:0!important;color:#fff!important;font-size:20px!important}
+                            .gsc-adBlock{display:none!important}
+                            .search-icon-desk{cursor:pointer}
+                            .search-icon-desk{float:right;height:54px;margin-right:10px}
+                            .search-icon-desk i{border:1px solid #ddd;border-radius:4px;color:#000;display:block;line-height:35px;margin-top:9px;padding:0 12px}
+                            .search-icon-desk i:hover{color:#79655d}
+                            .gsc-results-wrapper-overlay.gsc-results-wrapper-visible {width: 100%;left: 0;top: 0;height: 100%;}
+                            .gcsc-branding {display: none;}
+                            .gsc-search-button.gsc-search-button-v2{padding:10px 18px;line-height:35px;display:inline-block!important;background:var(--bl-theme);border-radius:5px;border-color:var(--bl-theme)}
+                            .gsc-search-button{width:auto!important;float:right!important}.gsc-search-button.gsc-search-button-v2:hover{background:#ddd!important}
+                            .gsc-search-button-v2 svg{fill:#000!important}
+                            .gsc-search-button.gsc-search-button-v2:hover{background:var(--bl-theme)!important;border-color:var(--bl-theme)!important}
+                            .gsc-search-button.gsc-search-button-v2:hover svg{fill:#fff!important}
+                        </style>
+                        <!-- /search-->
+                    </div>
+                    
+                </div>
+                <div class="cus-121-menu col-12 mt-4 px-0">
+                    <script type="text/javascript" language="javascript">GetMenuH();</script>
+              
+                </div>
+
+                <!-- menu -->
+                
+                <!-- /menu -->
+            </div>
+            <!-- /header -->
+
+            <!-- subscribe & app links -->
+            <div class="cus-121-subscribe-box row bg-body p-4 shadow d-none my-5 mx-0">
+                <div class="col-lg-4 text-center">
+                    <h3 class="fw-bold text-primary mb-5">Get Our Newsletter</h3>
+                    <p class="mb-0"><span class="cus-cursor-pointer btn btn-primary px-5 py-1" onclick="OpenPopup5('target_form2.asp?smenu=&pform={{NewsViaEmail}}&minform=Y&mad=No&site={{PutDomainX}}','iframe');">Sign Up</span></p>
+                </div>
+                <div class="col-lg-4 border-start border-end text-center">
+                    <h3 class="fw-bold text-black mb-5">Download our App</h3>
+                    <div class="row mx-0">
+                        <div class="col-6">
+                            <a class="text-decoration-none text-white" href="javascript:void(0);"><span style="" class="bg-black rounded px-4 py-2 lh-lg fs-5"><i aria-hidden="true" class="fa fa-apple mx-2" style="transform: scale(1.5);"></i> App Store</span></a>
+                        </div>
+                        <div class="col-6">
+                            <a class="text-decoration-none text-white" href="javascript:void(0);"><span style="" class="bg-black rounded px-4 py-2 lh-lg fs-5"><i aria-hidden="true" style="transform: scale(1.5);" class="fa fa-play mx-2"></i> Google Play</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h3 class="fw-bold text-success mb-5">Subscribe Now!</h3>
+                    <p class="mb-0"><span class="cus-cursor-pointer btn btn-success px-5 py-1" onclick="OpenPopup5('target_service_package.asp?twindow=ServicePackage&smenu=7&mad=No&sname=target_service_package.asp&site={{PutDomainX}}','iframe');">Subscribe</span></p>
+                </div>
+                <script>
+                    document.getElementsByClassName("cus-121-subscribe")[0].addEventListener("click",function(){
+                        document.getElementsByClassName("cus-121-subscribe-box")[0].classList.remove("d-none");
+                        document.getElementsByClassName("cus-121-subscribe-box")[0].classList.add("cus-121-subscribe-box-active");
+                    });
+                </script>
+            </div>
+            <!-- /subscribe & app links-->
+            
+            
+
+            <!-- 2-columns -->
+            <div class="cus-column-121-row row mb-3 container-bl px-0 px-lg-s">
+                
+                <div class="row mx-0 px-0 px-lg-s">
+                    <div class="cus-column-121-1 col-lg-8 bg-body py-4 px-lg-4">
+              
+            {{PutHighlight2}}
+            {{PutAdGroup30}}
+            {{PutHighlight7}}
+                        {{PutHighlight4}}
+
+                        <!-- previews -->
+                        <div class="row my-3">
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview90}}</div>                            
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview231}}</div>                            
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview232}}</div>                            
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview233}}</div>                            
+                                                     
+                        </div>
+                        <!-- /previews -->
+
+                        <!-- videogallery-->
+                        
+                        <!-- /videogallery-->
+                        <!-- photogallery-->
+                        <div class="row my-5">
+                            <div class="col-12">
+                                {{PutFile:section24.htm}}                                  
+                            </div>
+                        </div>
+                        <!-- /photogallery-->
+                        {{PutAdGroup12}}
+                    </div>
+                    <div class="cus-column-121-2 col-lg-4 border-start px-lg-4 mt-5 mt-lg-0 bg-body py-4">
+                        {{PutAdGroup21}}
+                        {{PutAdGroup28}}
+ {{PutAdGroup24}}
+                        
+                    </div>
+                    <style>@media (max-width: 992px) {.cus-column-121-2 {border-width: 0 !important;} }</style>
+                </div>
+            </div>
+            <!-- /2-columns -->
+
+            <div class="row container-bl my-5">
+                <div class="col-12">     
+                  <span class="gallery_heading">Sponsor Media</span>
+{{PutArticleGroup22}}                                          
+                </div>
+            </div>
+
+            <!-- footer-->
+            <footer class="row bg-black">
+                <div class="col-12 row container-bl py-5">
+                    <div class="col-lg-4 row mb-3 mb-lg-0">
+                        <div class="col-2"><i class="fa fa-commenting-o fs-1" style="color:#ff0200" aria-hidden="true"></i></div>
+                        <div class="col-10 ps-0 text-white">
+                            <h3>Need Help?</h3>
+                            <p class="hpe-custom-text-1 float-start"><script>Section1();</script></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 row mb-3 mb-lg-0">
+                        <div class="col-2"><i class="fa fa-phone fs-1" style="color:#ff0200" aria-hidden="true"></i></div>
+                        <div class="col-10 ps-0 text-white">
+                            <h3>Call Us</h3>
+                            <p class="hpe-custom-text-2 float-start"><span>214-369-3200<span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 row px-lg-0">
+                        <div class="col-2"><i class="fa fa-map-marker fs-1" style="color:#ff0200;" aria-hidden="true"></i></div>
+                        <div class="col-10 ps-0 text-white">
+                            <h3>Find Us</h3>
+                            <p class="hpe-custom-text-3 float-start"><span> Minority Business News USA • 2150 S. Central Expressway • McKinney • Texas • 75070<span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="background-color: #ff0200;">
+                    <div class="col-12 row py-1 container-bl">
+                        <div class="col-lg-6 fw-bold text-black text-center text-lg-start mb-3 mb-lg-0"><script type="text/javascript" language="JavaScript">GetCopyright();</script></div>
+                        <div class="col-lg-6 cus-121-bottom-links">
+                            <p class="mb-0 float-none float-lg-end text-center hpe-bottom-links">
+                                <a class="text-decoration-none text-black fw-bold text-white-hover me-2" href="javascript:void(0);" onclick="OpenPopup5('target_form2.asp?smenu=&pform=ContactUs&minform=Y&mad=No&site={{PutDomainX}}','iframe');">Contact Us</a>
+                                <a class="text-decoration-none text-black fw-bold text-white-hover me-2" href="https://bulletlink.com/client-mbnusa/index325.htm">About Us</a>
+                                <a class="text-decoration-none text-black fw-bold text-white-hover" href="/web/20240306185622/{{PutDomain}}sitemap.xml">site map</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- /footer-->
+        </div>
+    </div>
+
+    <!-- go to top -->
+    <div class="cus-scroll-top position-fixed bg-dark text-white fs-4 px-2 rounded-circle d-flex align-items-center justify-content-center">
+        <i class="fa fa-angle-up lh-base text-shadow-3"></i>
+    </div>
+    <script>
+        if (document.getElementsByClassName("cus-scroll-top")) {
+            window.addEventListener("scroll", function() {            
+                if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {                
+                    document.getElementsByClassName('cus-scroll-top')[0].style.bottom = '0px';            
+                } else {                
+                    document.getElementsByClassName('cus-scroll-top')[0].style.bottom = "-100px";            
+                }        
+            });        
+            document.getElementsByClassName('cus-scroll-top')[0].addEventListener('click', function() {            
+                window.scrollTo(0, 0);        
+            });    
+        }
+    </script>
+    <style>    
+        .cus-scroll-top {cursor: pointer; right:20px; bottom: auto;transition: 400ms ease-in-out;opacity: 0.8; width:40px;height: 40px;}    .cus-scroll-top:hover {transition: 300ms ease-in-out;box-shadow: 0 0 0 15px rgba(0,0,0,0.3) !important;opacity: 1;}
+    </style>
+    <!-- /go to top -->
+
+    <div class="cus-g-analytics-121">{{PutGoogleAnalytics}}</div>
+    
+    <!-- bottom-scripts -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}custom.js?v=9.000009"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
+    <!-- /bottom-scripts  -->
+</body>
+<!--Template-121-->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- {{main}} Layout (Head Section) --- 
+<!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="https://bulletlink.com/bootstrap.css">
+    <!-- /bootstrap -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- {{main}} Layout (Java Scripts) --- 
+// BEGIN: Highlight 1 slider  
+
+        jQuery(document).ready(function ($) {
+            if($('#Highlight1').length) { // Search for the Highlight 1
+            var _CaptionTransitions = [{$Duration:100,$Clip:2,$Opacity:1.7,$During:{$Clip:[0.5,0.5],$Opacity:[0,0.5]}}];
+            var options = {
+           
+                $AutoPlay: false,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlayInterval: 5500,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $PauseOnHover: 1,                                   //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $SlideDuration: 0,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                },
+                $CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
+                    $Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption
+                    $CaptionTransitions: _CaptionTransitions,       //[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
+                    $PlayInMode: 1,                                 //[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
+                    $PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
+                },
+
+                $BulletNavigatorOptions: {            //[Optional] Options to specify and enable navigator or not
+                    $Class: $JssorBulletNavigator$,   //[Required] Class to create navigator instance
+                    $ChanceToShow: 2,           //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 1,             //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1,                  //[Optional] Steps to go for each navigation request, default value is 1
+                    $Lanes: 1,                  //[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 8,               //[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 8,               //[Optional] Vertical space between each item in pixel, default value is 0
+                    $Orientation: 1             //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                },
+
+                $ThumbnailNavigatorOptions: {
+                    $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $ActionMode: 1,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+                    $AutoCenter: 1,                                 //[Optional] Auto center thumbnail items in the thumbnail navigator container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 3
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange thumbnails, default value is 1
+                    $SpacingX: 3,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+                    $SpacingY: 3,                                   //[Optional] Vertical space between each thumbnail in pixel, default value is 0
+                    $DisplayPieces: 6,                              //[Optional] Number of pieces to display, default value is 1
+                    $ParkingPosition: 260,                          //[Optional] The offset position to park thumbnail
+                    $Orientation: 1,                                //[Optional] Orientation to arrange thumbnails, 1 horizental, 2 vertical, default value is 1
+                    $DisableDrag: false                            //[Optional] Disable drag or not, default value is false
+                }
+            };
+
+            var jssor_sliderh1 = new $JssorSlider$("highlight1_container", options);
+
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var bodyWidth = document.body.clientWidth;
+                if (bodyWidth)
+                    jssor_sliderh1.$ScaleWidth(Math.min(bodyWidth, 1200));
+                else
+                    window.setTimeout(ScaleSlider, 30);
+            }
+            ScaleSlider();
+
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+        }
+        });
+
+
+// END: Highlight 1 slider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- {{main}} Layout (Free Layout) --- 
+{{PutDocType}}
+<html lang="en">
+
+<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{PutMetaTitle}} 
+    {{PutMetaKeyword}} 
+    {{PutMetaDescription}} 
+    {{PutNoIndex}}
+    <link rel="shortcut icon" href="{{PutDomain}}favicon.ico?v=9.000009">
+    <script type="text/javascript" language="javascript" src="{{PutDomainT}}lib/bl2.js"></script>
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="https://bulletlink.com/bootstrap.css">
+    <!-- /bootstrap -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.7.min.js" integrity="sha256-/05Jde9AMAT4/o5ZAI23rUf1SxDYTHLrkOco0eyRV84=" crossorigin="anonymous"></script>
+    <!-- /jQuery -->
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- /font -->
+
+    <!-- system -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}settings.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}ads.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}menu_horizontal.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}sections.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}polls.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}articles.js?v=9.000009"></script>
+    <script type="text/javascript" language="javascript" src="https://bulletlink.com/lib/iframeResizer.min.js"></script>
+    <!-- /system -->
+
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- /fontAwesome-->
+
+    <!-- general -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}jscript1.js?v=9.000009"></script>
+    <link type="text/css" rel="stylesheet" href="{{PutDomain}}custom.css?v=9.000009">
+    <!-- /general -->
+
+    <!--StartMH-->
+    <!--MetaSharing-->
+    <!--EndMH-->
+
+    <!-- live-Builder --> 
+    <link type="text/css" rel="stylesheet" href="{{PutDomain}}ufields.css?v=9.000009" />
+    <script type="text/javascript" src="{{PutDomain}}ufields.js?v=9.000009"></script>
+    <!-- /live-Builder --> 
+    {{PutHeadSection}}
+</head>
+
+<body id="blbodymain" class="blbody cus-select-red" style="background-color: var(--bl-body);font-family: 'Jost', sans-serif;">
+
+    <div class="mainbody">
+
+        <!-- sticky ads-->
+        <span class="cus-sticky-ads">{{PutStickyAds}}</span>
+        <!-- /sticky ads-->
+
+        <div class="container-fluid">
+
+            <!-- header -->
+            <div class="cus-121-header row mb-3 bg-light p-lg-3">
+                <div class="row container-bl">
+                    <div class="col-lg-6 d-flex align-items-center user-select-none mt-4 mt-lg-0">
+                        
+                        <span class="cus-121-logo w-100 text-center text-lg-start py-2 py-lg-0 px-5 px-lg-0 hpe-logo" data-logo-width="500">{{PutLogo}}</span>
+                        <style>@media (min-width: 992px) {#logo img {} }</style>
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-end align-items-center">
+
+                        <!-- social links -->
+                        <div class="cus-121-social-links cus-social-links d-flex justify-content-center d-sm-inline-block border-end pe-3 border-secondary">
+                            <div class="position-relative hpe-social">
+                                <a class="text-decoration-none text-white rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-121-icon" href="https://facebook.com/" target="_blank"><i class="fa fa-facebook-square text-warning-hover" aria-hidden="true"></i></a>
+                                <a class="text-decoration-none text-white rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-121-icon" href="https://twitter.com/" target="_blank"><i class="fa fa-twitter-square text-warning-hover" aria-hidden="true"></i></a>
+                                <a class="text-decoration-none text-white rounded ms-3 fs-4 d-inline-block lh-1 cus-social-1-121-icon" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin-square text-warning-hover" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <!-- /social links -->
+
+                        <!-- search-->
+                        <div class="cus-121-search text-white fw-bold hpe-gsearch"><i class="fa fa-search text-warning-hover cus-cursor-pointer search-link" aria-hidden="true"></i></div>
+                        {{PutGoogleCustomSearch}}
+                        <div class="search_content">
+                            <div class="search_box"><gcse:searchbox></gcse:searchbox></div>
+                            <div class="search_results"><gcse:searchresults></gcse:searchresults></div>
+                            <div class="search_remove">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                            </svg>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementsByClassName('search-link')[0].addEventListener("click", function() {
+                                document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search for...");
+                                document.getElementsByClassName('search_content')[0].classList.add("search-flex");
+                                document.getElementsByClassName('search_remove')[0].style.display = "block";
+                                document.getElementsByClassName('gsc-results-close-btn')[0].addEventListener("click", function() {
+                                    document.getElementsByClassName('search_content')[0].classList.remove("search-flex");
+                                });
+                            });
+                            document.getElementsByClassName('search_remove')[0].addEventListener("click", function() {
+                                document.getElementsByClassName('search_content')[0].classList.remove("search-flex");
+                                document.getElementsByClassName('search_remove')[0].style.display = "none";                        
+                            });
+                        </script>
+                        <style>
+                            .gsc-adBlock {display: none !important;}
+                            #gsc-i-id1{color:#000!important}
+                            #gsc-i-id1::placeholder{color:#555!important;opacity:1;font-size:inherit!important}
+                            .search_content{display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;background-color:rgba(255,255,255,.98);height:100%;position:fixed;top:100%;opacity:0;left:0;width:100%;z-index:2147483647;transition: 400ms ease-in-out;}
+                            .search-flex{top: 0;opacity: 1;display:flex;display:-webkit-flex;-ms-display:flex;align-items:center;-webkit-align-items:center;-ms-align-items:center;justify-content:center;-webkit-justify-content:center;-ms-justify-content:center;transition: 300ms ease-in-out;}
+                            .search_remove{cursor:pointer;user-select:none;position:absolute;top:10px;left:3%;}
+                            .search_remove:hover{color:var(--bl-theme)}
+                            .gsc-control-cse.gsc-control-cse-en{background-color:transparent;border-width:0;position:absolute}.search_box{border-bottom:2px solid var(--bl-theme);width:70%;padding-bottom:6px}
+                            .gsib_b,.gsst_a{display:none!important}
+                            .gscb_a{display:none!important}
+                            .gsc-input{background-image:none!important}
+                            .gsc-input{background-color:transparent!important}
+                            .gsc-input-box{background-color:transparent!important;border-bottom:0 solid #ff4500!important;border-width:0!important}
+                            .gsc-input{border-width:0!important;color:#fff!important;font-size:20px!important}
+                            .gsc-adBlock{display:none!important}
+                            .search-icon-desk{cursor:pointer}
+                            .search-icon-desk{float:right;height:54px;margin-right:10px}
+                            .search-icon-desk i{border:1px solid #ddd;border-radius:4px;color:#000;display:block;line-height:35px;margin-top:9px;padding:0 12px}
+                            .search-icon-desk i:hover{color:#79655d}
+                            .gsc-results-wrapper-overlay.gsc-results-wrapper-visible {width: 100%;left: 0;top: 0;height: 100%;}
+                            .gcsc-branding {display: none;}
+                            .gsc-search-button.gsc-search-button-v2{padding:10px 18px;line-height:35px;display:inline-block!important;background:var(--bl-theme);border-radius:5px;border-color:var(--bl-theme)}
+                            .gsc-search-button{width:auto!important;float:right!important}.gsc-search-button.gsc-search-button-v2:hover{background:#ddd!important}
+                            .gsc-search-button-v2 svg{fill:#000!important}
+                            .gsc-search-button.gsc-search-button-v2:hover{background:var(--bl-theme)!important;border-color:var(--bl-theme)!important}
+                            .gsc-search-button.gsc-search-button-v2:hover svg{fill:#fff!important}
+                        </style>
+                        <!-- /search-->
+                    </div>
+                    
+                </div>
+                <div class="cus-121-menu col-12 mt-4 px-0">
+                    <script type="text/javascript" language="javascript">GetMenuH();</script>
+              
+                </div>
+
+                <!-- menu -->
+                
+                <!-- /menu -->
+            </div>
+            <!-- /header -->
+
+            <!-- subscribe & app links -->
+            <div class="cus-121-subscribe-box row bg-body p-4 shadow d-none my-5 mx-0">
+                <div class="col-lg-4 text-center">
+                    <h3 class="fw-bold text-primary mb-5">Get Our Newsletter</h3>
+                    <p class="mb-0"><span class="cus-cursor-pointer btn btn-primary px-5 py-1" onclick="OpenPopup5('target_form2.asp?smenu=&pform={{NewsViaEmail}}&minform=Y&mad=No&site={{PutDomainX}}','iframe');">Sign Up</span></p>
+                </div>
+                <div class="col-lg-4 border-start border-end text-center">
+                    <h3 class="fw-bold text-black mb-5">Download our App</h3>
+                    <div class="row mx-0">
+                        <div class="col-6">
+                            <a class="text-decoration-none text-white" href="javascript:void(0);"><span style="" class="bg-black rounded px-4 py-2 lh-lg fs-5"><i aria-hidden="true" class="fa fa-apple mx-2" style="transform: scale(1.5);"></i> App Store</span></a>
+                        </div>
+                        <div class="col-6">
+                            <a class="text-decoration-none text-white" href="javascript:void(0);"><span style="" class="bg-black rounded px-4 py-2 lh-lg fs-5"><i aria-hidden="true" style="transform: scale(1.5);" class="fa fa-play mx-2"></i> Google Play</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h3 class="fw-bold text-success mb-5">Subscribe Now!</h3>
+                    <p class="mb-0"><span class="cus-cursor-pointer btn btn-success px-5 py-1" onclick="OpenPopup5('target_service_package.asp?twindow=ServicePackage&smenu=7&mad=No&sname=target_service_package.asp&site={{PutDomainX}}','iframe');">Subscribe</span></p>
+                </div>
+                <script>
+                    document.getElementsByClassName("cus-121-subscribe")[0].addEventListener("click",function(){
+                        document.getElementsByClassName("cus-121-subscribe-box")[0].classList.remove("d-none");
+                        document.getElementsByClassName("cus-121-subscribe-box")[0].classList.add("cus-121-subscribe-box-active");
+                    });
+                </script>
+            </div>
+            <!-- /subscribe & app links-->
+            
+            
+
+            <!-- 2-columns -->
+            <div class="cus-column-121-row row mb-3 container-bl px-0 px-lg-s">
+                
+                <div class="row mx-0 px-0 px-lg-s">
+                    <div class="cus-column-121-1 col-lg-8 bg-body py-4 px-lg-4">
+              
+            {{PutHighlight2}}
+            {{PutAdGroup30}}
+            {{PutMainContent}}
+                        {{PutHighlight4}}
+
+                        <!-- previews -->
+                        <div class="row my-3">
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview90}}</div>                            
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview231}}</div>                            
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview232}}</div>                            
+                            <div class="col-lg-6 col-md-6 mb-3">{{PutPreview233}}</div>                            
+                                                     
+                        </div>
+                        <!-- /previews -->
+
+                        <!-- videogallery-->
+                        
+                        <!-- /videogallery-->
+                        <!-- photogallery-->
+                        <div class="row my-5">
+                            <div class="col-12">
+                                {{PutFile:section24.htm}}                                  
+                            </div>
+                        </div>
+                        <!-- /photogallery-->
+                        {{PutAdGroup12}}
+                    </div>
+                    <div class="cus-column-121-2 col-lg-4 border-start px-lg-4 mt-5 mt-lg-0 bg-body py-4">
+                        {{PutAdGroup21}}
+                        {{PutAdGroup28}}
+ {{PutAdGroup24}}
+                        
+                    </div>
+                    <style>@media (max-width: 992px) {.cus-column-121-2 {border-width: 0 !important;} }</style>
+                </div>
+            </div>
+            <!-- /2-columns -->
+
+            <div class="row container-bl my-5">
+                <div class="col-12">     
+                  <span class="gallery_heading">Sponsor Media</span>
+{{PutArticleGroup22}}                                          
+                </div>
+            </div>
+
+            <!-- footer-->
+            <footer class="row bg-black">
+                <div class="col-12 row container-bl py-5">
+                    <div class="col-lg-4 row mb-3 mb-lg-0">
+                        <div class="col-2"><i class="fa fa-commenting-o fs-1" style="color:#ff0200" aria-hidden="true"></i></div>
+                        <div class="col-10 ps-0 text-white">
+                            <h3>Need Help?</h3>
+                            <p class="hpe-custom-text-1 float-start"><script>Section1();</script></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 row mb-3 mb-lg-0">
+                        <div class="col-2"><i class="fa fa-phone fs-1" style="color:#ff0200" aria-hidden="true"></i></div>
+                        <div class="col-10 ps-0 text-white">
+                            <h3>Call Us</h3>
+                            <p class="hpe-custom-text-2 float-start"><span>214-369-3200<span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 row px-lg-0">
+                        <div class="col-2"><i class="fa fa-map-marker fs-1" style="color:#ff0200;" aria-hidden="true"></i></div>
+                        <div class="col-10 ps-0 text-white">
+                            <h3>Find Us</h3>
+                            <p class="hpe-custom-text-3 float-start"><span> Minority Business News USA • 2150 S. Central Expressway • McKinney • Texas • 75070<span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="background-color: #ff0200;">
+                    <div class="col-12 row py-1 container-bl">
+                        <div class="col-lg-6 fw-bold text-black text-center text-lg-start mb-3 mb-lg-0"><script type="text/javascript" language="JavaScript">GetCopyright();</script></div>
+                        <div class="col-lg-6 cus-121-bottom-links">
+                            <p class="mb-0 float-none float-lg-end text-center hpe-bottom-links">
+                                <a class="text-decoration-none text-black fw-bold text-white-hover me-2" href="javascript:void(0);" onclick="OpenPopup5('target_form2.asp?smenu=&pform=ContactUs&minform=Y&mad=No&site={{PutDomainX}}','iframe');">Contact Us</a>
+                                <a class="text-decoration-none text-black fw-bold text-white-hover me-2" href="https://bulletlink.com/client-mbnusa/index325.htm">About Us</a>
+                                <a class="text-decoration-none text-black fw-bold text-white-hover" href="/web/20240306185622/{{PutDomain}}sitemap.xml">site map</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- /footer-->
+        </div>
+    </div>
+
+    <!-- go to top -->
+    <div class="cus-scroll-top position-fixed bg-dark text-white fs-4 px-2 rounded-circle d-flex align-items-center justify-content-center">
+        <i class="fa fa-angle-up lh-base text-shadow-3"></i>
+    </div>
+    <script>
+        if (document.getElementsByClassName("cus-scroll-top")) {
+            window.addEventListener("scroll", function() {            
+                if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {                
+                    document.getElementsByClassName('cus-scroll-top')[0].style.bottom = '0px';            
+                } else {                
+                    document.getElementsByClassName('cus-scroll-top')[0].style.bottom = "-100px";            
+                }        
+            });        
+            document.getElementsByClassName('cus-scroll-top')[0].addEventListener('click', function() {            
+                window.scrollTo(0, 0);        
+            });    
+        }
+    </script>
+    <style>    
+        .cus-scroll-top {cursor: pointer; right:20px; bottom: auto;transition: 400ms ease-in-out;opacity: 0.8; width:40px;height: 40px;}    .cus-scroll-top:hover {transition: 300ms ease-in-out;box-shadow: 0 0 0 15px rgba(0,0,0,0.3) !important;opacity: 1;}
+    </style>
+    <!-- /go to top -->
+
+    <div class="cus-g-analytics-121">{{PutGoogleAnalytics}}</div>
+    
+    <!-- bottom-scripts -->
+    <script type="text/javascript" language="javascript" src="{{PutDomain}}custom.js?v=9.000009"></script>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
+    <!-- /bottom-scripts  -->
+</body>
+<!--Template-121-->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
