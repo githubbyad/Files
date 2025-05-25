@@ -12,6 +12,9 @@ function OpenLoginPopupM(qrStr) {
         var st = st + "/" + url.split("/")[7];
     }
     var lg = '.' + pg + sg;
+    if (url.includes('mobile_login=success')) {
+        return true;
+    }
     if (a == '1' && s != 'Yes') {
         createCookie('curl', escape(qrStr));
         window.location = as + 'target_form2' + lg + '?pform={{Login}}&sname=target_form2' + lg + '&site=' + st;
