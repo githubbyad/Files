@@ -89,7 +89,6 @@ async function processRequest(request) {
   }
 
   // BEGIN: Short URL mappings ---------------------------------
-
   const urlMappings = [
     {
       short: 'short',
@@ -122,31 +121,32 @@ async function processRequest(request) {
       return new Response('Failed to load content', { status: 500 });
     }
   }
-
   // END: Short URL mappings ---------------------------------
 
   // BEGIN: Clean URL mappings ---------------------------------
-  if (objectKeyLower && !objectKeyLower.endsWith('.htm')) {
-    const fullURL = `${url.origin}/${objectKeyLower}.htm`
+  if (objectKeyLower) {
+    if (!objectKeyLower.endsWith('.htm')) {
+      const fullURL = `${url.origin}/${objectKeyLower}.htm`
 
-    try {
-      const fetched = await fetch(fullURL, {
-        headers: {
-          'User-Agent': request.headers.get('User-Agent') || 'Cloudflare-Worker'
-        }
-      })
-      if (fetched.ok) {
-        const contentType = fetched.headers.get('content-type') || 'text/html'
-        const body = await fetched.text()
-        return new Response(body, {
+      try {
+        const fetched = await fetch(fullURL, {
           headers: {
-            'content-type': contentType,
-            'cache-control': 'public, max-age=3600'
+            'User-Agent': request.headers.get('User-Agent') || 'Cloudflare-Worker'
           }
         })
+        if (fetched.ok) {
+          const contentType = fetched.headers.get('content-type') || 'text/html'
+          const body = await fetched.text()
+          return new Response(body, {
+            headers: {
+              'content-type': contentType,
+              'cache-control': 'public, max-age=3600'
+            }
+          })
+        }
+      } catch (err) {
+        return new Response('Failed to load clean URL content', { status: 500 })
       }
-    } catch (err) {
-      return new Response('Failed to load clean URL content', { status: 500 })
     }
   }
   // END: Clean URL mappings ---------------------------------
@@ -158,9 +158,10 @@ async function processRequest(request) {
   }
 
   try {
+
     const object = await BUCKET.get(objectPath);
     if (object === null) {
-      return new Response('<html><body><h1><center>Page Not Found</center></h1></body></html>', {
+      return new Response(`<html><head><style>body{margin:0;font-family:sans-serif;background:#f9fafb;display:flex;align-items:center;justify-content:center;height:100vh;color:#333}.box{text-align:center;padding:20px}svg{width:60px;height:60px;margin-bottom:10px;color:#ef4444}h1{font-size:1.8rem;margin:10px 0}p{color:#666;font-size:1rem}</style></head><body><div class="box"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><h1>404 - Page Not Found</h1><p>The page you requested could not be found.</p></div></body></html>`, {
         headers: { 'Content-Type': 'text/html' },
         status: 404
       });
