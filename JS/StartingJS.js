@@ -88,40 +88,7 @@ async function processRequest(request) {
     return Response.redirect(`https://bulletlink.one${url.pathname}${url.search}`, 301);
   }
 
-  // BEGIN: Short URL mappings ---------------------------------
-  const urlMappings = [
-    {
-      short: 'short',
-      long: 'https://bulletlink.com/index0.htm'
-    }
-  ];
-  const shortMatch = urlMappings.find(mapping => mapping.short === objectKeyLower);
-  if (shortMatch) {
-    if (shortMatch.long.includes('index0.htm')) {
-      return Response.redirect(shortMatch.long, 301);
-    }
-    try {
-      const fetched = await fetch(shortMatch.long, {
-        headers: {
-          'User-Agent': request.headers.get('User-Agent') || 'Cloudflare-Worker'
-        }
-      });
-      if (!fetched.ok) {
-        throw new Error(`HTTP ${fetched.status}: ${fetched.statusText}`);
-      }
-      const contentType = fetched.headers.get('content-type') || 'text/html';
-      const body = await fetched.text();
-      return new Response(body, {
-        headers: {
-          'content-type': contentType,
-          'cache-control': 'public, max-age=3600'
-        }
-      });
-    } catch (err) {
-      return new Response('Failed to load content', { status: 500 });
-    }
-  }
-  // END: Short URL mappings ---------------------------------
+  ///ShortURLs///
 
   // BEGIN: Clean URL mappings ---------------------------------
   if (objectKeyLower) {
