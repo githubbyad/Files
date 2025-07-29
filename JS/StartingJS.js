@@ -126,42 +126,25 @@ async function processRequest(request) {
   // END: Short URL mappings ---------------------------------
 
   // BEGIN: Clean URL mappings ---------------------------------
-  const cleanURLMappings = [
-    {
-      clean: 'newspaper-cms-template-clients',
-      page: 'newspaper-cms-template-clients-163.htm'
-    },
-    {
-      clean: 'online-newspaper-template-features',
-      page: 'online-newspaper-template-features-p107-128.htm'
-    },
-    {
-      clean: 'newspaper-cms-templates',
-      page: 'newspaper-cms-templates-155.htm'
-    },
-    {
-      clean: 'online-newspaper-template-faqs',
-      page: 'online-newspaper-template-faqs-p109-129.htm'
-    }
-  ]
-  const cleanMatch = cleanURLMappings.find(mapping => mapping.clean === objectKeyLower)
-  if (cleanMatch) {
+  if (objectKeyLower && !objectKeyLower.endsWith('.htm')) {
+    const fullURL = `${url.origin}/${objectKeyLower}.htm`
+
     try {
-      const fullURL = `${url.origin}/${cleanMatch.page}`
       const fetched = await fetch(fullURL, {
         headers: {
           'User-Agent': request.headers.get('User-Agent') || 'Cloudflare-Worker'
         }
       })
-      if (!fetched.ok) throw new Error(`HTTP ${fetched.status}: ${fetched.statusText}`)
-      const contentType = fetched.headers.get('content-type') || 'text/html'
-      const body = await fetched.text()
-      return new Response(body, {
-        headers: {
-          'content-type': contentType,
-          'cache-control': 'public, max-age=3600'
-        }
-      })
+      if (fetched.ok) {
+        const contentType = fetched.headers.get('content-type') || 'text/html'
+        const body = await fetched.text()
+        return new Response(body, {
+          headers: {
+            'content-type': contentType,
+            'cache-control': 'public, max-age=3600'
+          }
+        })
+      }
     } catch (err) {
       return new Response('Failed to load clean URL content', { status: 500 })
     }
