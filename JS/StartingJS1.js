@@ -90,34 +90,7 @@ async function processRequest(request) {
 
   ///ShortURLs///
 
-  // BEGIN: Clean URL mappings ---------------------------------
-  if (objectKeyLower) {
-    if (!objectKeyLower.endsWith('.htm')) {
-      const fullURL = `${url.origin}/${objectKeyLower}.htm`
-
-      try {
-        const fetched = await fetch(fullURL, {
-          headers: {
-            'User-Agent': request.headers.get('User-Agent') || 'Cloudflare-Worker'
-          }
-        })
-        if (fetched.ok) {
-          const contentType = fetched.headers.get('content-type') || 'text/html'
-          const body = await fetched.text()
-          return new Response(body, {
-            headers: {
-              'content-type': contentType,
-              'cache-control': 'public, max-age=3600'
-            }
-          })
-        }
-      } catch (err) {
-        return new Response('Failed to load clean URL content', { status: 500 })
-      }
-    }
-  }
-  // END: Clean URL mappings ---------------------------------
-
+  ///CleanURLs///
 
   const objectPath = objectKey || 'index.html';
   if (objectPath.includes('..')) {
