@@ -22,8 +22,7 @@ if (!isset($data['token']) || !in_array($data['token'], $validToken)) {
 
 // 🗑️ remove fields that are not needed, set them in array
 $fieldsToRemove = [
-    'token',
-    'SystemEmailConfirmMessage'
+    'token'
 ];
 foreach ($fieldsToRemove as $field) {
     unset($data[$field]);
