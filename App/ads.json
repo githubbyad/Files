@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "message": "ads",
+  "ads": [
+    {
+      "data": {
+        "ad_image": "https://chiswickherald.co.uk/gingerbreadhouse.jpg",
+        "ad_url_script": "https://google.com",
+        "starting_date": "",
+        "ending_date": ""
+      }
+    },
+    {
+      "data": {
+        "ad_image": "https://chiswickherald.co.uk/gingerbreadhouse.jpg",
+        "ad_url_script": "https://google.com",
+        "starting_date": "",
+        "ending_date": ""
+      }
+    },
+    {
+      "data": {
+        "ad_image": "https://chiswickherald.co.uk/gingerbreadhouse.jpg",
+        "ad_url_script": "https://google.com",
+        "starting_date": "",
+        "ending_date": ""
+      }
+    }
+  ]
+}
