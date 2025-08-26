@@ -1,0 +1,47 @@
+{
+  "status": "success",
+  "message": "menus",
+  "menus": [
+    {
+      "Menu": "HOME",
+      "IsWebView": "No",
+      "MenuLink": "",
+      "data": [
+        {
+          "SubMenu": "Front Page",
+          "IsWebView": "No",
+          "SubMenuLink": "https://chiswickherald.co.uk/index263.htm"
+        }
+      ]
+    },
+    {
+      "Menu": "TRAVEL",
+      "IsWebView": "No",
+      "MenuLink": "",
+      "data": [
+        {
+          "SubMenu": "TRAVEL",
+          "IsWebView": "No",
+          "SubMenuLink": "https://chiswickherald.co.uk/index326.htm"
+        }
+      ]
+    },
+    {
+      "Menu": "NEWS",
+      "IsWebView": "No",
+      "MenuLink": "",
+      "data": [
+        {
+          "SubMenu": "News and Local Life",
+          "IsWebView": "No",
+          "SubMenuLink": "https://chiswickherald.co.uk/hounslow-news-hounslow-community-isleworth-news-chiswick-news-brentford-news-feltham-news-ashford-news-bedfont-news-95.htm"
+        },
+        {
+          "SubMenu": "London News",
+          "IsWebView": "No",
+          "SubMenuLink": "https://chiswickherald.co.uk/index249.htm"
+        }
+      ]
+    }
+  ]
+}
