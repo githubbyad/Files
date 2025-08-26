@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "message": "system_json",
+  "system_json": [
+    {
+      "data": {
+        "url1": "https://raw.githubusercontent.com/githubbyad/Files/refs/heads/main/App/settings.json",
+        "url2": "https://raw.githubusercontent.com/githubbyad/Files/refs/heads/main/App/articles.json",
+        "url3": "https://raw.githubusercontent.com/githubbyad/Files/refs/heads/main/App/menus.json",
+        "url4": "https://raw.githubusercontent.com/githubbyad/Files/refs/heads/main/App/ads.json"
+      }
+    }
+  ]
+}
