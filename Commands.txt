@@ -1,0 +1,219 @@
+📂 Layout Commands (General)
+
+    {{LayoutH?Begin}} – Start a horizontal layout block (? = number).
+
+    {{LayoutH?End}} – End a horizontal layout block (? = number).
+
+    {{LayoutH?Limit?}} – Limit items inside layout (? = number).
+
+    {{PutHtmlChar?}} – Output a character using HTML code (? = ASCII/Unicode code).
+
+    {{PutHtmlEntity?}} – Output a character using HTML entity (? = entity code).
+
+    {{RepeatBegin}}, {{RepeatEnd}} – Repeat block wrapper for looping items. 
+
+
+
+
+📂 Section Layout Commands
+
+    (Used under Menus → Section (Layout))
+
+    {{LayoutSection?Begin}} – Begin section layout for PKEY.
+
+    {{LayoutSection?End}} – End section layout for PKEY.
+
+    {{LayoutSection?Limit?}} – Limit number of section items by PKEY.
+
+    Example: {{LayoutSection#SubMenuId#Begin}}
+
+
+
+
+📂 Section Preview Layout Commands
+
+    {{LayoutPreview?Begin}} – Begin preview layout for section (? = PKEY).
+
+    {{LayoutPreview?End}} – End preview layout for section.
+
+    {{LayoutPreview?Limit?}} – Limit preview section results.
+
+
+
+
+📂 Apps Layout Commands
+
+    {{LayoutArticlesApps?Begin}} – Begin apps layout block (? = PKEY).
+
+    {{LayoutArticlesApps?End}} – End apps layout block.
+
+    {{LayoutArticlesApps?Limit?}} – Limit apps articles.
+
+
+
+
+📂 Menu Layout Commands
+
+    {{LayoutMenus?Begin}}, {{LayoutMenus?End}} – Wrap menu layout.
+
+    {{MakePopupScriptLinks:Yes}} – Creates popup links.
+
+    {{Where:MenuTypeInclude:?,?,?}} – Restrict menu types:
+    Options: Default, Hidden, Horizontal, Vertical, SandwichHorizontal, SandwichVertical.
+
+
+Menu Repeat Controls
+
+    {{RepeatBegin1}}, {{RepeatEnd1}} – Repeat loop 1.
+
+    {{RepeatBegin2}}, {{RepeatEnd2}} – Repeat loop 2.
+
+    {{Menu}}, {{MenuApps}}, {{MenuId}}, {{MenuStyle}}, {{MenuHTML}}, {{CSSColumns}}, {{MenuMouseOverCode}} – Menu values.
+
+    {{MenuNoRepeat}} – Prevents duplicate menu.
+
+
+Submenu Controls
+
+    {{SubMenu}}, {{SubMenuApps}}, {{SubMenuId}}, {{SubMenuLink}}, {{SubMenuStyle}}, {{SubMenuHTML}}, {{CSSDisplay}} – Submenu values.
+
+    {{SubMenuNoRepeat}}, {{SubMenuLinkNoRepeat}}, {{SubMenuNoRepeatCSSDisplay}} – Prevent duplicates in submenu.
+
+    {{SubMenuMouseInOutColor}} – Control mouse hover color on submenu.
+
+
+
+
+📂 Article Layout Commands
+
+    {{LayoutArticle?Begin}}, {{LayoutArticle?End}}, {{LayoutArticle?Limit?}} – Wrap article layout.
+
+    {{LayoutArticleGroup?Begin}}, {{LayoutArticleGroup?End}}, {{LayoutArticleGroup?Limit?}} – Grouped article layout.
+
+    {{LayoutMenuLimit?}} – Limit number of menus.
+
+    {{LayoutMenuArticlesLimit?}} – Limit articles per menu.
+
+
+
+Filters & Restrictions
+
+    {{Where:MaxIssue}} – Only latest issue.
+
+    {{Where:SubMenuIdInclude:?,?,?}} – Restrict by submenu ID.
+
+    {{Where:SubMenuIdExclude:?,?,?}} – Exclude submenu ID.
+
+    {{ExcludeKeywords:?,?,?}} – Exclude articles containing keywords.
+
+    {{Where:HighlightAllExclude}} – Exclude all highlighted articles.
+
+    {{Where:HighlightAllInclude}} – Include all highlighted articles.
+
+    {{Where:HighlightInclude:?,?,?}} – Include specific highlight numbers.
+
+    {{Where:PageTypeInclude:?,?,?}} / {{Where:PageTypeExclude:?,?,?}} – Restrict by article type (Article, Gallery, Event2, Directory).
+
+    {{Where:MaxDaysUpdated:?}}, {{Where:MaxDaysIssue:?}}, {{Where:MaxDaysCreated:?}}, {{Where:MaxDaysStarting:?}} – Restrict by number of days.
+
+    {{SkipArticles?}} – Skip N articles.
+
+
+
+
+Display Modifiers
+
+    {{ReplaceJavascriptChars:No}} – Prevent JS char replacement.
+
+    {{RemoveHTMLBody}} – Strip HTML from article body.
+
+    {{RemoveMore:Yes}} – Remove {{more}} tag only.
+
+    {{RemoveMoreFully:Yes}} – Remove {{more}} tag & show full body.
+
+    {{MakeMobileLinks:Yes}}, {{MakeAppLinks:Yes}}, {{MakeFullLinks:Yes}}, {{MakeStaticLinks:Yes}} – Link types.
+
+    {{LayoutArticleBodyWordLimit?}} – Limit words in article body.
+
+    {{SortBy:?}} – Sort articles (Issue, Updated, Created, Menu, Heading).
+
+    {{BlankValue-Image1:?}} – Set default image if blank.
+
+    {{BlankValue-TotalArticles}} – Layout blank if no articles.
+
+
+
+📂 Date/Time Formatting
+
+    {{Month?}}, {{Month?1}}, {{Month?2}}, {{Month?3}}, {{Month?4}} – Month formats.
+
+    {{Day?}}, {{Day?1}} – Day formats.
+
+    {{Year?}} – Year.
+
+    {{DayName?1}}, {{DayName?2}}, {{DayName?3}}, {{DayName?4}} – Day name formats.
+
+
+
+📂 Article Fields
+
+    {{Heading}}, {{HeadingLink}}, {{HeadingImage}}, {{HeadingImageAlt}}
+
+    {{HeadingDisplay}} – Hide heading with display:none.
+
+    {{IssueDate}}, {{StartingDate}}, {{By}}, {{Source}}, {{Body}}
+
+    {{Picture1}}, {{Picture1Caption}}, {{PictureCaption}}, {{PictureT}} – Images.
+
+    {{AllowComments}}, {{ShareToolsTop}}, {{ShareToolsBottom}} – Interactivity.
+
+
+📂 Counters
+
+    {{Counter}}, {{CounterSubMenu}} – Numeric counter.
+
+    {{CounterAlphaUpperCase}}, {{CounterAlphaLowerCase}} – A, B, C or a, b, c.
+
+    {{CounterRomanUpperCase}}, {{CounterRomanLowerCase}} – Roman numeral counters.
+
+
+📂 Meta
+
+    {{MetaTitle}}, {{MetadDescription}}, {{MetaKeywords}}
+
+
+
+
+📂 Conditional Logic
+
+    {{If Counter...}} ... {{EndIf}} – Conditional block using counters.
+
+    {{If Picture1=Blank}} ... {{EndIf}} – Conditional block using images.
+
+    Supports <, >, <=, >=, <>, = operators.
+
+    {{Else}}, {{ElseIf}} supported.
+
+    {{If LastRecordMenu=?}} ... {{EndIf}} – Check last menu record.
+
+    {{If LastRecordSubMenu=?}} ... {{EndIf}} – Check last submenu record.    
+
+
+
+📂 Miscellaneous
+
+    {{Holder?}} (1–3) – Placeholder storage.
+
+    [[Holder?: ... ]] – Store code in placeholder.
+
+    {{PutFullHName}} – Insert full URL with https://
+
+    {{PutHCompany}} – Insert hosting company URL.
+
+    {{File:?}} – Include external file.
+
+    {{HighlightBackgroundImage}} – Highlight article background.
+
+    {{Find&ReplaceColumn:?1,?2,?3}} – Find & replace in a column (e.g., Body).
+
+    {{Find&ReplaceString:?1,?2}} – Find & replace in entire string.    
