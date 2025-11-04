@@ -28,10 +28,9 @@ function checkTagsClosed(formId, fieldName, textareaId) {
             }, 100);
 
             return false;
-        } else {
-            return true;
         }
     }
+    return true;
 }
 
 function areTagsClosed(html) {
