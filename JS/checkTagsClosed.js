@@ -49,6 +49,9 @@ function areTagsClosed(html) {
             tag = tag.toLowerCase();
             if (tag.startsWith('</')) {
                 const tagName = tag.match(/^<\/(\w+)/)[1];
+                if (stack.length === 0) {
+                    return { ok: false, message: `Closing tag </${tagName}> on line ${i + 1} has no matching opening tag.`, line: i + 1 };
+                }
                 const last = stack.pop();
                 if (last && last.name !== tagName) {
                     return { ok: false, message: `Tag <${last.name}> (line ${last.line}) is not properly closed before </${tagName}> (line ${i + 1}).`, line: last.line };
