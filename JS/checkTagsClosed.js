@@ -20,7 +20,28 @@ function checkTagsClosed(formId, fieldName, textareaId) {
             // short delay for highlight visibility
             setTimeout(() => {
                 alert(`<b>${fieldName}</b> contains unclosed or mismatched tags:\n<hr>${safeMessage}`, textarea);
-
+                // Popup overlay adjustments
+                const popup_overlay = document.getElementById('popup_overlay');
+                const popup_title = document.getElementById('popup_title');
+                const popup_container = document.getElementById('popup_container');
+                const popup_panel = document.getElementById('popup_panel');
+                if(popup_panel) {
+                    popup_panel.querySelector('.button').style.padding = '10px 24px';
+                    popup_panel.querySelector('.button').style.borderRadius = '5px';
+                }
+                if(popup_container) {
+                    popup_container.style.background = 'white';
+                    popup_container.style.borderRadius = '8px';
+                    popup_container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                }
+                if(popup_title) {
+                    popup_title.style.background = 'transparent';
+                    popup_title.innerHTML = `<i class="fa fa-exclamation-circle" style="color: gray;font-size: 60px;"></i>`;
+                }
+                if(popup_overlay) {
+                    popup_overlay.style.background = 'black';
+                    popup_overlay.style.opacity = '0.5';
+                }
                 // restore focus, selection & scroll position
                 textarea.focus();
                 textarea.scrollTop = prevScroll;
