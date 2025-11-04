@@ -19,7 +19,7 @@ function checkTagsClosed(formId, fieldName, textareaId) {
 
             // short delay for highlight visibility
             setTimeout(() => {
-                alert(`${fieldName} has unclosed/mismatched tags:\n\n${safeMessage}`);
+                alert(`${fieldName} has unclosed/mismatched tags:\n\n${safeMessage}`, textarea);
 
                 // restore focus, selection & scroll position
                 textarea.focus();
