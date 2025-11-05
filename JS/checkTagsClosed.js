@@ -5,9 +5,17 @@ function checkTagsClosed(formId, fieldName, textareaId) {
         const html = textarea.value;
         const result = areTagsClosed(html);
         if (!result.ok) {
-            const safeMessage = result.message
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+            const safeMessage = result.message.replace(
+                /<\/?([a-zA-Z0-9]+)>/g,
+                (match, tag) => {
+                    // Check if it's a closing tag
+                    if (match.startsWith("</")) {
+                        return `<b style="color: red;"><code><</code>/${tag}<code>></code></b>`;
+                    } else {
+                        return `<b style="color: red;"><code><</code>${tag}<code>></code></b>`;
+                    }
+                }
+            );
 
             // highlight before alert
             highlightTagLine(textarea, result.line);
