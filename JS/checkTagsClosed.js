@@ -40,6 +40,7 @@ function checkTagsClosed(formId, fieldName, textareaId) {
                 if(popup_container) {
                     popup_container.style.background = 'white';
                     popup_container.style.borderRadius = '8px';
+                    popup_container.style.padding = '10px';
                     popup_container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
                 }
                 if(popup_title) {
