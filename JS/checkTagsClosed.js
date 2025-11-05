@@ -117,7 +117,7 @@ function highlightTagLine(textarea, lineNumber) {
     textarea.setSelectionRange(start, end);
     textarea.scrollTop = textarea.scrollHeight * (lineNumber / lines.length);
 
-    // flash background color
+    // red flash background color
     const originalBg = textarea.style.backgroundColor;
     textarea.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
     setTimeout(() => textarea.style.backgroundColor = originalBg, 1500);
