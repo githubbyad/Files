@@ -8,7 +8,7 @@ function checkTagsClosed(formId, fieldName, textareaId) {
             const safeMessage = result.message.replace(
                 /<\/?([a-zA-Z0-9]+)>/g,
                 (match, tag) => {
-                    // Check if it's a closing tag
+                    // Check if its a closing tag
                     if (match.startsWith("</")) {
                         return `<b style="color: red;"><code><</code>/${tag}<code>></code></b>`;
                     } else {
