@@ -43,6 +43,7 @@ function checkTagsClosed(formId, fieldName, textareaId) {
                     popup_panel.querySelector('.button').style.cssText = 'padding: 10px 24px; border-radius: 5px;font-family: Trebuchet MS, sans-serif;';
                     popup_panel.querySelector('#popup_ok').style.background = `#53a653`;
                     popup_panel.querySelector('#popup_cancel').style.background = `#aaaaaa`;
+                    popup_panel.querySelector('#popup_cancel').style.marginLeft = `10px`;
                     popup_panel.style.marginTop = '30px';
                     popup_panel.querySelector('#popup_cancel').addEventListener('click', () => {
                         smForm.setAttribute('onclick', 'return true;');
