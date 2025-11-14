@@ -27,27 +27,42 @@ function checkTagsClosed(formId, fieldName, textareaId) {
 
             // short delay for highlight visibility
             setTimeout(() => {
-                alert(`<b>${fieldName}</b> contains unclosed or mismatched tags:\n<hr>${safeMessage}`, textarea);
+                alert(`<b>${fieldName}</b> contains unclosed or mismatched tags:\n\n${safeMessage}`, textarea);
                 // Popup overlay adjustments
                 const popup_overlay = document.getElementById('popup_overlay');
                 const popup_title = document.getElementById('popup_title');
                 const popup_container = document.getElementById('popup_container');
                 const popup_panel = document.getElementById('popup_panel');
-                if(popup_panel) {
-                    popup_panel.querySelector('.button').style.padding = '10px 24px';
-                    popup_panel.querySelector('.button').style.borderRadius = '5px';
+                const popup_message = document.getElementById('popup_message');
+                if (popup_message) {
+                    popup_message.style.fontFamily = 'Trebuchet MS, sans-serif';
                 }
-                if(popup_container) {
+                if (popup_panel) {
+                    popup_panel.querySelector('.button').value = `I WILL FIX`;
+                    popup_panel.insertAdjacentHTML(`beforeend`, `<input class="button" type="button" value="&nbsp;Ignore&nbsp;" id="popup_cancel" style="padding: 10px 24px; border-radius: 5px;">`);
+                    popup_panel.querySelector('.button').style.cssText = 'padding: 10px 24px; border-radius: 5px;font-family: Trebuchet MS, sans-serif;';
+                    popup_panel.querySelector('#popup_ok').style.background = `#53a653`;
+                    popup_panel.querySelector('#popup_cancel').style.background = `#aaaaaa`;
+                    popup_panel.querySelector('#popup_cancel').style.marginLeft = `10px`;
+                    popup_panel.style.marginTop = '30px';
+                    popup_panel.querySelector('#popup_cancel').addEventListener('click', () => {
+                        smForm.setAttribute('onclick', 'return true;');
+                        popup_panel.querySelector('#popup_ok').click();                        
+                        smForm.submit();
+                    });
+                    popup_panel.insertAdjacentHTML(`afterend`, `<div id="ignore_text" style="text-align: center;font-size: 13px;color: gray;"><i class="fa fa-exclamation-triangle" style="color: #565656;" aria-hidden="true"></i> IGNORE <b>may mess</b> up your homepage layout.</div>`);
+                }
+                if (popup_container) {
                     popup_container.style.background = 'white';
                     popup_container.style.borderRadius = '8px';
                     popup_container.style.padding = '10px';
                     popup_container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
                 }
-                if(popup_title) {
+                if (popup_title) {
                     popup_title.style.background = 'transparent';
-                    popup_title.innerHTML = `<i class="fa fa-exclamation-circle" style="color: gray;font-size: 60px;"></i>`;
+                    popup_title.innerHTML = `<i class="fa fa-exclamation-circle" style="color: orange;font-size: 60px;"></i>`;
                 }
-                if(popup_overlay) {
+                if (popup_overlay) {
                     popup_overlay.style.background = 'black';
                     popup_overlay.style.opacity = '0.5';
                 }
@@ -61,64 +76,4 @@ function checkTagsClosed(formId, fieldName, textareaId) {
         }
     }
     return true;
-}
-
-function areTagsClosed(html) {
-    html = html.replace(/<!--[\s\S]*?-->/g, '').replace(/<(\w+)([^>]*)\/>/gi, '');
-
-    const lines = html.split('\n');
-    const stack = [];
-    const voidTags = ['br', 'img', 'hr', 'input', 'meta', 'link', 'source', 'area', 'base', 'col', 'embed', 'param', 'track', 'wbr'];
-
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        const tags = line.match(/<\/?([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>/g);
-        if (!tags) continue;
-
-        for (let tag of tags) {
-            tag = tag.toLowerCase();
-            if (tag.startsWith('</')) {
-                const tagName = tag.match(/^<\/(\w+)/)[1];
-                if (stack.length === 0) {
-                    return { ok: false, message: `Closing tag </${tagName}> on line ${i + 1} has no matching opening tag.`, line: i + 1 };
-                }
-                const last = stack.pop();
-                if (last && last.name !== tagName) {
-                    return { ok: false, message: `Tag <${last.name}> (line ${last.line}) is not properly closed before </${tagName}> (line ${i + 1}).`, line: last.line };
-                }
-            } else {
-                const tagName = tag.match(/^<(\w+)/)[1];
-                if (!voidTags.includes(tagName)) {
-                    stack.push({ name: tagName, line: i + 1 });
-                }
-            }
-        }
-    }
-
-    if (stack.length > 0) {
-        const missing = stack.map(t => `<${t.name}> (line ${t.line})`).join(', ');
-        return { ok: false, message: `Missing closing tags for: ${missing}`, line: stack[0].line };
-    }
-
-    return { ok: true };
-}
-
-function highlightTagLine(textarea, lineNumber) {
-    const lines = textarea.value.split('\n');
-    let start = 0;
-
-    for (let i = 0; i < lineNumber - 1; i++) {
-        start += lines[i].length + 1;
-    }
-
-    const end = start + lines[lineNumber - 1].length;
-
-    textarea.focus();
-    textarea.setSelectionRange(start, end);
-    textarea.scrollTop = textarea.scrollHeight * (lineNumber / lines.length);
-
-    // red flash background color
-    const originalBg = textarea.style.backgroundColor;
-    textarea.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
-    setTimeout(() => textarea.style.backgroundColor = originalBg, 1500);
 }
