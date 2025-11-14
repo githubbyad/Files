@@ -50,6 +50,7 @@ function checkTagsClosed(formId, fieldName, textareaId) {
                         popup_panel.querySelector('#popup_ok').click();                        
                         smForm.submit();
                     });
+                    popup_panel.insertAdjacentHTML(`afterend`, `<div id="ignore_text" style="text-align: center;font-size: 13px;color: gray;"><i class="fa fa-exclamation-triangle" style="color: red;" aria-hidden="true"></i> IGNORE <b>may mess</b> up your homepage layout.</div>`);
                 }
                 if (popup_container) {
                     popup_container.style.background = 'white';
@@ -59,7 +60,7 @@ function checkTagsClosed(formId, fieldName, textareaId) {
                 }
                 if (popup_title) {
                     popup_title.style.background = 'transparent';
-                    popup_title.innerHTML = `<i class="fa fa-exclamation-circle" style="color: orange;font-size: 60px;"></i>`;
+                    popup_title.innerHTML = `<i class="fa fa-exclamation-triangle" style="color: red;font-size: 60px;"></i>`;
                 }
                 if (popup_overlay) {
                     popup_overlay.style.background = 'black';
