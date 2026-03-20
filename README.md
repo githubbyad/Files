@@ -2,7 +2,7 @@ Here is the complete MD compliance checklist followed for #133:
 
 | # | Check | Where to apply | Status indicator |
 |---|---|---|---|
-| 1 | Every article card has `data-cms-article-id="{{ArticleId}}"` | H1, H2, H4, H5, Preview, Section, Edition, Photo Gallery, Directory Page 2 | ✅ if present on repeating card div/article |
+| 1 | Every article card has `data-cms-article-id="{{ArticleId}}"` | H1, H2, H4, H5, Preview, Section, Edition, Photo Gallery, Video Gallery, Events, Directory Page 2 | ✅ if present on repeating card div/article |
 | 2 | Article detail has `data-cms-type="article"` + `data-cms-id="{{ArticleId}}"` | ArticleValues container div | ✅ if both present |
 | 3 | Directory detail has `data-cms-type="article"` + `data-cms-id="{{DetailID}}"` | DirectoryPage3 wrap div | ✅ if both present |
 | 4 | Section container has `data-cms-el="section"` + `data-cms-section="{{SubMenuId}}"` | SectionValues container div | ✅ if both present and SubMenuId is dynamic |
