@@ -291,10 +291,9 @@
           window._stStopNotify();
         }
 
-        var t = newTickets
-          .map(x => ({ ...x, _ts: new Date(x.last_update_date_server).getTime() }))
-          .sort((a, b) => a._ts - b._ts)
-          .pop();
+        var t = newTickets.sort((a, b) =>
+          new Date(a.last_update_date_server) - new Date(b.last_update_date_server)
+        ).pop();
 
         var answered = (t.answered_by || '').trim();
 
