@@ -47,39 +47,3 @@ function ReadSubmenu() {
   }
 }
 // ========== /Submenu Reader for Active Menu Highlighting
-
-
-// ========== Social Section URL Reader
-function getSectionUrl(sectionFn) {
-  var originalWrite = document.write;
-  var captured = "";
-
-  document.write = function (str) {
-    captured += str;
-  };
-
-  try {
-    sectionFn();
-  } catch (e) { }
-
-  document.write = originalWrite;
-
-  var match = captured.match(/https?:\/\/[^\s"]+/);
-  return match ? match[0] : "#";
-}
-document.addEventListener('readystatechange', event => {
-  if (event.target.readyState === "interactive") {
-    document.querySelectorAll("[data-social-section]").forEach(function (el) {
-      var num = el.getAttribute("data-social-section");
-      var fnName = "GetSection" + num;
-      var fn = window[fnName];
-
-      if (typeof fn === "function") {
-        el.href = getSectionUrl(fn);
-      } else {
-        el.href = "#";
-      }
-    });
-  }
-});
-// ========== /Social Section URL Reader
