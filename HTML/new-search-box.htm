@@ -1,0 +1,119 @@
+Free Layout: <div id="custom-search-box"></div><script>newCustomSearch();</script>
+
+
+
+
+
+
+JS(custom.js): 
+// Custom Search Bar Implementation
+function newCustomSearch(options = {}) {
+    const container = document.querySelector(options.selector || "#custom-search-box");
+
+    if (!container) return;
+
+    const currentUrl = new URL(window.location.href);
+    const currentQuery = currentUrl.searchParams.get("q") || "";
+
+    container.innerHTML = `
+        <div class="cus-search-wrapper">
+            <svg class="cus-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+            </svg>
+
+            <input 
+                type="text" 
+                class="cus-search-input" 
+                placeholder="SEARCH"
+                value="${currentQuery}"
+            >
+        </div>
+    `;
+
+    const input = container.querySelector(".cus-search-input");
+
+    // Update URL while typing
+    input.addEventListener("input", function () {
+        const value = this.value.trim();
+
+        const url = new URL(window.location.href);
+
+        if (value) {
+            url.searchParams.set("q", value);
+        } else {
+            url.searchParams.delete("q");
+        }
+
+        window.history.replaceState({}, "", url);
+    });
+
+    // Redirect on Enter
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            redirectSearch();
+        }
+    });
+
+    // Redirect on icon click
+    container.querySelector(".cus-search-icon").addEventListener("click", redirectSearch);
+
+    function redirectSearch() {
+        const value = input.value.trim();
+
+        if (!value) return;
+
+        window.location.href = `/search?q=${encodeURIComponent(value)}`;
+    }
+}
+// /Custom Search Bar Implementation
+
+
+
+
+
+
+
+
+
+
+
+
+
+CSS (custom.css): 
+/* ******** Custom Search Bar Styles ******** */
+.cus-search-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.cus-search-input{
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    border: 1px solid #8d8d8d;
+    border-radius: 4px;
+    padding: 0 14px 0 42px;
+    font-size: 14px;
+    text-transform: uppercase;
+    outline: none;
+    background: #fff;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.cus-search-input::placeholder{
+    color: #444;
+    letter-spacing: 0.5px;
+}
+
+.cus-search-icon{
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    cursor: pointer;
+}
+
+/* ******** /Custom Search Bar Styles ******** */
