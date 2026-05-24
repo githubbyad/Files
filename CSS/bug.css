@@ -2128,3 +2128,6 @@ input {
   padding: 18px !important;
   border-radius: 10px;
 }
+textarea, input {
+	box-sizing:border-box;
+}
