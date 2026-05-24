@@ -1727,3 +1727,6 @@ FORCE LABEL AREA
 #system-issues-app .si-detail, #system-issues-app .si-form {
 	padding: 8px 15px;
 }
+#support-tickets-app input, #support-tickets-app select, #support-tickets-app textarea {
+	color: #fff;
+}
