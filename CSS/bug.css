@@ -1724,3 +1724,6 @@ FORCE LABEL AREA
 	background-color: transparent;
 	color: #1e293b;
 }
+#support-tickets-app input, #support-tickets-app select, #support-tickets-app textarea {
+	color: #fff !important;
+}
