@@ -14,6 +14,7 @@
     padding:0;
     box-sizing:border-box;
 }
+    
 
 body{
     font-family:Inter,Segoe UI,sans-serif;
@@ -451,6 +452,264 @@ body{
 }
 
 </style>
+<script>
+
+/* =========================================
+   PAGE SWITCHING
+========================================= */
+
+const pageList   = document.getElementById('page-list');
+const pageNew    = document.getElementById('page-new');
+const pageDetail = document.getElementById('page-detail');
+
+function showPage(page){
+
+    pageList.style.display   = 'none';
+    pageNew.style.display    = 'none';
+    pageDetail.style.display = 'none';
+
+    page.style.display = 'block';
+
+}
+
+/* =========================================
+   NEW ISSUE BUTTON
+========================================= */
+
+document
+.querySelectorAll('.js-new-issue')
+.forEach(btn => {
+
+    btn.addEventListener('click', function(){
+
+        showPage(pageNew);
+
+    });
+
+});
+
+/* =========================================
+   BACK BUTTONS
+========================================= */
+
+document
+.querySelectorAll('.js-back')
+.forEach(btn => {
+
+    btn.addEventListener('click', function(){
+
+        showPage(pageList);
+
+    });
+
+});
+
+/* =========================================
+   OPEN ISSUE BUTTON
+========================================= */
+
+document
+.querySelectorAll('.js-open-issue')
+.forEach(btn => {
+
+    btn.addEventListener('click', function(){
+
+        const row = this.closest('tr');
+
+        const id      = row.dataset.id;
+        const type    = row.dataset.type;
+        const status  = row.dataset.status;
+        const module  = row.dataset.module;
+        const website = row.dataset.website;
+        const title   = row.dataset.title;
+
+        /*
+            UPDATE DETAIL PAGE
+        */
+
+        document.getElementById('detail-title').innerHTML =
+            '[' + type + '] BUG-' + id + ' — ' + title;
+
+        document.getElementById('detail-website').innerHTML =
+            website;
+
+        document.getElementById('detail-module').innerHTML =
+            module;
+
+        document.getElementById('detail-status').innerHTML =
+            status;
+
+        showPage(pageDetail);
+
+    });
+
+});
+
+/* =========================================
+   FILTER SYSTEM
+========================================= */
+
+const typeFilter   = document.getElementById('filter-type');
+const statusFilter = document.getElementById('filter-status');
+const moduleFilter = document.getElementById('filter-module');
+
+function applyFilters(){
+
+    const typeValue   = typeFilter.value.toLowerCase();
+    const statusValue = statusFilter.value.toLowerCase();
+    const moduleValue = moduleFilter.value.toLowerCase();
+
+    const rows = document.querySelectorAll('.si-table tbody tr');
+
+    rows.forEach(row => {
+
+        const rowType   = row.dataset.type.toLowerCase();
+        const rowStatus = row.dataset.status.toLowerCase();
+        const rowModule = row.dataset.module.toLowerCase();
+
+        let visible = true;
+
+        /*
+            TYPE FILTER
+        */
+
+        if(typeValue !== '' && rowType !== typeValue){
+
+            visible = false;
+
+        }
+
+        /*
+            STATUS FILTER
+        */
+
+        if(statusValue !== '' && rowStatus !== statusValue){
+
+            visible = false;
+
+        }
+
+        /*
+            MODULE FILTER
+        */
+
+        if(moduleValue !== '' && rowModule !== moduleValue){
+
+            visible = false;
+
+        }
+
+        /*
+            SHOW / HIDE
+        */
+
+        if(visible){
+
+            row.style.display = '';
+
+        }else{
+
+            row.style.display = 'none';
+
+        }
+
+    });
+
+}
+
+/* =========================================
+   FILTER EVENTS
+========================================= */
+
+typeFilter.addEventListener('change', applyFilters);
+
+statusFilter.addEventListener('change', applyFilters);
+
+moduleFilter.addEventListener('change', applyFilters);
+
+/* =========================================
+   CREATE ISSUE DEMO
+========================================= */
+
+document
+.getElementById('create-issue-btn')
+.addEventListener('click', function(){
+
+    alert('Issue Created Successfully');
+
+    showPage(pageList);
+
+});
+
+/* =========================================
+   REPLY BUTTON DEMO
+========================================= */
+
+document
+.getElementById('send-reply-btn')
+.addEventListener('click', function(){
+
+    const textarea = document.getElementById('reply-message');
+
+    const message = textarea.value.trim();
+
+    if(message === ''){
+
+        alert('Please enter reply');
+
+        return;
+
+    }
+
+    const thread = document.getElementById('thread-wrap');
+
+    const reply = document.createElement('div');
+
+    reply.className = 'si-reply';
+
+    reply.innerHTML = `
+
+        <div class="si-reply-top">
+
+            <div class="si-reply-user">
+                Adnan
+            </div>
+
+            <div class="si-reply-time">
+                Just now
+            </div>
+
+        </div>
+
+        <div class="si-reply-body">
+            ${message}
+        </div>
+
+    `;
+
+    thread.appendChild(reply);
+
+    textarea.value = '';
+
+});
+
+/* =========================================
+   OPTIONAL REFRESH BUTTON
+========================================= */
+
+document
+.querySelectorAll('.si-refresh')
+.forEach(btn => {
+
+    btn.addEventListener('click', function(){
+
+        location.reload();
+
+    });
+
+});
+
+</script>    
 </head>
 <body>
 
@@ -500,7 +759,7 @@ body{
         <div class="si-filter-group">
             <label>Issue Type</label>
 
-            <select>
+            <select id="filter-type">
                 <option>All Types</option>
                 <option>Issue</option>
                 <option>Feature</option>
