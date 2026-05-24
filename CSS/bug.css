@@ -1730,3 +1730,401 @@ FORCE LABEL AREA
 #support-tickets-app input, #support-tickets-app select, #support-tickets-app textarea {
 	color: #fff;
 }
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+body{
+    margin:0;
+    padding:0;
+
+    background:
+    radial-gradient(circle at top,#0f172a 0%,#020617 70%);
+
+    color:#e5e7eb;
+
+    font-family:Inter,Segoe UI,sans-serif;
+}
+
+#support-tickets-app{
+    padding:10px;
+}
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.si-toolbar{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 12px;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(15,23,42,0.95),
+        rgba(17,24,39,0.95)
+    );
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    margin-bottom:8px;
+}
+
+/* =========================================
+   NEW BUTTON
+========================================= */
+
+#si-new{
+    height:42px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
+
+    color:#ffffff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+#si-new:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================
+   SELECTS
+========================================= */
+
+.si-toolbar select{
+    height:38px;
+
+    min-width:110px;
+
+    padding:0 38px 0 12px;
+
+    background:#0f172a;
+
+    border:1px solid #334155;
+
+    border-radius:10px;
+
+    color:#ffffff;
+
+    outline:none;
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M2 5l6 6 6-6' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:right 12px center;
+
+    background-size:12px;
+}
+
+.si-toolbar select option{
+    background:#111827;
+
+    color:#ffffff;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.si-table{
+    width:100%;
+
+    border-collapse:separate;
+
+    border-spacing:0 12px;
+}
+
+/* =========================================
+   TABLE HEAD
+========================================= */
+
+.si-table thead th{
+    text-align:left;
+
+    color:#94a3b8;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    padding:0 16px 4px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+}
+
+/* =========================================
+   ROW
+========================================= */
+
+.si-table tbody tr{
+    transition:0.2s;
+}
+
+.si-table tbody tr:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================
+   CELLS
+========================================= */
+
+.si-table tbody td{
+    background:
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #111827
+    );
+
+    border-top:1px solid rgba(255,255,255,0.05);
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+
+    padding:14px 16px;
+
+    color:#e5e7eb;
+
+    vertical-align:middle;
+}
+
+/* FIRST CELL */
+
+.si-table tbody td:first-child{
+    border-left:1px solid rgba(255,255,255,0.05);
+
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+
+    font-weight:700;
+}
+
+/* LAST CELL */
+
+.si-table tbody td:last-child{
+    border-right:1px solid rgba(255,255,255,0.05);
+
+    border-top-right-radius:20px;
+    border-bottom-right-radius:20px;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.si-title{
+    color:#ffffff;
+
+    font-weight:600;
+}
+
+/* =========================================
+   TYPE
+========================================= */
+
+.si-table tbody td:nth-child(2){
+    color:#f87171;
+
+    font-weight:700;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-open{
+    color:#ffffff;
+
+    font-weight:700;
+}
+
+.status-fixed{
+    color:#34d399;
+
+    font-weight:700;
+}
+
+/* =========================================
+   FROM
+========================================= */
+
+.si-table tbody td:nth-child(5){
+    color:#60a5fa;
+
+    font-weight:700;
+}
+
+/* =========================================
+   ASSIGNED
+========================================= */
+
+.si-table tbody td:nth-child(6){
+    color:#e879f9;
+
+    font-weight:700;
+}
+
+/* =========================================
+   MODULE
+========================================= */
+
+.si-table tbody td:nth-child(7){
+    color:#38bdf8;
+}
+
+/* =========================================
+   WEBSITE
+========================================= */
+
+.si-table tbody td:nth-child(8){
+    color:#e5e7eb;
+}
+
+/* =========================================
+   UPDATED
+========================================= */
+
+.si-table tbody td:nth-child(9){
+    color:#cbd5e1;
+}
+
+/* =========================================
+   OPEN BUTTON
+========================================= */
+
+.si-open{
+    height:40px;
+
+    padding:0 20px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    color:#ffffff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.si-open:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.si-pagination{
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:20px;
+}
+
+.si-pagination button{
+    height:32px;
+
+    padding:0 14px;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    background:#0f172a;
+
+    border-radius:10px;
+
+    color:#94a3b8;
+
+    cursor:pointer;
+}
+
+.si-pagination span{
+    color:#ffffff;
+
+    font-weight:600;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:1200px){
+
+    body{
+        overflow-x:auto;
+    }
+
+    .si-table{
+        min-width:1200px;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .si-toolbar{
+        flex-wrap:wrap;
+    }
+
+    .si-toolbar select{
+        flex:1;
+    }
+
+}
+input {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+  box-shadow: none !important;
+  padding: 18px !important;
+  border-radius: 10px;
+}
