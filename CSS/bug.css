@@ -792,7 +792,7 @@ td {
 
     border-radius:12px !important;
 
-    background:#172033 !important;
+    background:#3e4554 !important;
 
     color:#e5e7eb !important;
 
@@ -1724,6 +1724,6 @@ FORCE LABEL AREA
 	background-color: transparent;
 	color: #1e293b;
 }
-#support-tickets-app input, #support-tickets-app select, #support-tickets-app textarea {
-	color: #fff !important;
+#system-issues-app .si-detail, #system-issues-app .si-form {
+	padding: 8px 15px;
 }
