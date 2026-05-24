@@ -50,13 +50,20 @@ function newCustomSearch(options = {}) {
     // Redirect on icon click
     container.querySelector(".cus-search-icon").addEventListener("click", redirectSearch);
 
-    function redirectSearch() {
-        const value = input.value.trim();
-
-        if (!value) return;
-
-        window.location.href = `/search?q=${encodeURIComponent(value)}`;
-    }
+   function redirectSearch() {
+       const value = input.value.trim();
+   
+       // Prevent empty search
+       if (!value) return;
+   
+       // Minimum 3 characters validation
+       if (value.length < 3) {
+           alert('Please enter at least 3 characters to search.');
+           return;
+       }
+   
+       window.location.href = `/search?q=${encodeURIComponent(value)}`;
+   }
 }
 // /Custom Search Bar Implementation
 
