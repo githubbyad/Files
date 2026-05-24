@@ -3,15 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>System Issues UI</title>
+<title>System Issues</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
 
 *{
     margin:0;
@@ -24,29 +20,24 @@ body{
     background:
     linear-gradient(
         180deg,
-        #0b1120,
-        #111827
+        #0b1120 0%,
+        #111827 100%
     );
     color:#e5e7eb;
+    min-height:100vh;
 }
 
-/* =========================
-   TOPBAR
-========================= */
+/* TOP BAR */
 
 .si-topbar{
     position:sticky;
     top:0;
     z-index:100;
-
-    height:72px;
-
-    padding:0 24px;
-
+    height:70px;
+    padding:0 22px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     background:
     linear-gradient(
         135deg,
@@ -55,12 +46,10 @@ body{
     );
 
     border-bottom:1px solid rgba(255,255,255,0.06);
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.35);
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
 }
 
-.si-logo-area{
+.si-left{
     display:flex;
     align-items:center;
     gap:14px;
@@ -69,7 +58,6 @@ body{
 .si-logo{
     width:42px;
     height:42px;
-
     border-radius:12px;
 
     display:flex;
@@ -84,44 +72,92 @@ body{
     );
 
     box-shadow:
-    0 0 20px rgba(239,68,68,0.3);
+    0 0 20px rgba(239,68,68,0.35);
 }
 
 .si-logo i{
     color:#fff;
+    font-size:18px;
 }
 
-.si-title h2{
+.si-title-wrap h2{
     font-size:18px;
+    font-weight:700;
     color:#fff;
 }
 
-.si-title p{
+.si-title-wrap p{
+    margin-top:3px;
     font-size:12px;
     color:#94a3b8;
-    margin-top:3px;
 }
 
-.si-top-actions{
+.active-bugs{
+    color:#f87171;
+    font-weight:600;
+}
+
+.si-right{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:14px;
 }
 
-.si-btn{
+.si-avatar-group{
+    display:flex;
+}
+
+.si-avatar{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    margin-left:-8px;
+
+    border:2px solid #0f172a;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:12px;
+    font-weight:700;
+    color:#fff;
+}
+
+.si-avatar:nth-child(1){
+    background:#3b82f6;
+}
+
+.si-avatar:nth-child(2){
+    background:#10b981;
+}
+
+.si-avatar:nth-child(3){
+    background:#f59e0b;
+}
+
+.si-refresh{
+    width:40px;
+    height:40px;
     border:none;
+    border-radius:12px;
+
+    background:#172033;
+    color:#cbd5e1;
+
     cursor:pointer;
     transition:0.2s;
 }
 
-.si-btn:hover{
-    transform:translateY(-1px);
+.si-refresh:hover{
+    background:#243046;
 }
 
-.si-btn-primary{
+.si-new-btn{
     height:42px;
     padding:0 18px;
 
+    border:none;
     border-radius:12px;
 
     background:
@@ -132,129 +168,135 @@ body{
     );
 
     color:#fff;
-    font-weight:700;
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 20px rgba(239,68,68,0.25);
+
+    transition:0.2s;
 }
 
-.si-btn-dark{
-    height:42px;
-    padding:0 18px;
-
-    border-radius:12px;
-
-    background:#172033;
-    color:#cbd5e1;
+.si-new-btn:hover{
+    transform:translateY(-1px);
 }
 
-/* =========================
-   COMMON
-========================= */
+/* PAGE */
 
-.si-page{
+.si-container{
     padding:24px;
 }
 
-.si-card{
+/* FILTERS */
+
+.si-filters{
     background:#111827;
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
 
-    border:1px solid rgba(255,255,255,0.05);
-
-    border-radius:22px;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,0.25);
-}
-
-/* =========================
-   LIST PAGE
-========================= */
-
-.si-toolbar{
     padding:18px;
+    margin-bottom:24px;
 
     display:flex;
     gap:14px;
     flex-wrap:wrap;
-
-    margin-bottom:22px;
 }
 
-.si-toolbar select{
-    height:44px;
+.si-filter-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.si-filter-group label{
+    font-size:12px;
+    color:#94a3b8;
+}
+
+.si-filter-group select{
     min-width:180px;
+    height:42px;
 
     padding:0 14px;
 
-    border-radius:14px;
-
-    border:1px solid #334155;
-
     background:#0f172a;
-    color:#e5e7eb;
+    border:1px solid #374151;
+    border-radius:12px;
 
+    color:#e5e7eb;
     outline:none;
 }
 
-.si-toolbar select:focus{
+.si-filter-group select:focus{
     border-color:#3b82f6;
+    box-shadow:
+    0 0 0 3px rgba(59,130,246,0.15);
 }
+
+/* TABLE */
 
 .si-table-wrap{
     overflow:auto;
+    border-radius:20px;
 }
 
 .si-table{
     width:100%;
     border-collapse:separate;
     border-spacing:0 12px;
-
-    min-width:1100px;
 }
 
-.si-table th{
-    text-align:left;
+.si-table thead th{
     font-size:12px;
+    font-weight:600;
     color:#94a3b8;
 
+    text-align:left;
     padding:0 16px 10px;
 }
 
-.si-table td{
+.si-table tbody tr{
     background:#111827;
+    transition:0.2s;
 
+    box-shadow:
+    0 4px 14px rgba(0,0,0,0.25);
+}
+
+.si-table tbody tr:hover{
+    background:#172033;
+    transform:translateY(-2px);
+}
+
+.si-table tbody td{
     padding:18px 16px;
-
     border-top:1px solid rgba(255,255,255,0.03);
     border-bottom:1px solid rgba(255,255,255,0.03);
 }
 
-.si-table tr td:first-child{
+.si-table tbody td:first-child{
     border-left:1px solid rgba(255,255,255,0.03);
-
-    border-top-left-radius:18px;
-    border-bottom-left-radius:18px;
+    border-top-left-radius:16px;
+    border-bottom-left-radius:16px;
 }
 
-.si-table tr td:last-child{
+.si-table tbody td:last-child{
     border-right:1px solid rgba(255,255,255,0.03);
-
-    border-top-right-radius:18px;
-    border-bottom-right-radius:18px;
+    border-top-right-radius:16px;
+    border-bottom-right-radius:16px;
 }
 
-.si-table tr{
-    transition:0.2s;
-}
-
-.si-table tr:hover{
-    transform:translateY(-2px);
-}
+/* BADGES */
 
 .si-badge{
     display:inline-flex;
     align-items:center;
-    gap:7px;
+    gap:6px;
 
-    padding:8px 12px;
+    height:30px;
+    padding:0 12px;
 
     border-radius:999px;
 
@@ -263,19 +305,24 @@ body{
 }
 
 .si-badge.issue{
-    background:rgba(239,68,68,0.14);
+    background:rgba(239,68,68,0.15);
     color:#f87171;
 }
 
 .si-badge.feature{
-    background:rgba(59,130,246,0.14);
+    background:rgba(59,130,246,0.15);
     color:#60a5fa;
 }
+
+/* STATUS */
 
 .si-status{
     display:inline-flex;
     align-items:center;
     gap:8px;
+
+    font-size:13px;
+    font-weight:600;
 }
 
 .si-dot{
@@ -289,13 +336,61 @@ body{
     box-shadow:0 0 12px #ef4444;
 }
 
+.status-testing .si-dot{
+    background:#3b82f6;
+}
+
 .status-fixed .si-dot{
     background:#10b981;
 }
 
-.status-testing .si-dot{
+.status-assigned .si-dot{
+    background:#f59e0b;
+}
+
+/* PRIORITY */
+
+.si-priority{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:10px;
+}
+
+.priority-high{
+    background:#ef4444;
+    box-shadow:0 0 10px #ef4444;
+}
+
+.priority-medium{
     background:#3b82f6;
 }
+
+.priority-low{
+    background:#6b7280;
+}
+
+/* TITLE */
+
+.si-title{
+    font-weight:600;
+    color:#fff;
+}
+
+.si-title small{
+    display:block;
+    margin-top:6px;
+    color:#94a3b8;
+    font-size:12px;
+}
+
+.si-camera{
+    color:#94a3b8;
+    margin-left:8px;
+}
+
+/* OPEN BUTTON */
 
 .si-open-btn{
     height:38px;
@@ -304,438 +399,53 @@ body{
     border:none;
     border-radius:10px;
 
-    background:#2563eb;
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
     color:#fff;
-
-    font-size:13px;
-    font-weight:700;
-}
-
-/* =========================
-   CREATE PAGE
-========================= */
-
-.si-grid{
-    display:grid;
-    grid-template-columns:1fr 350px;
-    gap:24px;
-}
-
-.si-form-card{
-    padding:28px;
-}
-
-.si-form-header{
-    margin-bottom:28px;
-}
-
-.si-form-header h1{
-    font-size:30px;
-    color:#fff;
-}
-
-.si-form-header p{
-    margin-top:8px;
-    color:#94a3b8;
-}
-
-.si-form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.si-field{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.si-field.full{
-    grid-column:1 / -1;
-}
-
-.si-field label{
     font-size:13px;
     font-weight:600;
-    color:#cbd5e1;
-}
-
-.si-input,
-.si-select,
-.si-textarea{
-    border:none;
-    outline:none;
-
-    background:#0f172a;
-
-    border:1px solid #334155;
-
-    color:#e5e7eb;
-
-    border-radius:16px;
-}
-
-.si-input,
-.si-select{
-    height:52px;
-    padding:0 16px;
-}
-
-.si-textarea{
-    min-height:250px;
-
-    padding:18px;
-
-    resize:vertical;
-
-    font-family:Consolas,monospace;
-}
-
-.si-upload{
-    border:2px dashed #334155;
-
-    border-radius:20px;
-
-    padding:30px;
-
-    text-align:center;
-
-    background:#0f172a;
-}
-
-.si-upload i{
-    font-size:36px;
-    color:#60a5fa;
-    margin-bottom:14px;
-}
-
-.si-upload h3{
-    color:#fff;
-}
-
-.si-upload p{
-    color:#94a3b8;
-    margin-top:8px;
-}
-
-.si-upload-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    margin-top:18px;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    background:#2563eb;
-    color:#fff;
 
     cursor:pointer;
+    transition:0.2s;
 }
 
-.si-upload input{
-    display:none;
+.si-open-btn:hover{
+    box-shadow:
+    0 0 16px rgba(37,99,235,0.35);
 }
 
-.si-actions{
-    margin-top:28px;
+/* RESPONSIVE */
 
-    display:flex;
-    justify-content:flex-end;
-    gap:14px;
-}
-
-.si-side-card{
-    padding:24px;
-}
-
-.si-side-card h3{
-    margin-bottom:18px;
-    color:#fff;
-}
-
-.si-priority-item{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    padding:14px;
-
-    border-radius:14px;
-
-    background:#0f172a;
-
-    margin-bottom:12px;
-}
-
-.si-priority-dot{
-    width:12px;
-    height:12px;
-    border-radius:50%;
-}
-
-.red{
-    background:#ef4444;
-}
-
-.orange{
-    background:#f59e0b;
-}
-
-.blue{
-    background:#3b82f6;
-}
-
-/* =========================
-   DETAIL PAGE
-========================= */
-
-.si-detail-card{
-    padding:28px;
-}
-
-.si-back{
-    margin-bottom:18px;
-}
-
-.si-back button{
-    height:42px;
-    padding:0 18px;
-
-    border:none;
-    border-radius:12px;
-
-    background:#172033;
-    color:#cbd5e1;
-
-    cursor:pointer;
-}
-
-.si-detail-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-
-    gap:20px;
-
-    margin-bottom:18px;
-}
-
-.si-detail-title h1{
-    font-size:28px;
-    color:#fff;
-}
-
-.si-detail-title p{
-    margin-top:8px;
-    color:#94a3b8;
-}
-
-.si-detail-actions{
-    display:flex;
-    gap:10px;
-}
-
-.si-meta{
-    margin-top:24px;
-
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-}
-
-.si-meta-box{
-    background:#0f172a;
-
-    border:1px solid rgba(255,255,255,0.05);
-
-    border-radius:14px;
-
-    padding:14px 16px;
-
-    min-width:180px;
-}
-
-.si-meta-box small{
-    display:block;
-
-    font-size:11px;
-    color:#94a3b8;
-
-    margin-bottom:6px;
-}
-
-.si-meta-box strong{
-    color:#fff;
-}
-
-.si-body{
-    margin-top:28px;
-
-    background:#0f172a;
-
-    border-radius:18px;
-
-    border:1px solid rgba(255,255,255,0.05);
-
-    padding:22px;
-
-    line-height:1.8;
-
-    font-family:Consolas,monospace;
-
-    white-space:pre-wrap;
-}
-
-.si-screen-wrap{
-    margin-top:28px;
-}
-
-.si-screen-wrap h3{
-    margin-bottom:14px;
-}
-
-.si-screens{
-    display:flex;
-    gap:16px;
-    flex-wrap:wrap;
-}
-
-.si-shot{
-    width:220px;
-
-    background:#0f172a;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,0.05);
-}
-
-.si-shot img{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-}
-
-.si-shot-footer{
-    padding:12px;
-}
-
-.si-shot-footer a{
-    color:#60a5fa;
-    text-decoration:none;
-    font-size:13px;
-}
-
-.si-thread{
-    margin-top:32px;
-}
-
-.si-thread h3{
-    margin-bottom:18px;
-}
-
-.si-reply{
-    background:#0f172a;
-
-    border-radius:18px;
-
-    padding:18px;
-
-    margin-bottom:16px;
-}
-
-.si-reply-top{
-    display:flex;
-    justify-content:space-between;
-
-    margin-bottom:10px;
-}
-
-.si-reply-user{
-    font-weight:700;
-    color:#fff;
-}
-
-.si-reply-time{
-    font-size:12px;
-    color:#94a3b8;
-}
-
-.si-reply-body{
-    line-height:1.7;
-    color:#d1d5db;
-}
-
-.si-reply-form{
-    margin-top:24px;
-}
-
-.si-reply-form textarea{
-    width:100%;
-
-    min-height:140px;
-
-    background:#0f172a;
-
-    border:1px solid #334155;
-
-    border-radius:18px;
-
-    padding:18px;
-
-    color:#e5e7eb;
-
-    resize:vertical;
-
-    outline:none;
-}
-
-.si-reply-actions{
-    margin-top:14px;
-
-    display:flex;
-    justify-content:flex-end;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1000px){
-
-    .si-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:700px){
-
-    .si-page{
-        padding:16px;
-    }
+@media(max-width:900px){
 
     .si-topbar{
         height:auto;
         padding:18px;
-
         flex-direction:column;
         align-items:flex-start;
         gap:16px;
     }
 
-    .si-form-grid{
-        grid-template-columns:1fr;
+    .si-right{
+        width:100%;
+        justify-content:space-between;
     }
 
-    .si-detail-header{
+    .si-filters{
         flex-direction:column;
+    }
+
+    .si-filter-group select{
+        width:100%;
+    }
+
+    .si-table{
+        min-width:900px;
     }
 
 }
@@ -744,32 +454,37 @@ body{
 </head>
 <body>
 
-<!-- =========================
-     TOPBAR
-========================= -->
-
 <div class="si-topbar">
 
-    <div class="si-logo-area">
+    <div class="si-left">
 
         <div class="si-logo">
             <i class="fas fa-bug"></i>
         </div>
 
-        <div class="si-title">
+        <div class="si-title-wrap">
             <h2>System Issues</h2>
-            <p>Debug Center • 3 Active Bugs</p>
+            <p>
+                <span class="active-bugs">3 Active Bugs</span>
+                • Monitoring & Debug Center
+            </p>
         </div>
 
     </div>
 
-    <div class="si-top-actions">
+    <div class="si-right">
 
-        <button class="si-btn si-btn-dark">
+        <div class="si-avatar-group">
+            <div class="si-avatar">A</div>
+            <div class="si-avatar">U</div>
+            <div class="si-avatar">Z</div>
+        </div>
+
+        <button class="si-refresh">
             <i class="fas fa-rotate"></i>
         </button>
 
-        <button class="si-btn si-btn-primary">
+        <button class="si-new-btn">
             <i class="fas fa-plus"></i>
             New Issue
         </button>
@@ -778,32 +493,44 @@ body{
 
 </div>
 
-<!-- ======================================================
-     PAGE 1 : BUG LIST
-====================================================== -->
+<div class="si-container">
 
-<div class="si-page">
+    <div class="si-filters">
 
-    <div class="si-card si-toolbar">
+        <div class="si-filter-group">
+            <label>Issue Type</label>
 
-        <select>
-            <option>All Types</option>
-            <option>Issue</option>
-            <option>Feature</option>
-        </select>
+            <select>
+                <option>All Types</option>
+                <option>Issue</option>
+                <option>Feature</option>
+            </select>
+        </div>
 
-        <select>
-            <option>All Statuses</option>
-            <option>Open</option>
-            <option>Testing</option>
-            <option>Fixed</option>
-        </select>
+        <div class="si-filter-group">
+            <label>Status</label>
 
-        <select>
-            <option>All Modules</option>
-            <option>Generator</option>
-            <option>Editor</option>
-        </select>
+            <select>
+                <option>All Statuses</option>
+                <option>Open</option>
+                <option>Assigned</option>
+                <option>Testing</option>
+                <option>Fixed</option>
+                <option>Won't Fix</option>
+            </select>
+        </div>
+
+        <div class="si-filter-group">
+            <label>Module</label>
+
+            <select>
+                <option>All Modules</option>
+                <option>Generator</option>
+                <option>Editor</option>
+                <option>Deploy</option>
+                <option>Auth</option>
+            </select>
+        </div>
 
     </div>
 
@@ -828,7 +555,9 @@ body{
 
                 <tr>
 
-                    <td><strong>BUG-002</strong></td>
+                    <td>
+                        <strong>BUG-002</strong>
+                    </td>
 
                     <td>
                         <span class="si-badge issue">
@@ -838,14 +567,27 @@ body{
                     </td>
 
                     <td>
-                        Editor crashes while saving article
+
+                        <div class="si-title">
+                            <span class="si-priority priority-high"></span>
+                            Editor crashes while saving article
+
+                            <i class="fas fa-camera si-camera"></i>
+
+                            <small>
+                                Screenshot attached • 3 mins ago
+                            </small>
+                        </div>
+
                     </td>
 
                     <td>
+
                         <div class="si-status status-open">
                             <span class="si-dot"></span>
                             Open
                         </div>
+
                     </td>
 
                     <td>Editor</td>
@@ -856,6 +598,7 @@ body{
 
                     <td>
                         <button class="si-open-btn">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
                             Open
                         </button>
                     </td>
@@ -864,7 +607,9 @@ body{
 
                 <tr>
 
-                    <td><strong>BUG-003</strong></td>
+                    <td>
+                        <strong>BUG-001</strong>
+                    </td>
 
                     <td>
                         <span class="si-badge feature">
@@ -874,14 +619,25 @@ body{
                     </td>
 
                     <td>
-                        Auto save feature request
+
+                        <div class="si-title">
+                            <span class="si-priority priority-medium"></span>
+                            Add auto-save feature for editor
+
+                            <small>
+                                Requested by staff • 1 hour ago
+                            </small>
+                        </div>
+
                     </td>
 
                     <td>
+
                         <div class="si-status status-testing">
                             <span class="si-dot"></span>
                             Testing
                         </div>
+
                     </td>
 
                     <td>Generator</td>
@@ -892,6 +648,59 @@ body{
 
                     <td>
                         <button class="si-open-btn">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            Open
+                        </button>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        <strong>BUG-003</strong>
+                    </td>
+
+                    <td>
+                        <span class="si-badge issue">
+                            <i class="fas fa-circle-exclamation"></i>
+                            Issue
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <div class="si-title">
+                            <span class="si-priority priority-low"></span>
+                            Deploy page alignment issue
+
+                            <i class="fas fa-camera si-camera"></i>
+
+                            <small>
+                                2 screenshots attached
+                            </small>
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <div class="si-status status-fixed">
+                            <span class="si-dot"></span>
+                            Fixed
+                        </div>
+
+                    </td>
+
+                    <td>Deploy</td>
+
+                    <td>demo.com</td>
+
+                    <td>Yesterday</td>
+
+                    <td>
+                        <button class="si-open-btn">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
                             Open
                         </button>
                     </td>
@@ -901,363 +710,6 @@ body{
             </tbody>
 
         </table>
-
-    </div>
-
-</div>
-
-<!-- ======================================================
-     PAGE 2 : CREATE ISSUE
-====================================================== -->
-
-<div class="si-page">
-
-    <div class="si-grid">
-
-        <div class="si-card si-form-card">
-
-            <div class="si-form-header">
-
-                <h1>Create New Issue</h1>
-
-                <p>
-                    Report bugs and attach screenshots for developers.
-                </p>
-
-            </div>
-
-            <div class="si-form-grid">
-
-                <div class="si-field">
-
-                    <label>Type</label>
-
-                    <select class="si-select">
-                        <option>Issue</option>
-                        <option>Feature</option>
-                    </select>
-
-                </div>
-
-                <div class="si-field">
-
-                    <label>Module</label>
-
-                    <select class="si-select">
-                        <option>generator</option>
-                        <option>editor</option>
-                        <option>deploy</option>
-                    </select>
-
-                </div>
-
-                <div class="si-field full">
-
-                    <label>Title</label>
-
-                    <input
-                        type="text"
-                        class="si-input"
-                        placeholder="Enter issue title"
-                    >
-
-                </div>
-
-                <div class="si-field full">
-
-                    <label>Website</label>
-
-                    <input
-                        type="text"
-                        class="si-input"
-                        placeholder="example.com"
-                    >
-
-                </div>
-
-                <div class="si-field full">
-
-                    <label>Description</label>
-
-                    <textarea
-                        class="si-textarea"
-                        placeholder="Describe issue..."
-                    ></textarea>
-
-                </div>
-
-                <div class="si-field full">
-
-                    <label>Screenshots</label>
-
-                    <div class="si-upload">
-
-                        <i class="fas fa-cloud-arrow-up"></i>
-
-                        <h3>Upload Screenshots</h3>
-
-                        <p>
-                            Drag & drop or upload images
-                        </p>
-
-                        <label class="si-upload-btn">
-
-                            <i class="fas fa-image"></i>
-
-                            Select Images
-
-                            <input
-                                type="file"
-                                multiple
-                            >
-
-                        </label>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="si-actions">
-
-                <button class="si-btn si-btn-dark">
-                    Save Draft
-                </button>
-
-                <button class="si-btn si-btn-primary">
-                    Create Issue
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="si-card si-side-card">
-
-            <h3>Priority Levels</h3>
-
-            <div class="si-priority-item">
-
-                <div class="si-priority-dot red"></div>
-
-                <div>
-                    <strong>Critical</strong><br>
-                    <small>System broken</small>
-                </div>
-
-            </div>
-
-            <div class="si-priority-item">
-
-                <div class="si-priority-dot orange"></div>
-
-                <div>
-                    <strong>High</strong><br>
-                    <small>Main feature affected</small>
-                </div>
-
-            </div>
-
-            <div class="si-priority-item">
-
-                <div class="si-priority-dot blue"></div>
-
-                <div>
-                    <strong>Medium</strong><br>
-                    <small>Minor issue</small>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ======================================================
-     PAGE 3 : OPEN ISSUE
-====================================================== -->
-
-<div class="si-page">
-
-    <div class="si-card si-detail-card">
-
-        <div class="si-back">
-            <button>
-                ← Back
-            </button>
-        </div>
-
-        <div class="si-detail-header">
-
-            <div class="si-detail-title">
-
-                <h1>
-                    [Issue] BUG-002 — Editor crashes
-                </h1>
-
-                <p>
-                    Created 5 mins ago • Assigned to Adnan
-                </p>
-
-            </div>
-
-            <div class="si-detail-actions">
-
-                <button class="si-btn si-btn-dark">
-                    Copy for AI
-                </button>
-
-                <button class="si-btn si-btn-primary">
-                    Edit Issue
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="si-meta">
-
-            <div class="si-meta-box">
-                <small>Website</small>
-                <strong>sacobaynews.com</strong>
-            </div>
-
-            <div class="si-meta-box">
-                <small>Module</small>
-                <strong>Generator</strong>
-            </div>
-
-            <div class="si-meta-box">
-                <small>Status</small>
-                <strong>Open</strong>
-            </div>
-
-            <div class="si-meta-box">
-                <small>Priority</small>
-                <strong>High</strong>
-            </div>
-
-        </div>
-
-        <div class="si-body">
-
-User opens editor and clicks save.
-
-The screen freezes for 3 seconds and then crashes.
-
-Steps to reproduce:
-
-1. Open article editor
-2. Add new image
-3. Click save
-4. Crash occurs
-
-Browser:
-Chrome latest version
-
-        </div>
-
-        <div class="si-screen-wrap">
-
-            <h3>Screenshots</h3>
-
-            <div class="si-screens">
-
-                <div class="si-shot">
-
-                    <img src="https://picsum.photos/400/300?1">
-
-                    <div class="si-shot-footer">
-                        <a href="#">
-                            editor-crash.png
-                        </a>
-                    </div>
-
-                </div>
-
-                <div class="si-shot">
-
-                    <img src="https://picsum.photos/400/300?2">
-
-                    <div class="si-shot-footer">
-                        <a href="#">
-                            console-error.png
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="si-thread">
-
-            <h3>Thread</h3>
-
-            <div class="si-reply">
-
-                <div class="si-reply-top">
-
-                    <div class="si-reply-user">
-                        Adnan
-                    </div>
-
-                    <div class="si-reply-time">
-                        5 mins ago
-                    </div>
-
-                </div>
-
-                <div class="si-reply-body">
-
-                    I tested this issue locally and confirmed the crash.
-                    Working on a fix now.
-
-                </div>
-
-            </div>
-
-            <div class="si-reply">
-
-                <div class="si-reply-top">
-
-                    <div class="si-reply-user">
-                        Zaid
-                    </div>
-
-                    <div class="si-reply-time">
-                        2 mins ago
-                    </div>
-
-                </div>
-
-                <div class="si-reply-body">
-
-                    Please also test image upload size limits.
-
-                </div>
-
-            </div>
-
-            <div class="si-reply-form">
-
-                <textarea placeholder="Write reply..."></textarea>
-
-                <div class="si-reply-actions">
-
-                    <button class="si-btn si-btn-primary">
-                        Send Reply
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
 
     </div>
 
