@@ -40,21 +40,6 @@ function newCustomSearch(options = {}) {
 
     const input = container.querySelector(".cus-search-input");
 
-    // Update URL while typing
-    input.addEventListener("input", function () {
-        const value = this.value.trim();
-
-        const url = new URL(window.location.href);
-
-        if (value) {
-            url.searchParams.set("q", value);
-        } else {
-            url.searchParams.delete("q");
-        }
-
-        window.history.replaceState({}, "", url);
-    });
-
     // Redirect on Enter
     input.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
@@ -101,8 +86,7 @@ CSS (custom.css):
     border: 1px solid #8d8d8d;
     border-radius: 4px;
     padding: 0 14px 0 42px;
-    font-size: 14px;
-    text-transform: uppercase;
+    font-size: 14px;    
     outline: none;
     background: #fff;
     color: #333;
