@@ -1,8 +1,4 @@
-/* =========================================================
-   SPACING UTILITIES
-========================================================= */
-
-/* Margin Bottom */
+/* ******** Classes for Non-Bootstrap sites ******** */
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -15,7 +11,6 @@
   margin-bottom: 3rem;
 }
 
-/* Margin Top */
 .mt-3 {
   margin-top: 1rem;
 }
@@ -24,7 +19,6 @@
   margin-top: 3rem;
 }
 
-/* Padding */
 .p-2 {
   padding: 0.5rem !important;
 }
@@ -43,16 +37,10 @@
   padding-bottom: 0.5rem;
 }
 
-/* Margin X */
 .mx-0 {
   margin-right: 0 !important;
   margin-left: 0 !important;
 }
-
-
-/* =========================================================
-   WIDTH UTILITIES
-========================================================= */
 
 .w-100 {
   width: 100%;
@@ -61,11 +49,6 @@
 .w-96 {
   width: 96%;
 }
-
-
-/* =========================================================
-   TEXT UTILITIES
-========================================================= */
 
 .text-center {
   text-align: center;
@@ -95,28 +78,13 @@
   font-size: calc(1.3rem + 0.6vw) !important;
 }
 
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
 .bg-dark {
   background-color: #212529;
 }
 
-
-/* =========================================================
-   DISPLAY
-========================================================= */
-
 .d-inline-block {
   display: inline-block;
 }
-
-
-/* =========================================================
-   BORDER & RADIUS
-========================================================= */
 
 .border {
   border: 1px solid #dee2e6 !important;
@@ -125,11 +93,6 @@
 .rounded {
   border-radius: 0.25rem !important;
 }
-
-
-/* =========================================================
-   FORM FLOATING
-========================================================= */
 
 .form-floating {
   position: relative;
@@ -140,12 +103,12 @@
   font-weight: 500;
 }
 
-.form-floating > .form-control,
-.form-floating > textarea.form-control {
+.form-floating>.form-control,
+.form-floating>textarea.form-control {
   padding: 1.5rem 0.75rem 0.5rem;
 }
 
-.form-floating > label {
+.form-floating>label {
   position: absolute;
   top: 0;
   left: 0;
@@ -154,11 +117,6 @@
   pointer-events: none;
   transition: 0.1s ease-in-out;
 }
-
-
-/* =========================================================
-   FORM CONTROLS
-========================================================= */
 
 .form-control {
   display: block;
@@ -184,11 +142,6 @@ textarea.form-control {
   resize: vertical;
 }
 
-
-/* =========================================================
-   FORM DIVIDER
-========================================================= */
-
 .formdivider {
   margin-top: 0;
   margin-bottom: 0;
@@ -209,10 +162,6 @@ textarea.form-control {
   border-bottom: 2px solid #343a40;
 }
 
-
-/* =========================================================
-   FORM BODY
-========================================================= */
 #CustomForm .formbody {
   float: left;
 }
@@ -230,11 +179,6 @@ textarea.form-control {
   font-size: 14px !important;
   font-family: Trebuchet MS !important;
 }
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
 
 .btn {
   display: inline-block;
@@ -258,7 +202,6 @@ textarea.form-control {
     box-shadow 0.15s ease-in-out;
 }
 
-/* Primary Button */
 .btn-primary {
   color: #fff;
   background-color: #0d6efd;
@@ -278,11 +221,6 @@ textarea.form-control {
   background-color: #0a58ca;
   border-color: #0a53be;
 }
-
-
-/* =========================================================
-   SELECT FIELD
-========================================================= */
 
 .select {
   position: relative;
@@ -304,11 +242,6 @@ textarea.form-control {
   appearance: none;
   min-height: calc(3.5rem + 2px);
 }
-
-
-/* =========================================================
-   FILE INPUT
-========================================================= */
 
 input[type="file"] {
   width: 100%;
@@ -334,11 +267,6 @@ input[type="file"]::file-selector-button:hover {
   border-color: #343a40;
 }
 
-
-/* =========================================================
-   CUSTOM FORM
-========================================================= */
-
 .custom-form .input input,
 .custom-form .select select,
 .custom-form .textarea textarea {
@@ -362,3 +290,13 @@ input[type="file"]::file-selector-button:hover {
 #CustomForm fieldset {
   border-width: 0;
 }
+
+.form-floating>.form-control,
+.form-select,
+.form-floating>textarea.form-control {
+  padding: 12px !important;
+  padding-top: 15px !important;
+  height: auto !important;
+}
+
+/* ******** /Classes for Non-Bootstrap sites ******** */
