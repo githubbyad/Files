@@ -1,0 +1,35 @@
+{{LayoutArticleGroup700Begin}}
+{{File:headlines.xml}}
+{{LayoutArticleGroup700Limit25}}
+{{ReplaceJavascriptChars:No}}
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+{{SortBy:Issue,Updated}}<?xml version="1.0"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <title>bulletlink.com/template-1</title>
+        <atom:link rel="self" href="https://bulletlink.com/template-1/headlines.xml" type="application/rss+xml" />
+        <link>https://bulletlink.com/template-1</link>
+        <description>bulletlink.com/template-1</description>
+        <language>en-US</language>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        {{RepeatBegin}}
+            <item>
+                  <title><![CDATA[{{Heading}}]]></title>
+                  <link>https://bulletlink.com/template-1/{{HeadingLink}}</link>
+                  <description><![CDATA[{{Body}}]]></description>
+                  <pubDate>{{DayNameI1}}, {{DayI}} {{MonthI1}} {{YearI}} 00:00:00 GMT</pubDate>
+                  <dc:creator><![CDATA[bulletlink.com/template-1]]></dc:creator>
+                  <category><![CDATA[{{SubMenu}}]]></category>
+                  <guid isPermaLink="true">{{PutDomain}}{{HeadingLink}}</guid>
+                  <atom:updated>1994-11-05T08:15:30-05:00</atom:updated>
+                  <enclosure url="{{PutDomain}}{{HeadingImage}}" type="image/jpeg" />
+                  <media:content url="{{PutDomain}}{{HeadingImage}}" type="image/jpeg" medium="image" width="1000" height="666">
+                        <media:thumbnail url="{{PutDomain}}{{HeadingImage}}" width="150" height="100" />
+                        <media:copyright>bulletlink.com/template-1</media:copyright>
+                  </media:content>
+            </item>
+        {{RepeatEnd}}
+    </channel>
+</rss>
+{{LayoutArticleGroup700End}}
