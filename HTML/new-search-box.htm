@@ -58,8 +58,8 @@ function newCustomSearch(options = {}) {
    
        // Minimum 3 characters validation
        if (value.length < 3) {
-           alert('Please enter at least 3 characters to search.');
-           return;
+          // alert('Please enter at least 3 characters to search.');
+          // return;
        }
    
        window.location.href = `/search?q=${encodeURIComponent(value)}`;
