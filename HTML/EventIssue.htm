@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Issue Report</title>
+
+<style>
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fa;
+    padding:20px;
+    color:#333;
+}
+.issue-card{
+    max-width:1100px;
+    margin:auto;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    overflow:hidden;
+}
+.issue-header{
+    background:#dc3545;
+    color:#fff;
+    padding:20px;
+}
+.issue-header h1{
+    margin:0;
+    font-size:28px;
+}
+.issue-body{
+    padding:25px;
+}
+.section{
+    margin-bottom:25px;
+}
+.section-title{
+    font-size:20px;
+    font-weight:bold;
+    border-left:5px solid #dc3545;
+    padding-left:10px;
+    margin-bottom:15px;
+}
+.note{
+    background:#eef6ff;
+    border-left:4px solid #0d6efd;
+    padding:15px;
+    border-radius:5px;
+}
+.issue{
+    background:#fff4e5;
+    border-left:4px solid #ff9800;
+    padding:15px;
+    border-radius:5px;
+}
+.result{
+    background:#fdeaea;
+    border-left:4px solid #dc3545;
+    padding:15px;
+    border-radius:5px;
+}
+.url{
+    color:#0d6efd;
+    word-break:break-all;
+}
+textarea{
+    width:100%;
+    height:500px;
+    border:1px solid #ced4da;
+    border-radius:6px;
+    padding:12px;
+    font-family:Consolas,monospace;
+    font-size:13px;
+    resize:vertical;
+    background:#1e1e1e;
+    color:#e6e6e6;
+}
+</style>
+</head>
+<body>
+
+<div class="issue-card">
+
+    <div class="issue-header">
+        <h1>Event Pages Not Using Sub-Menu Section Layout</h1>
+    </div>
+
+    <div class="issue-body">
+
+        <div class="section">
+            <div class="section-title">Issue Description</div>
+
+            <p>
+                Just like articles, we are also using Section Layouts for events at the sub-menu level.
+            </p>
+
+            <p>
+                There is no issue when the sub-menu has <strong>Page Type = Article</strong>.
+            </p>
+
+            <p>
+                Example:
+                <br>
+                <a class="url" href="https://bulletlink.com/staff-testing/index26.htm">
+                    https://bulletlink.com/staff-testing/index26.htm
+                </a>
+            </p>
+
+            <p>
+                However, when I try the same setup with an event page having
+                <strong>Page Type = Event</strong>, it continues to use the
+                Section Layout code from the menu level (or the default Section Layout)
+                instead of the Section Layout code recently added to the sub-menu.
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Test Setup</div>
+
+            <div class="note">
+                I added the following test code in the Section Layout field of the
+                <strong>"EVENTS - Events Testing"</strong> sub-menu on the
+                <strong>"staff-testing"</strong> site.
+                <br><br>
+                I placed <strong>$$</strong> before and after the heading so it would
+                be easy to verify whether the sub-menu Section Layout is being used.
+            </div>
+
+            <p style="margin-top:15px;">
+                Event Page:
+                <br>
+                <a class="url" href="https://bulletlink.com/staff-testing/index40.htm">
+                    https://bulletlink.com/staff-testing/index40.htm
+                </a>
+                ⚠ Issue
+            </p>
+
+            <textarea spellcheck="false">
+{{LayoutSection<<SubMenuId>>Begin}}
+{{LayoutSection<<SubMenuId>>Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:<<SubMenuId>>}}
+{{File:section<<SubMenuId>>.htm}}
+{{ReplaceJavascriptChars:No}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue Asc, Updated}}
+
+<div class="cus-event-133-container container-fluid px-0" data-cms-el="section" data-cms-section="{{SubMenuId}}">
+    <div class="cus-default-menu-bar mb-3">
+        <div class="text-uppercase fw-bold px-0 mb-2 text-black cus-133-label">
+            <span>
+                <span class="cus-default-submenu hpe-custom-text-10">
+                    <script>Section10();</script>
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <div class="cus-event-133-wrap row mx-0 py-3 border rounded shadow-sm">
+        {{RepeatBegin}}
+
+        <div class="hpe-in-event col-lg-4 my-2">
+            <span class="cus-event-133-box row mx-0 border rounded bg-body shadow-sm py-2">
+                <div class="col-9 ps-0">
+                    <a href="{{HeadingLink}}">
+                        $${{Heading}}$$
+                    </a>
+                </div>
+            </span>
+        </div>
+
+        {{RepeatEnd}}
+    </div>
+</div>
+
+{{LayoutSection<<SubMenuId>>End}}
+            </textarea>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Observed Result</div>
+
+            <div class="result">
+                Since the <strong>$$</strong> markers do not appear on the event page,
+                it seems the sub-menu Section Layout is being ignored and another
+                Section Layout is being rendered instead.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Additional Finding</div>
+
+            <p>
+                When we review the pasted code in the normal editing screen,
+                it appears as shown below:
+            </p>
+
+            <p>
+                <a class="url" href="https://i.snipboard.io/CDmKkX.jpg">
+                    https://i.snipboard.io/CDmKkX.jpg
+                </a>
+                ⚠ Issue
+            </p>
+
+            <div class="issue">
+                It appears that the HTML tags are being converted into HTML entities
+                during the save process instead of being preserved as actual HTML code.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Request</div>
+
+            <p>
+                Could you please review why event pages are not picking up the
+                Section Layout defined at the sub-menu level?
+            </p>
+
+            <p>
+                Additionally, please verify whether the save process is converting
+                HTML tags into entities, as this may be related to the issue.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
