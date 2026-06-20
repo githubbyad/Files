@@ -1,0 +1,44 @@
+function GetDateFormat(){return 'Fri, 15 July, 2009';}
+
+function start(){checkLoginStatus('No');}
+
+function GetLogo(){document.write('<a id="logo" href="https://olneygazettenews.com/"><img class="img-fluid" BORDER=0 src="https://olneygazettenews.com/3-6-2019-9-12-46-AM-2343042.jpg" title="LOGO: The Olney Gazette"></a>');}
+
+function GetLogoM(){document.write('<a id="logo" href="https://olneygazettenews.com/m.htm"><img BORDER=0 style="width:100%;" SRC=https://olneygazettenews.com/9-23-2014-7-38-18-AM-1950128.jpg title="LOGO: The Olney Gazette"></a>');}
+
+function hcCaption() {document.write('You are visitor:');}function hcShow() {return 'Yes';}function getHC2(myObj) {document.write('<div class="hitcounter"><script>hcCaption();<\/script> ' + myObj.hc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</div>');}function getHC(myObj) {if (hcShow() == 'Yes') {getHC2(myObj);}}  
+
+function HitCounter(){document.write('<script type="text/javascript" language="javascript" src="' + readCookie('AppServer') + 'get_site_counter.php?site=olneygazettenews.com"><\/script>');}
+
+function GetSandwichIconName(){document.write('MENU');}
+
+function GetContactInformation(){document.write('<div class="contactbody">The Olney Gazette 309 E. Main St., Olney, IL 62450  (618) 392-6397</div>');}
+
+function GetCopyright(){document.write('© Copyright  The Olney Gazette  All rights reserved.');}
+
+function GetUnauthorisedAccessText() {document.write('<div id="divAccess" style="display:none"><center><font size=4><b>You have not logged in.</b></font><br><br><a href="#" onclick="return OpenLoginPopup();"><font size=4><b>Please click here to login.</b></font></a></center><div class="pageruler"><span style="FONT-SIZE: 0pt;">&nbsp;</span></div></div>');}
+
+function GetAddThis(){document.write('<!-- AddToAny BEGIN --><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_dd" href="https://www.addtoany.com/share"></a><a class="a2a_button_facebook"></a><a class="a2a_button_twitter"></a><a class="a2a_button_google_plus"></a><a class="a2a_button_pinterest"></a><a class="a2a_button_linkedin"></a><a class="a2a_button_whatsapp"></a></div><script async src="https://static.addtoany.com/menu/page.js"></script><!-- AddToAny END -->');}
+
+function GetComments(){document.write('');}
+
+function GetTranslator(){document.write('<div id="google_translate_element"></div>\n<script>function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: \'en\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE  }, \'google_translate_element\');}<\/script>\n<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"><\/script>');}
+
+function GetSearchBox(){document.write('<a href=https://olneygazettenews.com/index0.htm?sname=target_search.asp class="sbinput"><img src="https://olneygazettenews.com/lib/images/ptrans.gif" border=0></a>');}
+
+function GetSearchBoxUser(FName){document.write('<a href=https://olneygazettenews.com/index0.htm?sname=target_search.asp><img src=' + FName + ' border=0></a>');}
+
+function SMThemeColor(){return 'Black';}
+
+function GetUserStyles(){document.write('<div id="UserStyles"><ul><li><a href="#">&nbsp;</a><ul><li><table cellpadding="0" cellspacing="0" border="0"><tr><td><a href="javascript:chooseStyle(\'olneygazettenews_stylea\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_stylea\', 60);"><img title="Gray" border="0" src="https://olneygazettenews.com/lib/images/style_grey.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_styleb\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_styleb\', 60);"><img title="Blue" border="0" src="https://olneygazettenews.com/lib/images/style_blue.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_stylec\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_stylec\', 60);"><img title="Magenta" border="0" src="https://olneygazettenews.com/lib/images/style_magenta.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_styled\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_styled\', 60);"><img title="Violet" border="0" src="https://olneygazettenews.com/lib/images/style_violet.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_stylee\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_stylee\', 60);"><img title="Orange" border="0" src="https://olneygazettenews.com/lib/images/style_orange.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_stylef\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_stylef\', 60);"><img title="Green" border="0" src="https://olneygazettenews.com/lib/images/style_green.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_styleg\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_styleg\', 60);"><img title="Yellow" border="0" src="https://olneygazettenews.com/lib/images/style_yellow.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_styleh\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_styleh\', 60);"><img title="Red" border="0" src="https://olneygazettenews.com/lib/images/style_red.gif" /></a></td><td><a href="javascript:chooseStyle(\'olneygazettenews_stylei\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_stylei\', 60);"><img title="Cyan" border="0" src="https://olneygazettenews.com/lib/images/style_cyan.gif" /></a></td><td style="padding-right:0px;"><a href="javascript:chooseStyle(\'olneygazettenews_stylej\', 60);reloadiframe(\'IFrameContent\',\'olneygazettenews_stylej\', 60);"><img title="Brown" border="0" src="https://olneygazettenews.com/lib/images/style_brown.gif" /></a></td></tr></table></li></ul></li></ul></div>');}
+
+function GetGoogleAnalytics(link) {document.write('');}
+
+function GetArticleDate(ArticleDate) {var Article_Timestamp = 0;if (ArticleDate == "") { document.write(''); }else if (Article_Timestamp == 0){GetDate(ArticleDate, "Fri, Jul 15, 2009");}else {GetTimeAgo(ArticleDate, 0, 0, "Fri, Jul 15, 2009", 300);}}
+
+function GetGoogleCustomSearch() {var cx = '012443218463301181581:kybb5g5fgla'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.google.com/cse/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);}
+
+WebFontConfig = {google: { families: [ 'Roboto+Condensed:300italic,400italic,700italic,400,300,700:latin','Oswald:400,300,700:latin','Dosis:200,300,400,500,600,700,800:latin' ]}};(function() {var wf = document.createElement('script');wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';wf.type = 'text/javascript';wf.async = 'true';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(wf, s);})();
+
+function SParameters(){return '90';}
+

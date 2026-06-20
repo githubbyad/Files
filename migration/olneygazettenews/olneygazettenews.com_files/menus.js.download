@@ -1,0 +1,5 @@
+function MenusDefault(){document.write('');}
+function MenusHorizontal(){document.write('<table align=center border=0 cellPadding=0 cellSpacing=0><tr><td align=center><script type="text/javascript" language="JavaScript" src="https://olneygazettenews.com/horizontal2_olneygazettenews.js?v=2495"></script></td></tr></table>');}
+
+function MenusVertical(){document.write('');}
+

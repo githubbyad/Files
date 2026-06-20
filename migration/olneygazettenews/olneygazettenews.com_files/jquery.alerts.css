@@ -1,0 +1,83 @@
+#popup_container {
+	color: #020202;
+	position: relative;
+	margin: 0 auto;
+	height: auto;
+	width: 500px !important;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+min-width: 300px;
+max-width: 500px;
+border-style: solid;
+border-width: 2px;
+border-color: #FFF;
+background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 0%, rgba(209,209,209,1) 20%, rgba(254,254,254,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+min-width: 413px !important;
+max-width: 394px !important;
+}
+
+#popup_title {
+	margin: 0;
+padding: 0.4em;
+text-align: center;
+font-size: 1.8em;
+font-weight: 300;
+opacity: 0.8;
+background: rgba(0,0,0,0.1);
+font-family: Arial;
+background-color: #373737;
+color: #FFFFFF;
+}
+.button {
+    border: medium none;
+padding: 0.6em 1.2em;
+background: none repeat scroll 0% 0% #C0392B;
+color: #FFF;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+display: inline-block;
+margin: 15px 2px;
+border-radius: 2px;
+margin-top: 5px;
+background-color: #000;
+font-family: Arial;
+font-size: 14px;
+
+}
+
+#popup_content {
+	
+}
+
+#popup_content.alert {
+	background-image: ;
+}
+
+#popup_content.confirm {
+	
+}
+
+#popup_content.prompt {
+	
+}
+
+#popup_message {
+	
+font-family: Arial;
+font-size: 16px;
+text-align: center;
+padding-top: 19px;
+}
+
+#popup_panel {
+	text-align: center;
+margin-top: 12px;
+	
+}
+
+#popup_prompt {
+	margin: .5em 0em;
+}

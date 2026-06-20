@@ -1,0 +1,342 @@
+//BEGIN: SubMenu Footer Limit
+
+$(window).bind('load',function(){
+$('.SubMenus81').css('height', 'auto');
+$('.SubMenus81').each(function () {
+  if ($(this).height() > 147) {
+    $(this).siblings('.SeeMore81').css('display', 'block');
+  } 
+  else {
+    $(this).siblings('.SeeMore81').css('display', 'none');
+  }
+});
+$('.SubMenus81').css('height', '147px');
+$('.SeeMore81').click(function () {
+  $(this).siblings('.SubMenus81').css('height', 'auto');
+  $(this).css('display', 'none');
+});
+});
+
+//END: SubMenu Footer Limit
+
+
+// BEGIN: Footer Menu81 JS
+
+$(document).ready(function(){
+$('.SubMenus81 > div:only-child').each(function(){
+ if($(this).css('display') == 'none')
+  $(this).parents('.MenuContainer81').remove();
+});
+$('.SubMenus81 > div').each(function(){
+if($(this).css('display') == 'none')
+$(this).remove();
+});
+$('.SubMenus81 div:last-of-type').each(function(){
+$(this).find('.SubMenuFooterBullet81').css('display', 'none');
+});
+$('.SubMenus81 > div a').each(function(){
+if($(this).is(':empty'))
+$(this).parents('.MenuContainer81').remove();
+});   
+$('.Menus81 > a').each(function(){
+if(jQuery(this).attr("href") == "#")
+  $(this).css('pointer-events', 'none');
+});
+/* if($('#Menu_footer').height()>$('.c30').height())
+  $('.c30').css('height', $('#Menu_footer').height());
+else
+  $('#Menu_footer').css('height', $('.c30').height()); */
+/* $('.MenuContainer81:last-of-type').each(function(){
+$(this).find('.SubMenus81').css('border-width', 0);
+}); */
+});
+
+// END: Footer Menu81 JS
+
+// BEGIN: Script scroll top 
+
+jQuery(document).ready(function() {
+    var offset = 600;
+    var duration = 300;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+    
+    jQuery('.back-to-top').click(function(event) {
+        event.preventDefault();
+        jQuery('html, body').animate({scrollTop: 0}, duration);
+        return false;
+    });
+});
+// END: Script scroll top
+
+
+// BEGIN: Footer height
+
+$(window).load(function(){
+$('li .menubodyhorizontal').each(function(){
+if($(this).is(':empty'))
+$(this).parents('li').remove();
+});
+if($(window).width()>768){
+if($('#Menu_footer81').height()>$('.c30').height())
+  $('.c30').css('height', $('#Menu_footer81').height());
+else
+  $('#Menu_footer81').css('height', $('.c30').height());
+}
+});
+
+// END: Footer height
+
+
+// BEGIN: Custom Menu(individual changes) 
+
+$(document).ready(function () {	
+	
+	// HOME - menu
+	if ($('.m_pkey:contains("A18A")').length > 0) $('.custom_menu_18').css('backgroundColor', 'red');
+
+});
+
+// END: Custom Menu(individual changes)
+
+
+// BEGIN: New Responsive Menu
+
+$(window).bind('load',function() {
+$('#cssmenu ul ul').css('background-color', $('.submenubodyhorizontal').css('background-color'));
+$('.submenubodyhorizontal').each(function(){
+if($(this).css('display') == 'none')
+$(this).remove();
+});
+if ($(window).width() > 1024)
+{
+$('#cssmenu ul ul').each(function () {
+if ($(this).children('li').length > 32)
+$(this).addClass('columnsFive');
+else if ($(this).children('li').length > 24)
+$(this).addClass('columnsFour');
+else if ($(this).children('li').length > 16)
+$(this).addClass('columnsThree');
+else if ($(this).children('li').length > 8)
+$(this).addClass('columnsTwo');
+});
+}
+});
+
+
+(function($) {
+
+  $.fn.menumaker = function(options) {
+      
+      var cssmenu = $(this), settings = $.extend({
+        title: "Menu",
+        format: "dropdown",
+        sticky: false
+      }, options);
+
+      return this.each(function() {
+        cssmenu.prepend('<div id="menu-button">' + settings.title + '</div>');
+        $(this).find("#menu-button").on('click', function(){
+          $(this).toggleClass('menu-opened');
+          var mainmenu = $(this).next('ul');
+          if (mainmenu.hasClass('open')) { 
+            mainmenu.hide().removeClass('open');
+          }
+          else {
+            mainmenu.show().addClass('open');
+            if (settings.format === "dropdown") {
+              mainmenu.find('ul').show();
+            }
+          }
+        });
+
+        cssmenu.find('li ul').parent().addClass('has-sub');
+
+        multiTg = function() {
+          cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
+          cssmenu.find('.menubodyhorizontal').on('click', function() {
+            $(this).toggleClass('submenu-opened');
+            if ($(this).siblings('ul').hasClass('open')) {
+              $(this).siblings('ul').removeClass('open').hide();
+            }
+
+            else {
+              $(this).siblings('ul').addClass('open').show();
+            }
+          });
+		     cssmenu.find('.submenu-button').on('click', function() {
+            $(this).parents('li').toggleClass('submenu-opened');
+            if ($(this).siblings('ul').hasClass('open')) {
+              $(this).siblings('ul').removeClass('open').hide();
+            }
+
+            else {
+              $(this).siblings('ul').addClass('open').show();
+            }
+          });
+        };
+
+        if (settings.format === 'multitoggle') multiTg();
+        else cssmenu.addClass('dropdown');
+
+        if (settings.sticky === true) cssmenu.css('position', 'fixed');
+
+        resizeFix = function() {
+          if ($( window ).width() > 1024) {
+            cssmenu.find('ul').show();
+          }
+
+          if ($(window).width() <= 1024) {
+            cssmenu.find('ul').hide().removeClass('open');
+          }
+        };
+        resizeFix();
+        return $(window).on('resize', resizeFix);
+
+      });
+  };
+})(jQuery);
+
+(function($){
+$(document).ready(function(){
+
+$(document).ready(function() {
+  $("#cssmenu").menumaker({
+    title: "Menu",
+    format: "multitoggle"
+  });
+
+  $("#cssmenu").prepend("");
+
+var foundActive = false, activeElement, linePosition = 0, menuLine = $("#cssmenu #menu-line"), lineWidth, defaultPosition, defaultWidth;
+
+$("#cssmenu > ul > li").each(function() {
+  if ($(this).hasClass('active')) {
+    activeElement = $(this);
+    foundActive = true;
+  }
+});
+
+if (foundActive === false) {
+  activeElement = $("#cssmenu > ul > li").first();
+}
+
+defaultWidth = lineWidth = activeElement.width();
+
+defaultPosition = linePosition = activeElement.position().left;
+
+menuLine.css("width", lineWidth);
+menuLine.css("left", linePosition);
+
+$("#cssmenu > ul > li").hover(function() {
+  activeElement = $(this);
+  lineWidth = activeElement.width();
+  linePosition = activeElement.position().left;
+  menuLine.css("width", lineWidth);
+  menuLine.css("left", linePosition);
+}, 
+function() {
+  menuLine.css("left", defaultPosition);
+  menuLine.css("width", defaultWidth);
+});
+
+});
+
+
+});
+})(jQuery);
+
+$(document).ready(function(){
+$(window).load(function(){
+$('a.menubodyhorizontal[href*="#"]').prev('.submenu-button').css('visibility', 'visible');
+});
+});
+
+$(document).ready(function(){
+if ($(window).width() <= 1024) {
+$('#menu-button').css('display','none');
+}
+});
+$(window).bind('load',function(){
+if ($(window).width() <= 1024) {
+$('#menu-button').css({'display':'block', 'width':'100%'});
+$('#menu-button').css('background-color',$('.column6').css('backgroundColor'));
+$('#cssmenu > ul').css('background-color',$('.column6').css('backgroundColor'));
+$('#menu-button').toggle(function(){
+$('body').css('overflow','hidden');
+$('#cssmenu').css({'height':$(window).height(true), 'overflow-y':'visible', 'z-index':'9999', 'top':0, 'position':'fixed','display':'block'});
+$('#cssmenu > ul').css({'height' : $(window).height() - $('#menu-button').innerHeight('true'), 'overflow-y':'auto'});
+}, function(){
+$('body').css('overflow','visible');
+$('#cssmenu').css({'height':'auto','overflow-y':'auto', 'z-index':'auto', 'top':0, 'position':'relative','display':'flex'});
+$('#cssmenu > ul').css('height', 'auto');
+});
+}
+});
+
+// BEGIN: New Responsive Menu
+
+
+// BEGIN: Menu Sticky on website
+
+$(document).scroll(function () {
+	if($(window).width()>1024){
+		if ($(document).scrollTop() > $('.c1').height()) {
+			$('.c3').addClass('stickyMenu');
+			$('.c1').css({'marginTop':$('.c3').height()});
+		}
+		else {
+			$('.c3').removeClass('stickyMenu');
+			$('.c1').css({'marginTop':0});
+		}
+		var x = $('.c21').offset().top - $('.c21').height();
+		if($(document).scrollTop()>x)
+			$('.stickyMenu').css('visibility', 'hidden');
+		else
+			$('.stickyMenu').css('visibility', 'visible');
+	}
+});
+
+// END: Menu Sticky on website
+
+
+
+// BEGIN: Section Preview Group1
+
+function GetPreviewGroup1(){document.write('<div class="spw1"><script type="text/javascript" language="JavaScript" src="https://olneygazettenews.com/preview117.js?v=24978125"></script><script type="text/javascript" language="JavaScript">GetPreview117();</script></div><div class="spw2"><script type="text/javascript" language="JavaScript" src="https://olneygazettenews.com/preview119.js?v=24978125"></script><script type="text/javascript" language="JavaScript">GetPreview119();</script></div><div class="spw1"><script type="text/javascript" language="JavaScript" src="https://olneygazettenews.com/preview103.js?v=24978125"></script><script type="text/javascript" language="JavaScript">GetPreview103();</script></div><div class="spw2"><script type="text/javascript" language="JavaScript" src="https://olneygazettenews.com/preview118.js?v=24978125"></script><script type="text/javascript" language="JavaScript">GetPreview118();</script></div>');}
+
+// END: Section Preview Group1
+
+// BEGIN: Read Cookie
+
+$(document).ready(function () {
+setInterval(function(){
+if (readCookie('loginStatus') != 'Yes') {
+$('.LOGIN').css('display', 'block');
+$('.LOGOUT').css('display', 'none');
+} 
+else {
+$('.LOGIN').css('display', 'none');
+$('.LOGOUT').css('display', 'block');
+}
+}, 10); 
+});
+
+// END: Read Cookie
+
+$(window).bind('load',function(){
+$('.gsib_a > input').attr('value', 'Type keywords and press Enter');
+$('.gsib_a > input').focus(function () {
+if (this.value == 'Type keywords and press Enter')
+this.value = '';
+});
+$('.gsib_a > input').blur(function () {
+if (this.value === '')
+this.value = 'Type keywords and press Enter';
+});
+});

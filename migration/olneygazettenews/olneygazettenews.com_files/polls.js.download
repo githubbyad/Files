@@ -1,0 +1,6 @@
+function GetPoll1(){var myParameters = new Array();myParameters = ReadSParameters();var smenu = myParameters["smenu"];var restrictedMenu;}
+function GetPoll2(){var myParameters = new Array();myParameters = ReadSParameters();var smenu = myParameters["smenu"];var restrictedMenu;}
+function GetPoll3(){var myParameters = new Array();myParameters = ReadSParameters();var smenu = myParameters["smenu"];var restrictedMenu;}
+function GetPoll4(){var myParameters = new Array();myParameters = ReadSParameters();var smenu = myParameters["smenu"];var restrictedMenu;}
+function GetPoll5(){var myParameters = new Array();myParameters = ReadSParameters();var smenu = myParameters["smenu"];var restrictedMenu;}
+
