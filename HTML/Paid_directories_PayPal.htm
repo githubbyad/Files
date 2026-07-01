@@ -1,0 +1,248 @@
+<!-- Directory Payment Form -->
+<form id="payment-form" method="POST" action="https://www.paypal.com/cgi-bin/webscr">
+  <div class="payment-form" style="max-width:700px; margin:0 auto; padding:20px;">
+    <div class="text-center mb-4">
+      <h2>Business Directory Listing</h2>
+      <p class="text-muted">Get your business listed in our directory</p>
+    </div>
+
+    <input type="hidden" name="process_payment" value="Yes">
+    <input type="hidden" name="content_type" value="customers">
+    <input type="hidden" data-base-price="0" id="base-price" value="0">
+
+    <!-- PayPal Fields -->
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="wsmith@wesnetmedia.com">
+    <input type="hidden" name="currency_code" value="USD">
+    <input type="hidden" name="item_name" id="paypal_item_name" value="Business Directory Listing">
+    <input type="hidden" name="amount" id="paypal_amount" value="0.00">
+    <input type="hidden" name="no_shipping" value="1">
+    <input type="hidden" name="no_note" value="1">
+    <input type="hidden" name="return" value="https://bravotroyohio.com?paypal=thank-you">
+    <input type="hidden" name="cancel_return" value="https://bravotroyohio.com?paypal=cancelled">
+
+    <input type="hidden" name="first_name" id="paypal_first_name">
+    <input type="hidden" name="last_name" id="paypal_last_name">
+    <input type="hidden" name="email" id="paypal_email">
+    <input type="hidden" name="custom" id="paypal_custom">
+
+    <section class="mb-4">
+      <div class="mb-3">
+        <label for="menu" class="form-label">Menu *</label>
+        <select class="form-control" id="menu" name="Menu" data-column="menu" required>
+          <option value="">-- Select --</option>
+          {{MenusDirectory}}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-control" id="category" name="Category" data-column="category">
+          <option value="">-- Select --</option>
+          {{Directory}}
+        </select>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h5>Contact Information</h5>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="first_name" class="form-label">First Name *</label>
+          <input type="text" class="form-control" id="first_name" name="first_name" data-column="first_name" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="last_name" class="form-label">Last Name *</label>
+          <input type="text" class="form-control" id="last_name" name="last_name" data-column="last_name" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="company" class="form-label">Company / Business Name *</label>
+        <input type="text" class="form-control" id="company" name="Company" data-column="company" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="address1" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address1" name="Address" data-column="address1">
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="city" class="form-label">City</label>
+          <input type="text" class="form-control" id="city" name="City" data-column="city">
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="state" class="form-label">State</label>
+          <input type="text" class="form-control" id="state" name="State" data-column="state">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="zip" class="form-label">ZIP</label>
+          <input type="text" class="form-control" id="zip" name="ZIP" data-column="zip">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="tel" class="form-control" id="phone" name="Phone" data-column="phone">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label">Email *</label>
+          <input type="email" class="form-control" id="email" name="email" data-column="email" required>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h5>Online Presence</h5>
+
+      <div class="mb-3">
+        <label for="website" class="form-label">Website</label>
+        <input type="url" class="form-control" id="website" name="Website" data-column="website" placeholder="https://">
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="facebook" class="form-label">Facebook</label>
+          <input type="url" class="form-control" id="facebook" name="Facebook" data-column="facebook" placeholder="https://facebook.com/...">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="twitter" class="form-label">Twitter / X</label>
+          <input type="url" class="form-control" id="twitter" name="Twitter" data-column="twitter" placeholder="https://x.com/...">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="instagram" class="form-label">Instagram</label>
+          <input type="url" class="form-control" id="instagram" name="Instagram" data-column="instagram" placeholder="https://instagram.com/...">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="youtube" class="form-label">YouTube</label>
+          <input type="url" class="form-control" id="youtube" name="YouTube" data-column="youtube" placeholder="https://youtube.com/...">
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h5>Business Details</h5>
+      <div class="mb-3">
+        <label for="profile" class="form-label">Business Profile / Description</label>
+        <textarea class="form-control" id="profile" name="Profile" data-column="profile" rows="5" placeholder="Tell customers about your business..."></textarea>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <h5>Listing Plan</h5>
+      <select class="form-select" id="subscription_plan" name="subscription_plan" data-price-field="true" required>
+        <option value="0|free|no" data-price="0">Free Basic Listing</option>
+        <option value="75|1 year|no" data-price="75">Basic - $75/year (Name, Address, Phone)</option>
+        <option value="150|1 year|no" data-price="150">Enhanced - $150/year (+ Website, Social, Photo)</option>
+        <option value="250|1 year|no" data-price="250">Premium - $250/year (+ Profile, Coupons, Logo, Featured)</option>
+      </select>
+    </section>
+
+    <section class="mb-4">
+      <div class="bg-light p-3 rounded">
+        <div>Subtotal: <strong id="subtotal-amount">$0.00</strong></div>
+        <hr>
+        <div>Total: <strong id="total-amount">$0.00</strong></div>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <div class="text-center mb-3">
+        <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" style="height:28px; vertical-align:middle; margin-right:8px;">
+        <strong>Pay with PayPal</strong>
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="terms" name="terms" required>
+        <label class="form-check-label" for="terms">I agree to the <a href="/terms" target="_blank">Terms of Service</a></label>
+      </div>
+    </section>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="submit" class="paypal-btn">
+        <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" style="height:24px; vertical-align:middle; margin-right:8px;">
+        Continue to PayPal
+      </button>
+    </div>
+  </div>
+</form>
+
+<script>
+(function () {
+  var form = document.getElementById('payment-form');
+  var planSelect = document.getElementById('subscription_plan');
+  var subtotalAmount = document.getElementById('subtotal-amount');
+  var totalAmount = document.getElementById('total-amount');
+  var paypalAmount = document.getElementById('paypal_amount');
+  var paypalItemName = document.getElementById('paypal_item_name');
+
+  function formatMoney(value) {
+    return '$' + Number(value).toFixed(2);
+  }
+
+  function updatePrice() {
+    var selected = planSelect.options[planSelect.selectedIndex];
+    var price = selected.dataset.price || '0';
+    var itemText = selected.textContent.trim();
+    subtotalAmount.textContent = formatMoney(price);
+    totalAmount.textContent = formatMoney(price);
+    paypalAmount.value = Number(price).toFixed(2);
+    paypalItemName.value = 'Business Directory Listing - ' + itemText;
+  }
+
+  planSelect.addEventListener('change', updatePrice);
+  updatePrice();
+
+  form.addEventListener('submit', function (e) {
+    var firstName = document.getElementById('first_name').value.trim();
+    var lastName = document.getElementById('last_name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var company = document.getElementById('company').value.trim();
+    var subscriptionPlan = planSelect.options[planSelect.selectedIndex].textContent.trim();
+
+    document.getElementById('paypal_first_name').value = firstName;
+    document.getElementById('paypal_last_name').value = lastName;
+    document.getElementById('paypal_email').value = email;
+    document.getElementById('paypal_custom').value = company + ' | ' + subscriptionPlan + ' | ' + email;
+
+    if (!document.getElementById('terms').checked) {
+      e.preventDefault();
+      alert('Please agree to the Terms of Service before continuing to PayPal.');
+      return false;
+    }
+  });
+})();
+</script>
+
+<style>
+.paypal-btn {
+  background: #ffc439;
+  border: 1px solid #f2ba36;
+  border-radius: 30px;
+  color: #111;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+}
+
+.paypal-btn:hover {
+  background: #ffb800;
+}
+
+.paypal-btn img {
+  display: block;
+}
+</style>
