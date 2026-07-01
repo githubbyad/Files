@@ -1,0 +1,122 @@
+<!-- Classifieds Payment Form -->
+<form id="payment-form" method="POST">
+  <div class="payment-form" style="max-width:650px; margin:0 auto; padding:20px;">
+    <div class="text-center mb-4">
+      <h2>Post a Classified Ad</h2>
+      <p class="text-muted">The Olney Gazette, is a weekly newspaper publishing on Thursday. Our deadline is every Monday at 4:00 pm.</p>
+    </div>
+
+    <input type="hidden" name="process_payment" value="Yes">
+    <input type="hidden" name="content_type" value="classifieds">
+<input type="hidden" data-base-price="0">
+    <input type="hidden" name="sub_menu_id" data-column="sub_menu_id" value="1">
+
+    <section class="mb-4">
+      <h5>Listing Details</h5>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title *</label>
+        <input type="text" class="form-control" id="title" name="Title" data-column="title" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="body" class="form-label">Description *</label>
+        <textarea class="form-control" id="body" name="Body" data-column="body" rows="5" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="menu" class="form-label">Menu *</label>
+        <select class="form-control" id="menu" name="Menu" data-column="menu" required>
+          <option value="">-- Select --</option>
+          {{MenusClassifieds}}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="major_category" class="form-label">Major Category *</label>
+        <select class="form-control" id="major_category" name="Major Category" data-column="major_category" required>
+          <option value="">-- Select --</option>
+          {{ClassifiedsMajor}}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-control" id="category" name="Category" data-column="category">
+          <option value="">-- Select --</option>
+          {{Classifieds}}
+        </select>
+      </div>
+
+      <div class="mb-3">
+<label for="ad">Image (Free)</label>
+        <div style="display:flex; align-items:center;">
+          <div style="display:flex !important; align-items:center !important; gap:10px !important; padding:12px !important; background:#f8f9fa !important; border:2px dashed #dee2e6 !important; border-radius:8px !important;">
+            <label for="ad-input" class="file-upload-label" style="background:#6b7280 !important; color:white !important; padding:8px 16px !important; border-radius:6px !important; cursor:pointer !important; display:flex !important; align-items:center !important; font-size:14px !important;">              <span style="font-size:16px !important; margin-right:5px !important;"></span>Choose File</label>
+           <input type="file"
+       id="ad-input"
+       style="display:none !important;"
+       data-target="ad"
+       accept="image/*"
+       data-file-price="0"
+       data-free-files="999">
+            <input type="hidden" id="ad" name="Ad Image" data-column="ad" value="">
+            <div id="ad-status" style="flex:1 !important; display:flex !important; align-items:center !important; gap:8px !important; color:#495057 !important; font-size:14px !important;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <section class="mb-4">
+  <h5>Contact Information</h5>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email *</label>
+    <input type="email" class="form-control" id="email" name="email" data-column="email" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">City</label>
+    <input type="text" class="form-control" id="City" name="City">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">State</label>
+    <input type="text" class="form-control" id="State" name="State">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Zip</label>
+    <input type="text" class="form-control" id="Zip" name="Zip">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="text" class="form-control" id="Phone" name="Phone">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Comments / Instructions</label>
+    <textarea class="form-control" id="Comments" name="Comments" rows="4"></textarea>
+  </div>
+</section>
+
+<section class="mb-4">
+  <h5>Listing Duration</h5>
+
+  <select class="form-select"
+          id="subscription_plan"
+          name="subscription_plan"
+          data-price-field="true">
+    <option value="6|1 week|no" data-price="6" selected>
+      1 Week - $6
+    </option>
+  </select>
+</section>
+
+    <section class="mb-4"><div class="bg-light p-3 rounded">[Subtotal]<hr>[Total]</div></section>
+    <section class="mb-4">[Credit Card]</section>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">[Pay Button]</div>
+  </div>
+</form>
