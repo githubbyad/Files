@@ -43,3 +43,23 @@ if (startingDateField) {
     validateEventDates(this.id);
   });
 }
+
+function checkExistingEventDates() {
+    const issueDateField = document.getElementById("issue_date");
+    const startingDateField = document.getElementById("starting_date");
+
+    if (!issueDateField || !startingDateField) return;
+    if (!issueDateField.value || !startingDateField.value) return;
+
+    const eventDate = new Date(issueDateField.value);
+    const startingDate = new Date(startingDateField.value);
+
+    if (startingDate > eventDate) {
+        alert(
+            "The selected Starting Date is later than the Event Date.\n\n" +
+            "This event will only become visible on or after the selected Starting Date."
+        );
+    }
+}
+
+checkExistingEventDates();
