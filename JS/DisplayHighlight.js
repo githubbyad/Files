@@ -3,15 +3,19 @@ function DisplayHighlight(divHighlight) {
     var qrStr = location.href.toLowerCase();
     var path = location.pathname.toLowerCase();
 
+    // return early if element doesn't exist
+    var element = document.getElementById(divHighlight);
+    if (!element) return;
+
     // default hide
-    document.getElementById(divHighlight).style.display = 'none';
+    element.style.display = 'none';
 
     // homepage only
     if (
         path == "/" ||
         path == "/index.html"
     ) {
-        document.getElementById(divHighlight).style.display = 'block';
+        element.style.display = 'block';
         return;
     }
 
@@ -46,8 +50,8 @@ function DisplayHighlight(divHighlight) {
                 // avoid pagination pages
                 sPos = qrStr.lastIndexOf('-p', qrStr.length);
 
-                if (sPos == -1) {
-                    document.getElementById(divHighlight).style.display = 'block';
+                if (sPos == -1) {   
+                    element.style.display = 'block';
                 }
             }
         }
