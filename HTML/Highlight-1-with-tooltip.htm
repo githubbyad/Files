@@ -1,0 +1,118 @@
+{{LayoutH1Begin}}
+{{LayoutH1Limit10}}
+{{RemoveHTMLBody}}
+{{LayoutArticleBodyWordLimit25}}
+{{SortBy:Issue,Updated}}
+{{BlankValue-TotalArticles}}
+function GetHighlights1(){document.write(`
+<div class="highlights1title">Current Headlines</div>
+<div width="100%" class="highlights1body" id="highlights1body">
+    {{RepeatBegin}}
+        <div class="highlights1_articles_div" data-submenu="{{SubMenu}}" data-date="{{YearI}}-{{MonthI}}-{{DayI}}">
+            <div class="h1_articleheading">
+                <div class="tooltip-wrap">
+                    <a href="{{HeadingLink}}">
+                        <div class="h1_bullet">{{PutHtmlEntity9632}}</div>
+                        <div class="h1_bullet_heading">{{Heading}}</div>
+                    </a>
+                    <div class="tooltip-box">{{Body}}</div>
+                </div>
+            </div>
+        </div>
+    {{RepeatEnd}}
+</div>
+<script>
+var container = document.getElementById('highlights1body');
+if (container) {
+    var articles = [];
+    container.querySelectorAll('.highlights1_articles_div').forEach(function(div) {
+        articles.push({
+            submenu: div.getAttribute('data-submenu'),
+            date: div.getAttribute('data-date'),
+            html: div.outerHTML
+        });
+    });
+
+    if (articles.length > 0) {
+        var groups = {};
+        articles.forEach(function(article) {
+            if (!groups[article.submenu]) groups[article.submenu] = [];
+            groups[article.submenu].push(article);
+        });
+
+        Object.keys(groups).forEach(function(submenu) {
+            groups[submenu].sort(function(a, b) {
+                return new Date(b.date) - new Date(a.date);
+            });
+        });
+
+        var sortedSubmenus = Object.keys(groups).sort(function(a, b) {
+            return new Date(groups[b][0].date) - new Date(groups[a][0].date);
+        });
+
+        var newHTML = '';
+        sortedSubmenus.forEach(function(submenu) {
+            newHTML += '<div class="h1-submenu" style="display:block"><div class="highlights1heading_div"><span class="highlights1heading"><span>' + submenu + '</span></span></div></div>';
+            groups[submenu].forEach(function(article) {
+                newHTML += article.html;
+            });
+        });
+
+        container.innerHTML = newHTML;
+    }
+}
+<\/script>
+<style>
+.tooltip-wrap {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+.highlights1body {
+    overflow:visible;
+    float:left;
+    width:100%;
+}
+
+.tooltip-box {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+    padding: 8px 10px;
+    background: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: normal;
+    max-width: 250px;
+    width: 250px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: opacity 0.2s ease;
+}
+
+.tooltip-wrap:hover .tooltip-box {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.tooltip-box::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #333;
+}
+</style>
+`);
+DisplayHighlight('Highlight1');
+}
+{{LayoutH1End}}
