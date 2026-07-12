@@ -17,9 +17,17 @@ window.addEventListener('load', function () {
 
             // Generate a placeholder from the ID
             // Example: first_name -> First Name
-            field.placeholder = field.id
-                .replace(/_/g, ' ')                   // Replace underscores with spaces
+            let placeholderText = field.id
+                .replace(/_/g, ' ')                    // Replace underscores with spaces
                 .replace(/\b\w/g, c => c.toUpperCase()); // Capitalize each word
+
+            // Append * if the field is required
+            if (field.hasAttribute('required')) {
+                placeholderText += ' *';
+            }
+
+            // Set the placeholder
+            field.placeholder = placeholderText;
         }
     });
 });
