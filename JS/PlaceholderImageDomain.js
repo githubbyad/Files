@@ -1,42 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* Check if any image containers exist on the page */
-    const containers = document.querySelectorAll(".img-content");
-    if (!containers.length) return;
+    const noImageContainers = document.querySelectorAll(".img-content");
+    if (!noImageContainers.length) return;
 
     /* Get current website domain */
-    const domain = window.location.hostname;
+    const noImageDomain = window.location.hostname;
 
-    containers.forEach(container => {
+    noImageContainers.forEach(noImageContainer => {
 
         /* Look for the default placeholder image */
-        const img = container.querySelector('img[src="/no-image.png"]');
-        if (!img) return;
+        const noImageElement = noImageContainer.querySelector('img[src="/no-image.png"]');
+        if (!noImageElement) return;
 
         /* Prevent duplicate domain text if this script runs multiple times */
-        if (container.querySelector(".domain-placeholder")) return;
+        if (noImageContainer.querySelector(".domain-placeholder")) return;
 
         /* Hide the placeholder image but preserve its layout */
-        img.style.visibility = "hidden";
+        noImageElement.style.visibility = "hidden";
 
         /* Create the domain name element */
-        const text = document.createElement("span");
-        text.className = "domain-placeholder";
-        text.textContent = domain;
+        const noImageText = document.createElement("span");
+        noImageText.className = "domain-placeholder";
+        noImageText.textContent = noImageDomain;
 
         /* Style the domain text */
-        text.style.position = "absolute";
-        text.style.left = "50%";
-        text.style.top = "50%";
-        text.style.transform = "translate(-50%, -50%)";
-        text.style.fontSize = "1.2rem";
-        text.style.fontWeight = "700";
-        text.style.color = "#777";
-        text.style.textAlign = "center";
-        text.style.width = "90%";
-        text.style.wordBreak = "break-word";
+        noImageText.style.position = "absolute";
+        noImageText.style.left = "50%";
+        noImageText.style.top = "50%";
+        noImageText.style.transform = "translate(-50%, -50%)";
+        noImageText.style.fontSize = "1.2rem";
+        noImageText.style.fontWeight = "700";
+        noImageText.style.color = "#777";
+        noImageText.style.textAlign = "center";
+        noImageText.style.width = "90%";
+        noImageText.style.wordBreak = "break-word";
 
         /* Add the domain name inside the image container */
-        container.appendChild(text);
+        noImageContainer.appendChild(noImageText);
     });
 });
