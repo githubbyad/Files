@@ -162,6 +162,10 @@ textarea.form-control {
   border-bottom: 2px solid #343a40;
 }
 
+.formdivider.formdivider_custom {
+	padding: 0 !important;
+}
+
 #CustomForm .formbody {
   float: left;
 }
