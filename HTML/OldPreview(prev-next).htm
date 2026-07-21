@@ -1,0 +1,226 @@
+{{LayoutPreview<<SubMenuId>>Begin}}
+{{LayoutPreview<<SubMenuId>>Limit25}}
+{{SortBy:Issue,Updated}}
+{{RemoveHTMLBody}}
+
+function GetPreview<<SubMenuId>>(){document.write(`
+
+<div class="pagebody politics_layout">
+
+    <div class="pagesubmenu politics_heading">
+        <a href="{{SubMenuLink}}">{{SubMenu}}</a>
+    </div>
+
+    <div id="politics_slider_<<SubMenuId>>" class="politics_slider">
+
+{{RepeatBegin}}
+
+        <div class="politics_item">
+
+            <div class="pageheading politics_articleheading">
+                <a href="{{HeadingLink}}">
+                    {{Heading}}
+                </a>
+            </div>
+
+            <div class="politics_image">
+                <a href="{{HeadingLink}}">
+                    <img class="pagephoto" src="{{HeadingImage}}" alt="{{Heading}}">
+                </a>
+            </div>
+
+        </div>
+
+{{RepeatEnd}}
+
+    </div>
+
+    <div id="politics_nav_<<SubMenuId>>" class="politics_nav">
+        <span class="politics_prev">◀</span>
+        <span class="politics_counter"></span>
+        <span class="politics_next">▶</span>
+    </div>
+
+</div>
+
+<style>
+
+.politics_layout{
+    border:1px solid #d8d8d8;
+    background:#fff;
+    padding:8px;
+}
+
+.politics_heading{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.politics_heading a{
+    color:#000;
+    text-decoration:none;
+}
+
+.politics_articleheading{
+    font-size:16px;
+    font-weight:bold;
+    line-height:1.15;
+    margin-bottom:8px;
+}
+
+.politics_articleheading a{
+    color:#000;
+    text-decoration:none;
+}
+
+.politics_image img{
+    width:100%;
+    display:block;
+    border:1px solid #cfcfcf;
+    box-sizing:border-box;
+}
+
+.politics_slider{
+    position:relative;
+}
+
+.politics_item{
+    display:none;
+}
+
+.politics_item.active{
+    display:block;
+}
+
+.politics_nav{
+    margin-top:8px;
+    background:#e8e8e8;
+    text-align:center;
+    padding:5px 0;
+    user-select:none;
+    font-size:15px;
+}
+
+.politics_prev,
+.politics_next{
+    cursor:pointer;
+    padding:0 12px;
+    color:#777;
+    font-weight:bold;
+}
+
+.politics_prev:hover,
+.politics_next:hover{
+    color:#000;
+}
+
+.politics_counter{
+    display:inline-block;
+    min-width:55px;
+    font-weight:bold;
+}
+.pagesubmenu.politics_heading a {
+  font-weight: bold;
+  color: #000;
+  font-size: 16px;
+  font-family: Arial;
+}
+.pageheading.politics_articleheading a {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: Verdana;
+  color: #000000;
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+.pagesubmenu.politics_heading {
+  margin-bottom: 5px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.pagebody.politics_layout {
+  padding: 3px;
+  border-width: 0;
+}
+.politics_counter {
+  font-size: 12px;
+}
+.pageheading.politics_articleheading a {
+  line-height: 14px;
+}
+.pageheading.politics_articleheading {
+  height: 28px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.pagephoto[src="/no-image.png"] {
+	display: none;
+}
+.politics_image {
+  min-height: 154.25px;
+}
+.preview_div {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+.politics_nav {
+	margin-top: 5px !important;
+	padding: 2px 0 !important;
+}
+</style>
+
+<script>
+
+window.addEventListener("load", function(){
+
+    var slider=document.getElementById("politics_slider_<<SubMenuId>>");
+    if(!slider) return;
+
+    var items=slider.getElementsByClassName("politics_item");
+    if(items.length==0) return;
+
+    var nav=document.getElementById("politics_nav_<<SubMenuId>>");
+
+    var prev=nav.getElementsByClassName("politics_prev")[0];
+    var next=nav.getElementsByClassName("politics_next")[0];
+    var counter=nav.getElementsByClassName("politics_counter")[0];
+
+    var current=0;
+
+    function show(i){
+
+        if(i<0) i=items.length-1;
+        if(i>=items.length) i=0;
+
+        for(var x=0;x<items.length;x++)
+            items[x].style.display="none";
+
+        items[i].style.display="block";
+
+        counter.innerHTML=(i+1)+" / "+items.length;
+
+        current=i;
+    }
+
+    prev.onclick=function(){
+        show(current-1);
+    };
+
+    next.onclick=function(){
+        show(current+1);
+    };
+
+    show(0);
+
+});
+
+<\/script>
+
+`);}
+
+{{LayoutPreview<<SubMenuId>>End}}
