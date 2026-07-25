@@ -1,8 +1,9 @@
+<!-- ------------------------------- Change links and use class as per site ------------------------------- -->
 <a 
     id="subscriber-login"
     class="..." 
     href="/LoginSubscriber" 
-    style="display:none;"
+    style="display:none !important;"
     onclick="if(window.PaywallWidget){PaywallWidget.showLoginModal();return false;}"
 >
     LOGIN
@@ -12,17 +13,18 @@
     id="subscriber-logout"
     class="..." 
     href="#"
-    style="display:none;"
+    style="display:none !important;"
     onclick="document.cookie='subscriber_token=; path=/; max-age=0'; location.href='/'; return false;"
 >
     LOGOUT
 </a>
 
-<!-- Before </body> tag -->
+<!-- ------------------------------- Before </body> tag ------------------------------- -->
 <script src="/js/paywall-widget.js" defer></script>
 <script defer src="/sys-popup.js?v=9.000009"></script>
 
-<!-- Under 'settings.js' -->
+<!-- ------------------------------- Under 'settings.js' ------------------------------- -->
+// Subscriber Login-Logout Toggle
 (function () {
     function hasSubscriberToken() {
         return document.cookie
@@ -31,7 +33,6 @@
                 return cookie.trim().startsWith('subscriber_token=');
             });
     }
-
     function updateSubscriberLinks() {
         var login = document.getElementById('subscriber-login');
         var logout = document.getElementById('subscriber-logout');
