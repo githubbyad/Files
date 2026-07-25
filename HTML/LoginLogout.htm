@@ -1,0 +1,52 @@
+<a 
+    id="subscriber-login"
+    class="..." 
+    href="/LoginSubscriber" 
+    onclick="if(window.PaywallWidget){PaywallWidget.showLoginModal();return false;}"
+>
+    LOGIN
+</a>
+
+<a 
+    id="subscriber-logout"class="..." 
+    href="#"
+    onclick="document.cookie='subscriber_token=; path=/; max-age=0'; location.href='/'; return false;"
+>
+    LOGOUT
+</a>
+
+<!-- Before </body> tag -->
+<script src="/js/paywall-widget.js" defer></script>
+<script defer src="/sys-popup.js?v=1784907246"></script>
+
+<!-- Under 'settings.js' -->
+(function () {
+    function hasSubscriberToken() {
+        return document.cookie
+            .split(';')
+            .some(function (cookie) {
+                return cookie.trim().startsWith('subscriber_token=');
+            });
+    }
+
+    function updateSubscriberLinks() {
+        var login = document.getElementById('subscriber-login');
+        var logout = document.getElementById('subscriber-logout');
+        var loggedIn = hasSubscriberToken();
+
+        if (login) {
+            login.style.display = loggedIn ? 'none' : '';
+        }
+
+        if (logout) {
+            logout.style.display = loggedIn ? '' : 'none';
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', updateSubscriberLinks);
+    } else {
+        updateSubscriberLinks();
+    }
+})();
+</script>
