@@ -1,0 +1,79 @@
+{{SectionValuesBegin}}
+{{LayoutSection<<SubMenuId>>Begin}}
+{{LayoutSection<<SubMenuId>>Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:<<SubMenuId>>}}
+{{File:section<<SubMenuId>>.htm}}
+{{ReplaceJavascriptChars:No}}
+{{SortBy:Issue, Updated}}
+<div class="cus-submenu-header" style="display:block">
+    <script type="text/javascript" language="JavaScript">GetSubMenuHeader<<SubMenuId>>();</script>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="pagebody">
+    <tbody>
+        {{RepeatBegin}}
+            {{If Counter<=TotalArticlesPage}}
+                <tr>
+                    <td>    
+                        <h1 class="pageheading" data-heading="{{Heading}}">{{Heading}}</h1>
+                        <div class="pagebody">
+                            <table align="{{PictureAlignment}}" border="0" cellspacing="0" cellpadding="0" width="1">
+                                <tbody>
+                                    <tr>
+                                        <td align="{{PictureAlignment}}">
+                                            <span>
+                                                <img class="pagephoto" border="0" src="{{HeadingImage}}" alt="{{Heading}}">
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="pagephotocaption">
+                                                <div class="pagephotocaption">{{Picture1Caption}}</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="pagebyline layout_pagebyline" style="padding-right:0px;">{{By}}<span style="color:#222222;padding-left:3px; padding-right:3px;" class="by-separator" data-by="{{By}}">•</span></div>
+                                            <div class="pageissuedate layout_pageissuedate" data-cms-field="issue_date" data-cms-type="date">{{IssueDate}}</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            {{Body}}
+                            <span class="pagesourceline layout_pagesourceline" data-s><span style="color:#222222;"> — </span> {{Source}}</span>  
+                            <div class="sharebody layout_sharebody bottom_share" align="left">
+                                <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                    <a class="a2a_dd" href="https://www.addtoany.com/share">{{PutHtmlChar8203}}​</a>
+                                    <a class="a2a_button_facebook">{{PutHtmlChar8203}}​</a>
+                                    <a class="a2a_button_email">{{PutHtmlChar8203}}​</a>
+                                    <a class="a2a_button_threads">{{PutHtmlChar8203}}​</a>
+                                    <a class="a2a_button_x">{{PutHtmlChar8203}}​</a>
+                                </div>
+                                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                </div></div>                          
+                        </div>
+                    </td>
+                </tr>
+            {{Else}}
+                <tr style="display: flex;">
+                    <td style="width:140px">
+                        <span class="archiveissuedate">{{IssueDate}}</span> • 
+                    </td>
+                    <td>
+                        <span class="archiveheading"><a href="{{HeadingLink}}">{{Heading}}</a></span>
+                    </td>
+                </tr>                        
+            {{EndIf}}        
+        {{RepeatEnd}}
+    </tbody>
+</table>
+<div class="cus-submenu-footer" style="display:block">
+    <script type="text/javascript" language="JavaScript">GetSubMenuFooter<<SubMenuId>>();</script>
+</div>
+{{LayoutSection<<SubMenuId>>End}}
+{{SectionValuesEnd}}
