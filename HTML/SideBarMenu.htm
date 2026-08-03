@@ -1,0 +1,17 @@
+{{LayoutMenus2Begin}}
+{{File:Menus-Default1.js}}
+{{Where:MenuTypeInclude:'Default'}}
+function GetMenusDefault() {
+document.write(`
+{{RepeatBegin1}}
+  <div class="menubodydefault">{{Menu}}</div>
+    {{RepeatBegin2}}
+      <div class="submenubodydefault">          
+        <a href="{{SubMenuLink}}">{{SubMenu}}</a>          
+      </div>
+    {{RepeatEnd2}}
+ <div style="padding-top:7px; line-height:0px;"></div>
+{{RepeatEnd1}}
+`);
+}
+{{LayoutMenus2End}}
