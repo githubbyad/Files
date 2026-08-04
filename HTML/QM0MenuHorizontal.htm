@@ -1,0 +1,219 @@
+{{LayoutMenus1Begin}}
+{{File:Menus-Horizontal.js}}
+{{Where:MenuTypeInclude:'Horizontal'}}
+function GetMenusHorizontal() {
+document.write(`
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td align="center">
+                <table border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div id="qm0" class="qmmc" style="zoom: 1; z-index: 11;">
+                                    {{RepeatBegin1}}
+                                    <div class="hp-parent">
+                                        <div class="hp-menu">
+                                            <a style=" background-image:url(https://highplainsobserverstratford.com/button_M0058.jpg);  color:#FFFFFF; background-color:#000000;" href="{{MenuLink}}" class="custom_menu_{{MenuId}} qmparent">{{Menu}}</a>
+                                        </div>
+                                        <div class="custom_menu_{{MenuId}}" style="z-index: 21; left: 0px; top: 20px;">
+                                            <table cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                    {{RepeatBegin2}}
+                                                    <tr>
+                                                        <td>
+                                                            <a class="custom_submenu_{{SubMenuId}}" style="background-image:url(https://highplainsobserverstratford.com/button_S0058.jpg);"
+                                                                href="{{SubMenuLink}}">{{SubMenu}}</a>
+                                                        </td>
+                                                    </tr>
+                                                    {{RepeatEnd2}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <span class="qmclear"> </span>
+                                    {{RepeatEnd1}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<style type="text/css">
+    /*!!!!!!!!!!! QuickMenu Core CSS [Do Not Modify!] !!!!!!!!!!!!!*/
+    .qmmc .qmdivider {
+        display: block;
+        font-size: 1px;
+        border-width: 0px;
+        border-style: solid;
+        position: relative;
+        z-index: 9990;
+    }
+
+    .qmmc .qmdividery {
+        float: left;
+        width: 0px;
+    }
+
+    .qmmc .qmtitle {
+        display: block;
+        cursor: default;
+        white-space: nowrap;
+        position: relative;
+        z-index: 9990;
+    }
+
+    .qmclear {
+        font-size: 1px;
+        height: 0px;
+        width: 0px;
+        clear: left;
+        line-height: 0px;
+        display: block;
+        float: none !important;
+    }
+
+    .qmmc {
+        position: relative;
+        zoom: 1;
+        z-index: 9999;
+    }
+
+    .qmmc a,
+    .qmmc li {
+        float: left;
+        display: block;
+        white-space: nowrap;
+        position: relative;
+        z-index: 9990;
+    }
+
+    .qmmc div a,
+    .qmmc ul a,
+    .qmmc ul li {
+        float: none;
+    }
+
+    .qmsh div a {
+        float: left;
+    }
+
+    .qmmc div {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .qmmc .qmcbox {
+        cursor: default;
+        display: inline-block;
+        position: relative;
+        z-index: 9990;
+    }
+
+    .qmmc .qmcbox a {
+        display: inline;
+    }
+
+    .qmmc .qmcbox div {
+        float: none;
+        position: static;
+        visibility: inherit;
+        left: auto;
+    }
+
+    /*!!!!!!!!!!! QuickMenu Styles [Please Modify!] !!!!!!!!!!!*/
+    /* QuickMenu 0 */
+    #qm0 li:hover>a {
+        background-color: #D7D8D8;
+    }
+
+    #qm0 .qmtitle {
+        margin: 2px 5px 5px 5px;
+        color: #112747;
+        font-family: Arial;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    #qm0 .qmdividerx {
+        border-top-width: 2px;
+        margin: 4px 5px 4px 5px;
+        border-color: #A2A1AD;
+    }
+
+    ul#qm0 ul li:hover>a.qmparent {
+        background-image: url(qmimages/cssalt1_arrow_right_hover.gif);
+    }
+
+    ul#qm0 ul .qmparent {
+        background-image: url(qmimages/cssalt1_arrow_right.gif);
+    }
+
+    ul#qm0 li:hover>a.qmparent {
+        background-image: url(qmimages/cssalt1_arrow_down_hover.gif);
+        text-decoration: underline;
+    }
+
+    ul#qm0 .qmparent {
+        background-image: url(qmimages/cssalt1_arrow_down.gif);
+        background-repeat: no-repeat;
+        background-position: 97% 50%;
+    }
+
+    .qmfv {
+        visibility: visible !important;
+    }
+
+    .qmfh {
+        visibility: hidden !important;
+    }
+        #qm0 {
+  width: 1078px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 0;
+  gap: 3px;
+}
+.qmparent {
+  padding: 2px !important;
+  display: inline-block !important;
+}
+.qmmc div {
+  visibility: visible !important;
+}
+#qm0 > div {
+}
+.hp-menu ~ div {
+  position: absolute !important;
+  display: none;
+  top: 31px !important;
+}
+.hp-menu {
+  position: static !important;
+}
+.hp-parent {
+  position: relative !important;
+}
+.hp-parent:hover [class*="custom_menu"] {
+  display: inline-block !important;
+}
+.custom_menu_30.qmparent {
+  background: #ff0000 !important;
+}
+#qm0 div a {
+  padding: 0 16px !important;
+  width: auto !important;
+}
+.hp-menu {
+  border: 2px solid black !important;
+}
+
+</style>
+`);
+}
+{{LayoutMenus1End}}
