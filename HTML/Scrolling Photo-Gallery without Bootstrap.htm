@@ -1,0 +1,551 @@
+{{LayoutSection<<SubMenuId>>Begin}}
+{{LayoutSection<<SubMenuId>>Limit<<TotalArticlesSubMenu>>}}
+{{Where:SubMenuIdInclude:<<SubMenuId>>}}
+{{File:section<<SubMenuId>>.htm}}
+{{ReplaceJavascriptChars:No}}
+{{RemoveHTMLBody}}
+{{SortBy:Issue, Updated}}
+
+<div class="cus-section-<<SubMenuId>>-wrapper" data-cms-el="section" data-cms-section="{{SubMenuId}}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
+
+    <div class="cus-photogallery-133">
+
+        <div class="cus-default-menu-bar">
+            <div class="cus-133-label">
+                <span>
+                    <span class="cus-default-submenu hpe-in-submenu-only"
+                          data-menu="{{MenuId}}"
+                          data-submenu="{{SubMenuId}}">
+                        {{SubMenu}}
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="cus-gallery-wrapper">
+
+            <button type="button"
+                    class="cus-gallery-arrow cus-gallery-arrow-left"
+                    aria-label="Previous photos">
+                <span>&lsaquo;</span>
+            </button>
+
+            <div class="cus-gallery-track">
+
+                {{RepeatBegin}}
+
+                <div class="cus-gallery-item"
+                     data-article="{{ArticleId}}"
+                     data-cms-article-id="{{ArticleId}}"
+                     data-url="{{HeadingLink}}"
+                     data-menu="{{Menu}}"
+                     data-submenu="{{SubMenu}}"
+                     data-date="{{MonthI}}_{{DayI}}_{{YearI}}">
+
+                    <a class="cus-photogallery-133-popup"
+                       data-fancybox="gallery"
+                       data-src="{{HeadingImage}}"
+                       data-caption="{{Heading}}">
+
+                        <div class="cus-gallery-image-wrap">
+
+                            <img class="cus-photogallery-133-img"
+                                 src="{{HeadingImage}}"
+                                 data-src="{{HeadingImage}}"
+                                 alt="{{HeadingImageAlt}}">
+
+                            <span class="cus-photogallery-133-icon">
+                                <span class="cus-gallery-camera">&#128247;</span>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                {{RepeatEnd}}
+
+            </div>
+
+            <button type="button"
+                    class="cus-gallery-arrow cus-gallery-arrow-right"
+                    aria-label="Next photos">
+                <span>&rsaquo;</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap");
+
+        .cus-section-<<SubMenuId>>-wrapper {
+            width:1300px;
+        }
+
+        /* ------------------------------------
+           PHOTO GALLERY TITLE
+        ------------------------------------ */
+
+        
+        .cus-133-label {
+            font-family: "PT Sans", sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000;
+            font-size: 16px;
+            line-height: 20px;
+            border-bottom: 4px solid #bdcde3;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .cus-133-label > span {
+            display: inline-block;
+            position: relative;
+        }
+
+        .cus-133-label > span:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 4px;
+            background: #dc3545;
+        }
+
+
+        /* ------------------------------------
+           GALLERY CONTAINER
+        ------------------------------------ */
+
+        .cus-gallery-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 0 34px;
+            box-sizing: border-box;
+        }
+
+
+        /* ------------------------------------
+           HORIZONTAL PHOTO TRACK
+        ------------------------------------ */
+
+        .cus-gallery-track {
+            display: flex;
+            align-items: stretch;
+            gap: 6px;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cus-gallery-track::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        /* ------------------------------------
+           INDIVIDUAL PHOTO
+        ------------------------------------ */
+
+        .cus-gallery-item {
+            flex: 0 0 auto;
+            height: 125px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cus-photogallery-133-popup {
+            display: block;
+            height: 125px;
+            text-decoration: none;
+        }
+
+        .cus-gallery-image-wrap {
+            position: relative;
+            height: 125px;
+            width: auto;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .cus-photogallery-133-img {
+            display: block;
+            height: 125px;
+            width: auto;
+            max-width: none;
+            object-fit: cover;
+        }
+
+
+        /* ------------------------------------
+           HOVER EFFECT
+        ------------------------------------ */
+
+        .cus-photogallery-133-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .cus-photogallery-133-popup:hover .cus-photogallery-133-icon {
+            opacity: 1;
+        }
+
+        .cus-gallery-camera {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            font-size: 18px;
+        }
+
+
+        /* ------------------------------------
+           LEFT / RIGHT ARROWS
+        ------------------------------------ */
+
+        .cus-gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+
+            width: 32px;
+            height: 52px;
+
+            border: 0;
+            padding: 0;
+
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        .cus-gallery-arrow:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .cus-gallery-arrow span {
+            font-family: Arial, sans-serif;
+            font-size: 38px;
+            font-weight: 300;
+            line-height: 1;
+            margin-top: -4px;
+        }
+
+        .cus-gallery-arrow-left {
+            left: 0;
+        }
+
+        .cus-gallery-arrow-right {
+            right: 0;
+        }
+
+        .cus-gallery-arrow.disabled {
+            opacity: 0.25;
+            cursor: default;
+        }
+
+
+        /* ------------------------------------
+           RESPONSIVE
+        ------------------------------------ */
+
+        @media (max-width: 767px) {
+
+            .cus-gallery-wrapper {
+                padding: 0 30px;
+            }
+
+            .cus-gallery-item,
+            .cus-photogallery-133-popup,
+            .cus-gallery-image-wrap,
+            .cus-photogallery-133-img {
+                height: 105px;
+            }
+
+            .cus-gallery-arrow {
+                width: 28px;
+                height: 46px;
+            }
+
+            .cus-gallery-arrow span {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
+<script>
+
+(function () {
+
+    function initPhotoGallery() {
+
+        var galleryWrapper = document.querySelector(
+            ".cus-section-<<SubMenuId>>-wrapper"
+        );
+
+        if (!galleryWrapper) {
+            return;
+        }
+
+        var track = galleryWrapper.querySelector(
+            ".cus-gallery-track"
+        );
+
+        var leftArrow = galleryWrapper.querySelector(
+            ".cus-gallery-arrow-left"
+        );
+
+        var rightArrow = galleryWrapper.querySelector(
+            ".cus-gallery-arrow-right"
+        );
+
+        if (!track || !leftArrow || !rightArrow) {
+            return;
+        }
+
+
+        /*
+         * Prevent duplicate initialization
+         */
+
+        if (galleryWrapper.getAttribute("data-gallery-ready") === "true") {
+            return;
+        }
+
+        galleryWrapper.setAttribute("data-gallery-ready", "true");
+
+
+        /*
+         * Calculate scroll amount
+         */
+
+        function getScrollAmount() {
+
+            var firstItem = track.querySelector(".cus-gallery-item");
+
+            if (firstItem) {
+
+                var itemWidth = firstItem.offsetWidth;
+
+                var gap = 6;
+
+                return (itemWidth + gap) * 3;
+
+            }
+
+            return track.clientWidth * 0.75;
+
+        }
+
+
+        /*
+         * Update arrow state
+         */
+
+        function updateArrows() {
+
+            var maxScroll = track.scrollWidth - track.clientWidth;
+
+            if (maxScroll <= 2) {
+
+                leftArrow.classList.add("disabled");
+                rightArrow.classList.add("disabled");
+
+                return;
+
+            }
+
+
+            if (track.scrollLeft <= 2) {
+                leftArrow.classList.add("disabled");
+            } else {
+                leftArrow.classList.remove("disabled");
+            }
+
+
+            if (track.scrollLeft >= maxScroll - 2) {
+                rightArrow.classList.add("disabled");
+            } else {
+                rightArrow.classList.remove("disabled");
+            }
+
+        }
+
+
+        /*
+         * LEFT ARROW
+         */
+
+        leftArrow.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (track.scrollLeft <= 2) {
+                return;
+            }
+
+            var amount = getScrollAmount();
+
+            track.scrollLeft = Math.max(
+                0,
+                track.scrollLeft - amount
+            );
+
+            updateArrows();
+
+        });
+
+
+        /*
+         * RIGHT ARROW
+         */
+
+        rightArrow.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            var maxScroll = track.scrollWidth - track.clientWidth;
+
+            if (track.scrollLeft >= maxScroll - 2) {
+                return;
+            }
+
+            var amount = getScrollAmount();
+
+            track.scrollLeft = Math.min(
+                maxScroll,
+                track.scrollLeft + amount
+            );
+
+            updateArrows();
+
+        });
+
+
+        /*
+         * Update arrows when manually scrolling
+         */
+
+        track.addEventListener("scroll", function () {
+            updateArrows();
+        });
+
+
+        /*
+         * Update after resize
+         */
+
+        window.addEventListener("resize", function () {
+            updateArrows();
+        });
+
+
+        /*
+         * Initial state
+         */
+
+        updateArrows();
+
+
+        /*
+         * Fancybox
+         */
+
+        if (typeof Fancybox !== "undefined") {
+
+            Fancybox.bind(
+                galleryWrapper,
+                '[data-fancybox="gallery"]',
+                {
+                    Thumbs: {
+                        autoStart: false
+                    }
+                }
+            );
+
+        }
+
+    }
+
+
+    /*
+     * IMPORTANT:
+     * Run immediately if DOM is already loaded.
+     * Otherwise wait for DOMContentLoaded.
+     */
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            initPhotoGallery
+        );
+
+    } else {
+
+        initPhotoGallery();
+
+    }
+
+})();
+
+
+/*
+ * SubMenu Title
+ */
+
+if (ReadSubmenu() == "<<SubMenuId>>") {
+    document.title = "Photo Gallery";
+}
+
+</script>
+
+</div>
+
+{{LayoutSection<<SubMenuId>>End}}
