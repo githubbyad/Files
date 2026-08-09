@@ -12,7 +12,7 @@
     <tbody>
         {{RepeatBegin}}
             {{If Counter<=TotalArticlesPage}}
-                <tr>
+                <tr class="section-tr">
                     <td>    
                         <h1 class="pageheading" data-heading="{{Heading}}">{{Heading}}</h1>
                         <div class="pagebody">
@@ -78,6 +78,7 @@
 <style>
     .pagesourceline.layout_pagesourceline[data-s=""], .by-separator[data-by=""] {display: none;}
     .archive-date {min-width: 170px;margin-right: 5px;text-align: right;}
+    .section-tr {display: table;border-bottom: 1px solid #ddd;padding-top: 5px;padding-bottom: 5px;}
 </style>    
 {{LayoutSection<<SubMenuId>>End}}
 {{SectionValuesEnd}}
