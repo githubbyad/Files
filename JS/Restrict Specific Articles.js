@@ -2,7 +2,7 @@
 (function () {
 
     var restrictedUrls = [
-        '/the-saudi-shift-why-british-footballers-swapped-the-premier-league-for-the-gulf-p33522-404.htm'
+        "/the-saudi-shift-why-british-footballers-swapped-the-premier-league-for-the-gulf-p33522-404.htm"
         // Add more restricted URLs here
     ];
 
