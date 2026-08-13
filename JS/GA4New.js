@@ -105,17 +105,30 @@ document.addEventListener("DOMContentLoaded", function () {
         // Detect Advertisement
         //----------------------------------------------------------
 
-        const img = link.querySelector("img");
-
         if (
             img &&
             (
                 img.className.includes("custom_adgroup_") ||
-                (img.title && img.title.startsWith("AD:"))
+                (img.title && img.title.startsWith("AD:")) ||
+                (img.dataset.title && img.dataset.title.startsWith("AD:")) ||
+                /cmsAdImagePopup\s*\(/i.test(link.getAttribute("onclick") || "")
             )
         ) {
 
             eventName = "ad_click";
+
+            // Get advertiser name
+            linkText =
+                img.dataset.title?.trim() ||
+                img.title?.trim() ||
+                img.alt?.trim() ||
+                linkText;
+
+            // Remove "AD: " prefix
+            linkText = linkText.replace(/^AD:\s*/i, "");
+
+            // Remove trailing "(11-333)" style ID
+            linkText = linkText.replace(/\s*\(\d+-\d+\)$/, "");
 
         }
 
