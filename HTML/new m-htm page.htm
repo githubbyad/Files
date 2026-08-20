@@ -1,0 +1,62 @@
+1. In {{main}} layout, under "Free HTML Layout" field, I replaced {{PutMainContent}} with following
+
+<div class="main-content-wrapper">{{PutMainContent}}</div>
+<script>showOnlyMainContent();</script>
+
+
+2. "mainbody" should be added in {{main}} layout. if not, wrap all contents with <div class="mainbody">.... </div>
+
+
+3. Add following meta in head part not added 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+
+4. Add following CSS in "custom.css".
+
+@media (max-width:992px){.mainbody {visibility: hidden;}}
+
+
+5. Added following JS in "settings.js"
+
+// ========== show Only MainContent
+function showOnlyMainContent() {
+function cleanPage() {
+const mainbody = document.querySelector('html[data-msx-ext] .mainbody');
+const content = document.querySelector('html[data-msx-ext] .main-content-wrapper');
+
+if (!mainbody || !content) {
+return false;
+}
+
+// Move content directly under .mainbody
+mainbody.appendChild(content);
+
+//  show .mainbody which was hidden using css 
+mainbody.style.visibility = "visible";
+
+// Remove everything else inside .mainbody
+Array.from(mainbody.children).forEach(function (child) {
+if (child !== content) {
+child.remove();
+}
+});
+
+return true;
+}
+
+if (cleanPage()) {
+return;
+}
+
+const observer = new MutationObserver(function () {
+if (cleanPage()) {
+observer.disconnect();
+}
+});
+
+observer.observe(document.documentElement, {
+childList: true,
+subtree: true
+});
+}
