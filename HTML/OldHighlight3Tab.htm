@@ -1,0 +1,627 @@
+{{LayoutPreview<<SubMenuId>>Begin}}
+{{LayoutPreview<<SubMenuId>>Limit5}}
+{{SortBy:Issue, Updated}}
+{{RemoveHTMLBody}}
+{{RemoveMore:Yes}}
+{{Where:HighlightInclude:3}}
+function GetPreview<<SubMenuId>>(){document.write(`
+<div class="cus-preview-133-container">
+    <div class="cus-preview-133-wrap row hp-parent mx-sm-s mx-md-0 mx-md-s1">
+        {{RepeatBegin}}
+            <div class="bulletin-article">
+                <div class="bulletin-title">
+                    <a href="{{HeadingLink}}" class="cus-preview-133-heading">{{Heading}}</a>                
+                </div>
+                <div class="bulletin-main">
+                    <div class="bulletin-image bulletin-left">
+                        <a href="{{HeadingLink}}">
+                            <div data-cus-src="{{HeadingImage}}">
+                                {{HeadingImageGallery}}
+                            </div>
+                        </a>
+                    </div>                
+                    <div class="bulletin-right">
+                        <div class="bulletin-text line-7">{{Body}}</div>
+                        <div class="Read_more_100">
+                            <a href="{{HeadingLink}}" class="Read_more hvr-icon-wobble-horizontal">READ MORE...</a>
+                        </div>                        
+                    </div>
+                </div>  
+            </div>
+        {{RepeatEnd}}
+    </div>
+</div>
+`);}
+{{LayoutPreview<<SubMenuId>>End}}
+
+
+
+
+  ---------------------------------- custom.css ----------------------------------
+  /* =========================================
+   BULLETIN BOARD - PREVIEW 133
+   ========================================= */
+
+.cus-preview-133-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.cus-preview-133-container * {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+/* =========================================
+   TOP MENU / SUBMENU BAR
+   ========================================= */
+
+.cus-default-menu-bar {
+    width: 100%;
+    padding: 4px 4px 0 4px;
+    background: #e5e5e5;
+    border: 1px solid #aaa;
+    border-bottom: none;
+}
+
+.cus-default-menu-bar .cus-133-label {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.cus-default-submenu {
+    display: inline-block;
+    background: #2d91df;
+    padding: 9px 14px;
+}
+
+.cus-default-submenu a {
+    color: #111 !important;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+/* =========================================
+   ARTICLE AREA
+   ========================================= */
+
+.cus-preview-133-wrap {
+    width: 100%;
+    margin: 0 !important;
+
+    background: #fff;
+
+    display: block !important;
+}
+
+.bulletin-title {
+	font-size: 25px;
+	font-weight: bold;
+	color: #A61BCF;
+}
+/* =========================================
+   ARTICLE
+   ========================================= */
+
+.cus-preview-133-wrap .hpe-in-prev {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+}
+
+
+/* =========================================
+   IMAGE CONTAINER
+   ========================================= */
+
+.cus-preview-133-img {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* =========================================
+   ARTICLE LINK
+   ========================================= */
+
+.cus-preview-133-link {
+    width: 100%;
+    display: block;
+    border: none !important;
+    color: #222;
+    text-decoration: none;
+    overflow: visible !important;
+    position: relative;
+}
+
+
+/* =========================================
+   IMAGE
+   ========================================= */
+
+.cus-preview-133-link .ratio-3-2 {
+    width: 245px;
+    height: 154px;
+    float: left;
+    margin: 0 8px 5px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* Remove default ratio behaviour */
+
+.cus-preview-133-link .ratio-3-2:before {
+    display: none !important;
+}
+
+.cus-preview-133-link .ratio-3-2 > div,
+.cus-preview-133-link .ratio-3-2 .img-content {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Image */
+
+.cus-preview-133-link .ratio-3-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =========================================
+   ARTICLE CONTENT
+   ========================================= */
+
+.cus-preview-133-slide {
+    width: 100%;
+    padding: 0 !important;
+    background: #fff;
+    position: static !important;
+}
+
+
+/* =========================================
+   HEADLINE
+   ========================================= */
+
+.cus-preview-133-heading {
+    display: block !important;
+    width: 100%;
+    margin: 0 0 11px 0 !important;
+    padding: 0 !important;
+
+    color: #32146b !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 1.35 !important;
+
+    text-decoration: none !important;
+}
+
+
+/* =========================================
+   BODY / SUMMARY
+   ========================================= */
+
+.cus-preview-133-body {
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #333 !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    line-height: 1.25 !important;
+
+    text-decoration: none !important;
+}
+
+
+/* =========================================
+   READ LINK
+   ========================================= */
+
+.cus-preview-133-body a,
+.cus-preview-133-slide a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+.cus-preview-133-body a:hover,
+.cus-preview-133-slide a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MORE
+   ========================================= */
+
+.cus-preview-133-more {
+    display: block !important;
+    clear: both;
+
+    width: 100%;
+
+    margin: 10px 0 0 0 !important;
+    padding: 0 !important;
+
+    color: #0645ad !important;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    font-style: normal !important;
+    line-height: 1.2 !important;
+
+    text-decoration: none !important;
+}
+
+
+/* =========================================
+   DATE
+   ========================================= */
+
+.cus-preview-133-date {
+    display: none !important;
+}
+
+
+/* =========================================
+   CLEAR FLOAT
+   ========================================= */
+
+.cus-preview-133-slide:after,
+.cus-preview-133-link:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* =========================================
+   HIDE EXTRA ARTICLES
+   ========================================= */
+
+.cus-preview-133-wrap .hpe-in-prev:nth-child(n+2) {
+    display: none !important;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media screen and (max-width: 600px) {
+
+    .cus-preview-133-container {
+        width: 100%;
+    }
+
+    .cus-preview-133-wrap {
+        padding: 10px;
+    }
+
+    .cus-preview-133-link .ratio-3-2 {
+        width: 45%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+    }
+
+    .cus-preview-133-heading {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+    }
+
+    .cus-preview-133-body {
+        font-size: 13px !important;
+        line-height: 1.25 !important;
+    }
+
+}
+.line-9 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box !important;
+	-webkit-line-clamp: 9;
+	-webkit-box-orient: vertical;
+}
+.bulletin-article .hvr-icon-wobble-horizontal::before {
+  right: -1rem;
+}
+.bulletin-article .Read_more_100 {
+  margin-left: 0;
+}
+.bulletin-article,
+.bulletin-title {
+  float: left;
+  width: 100%;
+}
+.bulletin-article {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.bulletin-main {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.bulletin-right {
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+}
+.bulletin-image.bulletin-left {
+  flex: 1;
+  display: inline-flex;
+}
+.bulletin-main {
+  flex-wrap: wrap;
+  flex-direction: row !important;
+  gap: 15px;
+}
+.cms-img-align.cms-img-align-center {
+  float: left;
+  width: 100%;
+}
+.Highlight3 img {
+  max-width: 100%;
+  max-height: none;
+}
+.bulletin-article {
+  padding-top: 10px !important;
+}
+.Highlight3 input:checked + label {
+  border-top-width: unset !important;
+}
+.Highlight3 > label {
+  text-align: center !important;
+}
+.Highlight3 {
+  border-top-width: 0;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 14px;
+}
+
+
+
+
+  ---------------------------------- custom.js ----------------------------------
+  function RenderHighlight3() {
+
+    window.Highlight3Tabs = [];
+
+    document.querySelectorAll(".highlight3-data").forEach(s => s.remove());
+
+    const submenuFiles = [
+        "submenu252.js",
+        "submenu586.js",
+        "submenu313.js",
+        "submenu260.js",
+        "submenu615.js",
+        "submenu304.js",
+        "submenu349.js"
+    ];
+
+    Promise.allSettled(
+        submenuFiles.map(loadScript)
+    ).then(function () {
+
+        if (window.Highlight3Tabs.length) {
+            buildHighlight3();
+        }
+
+    });
+
+}
+
+function loadScript(src) {
+
+    return new Promise(function (resolve, reject) {
+
+        const script = document.createElement("script");
+
+        script.src = src + "?v=9.000009";
+        script.className = "highlight3-data";
+        script.onload = resolve;
+        script.onerror = reject;
+
+        document.head.appendChild(script);
+
+    });
+
+}
+
+function buildHighlight3() {
+
+    const container = document.getElementById("Highlight3");
+
+    if (!container)
+        return;
+
+    let html = `
+        <div class="card shadow-sm border-0">
+
+            <ul class="nav nav-tabs flex-wrap" id="Highlight3Tabs">
+    `;
+
+    Highlight3Tabs.forEach(function (tab, index) {
+
+        html += `
+            <li class="nav-item">
+
+                <button
+                    type="button"
+                    class="nav-link ${index === 0 ? "active" : ""}"
+                    data-index="${index}">
+
+                    ${tab.submenuName}
+
+                </button>
+
+            </li>
+        `;
+
+    });
+
+    html += `
+
+            </ul>
+
+            <div class="card-body" id="Highlight3Content"></div>
+
+        </div>
+    `;
+
+    container.innerHTML = html;
+
+    showHighlight3Tab(0);
+
+    document.querySelectorAll("#Highlight3Tabs .nav-link").forEach(function (btn) {
+
+        btn.addEventListener("click", function () {
+
+            document.querySelectorAll("#Highlight3Tabs .nav-link").forEach(function (x) {
+
+                x.classList.remove("active");
+
+            });
+
+            this.classList.add("active");
+
+            showHighlight3Tab(parseInt(this.dataset.index));
+
+        });
+
+    });
+
+}
+
+function showHighlight3Tab(index) {
+
+    const tab = Highlight3Tabs[index];
+
+    if (!tab || !tab.articles || !tab.articles.length) {
+
+        document.getElementById("Highlight3Content").innerHTML =
+            "<div class='text-center py-5'>No articles found.</div>";
+
+        return;
+
+    }
+
+    let html = `<div class="row g-4">`;
+
+    tab.articles.forEach(function (article) {
+
+        let body = article.body || "";
+
+        if (body.length > 180) {
+            body = body.substring(0, 180) + "...";
+        }
+
+        html += `
+
+            <div class="col-lg-6 col-md-6">
+
+                <div class="card h-100 shadow-sm">
+
+                    <a href="${article.link}">
+
+                        <img
+                            loading="lazy"
+                            src="${article.image}"
+                            class="card-img-top"
+                            alt="${article.title}">
+
+                    </a>
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+
+                            <a href="${article.link}"
+                               class="text-decoration-none text-dark">
+
+                                ${article.title}
+
+                            </a>
+
+                        </h5>
+
+                        <p class="card-text">
+
+                            ${body}
+
+                        </p>
+
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+
+                        <a href="${article.link}"
+                           class="btn btn-primary btn-sm">
+
+                            Read More
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    html += `
+
+        </div>
+
+        <div class="text-center mt-4">
+
+            <a href="${tab.submenuLink}"
+               class="btn btn-outline-primary">
+
+                View All ${tab.submenuName}
+
+            </a>
+
+        </div>
+
+    `;
+
+    document.getElementById("Highlight3Content").innerHTML = html;
+
+}
+
+
+---------------------------------- Free Layout ----------------------------------
+  
+<div class="highlight3">
+   <div id="Highlight3"></div>
+   <script>RenderHighlight3()</script>
+</div>
