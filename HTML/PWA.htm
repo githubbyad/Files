@@ -175,6 +175,117 @@
         font-size: 13px;
     }
 }
+#ios-install-popup {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(100% - 30px);
+    max-width: 520px;
+
+    display: none;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+
+    z-index: 999999;
+
+    font-family: Arial, sans-serif;
+}
+
+#ios-install-popup img {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 10px;
+}
+
+.ios-install-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.ios-install-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 4px;
+}
+
+.ios-install-text {
+    font-size: 13px;
+    line-height: 18px;
+    color: #666666;
+}
+
+.ios-share-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    margin: 0 2px;
+
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+}
+
+#ios-install-close {
+    border: 0;
+    background: transparent;
+
+    color: #777777;
+
+    font-size: 24px;
+    line-height: 20px;
+
+    padding: 2px 4px;
+
+    cursor: pointer;
+}
+
+#ios-install-close:hover {
+    color: #222222;
+}
+
+@media (max-width: 480px) {
+
+    #ios-install-popup {
+        top: 10px;
+        width: calc(100% - 20px);
+        padding: 10px;
+        gap: 9px;
+    }
+
+    #ios-install-popup img {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .ios-install-title {
+        font-size: 15px;
+    }
+
+    .ios-install-text {
+        font-size: 12px;
+        line-height: 17px;
+    }
+}  
 /* ****** /PWA Install Popup Styles ****** */
 
 
@@ -207,6 +318,23 @@
         ×
     </button>
 </div>
+<div id="ios-install-popup">
+    <img src="/icons/loca-life-192.png" alt="LocaLife">
+
+    <div class="ios-install-content">
+        <div class="ios-install-title">Add LocaLife to your Home Screen</div>
+
+        <div class="ios-install-text">
+            Tap the <strong>Share</strong> button
+            <span class="ios-share-icon">↑</span>
+            and select <strong>Add to Home Screen</strong>.
+        </div>
+    </div>
+
+    <button id="ios-install-close" onclick="closeIOSInstallPopup()" aria-label="Close">
+        ×
+    </button>
+</div>  
 <!-- /PWA-->
 
 
@@ -296,3 +424,49 @@ window.addEventListener("appinstalled", function () {
     deferredPrompt = null;
     hideInstallPopup();
 });
+
+function isIOS() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function isIOSInstalled() {
+    return window.navigator.standalone === true ||
+           window.matchMedia("(display-mode: standalone)").matches;
+}
+
+function showIOSInstallPopup() {
+    const popup = document.getElementById("ios-install-popup");
+
+    if (popup) {
+        popup.style.display = "flex";
+    }
+}
+
+function closeIOSInstallPopup() {
+    const popup = document.getElementById("ios-install-popup");
+
+    if (popup) {
+        popup.style.display = "none";
+    }
+
+    sessionStorage.setItem("locaLifeIOSInstallClosed", "1");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (!isIOS()) {
+        return;
+    }
+
+    // Don't show if already installed
+    if (isIOSInstalled()) {
+        return;
+    }
+
+    // Don't show again if visitor closed it during this session
+    if (sessionStorage.getItem("locaLifeIOSInstallClosed")) {
+        return;
+    }
+
+    showIOSInstallPopup();
+});  
