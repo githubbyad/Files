@@ -1,0 +1,298 @@
+================================== Layouts (Apps) ====================================
+
+{{LayoutArticleApps501Begin}}
+{{File:manifest.json}}
+{{LayoutArticleApps501Limit1}}
+{{Where:SubMenuAppsIncludeBlank:No}}
+{{SortBy:Issue,Updated}}
+{{ReplaceJavascriptChars:No}}
+{{ReplaceJSONChars:Yes}}
+{
+  "name": "LocaLife",
+  "short_name": "LocaLife",
+  "description": "LocaLife",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/loca-life-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/loca-life-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+{{LayoutArticleApps501End}}
+
+
+
+
+
+
+
+
+
+================================== <head> ====================================
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="/loca-life-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LocaLife">
+
+
+
+
+
+
+
+
+
+
+
+
+================================== custom.css ====================================
+
+/* ****** PWA Install Popup Styles ****** */
+#pwa-install-popup {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 520px;
+
+    display: none;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.18);
+
+    z-index: 999999;
+
+    font-family: Arial, sans-serif;
+}
+
+#pwa-install-popup img {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 10px;
+}
+
+.pwa-install-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.pwa-install-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 3px;
+}
+
+.pwa-install-text {
+    font-size: 13px;
+    line-height: 18px;
+    color: #666666;
+}
+
+#pwa-install-button {
+    border: 0;
+    border-radius: 7px;
+    padding: 9px 15px;
+
+    background: #008f4c;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#pwa-install-button:hover {
+    background: #007a40;
+}
+
+#pwa-install-close {
+    border: 0;
+    background: transparent;
+    color: #777777;
+
+    font-size: 24px;
+    line-height: 20px;
+
+    padding: 2px 4px;
+    cursor: pointer;
+}
+
+#pwa-install-close:hover {
+    color: #222222;
+}
+
+@media (max-width: 480px) {
+    #pwa-install-popup {
+        top: 10px;
+        width: calc(100% - 20px);
+        padding: 10px;
+        gap: 9px;
+    }
+
+    #pwa-install-popup img {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .pwa-install-title {
+        font-size: 15px;
+    }
+
+    .pwa-install-text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #pwa-install-button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+/* ****** /PWA Install Popup Styles ****** */
+
+
+
+
+
+
+
+
+
+
+
+
+================================== Free Layout - HOME & {{main}} ====================================
+
+<!-- PWA-->
+<div id="pwa-install-popup">
+    <img src="/loca-life-192.png" alt="LocaLife">
+
+    <div class="pwa-install-content">
+        <div class="pwa-install-title">Install LocaLife</div>
+        <div class="pwa-install-text">Add LocaLife to your Home Screen for quick access.</div>
+    </div>
+
+    <button id="pwa-install-button" onclick="installLocaLife()">
+        Install
+    </button>
+
+    <button id="pwa-install-close" onclick="closeInstallPopup()" aria-label="Close">
+        ×
+    </button>
+</div>
+<!-- /PWA-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================================== custom.js ====================================
+
+// PWA Install Prompt Handling
+let deferredPrompt = null;
+
+function isLocaLifeInstalled() {
+    return window.matchMedia("(display-mode: standalone)").matches ||
+           window.navigator.standalone === true;
+}
+
+function showInstallPopup() {
+    if (isLocaLifeInstalled()) {
+        return;
+    }
+
+    const popup = document.getElementById("pwa-install-popup");
+
+    if (popup) {
+        popup.style.display = "flex";
+    }
+}
+
+function hideInstallPopup() {
+    const popup = document.getElementById("pwa-install-popup");
+
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+function closeInstallPopup() {
+    hideInstallPopup();
+
+    // Don't show it again during this browser session
+    sessionStorage.setItem("locaLifeInstallClosed", "1");
+}
+
+window.addEventListener("beforeinstallprompt", function (event) {
+
+    if (isLocaLifeInstalled()) {
+        return;
+    }
+
+    event.preventDefault();
+    deferredPrompt = event;
+
+    if (!sessionStorage.getItem("locaLifeInstallClosed")) {
+        showInstallPopup();
+    }
+});
+
+async function installLocaLife() {
+
+    if (!deferredPrompt) {
+        return;
+    }
+
+    deferredPrompt.prompt();
+
+    const result = await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+    if (result.outcome === "accepted") {
+        hideInstallPopup();
+    }
+}
+
+window.addEventListener("appinstalled", function () {
+    deferredPrompt = null;
+    hideInstallPopup();
+});
