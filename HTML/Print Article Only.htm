@@ -1,0 +1,92 @@
+********************************************************* sharing tool code (add following with existing) *********************************************************
+<a href="#" onclick="window.print(); return false;"
+   title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="30" height="30"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="1.7"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+</a>
+
+
+********************************************************* custom.css *********************************************************
+a[title="Print / Save as PDF"] svg {
+	padding: 4px;
+}
+@media print {
+  @page {
+    margin: 10mm;
+  }
+
+    /* Hide everything */
+  body * {
+    display: none !important;
+  }
+
+    /* Restore the article's parent containers */
+  .main_wrapper,
+  .wrapper_holder,
+  .c9,
+  .c10,
+  .left-column,
+  .highlight-2,
+  [data-cms-popup-root="1"] {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+    /* Restore article content */
+  div[data-cms-type="article"][data-cms-module="articles"],
+  div[data-cms-type="article"][data-cms-module="articles"] * {
+    display: revert !important;
+  }
+
+    /* Hide unwanted elements */
+  .opinionbody.layout_opinionbody,
+  .sharebody,
+  .sharebody *,
+  #ARG100_div {
+    display: none !important;
+  }
+/* Hide all sharing tools inside the article */
+  div[data-cms-type="article"][data-cms-module="articles"] .sharebody,
+  div[data-cms-type="article"][data-cms-module="articles"] .sharebody *,
+  div[data-cms-type="article"][data-cms-module="articles"] .a2a_kit,
+  div[data-cms-type="article"][data-cms-module="articles"] .a2a_floating_style,
+  div[data-cms-type="article"][data-cms-module="articles"] .social-share {
+    display: none !important;
+  }
+/* Hide article comments/opinion section */
+div[data-cms-type="article"][data-cms-module="articles"] .opinionbody.layout_opinionbody,
+div[data-cms-type="article"][data-cms-module="articles"] .opinionbody.layout_opinionbody * {
+    display: none !important;
+}
+html,
+body {
+    background: #fff !important;
+    background-color: #fff !important;
+    color: #474747 !important;
+}
+    /* Remove shadows */
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
